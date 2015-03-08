@@ -7,5 +7,9 @@ An Angular2 WebPack seed featuring hot-module-reloading of components
 ```bash
 $ npm start # open localhost:8080
 ```
+### auto build files
+```bash
+$ npm run watch
+```
 
 
