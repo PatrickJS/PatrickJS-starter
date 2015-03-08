@@ -4,7 +4,9 @@
   "description": "An Angular2 WebPack seed featuring hot-module-reloading of components",
   "main": "",
   "scripts": {
-    "start": "webpack-dev-server -d --inline --colors --display-error-details --content-base public",
+    "build": "./node_modules/.bin/webpack -d",
+    "watch": "./node_modules/.bin/webpack -d --watch",
+    "start": "./node_modules/.bin/webpack-dev-server -d --inline --colors --display-error-details --content-base public",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -38,6 +40,7 @@
     "traceur-compiler-loader": "^1.0.2",
     "typescript-loader": "^1.1.2",
     "url-loader": "^0.5.5",
-    "webpack": "^1.7.2"
+    "webpack": "^1.7.2",
+    "webpack-dev-server": "^1.7.0"
   }
 }
