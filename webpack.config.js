@@ -33,19 +33,6 @@ module.exports = {
     reasons: true
   },
 
-  // entry: fs.readdirSync(CODE).reduce(function(entries, dir) {
-  //   if (isDirectory(path.join(CODE, dir))) {
-  //     entries[dir] = path.join(CODE, dir, 'app.js');
-  //   }
-  //   return entries;
-  // }, {}),
-
-  // output: {
-  //   path: 'excercises/__build__',
-  //   filename: '[name].js',
-  //   chunkFilename: '[id].chunk.js',
-  //   publicPath: '/__build__/'
-  // },
 
   resolve: {
     extensions: [
@@ -90,17 +77,16 @@ module.exports = {
       // Support for .ts files.
       { test: /\.ts$/,                      loader: 'typescript-loader' },
       // Support for .es7 files.
-      { test: /\.es7/,                      loader: [
-                                              'traceur-compiler-loader?',
-                                              'modules=commonjs&',
-                                              'sourceMaps&',
-                                              'experimental&',
-                                              'runtime=false&',
-                                              'types=false&',
-                                              'annotations&',
-                                              'memberVariables&'
+      { test: /\.es7/,                      loader: ['traceur-compiler-loader'].concat([
+                                              'sourceMaps',
+                                              'runtime=false',
+                                              'modules=commonjs',
+                                              'experimental',
+                                              'types',
+                                              'annotations',
+                                              'memberVariables'
                                               // 'typeAssertionModule="rtts_assert"'
-                                            ].join('')
+                                            ].join('&')).join('?')
       }
     ]
   },
