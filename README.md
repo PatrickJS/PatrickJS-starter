@@ -13,3 +13,5 @@ $ npm run watch
 ```
 
 
+TODO: 
+* Get traceur to play well with WebPack
