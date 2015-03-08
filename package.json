@@ -6,7 +6,8 @@
   "scripts": {
     "build": "./node_modules/.bin/webpack -d",
     "watch": "./node_modules/.bin/webpack -d --watch",
-    "start": "./node_modules/.bin/webpack-dev-server -d --inline --colors --display-error-details --content-base public",
+    "server": "./node_modules/.bin/webpack-dev-server -d --inline --colors --display-error-details --content-base public",
+    "start": "npm install && npm run build && npm run server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
