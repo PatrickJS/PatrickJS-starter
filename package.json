@@ -1,0 +1,43 @@
+{
+  "name": "angular2-webpack-seed",
+  "version": "0.0.0",
+  "description": "An Angular2 WebPack seed featuring hot-module-reloading of components",
+  "main": "",
+  "scripts": {
+    "start": "webpack-dev-server -d --inline --colors --display-error-details --content-base public",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gdi2290/angular2-webpack-seed.git"
+  },
+  "author": "gdi2290 <github@gdi2290.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gdi2290/angular2-webpack-seed/issues"
+  },
+  "homepage": "https://github.com/gdi2290/angular2-webpack-seed",
+  "dependencies": {
+    "angular2": "^2.0.0-alpha.12",
+    "rtts_assert": "^2.0.0-alpha.12",
+    "zone.js": "^0.4.1"
+  },
+  "devDependencies": {
+    "babel-core": "^4.7.3",
+    "babel-loader": "^4.1.0",
+    "css-loader": "^0.9.1",
+    "exports-loader": "^0.6.2",
+    "expose-loader": "^0.6.0",
+    "file-loader": "^0.8.1",
+    "imports-loader": "^0.6.3",
+    "jade": "^1.9.2",
+    "jade-loader": "^0.7.1",
+    "json-loader": "^0.5.1",
+    "style-loader": "^0.8.3",
+    "traceur": "0.0.86",
+    "traceur-compiler-loader": "^1.0.2",
+    "typescript-loader": "^1.1.2",
+    "url-loader": "^0.5.5",
+    "webpack": "^1.7.2"
+  }
+}
