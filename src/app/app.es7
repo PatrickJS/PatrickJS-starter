@@ -1,0 +1,18 @@
+import {bootstrap, Component, Template} from 'angular2/angular2';
+// import {TodoApp} from 'components/todo-app/todo-app';
+
+@Component({
+  selector: 'app'
+})
+@Template({
+  inline: '<h1>Hello {{ name }}</h1>'
+})
+class App {
+  constructor() {
+    this.name = 'World';
+  }
+}
+
+debugger;
+console.log('bootstrap');
+bootstrap(App, []);
