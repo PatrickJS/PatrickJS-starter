@@ -1,3 +1,5 @@
+# Status:
+> Currently not working due to some limitations of either traceur or the angular version in npm do not use
 # angular2-webpack-seed
 An Angular2 WebPack seed featuring hot-module-reloading of components
 
