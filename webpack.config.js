@@ -26,7 +26,7 @@ module.exports = {
       './src/common/shared'
     ],
     // angular2: 'angular2/angular2',
-    app: './src/app/app'
+    app: './src/app/bootstrap'
   },
   output: {
     path: 'public/__build__',
@@ -45,6 +45,7 @@ module.exports = {
 
 
   resolve: {
+    root: __dirname,
     extensions: [
       '',
       '.js',
@@ -55,14 +56,20 @@ module.exports = {
       '.webpack.js',
       '.web.js'
     ],
-    alias: {
+    // Todo: learn more about aslias
+    // alias: {
       // 'angular2$': '/node_modules/angular2/atscript/angular2',
-      'app/*': '/app/*',
-      'components/*': '/app/components/*.js',
-      'decorators/*': '/app/decorators/*.js',
-      'services/*': '/app/services/*.js',
-      'stores/*': '/app/stores/*.js'
-    }
+      // 'app/*': '/app/*'
+      // 'components$': '/src/app/components/'
+      // 'decorators/*': '/app/decorators/*.js',
+      // 'services/*': '/app/services/*.js',
+      // 'stores/*': '/app/stores/*.js'
+    // },
+    modulesDirectories: [
+      'web_modules',
+      'node_modules',
+      'src/app' // hard coded for now until I figure out alias
+    ]
   },
 
   module: {
