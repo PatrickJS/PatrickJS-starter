@@ -4,7 +4,7 @@ BrowserDomAdapter.makeCurrent();
 import {bootstrap} from 'angular2/angular2';
 import {document} from 'angular2/src/facade/browser';
 
-import {App} from 'components/app.es7';
+import {App} from 'components/app.es6.js';
 
 // lolwut, because I can
 document.addEventListener('DOMContentLoaded', function() {

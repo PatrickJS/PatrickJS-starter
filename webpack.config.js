@@ -50,6 +50,7 @@ module.exports = {
       '',
       '.js',
       '.es6',
+      '.es6.js',
       '.es7',
       '.ts',
       '.json',
@@ -90,11 +91,11 @@ module.exports = {
       // Copy all .html as static file (keep filename)
       { test: /index[a-z-]*\.html$/,        loader: 'file-loader?name=[path][name].html&context=./src' },
       // Support for .es6 files.
-      { test: /\.es6/,                      loader: 'babel-loader' },
+      { test: /\.es6$/,                      loader: 'babel-loader' },
       // Support for .ts files.
       { test: /\.ts$/,                      loader: 'typescript-loader' },
       // Support for .es7 files.
-      { test: /\.es7/,                      loader: ['traceur-compiler-loader'].concat([
+      { test: /\.es6\.js$/,                      loader: ['traceur-compiler-loader'].concat([
                                               // 'inputSourceMap=true',
                                               // 'imports=true',
                                               'runtime=false',
