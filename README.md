@@ -1,5 +1,5 @@
 # Status:
-> Currently not working due to some limitations of either traceur or the angular version in npm do not use
+> Need clean up
 
 # angular2-webpack-seed
 An Angular2 WebPack seed featuring hot-module-reloading of components
@@ -16,5 +16,7 @@ $ npm run watch
 ```
 
 
-TODO: 
-* Get traceur to play well with WebPack
+TODO:
+* Refactor webpack config to use alias
+* hot-component-reloading
+* better way to include angular2
