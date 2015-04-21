@@ -21,8 +21,8 @@
   },
   "homepage": "https://github.com/gdi2290/angular2-webpack-seed",
   "dependencies": {
-    "angular2": "^2.0.0-alpha.13",
-    "rtts_assert": "^2.0.0-alpha.13",
+    "angular2": "2.0.0-alpha.18",
+    "rtts_assert": "2.0.0-alpha.18",
     "zone.js": "^0.4.1"
   },
   "devDependencies": {
