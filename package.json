@@ -27,20 +27,17 @@
     "zone.js": "^0.5.0"
   },
   "devDependencies": {
-    "css-loader": "^0.9.1",
+    "css-loader": "^0.12.1",
     "exports-loader": "^0.6.2",
     "expose-loader": "^0.6.0",
     "file-loader": "^0.8.1",
     "imports-loader": "^0.6.3",
     "json-loader": "^0.5.1",
-    "style-loader": "^0.8.3",
-    "traceur": "0.0.86",
-    "traceur-compiler-loader": "^1.0.6",
+    "style-loader": "^0.12.2",
     "typescript": "^1.5.0-beta",
-    "typescript-loader": "^1.1.2",
     "typescript-simple-loader": "^0.1.1",
     "url-loader": "^0.5.5",
-    "webpack": "^1.7.2",
-    "webpack-dev-server": "^1.7.0"
+    "webpack": "^1.9.6",
+    "webpack-dev-server": "^1.8.2"
   }
 }
