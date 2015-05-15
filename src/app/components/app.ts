@@ -49,7 +49,5 @@ import {Login} from './login';
 export class App {
   constructor(@Inject(Router) router: Router) {
     this.name = 'Angular 2';
-    // router.navigate('home');
-    // debugger;
   }
 }
