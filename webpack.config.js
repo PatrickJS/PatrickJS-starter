@@ -20,12 +20,15 @@ module.exports = {
 
   entry: {
     shared: [
-      // 'zone.js',
-      // 'zone.js/long-stack-trace-zone.js',
+      // Angular 2 Deps
+      'zone.js',
+      'reflect-metadata',
       'rtts_assert/rtts_assert',
-      './src/common/shared'
+
+      './src/common/BrowserDomAdapter',
+
+      'angular2/angular2'
     ],
-    // angular2: 'angular2/angular2',
     app: './src/app/bootstrap'
   },
   output: {
@@ -49,23 +52,24 @@ module.exports = {
     extensions: [
       '',
       '.js',
+      '.ts',
       '.es6',
       '.es6.js',
       '.es7',
-      '.ts',
       '.json',
       '.webpack.js',
       '.web.js'
     ],
     // Todo: learn more about aslias
-    // alias: {
+    alias: {
       // 'angular2$': '/node_modules/angular2/atscript/angular2',
       // 'app/*': '/app/*'
       // 'components$': '/src/app/components/'
       // 'decorators/*': '/app/decorators/*.js',
       // 'services/*': '/app/services/*.js',
       // 'stores/*': '/app/stores/*.js'
-    // },
+      // 'angular2': 'angular2/es6/dev'
+    },
     modulesDirectories: [
       'web_modules',
       'node_modules',
@@ -75,45 +79,20 @@ module.exports = {
 
   module: {
     loaders: [
-      // Define assert in global
-      // { test: require.resolve('angular2/angular2'), loader: "traceur-compiler-loader?" },
-      // { test: require.resolve('rtts_assert/rtts_assert'), loader: "imports?window&zone" },
       // Support for *.json files.
       { test: /\.json$/,                    loader: 'json-loader' },
       // Support for CSS (with hot module replacement)
       { test: /\.css$/,                     loader: 'style-loader!css-loader' },
       // Copy all assets in to asset folder (use hash filename)
       { test: /\.(png|jpg|gif|woff|eot|ttf|svg)$/,      loader: 'file-loader?name=assets/[hash].[ext]' },
-      // Load all *.jade as templates
-      { test: /(?!\.html)\.jade$/,          loader: 'jade-loader' },
-      // Copy all .html.jade as static html files (keep filename)
-      { test: /index[a-z-]*\.html\.jade$/,  loader: 'file-loader?name=[path][name]&context=./src!jade-html-loader' },
       // Copy all .html as static file (keep filename)
       { test: /index[a-z-]*\.html$/,        loader: 'file-loader?name=[path][name].html&context=./src' },
-      // Support for .es6 files.
-      { test: /\.es6$/,                      loader: 'babel-loader' },
       // Support for .ts files.
-      { test: /\.ts$/,                      loader: 'typescript-loader' },
-      // Support for .es7 files.
-      { test: /\.es6\.js$/,                      loader: ['traceur-compiler-loader'].concat([
-                                              // 'inputSourceMap=true',
-                                              // 'imports=true',
-                                              'runtime=false',
-                                              'sourceMaps=true',
-                                              'moduleName=true',
-                                              'modules=commonjs',
-                                              'experimental',
-                                              'types',
-                                              'annotations',
-                                              'memberVariables'
-                                              // 'typeAssertionModule="rtts_assert"'
-                                            ].join('&')).join('?')
-      }
+      { test: /\.ts$/,                      loader: 'typescript-simple-loader' }
     ],
     noParse: [
       new RegExp(TRACEUR_RUNTIME),
-      /rtts_assert\/src\/rtts_assert/,
-      /\/zone\.js$/
+      /rtts_assert\/src\/rtts_assert/
     ]
   },
 
@@ -121,19 +100,13 @@ module.exports = {
     // new webpack.optimize.DedupePlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'shared',
-
-      // filename: "vendor.js"
-      // (Give the chunk a different name)
-
       minChunks: Infinity,
-      // (with more entries, this ensures that no other module
-      //  goes into the vendor chunk)
     }),
     // new webpack.optimize.UglifyJsPlugin({
     //   compress: {
     //     warnings: false
     //   }
-    // })
+    // }),
     new webpack.BannerPlugin(getBanner(), {raw: true})
   ]
 
