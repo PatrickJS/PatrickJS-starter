@@ -1,5 +1,5 @@
 # angular2-webpack-seed
-A starter kit featuring Angular 2, TypeScript, and Webpack by [AngularClass](https://angularclass.com)
+A starter kit featuring Angular 2, Router, TypeScript, and Webpack by [AngularClass](https://angularclass.com)
 
 ### install
 ```bash
@@ -10,19 +10,19 @@ $ npm install
 
 ### server
 ```bash
-$ webpack-dev-server
+$ npm run server
 ```
 
 ### auto build files
 ```bash
-$ webpack --watch
+$ npm run watch
 ```
 
 ### Todo
 * hot-component-reloading
 
 
-<br><br><br>
+<br><br>
 
 [![AngularClass](https://angularclass.com/images/ng-crown.svg  "Angular Class")](https://angularclass.com)
 ##[AngularClass](https://angularclass.com)
