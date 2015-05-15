@@ -1,10 +1,4 @@
-var fs = require('fs');
-var path = require('path');
 var webpack = require('webpack');
-// var CODE = __dirname+'/src';
-var TRACEUR_RUNTIME = require('traceur-compiler-loader').runtime;
-
-
 
 module.exports = {
   devtool: '#eval-source-map',
@@ -53,9 +47,6 @@ module.exports = {
       '',
       '.js',
       '.ts',
-      '.es6',
-      '.es6.js',
-      '.es7',
       '.json',
       '.webpack.js',
       '.web.js'
@@ -113,10 +104,7 @@ module.exports = {
 };
 
 function getBanner() {
-  return '// Angular2 Webpack Seed by @gdi2290 \n';
+  return '// Angular 2, TypeScript 1.5, and Webpack Starter Kit by @gdi2290 from AngularClass \n';
 }
 
-function isDirectory(dir) {
-  return fs.lstatSync(dir).isDirectory();
-}
 
