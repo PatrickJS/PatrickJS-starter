@@ -21,7 +21,8 @@ module.exports = {
 
       './src/common/BrowserDomAdapter',
 
-      'angular2/angular2'
+      'angular2/angular2',
+      'angular2/router'
     ],
     app: './src/app/bootstrap'
   },
