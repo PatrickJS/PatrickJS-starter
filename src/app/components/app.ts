@@ -5,6 +5,7 @@ import {Component, View} from 'angular2/angular2';
 import {Inject} from 'angular2/di';
 
 import {Home} from './home';
+import {Dashboard} from './dashboard';
 import {Login} from './login';
 
 @Component({
@@ -19,6 +20,9 @@ import {Login} from './login';
       <a router-link="home">Home</a>
     </li>
     <li>
+      <a router-link="dashboard">Dashboard</a>
+    </li>
+    <li>
       <a router-link="login">Login</a>
     </li>
   </ul>
@@ -27,9 +31,14 @@ import {Login} from './login';
 })
 @RouteConfig([
   {
-    'path': '/home',
+    'path': '/',
     'as': 'home',
     'component': Home
+  },
+  {
+    'path': '/dashboard',
+    'as': 'dashboard',
+    'component': Dashboard
   },
   {
     'path': '/login',
@@ -40,6 +49,7 @@ import {Login} from './login';
 export class App {
   constructor(@Inject(Router) router: Router) {
     this.name = 'Angular 2';
-    router.navigate('home');
+    // router.navigate('home');
+    // debugger;
   }
 }
