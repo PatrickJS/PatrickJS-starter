@@ -82,7 +82,6 @@ module.exports = {
       { test: /\.ts$/,                      loader: 'typescript-simple-loader' }
     ],
     noParse: [
-      new RegExp(TRACEUR_RUNTIME),
       /rtts_assert\/src\/rtts_assert/
     ]
   },
