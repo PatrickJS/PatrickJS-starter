@@ -647,8 +647,8 @@ declare module "angular2/angular2" {
   var ___esModule: any;
   var ViewRef: any;
   var ProtoViewRef: any;
-  var ViewContainerRef: any;
-  var ElementRef: any;
+  class ViewContainerRef {}
+  class ElementRef {}
   var AncestorAnnotation: any;
   var ParentAnnotation: any;
   interface OnChange {}
@@ -666,8 +666,14 @@ declare module "angular2/angular2" {
   interface NativeShadowDomStrategy {}
   interface EmulatedScopedShadowDomStrategy {}
   interface EmulatedUnscopedShadowDomStrategy {}
-  interface ComponentRef {}
-  interface DynamicComponentLoader {}
+  interface ComponentRef {
+     instance: any;
+     dispose(): void;
+  }
+  class DynamicComponentLoader {
+     loadIntoNewLocation(type: any, b: any, c: any, d?: any): Promise<ComponentRef>;
+     loadNextToExistingLocation(a: any, b: any, c: any): Promise<ComponentRef>;
+  }
   var ComponentAnnotation: any;
   var DirectiveAnnotation: any;
   var onDestroy: any;
@@ -723,7 +729,9 @@ declare module "angular2/di" {
    *
    */
   function bind(token: any): any;
-  var Injector: any;
+  class Injector {
+     resolveAndCreateChild(bindings: [any]): Injector;
+  }
   var Binding: any;
   var ResolvedBinding: any;
   var Dependency: any;
