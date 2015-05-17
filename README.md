@@ -9,8 +9,8 @@ TypeScript 1.5 beta includes everything you need. Make sure to upgrade, even if 
 
 ### install
 ```bash
-$ npm webpack -global
-$ npm webpack-dev-server -global
+$ npm install webpack -global
+$ npm install webpack-dev-server -global
 $ npm install
 ```
 
