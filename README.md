@@ -54,9 +54,11 @@ angular2-webpack-starter/
 # Getting Started
 ## Dependencies
 What you need to run this app:
-* `node` and `npm` 
+* `node` and `npm` (`brew install node`)
+
 Once you have those, you should install these globals with `npm install -global`:
-* `webpack`
+* `webpack` (`npm install -global webpack`)
+* `webpack-dev-server` (`npm install -global webpack-dev-server`)
 
 ## Installing
 * `fork` this repo
