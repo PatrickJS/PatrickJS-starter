@@ -6,8 +6,8 @@
   "scripts": {
     "build": "webpack -d",
     "watch": "webpack -d --watch",
-    "server": "webpack-dev-server -d --inline --colors --display-error-details --content-base public",
-    "start": "npm install && npm run build && npm run server",
+    "server": "webpack-dev-server -d --inline --colors --display-error-details --display-cached ",
+    "start": "npm install && npm run server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -35,7 +35,7 @@
     "json-loader": "^0.5.1",
     "style-loader": "^0.12.2",
     "typescript": "^1.5.0-beta",
-    "typescript-simple-loader": "^0.1.1",
+    "typescript-simple-loader": "^0.1.2",
     "url-loader": "^0.5.5",
     "webpack": "^1.9.6",
     "webpack-dev-server": "^1.8.2"

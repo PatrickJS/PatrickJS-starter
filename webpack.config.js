@@ -4,13 +4,13 @@ module.exports = {
   devtool: '#eval-source-map',
   devServer: {
     contentBase: 'public',
-    // publicPath: 'public'
+    publicPath: '/__build__'
   },
+
   debug: true,
   cache: false,
 
   context: __dirname,
-  publicPath: 'public',
 
   entry: {
     shared: [
@@ -95,7 +95,8 @@ module.exports = {
     }),
     // new webpack.optimize.UglifyJsPlugin({
     //   compress: {
-    //     warnings: false
+    //     warnings: false,
+    //     drop_debugger: false
     //   }
     // }),
     new webpack.BannerPlugin(getBanner(), {raw: true})
