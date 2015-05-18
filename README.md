@@ -109,6 +109,9 @@ We have good experience using these editors:
 
 
 ### Todo
+* production/development environments
+* testing
+* e2e
 * hot-component-reloading
 
 # Starter Kit Support and Questions
