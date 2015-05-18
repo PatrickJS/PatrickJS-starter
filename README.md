@@ -107,10 +107,18 @@ We have good experience using these editors:
 * [Sublime Text](http://www.sublimetext.com/3) with [Typescript-Sublime-Plugin](https://github.com/Microsoft/Typescript-Sublime-plugin#installation)
 
 
-
 ### Todo
 * hot-component-reloading
 
+# Starter Kit Support and Questions
+> Contact us anytime for anything about this repo
+
+* [Gitter: angular-class/angular2-webpack-starter](https://gitter.im/angular-class/angular2-webpack-starter)
+* [Twitter: @AngularClass](https://twitter.com/AngularClass)
+
+___
+
+enjoy -- **AngularClass** 
 
 <br><br>
 
