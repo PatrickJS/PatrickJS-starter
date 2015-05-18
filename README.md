@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://res.cloudinary.com/angularclass/image/upload/v1431925418/webpackAndangular2_dwhus9.png" alt="Webpack and Angular 2" width="500px;" height="320px;"/>
+</p>
+
 # Angular2 Webpack Starter
 > A starter kit featuring [Angular 2](https://angular.io), [Router](https://angular.io/docs/js/latest/api/router/), [TypeScript](http://www.typescriptlang.org/), and [Webpack](http://webpack.github.io/) by [AngularClass](https://angularclass.com)
 
