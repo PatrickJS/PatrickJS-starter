@@ -1,7 +1,7 @@
 {
-  "name": "angular2-webpack-seed",
+  "name": "angular2-webpack-starter",
   "version": "0.0.0",
-  "description": "An Angular2 WebPack seed featuring hot-module-reloading of components",
+  "description": "An Angular 2 Webpack Starter kit featuring Angular 2, Router, TypeScript, and Webpack by AngularClass",
   "main": "",
   "scripts": {
     "build": "webpack -d",
