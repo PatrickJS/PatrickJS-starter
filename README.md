@@ -30,16 +30,9 @@ angular2-webpack-starter/
 ----index.html * where we place our script tags
 --src/ * our source files that will be compiled
 ----app/
-------bootstrap.js * entry file for app
+------bootstrap.ts * entry file for app
 ------components/ * where most of components live
---------app.js * entry file for components
---------home/ * home component
-----------home.js * home entry file
-----------home.component.js * directive for home
-----------home.css * styles for home
-----------home.html * template for home
-----------home.spec.js * specs for home
-----------home.e2e.js * e2e for home
+--------app.ts * entry file for components
 ----common/ * where common files that are used throughout our app
 ------BrowserDomAdapter.ts * ignore this. we need to set the DomAdapter to the browser
 ----custom_typings/ * where we define our custom types
