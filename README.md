@@ -58,7 +58,7 @@ $ npm run watch
 ```
 
 # TypeScript
-> To take full advantage of TypeScript with autocomplete install it and use an editor with the correct TypeScript plugins
+> To take full advantage of TypeScript with autocomplete you would have to install it globally and use an editor with the correct TypeScript plugins.
 
 ## Use latest TypeScript compiler
 TypeScript 1.5 beta includes everything you need. Make sure to upgrade, even if you installed TypeScript previously.
