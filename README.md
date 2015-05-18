@@ -48,6 +48,7 @@ angular2-webpack-starter/
 ## Dependencies
 What you need to run this app:
 * `node` and `npm` (`brew install node`)
+* Ensure you're running the latest versions Node `v0.12.2`+ and NPM `2.10.0`+
 
 Once you have those, you should install these globals with `npm install -global`:
 * `webpack` (`npm install -global webpack`)
