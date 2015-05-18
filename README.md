@@ -6,14 +6,22 @@ This repo serves as an extremely minmal starter for anyone looking to get up and
 * Ready to go build system for working with TypeScript
 
 ### Quick start
+> Edit `app.ts` inside `/src/components/app.ts`
+
 ```bash
 $ npm start
 ```
+
 
 ## File Structure
 We use the component approach in our starter. This is the new standard for developing Angular apps and a great way to ensure maintainable code by encapsulation of our behavior logic. A component is basically a self contained app usually in a single file or a folder with each concern as a file: style, template, specs, e2e, and component class. Here's how it looks:
 ```
 src
+--public/ * static assets are served here
+----lib/ * static libraries
+------traceur.min.js * ignore this file for now as it's required by Angular 2
+----favicon.ico * replace me with your own favicon.ico
+----index.html * where we place our script tags
 --app/
 ----bootstrap.js * entry file for app
 ----components/ * where most of components live
@@ -26,6 +34,13 @@ src
 --------home.spec.js * specs for home
 --------home.e2e.js * e2e for home
 ----common/ * where common files that are used throughout our app
+----custom_typings/ * where we define our custom types
+------ng2.d.ts * where we patch angular2 types with our own until it's fixed
+--typings/ * where tsd defines it's types definitions
+--tsconfig.json * config that webpack uses for typescript
+--tsd.json * config that tsd uses for managing it's definitions
+--package.json * what npm uses to manage it's dependencies
+--webpack.config.js * our webpack config
 ```
 
 # Getting Started
@@ -71,6 +86,12 @@ written. All the symbols should be present, but probably have wrong paramaters
 and missing members. Modify them as you go.
 
     $ npm install -global tsd
+ > You may need to require `reference path` for your editor to autocomplete correctly
+ ```
+ /// <reference path="../../typings/tsd.d.ts" />
+ /// <reference path="../custom_typings/ng2.d.ts" />
+ ```
+ Otherwise including them in `tsd.json` is prefered 
 
 ## Use a TypeScript-aware editor
 We have good experience using these editors:
