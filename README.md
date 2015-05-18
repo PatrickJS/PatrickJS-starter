@@ -22,24 +22,26 @@ $ npm start
 ## File Structure
 We use the component approach in our starter. This is the new standard for developing Angular apps and a great way to ensure maintainable code by encapsulation of our behavior logic. A component is basically a self contained app usually in a single file or a folder with each concern as a file: style, template, specs, e2e, and component class. Here's how it looks:
 ```
-src
+angular2-webpack-starter/
 --public/ * static assets are served here
 ----lib/ * static libraries
 ------traceur.min.js * ignore this file for now as it's required by Angular 2
 ----favicon.ico * replace me with your own favicon.ico
 ----index.html * where we place our script tags
---app/
-----bootstrap.js * entry file for app
-----components/ * where most of components live
-------app.js * entry file for components
-------home/ * home component
---------home.js * home entry file
---------home.component.js * directive for home
---------home.css * styles for home
---------home.html * template for home
---------home.spec.js * specs for home
---------home.e2e.js * e2e for home
+--src/ * our source files that will be compiled
+----app/
+------bootstrap.js * entry file for app
+------components/ * where most of components live
+--------app.js * entry file for components
+--------home/ * home component
+----------home.js * home entry file
+----------home.component.js * directive for home
+----------home.css * styles for home
+----------home.html * template for home
+----------home.spec.js * specs for home
+----------home.e2e.js * e2e for home
 ----common/ * where common files that are used throughout our app
+------BrowserDomAdapter.ts * ignore this. we need to set the DomAdapter to the browser
 ----custom_typings/ * where we define our custom types
 ------ng2.d.ts * where we patch angular2 types with our own until it's fixed
 --typings/ * where tsd defines it's types definitions
