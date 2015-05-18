@@ -6,7 +6,7 @@ import {bootstrap} from 'angular2/angular2';
 // include any injectables
 import {routerInjectables} from 'angular2/router';
 
-// Top level app to bootstrap
+// Top level component to bootstrap
 import {App} from 'components/app';
 
 // bootstrap the Angular app with bindings

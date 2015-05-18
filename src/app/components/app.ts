@@ -5,7 +5,7 @@ import {Component, View, Directive, ElementRef} from 'angular2/angular2';
 
 // Simple example directive
 @Directive({
-  selector: '[x-large]'
+  selector: '[x-large]' // using [ ] means selecting attributes
 })
 class XLarge {
   constructor(public el: ElementRef) {
@@ -16,10 +16,10 @@ class XLarge {
 
 // Top Level Component
 @Component({
-  selector: 'app'
+  selector: 'app' // without [ ] means we are selecting the tag directly
 })
 @View({
-  directives: [ XLarge ],
+  directives: [ XLarge ], // needed in order to tell Angular's compiler what's in the template
   template: `
   <h1>Hello {{ name }}</h1>
   <span x-large>Extra Large Font Directive</span>
