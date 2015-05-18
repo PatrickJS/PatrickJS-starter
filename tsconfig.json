@@ -13,6 +13,10 @@
     "outDir": "dist"
   },
   "files": [
-    "src/app.ts"
+    "node_modules/typescript/bin/lib.es6.d.ts",
+    "src/custom_typings/ng2.d.ts",
+    "typings/tsd.d.ts",
+    "src/components/app.ts",
+    "src/bootstrap.ts"
   ]
 }

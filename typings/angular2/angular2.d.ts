@@ -1,4 +1,4 @@
-// Type definitions for Angular sha 390cfb793b2cd351d2db609d088a8fdda3df4f24
+// Type definitions for Angular v2.0.0-alpha.22
 // Project: http://angular.io/
 // Definitions by: angular team <https://github.com/angular/>
 // Definitions: https://github.com/borisyankov/DefinitelyTyped
@@ -44,7 +44,7 @@ interface _ComponentArg {
    *
    */
   selector: string;
-
+  
   /**
    * Enumerates the set of properties that accept data binding for a directive.
    *
@@ -136,7 +136,7 @@ interface _ComponentArg {
    *
    */
   properties?: Object;
-
+  
   /**
    * Specifies which DOM hostListeners a directive listens to.
    *
@@ -192,7 +192,7 @@ interface _ComponentArg {
    *
    */
   hostListeners?: Object;
-
+  
   /**
    * Defines the set of injectable objects that are visible to a Component and its children.
    *
@@ -240,14 +240,14 @@ interface _ComponentArg {
    * ```
    */
   injectables?: List<any>;
-
+  
   /**
    * Specifies a set of lifecycle hostListeners in which the directive participates.
    *
    * See {@link onChange}, {@link onDestroy}, {@link onAllChangesDone} for details.
    */
   lifecycle?: List<any>;
-
+  
   /**
    * Defines the used change detection strategy.
    *
@@ -267,14 +267,14 @@ interface _ViewArg {
    * NOTE: either `templateUrl` or `template` should be used, but not both.
    */
   templateUrl?: string;
-
+  
   /**
    * Specifies an inline template for an angular component.
    *
    * NOTE: either `templateUrl` or `template` should be used, but not both.
    */
   template?: string;
-
+  
   /**
    * Specifies a list of directives that can be used within a template.
    *
@@ -282,7 +282,7 @@ interface _ViewArg {
    */
   directives?: List<Type>;
 }
-
+  
 declare module "angular2/angular2" {
   /**
    * Bootstrapping for Angular applications.
@@ -388,7 +388,7 @@ declare module "angular2/angular2" {
    *
    */
   function bootstrap(appComponentType: any): void;
-
+  
   /**
    * Declare reusable UI building blocks for an application.
    *
@@ -468,7 +468,7 @@ declare module "angular2/angular2" {
    *
    */
   function Component(arg: _ComponentArg): (target: any) => any;
-
+  
   /**
    * Declares the available HTML templates for an application.
    *
@@ -501,7 +501,7 @@ declare module "angular2/angular2" {
    *
    */
   function View(arg: _ViewArg): (target: any) => any;
-
+  
   /**
    * The `For` directive instantiates a template once per item from an iterable. The context for each
    * instantiated template inherits from the outer context with the given loop variable set to the
@@ -520,7 +520,7 @@ declare module "angular2/angular2" {
    *
    * ```
    * <ul>
-   *   <li *ng-for="#error of errors; #i = index">
+   *   <li *for="#error of errors; #i = index">
    *     Error {{i}} of {{errors.length}}: {{error.message}}
    *   </li>
    * </ul>
@@ -528,13 +528,13 @@ declare module "angular2/angular2" {
    *
    * # Syntax
    *
-   * - `<li *ng-for="#item of items; #i = index">...</li>`
-   * - `<li template="ng-for #item of items; #i=index">...</li>`
-   * - `<template [ng-for]="#item" [of]="items" #i="index"><li>...</li></template>`
+   * - `<li *for="#item of items; #i = index">...</li>`
+   * - `<li template="for #item of items; #i=index">...</li>`
+   * - `<template [for]="#item" [of]="items" #i="index"><li>...</li></template>`
    *
    */
-  function NgFor(): void;
-
+  function For(): void;
+  
   /**
    * Removes or recreates a portion of the DOM tree based on an {expression}.
    *
@@ -544,7 +544,7 @@ declare module "angular2/angular2" {
    * # Example:
    *
    * ```
-   * <div *ng-if="errorCount > 0" class="error">
+   * <div *if="errorCount > 0" class="error">
    *   <!-- Error message displayed when the errorCount property on the current context is greater than 0. -->
    *   {{errorCount}} errors detected
    * </div>
@@ -552,13 +552,13 @@ declare module "angular2/angular2" {
    *
    * # Syntax
    *
-   * - `<div *ng-if="condition">...</div>`
-   * - `<div template="ng-if condition">...</div>`
-   * - `<template [ng-if]="condition"><div>...</div></template>`
+   * - `<div *if="condition">...</div>`
+   * - `<div template="if condition">...</div>`
+   * - `<template [if]="condition"><div>...</div></template>`
    *
    */
-  function NgIf(): void;
-
+  function If(): void;
+  
   /**
    * The `NonBindable` directive tells Angular not to compile or bind the contents of the current
    * DOM element. This is useful if the element contains what appears to be Angular directives and
@@ -569,12 +569,12 @@ declare module "angular2/angular2" {
    *
    * ```
    * <div>Normal: {{1 + 2}}</div> // output "Normal: 3"
-   * <div ng-non-bindable>Ignored: {{1 + 2}}</div> // output "Ignored: {{1 + 2}}"
+   * <div non-bindable>Ignored: {{1 + 2}}</div> // output "Ignored: {{1 + 2}}"
    * ```
    *
    */
-  function NgNonBindable(): void;
-
+  function NonBindable(): void;
+  
   /**
    * The `Switch` directive is used to conditionally swap DOM structure on your template based on a
    * scope expression.
@@ -601,117 +601,7 @@ declare module "angular2/angular2" {
    * ```
    *
    */
-  function NgSwitch(): void;
-  var Observable: any;
-  var EventEmitter: any;
-  var DomRenderer: any;
-  var DOCUMENT_TOKEN: any;
-  var ASTWithSource: any;
-  var AST: any;
-  var AstTransformer: any;
-  var AccessMember: any;
-  var LiteralArray: any;
-  var ImplicitReceiver: any;
-  var Lexer: any;
-  var Parser: any;
-  var Locals: any;
-  var ExpressionChangedAfterItHasBeenChecked: any;
-  var ChangeDetectionError: any;
-  var ProtoChangeDetector: any;
-  var ChangeDispatcher: any;
-  var ChangeDetector: any;
-  var ChangeDetection: any;
-  var CHECK_ONCE: any;
-  var CHECK_ALWAYS: any;
-  var DETACHED: any;
-  var CHECKED: any;
-  var ON_PUSH: any;
-  var DEFAULT: any;
-  var DynamicProtoChangeDetector: any;
-  var JitProtoChangeDetector: any;
-  var BindingRecord: any;
-  var DirectiveIndex: any;
-  var DirectiveRecord: any;
-  var DynamicChangeDetector: any;
-  var ChangeDetectorRef: any;
-  var PipeRegistry: any;
-  var uninitialized: any;
-  var WrappedValue: any;
-  var Pipe: any;
-  var NullPipe: any;
-  var NullPipeFactory: any;
-  var defaultPipes: any;
-  var DynamicChangeDetection: any;
-  var JitChangeDetection: any;
-  var defaultPipeRegistry: any;
-  var ___esModule: any;
-  var ViewRef: any;
-  var ProtoViewRef: any;
-  class ViewContainerRef {}
-  class ElementRef {}
-  var AncestorAnnotation: any;
-  var ParentAnnotation: any;
-  interface OnChange {}
-  var ViewAnnotation: any;
-  interface ApplicationRef {}
-  var appComponentRefToken: any;
-  var appComponentAnnotatedTypeToken: any;
-  var QueryAnnotation: any;
-  var AttributeAnnotation: any;
-  interface QueryList {}
-  interface CompilerCache {}
-  interface Compiler {}
-  interface TemplateLoader {}
-  interface ShadowDomStrategy {}
-  interface NativeShadowDomStrategy {}
-  interface EmulatedScopedShadowDomStrategy {}
-  interface EmulatedUnscopedShadowDomStrategy {}
-  interface ComponentRef {
-     instance: any;
-     dispose(): void;
-  }
-  class DynamicComponentLoader {
-     loadIntoNewLocation(type: any, b: any, c: any, d?: any): Promise<ComponentRef>;
-     loadNextToExistingLocation(a: any, b: any, c: any): Promise<ComponentRef>;
-  }
-  var ComponentAnnotation: any;
-  var DirectiveAnnotation: any;
-  var onDestroy: any;
-  var onChange: any;
-  var onAllChangesDone: any;
-  var Directive: any;
-  var Ancestor: any;
-  var Parent: any;
-  var Attribute: any;
-  var Query: any;
-  var coreDirectives: any;
-  interface CSSClass {}
-  interface NgSwitchWhen {}
-  interface NgSwitchDefault {}
-  var VALID: any;
-  var INVALID: any;
-  interface Control {}
-  interface ControlGroup {}
-  interface ControlArray {}
-  interface DefaultValueAccessor {}
-  interface CheckboxControlValueAccessor {}
-  interface ControlDirective {}
-  interface ControlGroupDirective {}
-  var formDirectives: any;
-  interface Validators {}
-  interface RequiredValidatorDirective {}
-  interface FormBuilder {}
-  interface EventBinding {}
-  interface ElementBinder {}
-  interface DirectiveBinder {}
-  interface ProtoViewDto {}
-  interface DirectiveMetadata {}
-  interface RenderProtoViewRef {}
-  interface RenderViewRef {}
-  interface ViewDefinition {}
-  interface RenderCompiler {}
-  interface Renderer {}
-  interface EventDispatcher {}
+ function Switch(): void;
 }
 
 declare module "angular2/di" {
@@ -728,44 +618,5 @@ declare module "angular2/di" {
    * ```
    *
    */
-  function bind(token: any): any;
-  class Injector {
-     resolveAndCreateChild(bindings: [any]): Injector;
-  }
-  var Binding: any;
-  var ResolvedBinding: any;
-  var Dependency: any;
-  var Key: any;
-  var KeyRegistry: any;
-  var TypeLiteral: any;
-  var NoBindingError: any;
-  var AbstractBindingError: any;
-  var AsyncBindingError: any;
-  var CyclicDependencyError: any;
-  var InstantiationError: any;
-  var InvalidBindingError: any;
-  var NoAnnotationError: any;
-  var OpaqueToken: any;
-  var ___esModule: any;
-  var InjectAnnotation: any;
-  var InjectPromiseAnnotation: any;
-  var InjectLazyAnnotation: any;
-  var OptionalAnnotation: any;
-  var InjectableAnnotation: any;
-  var DependencyAnnotation: any;
-  var Inject: any;
-  var InjectPromise: any;
-  var InjectLazy: any;
-  var Optional: any;
-  var Injectable: any;
-}
-
-declare module "angular2/router" {
-  var Router: any;
-  var RouterOutlet: any;
-  var RouterLink: any;
-  var RouteParams: any;
-  var routerInjectables: any;
-  var RouteConfigAnnotation: any;
-  var RouteConfig: any;
+   function bind(token: any): any;
 }
