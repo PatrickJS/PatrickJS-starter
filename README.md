@@ -7,7 +7,7 @@
 > A starter kit featuring [Angular 2](https://angular.io), [Router](https://angular.io/docs/js/latest/api/router/), [TypeScript](http://www.typescriptlang.org/), and [Webpack](http://webpack.github.io/) by [AngularClass](https://angularclass.com).
 If you're looking for Angular 1.x please use [NG6-starter](https://github.com/angular-class/NG6-starter)
 
-This repo serves as an extremely minmal starter for anyone looking to get up and running with Angular 2 and TypeScript. Using a [Webpack](http://webpack.github.io/) for building our files and assiting with boilerplate.
+This repo serves as an extremely minimal starter for anyone looking to get up and running with Angular 2 and TypeScript. Using a [Webpack](http://webpack.github.io/) for building our files and assiting with boilerplate.
 * Best practice in file organization for Angular
 * Ready to go build system for working with TypeScript
 
