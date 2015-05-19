@@ -12,7 +12,7 @@ This repo serves as an extremely minimal starter for anyone looking to get up an
 * Ready to go build system for working with TypeScript
 
 ### Quick start
-> Clone/Download the repo then edit `app.ts` inside [`/src/components/app.ts`](https://github.com/angular-class/angular2-webpack-starter/blob/master/src/app/components/app.ts)
+> Clone/Download the repo then edit `app.ts` inside [`/src/app/components/app.ts`](https://github.com/angular-class/angular2-webpack-starter/blob/master/src/app/components/app.ts)
 
 ```bash
 $ npm start
