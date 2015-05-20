@@ -21,8 +21,14 @@ class XLarge {
 @View({
   directives: [ XLarge ], // needed in order to tell Angular's compiler what's in the template
   template: `
-  <h1>Hello {{ name }}</h1>
-  <span x-large>Extra Large Font Directive</span>
+  <style>
+    .title {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+  </style>
+
+  <h1 class="title">Hello {{ name }}</h1>
+  <span x-large>Extra Large Font Directive lol</span>
   `
 })
 export class App {
