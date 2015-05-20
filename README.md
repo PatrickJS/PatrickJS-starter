@@ -33,7 +33,7 @@ angular2-webpack-starter/
 ------bootstrap.ts * entry file for app
 ------components/ * where most of components live
 --------app.ts * entry file for components
-----common/ * where common files that are used throughout our app
+----common/ * where common files used throughout our app live
 ------BrowserDomAdapter.ts * ignore this. we need to set the DomAdapter to the browser
 ----custom_typings/ * where we define our custom types
 ------ng2.d.ts * where we patch angular2 types with our own until it's fixed
