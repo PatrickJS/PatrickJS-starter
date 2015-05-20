@@ -3,6 +3,7 @@ var webpack = require('webpack');
 module.exports = {
   devtool: '#eval-source-map',
   devServer: {
+    historyApiFallback: true,
     contentBase: 'public',
     publicPath: '/__build__'
   },
@@ -16,6 +17,7 @@ module.exports = {
     shared: [
       // Angular 2 Deps
       'zone.js',
+      // 'zone.js/dist/long-stack-trace-zone.js',
       'reflect-metadata',
       'rtts_assert/rtts_assert',
 
