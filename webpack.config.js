@@ -74,15 +74,17 @@ module.exports = {
   module: {
     loaders: [
       // Support for *.json files.
-      { test: /\.json$/,                    loader: 'json-loader' },
+      { test: /\.json$/,                    loader: 'json' },
       // Support for CSS (with hot module replacement)
-      { test: /\.css$/,                     loader: 'style-loader!css-loader' },
+      { test: /\.css$/,                     loader: 'style!css' },
       // Copy all assets in to asset folder (use hash filename)
-      { test: /\.(png|jpg|gif|woff|eot|ttf|svg)$/,      loader: 'file-loader?name=assets/[hash].[ext]' },
+      { test: /\.(png|jpg|gif|woff|eot|ttf|svg)$/, loader: 'file?name=assets/[hash].[ext]' },
       // Copy all .html as static file (keep filename)
-      { test: /index[a-z-]*\.html$/,        loader: 'file-loader?name=[path][name].html&context=./src' },
+      { test: /index[a-z-]*\.html$/,        loader: 'file?name=[path][name].html&context=./src' },
+      // support for .html as static file
+      { test: /\.html$/,                    loader: 'raw' },
       // Support for .ts files.
-      { test: /\.ts$/,                      loader: 'typescript-simple-loader' }
+      { test: /\.ts$/,                      loader: 'typescript-simple' }
     ],
     noParse: [
       /rtts_assert\/src\/rtts_assert/
@@ -90,7 +92,7 @@ module.exports = {
   },
 
   plugins: [
-    // new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.DedupePlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'shared',
       minChunks: Infinity,
