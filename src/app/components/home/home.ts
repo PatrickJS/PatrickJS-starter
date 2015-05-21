@@ -18,7 +18,7 @@ class XLarge {
   selector: 'home'
 })
 @View({
-  directive: [ XLarge ],
+  directives: [ XLarge ],
   template: require('./home.html') // using webpack require
 })
 export class Home {
