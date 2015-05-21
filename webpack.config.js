@@ -20,7 +20,7 @@ module.exports = {
   context: __dirname,
 
   entry: {
-    shared: [
+    angular2: [
       // Angular 2 Deps
       'zone.js',
       // 'zone.js/dist/long-stack-trace-zone.js',
@@ -108,8 +108,18 @@ module.exports = {
 
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'shared',
+      name: 'angular2',
       minChunks: Infinity,
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'common',
+      filename: 'commons.js'
+    }),
+    new webpack.DefinePlugin({
+      'ENV': {
+        'type': JSON.stringify('development'),
+        'debug': true
+      }
     }),
     // new HtmlWebpackPlugin({
     //   inject: true,
