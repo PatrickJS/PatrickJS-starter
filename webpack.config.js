@@ -4,6 +4,7 @@ var path = require('path');
 var sliceArgs = Function.prototype.call.bind(Array.prototype.slice);
 
 module.exports = {
+  // devtool: 'source-maps',
   devtool: 'eval',
   devServer: {
     inline: true,
@@ -14,7 +15,7 @@ module.exports = {
   },
 
   debug: true,
-  cache: false,
+  cache: true,
 
   context: __dirname,
 
@@ -29,7 +30,9 @@ module.exports = {
       './src/common/BrowserDomAdapter',
 
       'angular2/angular2',
-      'angular2/router'
+      'angular2/router',
+      'angular2/di',
+      'angular2/src/facade/browser'
     ],
     app: [
       // App
@@ -121,8 +124,8 @@ module.exports = {
     //     drop_debugger: false
     //   }
     // }),
-    // new webpack.optimize.OccurenceOrderPlugin(),
-    // new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.DedupePlugin(),
     new webpack.BannerPlugin(getBanner())
   ]
 
