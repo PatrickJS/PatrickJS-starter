@@ -1,7 +1,36 @@
 declare var require: any;
 
+declare module "angular2/core" {
+  class EmulatedScopedShadowDomStrategy {}
+  class EmulatedUnscopedShadowDomStrategy {}
+  class NativeShadowDomStrategy {}
+  class ShadowDomStrategy {}
+}
+
+declare module "angular2/src/facade/browser" {
+  var __esModule: boolean;
+  var win: any;
+  var document: any;
+  var location: any;
+  var gc: () => void;
+  const Event: any;
+  const MouseEvent: any;
+  const KeyboardEvent: any;
+}
+
 declare module "angular2/router" {
-  class Router {}
+  class Instruction {}
+  class Router {
+    navigate(url: string): Promise<any>;
+    config(config: any): Promise<any>;
+    deactivate(): Promise<any>;
+    activate(instruction: Instruction): Promise<any>;
+    recognize(url: string): Instruction;
+    recognize(url: string): Instruction;
+    renavigate(): Promise<any>;
+    generate(name:string, params:any): string;
+    subscribe(onNext: Function): void;
+  }
   var RouterOutlet: any;
   var RouterLink: any;
   var RouteParams: any;
