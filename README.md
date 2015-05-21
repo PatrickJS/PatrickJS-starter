@@ -28,12 +28,21 @@ angular2-webpack-starter/
 ------traceur.min.js * ignore this file for now as it's required by Angular 2
 ----favicon.ico * replace me with your own favicon.ico
 ----index.html * where we place our script tags
+----robots.txt * for search engines to crawl your website
+----human.txt * for humans to know who the developers are
+----service-worker.js * ignore this. Web App service worker that's not complete yet
 --src/ * our source files that will be compiled
 ----app/
 ------bootstrap.ts * entry file for app
 ------components/ * where most of components live
 --------app.ts * entry file for components
+--------dashboard.ts * A simple Component with a simple Directive examples
+--------home/ * example component as a folder
+----------home.ts * how you would require your template and style files
+----------home.css * simple css file for home styles
+----------home.html * simple html file for home template
 ----common/ * where common files used throughout our app live
+------checkIfShadowDom.ts * Determind if the user is on chrome and use ShadowDom
 ------BrowserDomAdapter.ts * ignore this. we need to set the DomAdapter to the browser
 ----custom_typings/ * where we define our custom types
 ------ng2.d.ts * where we patch angular2 types with our own until it's fixed
