@@ -32,6 +32,7 @@
     "exports-loader": "^0.6.2",
     "expose-loader": "^0.6.0",
     "file-loader": "^0.8.1",
+    "html-webpack-plugin": "^1.4.0",
     "imports-loader": "^0.6.3",
     "json-loader": "^0.5.1",
     "style-loader": "^0.12.2",

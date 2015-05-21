@@ -1,8 +1,13 @@
 var webpack = require('webpack');
+var HtmlWebpackPlugin = require("html-webpack-plugin");
+var path = require('path');
+var sliceArgs = Function.prototype.call.bind(Array.prototype.slice);
 
 module.exports = {
   devtool: 'eval',
   devServer: {
+    inline: true,
+    colors: true,
     historyApiFallback: true,
     contentBase: 'public',
     publicPath: '/__build__'
@@ -26,11 +31,15 @@ module.exports = {
       'angular2/angular2',
       'angular2/router'
     ],
-    app: './src/app/bootstrap'
+    app: [
+      // App
+      './src/app/bootstrap'
+    ]
   },
   output: {
     path: 'public/__build__',
     filename: '[name].js',
+    // filename: '[name].[hash].js',
     sourceMapFilename: '[name].js.map',
     chunkFilename: '[id].chunk.js'
     // publicPath: 'http://mycdn.com/'
@@ -50,13 +59,16 @@ module.exports = {
       '',
       '.js',
       '.ts',
+      // '.es6',
       '.json',
       '.webpack.js',
       '.web.js'
     ],
     // Todo: learn more about aslias
     alias: {
-      // 'angular2$': '/node_modules/angular2/atscript/angular2',
+      // When Angular2 has a TypeScript build
+      // 'angular2': grootNode('angular2/es6/prod'),
+
       // 'app/*': '/app/*'
       // 'components$': '/src/app/components/'
       // 'decorators/*': '/app/decorators/*.js',
@@ -75,12 +87,12 @@ module.exports = {
     loaders: [
       // Support for *.json files.
       { test: /\.json$/,                    loader: 'json' },
-      // Support for CSS (with hot module replacement)
-      { test: /\.css$/,                     loader: 'style!css' },
+      // Support for CSS
+      { test: /\.css$/,                     loader: 'raw' },
       // Copy all assets in to asset folder (use hash filename)
       { test: /\.(png|jpg|gif|woff|eot|ttf|svg)$/, loader: 'file?name=assets/[hash].[ext]' },
       // Copy all .html as static file (keep filename)
-      { test: /index[a-z-]*\.html$/,        loader: 'file?name=[path][name].html&context=./src' },
+      // { test: /index[a-z-]*\.html$/,        loader: 'file?name=[path][ ].html&context=./src' },
       // support for .html as static file
       { test: /\.html$/,                    loader: 'raw' },
       // Support for .ts files.
@@ -92,24 +104,40 @@ module.exports = {
   },
 
   plugins: [
-    new webpack.optimize.DedupePlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'shared',
       minChunks: Infinity,
     }),
+    // new HtmlWebpackPlugin({
+    //   inject: true,
+    //   template: './src/index.html',
+    //   title: getBanner(),
+    //   filename: '../index.html',
+    //   chunks: ['shared']
+    // }),
     // new webpack.optimize.UglifyJsPlugin({
     //   compress: {
     //     warnings: false,
     //     drop_debugger: false
     //   }
     // }),
-    new webpack.BannerPlugin(getBanner(), {raw: true})
+    // new webpack.optimize.OccurenceOrderPlugin(),
+    // new webpack.optimize.DedupePlugin(),
+    new webpack.BannerPlugin(getBanner())
   ]
 
 };
 
 function getBanner() {
-  return '// Angular 2, TypeScript 1.5, and Webpack Starter Kit by @gdi2290 from AngularClass \n';
+  return 'Angular2 Webpack Starter by @gdi2990 from @AngularClass';
 }
 
+function groot(args) {
+  args = sliceArgs(arguments, 0);
+  return path.join.apply(path, [__dirname].concat(args));
+}
+function grootNode(args) {
+  args = sliceArgs(arguments, 0);
+  return groot.apply(path, ['node_modules'].concat(args));
+}
 
