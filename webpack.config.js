@@ -113,7 +113,7 @@ module.exports = {
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'common',
-      filename: 'commons.js'
+      filename: 'common.js'
     }),
     new webpack.DefinePlugin({
       'ENV': {
