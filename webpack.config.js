@@ -1,7 +1,7 @@
 var webpack = require('webpack');
 
 module.exports = {
-  devtool: '#eval-source-map',
+  devtool: 'eval',
   devServer: {
     historyApiFallback: true,
     contentBase: 'public',
