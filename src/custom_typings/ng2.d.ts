@@ -1,5 +1,7 @@
+declare var require: any;
+
 declare module "angular2/router" {
-  var Router: any;
+  class Router {}
   var RouterOutlet: any;
   var RouterLink: any;
   var RouteParams: any;
