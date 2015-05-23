@@ -8,8 +8,8 @@
 If you're looking for Angular 1.x please use [NG6-starter](https://github.com/angular-class/NG6-starter)
 
 This repo serves as an extremely minimal starter for anyone looking to get up and running with Angular 2 and TypeScript. Using a [Webpack](http://webpack.github.io/) for building our files and assisting with boilerplate.
-* Best practice in file organization for Angular
-* Ready to go build system for working with TypeScript
+* Best practice in file organization for Angular 2.
+* Ready to go build system using Webpack for working with TypeScript.
 
 ### Quick start
 > Clone/Download the repo then edit `app.ts` inside [`/src/app/components/app.ts`](https://github.com/angular-class/angular2-webpack-starter/blob/master/src/app/components/app.ts)
