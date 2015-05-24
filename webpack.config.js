@@ -133,6 +133,7 @@ module.exports = {
     //     warnings: false,
     //     drop_debugger: false
     //   }
+    // beautify: false
     // }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.DedupePlugin(),

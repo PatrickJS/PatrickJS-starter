@@ -4,13 +4,12 @@
 // Angular 2
 import {Component, View} from 'angular2/angular2';
 
-// Example of using conventions
-let componentName = 'home';
-let styles   = getFile(componentName, 'css');  //=> home.css
-let template = getFile(componentName, 'html'); //=> home.html
+// Use webpack to get files as a raw string using raw-loader
+let styles   = require('./home.css');
+let template = require('./home.html');
 
 @Component({
-  selector: componentName
+  selector: 'home'
 })
 @View({
   // include our .html and .css file
@@ -20,11 +19,4 @@ export class Home {
   constructor() {
 
   }
-}
-
-
-
-function getFile(componentName: string, type: string): string {
-  // Use webpack to get files as a string
-  return require(`./${ componentName }.${type}`);
 }
