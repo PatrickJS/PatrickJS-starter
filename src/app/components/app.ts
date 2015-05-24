@@ -2,13 +2,18 @@
 /// <reference path="../../custom_typings/ng2.d.ts" />
 
 // Angular 2
-import {Component, View} from 'angular2/angular2';
+import {Component, View, coreDirectives} from 'angular2/angular2';
 import {RouteConfig, RouterOutlet, RouterLink} from 'angular2/router';
 
 // We use a folder if we want separate files
 import {Home} from './home/home';
 // Otherwise we only use one file for a component
 import {Dashboard} from './dashboard';
+// A simple example of a Component using a Service
+import {Todo} from './todo';
+
+// Import all of our custom app directives
+import {appDirectives} from '../directives/directives';
 
 // App: Top Level Component
 @Component({
@@ -16,7 +21,7 @@ import {Dashboard} from './dashboard';
 })
 @View({
   // needed in order to tell Angular's compiler what's in the template
-  directives: [ RouterOutlet, RouterLink, Home ],
+  directives: [ RouterOutlet, RouterLink, coreDirectives, appDirectives ],
   template: `
   <style>
     .title  { font-family: Arial, Helvetica, sans-serif; }
@@ -31,7 +36,10 @@ import {Dashboard} from './dashboard';
     <li><a router-link="home">Home</a></li>
     |
     <li><a router-link="dashboard">Dashboard</a></li>
+    |
+    <li><a router-link="todo">Todo</a></li>
   </ul>
+
 
   <main>
     <router-outlet></router-outlet>
@@ -40,7 +48,8 @@ import {Dashboard} from './dashboard';
 })
 @RouteConfig([
   { path: '/',          as: 'home',      component: Home },
-  { path: '/dashboard', as: 'dashboard', component: Dashboard }
+  { path: '/dashboard', as: 'dashboard', component: Dashboard },
+  { path: '/todo',      as: 'todo',      component: Todo }
 ])
 export class App {
   name: string;
