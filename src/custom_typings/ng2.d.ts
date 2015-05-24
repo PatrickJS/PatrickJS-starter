@@ -1,11 +1,78 @@
 declare var require: any;
 declare var __filename: string;
 declare var __dirname: string;
+declare var global: any;
+declare var zone: any;
+declare var Zone: any;
+
+
+declare module "angular2/src/facade/async" {
+  class Observable {}
+  class EventEmitter {
+    next(val:any)
+    return(val:any)
+    throw(val:any)
+  }
+}
+
+declare module "angular2/src/render/dom/shadow_dom/style_url_resolver" {
+  class StyleUrlResolver {}
+}
+
+declare module "angular2/src/core/life_cycle/life_cycle" {
+  class LifeCycle {
+    tick(): any;
+  }
+}
+
+declare module "zone.js" {
+  var zone: any;
+  var Zone: any;
+}
+
+declare module "angular2/directives" {
+  function NgSwitch(): void;
+  function NgSwitchWhen(): void;
+  function NgSwitchDefault(): void;
+  function NgNonBindable(): void;
+  function NgIf(): void;
+  function NgFor(): void;
+
+  var formDirectives: any;
+  var coreDirectives: any;
+
+}
+
+declare module "angular2/forms" {
+  var formDirectives: any;
+  class FormBuilder {
+    group(controls: any): any;
+  }
+  class Control {
+    constructor(controls: any)
+    updateValue(value: any)
+  }
+  class ControlArray {
+    removeAt(index: any)
+    push(item: any)
+  }
+  class ControlGroup {
+    constructor(controls: any)
+    controls: any;
+    valueChanges: any;
+  }
+}
 
 declare module "angular2/core" {
-  class EmulatedScopedShadowDomStrategy {}
-  class EmulatedUnscopedShadowDomStrategy {}
-  class NativeShadowDomStrategy {}
+  class EmulatedScopedShadowDomStrategy {
+    constructor(styleInliner: any, styleUrlResolver: any, styleHost: any)
+  }
+  class EmulatedUnscopedShadowDomStrategy {
+    constructor(styleUrlResolver: any, styleHost: any)
+  }
+  class NativeShadowDomStrategy {
+    constructor(styleUrlResolver: any)
+  }
   class ShadowDomStrategy {}
 }
 
@@ -140,12 +207,15 @@ declare module "angular2/angular2" {
     domElement: any;
   }
 
-  function Switch(): void;
-  function SwitchWhen(): void;
-  function SwitchDefault(): void;
-  function NonBindable(): void;
-  function If(): void;
-  function For(): void;
+  function NgSwitch(): void;
+  function NgSwitchWhen(): void;
+  function NgSwitchDefault(): void;
+  function NgNonBindable(): void;
+  function NgIf(): void;
+  function NgFor(): void;
+
+  var formDirectives: any;
+  var coreDirectives: any;
 
   var Observable: any;
   var EventEmitter: any;

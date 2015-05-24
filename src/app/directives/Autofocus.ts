@@ -1,5 +1,5 @@
 import {Directive, ElementRef} from 'angular2/angular2';
-// Simple example directive that should be in another file
+// Simple example directive that fixes autofocus problem with multiple views
 @Directive({
   selector: '[autofocus]' // using [ ] means selecting attributes
 })
