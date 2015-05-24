@@ -41,7 +41,9 @@ angular2-webpack-starter/
 ----------home.ts * how you would require your template and style files
 ----------home.css * simple css file for home styles
 ----------home.html * simple html file for home template
-----common/ * where common files used throughout our app live
+----services/ * where we keep our services used throughout our app
+----directives/ * where we keep our directives used throughout our app
+----common/ * where common files used throughout our app
 ------checkIfShadowDom.ts * Determind if the user is on chrome and use ShadowDom
 ------BrowserDomAdapter.ts * ignore this. we need to set the DomAdapter to the browser
 ----custom_typings/ * where we define our custom types
