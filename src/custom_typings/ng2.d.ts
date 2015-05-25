@@ -87,6 +87,12 @@ declare module "angular2/src/facade/browser" {
   const KeyboardEvent: any;
 }
 
+declare module "angular2/src/router/browser_location" {
+  class BrowserLocation {
+    path(): string
+  }
+}
+
 declare module "angular2/router" {
   class Instruction {}
   class Router {

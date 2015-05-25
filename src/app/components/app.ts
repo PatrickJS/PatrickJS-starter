@@ -3,8 +3,8 @@
 
 // Angular 2
 import {Component, View, coreDirectives} from 'angular2/angular2';
-import {RouteConfig, RouterOutlet, RouterLink} from 'angular2/router';
-
+import {RouteConfig, RouterOutlet, RouterLink, Router} from 'angular2/router';
+import {BrowserLocation} from 'angular2/src/router/browser_location';
 // We use a folder if we want separate files
 import {Home} from './home/home';
 // Otherwise we only use one file for a component
@@ -17,7 +17,8 @@ import {appDirectives} from '../directives/directives';
 
 // App: Top Level Component
 @Component({
-  selector: 'app' // without [ ] means we are selecting the tag directly
+  selector: 'app', // without [ ] means we are selecting the tag directly,
+  appInjector: [ BrowserLocation ]
 })
 @View({
   // needed in order to tell Angular's compiler what's in the template
@@ -53,7 +54,11 @@ import {appDirectives} from '../directives/directives';
 ])
 export class App {
   name: string;
-  constructor() {
+  constructor(router: Router, browserLocation: BrowserLocation) {
     this.name = 'Angular 2';
+
+    // we need to manually go to the correct uri until the router is fixed
+    let uri = browserLocation.path();
+    router.navigate(uri);
   }
 }
