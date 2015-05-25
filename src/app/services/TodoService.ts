@@ -8,8 +8,8 @@ interface ITodoState {
   }>
 }
 
-// We can also make a TodoStore
-var initialTodoState:ITodoState = {
+// We can also make a TodoStore to manage cache/localStorage
+let _todoState:ITodoState = {
   todos: [
     {value:'finish example', created_at: new Date()},
     {value:'add tests', created_at: new Date()}
@@ -19,7 +19,7 @@ var initialTodoState:ITodoState = {
 // Our Todo Service
 export class TodoService {
   private state: ITodoState; // we shouldn't access .state directly
-  constructor(@Inject('TodoState') state) {
+  constructor(@Inject('todoState') state) {
     this.state = state;
   }
 
@@ -28,6 +28,7 @@ export class TodoService {
   }
 
   add(todo) {
+    // Async call to server then save state
     this.state.todos.push({
       value: todo,
       created_at: new Date()
@@ -35,13 +36,13 @@ export class TodoService {
   }
 
   remove(index) {
+    // Async call to server then save state
     this.state.todos.splice(index, 1);
   }
 
 }//TodoService
 
-
 export const todoInjectables = [
-  bind('initialTodoState').toValue(initialTodoState),
-  bind(TodoService).toFactory(state => new TodoService(state), ['initialTodoState'])
+  bind('todoState').toValue(_todoState),
+  bind(TodoService).toClass(TodoService)
 ];

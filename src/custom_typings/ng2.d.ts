@@ -93,6 +93,12 @@ declare module "angular2/src/router/browser_location" {
   }
 }
 
+declare module "angular2/src/router/location" {
+  class Location {
+    normalize(url: string): string
+  }
+}
+
 declare module "angular2/router" {
   class Instruction {}
   class Router {

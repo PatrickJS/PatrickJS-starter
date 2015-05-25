@@ -17,8 +17,7 @@ import {appDirectives} from '../directives/directives';
 
 // App: Top Level Component
 @Component({
-  selector: 'app', // without [ ] means we are selecting the tag directly,
-  appInjector: [ BrowserLocation ]
+  selector: 'app' // without [ ] means we are selecting the tag directly,
 })
 @View({
   // needed in order to tell Angular's compiler what's in the template
