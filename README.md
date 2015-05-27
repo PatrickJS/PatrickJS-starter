@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://res.cloudinary.com/angularclass/image/upload/v1431925418/webpackAndangular2_dwhus9.png" alt="Webpack and Angular 2" width="500px;" height="320px;"/>
+  <img src="https://res.cloudinary.com/angularclass/image/upload/v1431925418/webpackAndangular2_dwhus9.png" alt="Webpack and Angular 2" width="500" height="320"/>
 </p>
 
 # Angular2 Webpack Starter [![Join the chat at https://gitter.im/angular-class/angular2-webpack-starter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/angular-class/angular2-webpack-starter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
@@ -12,7 +12,7 @@ This repo serves as an extremely minimal starter for anyone looking to get up an
 * Ready to go build system using Webpack for working with TypeScript.
 
 ### Quick start
-> Clone/Download the repo then edit `app.ts` inside [`/src/app/components/app.ts`](https://github.com/angular-class/angular2-webpack-starter/blob/master/src/app/components/app.ts)
+> Clone/Download the repo then edit `app.ts` inside [`/src/app/components/app.ts`](/src/app/components/app.ts)
 
 ```bash
 $ npm start
@@ -23,36 +23,36 @@ $ npm start
 We use the component approach in our starter. This is the new standard for developing Angular apps and a great way to ensure maintainable code by encapsulation of our behavior logic. A component is basically a self contained app usually in a single file or a folder with each concern as a file: style, template, specs, e2e, and component class. Here's how it looks:
 ```
 angular2-webpack-starter/
---public/ * static assets are served here
-----lib/ * static libraries
-------traceur.min.js * ignore this file for now as it's required by Angular 2
-----favicon.ico * replace me with your own favicon.ico
-----index.html * where we place our script tags
-----robots.txt * for search engines to crawl your website
-----human.txt * for humans to know who the developers are
-----service-worker.js * ignore this. Web App service worker that's not complete yet
---src/ * our source files that will be compiled
+--public/                    * static assets are served here
+----lib/                     * static libraries
+------traceur.min.js         * ignore this file for now as it's required by Angular 2
+----favicon.ico              * replace me with your own favicon.ico
+----index.html               * where we place our script tags
+----robots.txt               * for search engines to crawl your website
+----human.txt                * for humans to know who the developers are
+----service-worker.js        * ignore this. Web App service worker that's not complete yet
+--src/                       * our source files that will be compiled
 ----app/
-------bootstrap.ts * entry file for app
-------components/ * where most of components live
---------app.ts * entry file for components
---------dashboard.ts * A simple Component with a simple Directive examples
---------home/ * example component as a folder
-----------home.ts * how you would require your template and style files
-----------home.css * simple css file for home styles
-----------home.html * simple html file for home template
-----services/ * where we keep our services used throughout our app
-----directives/ * where we keep our directives used throughout our app
-----common/ * where common files used throughout our app
-------checkIfShadowDom.ts * Determind if the user is on chrome and use ShadowDom
-------BrowserDomAdapter.ts * ignore this. we need to set the DomAdapter to the browser
-----custom_typings/ * where we define our custom types
-------ng2.d.ts * where we patch angular2 types with our own until it's fixed
---typings/ * where tsd defines it's types definitions
---tsconfig.json * config that webpack uses for typescript
---tsd.json * config that tsd uses for managing it's definitions
---package.json * what npm uses to manage it's dependencies
---webpack.config.js * our webpack config
+------bootstrap.ts           * entry file for app
+------components/            * where most of components live
+--------app.ts               * entry file for components
+--------dashboard.ts         * A simple Component with a simple Directive examples
+--------home/                * example component as a folder
+----------home.ts            * how you would require your template and style files
+----------home.css           * simple css file for home styles
+----------home.html          * simple html file for home template
+----services/                * where we keep our services used throughout our app
+----directives/              * where we keep our directives used throughout our app
+----common/                  * where common files used throughout our app
+------checkIfShadowDom.ts    * Determind if the user is on chrome and use ShadowDom
+------BrowserDomAdapter.ts   * ignore this. we need to set the DomAdapter to the browser
+----custom_typings/          * where we define our custom types
+------ng2.d.ts               * where we patch angular2 types with our own until it's fixed
+--typings/                   * where tsd defines it's types definitions
+--tsconfig.json              * config that webpack uses for typescript
+--tsd.json                   * config that tsd uses for managing it's definitions
+--package.json               * what npm uses to manage it's dependencies
+--webpack.config.js          * our webpack config
 ```
 
 # Getting Started
@@ -120,11 +120,11 @@ We have good experience using these editors:
 
 
 ### Todo
-* production/development environments
-* testing
-* e2e
-* production services examples
-* hot-component-reloading
+- [ ] production/development environments
+- [ ] testing
+- [ ] e2e
+- [ ] production services examples
+- [ ] hot-component-reloading
 
 # Starter Kit Support and Questions
 > Contact us anytime for anything about this repo
@@ -134,7 +134,7 @@ We have good experience using these editors:
 
 ___
 
-enjoy -- **AngularClass** 
+enjoy — **AngularClass** 
 
 <br><br>
 
