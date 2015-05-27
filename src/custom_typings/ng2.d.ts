@@ -5,6 +5,9 @@ declare var global: any;
 declare var zone: any;
 declare var Zone: any;
 
+declare module 'angular2/src/services/url_resolver' {
+  class UrlResolver {}
+}
 
 declare module "angular2/src/facade/async" {
   class Observable {}

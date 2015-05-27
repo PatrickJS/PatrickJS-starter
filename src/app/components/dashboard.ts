@@ -4,7 +4,7 @@
 // Angular 2
 import {Component, View, Directive, ElementRef} from 'angular2/angular2';
 
-// Simple example directive that should be in another file
+// Simple example directive that should be in `/directives` folder
 @Directive({
   selector: '[x-large]' // using [ ] means selecting attributes
 })
