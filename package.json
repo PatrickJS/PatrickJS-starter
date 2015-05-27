@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gdi2290/angular2-webpack-seed.git"
+    "url": "https://github.com/gdi2290/angular2-webpack-starter.git"
   },
   "author": "gdi2290 <github@gdi2290.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/gdi2290/angular2-webpack-seed/issues"
+    "url": "https://github.com/gdi2290/angular2-webpack-starter/issues"
   },
-  "homepage": "https://github.com/gdi2290/angular2-webpack-seed",
+  "homepage": "https://github.com/gdi2290/angular2-webpack-starter",
   "dependencies": {
     "angular2": "2.0.0-alpha.25",
     "raw-loader": "^0.5.1",
