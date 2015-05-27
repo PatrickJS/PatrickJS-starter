@@ -6,7 +6,7 @@ import {bootstrap} from 'angular2/angular2';
 
 // include any injectables
 import {routerInjectables} from 'angular2/router';
-import {shadowDomInjectables} from '../common/checkIfShadowDom';
+import {shadowDomInjectables} from '../common/shadowDomInjectables';
 
 // Our injectables Services
 import {appServicesInjectables} from './services/services';

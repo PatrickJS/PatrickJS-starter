@@ -7,8 +7,7 @@ import {document} from 'angular2/src/facade/browser';
 
 export var hasShadowDom = Boolean(document && document.body && document.body.createShadowRoot);
 
-export var shadowDomInjectables = [
-  (!hasShadowDom) ? [] :
+export var shadowDomInjectables = (!hasShadowDom) ? [] : [
   bind(ShadowDomStrategy).toFactory(
     styleUrlResolver => new NativeShadowDomStrategy(styleUrlResolver),
     [StyleUrlResolver]
