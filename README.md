@@ -118,6 +118,8 @@ We have good experience using these editors:
 * [Atom](https://atom.io/) with [TypeScript plugin](https://atom.io/packages/atom-typescript)
 * [Sublime Text](http://www.sublimetext.com/3) with [Typescript-Sublime-Plugin](https://github.com/Microsoft/Typescript-Sublime-plugin#installation)
 
+## Frequently asked questions
+* Why we are using traceur? This is due to Angular 2 not being fully migrated to TypeScript and will be removed soon.
 
 ### Todo
 - [ ] production/development environments
