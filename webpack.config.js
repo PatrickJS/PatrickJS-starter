@@ -67,7 +67,7 @@ module.exports = {
       '.webpack.js',
       '.web.js'
     ],
-    // Todo: learn more about aslias
+    // Todo: learn more about alias
     alias: {
       // When Angular2 has a TypeScript build
       // 'angular2': grootNode('angular2/es6/prod'),
