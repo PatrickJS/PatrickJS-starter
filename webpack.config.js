@@ -2,6 +2,7 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 var path = require('path');
 var sliceArgs = Function.prototype.call.bind(Array.prototype.slice);
+var path = require('path');
 
 module.exports = {
   // devtool: 'source-maps',
@@ -36,11 +37,13 @@ module.exports = {
     ],
     app: [
       // App
+      'webpack-dev-server/client?http://localhost:8080',
+      'webpack/hot/dev-server',
       './src/app/bootstrap'
     ]
   },
   output: {
-    path: 'public/__build__',
+    path: path.join(__dirname, 'public', '__build__'),
     filename: '[name].js',
     // filename: '[name].[hash].js',
     sourceMapFilename: '[name].js.map',
@@ -135,6 +138,7 @@ module.exports = {
     //   }
     // beautify: false
     // }),
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.DedupePlugin(),
     new webpack.BannerPlugin(getBanner())
