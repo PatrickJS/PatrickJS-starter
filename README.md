@@ -139,7 +139,7 @@ We have good experience using these editors:
 
 ## Frequently asked questions
 * Why we are using traceur? This is due to Angular 2 not being fully migrated to TypeScript and will be removed soon.
-* Why is there an Error in Safari? This is a known issue with alpha.25 that will be fixed in the next tagged release (https://github.com/angular-class/angular2-webpack-starter/issues/17)
+* What's the current browser support for Angular 2 Alpha? as of version 2.0.0-alpha.26: Chrome (43, 44, 45), Firefox (37, 39, 40), IE 11, Safari 8, iOS 8, Android 5.1 (Chrome Mobile 39).
 
 ### Todo
 - [ ] production/development environments
