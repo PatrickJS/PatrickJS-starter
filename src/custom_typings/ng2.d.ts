@@ -5,6 +5,30 @@ declare var global: any;
 declare var zone: any;
 declare var Zone: any;
 
+interface ObjectConstructor {
+    assign(target: any, ...sources: any[]): any;
+    observe(target: any, callback: Function, acceptList?: Array<any>): void;
+}
+
+declare module "angular2/change_detection" {
+  class Pipe {}
+  class NullPipeFactory {}
+  class PipeRegistry {
+    constructor(pipes: any)
+  }
+  class JitChangeDetection {}
+  class ChangeDetection {}
+  class DynamicChangeDetection {}
+  var defaultPipes: any;
+}
+
+
+declare module "angular2/src/core/zone/ng_zone" {
+  class NgZone {
+    runOutsideAngular(func: Function): any
+  }
+}
+
 declare module 'angular2/src/services/url_resolver' {
   class UrlResolver {}
 }
@@ -54,6 +78,8 @@ declare module "angular2/forms" {
   class Control {
     constructor(controls: any)
     updateValue(value: any)
+    _valueChanges: any
+    valueChanges: any
   }
   class ControlArray {
     removeAt(index: any)
@@ -64,9 +90,12 @@ declare module "angular2/forms" {
     controls: any;
     valueChanges: any;
   }
+  class Validators {
+    static required: any;
+  }
 }
 
-declare module "angular2/core" {
+declare module "angular2/render" {
   class EmulatedScopedShadowDomStrategy {
     constructor(styleInliner: any, styleUrlResolver: any, styleHost: any)
   }
