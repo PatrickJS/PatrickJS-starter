@@ -5,21 +5,10 @@ var sliceArgs = Function.prototype.call.bind(Array.prototype.slice);
 var path = require('path');
 
 module.exports = {
-  // devtool: 'source-maps',
-  devtool: 'eval',
-  devServer: {
-    inline: true,
-    colors: true,
-    historyApiFallback: true,
-    contentBase: 'public',
-    publicPath: '/__build__'
-  },
+  devtool: 'source-maps',
+  // devtool: 'eval',
 
-  debug: true,
-  cache: true,
-
-  context: __dirname,
-
+  //
   entry: {
     angular2: [
       // Angular 2 Deps
@@ -37,13 +26,20 @@ module.exports = {
     ],
     app: [
       // App
-      'webpack-dev-server/client?http://localhost:8080',
-      'webpack/hot/dev-server',
+
+      // 'webpack-dev-server/client?http://localhost:8080',
+      // 'webpack/hot/dev-server',
+
+      /*
+      // * include any 3rd party js lib here
+      */
       './src/app/bootstrap'
     ]
   },
+
+  // Config for our build files
   output: {
-    path: path.join(__dirname, 'public', '__build__'),
+    path: root('public/__build__'),
     filename: '[name].js',
     // filename: '[name].[hash].js',
     sourceMapFilename: '[name].js.map',
@@ -51,58 +47,45 @@ module.exports = {
     // publicPath: 'http://mycdn.com/'
   },
 
-
-  stats: {
-    colors: true,
-    reasons: true
-  },
-
-
-
   resolve: {
     root: __dirname,
     extensions: [
       '',
-      '.js',
       '.ts',
-      // '.es6',
+      '.js',
       '.json',
       '.webpack.js',
       '.web.js'
     ],
-    // Todo: learn more about alias
     alias: {
       // When Angular2 has a TypeScript build
-      // 'angular2': grootNode('angular2/es6/prod'),
+      // we can switch between development and production
+      // 'angular2': 'angular2/es6/prod',
+      // 'angular2': 'angular2/es6/dev',
 
-      // 'app/*': '/app/*'
-      // 'components$': '/src/app/components/'
-      // 'decorators/*': '/app/decorators/*.js',
-      // 'services/*': '/app/services/*.js',
+      'app': 'src/app',
+      'common': 'src/common',
+
+      // 'components': 'src/app/components'
+      // 'services': '/app/services/*.js',
       // 'stores/*': '/app/stores/*.js'
       // 'angular2': 'angular2/es6/dev'
-    },
-    modulesDirectories: [
-      'web_modules',
-      'node_modules',
-      'src/app' // hard coded for now until I figure out alias
-    ]
+    }
   },
 
   module: {
     loaders: [
       // Support for *.json files.
-      { test: /\.json$/,                    loader: 'json' },
-      // Support for CSS
-      { test: /\.css$/,                     loader: 'raw' },
-      // Copy all assets in to asset folder (use hash filename)
-      { test: /\.(png|jpg|gif|woff|eot|ttf|svg)$/, loader: 'file?name=assets/[hash].[ext]' },
-      // Copy all .html as static file (keep filename)
-      // { test: /index[a-z-]*\.html$/,        loader: 'file?name=[path][ ].html&context=./src' },
-      // support for .html as static file
-      { test: /\.html$/,                    loader: 'raw' },
+      { test: /\.json$/,  loader: 'json' },
+
+      // Support for CSS as raw text
+      { test: /\.css$/,   loader: 'raw' },
+
+      // support for .html as raw text
+      { test: /\.html$/,  loader: 'raw' },
+
       // Support for .ts files.
-      { test: /\.ts$/,                      loader: 'typescript-simple' }
+      { test: /\.ts$/,    loader: 'typescript-simple' }
     ],
     noParse: [
       /rtts_assert\/src\/rtts_assert/
@@ -124,6 +107,7 @@ module.exports = {
         'debug': true
       }
     }),
+
     // new HtmlWebpackPlugin({
     //   inject: true,
     //   template: './src/index.html',
@@ -131,6 +115,7 @@ module.exports = {
     //   filename: '../index.html',
     //   chunks: ['shared']
     // }),
+
     // new webpack.optimize.UglifyJsPlugin({
     //   compress: {
     //     warnings: false,
@@ -138,24 +123,37 @@ module.exports = {
     //   }
     // beautify: false
     // }),
-    new webpack.HotModuleReplacementPlugin(),
+
+    // new webpack.HotModuleReplacementPlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.DedupePlugin(),
     new webpack.BannerPlugin(getBanner())
   ]
+  // our Development Server configs
+  devServer: {
+    inline: true,
+    colors: true,
+    historyApiFallback: true,
+    contentBase: 'public',
+    publicPath: '/__build__'
+  },
+  debug: true,
+  cache: true,
 
+  context: __dirname,
+  stats: { colors: true, reasons: true }
 };
 
 function getBanner() {
   return 'Angular2 Webpack Starter by @gdi2990 from @AngularClass';
 }
 
-function groot(args) {
+function root(args) {
   args = sliceArgs(arguments, 0);
   return path.join.apply(path, [__dirname].concat(args));
 }
-function grootNode(args) {
+function rootNode(args) {
   args = sliceArgs(arguments, 0);
-  return groot.apply(path, ['node_modules'].concat(args));
+  return root.apply(path, ['node_modules'].concat(args));
 }
 
