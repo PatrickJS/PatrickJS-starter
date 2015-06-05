@@ -21,16 +21,17 @@
   },
   "homepage": "https://github.com/gdi2290/angular2-webpack-starter",
   "dependencies": {
-    "angular2": "2.0.0-alpha.25",
+    "angular2": "2.0.0-alpha.26",
     "raw-loader": "^0.5.1",
     "reflect-metadata": "^0.1.0",
-    "rtts_assert": "2.0.0-alpha.25",
+    "rtts_assert": "2.0.0-alpha.26",
+    "rx": "^2.5.3",
     "zone.js": "^0.5.0"
   },
   "devDependencies": {
-    "css-loader": "^0.12.1",
+    "css-loader": "^0.14.4",
     "exports-loader": "^0.6.2",
-    "expose-loader": "^0.6.0",
+    "expose-loader": "^0.7.0",
     "file-loader": "^0.8.1",
     "html-webpack-plugin": "^1.4.0",
     "imports-loader": "^0.6.3",
