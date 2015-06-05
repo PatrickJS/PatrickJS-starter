@@ -3,7 +3,7 @@
 
 // Angular 2
 import {Component, View, Directive, coreDirectives} from 'angular2/angular2';
-import {formDirectives, FormBuilder, Control, ControlGroup} from 'angular2/forms';
+import {formDirectives, FormBuilder, Control, ControlGroup, Validators} from 'angular2/forms';
 
 // App
 import {appDirectives} from '../directives/directives';
@@ -13,59 +13,77 @@ import {TodoService} from '../services/TodoService';
 
 // Simple component
 @Component({
-  selector: 'todo',
-  appInjector: [ FormBuilder ]
+  selector: 'todo'
 })
+    // <fieldset ng-control-group="todos">
+    // </fieldset>
 @View({
   directives: [ coreDirectives, formDirectives, appDirectives ],
   template: `
-  <form [control-group]="todoForm" (submit)="addTodo($event, todoInput.value)">
-    <input name="todo" type="text" [control]="todoInput" autofocus>
+  <style>
+    .error-message {
+      color: red;
+
+    }
+  </style>
+
+  <form [ng-form-model]="todoForm" (submit)="todoForm.valid && addTodo($event, todoForm.value.todo)"
+  novalidate>
+
+    <input type="text" [ng-form-control]="todoInput" autofocus required>
+
     <button>Add Todo</button>
+
+    <span class="error-message" *ng-if="
+      todoForm.errors?.required &&
+      todoForm.dirty &&
+      todoForm.controls.todo.touched
+    ">
+      Todo is required
+    </span>
+
   </form>
 
   <ul>
-    <li *ng-for="var todo of todoService.get('todos'); var $index = index">
-      {{ todo.value }} <button (click)="removeTodo($event, $index)">[X]</button>
+    <li *ng-for="var todo of todoService.state.todos; var $index = index">
+      <p>
+        {{ todo.value }}
+        <br>
+        <button (click)="removeTodo($event, $index)">[Remove]</button>
+        <small>{{ todo.created_at }}</small>
+      </p>
     </li>
   </ul>
-
   `
 })
 export class Todo {
   todoForm: ControlGroup;
   todoInput: Control;
+  state: any;
   constructor(
     public formBuilder: FormBuilder,
     public todoService: TodoService
   ) {
 
     this.todoForm = formBuilder.group({
-      'todo': ['']
-    });
-    this.todoInput = this.todoForm.controls.todo;
+      'todo': ['', Validators.required]
+    })
+    this.todoInput = this.todoForm.controls.todo
 
   }
 
-  addTodo(event, value) {
+  addTodo(event, todo) {
     event.preventDefault(); // prevent native page refresh
 
-    this.todoService.add(value);
-
-    // this is needed until Angular adds an update dom feature or actions
-    this._setDefaultInput(event.target, 'todo');
+    this.todoService.add(todo);
+    // update the view/model
+    this.todoInput.updateValue('');
   }
 
   removeTodo(event, index) {
     event.preventDefault(); // prevent native page refresh
 
     this.todoService.remove(index);
-  }
-
-  _setDefaultInput(el, name) {
-    // update stateful element and internal model to default values
-    el.querySelector(`input[name=${name}]`).value = '';
-    this.todoForm.controls[name].updateValue('');
   }
 
 }
