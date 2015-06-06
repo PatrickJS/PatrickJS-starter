@@ -57,16 +57,27 @@ angular2-webpack-starter/
  │   │       ├──Autofocus.ts          * another simple directive to fix a problem with the router
  │   │       └──directives.ts         * where we gather our directives from our directives
  │   │
- │   ├──common/                       * where common files used throughout our app
- │   │   ├──shadowDomInjectables.ts   * Determind if the user is on chrome and use ShadowDom
- │   │   └──BrowserDomAdapter.ts      * ignore this. we need to set the DomAdapter to the browser
- │   │
- │   └─custom_typings/                * where we define our custom types
- │      └──ng2.d.ts                   * where we patch angular2 types with our own until it's fixed
+ │   └──common/                       * where common files used throughout our app
+ │       ├──shadowDomInjectables.ts   * determind if the user is on chrome and use ShadowDom
+ │       ├──jitInjectables.ts         * turn on Just-In-Time Change Detection
+ │       ├──formInjectables.ts        * services exported by angular/forms which is the FormBuilder
+ │       └──BrowserDomAdapter.ts      * ignore this. we need to set the DomAdapter to the browser
  │
  ├──typings/                          * where tsd defines it's types definitions
- │   └─angular2/
- │      └─angular2.d.ts               * our type definitions
+ │   ├──_custom/                      * where we define our custom types
+ │   │    └──ng2.d.ts                 * where we patch angular2 types with our own until it's fixed
+ │   │
+ │   ├──angular2/
+ │   │   └──angular2.d.ts             * our Angular 2 type definitions
+ │   │
+ │   ├──es6-promise/
+ │   │   └──es6-promise.d.ts          * ES6 promises type definitions
+ │   │
+ │   ├──rx/
+ │   │   ├──rx-lite.d.ts              * rx-lite type definitions
+ │   │   └──rx.d.ts                   * rx type definitions
+ │   │
+ │   └──tsd.d.ts.ts                   * our main file for all of our type definitions
  │
  ├──tsconfig.json                     * config that webpack uses for typescript
  ├──tsd.json                          * config that tsd uses for managing it's definitions
