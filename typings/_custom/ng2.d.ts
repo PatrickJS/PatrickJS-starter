@@ -1,14 +1,6 @@
-declare var require: any;
-declare var __filename: string;
-declare var __dirname: string;
-declare var global: any;
 declare var zone: any;
 declare var Zone: any;
 
-interface ObjectConstructor {
-    assign(target: any, ...sources: any[]): any;
-    observe(target: any, callback: Function, acceptList?: Array<any>): void;
-}
 
 declare module "angular2/change_detection" {
   class Pipe {}

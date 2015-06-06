@@ -1,3 +1,4 @@
+/// <reference path="../../../typings/tsd.d.ts" />
 export class Store {
   // we shouldn't access ._state
   constructor(private _state: any) {}

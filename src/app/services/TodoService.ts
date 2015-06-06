@@ -1,3 +1,4 @@
+/// <reference path="../../../typings/tsd.d.ts" />
 import {bind, Inject} from 'angular2/di';
 import {Store} from './Store';
 // Using TypeScript we can define our state interface

@@ -1,3 +1,4 @@
+/// <reference path="../../../typings/tsd.d.ts" />
 import {Directive, ElementRef} from 'angular2/angular2';
 // Simple example directive that fixes autofocus problem with multiple views
 @Directive({
