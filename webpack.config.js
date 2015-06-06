@@ -128,7 +128,7 @@ module.exports = {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.DedupePlugin(),
     new webpack.BannerPlugin(getBanner())
-  ]
+  ],
   // our Development Server configs
   devServer: {
     inline: true,
