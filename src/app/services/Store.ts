@@ -4,32 +4,32 @@ export class Store {
   // Ensure Immutable state
   set state(newState) {
     // Add ImmutableJS and use it
-    this._state = poorMansDeepRefCopy(this._state, newState);
+    this._state = deepRefCopy(this._state, newState);
   }
-
-  // Ensure Immutable state
   get state() {
     return this._state;
   }
 
+  // Ensure Immutable state
   get(type?: string) {
-    console.log('real copy')
-    var state = poorMansCopy(this.state);
+    var state = deepCopy(this.state);
     return (type) ? state[type] : state;
   }
   set(prop: any, value?: any) {
     this.state = (value === undefined) ? prop : {
       [prop]: value
     }
-  }
+  }//set
+}//Store
+
+function deepCopy(obj) {
+  return deepRefCopy(obj, obj, false);
 }
 
+function deepRefCopy(current, next, copy = true) {
 
-
-
-function poorMansDeepRefCopy(current, next) {
   // Same Value
-  if (current === next) {
+  if (copy && current === next) {
     return current;
   }
   // New Value
@@ -39,7 +39,7 @@ function poorMansDeepRefCopy(current, next) {
   else if (isArray(next)) {
     let newState = new Array(next.length);
     for (let i = 0; i < next.length; ++i) {
-      newState[i] = poorMansDeepRefCopy(current[i], next[i]);
+      newState[i] = deepRefCopy(current[i], next[i]);
     }//for
     return newState;
   }//Array
@@ -49,7 +49,7 @@ function poorMansDeepRefCopy(current, next) {
     let newState = {};
     for (let prop in next) {
       if (next.hasOwnProperty(prop)) {
-        newState[prop] = poorMansDeepRefCopy(current[prop], next[prop]);
+        newState[prop] = deepRefCopy(current[prop], next[prop]);
       }//hasOwn
     }//for-in
     return newState;
@@ -58,11 +58,6 @@ function poorMansDeepRefCopy(current, next) {
   // Default
   return next;
 }
-
-function poorMansCopy(obj) {
-  return JSON.parse(JSON.stringify(obj));
-}
-
 
 function isArray(arr): boolean {
   return Array.isArray(arr);
