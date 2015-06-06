@@ -32,25 +32,25 @@ angular2-webpack-starter/
  │   ├──service-worker.js             * ignore this. Web App service worker that's not complete yet
  │   ├──robots.txt                    * for search engines to crawl your website
  │   ├──human.txt                     * for humans to know who the developers are
- │   └──index.html                    * Index: where we place our script tags
+ │   └──index.html                    * Index.html: where we place our script tags
  │
  ├──src/                              * our source files that will be compiled to javascript
  │   ├──app/                          * WebApp folder
  │   │   ├──bootstrap.ts              * entry file for app
  │   │   │
  │   │   ├──components/               * where most of components live
- │   │   │   ├──app.ts                * entry file for components
- │   │   │   ├──dashboard.ts          * A simple Component with a simple Directive examples
+ │   │   │   ├──todo.ts               * an example of a component using a service and forms
+ │   │   │   ├──dashboard.ts          * a simple Component with a simple Directive example
  │   │   │   │
  │   │   │   ├──home/                 * example component as a folder
  │   │   │   │   ├──home.ts           * how you would require your template and style files
  │   │   │   │   ├──home.css          * simple css file for home styles
  │   │   │   │   └──home.html         * simple html file for home template
  │   │   │   │
- │   │   │   └──todo.ts               * An example of a component using a service and forms
+ │   │   │   └──app.ts                * App.ts: entry file for components
  │   │   │
  │   │   ├──services/                 * where we keep our services used throughout our app
- │   │   │   ├──TodoService.ts        * An example of a simple service 
+ │   │   │   ├──TodoService.ts        * an example of a simple service 
  │   │   │   └──services.ts           * where we gather our injectables from our services
  │   │   │
  │   │   └──directives/               * where we keep our directives used throughout our app
@@ -65,7 +65,8 @@ angular2-webpack-starter/
  │
  ├──typings/                          * where tsd defines it's types definitions
  │   ├──_custom/                      * where we define our custom types
- │   │    └──ng2.d.ts                 * where we patch angular2 types with our own until it's fixed
+ │   │   ├──ng2.d.ts                  * where we patch angular2 types with our own types until it's fixed
+ │   │   └──custom.d.ts               * we include all of our custom types here
  │   │
  │   ├──angular2/
  │   │   └──angular2.d.ts             * our Angular 2 type definitions
