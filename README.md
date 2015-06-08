@@ -26,12 +26,13 @@ We use the component approach in our starter. This is the new standard for devel
 angular2-webpack-starter/
  ├──public/                           * static assets are served here
  │   ├──lib/                          * static libraries
- │   │   └──traceur.min.js            * ignore this file for now as it's required by Angular 2
+ │   │   └──traceur-runtime.min.js    * ignore this file. This is needed to polyfill the browser to for ES6 features to similarly
  │   │
  │   ├──favicon.ico                   * replace me with your own favicon.ico
  │   ├──service-worker.js             * ignore this. Web App service worker that's not complete yet
  │   ├──robots.txt                    * for search engines to crawl your website
  │   ├──human.txt                     * for humans to know who the developers are
+ │   │
  │   └──index.html                    * Index.html: where we place our script tags
  │
  ├──src/                              * our source files that will be compiled to javascript
