@@ -4,9 +4,9 @@
   "description": "An Angular 2 Webpack Starter kit featuring Angular 2, Router, TypeScript, and Webpack by AngularClass",
   "main": "",
   "scripts": {
-    "build": "webpack -d",
-    "watch": "webpack -d --watch",
-    "server": "webpack-dev-server --inline -d --colors --display-error-details --display-cached ",
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "server": "webpack-dev-server --inline --colors --display-error-details --display-cached ",
     "start": "npm install && npm run server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
