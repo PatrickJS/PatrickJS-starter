@@ -5,7 +5,7 @@ var sliceArgs = Function.prototype.call.bind(Array.prototype.slice);
 var path = require('path');
 
 module.exports = {
-  devtool: 'source-maps',
+  devtool: 'source-map',
   // devtool: 'eval',
 
   //
