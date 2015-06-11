@@ -7,6 +7,7 @@ import {formDirectives, FormBuilder, Control, ControlGroup, Validators} from 'an
 // App
 import {appDirectives} from '../directives/directives';
 import {TodoService} from '../services/TodoService';
+import {ActionButton} from './action-button';
 
 
 
@@ -17,7 +18,7 @@ import {TodoService} from '../services/TodoService';
     // <fieldset ng-control-group="todos">
     // </fieldset>
 @View({
-  directives: [ coreDirectives, formDirectives, appDirectives ],
+  directives: [ coreDirectives, formDirectives, appDirectives, ActionButton ],
   template: `
   <style>
     .error-message {
@@ -49,6 +50,7 @@ import {TodoService} from '../services/TodoService';
         {{ todo.value }}
         <br>
         <button (click)="removeTodo($event, $index)">[Remove]</button>
+        <action-button (yummy)="yummy()"></action-button>
         <small>{{ todo.created_at }}</small>
       </p>
     </li>
@@ -83,6 +85,10 @@ export class Todo {
     event.preventDefault(); // prevent native page refresh
 
     this.todoService.remove(index);
+  }
+  
+  yummy() {
+    alert('Yummy!');
   }
 
 }
