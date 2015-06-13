@@ -141,7 +141,6 @@ and missing members. Modify them as you go.
  > You may need to require `reference path` for your editor to autocomplete correctly
  ```
  /// <reference path="../../typings/tsd.d.ts" />
- /// <reference path="../custom_typings/ng2.d.ts" />
  ```
  Otherwise including them in `tsd.json` is prefered 
 
