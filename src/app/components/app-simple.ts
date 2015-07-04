@@ -10,6 +10,7 @@
  * Angular 2
  */
 import {Component, View, coreDirectives} from 'angular2/angular2';
+import {Http} from 'angular2/http';
 import {routerDirectives} from 'angular2/router';
 // import {formDirectives} from 'angular2/forms';
 import {formDirectives} from '../../common/formDirectives'; // current workaround fix
@@ -40,6 +41,7 @@ import {appDirectives} from '../directives/directives';
 
   <main>
     Your Content Here
+    <pre>data = {{ data | json }}</pre>
   </main>
 
   <footer>
@@ -49,8 +51,17 @@ import {appDirectives} from '../directives/directives';
 })
 export class App {
   name: string;
-  constructor() {
+  data: any;
+  constructor(public http: Http) {
     this.name = 'Angular 2';
 
+    this.http.
+      get('http://jsonplaceholder.typicode.com/posts/1').
+      toRx().
+      map(res => res.json()).
+      subscribe(data => {
+        console.log('data', data);
+        this.data = data;
+      });
   }
 }
