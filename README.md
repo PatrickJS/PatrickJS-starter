@@ -4,7 +4,9 @@
 
 # Angular2 Webpack Starter [![Join the chat at https://gitter.im/angular-class/angular2-webpack-starter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/angular-class/angular2-webpack-starter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-> A starter kit featuring [Angular 2](https://angular.io) ([Router](https://angular.io/docs/js/latest/api/router/), [Forms](https://angular.io/docs/js/latest/api/forms/), [Services](https://gist.github.com/gdi2290/634101fec1671ee12b3e#_follow_@AngularClass_on_twitter)), [TypeScript](http://www.typescriptlang.org/), and [Webpack](http://webpack.github.io/) by [AngularClass](https://angularclass.com).
+> A starter kit featuring [Angular 2](https://angular.io) ([Router](https://angular.io/docs/js/latest/api/router/), [Forms](https://angular.io/docs/js/latest/api/forms/),
+[Http](https://angular.io/docs/js/latest/api/http/),
+[Services](https://gist.github.com/gdi2290/634101fec1671ee12b3e#_follow_@AngularClass_on_twitter)), [TypeScript](http://www.typescriptlang.org/), and [Webpack](http://webpack.github.io/) by [AngularClass](https://angularclass.com).
 
 > If you're looking for Angular 1.x please use [NG6-starter](https://github.com/angular-class/NG6-starter)
 
@@ -81,6 +83,8 @@ angular2-webpack-starter/
  │   │   └──rx.d.ts                        * rx type definitions
  │   │
  │   └──tsd.d.ts.ts                        * our main file for all of our type definitions
+ │
+ ├──server/                                * this is a stub for very basic server configurations
  │
  ├──tsconfig.json                          * config that webpack uses for typescript
  ├──tsd.json                               * config that tsd uses for managing it's definitions
@@ -163,6 +167,7 @@ We have good experience using these editors:
 - [ ] testing
 - [ ] e2e
 - [ ] production services examples
+- [ ] universal (isomorphic) example
 - [ ] hot-component-reloading
 
 # Starter Kit Support and Questions
