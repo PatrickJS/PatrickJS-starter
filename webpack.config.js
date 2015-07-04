@@ -9,6 +9,14 @@ module.exports = {
   // devtool: 'eval',
   debug: true,
   cache: true,
+  // our Development Server configs
+  devServer: {
+    inline: true,
+    colors: true,
+    historyApiFallback: true,
+    contentBase: 'public',
+    publicPath: '/__build__'
+  },
 
   //
   entry: {
@@ -131,14 +139,6 @@ module.exports = {
     new webpack.optimize.DedupePlugin(),
     new webpack.BannerPlugin(getBanner())
   ],
-  // our Development Server configs
-  devServer: {
-    inline: true,
-    colors: true,
-    historyApiFallback: true,
-    contentBase: 'public',
-    publicPath: '/__build__'
-  },
 
   context: __dirname,
   stats: { colors: true, reasons: true }
