@@ -3,48 +3,83 @@
 // Angular 2
 import {bootstrap} from 'angular2/angular2';
 
-// Angular's router injectables services/bindings
-import {routerInjectables} from 'angular2/router';
-// Angular's form injectables services/bindings
-import {formInjectables} from 'common/formInjectables';
-
-// Our custom injectable that checks if ShadowDom is available to inject
-import {shadowDomInjectables} from 'common/shadowDomInjectables';
-
-// Our custom injectable that uses Just-In-Time change detection
-// import {jitInjectables} from 'common/changeDetectionInjectables';
-
-// Our collection of injectables services
-import {appServicesInjectables} from './services/services';
-
-
-// Our top level component that holds all of our components
-import {App} from './components/app';
 
 /*
-  Bootstrap our Angular app with our top level component `App`
-  and inject our global services/bindings into Angular's dependency injection
-*/
+ * Common Injectables
+ * our custom helper injectables to configure our app differently using the dependency injection system
+ */
+import {
+  nativeShadowDomInjectables,
+  emulatedScopedShadowDomInjectables,
+  emulatedUnscopedShadowDomInjectables
+} from '../common/shadowDomInjectables';
+import {
+  jitInjectables,
+  dynamicInjectables,
+  preGeneratedInjectables
+} from '../common/changeDetectionInjectables';
+import {
+  html5locationInjectables,
+  hashlocationInjectables
+} from '../common/locationInjectables';
+
+/*
+ * Angular Modules
+ */
+import {routerInjectables} from 'angular2/router';
+import {httpInjectables} from 'angular2/http';
+import {formInjectables} from 'angular2/forms';
+
+/*
+ * App Services
+ * our collection of injectables services
+ */
+import {appServicesInjectables} from './services/services';
+/*
+ * App Component
+ * our top level component that holds all of our components
+ */
+// import {App} from './components/app';
+
+// A simple version of our App without the router or other components
+import {App} from './components/app-simple';
+
+/*
+ * Bootstrap our Angular app with a top level component `App` and inject
+ * our Universal/Platform services/bindings into Angular's dependency injection
+ */
 bootstrap(
   // Top Level Component
   App,
 
   // AppInjectors
   [
-    // Our collection of services from /services
-    appServicesInjectables,
+    // Universal injectables
+    [
+      // Angular's http service
+      httpInjectables,
 
+      // Angular's form builder service
+      formInjectables,
 
-    // Our custom injectable that checks if we have support for ShadowDom
-    shadowDomInjectables,
+      // Angular's router
+      routerInjectables,
 
-    // if we want to use the Just-In-Time change detection
-    // jitInjectables,
+      // Our collection of services from /services
+      appServicesInjectables
+    ],
 
-    // Angular's form builder service
-    formInjectables,
+    // Platform injectables
+    [
+      // if we want to use the Just-In-Time change detection
+      // jitInjectables
 
-    // Angular's router
-    routerInjectables
+      // if we want to use hashBash url for the router
+      // hashlocationInjectables,
+
+      // Our custom injectable that checks if we have support for ShadowDom
+      nativeShadowDomInjectables,
+    ]
+
   ]
 );
