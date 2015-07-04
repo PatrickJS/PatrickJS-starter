@@ -161,6 +161,7 @@ We have good experience using these editors:
 * Why we are using traceur-runtime? This for the ES6 polyfills.
 * What's the current browser support for Angular 2 Alpha? as of version 2.0.0-alpha.26: Chrome (43, 44, 45), Firefox (37, 39, 40), IE 11, Safari 8, iOS 8, Android 5.1 (Chrome Mobile 39).
 * What is the `TypeScript warning "Value of type 'typeof Directive' is not callable. Did you mean to include 'new'?`"? This is an error with the typings defined in DefinitelyTyped (please ignore until it's fixed)
+* How to I use `moduleId` with `module.id` in webpack? please use `__filename` if you must use `templateUrl` and `styleUrls` rather than webpack's module system
 
 ### Todo
 - [ ] production/development environments

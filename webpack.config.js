@@ -59,14 +59,7 @@ module.exports = {
 
   resolve: {
     root: __dirname,
-    extensions: [
-      '',
-      '.ts',
-      '.js',
-      '.json',
-      '.webpack.js',
-      '.web.js'
-    ],
+    extensions: ['','.ts','.js','.json','.webpack.js','.web.js'],
     alias: {
       // When Angular2 has a TypeScript build
       // we can switch between development and production
@@ -81,6 +74,14 @@ module.exports = {
       // 'stores/*': '/app/stores/*.js'
       // 'angular2': 'angular2/es6/dev'
     }
+  },
+
+  /*
+   * When using `templateUrl` and `styleUrls` please use `__filename`
+   * rather than `module.id` for `moduleId` in `@View`
+   */
+  node: {
+    __filename: true
   },
 
   module: {
