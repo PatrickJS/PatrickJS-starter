@@ -1,7 +1,8 @@
 /// <reference path="../../../typings/tsd.d.ts" />
 
 // Angular 2
-import {Component, View, Directive, ElementRef} from 'angular2/angular2';
+import {Component, View, Directive} from 'angular2/angular2';
+import {ElementRef} from 'angular2/core';
 
 // Simple example directive that should be in `/directives` folder
 // Todo: refactor
@@ -11,7 +12,7 @@ import {Component, View, Directive, ElementRef} from 'angular2/angular2';
 class XLarge {
   constructor(public el: ElementRef) {
     // simple dom manipulation to set font size to x-large
-    this.el.domElement.style.fontSize = 'x-large';
+    this.el.nativeElement.style.fontSize = 'x-large';
   }
 }
 
@@ -21,9 +22,12 @@ class XLarge {
 })
 @View({
   directives: [ XLarge ],
+  styles: [`
+  span[x-large] {
+    color: red;
+  }
+  `],
   template: `
-  <style> span[x-large] { color: red; } </style>
-
   <div>
     <h2>Dashboard</h2>
     <span x-large>Extra Large Font Directive</span>
