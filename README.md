@@ -109,7 +109,7 @@ Once you have those, you should install these globals with `npm install -global`
 * `npm run server` to start the server
 
 ## Running the app
-After you have installed all dependencies you can now run the app. Run `npm server` to start a local server using `webpack-dev-server` which will watch, build (in-memory), and reload for you. The port will be displayed to you as `http://localhost:8080`.
+After you have installed all dependencies you can now run the app. Run `npm run server` to start a local server using `webpack-dev-server` which will watch, build (in-memory), and reload for you. The port will be displayed to you as `http://localhost:8080` (or if you prefer IPv6 then it's `http://[::1]:8080/`).
  
 ### server
 ```bash
