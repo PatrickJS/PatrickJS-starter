@@ -168,6 +168,7 @@ We have good experience using these editors:
 - [ ] e2e
 - [ ] production services examples
 - [ ] universal (isomorphic) example
+- [ ] small/medium/large abstraction examples
 - [ ] hot-component-reloading
 
 # Starter Kit Support and Questions
