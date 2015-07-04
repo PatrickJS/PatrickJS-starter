@@ -1,11 +1,16 @@
 /// <reference path="../../../typings/tsd.d.ts" />
 
 // Angular 2
-import {Component, View, Directive, coreDirectives} from 'angular2/angular2';
-import {formDirectives, FormBuilder, Control, ControlGroup, Validators} from 'angular2/forms';
+import {Component, View, Directive} from 'angular2/angular2';
+import {FormBuilder, Validators} from 'angular2/forms';
 
-// App
+// directives
 import {appDirectives} from '../directives/directives';
+import {coreDirectives} from 'angular2/angular2';
+// import {formDirectives} from 'angular2/forms';
+import {formDirectives} from '../../common/formDirectives'; // current work around fix
+
+// services
 import {TodoService} from '../services/TodoService';
 
 
@@ -14,29 +19,27 @@ import {TodoService} from '../services/TodoService';
 @Component({
   selector: 'todo'
 })
-    // <fieldset ng-control-group="todos">
-    // </fieldset>
 @View({
   directives: [ coreDirectives, formDirectives, appDirectives ],
+  styles: [`
+  .error-message {
+    color: red;
+  }
+  `],
   template: `
-  <style>
-    .error-message {
-      color: red;
-
-    }
-  </style>
-
-  <form [ng-form-model]="todoForm" (submit)="todoForm.valid && addTodo($event, todoForm.value.todo)"
-  novalidate>
-
-    <input type="text" [ng-form-control]="todoInput" autofocus required>
+  <form
+    [ng-form-model]="todoForm"
+    (submit)="todoForm.valid && addTodo($event, todoInput.value)"
+    novalidate
+  >
+    <input type="text" [ng-form-control]="todoInput" autofocus>
 
     <button>Add Todo</button>
 
     <span class="error-message" *ng-if="
       todoForm.errors?.required &&
       todoForm.dirty &&
-      todoForm.controls.todo.touched
+      todoForm.controls?.todo?.touched
     ">
       Todo is required
     </span>
@@ -44,7 +47,7 @@ import {TodoService} from '../services/TodoService';
   </form>
 
   <ul>
-    <li *ng-for="var todo of todoService.state.todos; var $index = index">
+    <li *ng-for="var todo of todoService.get('todos'); var $index = index">
       <p>
         {{ todo.value }}
         <br>
@@ -56,8 +59,8 @@ import {TodoService} from '../services/TodoService';
   `
 })
 export class Todo {
-  todoForm: ControlGroup;
-  todoInput: Control;
+  todoForm:  any;
+  todoInput: any;
   state: any;
   constructor(
     public formBuilder: FormBuilder,
@@ -66,8 +69,8 @@ export class Todo {
 
     this.todoForm = formBuilder.group({
       'todo': ['', Validators.required]
-    })
-    this.todoInput = this.todoForm.controls.todo
+    });
+    this.todoInput = this.todoForm.controls.todo;
 
   }
 
