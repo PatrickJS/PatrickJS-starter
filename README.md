@@ -165,11 +165,13 @@ We have good experience using these editors:
 
 ### Todo
 - [ ] production/development environments
+- [ ] bootstrap example
 - [ ] testing
 - [ ] e2e
 - [ ] production services examples
 - [ ] universal (isomorphic) example
 - [ ] small/medium/large abstraction examples
+- [ ] Material Design example
 - [ ] hot-component-reloading
 
 # Starter Kit Support and Questions
