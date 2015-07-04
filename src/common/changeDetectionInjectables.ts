@@ -18,3 +18,8 @@ export var dynamicInjectables = [
 export var preGeneratedInjectables = [
   bind(ChangeDetection).toClass(PreGeneratedChangeDetection)
 ];
+
+export var bestChangeDetectionInjectables = [
+  PreGeneratedChangeDetection.isSupported() ? preGeneratedInjectables :
+  JitChangeDetection.isSupported() ? jitInjectables : dynamicInjectables
+];
