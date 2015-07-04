@@ -7,6 +7,8 @@ var path = require('path');
 module.exports = {
   devtool: 'source-map',
   // devtool: 'eval',
+  debug: true,
+  cache: true,
 
   //
   entry: {
@@ -137,8 +139,6 @@ module.exports = {
     contentBase: 'public',
     publicPath: '/__build__'
   },
-  debug: true,
-  cache: true,
 
   context: __dirname,
   stats: { colors: true, reasons: true }
