@@ -33,7 +33,7 @@ import {appDirectives} from '../directives/directives';
   <h1 class="title">Hello {{ name }}</h1>
 
   <ul class="nav">
-    <li><a router-link="home">Home</a></li>
+    <li><a router-link="home">Welcome</a></li>
     |
     <li><a router-link="dashboard">Dashboard</a></li>
     |
