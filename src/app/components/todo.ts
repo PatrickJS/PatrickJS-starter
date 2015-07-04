@@ -1,32 +1,37 @@
 /// <reference path="../../../typings/tsd.d.ts" />
 
-// Angular 2
-import {Component, View, Directive} from 'angular2/angular2';
+/*
+ * Angular 2
+ */
+import {Component, View, Directive} from 'angular2/annotations';
 import {FormBuilder, Validators} from 'angular2/forms';
 
-// directives
-import {appDirectives} from '../directives/directives';
-import {coreDirectives} from 'angular2/angular2';
-// import {formDirectives} from 'angular2/forms';
-import {formDirectives} from '../../common/formDirectives'; // current work around fix
+/*
+ * Directives
+ * angularDirectives: Angular's core/form/router directives
+ * appDirectives: Our collection of directives from /directives
+ */
+import {appDirectives, angularDirectives} from '../directives/directives';
 
-// services
+/*
+ * Services
+ */
 import {TodoService} from '../services/TodoService';
 
 
 
-// Simple component
+// Simple form component example
 @Component({
   selector: 'todo'
 })
 @View({
-  directives: [ coreDirectives, formDirectives, appDirectives ],
-  styles: [`
-  .error-message {
-    color: red;
-  }
-  `],
+  directives: [ angularDirectives, appDirectives ],
   template: `
+  <style>
+    .error-message {
+      color: red;
+    }
+  </style>
   <form
     [ng-form-model]="todoForm"
     (submit)="todoForm.valid && addTodo($event, todoInput.value)"

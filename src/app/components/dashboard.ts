@@ -1,11 +1,15 @@
 /// <reference path="../../../typings/tsd.d.ts" />
 
-// Angular 2
+/*
+ * Angular 2
+ */
 import {Component, View, Directive} from 'angular2/annotations';
 import {ElementRef} from 'angular2/core';
 
-// Simple example directive that should be in `/directives` folder
-// Todo: refactor
+/*
+ * TODO: refactor
+ * simple example directive that should be in `/directives` folder
+ */
 @Directive({
   selector: '[x-large]' // using [ ] means selecting attributes
 })
@@ -18,18 +22,18 @@ class XLarge {
   }
 }
 
-// Simple component
+// Simple component with custom directive example
 @Component({
   selector: 'dashboard'
 })
 @View({
   directives: [ XLarge ],
-  styles: [`
-  span[x-large] {
-    color: red;
-  }
-  `],
   template: `
+  <style>
+    span[x-large] {
+      color: red;
+    }
+  </style>
   <div>
     <h2>Dashboard</h2>
     <span x-large>Extra Large Font Directive</span>

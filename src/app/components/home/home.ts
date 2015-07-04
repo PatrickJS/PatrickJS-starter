@@ -1,26 +1,30 @@
 /// <reference path="../../../../typings/tsd.d.ts" />
 
-// Angular 2
-import {Component, View} from 'angular2/angular2';
+/*
+ * Angular 2
+ */
+import {Component, View} from 'angular2/annotations';
 
-// Directives
-import {coreDirectives} from 'angular2/directives';
-// import {formDirectives} from 'angular2/forms';
-import {formDirectives} from 'common/formDirectives'; // current workaround fix
-import {appDirectives} from 'app/directives/directives';
+/*
+ * Directives
+ * angularDirectives: Angular's core/form/router directives
+ * appDirectives: Our collection of directives from /directives
+ */
+import {appDirectives, angularDirectives} from 'app/directives/directives';
 
 // Use webpack's `require` to get files as a raw string using raw-loader
 let styles   = require('./home.css');
 let template = require('./home.html');
 
+// Simple external file component example
 @Component({
   selector: 'home'
 })
 @View({
-  directives: [ coreDirectives, formDirectives, appDirectives ],
+  directives: [ angularDirectives, appDirectives ],
   // include our .html and .css file
-  template: template,
-  styles: [ styles ]
+  styles: [ styles ],
+  template: template
 })
 export class Home {
   constructor() {

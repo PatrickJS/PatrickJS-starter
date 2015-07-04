@@ -29,6 +29,7 @@ import {Todo} from './todo';
 /*
  * App Component
  * Top Level Component
+ * Simple router component example
  */
 @Component({
   selector: 'app', // without [ ] means we are selecting the tag directly
@@ -48,7 +49,8 @@ import {Todo} from './todo';
     // Our collection of directives from /directives
     appDirectives
   ],
-  styles: [`
+  template: `
+  <style>
     .title  {
       font-family: Arial, Helvetica, sans-serif;
       margin: 0;
@@ -63,8 +65,8 @@ import {Todo} from './todo';
     main {
       padding: 0.5em;
     }
-  `],
-  template: `
+  </style>
+
   <header>
     <h1 class="title">Hello {{ name }}</h1>
 
