@@ -1,7 +1,7 @@
 /// <reference path="../../../typings/tsd.d.ts" />
 
 // Angular 2
-import {Component, View, Directive} from 'angular2/angular2';
+import {Component, View, Directive} from 'angular2/annotations';
 import {ElementRef} from 'angular2/core';
 
 // Simple example directive that should be in `/directives` folder
@@ -12,7 +12,9 @@ import {ElementRef} from 'angular2/core';
 class XLarge {
   constructor(public el: ElementRef) {
     // simple dom manipulation to set font size to x-large
-    this.el.nativeElement.style.fontSize = 'x-large';
+    if (this.el.nativeElement.style) {
+      this.el.nativeElement.style.fontSize = 'x-large';
+    }
   }
 }
 

@@ -26,9 +26,9 @@ import {
 /*
  * Angular Modules
  */
-import {routerInjectables} from 'angular2/router';
 import {httpInjectables} from 'angular2/http';
 import {formInjectables} from 'angular2/forms';
+import {routerInjectables} from 'angular2/router';
 
 /*
  * App Services
@@ -39,10 +39,38 @@ import {appServicesInjectables} from './services/services';
  * App Component
  * our top level component that holds all of our components
  */
-// import {App} from './components/app';
+import {App} from './components/app';
 
 // A simple version of our App without the router or other components
-import {App} from './components/app-simple';
+// import {App} from './components/app-simple';
+
+
+/*
+ * Universal injectables
+ */
+var universalInjectables = [
+  // Angular's http/form/router services/bindings
+  httpInjectables,
+  formInjectables,
+  routerInjectables,
+
+  // Our collection of services from /services
+  appServicesInjectables
+];
+
+/*
+ * Platform injectables
+ */
+var platformInjectables = [
+  // if we want to use the Just-In-Time change detection
+  // bestChangeDetectionInjectables,
+
+  // if we want to use hashBash url for the router
+  // hashlocationInjectables,
+
+  // Our custom injectable that checks if we have support for ShadowDom
+  nativeShadowDomInjectables
+];
 
 /*
  * Bootstrap our Angular app with a top level component `App` and inject
@@ -52,34 +80,9 @@ bootstrap(
   // Top Level Component
   App,
 
-  // AppInjectors
+  // AppInjector
   [
-    // Universal injectables
-    [
-      // Angular's http service
-      httpInjectables,
-
-      // Angular's form builder service
-      formInjectables,
-
-      // Angular's router
-      routerInjectables,
-
-      // Our collection of services from /services
-      appServicesInjectables
-    ],
-
-    // Platform injectables
-    [
-      // if we want to use the Just-In-Time change detection
-      // jitInjectables
-
-      // if we want to use hashBash url for the router
-      // hashlocationInjectables,
-
-      // Our custom injectable that checks if we have support for ShadowDom
-      nativeShadowDomInjectables,
-    ]
-
+    universalInjectables,
+    platformInjectables
   ]
 );

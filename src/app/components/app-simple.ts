@@ -2,8 +2,8 @@
 
 /*
  * TODO: use the real App component
- * uncomment `components/app` in bootstrap.ts and comment
- * our this file `components/app-simple`
+ * uncomment `./components/app` in bootstrap.ts and comment
+ * this file `./components/app-simple`
  */
 
 /*
@@ -15,9 +15,8 @@ import {routerDirectives} from 'angular2/router';
 import {formDirectives} from '../../common/formDirectives'; // current workaround fix
 
 /*
- * App
+ * App Directives
  */
-import {todoInjectables} from '../services/TodoService';
 import {appDirectives} from '../directives/directives';
 
 /*
@@ -31,7 +30,17 @@ import {appDirectives} from '../directives/directives';
   // needed in order to tell Angular's compiler what's in the template
   directives: [ coreDirectives, formDirectives, routerDirectives, appDirectives ],
   template: `
-  <h1 class="title">Hello {{ name }}</h1>
+  <style>
+    .title  { font-family: Arial, Helvetica, sans-serif; }
+  </style>
+
+  <header>
+    <h1 class="title">Hello {{ name }}</h1>
+  </header>
+
+  <main>
+    Your Content Here
+  </main>
 
   <footer>
     WebPack Angular 2 Starter by <a href="https://twitter.com/AngularClass">@AngularClass</a>

@@ -3,17 +3,17 @@
 /*
  * Angular 2
  */
-import {Component, View} from 'angular2/angular2';
+import {Component, View} from 'angular2/annotations';
 import {RouteConfig} from 'angular2/router';
 
 /*
  * Directives
  */
-// Import all of our custom app directives
 import {coreDirectives} from 'angular2/angular2';
 import {routerDirectives} from 'angular2/router';
 // import {formDirectives} from 'angular2/forms';
 import {formDirectives} from '../../common/formDirectives'; // current workaround fix
+// Import all of our custom app directives
 import {appDirectives} from '../directives/directives';
 
 /*
@@ -48,22 +48,36 @@ import {Todo} from './todo';
     // Our collection of directives from /directives
     appDirectives
   ],
+  styles: [`
+    .title  {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      display: inline;
+    }
+    nav {
+      display: inline;
+      list-style-type: none;
+      padding: 0;
+      background-color: #F8F8F8;
+    }
+    main {
+      padding: 0.5em;
+    }
+  `],
   template: `
-  <style>
-    .title  { font-family: Arial, Helvetica, sans-serif; }
-    .nav    { display: inline; list-style-type: none; padding: 0;  background-color: #F8F8F8; }
-    .nav li { display: inline; }
-    main    { padding: 0.5em; }
-  </style>
-  <h1 class="title">Hello {{ name }}</h1>
+  <header>
+    <h1 class="title">Hello {{ name }}</h1>
 
-  <ul class="nav">
-    <li><a [router-link]=" ['/home'] ">Home</a></li>
-    |
-    <li><a [router-link]=" ['/dashboard'] ">Dashboard</a></li>
-    |
-    <li><a [router-link]=" ['/todo'] ">Todo</a></li>
-  </ul>
+    <nav>
+      [
+      <a [router-link]=" ['/home'] ">Home</a>
+      |
+      <a [router-link]=" ['/dashboard'] ">Dashboard</a>
+      |
+      <a [router-link]=" ['/todo'] ">Todo</a>
+      ]
+    </mav>
+  </header>
 
   <main>
     <router-outlet></router-outlet>

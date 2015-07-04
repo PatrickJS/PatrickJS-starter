@@ -17,7 +17,7 @@ let template = require('./home.html');
   selector: 'home'
 })
 @View({
-  directives: [ coreDirectives, /*formDirectives,*/ appDirectives ],
+  directives: [ coreDirectives, formDirectives, appDirectives ],
   // include our .html and .css file
   template: template,
   styles: [ styles ]

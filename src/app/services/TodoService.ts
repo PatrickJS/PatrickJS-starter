@@ -1,4 +1,5 @@
 /// <reference path="../../../typings/tsd.d.ts" />
+
 import {bind, Inject} from 'angular2/di';
 
 // Using TypeScript we can define our state interface
@@ -26,7 +27,8 @@ export class TodoService {
   // we shouldn't access ._state or ._setState outside of the class
   _state: ITodoState;
   constructor(@Inject('initialTodoState') state: ITodoState) {
-    // use Store class as a helper
+
+    // our initial state
     this._state = state;
   }
 
@@ -42,14 +44,14 @@ export class TodoService {
     });
   }
 
-  add(todo) {
+  add(value) {
     // Async call to server then save state
-
-    var todos = this.get('todos').slice(); // create array copy
-    todos.push({
-      value: todo,
+    var todo = {
+      value: value,
       created_at: new Date()
-    });
+    };
+    var todos = this.get('todos').slice(); // create array copy
+    todos.push(todo);
 
     // You can use .set to replace state
     this.set('todos', todos);

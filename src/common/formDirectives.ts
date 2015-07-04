@@ -34,12 +34,12 @@ import {NgSelectOption} from 'angular2/forms';
 import {NgRequiredValidator} from 'angular2/forms';
 
 
-import {Directive, Query, QueryList} from 'angular2/angular2';
+import {Directive, Query} from 'angular2/annotations';
+import {QueryList, ElementRef} from 'angular2/core';
 import {bind} from 'angular2/di';
 import {NgControl} from 'angular2/forms';
 import {Renderer} from 'angular2/render';
 import {DomRenderer} from 'angular2/src/render/dom/dom_renderer';
-import {ElementRef} from 'angular2/core';
 import {isBlank, isPresent} from 'angular2/src/facade/lang';
 
 
