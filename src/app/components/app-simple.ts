@@ -11,7 +11,7 @@
  */
 import {Component, View, coreDirectives} from 'angular2/angular2';
 import {Http} from 'angular2/http';
-import {routerDirectives} from 'angular2/router';
+import {RouteConfig, routerDirectives} from 'angular2/router';
 // import {formDirectives} from 'angular2/forms';
 import {formDirectives} from '../../common/formDirectives'; // current workaround fix
 
