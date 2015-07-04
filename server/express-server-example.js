@@ -10,18 +10,9 @@ var bodyParser = require('body-parser');
 // Express App
 var app = express();
 var router = express.Router();
-var appPort = 8080;
+var PORT = process.env.PORT || 8080;
+var NODE_ENV = process.env.NODE_ENV || 'development';
 
-// Only use in development
-var server = new WebpackDevServer(webpack(webpackConfig), {
-  publicPath: '/__build__',
-  historyApiFallback: false, // won't work due to order
-  inline: true,
-  quiet: false,
-  noInfo: false,
-  stats: { colors: true }
-});
-// Webpack express app that uses socket.io
 
 // your API
 var count = 0;
@@ -86,8 +77,21 @@ app.use(bodyParser.json());
 
 app.use(morgan('dev'));
 
-app.use(server.app);
+// Only use in development
+if (process.env.NODE_ENV === 'development') {
+  var server = new WebpackDevServer(webpack(webpackConfig), {
+    publicPath: '/__build__',
+    historyApiFallback: false, // won't work due to order
+    inline: true,
+    quiet: false,
+    noInfo: false,
+    stats: { colors: true }
+  });
+  app.use(server.app);
+}
+// Webpack express app that uses socket.io
 
-app.listen(appPort, function() {
-  console.log('Listen on http://localhost:' + appPort);
+
+app.listen(PORT, function() {
+  console.log('Listen on http://localhost:' + PORT + ' in ' + NODE_ENV);
 });

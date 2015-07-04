@@ -114,7 +114,7 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       'ENV': {
-        'type': JSON.stringify('development'),
+        'type': JSON.stringify(process.env.NODE_ENV),
         'debug': true
       }
     }),
