@@ -15,7 +15,7 @@ This repo serves as an extremely minimal starter for anyone looking to get up an
 * Ready to go build system using Webpack for working with TypeScript.
 
 ### Quick start
-> Clone/Download the repo then edit `app.ts` inside [`/src/app/components/app.ts`](/src/app/components/app.ts)
+> Clone/Download the repo then edit `app-simple.ts` inside [`/src/app/components/app-simple.ts`](/src/app/components/app-simple.ts)
 
 ```bash
 $ npm start # then open your browser and go to http://localhost:8080
