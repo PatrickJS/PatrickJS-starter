@@ -248,7 +248,33 @@ declare module "angular2/directives" {
 
 }
 
+declare module "angular2/src/change_detection/pipes/pipe" {
+  class PipeFactory {
+  }
+}
+
+declare module "angular2/src/change_detection/change_detection" {
+  var async: any;
+}
+
+declare module "angular2/pipes" {
+  class ObservablePipe {
+    constructor(ref: any)
+    _subscription: any;
+    _observable: any;
+    _updateLatestValue(value: any): any;
+    _subscribe(obs: any): any;
+  }
+}
+
 declare module "angular2/change_detection" {
+  class Pipe {}
+  class NullPipeFactory {}
+  class PipeRegistry {
+    constructor(pipes: any)
+  }
+  var defaultPipeRegistry: any;
+  var defaultPipes: any;
   class Parser {
 
   }
@@ -261,16 +287,12 @@ declare module "angular2/change_detection" {
   class DynamicChangeDetection {
 
   }
-  class PipeRegistry {
-
-  }
   class PreGeneratedChangeDetection {
     static isSupported(): boolean;
   }
   class JitChangeDetection {
     static isSupported(): boolean;
   }
-  var defaultPipeRegistry: any;
 }
 
 declare module "angular2/src/core/zone/ng_zone" {
