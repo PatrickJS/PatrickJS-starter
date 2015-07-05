@@ -74,9 +74,9 @@ angular2-webpack-starter/
  │   │       └──directives.ts              * where we gather our directives from our directives
  │   │
  │   └──common/                            * where common files used throughout our app
- │       ├──shadowDomInjectables.ts        * injectables to change the use of ShadowDom for each Component
- │       ├──changeDetectionInjectables.ts  * injectables to change Angular's Change Detection
- │       ├──formInjectables.ts             * services exported by angular/forms which is the FormBuilder
+ │       ├──shadowDomInjectables.ts        * injectables to change the use of ShadowDom Strategy for each Component
+ │       ├──changeDetectionInjectables.ts  * injectables to change Angular's Change Detection Strategy
+ │       ├──locationInjectables.ts         * injectables to change the Router location Strategy
  │       ├──formDirectives.ts              * turn on Just-In-Time Change Detection
  │       └──BrowserDomAdapter.ts           * ignore this. we need to set the DomAdapter to the browser
  │
