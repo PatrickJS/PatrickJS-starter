@@ -69,6 +69,10 @@ angular2-webpack-starter/
  │   │   │   ├──TodoService.ts             * an example of a simple service 
  │   │   │   └──services.ts                * where we gather our injectables from our services
  │   │   │
+ │   │   ├──pipes/                         * where we keep our custom pipes
+ │   │   │   ├──rxAsync.ts                 * upgrade async pipe with Rx support
+ │   │   │   └──pipes.ts                   * where we gather our custom pipes
+ │   │   │
  │   │   └──directives/                    * where we keep our directives used throughout our app
  │   │       ├──Autofocus.ts               * another simple directive to fix a problem with the router
  │   │       └──directives.ts              * where we gather our directives from our directives
