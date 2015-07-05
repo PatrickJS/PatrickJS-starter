@@ -22,10 +22,41 @@ declare module "angular2/http" {
     head(url: string, options?: any): any;
   }
   class HttpFactory {}
-  class MockBackend {}
+  class MockBackend {
+    constructor(req: any)
+  }
   class XHRBackend {}
   class BaseRequestOptions {}
   var httpInjectables: Array<any>;
+}
+
+declare module "angular2/src/core/life_cycle/life_cycle" {
+  class LifeCycle {
+    constructor(...args)
+    tick(): any;
+  }
+}
+
+declare module "angular2/src/render/dom/compiler/view_loader" {
+  class ViewLoader {}
+}
+
+declare module "angular2/src/render/dom/compiler/style_url_resolver" {
+  class StyleUrlResolver {}
+}
+
+declare module "angular2/src/render/dom/compiler/style_inliner" {
+  class StyleInliner {}
+}
+
+declare module "angular2/src/core/compiler/view_resolver" {
+  class ViewResolver {
+    resolve(appComponent: any): any
+  }
+}
+
+declare module "angular2/src/services/app_root_url" {
+  class AppRootUrl {}
 }
 
 declare module "angular2/src/http/backends/browser_xhr" {
@@ -86,12 +117,13 @@ declare module "angular2/src/render/dom/shadow_dom/style_inliner" {
 }
 declare module "angular2/src/core/compiler/dynamic_component_loader" {
   class ComponentRef {
+    constructor(newLocation: any, component: any, dispose: any)
     location: any
     instance: any
     dispose: any
   }
   class DynamicComponentLoader {
-
+    loadAsRoot(appComponentType: any, bindings: any, injector: any): any
   }
 }
 declare module "angular2/src/core/testability/testability" {
@@ -219,13 +251,6 @@ declare module "angular2/src/render/dom/events/event_manager" {
   }
 }
 
-declare module "angular2/src/core/life_cycle/life_cycle" {
-  class LifeCycle {
-    constructor(...args)
-    tick(): any;
-  }
-}
-
 declare module "zone.js" {
   var zone: any;
   var Zone: any;
@@ -298,12 +323,16 @@ declare module "angular2/change_detection" {
 
 declare module "angular2/src/core/zone/ng_zone" {
   class NgZone {
-    run(): any
+    constructor(config: any)
+    initCallbacks(config: any): any
+    run(context: any): any
   }
 }
 
+
 declare module "angular2/src/core/compiler/element_ref" {
   class ElementRef {
+    constructor(host: any, location?: any)
     nativeElement: any;
   }
 }
@@ -391,16 +420,26 @@ declare module "angular2/forms" {
 
 declare module "angular2/src/render/dom/shadow_dom/emulated_unscoped_shadow_dom_strategy" {
   class EmulatedUnscopedShadowDomStrategy {
+    styleHost: any;
+    constructor(styleHost: any);
+    hasNativeContentElement(): boolean;
+    prepareShadowRoot(el: any): any;
+    constructLightDom(lightDomView: any, el: any): any;
+    processStyleElement(hostComponentId: string, templateUrl: string, styleEl: any): void;
 
   }
 }
 
 declare module "angular2/core" {
   class ElementRef {
+    constructor(host: any, location?: any)
     nativeElement: any;
   }
   class QueryList<T> {
     onChange(callback: any): void;
+  }
+  class DirectiveResolver {
+    resolve(appComponent: any): any
   }
 }
 
@@ -531,7 +570,8 @@ declare module "angular2/src/facade/async" {
   class PromiseWrapper {
     static completer(): any;
     static all(all: any): any;
-    static then(pro:any): any;
+    static then(pro:any, sucess?: any, failure?: any): any;
+    static wrap(pro:any): any;
   }
 }
 
@@ -561,6 +601,7 @@ declare module "angular2/src/facade/lang" {
   var assertionsEnabled: any;
   function isPresent(bool: any): boolean;
   function isBlank(bool: any): boolean;
+  function isString(bool: any): boolean;
   class BaseException {
 
   }
@@ -894,7 +935,7 @@ declare module "angular2/src/di/binding" {
 }
 
 declare module "angular2/di" {
-
+  class Binding {}
   function bind(token: any): any;
   class Injector {
      resolveAndCreateChild(bindings: [any]): Injector;
