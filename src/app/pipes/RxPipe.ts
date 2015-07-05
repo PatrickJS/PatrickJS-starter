@@ -1,7 +1,5 @@
-import {PipeFactory} from 'angular2/src/change_detection/pipes/pipe';
 import {async} from 'angular2/src/change_detection/change_detection';
-import {NullPipeFactory, Pipe, PipeRegistry, defaultPipes} from 'angular2/change_detection';
-import {bind} from 'angular2/di';
+import {Pipe, PipeFactory} from 'angular2/change_detection';
 import {ObservablePipe} from 'angular2/pipes';
 import * as Rx from 'rx';
 
@@ -23,8 +21,7 @@ export class RxPipe extends ObservablePipe {
   }
 }
 
-export class RxPipeFactory extends PipeFactory {
-  constructor() { super(); }
+export class RxPipeFactory implements PipeFactory {
   supports(obs) { return isObservable(obs); }
   create(cdRef): Pipe { return new RxPipe(cdRef); }
 }

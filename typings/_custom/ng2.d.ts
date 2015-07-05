@@ -268,6 +268,7 @@ declare module "angular2/pipes" {
 }
 
 declare module "angular2/change_detection" {
+  interface PipeFactory {}
   class Pipe {}
   class NullPipeFactory {}
   class PipeRegistry {

@@ -10,7 +10,6 @@ import {PipeRegistry, defaultPipes} from 'angular2/change_detection';
  */
 import {rxAsync} from './RxPipe';
 
-
 // include the default pipes and our own
 export var appPipes = Object.assign({}, defaultPipes, {
   'async': rxAsync
