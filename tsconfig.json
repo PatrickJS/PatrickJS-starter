@@ -14,7 +14,7 @@
   },
   "files": [
     "node_modules/typescript/bin/dom.d.ts",
-    "src/custom_typings/ng2.d.ts",
+    "typings/_custom/custom.d.ts",
     "typings/tsd.d.ts",
     "src/components/app.ts",
     "src/bootstrap.ts"
