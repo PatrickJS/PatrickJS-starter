@@ -1,6 +1,6 @@
 /// <reference path="../../../typings/tsd.d.ts" />
 
-import {bind, Inject} from 'angular2/di';
+import {bind, Inject, Injectable} from 'angular2/di';
 
 // Using TypeScript we can define our state interface
 interface ITodo {
@@ -23,6 +23,7 @@ let initialTodoState:ITodoState = {
 };
 
 // Our Todo Service that uses Store helper class for managing our state
+@Injectable()
 export class TodoService {
   // we shouldn't access ._state or ._setState outside of the class
   _state: ITodoState;
