@@ -16,7 +16,7 @@
     "node_modules/typescript/bin/dom.d.ts",
     "typings/_custom/custom.d.ts",
     "typings/tsd.d.ts",
-    "src/components/app.ts",
-    "src/bootstrap.ts"
+    "src/app/components/app.ts",
+    "src/app/bootstrap.ts"
   ]
 }
