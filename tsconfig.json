@@ -8,6 +8,7 @@
     "removeComments": true,
     "noLib": false,
     "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "sourceMap": true,
     "listFiles": true,
     "outDir": "dist"
