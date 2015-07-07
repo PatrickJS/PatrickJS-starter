@@ -38,8 +38,8 @@
     "imports-loader": "^0.6.3",
     "json-loader": "^0.5.1",
     "style-loader": "^0.12.2",
-    "typescript": "^1.5.0-beta",
     "typescript-simple-loader": "^0.1.2",
+    "typescript": "git://github.com/Microsoft/TypeScript.git#release-1.5",
     "url-loader": "^0.5.5",
     "webpack": "^1.9.6",
     "webpack-dev-server": "^1.8.2"
