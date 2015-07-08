@@ -10,7 +10,7 @@
  * Angular 2
  */
 import {Component, View, coreDirectives} from 'angular2/angular2';
-import {Http} from 'angular2/http';
+import {Http, Headers} from 'angular2/http';
 import {RouteConfig, routerDirectives} from 'angular2/router';
 // import {formDirectives} from 'angular2/forms';
 import {formDirectives} from '../../common/formDirectives'; // current workaround fix
@@ -55,8 +55,14 @@ export class App {
   constructor(public http: Http) {
     this.name = 'Angular 2';
 
+    // npm install express connect-history-api-fallback morgan body-parser
+    // npm run express
     this.http.
-      get('http://jsonplaceholder.typicode.com/posts/1').
+      get('/api/todos', {
+        headers: new Headers({
+          'Content-Type': 'application/json'
+        })
+      }).
       toRx().
       map(res => res.json()).
       subscribe(data => {
