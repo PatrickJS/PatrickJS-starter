@@ -303,6 +303,12 @@ declare module "angular2/change_detection" {
   class PipeRegistry {
     constructor(pipes: any)
   }
+  class WrappedValue {
+    static wrap(...args): any
+  }
+  class ChangeDetectorRef {
+    requestCheck(): void;
+  }
   var defaultPipeRegistry: any;
   var defaultPipes: any;
   class Parser {
@@ -647,15 +653,41 @@ declare module "angular2/router" {
   class LocationStrategy {}
   class HashLocationStrategy {}
   class HTML5LocationStrategy {}
-  var RouterOutlet: any;
-  var RouterLink: any;
-  var RouteParams: any;
+  class RouteParams {
+    get(path: string): string;
+  }
+  class RouterLink {}
+  class RouterOutlet {}
   var routerInjectables: any;
   var RouteConfigAnnotation: any;
   var RouteConfig: any;
   var routerDirectives: any;
 }
 
+
+declare module "angular2/src/router/router" {
+  class Router {}
+  class RootRouter {
+    constructor(registry: any, pipeline: any, location: any , appRoot: any)
+  }
+}
+
+declare module "angular2/src/router/route_registry" {
+  class RouteRegistry {}
+}
+
+declare module "angular2/src/router/pipeline" {
+  class Pipeline {}
+}
+
+declare module "angular2/src/router/instruction" {
+  class Instruction {
+    component: any;
+    params: any;
+    reuse: any;
+    child: any;
+  }
+}
 
 declare module "angular2/src/dom/browser_adapter" {
     class BrowserDomAdapter {
