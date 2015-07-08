@@ -4,8 +4,7 @@
  */
 import {coreDirectives} from 'angular2/directives';
 import {routerDirectives} from 'angular2/router';
-// import {formDirectives} from 'angular2/forms';
-import {formDirectives} from 'common/formDirectives'; // current workaround fix
+import {formDirectives} from 'angular2/forms';
 
 /*
  * App
