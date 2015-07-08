@@ -67,6 +67,15 @@ export class App {
       subscribe(data => {
         console.log('data', data);
         this.data = data;
+      },
+      err => {
+        if (err.message = 'Unexpected token <') {
+          console.info(`${'\n'
+            } // You must run these commands for the Http API to work ${'\n'
+            } npm install express connect-history-api-fallback morgan body-parser ${'\n'
+            } npm run express
+          `);
+        }
       });
   }
 }
