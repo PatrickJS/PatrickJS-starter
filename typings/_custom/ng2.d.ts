@@ -25,6 +25,9 @@ declare module "angular2/http" {
   class MockBackend {
     constructor(req: any)
   }
+  class Headers {
+    constructor(config: any)
+  }
   class XHRBackend {}
   class BaseRequestOptions {}
   var httpInjectables: Array<any>;
