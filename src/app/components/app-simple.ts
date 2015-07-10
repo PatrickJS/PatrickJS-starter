@@ -10,7 +10,7 @@
  * Angular 2
  */
 import {Component, View, coreDirectives} from 'angular2/angular2';
-import {Http, Headers} from 'angular2/http';
+import {Http} from 'angular2/http';
 import {RouteConfig, routerDirectives} from 'angular2/router';
 import {formDirectives} from 'angular2/forms';
 
@@ -58,9 +58,10 @@ export class App {
     // npm run express
     this.http.
       get('/api/todos', {
-        headers: new Headers({
+        headers: {
+          'Accept': 'application/json',
           'Content-Type': 'application/json'
-        })
+        }
       }).
       toRx().
       map(res => res.json()).
