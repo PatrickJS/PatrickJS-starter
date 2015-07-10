@@ -63,6 +63,7 @@ angular2-webpack-starter/
  │   │   │   │   ├──home.css               * simple css file for home styles
  │   │   │   │   └──home.html              * simple html file for home template
  │   │   │   │
+ │   │   │   └──app-simple.ts              * the simple version of our App component components
  │   │   │   └──app.ts                     * App.ts: entry file for components
  │   │   │
  │   │   ├──services/                      * where we keep our services used throughout our app
