@@ -14,6 +14,10 @@ This repo serves as an extremely minimal starter for anyone looking to get up an
 * Best practice in file organization for Angular 2.
 * Ready to go build system using Webpack for working with TypeScript.
 
+```coffeescript
+Warning: Angular 2.0 is not production ready yet!
+```
+
 ### Quick start
 > Clone/Download the repo then edit `app-simple.ts` inside [`/src/app/components/app-simple.ts`](/src/app/components/app-simple.ts)
 
