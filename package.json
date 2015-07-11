@@ -8,7 +8,8 @@
     "watch": "webpack --watch",
     "server": "webpack-dev-server --inline --colors --display-error-details --display-cached ",
     "express": "node ./server/express-server-example.js",
-    "start": "npm install && npm run server",
+    "prestart": "npm install",
+    "start": "pm run server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
