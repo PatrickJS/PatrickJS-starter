@@ -3,19 +3,34 @@
  * Angular 2
  */
 import {bind} from 'angular2/di';
-import {PipeRegistry, defaultPipes} from 'angular2/change_detection';
+import {PipeRegistry, Pipes, defaultPipes} from 'angular2/change_detection';
 
 /*
  * App Pipes
  */
 import {rxAsync} from './RxPipe';
 
-// include the default pipes and our own
-export var appPipes = Object.assign({}, defaultPipes, {
-  'async': rxAsync
-  // add more pipes to this Map
-});
+var newPipesBindings;
 
-export var appPipesRegistry = [
-  bind(PipeRegistry).toValue(new PipeRegistry(appPipes))
+// Alpha.31
+if (Pipes) {
+  newPipesBindings = bind(Pipes).toValue(Pipes.append({
+    'async': rxAsync,
+    'capitalize': capitalize
+    // add more pipes to this Map
+  }));
+}
+// Alpha.30
+else if (PipeRegistry) {
+  // include the default pipes and our own
+  let replaceBindings = Object.assign({}, defaultPipes, {
+    'async': rxAsync,
+    'capitalize': capitalize
+    // add more pipes to this Map
+  });
+  newPipesBindings = bind(PipeRegistry).toValue(new PipeRegistry(replaceBindings));
+}
+
+export var appPipeInjectables = [
+  newPipesBindings
 ];

@@ -40,7 +40,7 @@ import {appServicesInjectables} from './services/services';
  * App Pipes
  * our collection of pipes registry
  */
-import {appPipesRegistry} from './pipes/pipes';
+import {appPipeInjectables} from './pipes/pipes';
 
 /*
  * App Component
@@ -62,7 +62,7 @@ var universalInjectables = [
   routerInjectables,
 
   // Pipe Injectables
-  appPipesRegistry,
+  appPipeInjectables,
 
   // Our collection of services from /services
   appServicesInjectables
