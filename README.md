@@ -75,7 +75,8 @@ angular2-webpack-starter/
  │   │   │   └──services.ts                * where we gather our injectables from our services
  │   │   │
  │   │   ├──pipes/                         * where we keep our custom pipes
- │   │   │   ├──rxAsync.ts                 * upgrade async pipe with Rx support
+ │   │   │   ├──CapitalizePipe.ts          * a simple example of a Pipe
+ │   │   │   ├──RxPipe.ts                  * upgrade async pipe with Rx support
  │   │   │   └──pipes.ts                   * where we gather our custom pipes
  │   │   │
  │   │   └──directives/                    * where we keep our directives used throughout our app

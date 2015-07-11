@@ -8,6 +8,7 @@ import {PipeRegistry, Pipes, defaultPipes} from 'angular2/change_detection';
 /*
  * App Pipes
  */
+import {capitalize} from './CapitalizePipe';
 import {rxAsync} from './RxPipe';
 
 var newPipesBindings;

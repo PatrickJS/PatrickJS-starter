@@ -67,7 +67,7 @@ import {Todo} from './todo';
   </style>
 
   <header>
-    <h1 class="title">Hello {{ name }}</h1>
+    <h1 class="title">Hello {{ name | capitalize }}</h1>
 
     <nav>
       [
@@ -97,6 +97,6 @@ import {Todo} from './todo';
 export class App {
   name: string;
   constructor() {
-    this.name = 'Angular 2';
+    this.name = 'angular 2';
   }
 }
