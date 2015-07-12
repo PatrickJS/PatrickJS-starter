@@ -7,7 +7,7 @@
 > A starter kit featuring [Angular 2](https://angular.io) ([Router](https://angular.io/docs/js/latest/api/router/), [Forms](https://angular.io/docs/js/latest/api/forms/),
 [Http](https://angular.io/docs/js/latest/api/http/),
 [Services](https://gist.github.com/gdi2290/634101fec1671ee12b3e#_follow_@AngularClass_on_twitter),
-[Karma Tests](https://karma-runner.github.io/)), [TypeScript](http://www.typescriptlang.org/), and [Webpack](http://webpack.github.io/) by [AngularClass](https://angularclass.com).
+[Tests](https://angular.io/docs/js/latest/api/test/)), [TypeScript](http://www.typescriptlang.org/), [Karma](https://karma-runner.github.io/), and [Webpack](http://webpack.github.io/) by [AngularClass](https://angularclass.com).
 
 > If you're looking for Angular 1.x please use [NG6-starter](https://github.com/angular-class/NG6-starter)
 
@@ -43,7 +43,7 @@ npm start
 * [TypeScript](#typescript)
 * [Frequently asked questions](#frequently-asked-questions)
 * [Todo](#todo)
-* [Starter Kit Support and Questions](#starter-kit-support-and-questions)
+* [Support, Questions, or Feedback](#support-questions-or-feedback)
 * [License](#license)
 
 
@@ -193,16 +193,24 @@ We have good experience using these editors:
 * [Sublime Text](http://www.sublimetext.com/3) with [Typescript-Sublime-Plugin](https://github.com/Microsoft/Typescript-Sublime-plugin#installation)
 
 # Frequently asked questions
-* Why we are using traceur-runtime? This for the ES6 polyfills.
-* What's the current browser support for Angular 2 Alpha? as of version 2.0.0-alpha.26: Chrome (43, 44, 45), Firefox (37, 39, 40), IE 11, Safari 8, iOS 8, Android 5.1 (Chrome Mobile 39).
-* What is the `TypeScript warning "Value of type 'typeof Directive' is not callable. Did you mean to include 'new'?`"? This is an error with the typings defined in DefinitelyTyped (please ignore until it's fixed)
-* How to I use `moduleId` with `module.id` in webpack? please use `__filename` if you must use `templateUrl` and `styleUrls` rather than webpack's module system
-* Why is my service not injecting parameter correctly? please use `@Injectable()` for your service for typescript to corrrectly attach the metadata (this is a typescript beta problem)
+* Why we are using traceur-runtime?
+  * This for the ES6 polyfills.
+* If TypeScript compiles to ES5 why do we need traceur-runtime?
+  * Angular 2 framework itself expects these ES6 features.
+* What's the current browser support for Angular 2 Alpha?
+  * As of version 2.0.0-alpha.26: Chrome (43, 44, 45), Firefox (37, 39, 40), IE 11, Safari 8, iOS 8, Android 5.1 (Chrome Mobile 39).
+* What is the `TypeScript warning "Value of type 'typeof Directive' is not callable. Did you mean to include 'new'?`"?
+  * This is an error with the typings defined in DefinitelyTyped (please ignore until it's fixed)
+* How to I use `moduleId` with `module.id` in webpack?
+  * Please use `__filename` if you must use `templateUrl` and `styleUrls` rather than webpack's module system
+* Why is my service not injecting parameter correctly?
+  * Please use `@Injectable()` for your service for typescript to corrrectly attach the metadata (this is a typescript beta problem)
+* Where do I write my tests? 
+  * You can write your tests anywhere you like either next to your components or in the  `test/` folder
 
 # Todo
 - [ ] production/development environments
 - [ ] bootstrap example
-- [ ] testing
 - [ ] e2e
 - [ ] production services examples
 - [ ] universal (isomorphic) example
@@ -210,8 +218,8 @@ We have good experience using these editors:
 - [ ] Material Design example
 - [ ] hot-component-reloading
 
-# Starter Kit Support and Questions
-> Contact us anytime for anything about this repo
+# Support, Questions, or Feedback
+> Contact us anytime for anything about this repo or Angular 2
 
 * [Gitter: angular-class/angular2-webpack-starter](https://gitter.im/angular-class/angular2-webpack-starter)
 * [Twitter: @AngularClass](https://twitter.com/AngularClass)
