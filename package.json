@@ -48,7 +48,7 @@
     "phantomjs": "^1.9.17",
     "style-loader": "^0.12.2",
     "typescript": "Microsoft/TypeScript#release-1.5",
-    "typescript-simple-loader": "^0.2.0",
+    "typescript-simple-loader": "^0.3.0",
     "url-loader": "^0.5.5",
     "webpack": "^1.9.6",
     "webpack-dev-server": "^1.8.2"
