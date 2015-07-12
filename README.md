@@ -6,7 +6,8 @@
 
 > A starter kit featuring [Angular 2](https://angular.io) ([Router](https://angular.io/docs/js/latest/api/router/), [Forms](https://angular.io/docs/js/latest/api/forms/),
 [Http](https://angular.io/docs/js/latest/api/http/),
-[Services](https://gist.github.com/gdi2290/634101fec1671ee12b3e#_follow_@AngularClass_on_twitter)), [TypeScript](http://www.typescriptlang.org/), and [Webpack](http://webpack.github.io/) by [AngularClass](https://angularclass.com).
+[Services](https://gist.github.com/gdi2290/634101fec1671ee12b3e#_follow_@AngularClass_on_twitter),
+[Karma Tests](https://karma-runner.github.io/)), [TypeScript](http://www.typescriptlang.org/), and [Webpack](http://webpack.github.io/) by [AngularClass](https://angularclass.com).
 
 > If you're looking for Angular 1.x please use [NG6-starter](https://github.com/angular-class/NG6-starter)
 
@@ -115,6 +116,8 @@ angular2-webpack-starter/
  │   └──tsd.d.ts.ts                        * our main file for all of our type definitions
  │
  ├──server/                                * this is a stub for very basic server configurations
+ │
+ ├──test/                                  * this is our global tests and end-to-end
  │
  ├──tsconfig.json                          * config that webpack uses for typescript
  ├──tsd.json                               * config that tsd uses for managing it's definitions
