@@ -8,6 +8,10 @@
     "watch": "webpack --watch",
     "server": "webpack-dev-server --inline --colors --display-error-details --display-cached ",
     "express": "node ./server/express-server-example.js",
+    "webdriver-update": "webdriver-manager update",
+    "webdriver-start": "webdriver-manager start",
+    "preprotractor": "npm run webdriver-update",
+    "protractor": "protractor",
     "prestart": "npm install",
     "start": "npm run server",
     "test": "karma start"
@@ -46,6 +50,7 @@
     "karma-sourcemap-loader": "^0.3.5",
     "karma-webpack": "^1.5.1",
     "phantomjs": "^1.9.17",
+    "protractor": "^2.1.0",
     "style-loader": "^0.12.2",
     "typescript": "Microsoft/TypeScript#release-1.5",
     "typescript-simple-loader": "^0.3.0",
