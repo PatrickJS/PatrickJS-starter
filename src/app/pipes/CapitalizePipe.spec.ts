@@ -36,7 +36,7 @@ describe('Capitalize', () => {
 
   });
 
-  describe('CapitalizePipe', () => {
+  describe('CapitalizeFactory', () => {
     var subject;
     var result;
     var factory;
