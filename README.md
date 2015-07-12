@@ -1,8 +1,14 @@
+[![GitHub version](https://badge.fury.io/gh/angular-class%2Fangular2-webpack-starter.svg)](http://badge.fury.io/gh/angular-class%2Fangular2-webpack-starter)
+[![Dependency Status](https://david-dm.org/angular-class/angular2-webpack-starter.svg)](https://david-dm.org/angular-class/angular2-webpack-starter)
+[![Issue Stats](http://issuestats.com/github/angular-class/angular2-webpack-starter/badge/pr?style=flat)](http://issuestats.com/github/angular-class/angular2-webpack-starter)
+[![Issue Stats](http://issuestats.com/github/angular-class/angular2-webpack-starter/badge/issue?style=flat)](http://issuestats.com/github/angular-class/angular2-webpack-starter)
+
 <p align="center">
   <img src="https://res.cloudinary.com/angularclass/image/upload/v1431925418/webpackAndangular2_dwhus9.png" alt="Webpack and Angular 2" width="500" height="320"/>
 </p>
 
 # Angular2 Webpack Starter [![Join the chat at https://gitter.im/angular-class/angular2-webpack-starter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/angular-class/angular2-webpack-starter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 
 > A starter kit featuring [Angular 2](https://angular.io) ([Router](https://angular.io/docs/js/latest/api/router/), [Forms](https://angular.io/docs/js/latest/api/forms/),
 [Http](https://angular.io/docs/js/latest/api/http/),
