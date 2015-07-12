@@ -49,7 +49,7 @@ module.exports = {
 
   // Config for our build files
   output: {
-    path: root('public/__build__'),
+    path: root('__build__'),
     filename: '[name].js',
     // filename: '[name].[hash].js',
     sourceMapFilename: '[name].js.map',
@@ -61,10 +61,9 @@ module.exports = {
     root: __dirname,
     extensions: ['','.ts','.js','.json'],
     alias: {
-      // When Angular2 has a TypeScript build
       // we can switch between development and production
-      // 'angular2': 'angular2/es6/prod',
-      // 'angular2': 'angular2/es6/dev',
+      // 'angular2': 'node_modules/angular2/ts',
+      // 'angular2': 'angular2/ts/dev',
 
       'app': 'src/app',
       'common': 'src/common',
