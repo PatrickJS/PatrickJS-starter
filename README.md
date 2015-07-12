@@ -208,7 +208,6 @@ We have good experience using these editors:
 # Todo
 - [ ] production/development environments
 - [ ] bootstrap example
-- [ ] e2e
 - [ ] production services examples
 - [ ] universal (isomorphic) example
 - [ ] small/medium/large abstraction examples
@@ -232,4 +231,4 @@ enjoy — **AngularClass**
 > Learn Angular in 2 days from the best
 
 # License
- MIT
+ [MIT](/LICENSE)
