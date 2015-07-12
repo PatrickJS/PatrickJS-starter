@@ -15,7 +15,8 @@
     "postinstall": "tsd reinstall",
     "prestart": "npm install",
     "start": "npm run server",
-    "test": "karma start"
+    "test": "karma start",
+    "e2e": "npm run protractor"
   },
   "repository": {
     "type": "git",
