@@ -1,3 +1,5 @@
+// @AngularClass
+
 module.exports = function(config) {
   var _config = {
 
