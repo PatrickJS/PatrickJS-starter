@@ -1,4 +1,4 @@
-/// <reference path="../../../typings/tsd.d.ts" />
+/// <reference path="../../typings/_custom.d.ts" />
 
 import {bind, Inject, Injectable} from 'angular2/di';
 

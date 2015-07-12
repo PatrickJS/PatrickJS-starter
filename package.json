@@ -13,6 +13,7 @@
     "preprotractor": "npm run webdriver-update",
     "protractor": "protractor",
     "prestart": "npm install",
+    "postinstall": "tsd reinstall",
     "start": "npm run server",
     "test": "karma start"
   },
@@ -28,7 +29,6 @@
   "homepage": "https://github.com/angular-class/angular2-webpack-starter",
   "dependencies": {
     "angular2": "2.0.0-alpha.30",
-    "raw-loader": "^0.5.1",
     "reflect-metadata": "^0.1.0",
     "rtts_assert": "2.0.0-alpha.30",
     "rx": "^2.5.3",
@@ -51,7 +51,9 @@
     "karma-webpack": "^1.5.1",
     "phantomjs": "^1.9.17",
     "protractor": "^2.1.0",
+    "raw-loader": "^0.5.1",
     "style-loader": "^0.12.2",
+    "tsd": "^0.6.3",
     "typescript": "Microsoft/TypeScript#release-1.5",
     "typescript-simple-loader": "^0.3.0",
     "url-loader": "^0.5.5",

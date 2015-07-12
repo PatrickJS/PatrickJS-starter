@@ -95,7 +95,7 @@ module.exports = {
       { test: /\.html$/,  loader: 'raw' },
 
       // Support for .ts files.
-      { test: /^(?!.*(spec|e2e)).*ts$/,    loader: 'typescript-simple', exclude: [
+      { test: /^(?!.*(spec|e2e)).*ts$/,    loader: 'typescript-simple?ignoreWarnings[]=2309', exclude: [
           /web_modules/,
           /test/,
           /node_modules/
