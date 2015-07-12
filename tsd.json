@@ -2,8 +2,8 @@
   "version": "v4",
   "repo": "jeffbcross/DefinitelyTyped",
   "ref": "master",
-  "path": "src/typings/tsd",
-  "bundle": "src/typings/tsd/tsd.d.ts",
+  "path": "tsd_typings",
+  "bundle": "tsd_typings/tsd.d.ts",
   "installed": {
     "angular2/angular2.d.ts": {
       "commit": "e29cf4cafbd804cae59dfc4cc8007560310f4520"
