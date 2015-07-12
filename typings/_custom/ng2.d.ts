@@ -1,6 +1,12 @@
 declare var zone: any;
 declare var Zone: any;
 
+declare module "angular2/test" {
+  class TestComponentBuilder {}
+  class AsyncTestCompleter {}
+  function inject(args: any): any;
+}
+
 declare module "angular2/annotations" {
   var Component: any;
   var View: any;
