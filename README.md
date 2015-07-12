@@ -22,7 +22,14 @@ Warning: Angular 2.0 is not production ready yet!
 > Clone/Download the repo then edit `app-simple.ts` inside [`/src/app/components/app-simple.ts`](/src/app/components/app-simple.ts)
 
 ```bash
-$ npm start # then open your browser and go to http://localhost:8080
+# clone our repo
+git clone https://github.com/angular-class/angular2-webpack-starter.git 
+
+# change directory to our repo
+cd angular2-webpack-starter
+
+# then open your browser and go to http://localhost:8080
+npm start 
 ```
 
 # Table of Contents
