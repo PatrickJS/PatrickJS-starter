@@ -14,7 +14,7 @@ module.exports = {
     inline: true,
     colors: true,
     historyApiFallback: true,
-    contentBase: 'public',
+    contentBase: 'src/public',
     publicPath: '/__build__'
   },
 
