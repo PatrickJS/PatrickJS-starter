@@ -59,7 +59,7 @@ module.exports = {
 
   resolve: {
     root: __dirname,
-    extensions: ['','.ts','.js','.json','.webpack.js','.web.js'],
+    extensions: ['','.ts','.js','.json'],
     alias: {
       // When Angular2 has a TypeScript build
       // we can switch between development and production
@@ -96,7 +96,12 @@ module.exports = {
       { test: /\.html$/,  loader: 'raw' },
 
       // Support for .ts files.
-      { test: /\.ts$/,    loader: 'typescript-simple' }
+      { test: /^(?!.*(spec|e2e)).*ts$/,    loader: 'typescript-simple', exclude: [
+          /web_modules/,
+          /test/,
+          /node_modules/
+        ]
+      }
     ],
     noParse: [
       /rtts_assert\/src\/rtts_assert/
