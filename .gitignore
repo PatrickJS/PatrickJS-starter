@@ -33,7 +33,7 @@ node_modules
 bower_components
 
 # Typing TSD
-typings/tsd/**
+src/typings/tsd/**
 
 # Dist       #
 dist
@@ -41,4 +41,5 @@ public/__build__/**
 src/*/__build__/**
 __build__/**
 .webpack.json
+
 
