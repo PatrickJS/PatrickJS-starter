@@ -119,6 +119,8 @@ angular2-webpack-starter/
  │
  ├──test/                                  * this is our global tests and end-to-end
  │
+ ├──spec.bundle.js                         * ignore this magic that sets up our angular 2 testing environment
+ ├──karma.config.js                        * karam config for our unit tests
  ├──tsconfig.json                          * config that webpack uses for typescript
  ├──tsd.json                               * config that tsd uses for managing it's definitions
  ├──package.json                           * what npm uses to manage it's dependencies
