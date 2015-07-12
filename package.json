@@ -12,8 +12,8 @@
     "webdriver-start": "webdriver-manager start",
     "preprotractor": "npm run webdriver-update",
     "protractor": "protractor",
-    "prestart": "npm install",
     "postinstall": "tsd reinstall",
+    "prestart": "npm install",
     "start": "npm run server",
     "test": "karma start"
   },
@@ -32,7 +32,7 @@
     "reflect-metadata": "^0.1.0",
     "rtts_assert": "2.0.0-alpha.30",
     "rx": "^2.5.3",
-    "zone.js": "^0.5.0"
+    "zone.js": "^0.5.2"
   },
   "devDependencies": {
     "css-loader": "^0.15.1",
