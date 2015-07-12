@@ -4,7 +4,13 @@ declare var Zone: any;
 declare module "angular2/test" {
   class TestComponentBuilder {}
   class AsyncTestCompleter {}
+  class DebugElement {}
+  class By {}
   function inject(args: any): any;
+  var browser: any;
+  var $: any;
+  function clickAll(buttonSelectors: any): void;
+  function verifyNoBrowserErrors(): void;
 }
 
 declare module "angular2/annotations" {
