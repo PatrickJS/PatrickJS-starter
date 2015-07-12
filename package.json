@@ -9,7 +9,7 @@
     "server": "webpack-dev-server --inline --colors --display-error-details --display-cached ",
     "express": "node ./server/express-server-example.js",
     "prestart": "npm install",
-    "start": "pm run server",
+    "start": "npm run server",
     "test": "karma start"
   },
   "repository": {
