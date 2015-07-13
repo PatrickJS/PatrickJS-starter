@@ -235,13 +235,11 @@ We have good experience using these editors:
 * [angular2-seed (Minko Gechev)](https://github.com/mgechev/angular2-seed)
   * Client only, SystemJS, Gulp, TypeScript, TSD, Versioned, Env Dev/Prod
 * [ng2-play (Roland Groza)](https://github.com/rolandjitsu/ng2-play)
-  * ES6, TypeScript, Firebase, Gulp, Ci, TSD, TSLint
+  * Client only, ES6, TypeScript, Firebase, Gulp, Ci, TSD, TSLint
 * [ng2-jspm-seed (Rob Wormald)](https://github.com/robwormald/ng2-jspm-seed)
-  * TypeScript, TSD, Gulp, JSPM, Minimalist
-* [angular2-minimalist-starter (Roger Padilla)](https://github.com/rogerpadilla/angular2-minimalist-starter)
-  * (derived from angular2-webpack-starter) gulp and systemjs (rather than webpack), different folder/coding organization style, and TSLint (no tests)
-* [angular2-authentication-sample (auth0)](https://github.com/auth0/angular2-authentication-sample)
-  * (derived from angular2-webpack-starter) auth, different folder organization style (no tests, client with api server)
+  * Client only, TypeScript, TSD, Gulp, JSPM, Minimalist
+* [babel-angular2-app (Shuhei Kagawa)](https://github.com/shuhei/babel-angular2-app)
+  * Client only, Minimalist, Babel, ES6+, Webpack (outdated)
   
 ___
 
