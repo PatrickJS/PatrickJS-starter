@@ -79,7 +79,7 @@ export class App {
     this.data = data;
   }
   errorMessage(err) {
-    if (err && err.message = 'Unexpected token <') {
+    if (err && (/Unexpected token/).test(err.message)) {
       console.info(`${'\n'
         } // You must run these commands for the Http API to work ${'\n'
         } npm install express connect-history-api-fallback morgan body-parser ${'\n'
