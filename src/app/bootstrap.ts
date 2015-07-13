@@ -46,10 +46,7 @@ import {appPipeInjectables} from './pipes/pipes';
  * App Component
  * our top level component that holds all of our components
  */
-// import {App} from './components/app';
-
-// A simple version of our App without the router or other components
-import {App} from './components/app-simple';
+import {App} from './components/app';
 
 
 /*

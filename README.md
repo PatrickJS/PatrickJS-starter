@@ -26,7 +26,7 @@ Warning: Angular 2.0 is not production ready yet!
 ```
 
 ### Quick start
-> Clone/Download the repo then edit `app-simple.ts` inside [`/src/app/components/app-simple.ts`](/src/app/components/app-simple.ts)
+> Clone/Download the repo then edit `app.ts` inside [`/src/app-simple/app.ts`](/src/app-simple/app.ts)
 
 ```bash
 # clone our repo
@@ -59,6 +59,10 @@ We use the component approach in our starter. This is the new standard for devel
 angular2-webpack-starter/
  ├──src/                                   * our source files that will be compiled to javascript
  │   │
+ │   ├──app-simple/                               * WebApp folder
+ │   │   ├──app.ts                         * App.ts: a simple version of our App component components
+ │   │   └──bootstrap.ts                   * entry file for app
+ │   │
  │   ├──app/                               * WebApp folder
  │   │   ├──bootstrap.ts                   * entry file for app
  │   │   │
@@ -71,14 +75,15 @@ angular2-webpack-starter/
  │   │   │   │   ├──home.css               * simple css file for home styles
  │   │   │   │   └──home.html              * simple html file for home template
  │   │   │   │
- │   │   │   └──app-simple.ts              * the simple version of our App component components
  │   │   │   └──app.ts                     * App.ts: entry file for components
+ │   │   │ 
  │   │   │
  │   │   ├──services/                      * where we keep our services used throughout our app
  │   │   │   ├──TodoService.ts             * an example of a simple service 
  │   │   │   └──services.ts                * where we gather our injectables from our services
  │   │   │
  │   │   ├──pipes/                         * where we keep our custom pipes
+ │   │   │   ├──CapitalizePipe.spec.ts     * a simple example of unit tests that we're able to define anywhere
  │   │   │   ├──CapitalizePipe.ts          * a simple example of a Pipe
  │   │   │   ├──RxPipe.ts                  * upgrade async pipe with Rx support
  │   │   │   └──pipes.ts                   * where we gather our custom pipes
@@ -114,10 +119,11 @@ angular2-webpack-starter/
  │
  ├──server/                                * this is a stub for very basic server configurations
  │
- ├──test/                                  * this is our global tests and end-to-end
+ ├──test/                                  * this is our global unit tests and end-to-end tests
  │
  ├──spec.bundle.js                         * ignore this magic that sets up our angular 2 testing environment
  ├──karma.config.js                        * karam config for our unit tests
+ ├──protractor.config.js                   * protractor config for our end-to-end tests
  ├──tsconfig.json                          * config that webpack uses for typescript
  ├──tsd.json                               * config that tsd uses for managing it's definitions
  ├──package.json                           * what npm uses to manage it's dependencies

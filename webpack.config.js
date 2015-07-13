@@ -21,7 +21,7 @@ module.exports = {
 
   //
   entry: {
-    angular2: [
+    'angular2': [
       // Angular 2 Deps
       'zone.js',
       // 'zone.js/dist/long-stack-trace-zone.js',
@@ -35,7 +35,7 @@ module.exports = {
       'angular2/di',
       'angular2/src/facade/browser'
     ],
-    app: [
+    'app': [
       // App
 
       // 'webpack-dev-server/client?http://localhost:8080',
@@ -45,6 +45,13 @@ module.exports = {
       // * include any 3rd party js lib here
       */
       './src/app/bootstrap'
+    ],
+    'app-simple': [
+      // Simple Version of App
+      /*
+      // * include any 3rd party js lib here
+      */
+      './src/app-simple/bootstrap'
     ]
   },
 
