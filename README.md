@@ -59,11 +59,11 @@ We use the component approach in our starter. This is the new standard for devel
 angular2-webpack-starter/
  ├──src/                                   * our source files that will be compiled to javascript
  │   │
- │   ├──app-simple/                               * WebApp folder
+ │   ├──app-simple/                        * WebApp: folder
  │   │   ├──app.ts                         * App.ts: a simple version of our App component components
  │   │   └──bootstrap.ts                   * entry file for app
  │   │
- │   ├──app/                               * WebApp folder
+ │   ├──app/                               * WebApp: folder
  │   │   ├──bootstrap.ts                   * entry file for app
  │   │   │
  │   │   ├──components/                    * where most of components live
@@ -139,6 +139,8 @@ What you need to run this app:
 Once you have those, you should install these globals with `npm install -global`:
 * `webpack` (`npm install -global webpack`)
 * `webpack-dev-server` (`npm install -global webpack-dev-server`)
+* `karma` (`npm install -global karma-cli`)
+* `protractor` (`npm install -global protractor`)
 
 ## Installing
 * `fork` this repo
@@ -151,17 +153,35 @@ After you have installed all dependencies you can now run the app. Run `npm run 
  
 ### server
 ```bash
-$ npm run server
+$ npm run server # or either webpack-dev-server or npm run express
 ```
+
+## Other commands 
 
 ### build files
 ```bash
-$ npm run build
+$ npm run build  # or webpack
 ```
 
 ### watch and build files
 ```bash
-$ npm run watch
+$ npm run watch  # or webpack --watch
+```
+
+### run tests 
+```bash
+$ npm run test  # or karma start
+```
+
+### run webdriver (for end-to-end)
+```bash
+$ npm run webdriver-start  # or webdriver-manager start
+```
+
+### run end-to-end tests
+```bash
+# make sure you have webdriver running and a sever for the client app
+$ npm run e2e  # or protractor
 ```
 
 # Contributing
