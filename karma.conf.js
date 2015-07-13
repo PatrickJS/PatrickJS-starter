@@ -37,33 +37,25 @@ module.exports = function(config) {
         root: __dirname,
         extensions: ['','.ts','.js','.json'],
         alias: {
-          // When Angular2 has a TypeScript build
-          // we can switch between development and production
-          // 'angular2': 'angular2/es6/prod',
-          // 'angular2': 'angular2/es6/dev',
-
           'app': 'src/app',
           'common': 'src/common',
-
-          // 'components': 'src/app/components'
-          // 'services': '/app/services/*.js',
-          // 'stores/*': '/app/stores/*.js'
-          // 'angular2': 'angular2/es6/dev'
         }
       },
       devtool: 'inline-source-map',
       module: {
         loaders: [
-          { test: /\.ts$/,   loader: 'typescript-simple', exclude: [
-            /web_modules/,
-            /node_modules/
+          { test: /\.ts$/,   loader: 'typescript-simple?ignoreWarnings[]=2309', exclude: [
+              /web_modules/,
+              /node_modules/
             ]
           },
           { test: /\.json$/, loader: 'json' },
           { test: /\.html$/, loader: 'raw' },
           { test: /\.css$/,  loader: 'raw' }
         ]
-      }
+      },
+      stats: { colors: true, reasons: true },
+      debug: false
     },
 
     webpackServer: {

@@ -2,26 +2,24 @@
 import {Pipe, PipeFactory, NullPipeFactory} from 'angular2/change_detection';
 
 // Check if the value is supported for the pipe
-export function isString(txt) {
-  return txt && typeof txt === 'string';
+export function isString(txt): boolean {
+  return typeof txt === 'string';
 }
 
 // Simple example of a Pipe
 export class CapitalizePipe implements Pipe {
-  regexp: RegExp;
-  constructor() {
-    this.regexp = /([^\W_]+[^\s-]*) */g;
-  }
-  supports(txt) {
+  regexp: RegExp = /([^\W_]+[^\s-]*) */g;
+
+  supports(txt): boolean {
     return isString(txt);
   }
-  transform(input, isEveryWord) {
+  transform(input: string, isEveryWord?: boolean): string {
     return (!input) ? '' :
       (!isEveryWord) ?
-        this.capWord(input) :
-        input.replace(this.regexp, this.capWord);
+        this.capitalizeWord(input) :
+        input.replace(this.regexp, this.capitalizeWord);
   }
-  capWord(txt) {
+  capitalizeWord(txt: string): string {
     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
   }
 
@@ -29,7 +27,7 @@ export class CapitalizePipe implements Pipe {
 
 // We create a factory since we create an instance for each binding for stateful pipes
 export class CapitalizeFactory implements PipeFactory {
-  supports(txt) {
+  supports(txt): boolean {
     return isString(txt);
   }
   create(cdRef): Pipe {
