@@ -13,7 +13,7 @@
 > A starter kit featuring [Angular 2](https://angular.io) ([Router](https://angular.io/docs/js/latest/api/router/), [Forms](https://angular.io/docs/js/latest/api/forms/),
 [Http](https://angular.io/docs/js/latest/api/http/),
 [Services](https://gist.github.com/gdi2290/634101fec1671ee12b3e#_follow_@AngularClass_on_twitter),
-[Tests](https://angular.io/docs/js/latest/api/test/)), [TypeScript](http://www.typescriptlang.org/), [Karma](https://karma-runner.github.io/), and [Webpack](http://webpack.github.io/) by [AngularClass](https://angularclass.com).
+[Tests](https://angular.io/docs/js/latest/api/test/), [E2E](https://angular.github.io/protractor/#/faq#what-s-the-difference-between-karma-and-protractor-when-do-i-use-which-)), [Karma](https://karma-runner.github.io/), [Protractor](https://angular.github.io/protractor/), [Jasmine](https://github.com/jasmine/jasmine), [TypeScript](http://www.typescriptlang.org/), and [Webpack](http://webpack.github.io/) by [AngularClass](https://angularclass.com).
 
 > If you're looking for Angular 1.x please use [NG6-starter](https://github.com/angular-class/NG6-starter)
 
@@ -220,6 +220,23 @@ We have good experience using these editors:
 * [Gitter: angular-class/angular2-webpack-starter](https://gitter.im/angular-class/angular2-webpack-starter)
 * [Twitter: @AngularClass](https://twitter.com/AngularClass)
 
+
+# Other Seed/Starter/Example Repos
+* [angular2-webpack-starter (AngularClass)](https://github.com/angular-class/angular2-webpack-starter)
+  * Client/Server, Webpack, TypeScript, TSD, Protractor, Karma, Jasmine
+* [ng2-play (Pawel Kozlowski)](https://github.com/pkozlowski-opensource/ng2-play)
+  * Client only, Minimalist, SystemJS, Gulp, AtScript (traceur), Env Dev only
+* [angular2-seed (Minko Gechev)](https://github.com/mgechev/angular2-seed)
+  * Client only, SystemJS, Gulp, TypeScript, TSD, Versioned, Env Dev/Prod
+* [ng2-play (Roland Groza)](https://github.com/rolandjitsu/ng2-play)
+  * ES6, TypeScript, Firebase, Gulp, Ci, TSD, TSLint
+* [ng2-jspm-seed (Rob Wormald)](https://github.com/robwormald/ng2-jspm-seed)
+  * TypeScript, TSD, Gulp, JSPM, Minimalist
+* [angular2-minimalist-starter (Roger Padilla)](https://github.com/rogerpadilla/angular2-minimalist-starter)
+  * (derived from angular2-webpack-starter) gulp and systemjs (rather than webpack), different folder/coding organization style, and TSLint (no tests)
+* [angular2-authentication-sample (auth0)](https://github.com/auth0/angular2-authentication-sample)
+  * (derived from angular2-webpack-starter) auth, different folder organization style (no tests, client with api server)
+  
 ___
 
 enjoy — **AngularClass** 
