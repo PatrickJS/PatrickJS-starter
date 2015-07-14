@@ -17,13 +17,16 @@
 
 > If you're looking for Angular 1.x please use [NG6-starter](https://github.com/angular-class/NG6-starter)
 
-This repo serves as an extremely minimal starter for anyone looking to get up and running with Angular 2 and TypeScript. Using a [Webpack](http://webpack.github.io/) for building our files and assisting with boilerplate.
-* Best practice in file organization for Angular 2.
+This repo serves as a starter for anyone looking to get up and running with Angular 2 and TypeScript fast. Using a [Webpack](http://webpack.github.io/) for building our files and assisting with boilerplate. We're also using Protractor for our end-to-end story and Karma for our unit tests.
+* Best practice in file and application organization for Angular 2.
 * Ready to go build system using Webpack for working with TypeScript.
+* Test and end-to-end system using Karma and Protractor.
+
 
 ```coffeescript
 Warning: Angular 2.0 is not production ready yet!
 ```
+[Is Angular 2 Ready Yet?](http://splintercode.github.io/is-angular-2-ready/)
 
 ### Quick start
 > Clone/Download the repo then edit `app.ts` inside [`/src/app-simple/app.ts`](/src/app-simple/app.ts)
@@ -230,6 +233,9 @@ We have good experience using these editors:
   * Please use `@Injectable()` for your service for typescript to corrrectly attach the metadata (this is a typescript beta problem)
 * Where do I write my tests? 
   * You can write your tests anywhere you like either next to your components or in the  `test/` folder
+* Is Angular 2 production ready yet?
+  * No, please visit [Is Angular 2 Ready Yet?](http://splintercode.github.io/is-angular-2-ready/) website.
+
 
 # Todo
 - [ ] production/development environments
