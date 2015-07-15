@@ -36,11 +36,6 @@ import {routerInjectables} from 'angular2/router';
  */
 import {appServicesInjectables} from './services/services';
 
-/*
- * App Pipes
- * our collection of pipes registry
- */
-import {appPipeInjectables} from './pipes/pipes';
 
 /*
  * App Component
@@ -57,9 +52,6 @@ var universalInjectables = [
   httpInjectables,
   formInjectables,
   routerInjectables,
-
-  // Pipe Injectables
-  appPipeInjectables,
 
   // Our collection of services from /services
   appServicesInjectables

@@ -16,6 +16,12 @@ import {formDirectives} from 'angular2/forms';
 import {appDirectives} from '../directives/directives';
 
 /*
+ * App Pipes
+ * our collection of pipes registry
+ */
+import {appPipes} from '../pipes/pipes';
+
+/*
  * Components
  */
 // We use a folder if we want separate files
@@ -32,6 +38,7 @@ import {Todo} from './todo';
  */
 @Component({
   selector: 'app', // without [ ] means we are selecting the tag directly
+  viewInjector: [ appPipes ]
 })
 @View({
   // needed in order to tell Angular's compiler what's in the template

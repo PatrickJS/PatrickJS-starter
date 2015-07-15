@@ -11,12 +11,11 @@ import {PipeRegistry, Pipes, defaultPipes} from 'angular2/change_detection';
 import {capitalize} from './CapitalizePipe';
 import {rxAsync} from './RxPipe';
 
-var newPipesBindings = bind(Pipes).toValue(Pipes.append({
-  'async': rxAsync,
-  'capitalize': capitalize
-  // add more pipes to this Map
-}));
 
-export var appPipeInjectables = [
-  newPipesBindings
+export var appPipes = [
+  Pipes.append({
+    'async': rxAsync,
+    'capitalize': capitalize
+    // add more pipes to this Map
+  })
 ];
