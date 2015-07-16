@@ -28,13 +28,12 @@ export class Autosuggest {
       distinctUntilChanged(). // Only if the value has changed
 
       flatMapLatest((query: string) => this.github.search(query)). // send query to search service
-
       // here is the real action
       subscribe(
-        (results: string[]) => {
+        (repos: string[]) => {
           // fire "term" event
           // the Search component is the listener
-          this.term.next(results);
+          this.term.next(repos);
         },
         err => {
           console.log(err);

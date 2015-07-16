@@ -18,8 +18,10 @@ import {Autosuggest} from './Autosuggest';
       <div><input autosuggest (term)="showResults($event)" type="text" /></div>
 
       <div>
-        <div *ng-for="#item of items">
-          {{ item }}
+        <div *ng-for="#repo of repos">
+          <a [href]="repo.html_url" target="_blank">
+            {{ repo.name }}
+          </a>
         </div>
       </div>
     </div>
@@ -27,14 +29,14 @@ import {Autosuggest} from './Autosuggest';
 })
 export class Search {
 
-  items: Array<string>;
+  repos: Array<any>;
 
   constructor() {
-    this.items = [];
+    this.repos = [];
   }
 
   showResults(results: string[]) {
-    this.items = results;
+    this.repos = results;
   }
 
 }
