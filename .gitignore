@@ -47,3 +47,5 @@ __build__/**
 .webpack.json
 
 
+# IDE #
+.idea/
