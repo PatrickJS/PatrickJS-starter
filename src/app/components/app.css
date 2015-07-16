@@ -1,0 +1,84 @@
+.top-nav {
+  height: 56px;
+  min-height: 56px;
+  padding: 0 16px;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.26);
+}
+
+.top-nav h1 {
+  width: 200px;
+  float: left;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.005em;
+}
+.top-nav .logo {
+  line-height:56px;
+  display:inline-block;
+  color:#FFF;
+  padding:0 5px;
+  font-weight:400;
+  font-size:16px;
+  position:relative
+}
+
+
+.top-nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0 20px;
+}
+
+.top-nav ul li {
+  margin: 0;
+}
+.l-left {
+  float: left;
+}
+
+.top-nav {
+  font-family:'Roboto',"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+}
+
+.top-nav .top-nav-button{
+  line-height:56px;
+  display:inline-block;
+  color:#FFF;
+  text-decoration:none;
+  padding:0 10px;
+  text-transform:uppercase;
+  font-weight:400;
+  font-size:16px;
+  border:none;
+  background:none;
+  border-radius:0;
+  position:relative
+}
+
+
+.top-nav .top-nav-button:hover{
+  background-color: rgba(158, 158, 158, 0.2);
+}
+
+a:active, a:hover {
+  outline: 0px none;
+}
+
+.ac-default-theme {
+  background-color: rgb(25,118,210);
+  color: rgb(255,255,255);
+}
+
+
+[layout=row] {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+[layout] {
+  box-sizing: border-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+}

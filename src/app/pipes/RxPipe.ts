@@ -1,4 +1,4 @@
-/// <reference path="../../typings/_custom.d.ts" />
+/// <reference path="../../typings/tsd.d.ts" />
 import {async} from 'angular2/src/change_detection/change_detection';
 import {Pipe, PipeFactory} from 'angular2/change_detection';
 import {ObservablePipe} from 'angular2/pipes';

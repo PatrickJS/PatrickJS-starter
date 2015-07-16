@@ -1,4 +1,4 @@
-/// <reference path="../typings/_custom.d.ts" />
+/// <reference path="../typings/tsd.d.ts" />
 
 /*
  * TODO: use the real App component

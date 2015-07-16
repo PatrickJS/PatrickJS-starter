@@ -1,8 +1,12 @@
-/// <reference path="../../typings/_custom.d.ts" />
+/// <reference path="../../typings/tsd.d.ts" />
 
-import {todoInjectables} from './TodoService';
+import { bind } from 'angular2/di';
+
+import { todoInjectables } from './TodoService';
+import { Github } from '../components/rxjs-examples/autosuggest/github';
 
 // Include injectables that you want to have globally throughout our app
 export var appServicesInjectables: Array<any> = [
-  todoInjectables
+  todoInjectables,
+  bind('Searchable').toClass(Github)
 ];
