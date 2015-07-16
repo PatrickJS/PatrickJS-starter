@@ -1,4 +1,4 @@
-/// <reference path="../../../typings/tsd.d.ts" />
+/// <reference path="../../../typings/_custom.d.ts" />
 import {Component, View} from 'angular2/angular2';
 import {Home} from './home';
 

@@ -1,4 +1,4 @@
-/// <reference path="../../typings/tsd.d.ts" />
+/// <reference path="../../typings/_custom.d.ts" />
 
  /*
   * TODO: ES5 for now until I make a webpack plugin for protractor

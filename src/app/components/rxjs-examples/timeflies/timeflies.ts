@@ -1,11 +1,12 @@
-/// <reference path="../../../../typings/tsd.d.ts" />
+/// <reference path="../../../../typings/_custom.d.ts" />
 
 // Angular 2
-import { Component, View, ElementRef, NgFor } from 'angular2/angular2';
+import {Component, View, ElementRef} from 'angular2/angular2';
+import {NgFor} from 'angular2/directives';
 
-import { NgZone } from 'angular2/src/core/zone/ng_zone';
+import {NgZone} from 'angular2/src/core/zone/ng_zone';
 
-import { MessageService } from './MessageService';
+import {MessageService} from './MessageService';
 
 import * as Rx from 'rx';
 
@@ -17,20 +18,20 @@ import * as Rx from 'rx';
 @View({
   directives: [ NgFor ],
   template: `
-    <div style="background-color: papayawhip; height: 500px;">
-      <span *ng-for="#letter of letters"
-            [style.color]="color"
-            [style.left]="letter.left+'px'"
-            [style.top]="letter.top+'px'"
-            [style.position]="pos">
-              {{letter.text}}
-      </span>
-    </div>
+  <div style="background-color: papayawhip; height: 500px;">
+    <span *ng-for="#letter of letters"
+          [style.color]="color"
+          [style.left]="letter.left+'px'"
+          [style.top]="letter.top+'px'"
+          [style.position]="pos">
+      {{ letter.text }}
+    </span>
+  </div>
   `
 })
 export class Timeflies {
   el: HTMLElement;
-  pos = 'absolute';
+  pos   = 'absolute';
   color = 'red';
   letters: LetterConfig[];
 
@@ -55,9 +56,9 @@ export class Timeflies {
   timeflies() {
     // run mouse move outside of Angular
     // got this hint from @mgonto
-    this.zone.runOutsideAngular(() => {
-      Rx.Observable.fromEvent(this.el, 'mousemove')
-        .map((e: MouseEvent) => {
+    this.zone.runOutsideAngular(_ => {
+      (<any>Rx).Observable.fromEvent(this.el, 'mousemove').
+        map((e: MouseEvent) => {
           //var offset = getOffset(this.el);
 
           // subtract offset of the element
@@ -67,9 +68,8 @@ export class Timeflies {
             offsetX : e.clientX - o.left,
             offsetY : e.clientY - o.top
           };
-        })
-
-        .flatMap(delta => {
+        }).
+        flatMap(delta => {
           return Rx.Observable.fromArray(
             this.letters.map(
               (val, index) => ({
@@ -79,10 +79,9 @@ export class Timeflies {
               })
             )
           );
-        })
-
-        .flatMap(letterConfig =>
-          Rx.Observable.timer((letterConfig.index+1) * 100)
+        }).
+        flatMap(letterConfig =>
+          (<any>Rx).Observable.timer((letterConfig.index+1) * 100)
             .map(
             () => ({
               text: letterConfig.letter,
@@ -91,22 +90,17 @@ export class Timeflies {
               index: letterConfig.index
             })
           )
-      )
-
-        .subscribe(
-          letterConfig => {
+        ).
+        subscribe(letterConfig => {
 
           //console.log(letterConfig, this.letters);
 
           // to render the letters, put them back into app zone
-          this.zone.run(() => {
-            this.letters[letterConfig.index] = letterConfig;
-          })
+          this.zone.run(_ => this.letters[letterConfig.index] = letterConfig);
 
-        }
-      )
-    });
-  }
+        });
+    });//zone
+  }// timeflies
 
 }
 

@@ -1,9 +1,10 @@
-/// <reference path="../../../../typings/tsd.d.ts" />
+/// <reference path="../../../../typings/_custom.d.ts" />
 
 // Angular 2
-import { Component, View, NgFor } from 'angular2/angular2';
+import {Component, View} from 'angular2/angular2';
+import {NgFor} from 'angular2/directives';
 
-import { Autosuggest } from './autosuggest';
+import {Autosuggest} from './Autosuggest';
 
 @Component({
   selector: 'search-github'

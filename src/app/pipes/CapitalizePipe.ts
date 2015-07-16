@@ -1,4 +1,4 @@
-/// <reference path="../../typings/tsd.d.ts" />
+/// <reference path="../../typings/_custom.d.ts" />
 import {Pipe, PipeFactory, NullPipeFactory} from 'angular2/change_detection';
 
 // Check if the value is supported for the pipe

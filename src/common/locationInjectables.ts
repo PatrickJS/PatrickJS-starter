@@ -1,4 +1,4 @@
-/// <reference path="../typings/_custom/_custom.d.ts" />
+/// <reference path="../typings/_custom.d.ts" />
 import {bind} from 'angular2/di';
 import {
   LocationStrategy,
