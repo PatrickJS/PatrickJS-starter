@@ -1,4 +1,4 @@
-/// <reference path="../../typings/_custom.d.ts" />
+/// <reference path="../../typings/tsd.d.ts" />
 
 /*
  * Angular 2
@@ -31,6 +31,12 @@ import {Dashboard} from './dashboard';
 // A simple example of a Component using a Service
 import {Todo} from './todo';
 
+// RxJs examples
+import {RxJsExamples} from './rxjs-examples/rxjs-examples';
+
+// Use webpack's `require` to get files as a raw string using raw-loader
+let styles   = require('./app.css');
+
 /*
  * App Component
  * Top Level Component
@@ -55,55 +61,48 @@ import {Todo} from './todo';
     // Our collection of directives from /directives
     appDirectives
   ],
+  // include our .css file
+  styles: [ styles ],
   template: `
-  <style>
-    .title  {
-      font-family: Arial, Helvetica, sans-serif;
-      margin: 0;
-      display: inline;
-    }
-    nav {
-      display: inline;
-      list-style-type: none;
-      padding: 0;
-      background-color: #F8F8F8;
-    }
-    main {
-      padding: 0.5em;
-    }
-  </style>
+    <header>
+      <div layout="row" class="top-nav ac-default-theme">
+        <img src="angular-shield.png" alt="Angular2" height="54" width="54">
+        <span class="logo">{{ name | capitalize }} + Webpack</span>
+        <ul>
+          <li class="l-left">
+            <a [router-link]=" ['/home'] "class="top-nav-button ac-default-theme">Home</a>
+          </li>
+          <li class="l-left">
+            <a [router-link]=" ['/dashboard'] "class="top-nav-button ac-default-theme">Dashboard</a>
+          </li>
+          <li class="l-left">
+            <a [router-link]=" ['/todo'] "class="top-nav-button ac-default-theme">Todo</a>
+          </li>
+          <li class="l-left">
+            <a [router-link]=" ['/rxjs-examples'] "class="top-nav-button ac-default-theme">RxJs Examples</a>
+          </li>
+        </ul>
+      </div>
+    </header>
 
-  <header>
-    <h1 class="title">Hello {{ name | capitalize }}</h1>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
 
-    <nav>
-      [
-      <a [router-link]=" ['/home'] ">Home</a>
-      |
-      <a [router-link]=" ['/dashboard'] ">Dashboard</a>
-      |
-      <a [router-link]=" ['/todo'] ">Todo</a>
-      ]
-    </mav>
-  </header>
-
-  <main>
-    <router-outlet></router-outlet>
-  </main>
-
-  <footer>
-    WebPack Angular 2 Starter by <a href="https://twitter.com/AngularClass">@AngularClass</a>
-  </footer>
+    <footer>
+      WebPack Angular 2 Starter by <a href="https://twitter.com/AngularClass">@AngularClass</a>
+    </footer>
   `
 })
 @RouteConfig([
-  { path: '/',          as: 'home',      component: Home },
-  { path: '/dashboard', as: 'dashboard', component: Dashboard },
-  { path: '/todo',      as: 'todo',      component: Todo }
+  { path: '/',              as: 'home',          component: Home },
+  { path: '/dashboard',     as: 'dashboard',     component: Dashboard },
+  { path: '/todo',          as: 'todo',          component: Todo },
+  { path: '/rxjs-examples', as: 'rxjs-examples', component: RxJsExamples }
 ])
 export class App {
   name: string;
   constructor() {
-    this.name = 'angular 2';
+    this.name = 'angular'; // used in logo
   }
 }

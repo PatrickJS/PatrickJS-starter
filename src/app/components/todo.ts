@@ -1,4 +1,4 @@
-/// <reference path="../../typings/_custom.d.ts" />
+/// <reference path="../../typings/tsd.d.ts" />
 
 /*
  * Angular 2
@@ -30,6 +30,9 @@ import {TodoService} from '../services/TodoService';
   <style>
     .error-message {
       color: red;
+    }
+    form {
+      padding:16px;
     }
   </style>
   <form

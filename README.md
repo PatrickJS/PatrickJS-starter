@@ -78,6 +78,10 @@ angular2-webpack-starter/
  │   │   │   │   ├──home.css               * simple css file for home styles
  │   │   │   │   └──home.html              * simple html file for home template
  │   │   │   │
+ │   │   │   ├──rxjs-examples/             * various rxjs examples
+ │   │   │   │   ├──autosuggest/           * autosuggest component as a golder
+ │   │   │   │   └──timeflies/             * timeflies component as a folder
+ │   │   │   │
  │   │   │   └──app.ts                     * App.ts: entry file for components
  │   │   │ 
  │   │   │
