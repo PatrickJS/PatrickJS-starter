@@ -8,7 +8,7 @@ module.exports = {
   devtool: 'source-map',
   // devtool: 'eval',
   debug: true,
-  cache: true,
+  cache: false,
   // our Development Server configs
   devServer: {
     inline: true,
@@ -23,33 +23,26 @@ module.exports = {
     'angular2': [
       // Angular 2 Deps
       'zone.js',
-      // 'zone.js/dist/long-stack-trace-zone.js',
       'reflect-metadata',
       'rtts_assert/rtts_assert',
-
-      './src/common/BrowserDomAdapter',
-
-      'angular2/angular2',
-      'angular2/router',
-      'angular2/di',
-      'angular2/src/facade/browser'
+      'angular2/angular2'
     ],
     'app': [
       // App
 
-      // 'webpack-dev-server/client?http://localhost:8080',
-      // 'webpack/hot/dev-server',
-
       /*
-      // * include any 3rd party js lib here
-      */
+       * include any 3rd party js lib here
+       */
+
       './src/app/bootstrap'
     ],
     'app-simple': [
       // Simple Version of App
+
       /*
-      // * include any 3rd party js lib here
-      */
+       * include any 3rd party js lib here
+       */
+
       './src/app-simple/bootstrap'
     ]
   },

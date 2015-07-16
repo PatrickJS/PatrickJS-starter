@@ -31,18 +31,18 @@ Icon?
 Thumbs.db
 
 # Node Files #
-node_modules
-bower_components
+/node_modules
+/bower_components
 
 # Typing TSD #
-src/typings/tsd/
-typings/
-tsd_typings/
+/src/typings/tsd/
+/typings/
+/tsd_typings/
 
 # Dist #
-dist
-public/__build__/
-src/*/__build__/
+/dist
+/public/__build__/
+/src/*/__build__/
 __build__/**
 .webpack.json
 

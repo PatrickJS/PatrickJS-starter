@@ -12,19 +12,25 @@ import {Autosuggest} from './Autosuggest';
 @View({
   directives: [ NgFor, Autosuggest ],
   template: `
-    <div style="padding: 0 16px;">
-      <h2>Search Github repos</h2>
+  <div style="padding: 0 16px;">
+    <h2>Search Github repos</h2>
 
-      <div><input autosuggest (term)="showResults($event)" type="text" /></div>
+    <div>
+      <input
+        autosuggest
+        (term)="showResults($event)"
+        type="text"
+        autofocus>
+    </div>
 
-      <div>
-        <div *ng-for="#repo of repos">
-          <a [href]="repo.html_url" target="_blank">
-            {{ repo.name }}
-          </a>
-        </div>
+    <div>
+      <div *ng-for="#repo of repos">
+        <a [href]="repo.html_url" target="_blank">
+          {{ repo.name }}
+        </a>
       </div>
     </div>
+  </div>
   `
 })
 export class Search {
