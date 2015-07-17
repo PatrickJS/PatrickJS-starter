@@ -1,7 +1,7 @@
 /// <reference path="../../../../typings/_custom.d.ts" />
 
 // Angular 2
-import { Component, View, NgFor, EventEmitter } from 'angular2/angular2';
+import {Component, View, NgFor, EventEmitter} from 'angular2/angular2';
 
 let styles = require('./board.css');
 

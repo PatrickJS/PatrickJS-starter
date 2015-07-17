@@ -18,7 +18,7 @@ import { Game }  from './game_service';
   template:`
   <div style="padding: 0 16px;">
     <h1>Tic Tac Toe</h1>
-    <h2 *ng-if="game.winner">{{game.winner}} won!</h2>
+    <h2 *ng-if="game.winner">{{ game.winner }} won!</h2>
     <h2 *ng-if="game.draw">draw</h2>
     <button (click)="reset()">reset</button>
     <board [board]="game.board" (select)="game.play($event)"></board>
