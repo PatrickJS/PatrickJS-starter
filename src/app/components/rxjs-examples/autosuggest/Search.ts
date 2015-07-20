@@ -4,7 +4,7 @@
 import {Component, View} from 'angular2/angular2';
 import {NgFor} from 'angular2/directives';
 
-import {Autosuggest} from './Autosuggest';
+import {Autosuggest} from './autosuggest';
 
 @Component({
   selector: 'search-github'
