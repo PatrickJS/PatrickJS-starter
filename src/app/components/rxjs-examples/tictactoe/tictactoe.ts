@@ -31,7 +31,7 @@ export class Tictactoe {
   }
 
   reset() {
-    this.game = new this.game.constructor();
+    this.game = Game.create();
   }
 
 }

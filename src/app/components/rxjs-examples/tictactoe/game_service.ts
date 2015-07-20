@@ -7,6 +7,15 @@ export class Game {
   board: Rows = [['', '', ''], ['', '', ''], ['', '', '']];
   plays: Point[] = [];
 
+  public static create(): Game {
+    return new Game();
+  }
+
+  dispose() {
+    this.board = null;
+    this.plays = null;
+  }
+
   play(coord: Point) {
     const { x, y } = coord;
     if (!this.gameover && this.board[x][y] === '') {
