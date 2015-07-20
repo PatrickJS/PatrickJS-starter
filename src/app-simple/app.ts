@@ -8,16 +8,14 @@
 /*
  * Angular 2 decorators and servces
  */
-import {Directive, Component, View} from 'angular2/angular2';
+import {Directive, Component, View, Http, Headers} from 'angular2/angular2';
 import {RouteConfig, Router} from 'angular2/router';
-import {Http} from 'angular2/http';
 
 /*
  * Angular Directives
  */
-import {coreDirectives} from 'angular2/directives';
+import {coreDirectives, formDirectives} from 'angular2/angular2';
 import {routerDirectives} from 'angular2/router';
-import {formDirectives} from 'angular2/forms';
 
 /*
  * App Component
@@ -58,12 +56,13 @@ export class App {
   getData() {
     // npm install express connect-history-api-fallback morgan body-parser
     // npm run express
+    var headers = new Headers();
+    headers.append('Accept', 'application/json');
+    headers.append('Content-Type', 'application/json');
+
     this.http.
       get('/api/todos', {
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
+        headers: headers
       }).
       toRx().
       map(res => res.json()).

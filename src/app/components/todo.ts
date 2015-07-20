@@ -3,8 +3,8 @@
 /*
  * Angular 2
  */
-import {Component, View, Directive} from 'angular2/annotations';
-import {FormBuilder, Validators} from 'angular2/forms';
+import {Component, View, Directive, FormBuilder} from 'angular2/angular2';
+import {Validators} from 'angular2/forms';
 
 /*
  * Directives

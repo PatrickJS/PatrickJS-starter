@@ -1,5 +1,5 @@
 /// <reference path="../../typings/_custom.d.ts" />
-import {Pipe, PipeFactory, NullPipeFactory} from 'angular2/change_detection';
+import {Pipe, PipeFactory, NullPipeFactory} from 'angular2/angular2';
 
 // Check if the value is supported for the pipe
 export function isString(txt): boolean {

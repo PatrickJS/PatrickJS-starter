@@ -7,7 +7,6 @@
 /// <reference path="protractor.d.ts" />
 
 
-
 /*
  * tsd generated types
  */

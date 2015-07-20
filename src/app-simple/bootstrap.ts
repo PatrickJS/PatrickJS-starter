@@ -5,8 +5,7 @@ import {bootstrap} from 'angular2/angular2';
 /*
  * Angular Modules
  */
-import {httpInjectables} from 'angular2/http';
-import {formInjectables} from 'angular2/forms';
+import {httpInjectables, formInjectables} from 'angular2/angular2'
 import {routerInjectables} from 'angular2/router';
 
 /*

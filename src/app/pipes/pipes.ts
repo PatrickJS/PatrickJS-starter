@@ -2,8 +2,7 @@
 /*
  * Angular 2
  */
-import {bind} from 'angular2/di';
-import {PipeRegistry, Pipes, defaultPipes} from 'angular2/change_detection';
+import {bind, PipeRegistry, Pipes, defaultPipes} from 'angular2/angular2';
 
 /*
  * App Pipes

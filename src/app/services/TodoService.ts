@@ -1,6 +1,6 @@
 /// <reference path="../../typings/_custom.d.ts" />
 
-import {bind, Inject, Injectable} from 'angular2/di';
+import {bind, Inject, Injectable} from 'angular2/angular2';
 
 // Using TypeScript we can define our state interface
 interface ITodo {

@@ -1,10 +1,7 @@
 /// <reference path="../../../../typings/_custom.d.ts" />
 
 // Angular 2
-import {Component, View, ElementRef} from 'angular2/angular2';
-import {NgFor} from 'angular2/directives';
-
-import {NgZone} from 'angular2/src/core/zone/ng_zone';
+import {Component, View, ElementRef, NgFor, NgZone} from 'angular2/angular2';
 
 import {MessageService} from './MessageService';
 
