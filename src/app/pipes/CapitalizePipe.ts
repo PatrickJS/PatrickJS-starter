@@ -13,14 +13,17 @@ export class CapitalizePipe implements Pipe {
   supports(txt): boolean {
     return isString(txt);
   }
-  transform(input: string, isEveryWord?: boolean): string {
-    return (!input) ? '' :
-      (!isEveryWord) ?
-        this.capitalizeWord(input) :
-        input.replace(this.regexp, this.capitalizeWord);
+  transform(value: string, args: List<any>): any {
+    return (!value) ? '' :
+      (!args) ?
+        this.capitalizeWord(value) :
+        value.replace(this.regexp, this.capitalizeWord);
   }
   capitalizeWord(txt: string): string {
     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  }
+  onDestroy(): void {
+    // not sure what we should do here
   }
 
 }

@@ -357,32 +357,41 @@ declare module "angular2/src/change_detection/change_detection" {
   var async: any;
 }
 
-declare module "angular2/pipes" {
-  class ObservablePipe {
-    constructor(ref: any)
-    _subscription: any;
-    _observable: any;
-    _updateLatestValue(value: any): any;
-    _subscribe(obs: any): any;
-  }
-}
-
 declare module "angular2/change_detection" {
   interface PipeFactory {}
-  interface Pipe {}
-  class Pipes {
-    static append(pipes: any)
+  interface Pipe {
+    supports(obj: any): boolean;
+    onDestroy(): void;
+    transform(value: any, args: List<any>): any;
   }
-  class BasePipe implements Pipe {}
+  class Pipes {
+    static append(pipes: any);
+  }
   class NullPipeFactory {}
   class PipeRegistry {
-    constructor(pipes: any)
+    constructor(pipes: any);
   }
   class WrappedValue {
     static wrap(...args): any
   }
   class ChangeDetectorRef {
     requestCheck(): void;
+  }
+  class ObservablePipe implements Pipe {
+    constructor(ref: any);
+    _subscription: any;
+    _observable: any;
+    _updateLatestValue(value: any): any;
+    _subscribe(obs: any): void;
+
+    _latestValue: any;
+    _latestReturnedValue: any;
+
+    _dispose(): void;
+
+    supports(obj: any): boolean;
+    onDestroy(): void;
+    transform(value: any, args: List<any>): any;
   }
   var defaultPipeRegistry: any;
   var defaultPipes: any;

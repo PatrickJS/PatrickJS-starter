@@ -1,5 +1,6 @@
 /// <reference path="../../typings/_custom.d.ts" />
-import {Pipe, PipeFactory, ObservablePipe} from 'angular2/angular2';
+import {Pipe, PipeFactory} from 'angular2/angular2';
+import {ObservablePipe} from 'angular2/change_detection';
 import {async} from 'angular2/src/change_detection/change_detection';
 import * as Rx from 'rx';
 
@@ -18,6 +19,12 @@ export class RxPipe extends ObservablePipe {
       value => this._updateLatestValue(value),
       e => { throw e; }
     );
+  }
+  transform(value: any, args: List<any> = null): any {
+    return;
+  }
+  onDestroy(): void {
+    // not sure what we should do here
   }
 }
 
