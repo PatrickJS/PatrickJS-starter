@@ -6,6 +6,7 @@ import {NgIf, CSSClass} from 'angular2/directives';
 
 import {Search} from './autosuggest/Search';
 import {Timeflies} from './timeflies/timeflies';
+import {Tictactoe} from './tictactoe/tictactoe';
 
 // Use webpack's `require` to get files as a raw string using raw-loader
 let styles   = require('./rxjs.css');
@@ -15,7 +16,7 @@ let styles   = require('./rxjs.css');
   selector: 'rxjs-examples'
 })
 @View({
-  directives: [ NgIf, CSSClass, Search, Timeflies ],
+  directives: [ NgIf, CSSClass, Search, Timeflies, Tictactoe ],
 
   // include our .css file
   styles: [ styles ],
@@ -30,6 +31,9 @@ let styles   = require('./rxjs.css');
         <li>
           <a (click)="selectComponent('timeflies')" [class]="getActiveClass('timeflies')" class="ac-button md-default-theme">Timeflies</a>
         </li>
+        <li>
+          <a (click)="selectComponent('tictactoe')" [class]="getActiveClass('tictactoe')" class="ac-button md-default-theme">Tic tac toe</a>
+        </li>
       </ul>
     </nav>
 
@@ -40,6 +44,10 @@ let styles   = require('./rxjs.css');
 
       <div class="rxjs-content" *ng-if="isActive('timeflies')">
         <timeflies></timeflies>
+      </div>
+
+      <div class="rxjs-content" *ng-if="isActive('tictactoe')">
+        <tictactoe></tictactoe>
       </div>
     </div>
 
