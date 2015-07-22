@@ -3,7 +3,7 @@
 // Angular 2
 import {Component, View, NgFor} from 'angular2/angular2';
 
-import {Autosuggest} from './Autosuggest';
+import {Autosuggest} from './autosuggest';
 
 @Component({
   selector: 'search-github'

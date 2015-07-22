@@ -5,6 +5,7 @@
   "main": "",
   "scripts": {
     "build": "webpack",
+    "clean": "rm -rf node_modules && rm -rf tsd_typings",
     "watch": "webpack --watch",
     "server": "webpack-dev-server --inline --colors --display-error-details --display-cached ",
     "express": "node ./server/express-server-example.js",
@@ -55,8 +56,8 @@
     "raw-loader": "^0.5.1",
     "style-loader": "^0.12.2",
     "tsd": "^0.6.3",
-    "typescript": "Microsoft/TypeScript#release-1.5",
-    "typescript-simple-loader": "^0.3.0",
+    "typescript": "^1.5.3",
+    "typescript-simple-loader": "^0.3.2",
     "url-loader": "^0.5.5",
     "webpack": "^1.9.6",
     "webpack-dev-server": "^1.8.2"
