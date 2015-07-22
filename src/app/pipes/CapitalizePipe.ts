@@ -13,7 +13,7 @@ export class CapitalizePipe implements Pipe {
   supports(txt): boolean {
     return isString(txt);
   }
-  transform(value: string, args: List<any>): any {
+  transform(value: string, args?: List<any>): any {
     return (!value) ? '' :
       (!args) ?
         this.capitalizeWord(value) :
@@ -23,7 +23,7 @@ export class CapitalizePipe implements Pipe {
     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
   }
   onDestroy(): void {
-    // not sure what we should do here
+    // not needed since this is stateless
   }
 
 }
