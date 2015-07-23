@@ -365,7 +365,7 @@ declare module "angular2/change_detection" {
     transform(value: any, args: List<any>): any;
   }
   class Pipes {
-    static append(pipes: any);
+    static extend(pipes: any)
   }
   class NullPipeFactory {}
   class PipeRegistry {
