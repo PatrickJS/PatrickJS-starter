@@ -13,7 +13,7 @@ import {rxAsync} from './RxPipe';
 
 
 export var appPipes = [
-  Pipes.append({
+  Pipes.extend({
     'async': rxAsync,
     'capitalize': capitalize
     // add more pipes to this Map

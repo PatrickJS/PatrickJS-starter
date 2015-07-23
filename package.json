@@ -30,9 +30,9 @@
   },
   "homepage": "https://github.com/angular-class/angular2-webpack-starter",
   "dependencies": {
-    "angular2": "2.0.0-alpha.31",
+    "angular2": "2.0.0-alpha.32",
     "reflect-metadata": "^0.1.0",
-    "rtts_assert": "2.0.0-alpha.31",
+    "rtts_assert": "2.0.0-alpha.32",
     "rx": "^2.5.3",
     "zone.js": "^0.5.2"
   },
@@ -44,7 +44,7 @@
     "html-webpack-plugin": "^1.4.0",
     "imports-loader": "^0.6.3",
     "json-loader": "^0.5.1",
-    "karma": "^0.12.35",
+    "karma": "^0.13.3",
     "karma-chrome-launcher": "^0.2.0",
     "karma-coverage": "^0.4.2",
     "karma-jasmine": "^0.3.5",
