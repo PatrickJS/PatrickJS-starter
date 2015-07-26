@@ -153,7 +153,8 @@ Once you have those, you should install these globals with `npm install --global
 * `fork` this repo
 * `clone` your fork
 * `npm install` to install all dependencies
-* `npm run server` to start the server
+* `npm run express` to start up the sample backend api server in one tab
+* `npm run server` to start the dev server in another tab
 
 ## Running the app
 After you have installed all dependencies you can now run the app. Run `npm run server` to start a local server using `webpack-dev-server` which will watch, build (in-memory), and reload for you. The port will be displayed to you as `http://localhost:8080` (or if you prefer IPv6 then it's `http://[::1]:8080/`).

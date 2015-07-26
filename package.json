@@ -8,7 +8,7 @@
     "clean": "rm -rf node_modules && rm -rf tsd_typings",
     "watch": "webpack --watch",
     "server": "webpack-dev-server --inline --colors --display-error-details --display-cached ",
-    "express": "node ./server/express-server-example.js",
+    "express": "NODE_ENV=development node ./server/express-server-example.js",
     "webdriver-update": "webdriver-manager update",
     "webdriver-start": "webdriver-manager start",
     "preprotractor": "npm run webdriver-update",
@@ -59,7 +59,7 @@
     "typescript": "^1.5.3",
     "typescript-simple-loader": "^0.3.2",
     "url-loader": "^0.5.5",
-    "webpack": "^1.9.6",
-    "webpack-dev-server": "^1.8.2"
+    "webpack": "^1.10.5",
+    "webpack-dev-server": "^1.10.1"
   }
 }
