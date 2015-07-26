@@ -153,6 +153,7 @@ Once you have those, you should install these globals with `npm install --global
 * `fork` this repo
 * `clone` your fork
 * `npm install` to install all dependencies
+* `npm install express connect-history-api-fallback morgan body-parser` to install sample backend api dependencies
 * `npm run express` to start up the sample backend api server in one tab
 * `npm run server` to start the dev server in another tab
 
