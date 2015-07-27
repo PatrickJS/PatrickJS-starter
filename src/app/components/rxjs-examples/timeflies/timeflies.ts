@@ -1,10 +1,7 @@
 /// <reference path="../../../../typings/_custom.d.ts" />
 
 // Angular 2
-import {Component, View, ElementRef} from 'angular2/angular2';
-import {NgFor} from 'angular2/directives';
-
-import {NgZone} from 'angular2/src/core/zone/ng_zone';
+import {Component, View, ElementRef, NgFor, NgZone} from 'angular2/angular2';
 
 import {MessageService} from './MessageService';
 
@@ -56,7 +53,7 @@ export class Timeflies {
   timeflies() {
     // run mouse move outside of Angular
     // got this hint from @mgonto
-    this.zone.runOutsideAngular(_ => {
+    this.zone.runOutsideAngular(() => {
       (<any>Rx).Observable.fromEvent(this.el, 'mousemove').
         map((e: MouseEvent) => {
           //var offset = getOffset(this.el);
@@ -96,7 +93,7 @@ export class Timeflies {
           //console.log(letterConfig, this.letters);
 
           // to render the letters, put them back into app zone
-          this.zone.run(_ => this.letters[letterConfig.index] = letterConfig);
+          this.zone.run(() => this.letters[letterConfig.index] = letterConfig);
 
         });
     });//zone

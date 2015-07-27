@@ -3,7 +3,7 @@
 /*
  * Angular 2
  */
-import {Component, View} from 'angular2/annotations';
+import {Component, View} from 'angular2/angular2';
 
 /*
  * Directives

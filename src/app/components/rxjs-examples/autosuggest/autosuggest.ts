@@ -1,9 +1,7 @@
 /// <reference path="../../../../typings/_custom.d.ts" />
 
 // Angular 2
-import {Directive, View} from 'angular2/angular2';
-import {EventEmitter, ElementRef} from 'angular2/angular2';
-import {NgFor} from 'angular2/directives';
+import {Directive, View, EventEmitter, ElementRef, NgFor} from 'angular2/angular2';
 
 import {Github} from './Github';
 // RxJs

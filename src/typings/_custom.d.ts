@@ -6,7 +6,6 @@
 /// <reference path="webpack.d.ts" />
 
 
-
 /*
  * tsd generated types
  */

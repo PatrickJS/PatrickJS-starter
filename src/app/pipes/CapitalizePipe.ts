@@ -1,5 +1,5 @@
 /// <reference path="../../typings/_custom.d.ts" />
-import {Pipe, PipeFactory, NullPipeFactory} from 'angular2/change_detection';
+import {Pipe, PipeFactory, NullPipeFactory} from 'angular2/angular2';
 
 // Check if the value is supported for the pipe
 export function isString(txt): boolean {
@@ -13,14 +13,17 @@ export class CapitalizePipe implements Pipe {
   supports(txt): boolean {
     return isString(txt);
   }
-  transform(input: string, isEveryWord?: boolean): string {
-    return (!input) ? '' :
-      (!isEveryWord) ?
-        this.capitalizeWord(input) :
-        input.replace(this.regexp, this.capitalizeWord);
+  transform(value: string, args?: List<any>): any {
+    return (!value) ? '' :
+      (!args) ?
+        this.capitalizeWord(value) :
+        value.replace(this.regexp, this.capitalizeWord);
   }
   capitalizeWord(txt: string): string {
     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  }
+  onDestroy(): void {
+    // not needed since this is stateless
   }
 
 }

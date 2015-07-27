@@ -1,6 +1,6 @@
 /// <reference path="../../typings/_custom.d.ts" />
 
-import {bind} from 'angular2/di';
+import {bind} from 'angular2/angular2';
 
 import {todoInjectables} from './TodoService';
 import {githubInjectables} from '../components/rxjs-examples/autosuggest/Github';

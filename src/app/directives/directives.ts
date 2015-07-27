@@ -2,9 +2,8 @@
 /*
  * Angular 2
  */
-import {coreDirectives} from 'angular2/directives';
+import {coreDirectives, formDirectives} from 'angular2/angular2';
 import {routerDirectives} from 'angular2/router';
-import {formDirectives} from 'angular2/forms';
 
 /*
  * App

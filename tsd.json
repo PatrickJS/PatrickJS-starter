@@ -6,10 +6,10 @@
   "bundle": "tsd_typings/tsd.d.ts",
   "installed": {
     "angular2/angular2.d.ts": {
-      "commit": "e29cf4cafbd804cae59dfc4cc8007560310f4520"
+      "commit": "f6c8ca47193fb67947944a3170912672ac3e908e"
     },
     "angular2/router.d.ts": {
-      "commit": "e29cf4cafbd804cae59dfc4cc8007560310f4520"
+      "commit": "f6c8ca47193fb67947944a3170912672ac3e908e"
     },
     "rx/rx.d.ts": {
       "commit": "e29cf4cafbd804cae59dfc4cc8007560310f4520"

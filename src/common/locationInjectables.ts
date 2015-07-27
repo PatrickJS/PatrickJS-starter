@@ -1,5 +1,5 @@
 /// <reference path="../typings/_custom.d.ts" />
-import {bind} from 'angular2/di';
+import {bind} from 'angular2/angular2';
 import {
   LocationStrategy,
   HashLocationStrategy,
