@@ -1,5 +1,8 @@
 declare var zone: any;
 declare var Zone: any;
+interface Type extends Function {
+  new (...args: any[]): any;
+}
 
 declare module "angular2/test" {
   class TestComponentBuilder {}

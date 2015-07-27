@@ -44,7 +44,7 @@ module.exports = function(config) {
       devtool: 'inline-source-map',
       module: {
         loaders: [
-          { test: /\.ts$/,   loader: 'typescript-simple?ignoreWarnings[]=2309', exclude: [
+          { test: /\.ts$/,   loader: 'typescript-simple?ignoreWarnings[]=2345', exclude: [
               /web_modules/,
               /node_modules/
             ]
