@@ -261,6 +261,7 @@ We have good experience using these editors:
 - [ ] small/medium/large abstraction examples
 - [ ] Material Design example
 - [ ] hot-component-reloading
+- [ ] add "active" class for navigation items
 
 # Support, Questions, or Feedback
 > Contact us anytime for anything about this repo or Angular 2

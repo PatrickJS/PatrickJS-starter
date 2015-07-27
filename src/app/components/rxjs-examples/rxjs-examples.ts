@@ -1,7 +1,8 @@
 /// <reference path="../../../typings/_custom.d.ts" />
 
 // Angular 2
-import {Component, View, NgIf, CSSClass} from 'angular2/angular2';
+import {Component, View, CSSClass} from 'angular2/angular2';
+import {RouteConfig, routerDirectives} from 'angular2/router';
 
 import {Search} from './autosuggest/Search';
 import {Timeflies} from './timeflies/timeflies';
@@ -14,8 +15,14 @@ let styles   = require('./rxjs.css');
 @Component({
   selector: 'rxjs-examples'
 })
+@RouteConfig([
+  { path: '/',           redirectTo: '/search' },
+  { path: '/search',     as: 'search',    component: Search },
+  { path: '/timeflies',  as: 'timeflies', component: Timeflies },
+  { path: '/tictactoe',  as: 'tictactoe', component: Tictactoe }
+])
 @View({
-  directives: [ NgIf, CSSClass, Search, Timeflies, Tictactoe ],
+  directives: [ routerDirectives, CSSClass ],
 
   // include our .css file
   styles: [ styles ],
@@ -25,28 +32,20 @@ let styles   = require('./rxjs.css');
     <nav class="side-nav l-pinned-left l-layer-4 l-offset-nav">
       <ul class="rxjs-menu">
         <li>
-          <a (click)="selectComponent('search')"    [class]="getActiveClass('search')" class="ac-button ac-default-theme">Search Github</a>
+          <a [router-link]="['./search']" class="ac-button ac-default-theme">Search Github</a>
         </li>
         <li>
-          <a (click)="selectComponent('timeflies')" [class]="getActiveClass('timeflies')" class="ac-button md-default-theme">Timeflies</a>
+          <a [router-link]="['./timeflies']" class="ac-button md-default-theme">Timeflies</a>
         </li>
         <li>
-          <a (click)="selectComponent('tictactoe')" [class]="getActiveClass('tictactoe')" class="ac-button md-default-theme">Tic tac toe</a>
+          <a [router-link]="['./tictactoe']" class="ac-button md-default-theme">Tic tac toe</a>
         </li>
       </ul>
     </nav>
 
     <div layout="column" class="wide">
-      <div class="rxjs-content" *ng-if="isActive('search')">
-        <search-github></search-github>
-      </div>
-
-      <div class="rxjs-content" *ng-if="isActive('timeflies')">
-        <timeflies></timeflies>
-      </div>
-
-      <div class="rxjs-content" *ng-if="isActive('tictactoe')">
-        <tictactoe></tictactoe>
+      <div class="rxjs-content">
+        <router-outlet></router-outlet>
       </div>
     </div>
 
@@ -69,5 +68,16 @@ export class RxJsExamples {
     if (this.isActive(component)) {
       return 'active';
     }
+  }
+
+  /**
+   * Next two methods are not working yet
+   */
+  canActivate() {
+    console.info('canActivate works with the new router')
+  }
+
+  activate() {
+    console.info('activate works with the new router')
   }
 }
