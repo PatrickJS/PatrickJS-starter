@@ -38,6 +38,9 @@ import {routerDirectives} from 'angular2/router';
 
   <main>
     Your Content Here
+    <div>
+      <input type="text" [(ng-model)]="name" autofocus>
+    </div>
     <pre>data = {{ data | json }}</pre>
   </main>
 
