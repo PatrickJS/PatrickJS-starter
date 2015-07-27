@@ -8,7 +8,7 @@
 /*
  * Angular 2 decorators and servces
  */
-import {Directive, Component, View, Http, Headers} from 'angular2/angular2';
+import {Directive, Component, View, Http} from 'angular2/angular2';
 import {RouteConfig, Router} from 'angular2/router';
 
 /*
@@ -59,13 +59,15 @@ export class App {
   getData() {
     // npm install express connect-history-api-fallback morgan body-parser
     // npm run express
-    var headers = new Headers();
-    headers.append('Accept', 'application/json');
-    headers.append('Content-Type', 'application/json');
+
+    // var headers = new Headers();
 
     this.http.
       get('/api/todos', {
-        headers: headers
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
       }).
       toRx().
       map(res => res.json()).
@@ -76,6 +78,7 @@ export class App {
         err  => this.errorMessage(err)
       );//end http
   }
+
   serverData(data) {
     console.log('data', data);
     this.data = data;
