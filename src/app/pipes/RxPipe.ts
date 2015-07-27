@@ -1,6 +1,6 @@
 /// <reference path="../../typings/_custom.d.ts" />
 import {Pipe, PipeFactory} from 'angular2/angular2';
-import {ObservablePipe} from 'angular2/change_detection';
+import {ObservablePipe} from 'angular2/pipes';
 import {async} from 'angular2/src/change_detection/change_detection';
 import * as Rx from 'rx';
 
