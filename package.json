@@ -50,7 +50,7 @@
     "karma-jasmine": "^0.3.5",
     "karma-phantomjs-launcher": "^0.2.0",
     "karma-sourcemap-loader": "^0.3.5",
-    "karma-webpack": "^1.5.1",
+    "karma-webpack": "Dignifiedquire/karma-webpack#29fb1d801158f29cb0eb784edff69356705a7b74",
     "phantomjs": "^1.9.17",
     "protractor": "^2.1.0",
     "raw-loader": "^0.5.1",
