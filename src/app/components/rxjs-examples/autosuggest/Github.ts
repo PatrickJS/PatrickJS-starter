@@ -9,6 +9,7 @@ export class Github implements ISearchable<any[]> {
   url: string = 'https://api.github.com/search/repositories?q=';
 
   constructor(public http: Http) {
+
   }
 
   /**

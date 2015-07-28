@@ -1,7 +1,7 @@
 /// <reference path="../../../../typings/_custom.d.ts" />
 
 // Angular 2
-import {Component, View, NgFor} from 'angular2/angular2';
+import {Component, View, coreDirectives, formDirectives} from 'angular2/angular2';
 
 import {Autosuggest} from './autosuggest';
 
@@ -9,7 +9,7 @@ import {Autosuggest} from './autosuggest';
   selector: 'search-github'
 })
 @View({
-  directives: [ NgFor, Autosuggest ],
+  directives: [ coreDirectives, formDirectives, Autosuggest ],
   template: `
   <div style="padding: 0 16px;">
     <h2>Search Github repos</h2>
@@ -18,8 +18,13 @@ import {Autosuggest} from './autosuggest';
       <input
         autosuggest
         (term)="showResults($event)"
+        (loading)="loading = $event"
         type="text"
         autofocus>
+      <img
+        style="width: 20px;position: absolute;"
+        [hidden]="!loading"
+        src="https://www.brown.edu/sites/default/themes/pawtuxet/img/loader-larger.gif">
     </div>
 
     <div>
@@ -33,11 +38,10 @@ import {Autosuggest} from './autosuggest';
   `
 })
 export class Search {
-
-  repos: Array<any>;
+  repos: Array<any> = [];
+  loading: boolean = false;
 
   constructor() {
-    this.repos = [];
   }
 
   showResults(results: string[]) {

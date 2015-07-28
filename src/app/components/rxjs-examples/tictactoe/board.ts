@@ -1,18 +1,18 @@
 /// <reference path="../../../../typings/_custom.d.ts" />
 
 // Angular 2
-import {Component, View, NgFor, EventEmitter} from 'angular2/angular2';
-
-let styles = require('./board.css');
+import {Component, View, EventEmitter, coreDirectives} from 'angular2/angular2';
 
 @Component({
   selector: 'board',
-  properties: ['board'],
-  events: ['select']
+  properties: [ 'board' ],
+  events: [ 'select' ]
 })
 @View({
-  directives: [ NgFor ],
-  styles: [ styles ],
+  directives: [ coreDirectives ],
+  styles: [
+    require('./board.css') // webpack require
+  ],
   template:`
     <div class="board">
       <div *ng-for="#row of board; #x=index" class="row">
@@ -28,5 +28,5 @@ let styles = require('./board.css');
   `
 })
 export class Board {
-  select = new EventEmitter();
+  select: EventEmitter = new EventEmitter();
 }

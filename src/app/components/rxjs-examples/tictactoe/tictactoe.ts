@@ -1,20 +1,20 @@
 /// <reference path="../../../../typings/_custom.d.ts" />
 
 // Angular 2
-import {Component, View, NgIf } from 'angular2/angular2';
+import {Component, View, coreDirectives} from 'angular2/angular2';
 
-import { Board } from './board';
-import { Game }  from './game_service';
+// Services
+import {Game}  from './Game';
 
-
+// Components
+import {Board} from './board';
 
 @Component({
   selector: 'tictactoe',
   viewInjector: [ Game ]
 })
 @View({
-  directives: [NgIf, Board],
-
+  directives: [ coreDirectives, Board ],
   template:`
   <div style="padding: 0 16px;">
     <h1>Tic Tac Toe</h1>
@@ -26,11 +26,12 @@ import { Game }  from './game_service';
   `
 })
 export class Tictactoe {
-
   constructor(public game: Game) {
+
   }
 
   reset() {
+    this.game.dispose();
     this.game = Game.create();
   }
 

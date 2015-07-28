@@ -4,7 +4,7 @@
 import {Component, View, CSSClass} from 'angular2/angular2';
 import {RouteConfig, routerDirectives} from 'angular2/router';
 
-import {Search} from './autosuggest/Search';
+import {Search} from './autosuggest/search';
 import {Timeflies} from './timeflies/timeflies';
 import {Tictactoe} from './tictactoe/tictactoe';
 

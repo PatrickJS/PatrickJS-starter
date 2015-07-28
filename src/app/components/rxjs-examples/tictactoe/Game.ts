@@ -1,10 +1,18 @@
-type Triple = [string, string, string]; // tuple type
-type Rows = [Triple, Triple, Triple];
-type Point = { x: number; y: number }
 
+import {Injectable} from 'angular2/angular2';
+
+type Triple = [ string, string, string ]; // tuple type
+type Rows   = [ Triple, Triple, Triple ];
+type Point  = { x: number; y: number };
+
+@Injectable()
 export class Game {
 
-  board: Rows = [['', '', ''], ['', '', ''], ['', '', '']];
+  board: Rows = [
+    ['', '', ''],
+    ['', '', ''],
+    ['', '', '']
+  ];
   plays: Point[] = [];
 
   public static create(): Game {
@@ -62,9 +70,7 @@ function getWinnerFromList(winner: string, list: Triple) {
 }
 
 function zip(arrays: Rows) {
-  return arrays[0].map(function(_, i) {
-    return arrays.map(function(array) { return array[i] } )
-  });
+  return arrays[0].map((_, i) => arrays.map(array => array[i]));
 }
 
 function diagonals(rows: Rows) {
