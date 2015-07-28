@@ -39,7 +39,7 @@ var api = require('./todo_api')();
 app.use('/api', api);
 
 // Only use in development
-if (process.env.NODE_ENV === 'development') {
+if (NODE_ENV === 'development') {
   var server = new WebpackDevServer(webpack(webpackConfig), {
     publicPath: '/__build__',
     historyApiFallback: false, // won't work due to order

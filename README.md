@@ -254,14 +254,15 @@ We have good experience using these editors:
 
 
 # Todo
-- [ ] production/development environments
-- [ ] bootstrap example
+- [x] production/development environments
+- [x] add "active" class for navigation items
+- [ ] production/development Angular 2 environments
+- [ ] bootstrap framework example
 - [ ] production services examples
 - [ ] universal (isomorphic) example
 - [ ] small/medium/large abstraction examples
 - [ ] Material Design example
 - [ ] hot-component-reloading
-- [ ] add "active" class for navigation items
 
 # Support, Questions, or Feedback
 > Contact us anytime for anything about this repo or Angular 2
