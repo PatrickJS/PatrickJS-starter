@@ -78,7 +78,7 @@ let styles   = require('./app.css');
             <a [router-link]=" ['/todo'] "class="top-nav-button ac-default-theme">Todo</a>
           </li>
           <li class="l-left">
-            <a [router-link]=" ['/rxjs-examples'] "class="top-nav-button ac-default-theme">RxJs Examples</a>
+            <a [router-link]=" ['/rxjs-examples', 'search'] "class="top-nav-button ac-default-theme">RxJs Examples</a>
           </li>
         </ul>
       </div>
@@ -94,10 +94,10 @@ let styles   = require('./app.css');
   `
 })
 @RouteConfig([
-  { path: '/',              as: 'home',          component: Home },
-  { path: '/dashboard',     as: 'dashboard',     component: Dashboard },
-  { path: '/todo',          as: 'todo',          component: Todo },
-  { path: '/rxjs-examples', as: 'rxjs-examples', component: RxJsExamples }
+  { path: '/',                  as: 'home',          component: Home },
+  { path: '/dashboard',         as: 'dashboard',     component: Dashboard },
+  { path: '/todo',              as: 'todo',          component: Todo },
+  { path: '/rxjs-examples/...', as: 'rxjs-examples', component: RxJsExamples }
 ])
 export class App {
   name: string;
