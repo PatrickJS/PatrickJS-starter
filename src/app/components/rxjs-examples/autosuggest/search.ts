@@ -14,7 +14,8 @@ import {Autosuggest} from './autosuggest';
   <div style="padding: 0 16px;">
     <h2>Search Github repos</h2>
 
-    <div>
+    <section>
+
       <input
         autosuggest
         (term)="showResults($event)"
@@ -25,15 +26,18 @@ import {Autosuggest} from './autosuggest';
         style="width: 20px;position: absolute;"
         [hidden]="!loading"
         src="https://www.brown.edu/sites/default/themes/pawtuxet/img/loader-larger.gif">
-    </div>
 
-    <div>
-      <div *ng-for="#repo of repos">
+    </section>
+
+    <section>
+
+      <div *ng-for="#repo of repos" style="padding: 0.5em 0.5em 0.5em 0;">
         <a [href]="repo.html_url" target="_blank">
-          {{ repo.name }}
+          {{ repo.owner.login }}/<b>{{ repo.name }}</b>
         </a>
       </div>
-    </div>
+
+    </section>
   </div>
   `
 })
