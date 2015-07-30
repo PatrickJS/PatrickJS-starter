@@ -51,8 +51,8 @@ import {DraggableDiv} from './draggable_div/draggable_div';
         <li>
           <a class="ac-button md-default-theme"
              [router-link]=" ['./draggable_div'] "
-             (click)="active = 2"
-             [class.active]="active === 2">Drag Element</a>
+             (click)="active = 3"
+             [class.active]="active === 3">Drag Element</a>
         </li>
       </ul>
     </nav>
@@ -68,15 +68,4 @@ import {DraggableDiv} from './draggable_div/draggable_div';
 })
 export class RxJsExamples {
   active: number = 0;
-
-  /**
-   * Next two methods are not working yet
-   */
-  canActivate() {
-    console.info('canActivate works with the new router')
-  }
-
-  activate() {
-    console.info('activate works with the new router')
-  }
 }
