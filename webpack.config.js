@@ -2,7 +2,7 @@
 
 // Helper
 var sliceArgs = Function.prototype.call.bind(Array.prototype.slice);
-var NODE_ENV = process.env.NODE_ENV;
+var NODE_ENV = process.env.NODE_ENV || 'development';
 
 // Node
 var webpack = require('webpack');
