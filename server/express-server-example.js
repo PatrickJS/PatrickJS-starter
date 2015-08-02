@@ -13,7 +13,7 @@ var bodyParser = require('body-parser');
 var app = express();
 
 // Env
-var PORT     = process.env.PORT || 8080;
+var PORT     = process.env.PORT || 3000;
 var NODE_ENV = process.env.NODE_ENV || 'development';
 
 app.use(morgan('dev'));

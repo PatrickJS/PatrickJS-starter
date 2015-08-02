@@ -10,7 +10,7 @@
     "webpack": "webpack",
     "clean": "rm -rf node_modules && rm -rf tsd_typings",
     "watch": "webpack --watch",
-    "server": "webpack-dev-server --inline --colors --display-error-details --display-cached ",
+    "server": "webpack-dev-server --inline --colors --display-error-details --display-cached --port 3000",
     "express": "NODE_ENV=development node ./server/express-server-example.js",
     "express:dev": " npm run env:dev  node ./server/express-server-example.js",
     "express:prod": "npm run env:prod node ./server/express-server-example.js",
