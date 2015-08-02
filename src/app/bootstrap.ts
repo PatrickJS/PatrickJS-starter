@@ -9,11 +9,6 @@ import {bootstrap} from 'angular2/angular2';
  * our custom helper injectables to configure our app differently using the dependency injection system
  */
 import {
-  nativeShadowDomInjectables,
-  emulatedScopedShadowDomInjectables,
-  emulatedUnscopedShadowDomInjectables
-} from '../common/shadowDomInjectables';
-import {
   jitInjectables,
   dynamicInjectables,
   preGeneratedInjectables
@@ -64,10 +59,7 @@ var platformInjectables = [
   // bestChangeDetectionInjectables,
 
   // if we want to use hashBash url for the router
-  // hashlocationInjectables,
-
-  // Our custom injectable that checks if we have support for ShadowDom
-  nativeShadowDomInjectables
+  // hashlocationInjectables
 ];
 
 /*
