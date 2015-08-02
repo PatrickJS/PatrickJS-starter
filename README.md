@@ -251,7 +251,8 @@ We have good experience using these editors:
   * You can write your tests anywhere you like either next to your components or in the  `test/` folder
 * Is Angular 2 production ready yet?
   * No, please visit [Is Angular 2 Ready Yet?](http://splintercode.github.io/is-angular-2-ready/) website.
-* How do I start the app when I get `EACCES` and `EADDRINUSE` errors? The `EADDRINUSE` error means the port `3000` is currently being used and `EACCES` is lack of permission for webpack to build files to `./__build__/`
+* How do I start the app when I get `EACCES` and `EADDRINUSE` errors? 
+  * The `EADDRINUSE` error means the port `3000` is currently being used and `EACCES` is lack of permission for webpack to build files to `./__build__/`
 
 
 # Todo
