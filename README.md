@@ -38,7 +38,7 @@ git clone https://github.com/angular-class/angular2-webpack-starter.git
 # change directory to our repo
 cd angular2-webpack-starter
 
-# then open your browser and go to http://localhost:8080
+# then open your browser and go to http://localhost:3000
 npm start 
 ```
 
@@ -159,7 +159,7 @@ Once you have those, you should install these globals with `npm install --global
 * `npm run server` to start the dev server in another tab
 
 ## Running the app
-After you have installed all dependencies you can now run the app. Run `npm run server` to start a local server using `webpack-dev-server` which will watch, build (in-memory), and reload for you. The port will be displayed to you as `http://localhost:8080` (or if you prefer IPv6 then it's `http://[::1]:8080/`).
+After you have installed all dependencies you can now run the app. Run `npm run server` to start a local server using `webpack-dev-server` which will watch, build (in-memory), and reload for you. The port will be displayed to you as `http://localhost:3000` (or if you prefer IPv6, if you're using `express` server, then it's `http://[::1]:3000/`).
  
 ### server
 ```bash
