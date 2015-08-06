@@ -123,7 +123,7 @@ angular2-webpack-starter/
  │       └──_custom.d.ts                   * we include all of our custom types here
  │
  ├──tsd_typings/                           * ignore this auto generated file from tsd
- │   └──tsd.d.ts.ts                        * ignore this our main file for all of our type definitions
+ │   └──tsd.d.ts                           * ignore this our main file for all of our type definitions
  │
  ├──server/                                * this is a stub for very basic server configurations
  │
