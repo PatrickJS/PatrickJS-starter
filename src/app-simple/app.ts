@@ -8,7 +8,7 @@
 /*
  * Angular 2 decorators and servces
  */
-import {Directive, Component, View, Http} from 'angular2/angular2';
+import {Directive, Component, View, ViewEncapsulation, Http} from 'angular2/angular2';
 import {RouteConfig, Router} from 'angular2/router';
 
 /*
@@ -25,6 +25,7 @@ import {routerDirectives} from 'angular2/router';
   selector: 'app'
 })
 @View({
+  encapsulation: ViewEncapsulation.EMULATED,
   // needed in order to tell Angular's compiler what's in the template
   directives: [ coreDirectives, formDirectives, routerDirectives ],
   template: `

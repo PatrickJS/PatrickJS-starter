@@ -1,5 +1,5 @@
 /// <reference path="../../typings/_custom.d.ts" />
-import {Pipe, PipeFactory, NullPipeFactory} from 'angular2/angular2';
+import {Pipe, PipeFactory} from 'angular2/angular2';
 
 // Check if the value is supported for the pipe
 export function isString(txt): boolean {
@@ -40,4 +40,4 @@ export class CapitalizeFactory implements PipeFactory {
 
 // Since templates in angular are async we are passing the value to
 // NullPipeFactory if the value is not supported
-export var capitalize = [ new CapitalizeFactory(), new NullPipeFactory() ];
+export var capitalize = [ new CapitalizeFactory() ];

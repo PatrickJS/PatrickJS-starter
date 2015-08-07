@@ -43,7 +43,7 @@ let styles   = require('./app.css');
  */
 @Component({
   selector: 'app', // without [ ] means we are selecting the tag directly
-  viewInjector: [ appPipes ]
+  viewBindings: [ appPipes ]
 })
 @View({
   // needed in order to tell Angular's compiler what's in the template

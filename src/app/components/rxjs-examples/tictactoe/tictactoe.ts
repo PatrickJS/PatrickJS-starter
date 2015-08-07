@@ -11,7 +11,7 @@ import {Board} from './board';
 
 @Component({
   selector: 'tictactoe',
-  viewInjector: [ Game ]
+  viewBindings: [ Game ]
 })
 @View({
   directives: [ coreDirectives, Board ],

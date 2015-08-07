@@ -19,7 +19,7 @@ interface LetterConfig {
 @Component({
   selector: 'timeflies',
   lifecycle: [ LifecycleEvent.onInit ],
-  hostInjector: [ Message ]
+  bindings: [ Message ]
 })
 @View({
   directives: [ coreDirectives ],

@@ -3,7 +3,7 @@
 /*
  * Angular 2
  */
-import {Component, View} from 'angular2/angular2';
+import {Component, View, ViewEncapsulation} from 'angular2/angular2';
 
 /*
  * Directives
@@ -22,6 +22,7 @@ let template = require('./home.html');
 })
 @View({
   directives: [ angularDirectives, appDirectives ],
+  encapsulation: ViewEncapsulation.EMULATED,
   // include our .html and .css file
   styles: [ styles ],
   template: template
