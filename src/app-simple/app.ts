@@ -61,8 +61,6 @@ export class App {
     // npm install express connect-history-api-fallback morgan body-parser
     // npm run express
 
-    // var headers = new Headers();
-
     this.http.
       get('/api/todos', {
         headers: {
