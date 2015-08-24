@@ -9,16 +9,17 @@ import {RouteConfig} from 'angular2/router';
 /*
  * Directives
  */
-import {coreDirectives, formDirectives} from 'angular2/angular2';
-import {routerDirectives} from 'angular2/router';
+import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/angular2';
+// should be ROUTER_DIRECTIVES in next release
+import {routerDirectives as ROUTER_DIRECTIVES} from 'angular2/router';
 // Import all of our custom app directives
-import {appDirectives} from '../directives/directives';
+import {APP_DIRECTIVES} from '../directives/directives';
 
 /*
  * App Pipes
  * our collection of pipes registry
  */
-import {appPipes} from '../pipes/pipes';
+import {APP_PIPES} from '../pipes/pipes';
 
 /*
  * Components
@@ -34,7 +35,7 @@ import {Todo} from './todo';
 import {RxJsExamples} from './rxjs-examples/rxjs-examples';
 
 // Use webpack's `require` to get files as a raw string using raw-loader
-let styles   = require('./app.css');
+const APP_STYLES = require('./app.css');
 
 /*
  * App Component
@@ -43,25 +44,12 @@ let styles   = require('./app.css');
  */
 @Component({
   selector: 'app', // without [ ] means we are selecting the tag directly
-  viewBindings: [ appPipes ]
+  viewBindings: []
 })
 @View({
-  // needed in order to tell Angular's compiler what's in the template
-  directives: [
-    // Angular's core directives
-    coreDirectives,
-
-    // Angular's form directives
-    formDirectives,
-
-    // Angular's router
-    routerDirectives,
-
-    // Our collection of directives from /directives
-    appDirectives
-  ],
-  // include our .css file
-  styles: [ styles ],
+  pipes:      [ APP_PIPES ],
+  directives: [ APP_DIRECTIVES ],
+  styles:     [ APP_STYLES ],
   template: `
     <header>
       <div layout="row" class="top-nav ac-default-theme">
