@@ -54,15 +54,6 @@ var config = {
        */
 
       './src/app/bootstrap'
-    ],
-    'app-simple': [
-      // Simple Version of App
-
-      /*
-       * include any 3rd party js lib here
-       */
-
-      './src/app-simple/bootstrap'
     ]
   },
 
@@ -114,7 +105,7 @@ var config = {
       { test: /\.html$/,  loader: 'raw' },
 
       // Support for .ts files.
-      { test: /\.ts$/,    loader: 'typescript-simple?ignoreWarnings[]=2345', exclude: [
+      { test: /\.ts$/,    loader: 'typescript-simple?&ignoreWarnings[]=2300&ignoreWarnings[]=2309', exclude: [
           /\.spec\.ts$/,
           /\.e2e\.ts$/,
           /web_modules/,
