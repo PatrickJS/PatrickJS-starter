@@ -23,7 +23,10 @@ import {DraggableDiv} from './draggable_div/draggable_div';
 @View({
   directives: [ routerDirectives, CSSClass ],
   // include our .css file
-  styles: [ require('./rxjs.css') ], // Use webpack's `require` to get files as a raw string using raw-loader
+  styles: [
+    // Use webpack's `require` to get files as a raw string using raw-loader
+    require('./rxjs.css')
+  ],
   template: `
   <div layout="row">
     <nav class="side-nav l-pinned-left l-layer-4 l-offset-nav">

@@ -3,76 +3,22 @@
 // Angular 2
 import {bootstrap} from 'angular2/angular2';
 
-
 /*
- * Common Injectables
- * our custom helper injectables to configure our app differently using the dependency injection system
+ * Angular Bindings
  */
-import {
-  jitInjectables,
-  dynamicInjectables,
-  preGeneratedInjectables
-} from '../common/changeDetectionInjectables';
-import {
-  html5locationInjectables,
-  hashlocationInjectables
-} from '../common/locationInjectables';
-
-/*
- * Angular Modules
- */
-import {httpInjectables, formInjectables} from 'angular2/angular2';
-import {routerInjectables} from 'angular2/router';
-
-/*
- * App Services
- * our collection of injectables services
- */
-import {appServicesInjectables} from './services/services';
-
+import {FORM_BINDINGS} from 'angular2/angular2'
+// should be ROUTER_BINDINGS in next release
+import {routerInjectables as ROUTER_BINDINGS} from 'angular2/router';
 
 /*
  * App Component
  * our top level component that holds all of our components
  */
-import {App} from './components/app';
+import {App} from './app';
 
-
-/*
- * Universal injectables
- */
-var universalInjectables = [
-  // Angular's http/form/router services/bindings
-  httpInjectables,
-  formInjectables,
-  routerInjectables,
-
-  // Our collection of services from /services
-  appServicesInjectables
-];
-
-/*
- * Platform injectables
- */
-var platformInjectables = [
-  // if we want to use the Just-In-Time change detection
-  // bestChangeDetectionInjectables,
-
-  // if we want to use hashBash url for the router
-  // hashlocationInjectables
-];
-
+const APP_BINDINGS = [ FORM_BINDINGS, ROUTER_BINDINGS ];
 /*
  * Bootstrap our Angular app with a top level component `App` and inject
- * our Universal/Platform services/bindings into Angular's dependency injection
+ * our services/bindings into Angular's dependency injection
  */
-bootstrap(
-  // Top Level Component
-  App,
-
-  // AppInjector
-  [
-    universalInjectables,
-    platformInjectables
-  ]
-);
+bootstrap(App, APP_BINDINGS);

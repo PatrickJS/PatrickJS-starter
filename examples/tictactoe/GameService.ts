@@ -6,7 +6,7 @@ type Rows   = [ Triple, Triple, Triple ];
 type Point  = { x: number; y: number };
 
 @Injectable()
-export class Game {
+export class GameService {
 
   board: Rows = [
     ['', '', ''],
@@ -15,8 +15,8 @@ export class Game {
   ];
   plays: Point[] = [];
 
-  public static create(): Game {
-    return new Game();
+  static create(): GameService {
+    return new GameService();
   }
 
   dispose() {
@@ -50,9 +50,13 @@ export class Game {
 
 }
 
+export var GAMESERVICE_BINDINGS = [
+  GameService
+];
+
 // Pure functions
 
-function getWinnerFromBoard(board: Rows): string {
+export function getWinnerFromBoard(board: Rows): string {
   const allWinningLists = [].concat(
     board,             // rows
     zip(board),        // columns
@@ -62,18 +66,18 @@ function getWinnerFromBoard(board: Rows): string {
   return allWinningLists.reduce(getWinnerFromList, '');
 }
 
-function getWinnerFromList(winner: string, list: Triple) {
+export function getWinnerFromList(winner: string, list: Triple) {
   if (winner) return winner;
   if (list.every(s => s == 'o')) return 'o';
   if (list.every(s => s == 'x')) return 'x';
   return '';
 }
 
-function zip(arrays: Rows) {
+export function zip(arrays: Rows) {
   return arrays[0].map((_, i) => arrays.map(array => array[i]));
 }
 
-function diagonals(rows: Rows) {
+export function diagonals(rows: Rows) {
   return [
     rows.map((row, index) => row[index]), // left to right diagonal
     rows.map((row, index) => row[row.length - 1 - index]) // right to left diagonal
