@@ -1,11 +1,6 @@
 /// <reference path="../typings/_custom.d.ts" />
 
 /*
- * TODO: use the real App component
- * change `app-simple.js` to `app.js` in src/public/index.html
- */
-
-/*
  * Angular 2 decorators and servces
  */
 import {Directive, Component, View} from 'angular2/angular2';
@@ -53,17 +48,19 @@ import {routerDirectives as ROUTER_DIRECTIVES} from 'angular2/router';
 export class App {
   name: string;
   data: Array<any> = []; // default data
-  constructor(/*public http: Http*/) {
+  constructor() {
     this.name = 'Angular 2';
     this.getData();
   }
+  
   getData() {
     // fake async call
     setTimeout(() => {
       let data = [
         { value: 'finish example', created_at: new Date() }
       ];
-
+      
+      // fake callback
       this.data = data;
 
     }, 2000);
