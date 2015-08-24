@@ -3,12 +3,13 @@
 import {bind, Inject, Injectable} from 'angular2/angular2';
 
 // Using TypeScript we can define our state interface
-interface ITodo {
+export interface ITodo {
   value: string;
   created_at: Date;
   completed?: boolean;
 }
-interface ITodoState {
+
+export interface ITodoState {
   todos: Array<ITodo>
 }
 
@@ -74,7 +75,7 @@ export class TodoService {
 }//TodoService
 
 // export our injectables for this module
-export var todoInjectables: Array<any> = [
+export var TODO_BINDINGS: Array<any> = [
   bind('initialTodoState').toValue(initialTodoState),
   bind(TodoService).toClass(TodoService)
 ];
