@@ -62,12 +62,12 @@ We use the component approach in our starter. This is the new standard for devel
 angular2-webpack-starter/
  ├──src/                                   * our source files that will be compiled to javascript
  │   │
- │   ├──app/                        * WebApp: folder
+ │   ├──app/                               * WebApp: folder
  │   │   ├──app.ts                         * App.ts: a simple version of our App component components
  │   │   └──bootstrap.ts                   * entry file for app
  │   │
- │   ├──bindings/                            * where common files used throughout our app
- │   │   ├──shadowDomInjectables.ts        * injectables to change the use of ShadowDom Strategy for each Component
+ │   ├──bindings/                          * where common files used throughout our app
+ │   │   ├──location_bindings.ts           * injectables to change the Router location Strategy
  │   │   └──change_detection_bindings.ts   * injectables to change Angular's Change Detection Strategy
  │   │
  │   ├──public/                            * static assets are served here
