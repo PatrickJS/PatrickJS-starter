@@ -22,12 +22,6 @@
     },
     "rx/rx-lite.d.ts": {
       "commit": "f6c8ca47193fb67947944a3170912672ac3e908e"
-    },
-    "angular2/angular2.d.ts": {
-      "commit": "284c2b8828f06bdde1f949a22ad174f5221d57f9"
-    },
-    "angular2/router.d.ts": {
-      "commit": "284c2b8828f06bdde1f949a22ad174f5221d57f9"
     }
   }
 }
