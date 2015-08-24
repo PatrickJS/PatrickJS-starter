@@ -4,6 +4,11 @@ interface Type extends Function {
   new (...args: any[]): any;
 }
 
+declare module "angular2/router" {
+  var ROUTER_BINDINGS: any;
+  var ROUTER_DIRECTIVES: any;
+}
+
 declare module "angular2/test" {
   class TestComponentBuilder {}
   class AsyncTestCompleter {}
