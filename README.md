@@ -88,8 +88,6 @@ angular2-webpack-starter/
  ├──tsd_typings/                           * ignore this auto generated file from tsd
  │   └──tsd.d.ts                           * ignore this our main file for all of our type definitions
  │
- ├──server/                                * this is a stub for very basic server configurations
- │
  ├──test/                                  * this is our global unit tests and end-to-end tests
  │
  ├──spec.bundle.js                         * ignore this magic that sets up our angular 2 testing environment
@@ -117,8 +115,6 @@ Once you have those, you should install these globals with `npm install --global
 * `fork` this repo
 * `clone` your fork
 * `npm install` to install all dependencies
-* `npm install express connect-history-api-fallback morgan body-parser` to install sample backend api dependencies
-* `npm run express` to start up the sample backend api server in one tab
 * `npm run server` to start the dev server in another tab
 
 ## Running the app
@@ -222,10 +218,11 @@ We have good experience using these editors:
 - [x] production/development environments
 - [x] add "active" class for navigation items
 - [ ] fix examples again
+- [ ] include server again
+- [ ] universal (isomorphic) example
 - [ ] production/development Angular 2 environments
 - [ ] bootstrap framework example
 - [ ] production services examples
-- [ ] universal (isomorphic) example
 - [ ] small/medium/large abstraction examples
 - [ ] Material Design example
 - [ ] hot-component-reloading
