@@ -29,7 +29,7 @@ Warning: Angular 2.0 is not production ready yet!
 [Is Angular 2 Ready Yet?](http://splintercode.github.io/is-angular-2-ready/)
 
 ### Quick start
-> Clone/Download the repo then edit `app.ts` inside [`/src/app-simple/app.ts`](/src/app-simple/app.ts)
+> Clone/Download the repo then edit `app.ts` inside [`/src/app/app.ts`](/src/app/app.ts)
 
 ```bash
 # clone our repo
@@ -62,54 +62,17 @@ We use the component approach in our starter. This is the new standard for devel
 angular2-webpack-starter/
  ├──src/                                   * our source files that will be compiled to javascript
  │   │
- │   ├──app-simple/                        * WebApp: folder
+ │   ├──app/                        * WebApp: folder
  │   │   ├──app.ts                         * App.ts: a simple version of our App component components
  │   │   └──bootstrap.ts                   * entry file for app
  │   │
- │   ├──app/                               * WebApp: folder
- │   │   ├──bootstrap.ts                   * entry file for app
- │   │   │
- │   │   ├──components/                    * where most of components live
- │   │   │   ├──todo.ts                    * an example of a component using a service and forms
- │   │   │   ├──dashboard.ts               * a simple Component with a simple Directive example
- │   │   │   │
- │   │   │   ├──home/                      * example component as a folder
- │   │   │   │   ├──home.ts                * how you would require your template and style files
- │   │   │   │   ├──home.css               * simple css file for home styles
- │   │   │   │   └──home.html              * simple html file for home template
- │   │   │   │
- │   │   │   ├──rxjs-examples/             * various rxjs examples
- │   │   │   │   ├──autosuggest/           * autosuggest component as a folder
- │   │   │   │   ├──timeflies/             * timeflies component as a folder
- │   │   │   │   └──tictactoe/             * tic-tac-toe component as a folder
- │   │   │   │
- │   │   │   └──app.ts                     * App.ts: entry file for components
- │   │   │ 
- │   │   │
- │   │   ├──services/                      * where we keep our services used throughout our app
- │   │   │   ├──TodoService.ts             * an example of a simple service 
- │   │   │   └──services.ts                * where we gather our injectables from our services
- │   │   │
- │   │   ├──pipes/                         * where we keep our custom pipes
- │   │   │   ├──CapitalizePipe.spec.ts     * a simple example of unit tests that we're able to define anywhere
- │   │   │   ├──CapitalizePipe.ts          * a simple example of a Pipe
- │   │   │   ├──RxPipe.ts                  * upgrade async pipe with Rx support
- │   │   │   └──pipes.ts                   * where we gather our custom pipes
- │   │   │
- │   │   └──directives/                    * where we keep our directives used throughout our app
- │   │       ├──Autofocus.ts               * another simple directive to fix a problem with the router
- │   │       └──directives.ts              * where we gather our directives from our directives
- │   │
- │   ├──common/                            * where common files used throughout our app
+ │   ├──bindings/                            * where common files used throughout our app
  │   │   ├──shadowDomInjectables.ts        * injectables to change the use of ShadowDom Strategy for each Component
- │   │   ├──changeDetectionInjectables.ts  * injectables to change Angular's Change Detection Strategy
- │   │   ├──locationInjectables.ts         * injectables to change the Router location Strategy
- │   │   ├──formDirectives.ts              * turn on Just-In-Time Change Detection
- │   │   └──BrowserDomAdapter.ts           * ignore this. we need to set the DomAdapter to the browser
+ │   │   └──change_detection_bindings.ts   * injectables to change Angular's Change Detection Strategy
  │   │
  │   ├──public/                            * static assets are served here
  │   │   ├──lib/                           * static libraries
- │   │   │   └──es6-shim.js                 * ignore this file. This is needed to polyfill the browser to for ES6 features to similarly
+ │   │   │   └──es6-shim.js                * ignore this file. This is needed to polyfill the browser to for ES6 features to similarly
  │   │   │
  │   │   ├──favicon.ico                    * replace me with your own favicon.ico
  │   │   ├──service-worker.js              * ignore this. Web App service worker that's not complete yet
@@ -258,6 +221,7 @@ We have good experience using these editors:
 # Todo
 - [x] production/development environments
 - [x] add "active" class for navigation items
+- [ ] fix examples again
 - [ ] production/development Angular 2 environments
 - [ ] bootstrap framework example
 - [ ] production services examples
