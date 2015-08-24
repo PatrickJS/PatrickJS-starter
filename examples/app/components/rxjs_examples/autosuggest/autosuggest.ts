@@ -3,7 +3,6 @@
 // Angular 2
 import {Directive, View, EventEmitter, ElementRef, LifecycleEvent} from 'angular2/angular2';
 
-import {Github} from './Github';
 // RxJs
 import * as Rx from 'rx';
 
@@ -14,7 +13,7 @@ import * as Rx from 'rx';
   events: [ 'term', 'loading' ]
 })
 export class Autosuggest {
-  term: EventEmitter = new EventEmitter();
+  term:    EventEmitter = new EventEmitter();
   loading: EventEmitter = new EventEmitter();
 
   constructor(private el: ElementRef, public github: Github) {
