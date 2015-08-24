@@ -1,7 +1,7 @@
 /// <reference path="../../../../typings/_custom.d.ts" />
 
 // Angular 2
-import {Component, View, EventEmitter, coreDirectives} from 'angular2/angular2';
+import {Component, View, EventEmitter, CORE_DIRECTIVES} from 'angular2/angular2';
 
 @Component({
   selector: 'board',
@@ -9,7 +9,7 @@ import {Component, View, EventEmitter, coreDirectives} from 'angular2/angular2';
   events: [ 'select' ]
 })
 @View({
-  directives: [ coreDirectives ],
+  directives: [ CORE_DIRECTIVES ],
   styles: [
     require('./board.css') // webpack require
   ],
