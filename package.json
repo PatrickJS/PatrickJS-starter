@@ -14,7 +14,7 @@
     "express": "NODE_ENV=development node ./examples/server/express-server-example.js",
     "express:dev": " NODE_ENV=development  node ./examples/server/express-server-example.js",
     "express:prod": "NODE_ENV=production node ./examples/server/express-server-example.js",
-    "express-install": "npm install express connect-history-api-fallback morgan body-parser",
+    "express-install": "npm install express connect-history-api-fallback morgan body-parser cors",
     "env:dev": "NODE_ENV=development",
     "env:prod": "NODE_ENV=production",
     "webdriver-update": "webdriver-manager update",
