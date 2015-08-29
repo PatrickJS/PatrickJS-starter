@@ -41,10 +41,15 @@ var config = {
   entry: {
     'angular2': [
       // Angular 2 Deps
+      'rx',
       'zone.js',
       'reflect-metadata',
-      'rtts_assert/rtts_assert',
-      'angular2/angular2'
+      // 'rtts_assert/rtts_assert',
+
+      'angular2/angular2',
+      'angular2/router',
+      'angular2/di',
+      'ngHttp'
     ],
     'app': [
       // App

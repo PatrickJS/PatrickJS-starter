@@ -6,6 +6,8 @@ import {bootstrap} from 'angular2/angular2';
 /*
  * Angular Bindings
  */
+// should be angular2/http in next release
+import {HTTP_BINDINGS} from 'ngHttp/http';
 import {FORM_BINDINGS} from 'angular2/angular2'
 // should be ROUTER_BINDINGS in next release
 import {routerInjectables as ROUTER_BINDINGS} from 'angular2/router';
@@ -16,7 +18,7 @@ import {routerInjectables as ROUTER_BINDINGS} from 'angular2/router';
  */
 import {App} from './app';
 
-const APP_BINDINGS = [ FORM_BINDINGS, ROUTER_BINDINGS ];
+const APP_BINDINGS = [ FORM_BINDINGS, ROUTER_BINDINGS, HTTP_BINDINGS ];
 /*
  * Bootstrap our Angular app with a top level component `App` and inject
  * our services/bindings into Angular's dependency injection
