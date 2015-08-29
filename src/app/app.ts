@@ -3,7 +3,7 @@
 /*
  * Angular 2 decorators and servces
  */
-import {Directive, Component, View} from 'angular2/angular2';
+import {Directive, Component, View, LifecycleEvent} from 'angular2/angular2';
 import {RouteConfig, Router} from 'angular2/router';
 // should be angular2/http in next release
 import {Http} from 'ngHttp/http';
@@ -21,25 +21,32 @@ import {routerDirectives as ROUTER_DIRECTIVES} from 'angular2/router';
  * Top Level Component
  */
 @Component({
-  selector: 'app'
+  selector: 'app',
+  lifecycle: [ LifecycleEvent.onInit ]
 })
 @View({
   // needed in order to tell Angular's compiler what's in the template
   directives: [ CORE_DIRECTIVES, FORM_DIRECTIVES, ROUTER_DIRECTIVES ],
   style: [`
-    .title { font-family: Arial, Helvetica, sans-serif; }
+    .title {
+      font-family: Arial,
+      Helvetica, sans-serif;
+    }
   `],
   template: `
   <header>
-    <h1 class="title">Hello {{ name }}</h1>
+    <h1 class="title">Hello {{ title }}</h1>
   </header>
 
   <main>
     Your Content Here
     <div>
-      <input type="text" [(ng-model)]="name" autofocus>
+      <input type="text" [(ng-model)]="title" autofocus>
     </div>
+
+    <pre>this.title = {{ title | json }}</pre>
     <pre>this.data = {{ data | json }}</pre>
+
   </main>
 
   <footer>
@@ -48,25 +55,50 @@ import {routerDirectives as ROUTER_DIRECTIVES} from 'angular2/router';
   `
 })
 export class App {
-  name: string;
+  title: string;
   data: Array<any> = []; // default data
-  constructor() {
-    this.name = 'Angular 2';
-    this.getData();
+  constructor(public http: Http) {
+    this.title = 'Angular 2';
   }
-  
-  getData() {
-    // fake async call
-    setTimeout(() => {
-      let data = [
-        { value: 'finish example', created_at: new Date() }
-      ];
-      
-      // fake callback
-      this.data = data;
 
-    }, 2000);
+  onInit() {
+    // npm run express-install
+    // npm run express
 
-  }
+    const BASE_URL = 'http://localhost:3001';
+    const TODO_API_URL = '/api/todos';
+
+    this.http.
+      get(BASE_URL + TODO_API_URL, {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      }).
+      toRx().
+      map(res => res.json()).
+      subscribe(
+        // onNext value
+        data => this.serverData(data),
+        // onError
+        err  => this.errorMessage(err)
+      );//end http
+
+  }//onInit
+
+  serverData(data) {
+    console.log('data', data);
+    this.data = data;
+  }//serverData
+
+  errorMessage(err) {
+    if (err && (/Unexpected token/).test(err.message)) {
+      console.info(`${'\n'
+        } // You must run these commands for the Http API to work ${'\n'
+        } npm install express connect-history-api-fallback morgan body-parser ${'\n'
+        } npm run express
+      `);
+    }//end err.message
+  }//errorMessage
 
 }
