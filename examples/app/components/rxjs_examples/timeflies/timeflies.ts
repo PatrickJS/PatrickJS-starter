@@ -1,10 +1,10 @@
 /// <reference path="../../../../typings/_custom.d.ts" />
 
 // Angular 2
-import {Component, View, ElementRef, NgZone, LifecycleEvent, coreDirectives} from 'angular2/angular2';
+import {Component, View, ElementRef, NgZone, LifecycleEvent, CORE_DIRECTIVES} from 'angular2/angular2';
 
 // Services
-import {Message} from './Message';
+import {MESSAGE_BINDINGS, Message} from './Message';
 
 import * as Rx from 'rx';
 var Observable = Rx.Observable;
@@ -19,10 +19,10 @@ interface LetterConfig {
 @Component({
   selector: 'timeflies',
   lifecycle: [ LifecycleEvent.onInit ],
-  bindings: [ Message ]
+  bindings: [ MESSAGE_BINDINGS ]
 })
 @View({
-  directives: [ coreDirectives ],
+  directives: [ CORE_DIRECTIVES ],
   template: `
   <div style="background-color: papayawhip; height: 500px;">
     <span *ng-for="#letter of letters"
