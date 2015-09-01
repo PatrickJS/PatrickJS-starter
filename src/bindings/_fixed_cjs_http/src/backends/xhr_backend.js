@@ -48,6 +48,7 @@ var XHRConnection = (function () {
             if (status === 0) {
                 status = response ? 200 : 0;
             }
+
             var responseOptions = new base_response_options_1.ResponseOptions({ body: response, status: status });
             if (lang_1.isPresent(baseResponseOptions)) {
                 responseOptions = baseResponseOptions.merge(responseOptions);
@@ -56,11 +57,33 @@ var XHRConnection = (function () {
             // TODO(gdi2290): defer complete if array buffer until done
             async_1.ObservableWrapper.callReturn(_this.response);
         });
+
+        this._xhr.addEventListener('error', function (err) {
+            var responseOptions = new base_response_options_1.ResponseOptions({
+              body: err,
+              type: enums_1.ResponseTypes.Error,
+              status: _this._xhr.status,
+              ok: false
+            });
+
+            if (lang_1.isPresent(baseResponseOptions)) {
+                responseOptions = baseResponseOptions.merge(responseOptions);
+            }
+            async_1.ObservableWrapper.callThrow(_this.response, new static_response_1.Response(responseOptions));
+        });
         // TODO(jeffbcross): make this more dynamic based on body type
         if (lang_1.isPresent(req.headers)) {
             req.headers.forEach(function (value, name) { _this._xhr.setRequestHeader(name, value); });
         }
-        this._xhr.send(this.request.text());
+        try {
+          this._xhr.send(this.request.text());
+        } catch(err) {
+          var responseOptions = new base_response_options_1.ResponseOptions({ body: err, type: enums_1.ResponseTypes.Error });
+          if (lang_1.isPresent(baseResponseOptions)) {
+              responseOptions = baseResponseOptions.merge(responseOptions);
+          }
+          async_1.ObservableWrapper.callThrow(_this.response, new static_response_1.Response(responseOptions));
+        }
     }
     /**
      * Calls abort on the underlying XMLHttpRequest.
@@ -104,7 +127,7 @@ var XHRBackend = (function () {
         return new XHRConnection(request, this._browserXHR, this._baseResponseOptions);
     };
     XHRBackend = __decorate([
-        di_1.Injectable(), 
+        di_1.Injectable(),
         __metadata('design:paramtypes', [browser_xhr_1.BrowserXhr, base_response_options_1.ResponseOptions])
     ], XHRBackend);
     return XHRBackend;
