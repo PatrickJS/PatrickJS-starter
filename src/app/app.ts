@@ -12,7 +12,6 @@ import {Http} from 'ngHttp/http';
  * Angular Directives
  */
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/angular2';
-// should be ROUTER_DIRECTIVES in next release
 import {ROUTER_DIRECTIVES} from 'angular2/router';
 
 

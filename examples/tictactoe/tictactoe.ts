@@ -9,6 +9,7 @@ import {GameService}  from './GameService';
 // Components
 import {Board} from './board';
 
+
 @Component({
   selector: 'tictactoe',
   viewBindings: [ GameService ]

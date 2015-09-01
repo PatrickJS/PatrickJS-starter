@@ -10,8 +10,7 @@ import {RouteConfig} from 'angular2/router';
  * Directives
  */
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/angular2';
-// should be ROUTER_DIRECTIVES in next release
-import {routerDirectives as ROUTER_DIRECTIVES} from 'angular2/router';
+import {ROUTER_DIRECTIVES} from 'angular2/router';
 // Import all of our custom app directives
 import {APP_DIRECTIVES} from '../directives/directives';
 

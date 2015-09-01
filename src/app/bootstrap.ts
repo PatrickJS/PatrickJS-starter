@@ -9,7 +9,6 @@ import {bootstrap} from 'angular2/angular2';
 // should be angular2/http in next release
 import {HTTP_BINDINGS} from 'ngHttp/http';
 import {FORM_BINDINGS} from 'angular2/angular2'
-// should be ROUTER_BINDINGS in next release
 import {ROUTER_BINDINGS} from 'angular2/router';
 
 /*
