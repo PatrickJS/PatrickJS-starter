@@ -39,10 +39,10 @@
   },
   "homepage": "https://github.com/angular-class/angular2-webpack-starter",
   "dependencies": {
-    "angular2": "2.0.0-alpha.35",
-    "ngHttp": "file:examples/_fixed_cjs_http",
+    "angular2": "2.0.0-alpha.36",
+    "ngHttp": "file:src/bindings/_fixed_cjs_http",
     "reflect-metadata": "^0.1.0",
-    "rtts_assert": "2.0.0-alpha.35",
+    "rtts_assert": "2.0.0-alpha.36",
     "rx": "^2.5.3",
     "zone.js": "^0.5.3"
   },
