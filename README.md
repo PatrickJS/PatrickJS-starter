@@ -51,7 +51,6 @@ npm start
 * [Contributing](#contributing)
 * [TypeScript](#typescript)
 * [Frequently asked questions](#frequently-asked-questions)
-* [Todo](#todo)
 * [Support, Questions, or Feedback](#support-questions-or-feedback)
 * [License](#license)
 
@@ -213,19 +212,6 @@ We have good experience using these editors:
 * How do I start the app when I get `EACCES` and `EADDRINUSE` errors? 
   * The `EADDRINUSE` error means the port `3000` is currently being used and `EACCES` is lack of permission for webpack to build files to `./__build__/`
 
-
-# Todo
-- [x] production/development environments
-- [x] add "active" class for navigation items
-- [ ] fix examples again
-- [ ] include server again
-- [ ] universal (isomorphic) example
-- [ ] production/development Angular 2 environments
-- [ ] bootstrap framework example
-- [ ] production services examples
-- [ ] small/medium/large abstraction examples
-- [ ] Material Design example
-- [ ] hot-component-reloading
 
 # Support, Questions, or Feedback
 > Contact us anytime for anything about this repo or Angular 2
