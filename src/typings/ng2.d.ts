@@ -7,6 +7,9 @@ interface Type extends Function {
 declare module "angular2/router" {
   var ROUTER_BINDINGS: any;
   var ROUTER_DIRECTIVES: any;
+  class Router {
+
+  }
 }
 
 declare module "angular2/test" {
