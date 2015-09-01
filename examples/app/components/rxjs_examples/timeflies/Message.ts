@@ -9,3 +9,8 @@ export class Message {
   }
 
 }
+
+
+export var MESSAGE_BINDINGS: Array<any> = [
+  bind(Message).toClass(Message)
+];
