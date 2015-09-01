@@ -1,7 +1,7 @@
 /// <reference path="../../../../typings/_custom.d.ts" />
 
 // Angular 2
-import {Component, View, coreDirectives, formDirectives} from 'angular2/angular2';
+import {Component, View, CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/angular2';
 
 import {Autosuggest} from './autosuggest';
 
@@ -9,7 +9,7 @@ import {Autosuggest} from './autosuggest';
   selector: 'search-github'
 })
 @View({
-  directives: [ coreDirectives, formDirectives, Autosuggest ],
+  directives: [ CORE_DIRECTIVES, FORM_DIRECTIVES, Autosuggest ],
   template: `
   <div style="padding: 0 16px;">
     <h2>Search Github repos</h2>
