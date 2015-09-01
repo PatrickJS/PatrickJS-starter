@@ -4,6 +4,7 @@
  * Angular 2
  */
 import {Component, View, Directive, ElementRef} from 'angular2/angular2';
+import {Renderer} from 'angular2/render';
 
 /*
  * TODO: refactor
@@ -13,11 +14,9 @@ import {Component, View, Directive, ElementRef} from 'angular2/angular2';
   selector: '[x-large]' // using [ ] means selecting attributes
 })
 class XLarge {
-  constructor(public el: ElementRef) {
+  constructor(el: ElementRef, renderer: Renderer) {
     // simple dom manipulation to set font size to x-large
-    if (this.el.nativeElement.style) {
-      this.el.nativeElement.style.fontSize = 'x-large';
-    }
+    renderer.setElementStyle(el, 'fontSize', 'x-large');
   }
 }
 
