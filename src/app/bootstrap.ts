@@ -10,7 +10,7 @@ import {bootstrap} from 'angular2/angular2';
 import {HTTP_BINDINGS} from 'ngHttp/http';
 import {FORM_BINDINGS} from 'angular2/angular2'
 // should be ROUTER_BINDINGS in next release
-import {routerInjectables as ROUTER_BINDINGS} from 'angular2/router';
+import {ROUTER_BINDINGS} from 'angular2/router';
 
 /*
  * App Component

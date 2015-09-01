@@ -13,7 +13,7 @@ import {Http} from 'ngHttp/http';
  */
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/angular2';
 // should be ROUTER_DIRECTIVES in next release
-import {routerDirectives as ROUTER_DIRECTIVES} from 'angular2/router';
+import {ROUTER_DIRECTIVES} from 'angular2/router';
 
 
 /*
@@ -92,10 +92,10 @@ export class App {
   }//serverData
 
   errorMessage(err) {
-    if (err && (/Unexpected token/).test(err.message)) {
+    if (err && (/Unexpected token/).test(err.message) || err.status === 0) {
       console.info(`${'\n'
-        } // You must run these commands for the Http API to work ${'\n'
-        } npm install express connect-history-api-fallback morgan body-parser ${'\n'
+        } // You must run these commands for the Http API to work in another process ${'\n'
+        } npm install express-install ${'\n'
         } npm run express
       `);
     }//end err.message
