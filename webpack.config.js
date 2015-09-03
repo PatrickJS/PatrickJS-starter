@@ -44,8 +44,7 @@ var config = {
       'rx',
       'zone.js',
       'reflect-metadata',
-      // 'rtts_assert/rtts_assert',
-
+      // to ensure these modules are grouped together in one file
       'angular2/angular2',
       'angular2/router',
       'angular2/di',
