@@ -26,8 +26,9 @@
     "e2e": "npm run protractor",
     "test": "karma start",
     "remove-http-typings": "rm -rf node_modules/angular2/bundles/typings/angular2/http.d.ts",
-    "postinstall": "npm run remove-http-typings && tsd install",
-    "prestart": "npm install",
+    "tsd-update": "npm run remove-http-typings && tsd reinstall --overwrite",
+    "postinstall": "npm run tsd-update && tsd install && tsd link",
+    "prestart": "npm install && tsd install && tsd link",
     "start": "npm run server"
   },
   "repository": {
