@@ -211,6 +211,8 @@ We have good experience using these editors:
   * No, please visit [Is Angular 2 Ready Yet?](http://splintercode.github.io/is-angular-2-ready/) website.
 * How do I start the app when I get `EACCES` and `EADDRINUSE` errors? 
   * The `EADDRINUSE` error means the port `3000` is currently being used and `EACCES` is lack of permission for webpack to build files to `./__build__/`
+* Why am I getting lots of warnings when starting the repo?
+  * You need to run `tsd install` this happens when tsd didn't install correctly or at all
 
 
 # Support, Questions, or Feedback
