@@ -75,17 +75,16 @@ var config = {
     root: __dirname,
     extensions: ['','.ts','.js','.json'],
     alias: {
-      // we can switch between development and production
-      // 'angular2': 'node_modules/angular2/ts',
-      // 'angular2': 'angular2/ts/dev',
+      // should be angular2/http in next release
+      'angular2/http': 'node_modules/ngHttp/http.js',
 
-      'app': 'src/app',
-      'common': 'src/common',
 
+      // 'app': 'src/app',
+      // 'common': 'src/common',
+      // 'bindings': 'src/bindings',
       // 'components': 'src/app/components'
-      // 'services': '/app/services/*.js',
-      // 'stores/*': '/app/stores/*.js'
-      // 'angular2': 'angular2/es6/dev'
+      // 'services': 'src/app/services',
+      // 'stores': 'src/app/stores'
     }
   },
 

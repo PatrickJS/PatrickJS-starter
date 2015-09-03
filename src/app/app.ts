@@ -5,8 +5,7 @@
  */
 import {Directive, Component, View, LifecycleEvent} from 'angular2/angular2';
 import {RouteConfig, Router} from 'angular2/router';
-// should be angular2/http in next release
-import {Http} from 'ngHttp/http';
+import {Http} from 'angular2/http';
 
 /*
  * Angular Directives
