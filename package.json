@@ -28,7 +28,7 @@
     "remove-http-typings": "rm -rf node_modules/angular2/bundles/typings/angular2/http.d.ts",
     "tsd-update": "npm run remove-http-typings && tsd reinstall --overwrite",
     "postinstall": "npm run tsd-update && tsd install && tsd link",
-    "prestart": "npm install && tsd install && tsd link",
+    "prestart": "npm install",
     "start": "npm run server"
   },
   "repository": {
@@ -44,7 +44,7 @@
   "dependencies": {
     "angular2": "2.0.0-alpha.36",
     "ngHttp": "file:src/bindings/_fixed_cjs_http",
-    "reflect-metadata": "^0.1.1",
+    "reflect-metadata": "0.1.0",
     "rx": "^2.5.3",
     "zone.js": "^0.5.4"
   },
