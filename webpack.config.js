@@ -109,7 +109,19 @@ var config = {
       { test: /\.html$/,  loader: 'raw' },
 
       // Support for .ts files.
-      { test: /\.ts$/,    loader: 'typescript-simple?&ignoreWarnings[]=2300&ignoreWarnings[]=2309', exclude: [
+      {
+        test: /\.ts$/,
+
+        loader: 'typescript-simple?' + [
+          // 2300 -> Duplicate identifier
+          'ignoreWarnings[]=2300',
+          // 2346 -> Supplied parameters do not match any signature of call target.
+          'ignoreWarnings[]=2346',
+          // 2309 -> An export assignment cannot be used in a module with other exported elements.
+          'ignoreWarnings[]=2309'
+        ].join('&'),
+
+        exclude: [
           /\.spec\.ts$/,
           /\.e2e\.ts$/,
           /web_modules/,
