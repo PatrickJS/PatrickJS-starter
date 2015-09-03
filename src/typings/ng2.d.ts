@@ -7,8 +7,21 @@ interface Type extends Function {
 declare module "angular2/router" {
   var ROUTER_BINDINGS: any;
   var ROUTER_DIRECTIVES: any;
+  var RouteConfig: any;
   class Router {
+  }
 
+  class Route {
+    constructor(config: any)
+  }
+  class AuxRoute {
+    constructor(config: any)
+  }
+  class AsyncRoute {
+    constructor(config: any)
+  }
+  class Redirect {
+    constructor(config: any)
   }
 }
 
