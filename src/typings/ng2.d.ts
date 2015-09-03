@@ -12,15 +12,19 @@ declare module "angular2/router" {
   }
 
   class Route {
+    new (config: any): any;
     constructor(config: any)
   }
   class AuxRoute {
+    new (config: any): any;
     constructor(config: any)
   }
   class AsyncRoute {
+    new (config: any): any;
     constructor(config: any)
   }
   class Redirect {
+    new (config: any): any;
     constructor(config: any)
   }
 }
