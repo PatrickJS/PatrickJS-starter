@@ -131,7 +131,8 @@ var config = {
       }
     ],
     noParse: [
-      /rtts_assert\/src\/rtts_assert/
+      /rtts_assert\/src\/rtts_assert/,
+      /reflect-metadata/
     ]
   },
 
