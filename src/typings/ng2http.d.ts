@@ -973,6 +973,10 @@ declare module "angular2_http/http" {
   export = ngHttp;
 }
 
+declare module "angular2/http" {
+  export = ngHttp;
+}
+
 declare module "ngHttp" {
   export = ngHttp;
 }
