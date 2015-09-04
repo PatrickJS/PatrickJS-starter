@@ -47,8 +47,9 @@ var config = {
       // to ensure these modules are grouped together in one file
       'angular2/angular2',
       'angular2/router',
-      'angular2/di',
-      'ngHttp'
+      'angular2/http',
+      'angular2/debug',
+      'angular2/di'
     ],
     'app': [
       // App
