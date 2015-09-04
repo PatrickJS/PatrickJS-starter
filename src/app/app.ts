@@ -5,7 +5,7 @@
  */
 import {Directive, Component, View, LifecycleEvent} from 'angular2/angular2';
 import {RouteConfig, Router} from 'angular2/router';
-import {Http} from 'angular2/http';
+import {Http, Jsonp} from 'angular2/http';
 
 /*
  * Angular Directives
