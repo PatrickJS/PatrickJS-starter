@@ -29,6 +29,14 @@ declare module "angular2/router" {
   }
 }
 
+declare module "angular2/debug" {
+  var ELEMENT_PROBE_BINDINGS: any;
+  class DebugElementViewListener {
+
+  }
+  function inspectNativeElement(element: any): any;
+}
+
 declare module "angular2/test" {
   class TestComponentBuilder {}
   class AsyncTestCompleter {}
