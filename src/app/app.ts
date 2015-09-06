@@ -25,7 +25,7 @@ import {ROUTER_DIRECTIVES} from 'angular2/router';
 @View({
   // needed in order to tell Angular's compiler what's in the template
   directives: [ CORE_DIRECTIVES, FORM_DIRECTIVES, ROUTER_DIRECTIVES ],
-  style: [`
+  styles: [`
     .title {
       font-family: Arial,
       Helvetica, sans-serif;
