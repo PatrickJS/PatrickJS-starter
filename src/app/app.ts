@@ -93,7 +93,7 @@ export class App {
     if (err && (/Unexpected token/).test(err.message) || err.status === 0) {
       console.info(`${'\n'
         } // You must run these commands for the Http API to work in another process ${'\n'
-        } npm install express-install ${'\n'
+        } npm run express-install ${'\n'
         } npm run express
       `);
     }//end err.message
