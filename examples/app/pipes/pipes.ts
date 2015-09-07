@@ -7,14 +7,11 @@ import {Pipes} from 'angular2/change_detection';
 /*
  * App Pipes
  */
-import {rxAsync} from './RxPipe';
 import {CapitalizePipe} from './CapitalizePipe';
+import {RxPipe} from './RxPipe';
 
 
-export var APP_PIPES = [
-  Pipes.extend({
-    'async': rxAsync,
-    'capitalize': capitalize
-    // add more pipes to this Map
-  })
+export const APP_PIPES = [
+  CapitalizePipe,
+  RxPipe
 ];
