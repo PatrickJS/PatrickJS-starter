@@ -5,6 +5,8 @@ import {bootstrap} from 'angular2/angular2';
 
 import {App} from './app';
 
+
+const APP_BINDINGS = [ ];
 /*
  * Bootstrap our Angular app with a top level component `App` and inject
  * our Universal/Platform services/bindings into Angular's dependency injection
