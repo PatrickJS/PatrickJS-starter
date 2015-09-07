@@ -21,8 +21,8 @@ let template = require('./home.html');
   selector: 'home'
 })
 @View({
-  directives: [ APP_DIRECTIVES ],
   encapsulation: ViewEncapsulation.EMULATED,
+  directives: [ APP_DIRECTIVES ],
   // include our .html and .css file
   styles: [ styles ],
   template: template
