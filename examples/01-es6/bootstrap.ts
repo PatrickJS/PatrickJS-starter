@@ -244,3 +244,19 @@
 
   console.log('---------------------------------------------');
 }();
+!function() {
+  console.log('---------------Default Arguments-------------');
+/*
+ * With ES6 we can declare a default argument
+ */
+
+   function returnText(text = 'default text') {
+     return 'return:\n' + text;
+   }
+   console.log(returnText());
+   console.log(returnText('now with text'));
+   console.log('template strings now\n', now);
+
+
+  console.log('---------------------------------------------');
+}();
