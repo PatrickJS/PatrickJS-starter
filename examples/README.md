@@ -1,1 +1,1 @@
-Work In Progress refactor
+These are examples that you're able to copy/paste
