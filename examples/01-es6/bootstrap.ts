@@ -226,25 +226,25 @@
  * With ES6 we finally have multi-line string support
  */
 
-   let prevouly = '\n'+
+  let prevouly = '\n'+
 '   <h1>Test</h1>\n'+
 '   <p>testing</p>\n'+
-'   ';
-   console.log('template strings prevouly\n', prevouly)
+' ';
+  console.log('template strings prevouly\n', prevouly)
 
    // now we can use back-ticks
 
-   let now = `
+  let now = `
    <h1>Test</h1>
    <p>testing</p>
-   `;
+  `;
 
-   console.log('template strings now\n', now);
+  console.log('template strings now\n', now);
 
    // we also get interpolation features
-   let feature = 'interpolation';
+  let feature = 'interpolation';
 
-   console.log(`testing out the new ${ feature } feature in ES6`)
+  console.log(`testing out the new ${ feature } feature in ES6`)
 
 
   console.log('---------------------------------------------');
@@ -255,11 +255,11 @@
  * With ES6 we can declare a default argument
  */
 
-   function returnText(text = 'default text') {
-     return 'return:\n' + text;
-   }
-   console.log(returnText());
-   console.log(returnText('now with text'));
+  function returnText(text = 'default text') {
+    return 'return:\n' + text;
+  }
+  console.log(returnText());
+  console.log(returnText('now with text'));
 
 
   console.log('---------------------------------------------');
@@ -267,18 +267,18 @@
 !function() {
   console.log('----------------Rest Arguments--------------');
 /*
- * With ES6 we can declare a default argument
+ * With ES6 we can convert the arguments Object into an array
  */
 
-   function printObjects(...objects) {
-     objects.forEach(obj => {
-       console.log('ES6 rest object:', obj);
-     });
-   }
+  function printObjects(...objects) {
+    objects.forEach(obj => {
+      console.log('ES6 rest object:', obj);
+    });
+  }
 
-   printObjects({name: 'PatrickJS'}, {name: 'Lukas'}, {name: 'Jeff'}, {name: 'Dan'});
+  printObjects({name: 'PatrickJS'}, {name: 'Lukas'}, {name: 'Jeff'}, {name: 'Dan'});
 
-   console.log('-es5-');
+  console.log('-es5-');
    // in ES5 we would do
   function printObjectsES5(objects) {
     // re-assign objects as an Array of objects
@@ -287,7 +287,7 @@
     objects.forEach(obj => {
        console.log('ES5 rest object:', obj);
      });
-   }
+  }
 
    printObjectsES5({name: 'PatrickJS'}, {name: 'Lukas'}, {name: 'Jeff'}, {name: 'Dan'});
 
@@ -298,15 +298,99 @@
 !function() {
   console.log('---------------Spread Arguments--------------');
 /*
- * With ES6 we can declare a default argument
+ * With ES6 spread out an array into arguments for a function
  */
 
-   function printObjects(...objects) {
+  function printObjects(...objects) {
      console.log('rest object:', ...objects);
-   }
+  }
 
-   printObjects({name: 'PatrickJS'}, {name: 'Lukas'}, {name: 'Jeff'}, {name: 'Dan'});
+  printObjects({name: 'PatrickJS'}, {name: 'Lukas'}, {name: 'Jeff'}, {name: 'Dan'});
 
 
+  console.log('---------------------------------------------');
+}();
+!function() {
+  console.log('---------------------Class-------------------');
+/*
+ * We now have sugar for a common pattern a lot of people use in ES5
+ * we commented out the code because class declarations needs to be
+ * declared at the top-level declaration
+ */
+
+
+/*
+
+    // ES6 class
+    class TestObject {
+
+    }
+
+    console.log('\n', TestObject.toString())
+
+    // ES5 we would do this
+    function TestObjectES5() {
+
+    }
+
+    console.log('\n', TestObjectES5.toString())
+
+
+
+
+  // what happens when we add a method?
+
+    // ES6 class
+    class TestObject {
+      method() {
+        console.log('method');
+      }
+    }
+
+    console.log('\n', TestObject.prototype.method.toString())
+
+    // ES5 we would do this
+    function TestObjectES5() {
+
+    }
+
+    TestObjectES5.prototype.method = function() {
+      console.log('method');
+    }
+
+    console.log('\n', TestObjectES5.prototype.method.toString())
+
+
+
+  // what happens when we subclass?
+
+    class AnotherObject {
+
+    }
+    // ES6 class
+    class TestObject extends AnotherObject {
+      method() {
+        console.log('method');
+      }
+    }
+
+    function AnotherObjectES5() {
+
+    }
+
+    // ES5 we would do this
+    function TestObjectES5() {
+      AnotherObjectES5.apply(this, arguments);
+
+    }
+
+    TestObjectES5.prototype = Object.create(AnotherObjectES5);
+    TestObjectES5.prototype.constructor = TestObjectES5;
+
+    TestObjectES5.prototype.method = function() {
+      console.log('method');
+    }
+
+*/
   console.log('---------------------------------------------');
 }();
