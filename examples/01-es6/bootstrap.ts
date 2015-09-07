@@ -83,7 +83,7 @@
    */
 
 
-  var object = {
+  let object = {
     collection: ['PatrickJS', 'Lukas', 'Jeff', 'Dan'],
     value: 'print some value:',
     method: function() {
@@ -98,7 +98,7 @@
   object.method();
 
 
-  var object2 = {
+  let object2 = {
     collection: ['PatrickJS', 'Lukas', 'Jeff', 'Dan'],
     value: 'print some value:',
     method: function() {
@@ -226,7 +226,7 @@
  * With ES6 we finally have multi-line string support
  */
 
-   var prevouly = '\n'+
+   let prevouly = '\n'+
 '   <h1>Test</h1>\n'+
 '   <p>testing</p>\n'+
 '   ';
@@ -234,12 +234,17 @@
 
    // now we can use back-ticks
 
-   var now = `
+   let now = `
    <h1>Test</h1>
    <p>testing</p>
    `;
 
    console.log('template strings now\n', now);
+
+   // we also get interpolation features
+   let feature = 'interpolation';
+
+   console.log(`testing out the new ${ feature } feature in ES6`)
 
 
   console.log('---------------------------------------------');
