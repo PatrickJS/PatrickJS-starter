@@ -11,7 +11,7 @@ import {Validators} from 'angular2/forms';
  * angularDirectives: Angular's core/form/router directives
  * appDirectives: Our collection of directives from /directives
  */
-import {appDirectives, angularDirectives} from '../directives/directives';
+import {APP_DIRECTIVES, ANGULAR_DIRECTIVES} from '../directives/directives';
 
 /*
  * Services
@@ -25,16 +25,16 @@ import {TodoService} from '../services/TodoService';
   selector: 'todo'
 })
 @View({
-  directives: [ angularDirectives, appDirectives ],
-  template: `
-  <style>
+  directives: [ ANGULAR_DIRECTIVES, APP_DIRECTIVES ],
+  STYLES: [`
     .error-message {
       color: red;
     }
     form {
       padding:16px;
     }
-  </style>
+  `],
+  template: `
   <form
     [ng-form-model]="todoForm"
     (submit)="todoForm.valid && addTodo($event, todoInput.value)"
