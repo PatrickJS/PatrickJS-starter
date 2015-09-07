@@ -1,5 +1,5 @@
 
-import {Injectable} from 'angular2/angular2';
+import {bind, Injectable} from 'angular2/angular2';
 
 type Triple = [ string, string, string ]; // tuple type
 type Rows   = [ Triple, Triple, Triple ];
@@ -51,7 +51,7 @@ export class GameService {
 }
 
 export var GAMESERVICE_BINDINGS = [
-  GameService
+  bind(GameService).toClass(GameService)
 ];
 
 // Pure functions
