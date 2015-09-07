@@ -161,7 +161,14 @@
 !function() {
   console.log('----------------Destructuring----------------');
 
+  // ES6
+
   // import {ClassObject} from 'framework/or/library';
+
+  // ES5
+
+  // var lib = require('framework/or/library');
+  // var ClassObject = lib.ClassObject;
 
   // swap variables in ES5
   !function() {
@@ -209,6 +216,30 @@
     console.log(a, b); // 2,1
 
   }();
+
+
+  console.log('---------------------------------------------');
+}();
+!function() {
+  console.log('---------------Template String---------------');
+/*
+ * With ES6 we finally have multi-line string support
+ */
+
+   var prevouly = '\n'+
+'   <h1>Test</h1>\n'+
+'   <p>testing</p>\n'+
+'   ';
+   console.log('template strings prevouly\n', prevouly)
+
+   // now we can use back-ticks
+
+   var now = `
+   <h1>Test</h1>
+   <p>testing</p>
+   `;
+
+   console.log('template strings now\n', now);
 
 
   console.log('---------------------------------------------');
