@@ -255,7 +255,52 @@
    }
    console.log(returnText());
    console.log(returnText('now with text'));
-   console.log('template strings now\n', now);
+
+
+  console.log('---------------------------------------------');
+}();
+!function() {
+  console.log('----------------Rest Arguments--------------');
+/*
+ * With ES6 we can declare a default argument
+ */
+
+   function printObjects(...objects) {
+     objects.forEach(obj => {
+       console.log('ES6 rest object:', obj);
+     });
+   }
+
+   printObjects({name: 'PatrickJS'}, {name: 'Lukas'}, {name: 'Jeff'}, {name: 'Dan'});
+
+   console.log('-es5-');
+   // in ES5 we would do
+  function printObjectsES5(objects) {
+    // re-assign objects as an Array of objects
+    objects = Array.prototype.slice.call(arguments);
+
+    objects.forEach(obj => {
+       console.log('ES5 rest object:', obj);
+     });
+   }
+
+   printObjectsES5({name: 'PatrickJS'}, {name: 'Lukas'}, {name: 'Jeff'}, {name: 'Dan'});
+
+
+
+  console.log('---------------------------------------------');
+}();
+!function() {
+  console.log('---------------Spread Arguments--------------');
+/*
+ * With ES6 we can declare a default argument
+ */
+
+   function printObjects(...objects) {
+     console.log('rest object:', ...objects);
+   }
+
+   printObjects({name: 'PatrickJS'}, {name: 'Lukas'}, {name: 'Jeff'}, {name: 'Dan'});
 
 
   console.log('---------------------------------------------');
