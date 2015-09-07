@@ -6,13 +6,13 @@ import * as Rx from 'rx';
 @Directive({
   selector: '[drag-element]',
   host: {
-    // Observable plz
     // '(mouseup)': 'onMouseup($event)',
     // '(mousedown)': 'onMousedown($event)'
     // '(window:mousemove)': 'onMousedown($event)'
   }
 })
 export class DragElement {
+  // @HostEvent() will be released in alpha 38
   mouseup:   Rx.Observable<any>;
   mousemove: Rx.Observable<any>;
   mousedown: Rx.Observable<any>;
