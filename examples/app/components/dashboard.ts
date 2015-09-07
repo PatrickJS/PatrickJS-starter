@@ -14,9 +14,9 @@ import {Renderer} from 'angular2/render';
   selector: '[x-large]' // using [ ] means selecting attributes
 })
 class XLarge {
-  constructor(el: ElementRef, renderer: Renderer) {
-    // simple dom manipulation to set font size to x-large
-    renderer.setElementStyle(el, 'fontSize', 'x-large');
+  constructor(element: ElementRef, renderer: Renderer) {
+    // simple DOM manipulation to set font size to x-large
+    renderer.setElementStyle(element, 'fontSize', 'x-large');
   }
 }
 
@@ -26,12 +26,12 @@ class XLarge {
 })
 @View({
   directives: [ XLarge ],
-  template: `
-  <style>
+  styles: [`
     span[x-large] {
       color: red;
     }
-  </style>
+  `],
+  template: `
   <div>
     <h2>Dashboard</h2>
     <span x-large>Extra Large Font Directive</span>
