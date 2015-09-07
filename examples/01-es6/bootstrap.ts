@@ -9,7 +9,7 @@
  * In ES6 we have a lot of new features added to JavaScript
  * so let's go over a few of the features that we will see
  * in Angular 2
- *
+ * please consider using https://babeljs.io/repl
  */
 
 !function() {
@@ -187,7 +187,7 @@
 
     console.log(a, b); // 1,2
 
-    let [b, a] = [a, b];
+    [b, a] = [a, b];
 
     console.log(a, b); // 2,1
 
