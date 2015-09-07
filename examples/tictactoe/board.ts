@@ -4,9 +4,9 @@
 import {Component, View, EventEmitter, CORE_DIRECTIVES} from 'angular2/angular2';
 
 @Component({
-  selector: 'board',
+  selector:     'board',
   properties: [ 'board' ],
-  events: [ 'select' ]
+  events:     [ 'select' ]
 })
 @View({
   directives: [ CORE_DIRECTIVES ],

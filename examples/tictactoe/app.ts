@@ -19,5 +19,8 @@ import {Tictactoe} from './tictactoe';
   `
 })
 class App {
+  constructor() {
+
+  }
 
 }
