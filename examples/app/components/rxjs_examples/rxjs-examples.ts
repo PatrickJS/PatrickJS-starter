@@ -2,7 +2,7 @@
 
 // Angular 2
 import {Component, View, CSSClass} from 'angular2/angular2';
-import {RouteConfig, routerDirectives} from 'angular2/router';
+import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 
 import {Search} from './autosuggest/search';
 import {Timeflies} from './timeflies/timeflies';
@@ -21,7 +21,7 @@ import {DraggableDiv} from './draggable_div/draggable_div';
   { path: '/draggable_div', as: 'draggable_div', component: DraggableDiv }
 ])
 @View({
-  directives: [ routerDirectives, CSSClass ],
+  directives: [ ROUTER_DIRECTIVES, CSSClass ],
   // include our .css file
   styles: [
     // Use webpack's `require` to get files as a raw string using raw-loader
