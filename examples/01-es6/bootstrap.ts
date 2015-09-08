@@ -394,3 +394,25 @@
 */
   console.log('---------------------------------------------');
 }();
+!function() {
+  console.log('------------Enhanced Object Literals---------');
+
+  function handler() {
+    return 'handler';
+  }
+  function get42() {
+    return 42;
+  }
+
+  let object = {
+    // Shorthand for ‘handler: handler’
+    handler,
+    // Computed (dynamic) property names
+    [ 'prop_' + get42() ]: 42
+  };
+
+  console.log(object.handler())
+  console.log(object.prop_42());
+
+  console.log('---------------------------------------------');
+}();
