@@ -28,7 +28,7 @@ var config = {
 
   debug: true,
   cache: true,
-  // our Development Server configs
+  // our Development Server config
   devServer: {
     inline: true,
     colors: true,
