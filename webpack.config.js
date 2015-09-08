@@ -200,7 +200,7 @@ var environment_plugins = {
 if (NODE_ENV === 'production') {
   // replace filename `.js` with `.min.js`
   config.output.filename = config.output.filename.replace('.js', '.min.js');
-  config.output.sourceMapFilename = config.output.sourceMapFilename.replace('.js', '.min.js');
+  //config.output.sourceMapFilename = config.output.sourceMapFilename.replace('.js', '.min.js');
   commons_chunks_plugins = commons_chunks_plugins.map(function(chunk) {
     return chunk.filename.replace('.js', '.min.js');
   });
