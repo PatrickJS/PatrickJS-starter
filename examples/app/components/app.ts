@@ -31,7 +31,7 @@ import {Dashboard} from './dashboard';
 import {Todo} from './todo';
 
 // RxJs examples
-import {RxJsExamples} from './rxjs-examples/rxjs-examples';
+import {RxJsExamples} from './rxjs_examples/rxjs-examples';
 
 // Use webpack's `require` to get files as a raw string using raw-loader
 const APP_STYLES = require('./app.css');
