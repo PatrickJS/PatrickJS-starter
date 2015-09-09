@@ -13,22 +13,26 @@ import {Http} from 'angular2/http';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/angular2';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
 
-
 /*
  * App Component
  * Top Level Component
  */
 @Component({
-  selector: 'app',
-  lifecycle: [ LifecycleEvent.onInit ]
+  // The selector is what angular internally uses
+  // for `document.querySelectorAll(selector)` in our index.html
+  // where, in this case, selector is the string 'app'
+  selector: 'app'
 })
 @View({
-  // needed in order to tell Angular's compiler what's in the template
+  // We need to tell Angular's compiler what's in the template
   directives: [ CORE_DIRECTIVES, FORM_DIRECTIVES, ROUTER_DIRECTIVES ],
+  // list of styles
   styles: [`
     .title {
-      font-family: Arial,
-      Helvetica, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    main {
+      padding: 1em;
     }
   `],
   template: `
@@ -57,32 +61,32 @@ export class App {
   data: Array<any> = []; // default data
   constructor(public http: Http) {
     this.title = 'Angular 2';
-  }
 
-  onInit() {
+    // Our API
     // npm run express-install
     // npm run express
 
     const BASE_URL = 'http://localhost:3001';
     const TODO_API_URL = '/api/todos';
+    const JSON_HEADERS = {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    };
+    const http = this.http;
 
-    this.http.
-      get(BASE_URL + TODO_API_URL, {
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
-      }).
-      toRx().
-      map(res => res.json()).
-      subscribe(
-        // onNext value
+    http
+      .get(BASE_URL + TODO_API_URL, {
+        headers: JSON_HEADERS
+      })
+      .toRx()
+      .map(res => res.json())
+      .subscribe(
+        // onNext callback
         data => this.serverData(data),
-        // onError
+        // onError callback
         err  => this.errorMessage(err)
       );//end http
-
-  }//onInit
+  }
 
   serverData(data) {
     console.log('data', data);
