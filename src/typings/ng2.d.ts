@@ -13,19 +13,19 @@ declare module "angular2/router" {
 
   class Route {
     new (config: any): any;
-    constructor(config: any)
+    constructor(config: any);
   }
   class AuxRoute {
     new (config: any): any;
-    constructor(config: any)
+    constructor(config: any);
   }
   class AsyncRoute {
     new (config: any): any;
-    constructor(config: any)
+    constructor(config: any);
   }
   class Redirect {
     new (config: any): any;
-    constructor(config: any)
+    constructor(config: any);
   }
 }
 
@@ -51,7 +51,7 @@ declare module "angular2/test" {
 
 declare module "angular2/pipes" {
   class ObservablePipe {
-    constructor(ref?: any)
+    constructor(ref?: any);
     _subscription: any;
     _observable: any;
     _updateLatestValue(value: any): any;
@@ -83,10 +83,10 @@ declare module "angular2/http" {
   }
   class HttpFactory {}
   class MockBackend {
-    constructor(req: any)
+    constructor(req: any);
   }
   class Headers {
-    constructor(config: any)
+    constructor(config: any);
   }
   class XHRBackend {}
   class BaseRequestOptions {}
@@ -95,7 +95,7 @@ declare module "angular2/http" {
 
 declare module "angular2/src/core/life_cycle/life_cycle" {
   class LifeCycle {
-    constructor(...args)
+    constructor(...args);
     tick(): any;
   }
 }
@@ -114,7 +114,7 @@ declare module "angular2/src/render/dom/compiler/style_inliner" {
 
 declare module "angular2/src/core/compiler/view_resolver" {
   class ViewResolver {
-    resolve(appComponent: any): any
+    resolve(appComponent: any): any;
   }
 }
 
@@ -180,13 +180,13 @@ declare module "angular2/src/render/dom/shadow_dom/style_inliner" {
 }
 declare module "angular2/src/core/compiler/dynamic_component_loader" {
   class ComponentRef {
-    constructor(newLocation: any, component: any, dispose: any)
+    constructor(newLocation: any, component: any, dispose: any);
     location: any
     instance: any
     dispose: any
   }
   class DynamicComponentLoader {
-    loadAsRoot(appComponentType: any, bindings: any, injector: any): any
+    loadAsRoot(appComponentType: any, bindings: any, injector: any): any;
   }
 }
 declare module "angular2/src/core/testability/testability" {
@@ -244,8 +244,8 @@ declare module "angular2/src/render/dom/view/proto_view" {
   class DomProtoView {
     rootBindingOffset: any;
     element: any;
-    isTemplateElement(): any
-    elementBinders(): any
+    isTemplateElement(): any;
+    elementBinders(): any;
   }
 
 }
@@ -262,9 +262,9 @@ declare module "angular2/src/render/dom/util" {
 
 declare module "angular2/src/render/dom/dom_renderer" {
   class DomRenderer {
-    _moveViewNodesIntoParent(): any
-    _createGlobalEventListener(): any
-    _createEventListener(): any
+    _moveViewNodesIntoParent(): any;
+    _createGlobalEventListener(): any;
+    _createEventListener(): any;
   }
   var DOCUMENT_TOKEN: any;
 }
@@ -292,22 +292,22 @@ declare module "angular2/src/render/dom/view/view" {
 
   }
   class DomView {
-    viewContainers(): any
+    viewContainers(): any;
   }
   function resolveInternalDomView(viewRef: any): any;
 }
 declare module "angular2/src/render/dom/shadow_dom/shadow_dom_strategy" {
   class ShadowDomStrategy {
-    prepareShadowRoot(element: any): any
-    constructLightDom(lightDomView: any, el: any): any
+    prepareShadowRoot(element: any): any;
+    constructLightDom(lightDomView: any, el: any): any;
   }
 }
 
 declare module "angular2/src/render/dom/events/event_manager" {
   class EventManager {
-    constructor(...args)
-    addEventListener(element: any, eventName: string, handler: Function): any
-    addGlobalEventListener(target: string, eventName: string, handler: Function): any
+    constructor(...args);
+    addEventListener(element: any, eventName: string, handler: Function): any;
+    addGlobalEventListener(target: string, eventName: string, handler: Function): any;
   }
   class DomEventsPlugin {
 
@@ -354,14 +354,14 @@ declare module "angular2/change_detection" {
     transform(value: any, args: List<any>): any;
   }
   class Pipes {
-    static extend(pipes: any)
+    static extend(pipes: any);
   }
   class NullPipeFactory {}
   class PipeRegistry {
     constructor(pipes: any);
   }
   class WrappedValue {
-    static wrap(...args): any
+    static wrap(...args): any;
   }
   class ChangeDetectorRef {
     requestCheck(): void;
@@ -406,17 +406,17 @@ declare module "angular2/change_detection" {
 
 declare module "angular2/src/core/zone/ng_zone" {
   class NgZone {
-    constructor(config: any)
-    initCallbacks(config: any): any
+    constructor(config: any);
+    initCallbacks(config: any): any;
     runOutsideAngular(context: any): any;
-    run(context: any): any
+    run(context: any): any;
   }
 }
 
 
 declare module "angular2/src/core/compiler/element_ref" {
   class ElementRef {
-    constructor(host: any, location?: any)
+    constructor(host: any, location?: any);
     nativeElement: any;
   }
 }
@@ -451,24 +451,24 @@ declare module "angular2/forms" {
   var formDirectives: any;
   var formInjectables: any;
   class FormBuilder {
-    group(config: any): any
-    array(): any
+    group(config: any): any;
+    array(): any;
   }
   class Validators {
-    static required(): any
+    static required(): any;
   }
   class ControlGroup {
     value: any
     controls: any
-    include(): any
-    exclude(): any
+    include(): any;
+    exclude(): any;
   }
   class Control {
-    valueChanges(): any
+    valueChanges(): any;
   }
   class ControlArray {
-    push(): any
-    removeAt(): any
+    push(): any;
+    removeAt(): any;
   }
 
   class NgControlName {
@@ -516,14 +516,14 @@ declare module "angular2/src/render/dom/shadow_dom/emulated_unscoped_shadow_dom_
 
 declare module "angular2/core" {
   class ElementRef {
-    constructor(host: any, location?: any)
+    constructor(host: any, location?: any);
     nativeElement: any;
   }
   class QueryList<T> {
     onChange(callback: any): void;
   }
   class DirectiveResolver {
-    resolve(appComponent: any): any
+    resolve(appComponent: any): any;
   }
 }
 
@@ -705,7 +705,7 @@ declare module "angular2/src/facade/lang" {
 
 declare module "angular2/src/core/compiler/directive_resolver" {
   class DirectiveResolver {
-    resolve(appComponent: any): any
+    resolve(appComponent: any): any;
   }
 }
 
@@ -1014,8 +1014,8 @@ declare module "angular2/di" {
      resolveAndCreateChild(bindings: [any]): Injector;
      static resolveAndCreate(bindings: any): any;
      static fromResolvedBindings(bindings: any): any;
-     asyncGet(di: any):any
-     get(di: any):any
+     asyncGet(di: any):any;
+     get(di: any):any;
   }
   var Inject: any;
   var Injectable: any;
