@@ -1,5 +1,5 @@
 /// <reference path="../../typings/_custom.d.ts" />
-import {Pipe} from 'angular2/angular2';
+import {Pipe, ChangeDetectorRef} from 'angular2/angular2';
 import {AsyncPipe} from "angular2/pipes";
 import * as Rx from 'rx';
 
@@ -11,11 +11,14 @@ export class RxStrategy {
   createSubscription(async, updateLatestValue) {
     return async.subscribe(updateLatestValue, e => { throw e; });
   }
+
   dispose(subscription) {
     subscription.dispose();
   }
+
   onDestroy(subscription) {
     subscription.dispose();
+
   }
 }
 
