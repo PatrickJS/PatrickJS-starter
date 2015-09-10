@@ -63,7 +63,7 @@ class XLarge {
     Your Content Here
     <div>
 
-      <input type="text" [value]="title" (keyup)="title = $event.target.value" autofocus>
+      <input type="text" [value]="title" (input)="title = $event.target.value" autofocus>
       <!--
         Rather than wiring up two-way data-binding ourselves
         we can use Angular's [(ng-model)] syntax
