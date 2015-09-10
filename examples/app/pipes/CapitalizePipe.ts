@@ -17,7 +17,7 @@ export class CapitalizePipe {
     return isString(txt);
   }
 
-  transform(value: string, args?: List<any>): any {
+  transform(value: string, args?: Array<any>): any {
     return (!value) ? '' :
       (!args) ?
         this.capitalizeWord(value) :
@@ -27,9 +27,6 @@ export class CapitalizePipe {
   capitalizeWord(txt: string): string {
     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
 
-  }
-  onDestroy(): void {
-    // not needed since this is stateless
   }
 
 }

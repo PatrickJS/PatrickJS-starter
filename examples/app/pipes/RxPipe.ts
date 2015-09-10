@@ -36,7 +36,7 @@ export class RxPipe extends AsyncPipe {
     return isObservable(obs);
   }
 
-  _selectStrategy(obj: Rx.Observable<any>): any {
+  _selectStrategy(obj: Rx.Observable<any>) {
     return RX_STRATEGY;
   }
 
