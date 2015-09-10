@@ -1,49 +1,54 @@
 // Angular 2
 import {bootstrap} from 'angular2/angular2';
-import {Component, View} from 'angular2/angular2';
+import {
+  Component,
+  View,
+  Directive,
+  ElementRef,
+  Attribute,
+  NgStyle
+} from 'angular2/angular2';
 
-@Component({
-  selector: 'ac-word'
+
+@Directive({
+  // using [ ] means selecting an attribute
+  selector: '[x-large]'
 })
-@View({
-  template: `
-  Hello from Angular Class
-  `
-})
-class App {
-  constructor() {
-    console.log('Angular Class Word component');
+class XLarge {
+  constructor(element: ElementRef) {
+    element.nativeElement.style.fontSize = 'x-large';
   }
-
 }
 
-@Component({
-  selector: 'ac-box'
-})
-@View({
-  directives: [
-    AcWord
-  ],
-  template: `
-  <ac-word></ac-word>
-  `
-})
-class AcBox {
-  constructor() {
-    console.log('Angular Class Box component');
-  }
 
+@Directive({
+  // using [ ] means selecting an attribute
+  selector: '[set-font]'
+})
+class SetFont {
+  constructor(element: ElementRef, @Attribute('set-font') color: string) {
+    element.nativeElement.style.color = color;
+  }
 }
+
 
 @Component({
   selector: 'app'
 })
 @View({
   directives: [
-    AcBox
+    XLarge,
+    SetFont,
+    NgStyle
   ],
   template: `
-  <ac-box></ac-box>
+  <span x-large set-font="blue">Hello from AngularClass</span>
+
+  <div [hidden]="false">
+    hidden text?
+  </div>
+
+  <span [ng-style]=" {'color': 'blue'} ">Hello from AngularClass</span>
   `
 })
 class App {

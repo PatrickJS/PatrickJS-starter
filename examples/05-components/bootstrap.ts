@@ -1,53 +1,51 @@
 // Angular 2
 import {bootstrap} from 'angular2/angular2';
-import {
-  Component,
-  View,
-  Directive,
-  ElementRef,
-  Attribute,
-  NgIf,
-  NgStyle
-} from 'angular2/angular2';
+import {Component, View} from 'angular2/angular2';
 
-@Directive({
-  // using [ ] means selecting attributes
-  selector: '[x-large]'
+@Component({
+  selector: 'ac-word'
 })
-class XLarge {
-  constructor(element: ElementRef) {
-    element.nativeElement.style.fontSize = 'x-large';
+@View({
+  template: `
+  Hello from Angular Class
+  `
+})
+class App {
+  constructor() {
+    console.log('Angular Class Word component');
   }
+
 }
 
-
-@Directive({
-  // using [ ] means selecting attributes
-  selector: '[set-font]'
+@Component({
+  selector: 'ac-box'
 })
-class SetFont {
-  constructor(element: ElementRef, @Attribute('set-font') color: string) {
-    element.nativeElement.style.color = color;
+@View({
+  directives: [
+    AcWord
+  ],
+  template: `
+  <ac-word></ac-word>
+  `
+})
+class AcBox {
+  constructor() {
+    console.log('Angular Class Box component');
   }
-}
 
+}
 
 @Component({
   selector: 'app'
 })
 @View({
+  // We need to tell Angular's compiler which directives are in our template.
+  // Doing so will allow Angular to attach our behavior to an element
   directives: [
-    XLarge,
-    SetFont,
-    NgIf,
-    NgStyle
+    AcBox
   ],
   template: `
-  <span x-large set-font="blue">Hello from AngularClass</span>
-  <div *ng-if="true">
-    hidden text?
-  </div>
-  <span [ng-style]=" {'color': 'blue'} ">Hello from AngularClass</span>
+  <ac-box></ac-box>
   `
 })
 class App {
@@ -57,4 +55,4 @@ class App {
 }
 
 
-bootstrap(App);
+bootstrap(App, []);
