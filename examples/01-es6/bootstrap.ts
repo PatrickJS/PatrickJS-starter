@@ -11,25 +11,25 @@ app.innerHTML = 'open up your Console with CMD+Option+I';
  */
 
 console.log('----------ES6 variable declarations----------');
-require('./variable-declarations');
+require('./1.variable-declarations');
 
 console.log('---------------Arrow Functions---------------');
-require('./arrow-functions');
+require('./2.arrow-functions');
 
 console.log('----------------Destructuring----------------');
-require('./destructuring');
+require('./3.destructuring');
 
 console.log('---------------Template String---------------');
-require('./template-string');
+require('./4.template-string');
 
 console.log('----------------Rest Arguments--------------');
-require('./rest-arguments');
+require('./5.rest-arguments');
 
 console.log('---------------Spread Arguments--------------');
-require('./spread-arguments');
+require('./6.spread-arguments');
 
 console.log('---------------------Class-------------------');
-require('./class');
+require('./7.class');
 
 console.log('------------Enhanced Object Literals---------');
-require('./enhanced-object-literals');
+require('./8.enhanced-object-literals');
