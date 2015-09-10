@@ -33,3 +33,7 @@ require('./7.class');
 
 console.log('------------Enhanced Object Literals---------');
 require('./8.enhanced-object-literals');
+
+
+// ES6 Modules
+// www.2ality.com/2014/09/es6-modules-final.html
