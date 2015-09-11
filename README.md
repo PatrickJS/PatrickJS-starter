@@ -106,7 +106,7 @@ What you need to run this app:
 
 Once you have those, you should install these globals with `npm install --global`:
 * `webpack` (`npm install --global webpack`)
-* `webpack-dev-server` (`npm install -global webpack-dev-server`)
+* `webpack-dev-server` (`npm install --global webpack-dev-server`)
 * `karma` (`npm install --global karma-cli`)
 * `protractor` (`npm install --global protractor`)
 
