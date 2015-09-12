@@ -46,7 +46,7 @@ module.exports = {
       colors: true,
       reasons: true
     }
-  })
+  }),
 
   // our Development Server config
   devServer: {
@@ -133,10 +133,10 @@ module.exports = {
 
         query: {
           'ignoreWarnings': [
-            '2300', // 2300 -> Duplicate identifier
-            '2309', // 2309 -> An export assignment cannot be used in a module with other exported elements.
-            '2346', // 2346 -> Supplied parameters do not match any signature of call target.
-            '2432'  // 2432 -> In an enum with multiple declarations, only one declaration can omit an initializer for its first enum element.
+            2300, // 2300 -> Duplicate identifier
+            2309, // 2309 -> An export assignment cannot be used in a module with other exported elements.
+            2346, // 2346 -> Supplied parameters do not match any signature of call target.
+            2432  // 2432 -> In an enum with multiple declarations, only one declaration can omit an initializer for its first enum element.
           ]
         },
 

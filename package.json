@@ -63,7 +63,7 @@
     "style-loader": "^0.12.2",
     "tsd": "^0.6.4",
     "typescript": "^1.6.0-beta",
-    "typescript-simple-loader": "^0.3.2",
+    "typescript-simple-loader": "^0.3.7",
     "url-loader": "^0.5.5",
     "webpack": "^1.10.5",
     "webpack-dev-server": "^1.10.1"
