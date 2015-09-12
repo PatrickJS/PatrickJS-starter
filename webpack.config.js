@@ -93,7 +93,7 @@ module.exports = {
     extensions: ['','.ts','.js','.json'],
     alias: {
       // should be angular2/http in next release
-      'angular2/http': 'node_modules/ngHttp/http.js',
+      // 'angular2/http': 'node_modules/ngHttp/http.js',
 
 
       // 'app': 'src/app',
@@ -125,8 +125,9 @@ module.exports = {
         query: {
           'ignoreWarnings': [
             '2300', // 2300 -> Duplicate identifier
+            '2309', // 2309 -> An export assignment cannot be used in a module with other exported elements.
             '2346', // 2346 -> Supplied parameters do not match any signature of call target.
-            '2309'  // 2309 -> An export assignment cannot be used in a module with other exported elements.
+            '2432'  // 2432 -> In an enum with multiple declarations, only one declaration can omit an initializer for its first enum element.
           ]
         },
 

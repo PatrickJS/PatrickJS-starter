@@ -5,7 +5,7 @@
  */
 import {Directive, Component, View, ElementRef} from 'angular2/angular2';
 import {RouteConfig, Router} from 'angular2/router';
-import {Http} from 'angular2/http';
+import {Http, Headers} from 'angular2/http';
 
 /*
  * Angular Directives
@@ -94,10 +94,10 @@ export class App {
 
     const BASE_URL = 'http://localhost:3001';
     const TODO_API_URL = '/api/todos';
-    const JSON_HEADERS = {
+    const JSON_HEADERS = new Headers({
       'Accept': 'application/json',
       'Content-Type': 'application/json'
-    };
+    });
 
     this.http
       .get(BASE_URL + TODO_API_URL, {
