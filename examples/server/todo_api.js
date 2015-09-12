@@ -6,7 +6,7 @@ var express = require('express');
 
 var db = require('./db');
 
-module.exports = function() {
+module.exports = function(config) {
   var router = express.Router();
 
 
