@@ -29,6 +29,10 @@ declare module "angular2/router" {
   }
 }
 
+declare module "angular2/tools" {
+  function enableDebugTools(appRef: any): any;
+}
+
 declare module "angular2/debug" {
   var ELEMENT_PROBE_BINDINGS: any;
   class DebugElementViewListener {

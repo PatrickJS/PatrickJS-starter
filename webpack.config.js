@@ -38,6 +38,15 @@ module.exports = {
     // 'development': false
     'all': true
   }),
+  verbose: true,
+  displayErrorDetails: true,
+  context: __dirname,
+  stats: env({
+    'all': {
+      colors: true,
+      reasons: true
+    }
+  })
 
   // our Development Server config
   devServer: {
@@ -202,14 +211,7 @@ module.exports = {
   node: {
     crypto: false,
     __filename: true
-  },
-
-  stats: env({
-    'all': {
-      colors: true,
-      reasons: true
-    }
-  })
+  }
 };
 
 
