@@ -2,6 +2,8 @@
 
 // Helper
 var sliceArgs = Function.prototype.call.bind(Array.prototype.slice);
+var toString = Object.prototype.toString;
+Object.assign = require('object-assign');
 var NODE_ENV = process.env.NODE_ENV || 'development';
 
 // Node
@@ -22,12 +24,21 @@ var BannerPlugin   = webpack.BannerPlugin;
  * Config
  */
 
-var config = {
-  devtool: 'source-map',
-  // devtool: 'eval',
+module.exports = {
+  devtool: env({
+    'development': 'eval',
+    'all': 'source-map'
+  }),
 
-  debug: true,
-  cache: true,
+  debug: env({
+    'development': true,
+    'all': false
+  }),
+  cache: env({
+    // 'development': false
+    'all': true
+  }),
+
   // our Development Server config
   devServer: {
     inline: true,
@@ -65,9 +76,14 @@ var config = {
   // Config for our build files
   output: {
     path: root('__build__'),
-    filename: '[name].js',
-    // filename: '[name].[hash].js',
-    sourceMapFilename: '[name].js.map',
+    filename: env({
+      'development': '[name].js',
+      'all': '[name].[hash].min.js'
+    }),
+    sourceMapFilename: env({
+      'development': '[name].js.map',
+      'all': '[name].[hash].min.js.map'
+    }),
     chunkFilename: '[id].chunk.js'
     // publicPath: 'http://mycdn.com/'
   },
@@ -89,15 +105,6 @@ var config = {
     }
   },
 
-  /*
-   * When using `templateUrl` and `styleUrls` please use `__filename`
-   * rather than `module.id` for `moduleId` in `@View`
-   */
-  node: {
-    crypto: false,
-    __filename: true
-  },
-
   module: {
     loaders: [
       // Support for *.json files.
@@ -113,16 +120,18 @@ var config = {
       {
         test: /\.ts$/,
 
-        loader: 'typescript-simple?' + [
-          // 2300 -> Duplicate identifier
-          'ignoreWarnings[]=2300',
-          // 2346 -> Supplied parameters do not match any signature of call target.
-          'ignoreWarnings[]=2346',
-          // 2309 -> An export assignment cannot be used in a module with other exported elements.
-          'ignoreWarnings[]=2309'
-        ].join('&'),
+        loader: 'typescript-simple',
+
+        query: {
+          'ignoreWarnings': [
+            '2300', // 2300 -> Duplicate identifier
+            '2346', // 2346 -> Supplied parameters do not match any signature of call target.
+            '2309'  // 2309 -> An export assignment cannot be used in a module with other exported elements.
+          ]
+        },
 
         exclude: [
+          /\.min\.js$/,
           /\.spec\.ts$/,
           /\.e2e\.ts$/,
           /web_modules/,
@@ -137,88 +146,83 @@ var config = {
     ]
   },
 
-  // plugins: plugins, // see below
-  context: __dirname,
-  stats: { colors: true, reasons: true }
+  plugins: env({
+    'production': [
+      new UglifyJsPlugin({
+        compress: {
+          warnings: false,
+          drop_debugger: env({
+            'development': false,
+            'all': true
+          })
+        },
+        output: {
+          comments: false
+        },
+        beautify: false
+      }),
+      new BannerPlugin(getBanner(), {entryOnly: true})
+    ],
+    'development': [
+      /* Dev Plugin */
+      // new webpack.HotModuleReplacementPlugin(),
+    ],
+    'all': [
+      new DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
+        'VERSION': JSON.stringify(pkg.version)
+      }),
+      new OccurenceOrderPlugin(),
+      new DedupePlugin(),
+
+      new CommonsChunkPlugin({
+        name: 'angular2',
+        minChunks: Infinity,
+        filename: env({
+          'development': 'angular2.js',
+          'all': 'angular2.min.js'
+        })
+      }),
+      new CommonsChunkPlugin({
+        name: 'common',
+        filename: env({
+          'development': 'common.js',
+          'all': 'common.min.js'
+        })
+      })
+    ]
+
+  }),
+
+  /*
+   * When using `templateUrl` and `styleUrls` please use `__filename`
+   * rather than `module.id` for `moduleId` in `@View`
+   */
+  node: {
+    crypto: false,
+    __filename: true
+  },
+
+  stats: env({
+    'all': {
+      colors: true,
+      reasons: true
+    }
+  })
 };
 
 
-var commons_chunks_plugins = [
-  {
-    name: 'angular2',
-    minChunks: Infinity,
-    filename: 'angular2.js'
-  },
-  {
-    name: 'common',
-    filename: 'common.js'
+function env(configEnv) {
+  if (configEnv === undefined) { return configEnv; }
+
+  if (toString.call(configEnv[NODE_ENV]) === '[object Object]') {
+    return Object.assign({}, configEnv.all || {}, configEnv[NODE_ENV])
   }
-]
-
-
-//
-var environment_plugins = {
-
-  all: [
-    new DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
-      'VERSION': pkg.version
-    }),
-    new OccurenceOrderPlugin(),
-    new DedupePlugin(),
-  ],
-
-  production: [
-    new UglifyJsPlugin({
-      compress: {
-        warnings: false,
-        drop_debugger: false
-      },
-      output: {
-        comments: false
-      },
-      beautify: false
-    }),
-    new BannerPlugin(getBanner(), {entryOnly: true})
-  ],
-
-  development: [
-    /* Dev Plugin */
-    // new webpack.HotModuleReplacementPlugin(),
-  ]
-
-}//env
-
-
-
-
-
-
-
-
-
-if (NODE_ENV === 'production') {
-  // replace filename `.js` with `.min.js`
-  config.output.filename = config.output.filename.replace('.js', '.min.js');
-  //config.output.sourceMapFilename = config.output.sourceMapFilename.replace('.js', '.min.js');
-  commons_chunks_plugins = commons_chunks_plugins.map(function(chunk) {
-    return chunk.filename.replace('.js', '.min.js');
-  });
+  else if (toString.call(configEnv[NODE_ENV]) === '[object Array]') {
+    return [].concat(configEnv.all || [], configEnv[NODE_ENV])
+  }
+  return configEnv[NODE_ENV] === undefined ? configEnv.all : configEnv[NODE_ENV];
 }
-else if (NODE_ENV === 'development') {
-  // any development actions here
-}
-
-// create CommonsChunkPlugin instance for each config
-var combine_common_chunks = commons_chunks_plugins.map(function(config) {
-  return new CommonsChunkPlugin(config);
-});
-
-// conbine everything
-config.plugins = [].concat(combine_common_chunks, environment_plugins.all, environment_plugins[NODE_ENV]);
-
-
-module.exports = config;
 
 // Helper functions
 function getBanner() {

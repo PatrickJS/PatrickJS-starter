@@ -57,6 +57,7 @@
     "karma-phantomjs-launcher": "^0.2.0",
     "karma-sourcemap-loader": "^0.3.5",
     "karma-webpack": "^1.7.0",
+    "object-assign": "^4.0.1",
     "phantomjs": "^1.9.17",
     "protractor": "^2.1.0",
     "raw-loader": "^0.5.1",
