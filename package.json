@@ -19,9 +19,8 @@
     "protractor": "protractor",
     "e2e": "npm run protractor",
     "test": "karma start",
-    "remove-http-typings": "rimraf node_modules/angular2/bundles/typings/angular2/http.d.ts",
     "remove-tsd-loader-typings": "rimraf node_modules/typescript-simple-loader/typescript-simple-loader.d.ts",
-    "tsd-update": "npm run remove-http-typings && npm run remove-tsd-loader-typings && tsd reinstall --overwrite",
+    "tsd-update": "npm run remove-tsd-loader-typings && tsd reinstall --overwrite",
     "postinstall": "npm run tsd-update && tsd install && tsd link",
     "prestart": "npm install",
     "start": "npm run server"
