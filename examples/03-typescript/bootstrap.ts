@@ -54,8 +54,8 @@ class Greeter {
 var greeter = new Greeter('world');
 var greeterStandard = new Greeter();
 
-greeter.greet();
-greeterStandard.greet();
+console.log(greeter.greet());
+console.log(greeterStandard.greet());
 
 
 
