@@ -10,7 +10,7 @@ import {Component, View, CORE_DIRECTIVES} from 'angular2/angular2';
   directives: [ CORE_DIRECTIVES ],
   template: `
   <ul>
-    <li *ng-for="var item in collection">
+    <li *ng-for="var item of collection">
      {{ item }}
     </li>
   </ul>
@@ -23,8 +23,8 @@ class App {
 
     this.collection = [
       'item-1',
-      'item2',
-      'item3'
+      'item-2',
+      'item-3'
     ];
 
   }
