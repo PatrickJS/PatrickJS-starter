@@ -87,7 +87,9 @@ export class App {
   data: Array<any> = []; // default data
   constructor(public http: Http) {
     this.title = 'Angular 2';
+  }
 
+  onInit() {
     // Our API
     // npm run express-install
     // npm run express
@@ -111,6 +113,7 @@ export class App {
         // onError callback
         err  => this.errorMessage(err)
       );//end http
+
   }
 
   serverData(data) {
@@ -119,13 +122,12 @@ export class App {
   }//serverData
 
   errorMessage(err) {
-    if (err && (/Unexpected token/).test(err.message) || err.status === 0) {
-      console.info(`${'\n'
-        } // You must run these commands for the Http API to work in another process ${'\n'
-        } npm run express-install ${'\n'
-        } npm run express
-      `);
-    }//end err.message
+    console.info(`${'\n'
+      } // You must run these commands for the Http API to work in another process ${'\n'
+      } npm run express-install ${'\n'
+      } npm run express
+    `);
+    console.error(err);
   }//errorMessage
 
 }
