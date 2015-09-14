@@ -4,7 +4,9 @@
 [![Issue Stats](http://issuestats.com/github/angular-class/angular2-webpack-starter/badge/issue?style=flat)](http://issuestats.com/github/angular-class/angular2-webpack-starter)
 
 <p align="center">
-  <img src="https://res.cloudinary.com/angularclass/image/upload/v1431925418/webpackAndangular2_dwhus9.png" alt="Webpack and Angular 2" width="500" height="320"/>
+  <a href="https://angularclass.com" target="_blank">
+    <img src="https://cloud.githubusercontent.com/assets/1016365/9863762/a84fed4a-5af7-11e5-9dde-d5da01e797e7.png" alt="Webpack and Angular 2" width="500" height="320"/>
+  </a>
 </p>
 
 # Angular2 Webpack Starter [![Join the chat at https://gitter.im/angular-class/angular2-webpack-starter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/angular-class/angular2-webpack-starter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
@@ -242,9 +244,10 @@ enjoy — **AngularClass**
 
 <br><br>
 
-[![AngularClass](https://angularclass.com/images/ng-crown.svg  "Angular Class")](https://angularclass.com)
+[![AngularClass](https://cloud.githubusercontent.com/assets/1016365/9863770/cb0620fc-5af7-11e5-89df-d4b0b2cdfc43.png  "Angular Class")](https://angularclass.com)
 ##[AngularClass](https://angularclass.com)
-> Learn Angular in 2 days from the best
+> Learn AngularJS, Angular 2, and Modern Web Development form the best.
+> Looking for corporate Angular training, want to host us, or Angular consulting? scott@angularclass.com
 
 # License
  [MIT](/LICENSE)
