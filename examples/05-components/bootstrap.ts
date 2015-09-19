@@ -7,7 +7,9 @@ import {Component, View} from 'angular2/angular2';
 })
 @View({
   template: `
-  Hello from Angular Class
+  <span>
+    Hello from Angular Class
+  </span>
   `
 })
 class AcWord {
@@ -25,7 +27,9 @@ class AcWord {
     AcWord
   ],
   template: `
-  <ac-word></ac-word>
+  <div>
+    <ac-word></ac-word>
+  </div>
   `
 })
 class AcBox {
@@ -45,7 +49,18 @@ class AcBox {
     AcBox
   ],
   template: `
-  <ac-box></ac-box>
+  <header>
+    AngularClass
+  </header>
+
+  <main>
+    <ac-box></ac-box>
+  </main>
+
+  <footer>
+    © AngularClass 2015
+  </footer>
+
   `
 })
 class App {
