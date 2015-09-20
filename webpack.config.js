@@ -218,8 +218,8 @@ function env(configEnv) {
   switch (toString(configEnv[NODE_ENV])) {
     case '[object Object]'    : return Object.assign({}, configEnv.all || {}, configEnv[NODE_ENV]);
     case '[object Array]'     : return [].concat(configEnv.all || [], configEnv[NODE_ENV]);
-    case '[object Undefined]' : return configEnv[NODE_ENV];
-    default                   : return configEnv.all;
+    case '[object Undefined]' : return configEnv.all;
+    default                   : return configEnv[NODE_ENV];
   }
 }
 
