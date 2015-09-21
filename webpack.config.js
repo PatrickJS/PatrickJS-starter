@@ -1,6 +1,10 @@
 // @AngularClass
 
-// Helper
+/*
+ * Helper
+ * env(), getBanner(), root(), and rootDir()
+ * are defined at the bottom
+ */
 var sliceArgs = Function.prototype.call.bind(Array.prototype.slice);
 var toString  = Function.prototype.call.bind(Object.prototype.toString);
 var NODE_ENV  = process.env.NODE_ENV || 'development';
@@ -27,7 +31,6 @@ var BannerPlugin   = webpack.BannerPlugin;
 /*
  * Config
  */
-
 module.exports = {
   devtool: env({
     'development': 'eval',
