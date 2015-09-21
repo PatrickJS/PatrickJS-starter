@@ -15,7 +15,9 @@ import {Tictactoe} from './tictactoe';
 @View({
   directives: [ Tictactoe ],
   template: `
-  <tictactoe></tictactoe>
+  <main>
+    <tictactoe></tictactoe>
+  </main>
   `
 })
 class App {
