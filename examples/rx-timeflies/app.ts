@@ -3,7 +3,7 @@
 // Angular 2
 import {Component, View} from 'angular2/angular2';
 
-import {AcTimeflies} from './timeflies';
+import {Timeflies} from './timeflies';
 
 /*
  * App Component
@@ -13,10 +13,10 @@ import {AcTimeflies} from './timeflies';
   selector: 'app'
 })
 @View({
-  directives: [ AcTimeflies ],
+  directives: [ Timeflies ],
   template: `
   <main>
-    <ac-timeflies></ac-timeflies>
+    <timeflies></timeflies>
   </main>
   `
 })

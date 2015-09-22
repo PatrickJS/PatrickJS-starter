@@ -16,7 +16,7 @@ interface LetterConfig {
 }
 
 @Component({
-  selector: 'ac-timeflies',
+  selector: 'timeflies',
   bindings: [ MESSAGE_BINDINGS ]
 })
 @View({
@@ -33,7 +33,7 @@ interface LetterConfig {
   </div>
   `
 })
-export class AcTimeflies {
+export class Timeflies {
   pos   = 'absolute';
   color = 'red';
   letters: LetterConfig[];
@@ -42,6 +42,7 @@ export class AcTimeflies {
     private service: Message,
     private el: ElementRef,
     private zone: NgZone) {
+
   }
 
 
