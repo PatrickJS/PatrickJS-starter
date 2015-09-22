@@ -63,6 +63,7 @@ declare module "angular2/pipes" {
     transform(obs: any, args?: Array<any>): any;
     onDestroy(): void;
   }
+  class AsyncPipe {}
 }
 
 declare module "angular2/annotations" {
