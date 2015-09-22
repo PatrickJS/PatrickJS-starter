@@ -18,7 +18,7 @@ import {App} from './app';
 
 /*
  * Bootstrap our Angular app with a top level component `App` and inject
- * our services/bindings into Angular's dependency injection
+ * our Services and Bindings into Angular's dependency injection
  */
 bootstrap(App, [
   // These are dependencies of our App
