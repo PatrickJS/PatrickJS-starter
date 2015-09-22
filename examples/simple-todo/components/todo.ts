@@ -3,15 +3,10 @@
 /*
  * Angular 2
  */
-import {Component, View, Directive, FormBuilder} from 'angular2/angular2';
-import {Validators} from 'angular2/forms';
-
-/*
- * Directives
- * angularDirectives: Angular's core/form/router directives
- * appDirectives: Our collection of directives from /directives
- */
-import {APP_DIRECTIVES, ANGULAR_DIRECTIVES} from '../directives/directives';
+import {Component, View, Directive} from 'angular2/angular2';
+import {Validators, FormBuilder} from 'angular2/forms';
+import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/angular2';
+import {ROUTER_DIRECTIVES} from 'angular2/router';
 
 /*
  * Services
@@ -25,8 +20,17 @@ import {TodoService} from '../services/TodoService';
   selector: 'todo'
 })
 @View({
-  directives: [ ANGULAR_DIRECTIVES, APP_DIRECTIVES ],
-  STYLES: [`
+  directives: [
+    // Angular's core directives
+    CORE_DIRECTIVES,
+
+    // Angular's form directives
+    FORM_DIRECTIVES,
+
+    // Angular's router
+    ROUTER_DIRECTIVES,
+  ],
+  styles: [`
     .error-message {
       color: red;
     }
@@ -38,8 +42,8 @@ import {TodoService} from '../services/TodoService';
   <form
     [ng-form-model]="todoForm"
     (submit)="todoForm.valid && addTodo($event, todoInput.value)"
-    novalidate
-  >
+    novalidate>
+
     <input type="text" [ng-form-control]="todoInput" autofocus>
 
     <button>Add Todo</button>
@@ -55,7 +59,7 @@ import {TodoService} from '../services/TodoService';
   </form>
 
   <ul>
-    <li *ng-for="var todo of todoService.get('todos'); var $index = index">
+    <li *ng-for="var todo of todoService.cloneTodos(); var $index = index">
       <p>
         {{ todo.value }}
         <br>
@@ -72,8 +76,7 @@ export class Todo {
   state: any;
   constructor(
     public formBuilder: FormBuilder,
-    public todoService: TodoService
-  ) {
+    public todoService: TodoService) {
 
     this.todoForm = formBuilder.group({
       'todo': ['', Validators.required]

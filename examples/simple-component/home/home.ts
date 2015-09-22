@@ -5,7 +5,7 @@
  */
 import {Component, View} from 'angular2/angular2';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/angular2';
-import {ROUTER_DIRECTIVES} from 'angular2/forms';
+import {ROUTER_DIRECTIVES} from 'angular2/router';
 
 // Use webpack's `require` to get files as a raw string using raw-loader
 let styles   = require('./home.css');

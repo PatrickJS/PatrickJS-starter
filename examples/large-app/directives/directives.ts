@@ -3,14 +3,14 @@
  * Angular 2
  */
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/angular2';
-// should be ROUTER_DIRECTIVES in next release
-import {routerDirectives as ROUTER_DIRECTIVES} from 'angular2/router';
+import {ROUTER_DIRECTIVES} from 'angular2/router';
 
 /*
  * App
  */
 import {Autofocus} from './Autofocus';
 
+export * from './Autofocus';
 // global App only directives
 export var SERVICES_DIRECTIVES: Array<any> = [
   Autofocus

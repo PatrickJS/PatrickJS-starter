@@ -1,17 +1,17 @@
-/// <reference path="../../../../typings/_custom.d.ts" />
+/// <reference path="../../typings/_custom.d.ts" />
 
 import {Directive, ElementRef} from 'angular2/angular2';
 import * as Rx from 'rx';
 
 @Directive({
-  selector: '[drag-element]',
+  selector: '[ac-drag-element]',
   host: {
     // '(mouseup)': 'onMouseup($event)',
     // '(mousedown)': 'onMousedown($event)'
     // '(window:mousemove)': 'onMousedown($event)'
   }
 })
-export class DragElement {
+export class AcDragElement {
   // @HostEvent() will be released in alpha 38
   mouseup:   Rx.Observable<any>;
   mousemove: Rx.Observable<any>;
@@ -48,7 +48,7 @@ export class DragElement {
     /*
     todo: Use requestAnimationFrame Scheduler
     */
-    this.mousedrag.subscribe( pos => {
+    this.mousedrag.subscribe(pos => {
       var {top, left} = pos;
       var {style}     = this.el.nativeElement;
       // Update position

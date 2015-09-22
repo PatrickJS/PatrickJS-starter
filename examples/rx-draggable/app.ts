@@ -3,7 +3,7 @@
 // Angular 2
 import {Component, View} from 'angular2/angular2';
 
-import {Home} from './home/home';
+import {Draggable} from './components/draggable';
 
 /*
  * App Component
@@ -13,14 +13,14 @@ import {Home} from './home/home';
   selector: 'app'
 })
 @View({
-  directives: [ Home ],
+  directives: [ Draggable ],
   template: `
   <main>
-    <tictactoe></tictactoe>
+    <draggable></draggable>
   </main>
   `
 })
-class App {
+export class App {
   constructor() {
 
   }

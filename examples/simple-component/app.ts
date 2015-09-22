@@ -3,7 +3,7 @@
 // Angular 2
 import {Component, View} from 'angular2/angular2';
 
-import {GITHUB_BINDINGS} from './components/search-github';
+import {Home} from './home/home';
 
 /*
  * App Component
@@ -13,10 +13,10 @@ import {GITHUB_BINDINGS} from './components/search-github';
   selector: 'app'
 })
 @View({
-  directives: [ GITHUB_BINDINGS ],
+  directives: [ Home ],
   template: `
   <main>
-    <search-github></search-github>
+    <home></home>
   </main>
   `
 })

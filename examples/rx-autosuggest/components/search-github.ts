@@ -1,15 +1,16 @@
-/// <reference path="../../../../typings/_custom.d.ts" />
+/// <reference path="../../typings/_custom.d.ts" />
 
 // Angular 2
-import {Component, View, CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/angular2';
+import {Component, View} from 'angular2/angular2';
+import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/angular2';
 
-import {Autosuggest} from './autosuggest';
+import {AcAutosuggestGithub} from '../directives/ac-autosuggest';
 
 @Component({
   selector: 'search-github'
 })
 @View({
-  directives: [ CORE_DIRECTIVES, FORM_DIRECTIVES, Autosuggest ],
+  directives: [ CORE_DIRECTIVES, FORM_DIRECTIVES, AcAutosuggestGithub ],
   template: `
   <div style="padding: 0 16px;">
     <h2>Search Github repos</h2>
@@ -17,8 +18,8 @@ import {Autosuggest} from './autosuggest';
     <section>
 
       <input
-        autosuggest
-        (term)="showResults($event)"
+        ac-autosuggest-github
+        (results)="repos = $event"
         (loading)="loading = $event"
         type="text"
         autofocus>
@@ -26,7 +27,6 @@ import {Autosuggest} from './autosuggest';
         style="width: 20px;position: absolute;"
         [hidden]="!loading"
         src="https://www.brown.edu/sites/default/themes/pawtuxet/img/loader-larger.gif">
-
     </section>
 
     <section>
@@ -41,15 +41,11 @@ import {Autosuggest} from './autosuggest';
   </div>
   `
 })
-export class Search {
+export class SearchGithub {
   repos: Array<any> = [];
   loading: boolean = false;
 
   constructor() {
-  }
 
-  showResults(results: string[]) {
-    this.repos = results;
   }
-
 }

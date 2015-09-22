@@ -1,18 +1,17 @@
-/// <reference path="../../../../typings/_custom.d.ts" />
+/// <reference path="../../typings/_custom.d.ts" />
 
 // Angular 2
 import {Component, View} from 'angular2/angular2';
 
-import {DragElement} from './drag_element';
+import {AcDragElement} from '../directives/ac-drag-element';
 
 @Component({
-  selector: 'draggable-div'
+  selector: 'draggable'
 })
 @View({
   // needed in order to tell Angular's compiler what's in the template
-  directives: [ DragElement ],
-  template: `
-    <style>
+  directives: [ AcDragElement ],
+  styles: [`
     [drag-element] {
       -webkit-transform: translate3d(0, 0, 0);
       -moz-transform: translate3d(0, 0, 0);
@@ -30,7 +29,8 @@ import {DragElement} from './drag_element';
       position: fixed;
       cursor: move;
     }
-  </style>
+  `],
+  template: `
 
   <div drag-element>
     Draggable Div
@@ -38,7 +38,7 @@ import {DragElement} from './drag_element';
 
   `
 })
-export class DraggableDiv {
+export class Draggable {
   constructor() {
   }
 }
