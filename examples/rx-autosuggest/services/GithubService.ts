@@ -9,6 +9,7 @@ import * as Rx from 'rx';
 export class GithubService {
   url: string = 'https://api.github.com/search/repositories?q=';
   constructor(public http: Http) {
+
   }
 
   /**

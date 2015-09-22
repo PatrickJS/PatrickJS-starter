@@ -10,7 +10,8 @@ import {GithubService} from '../services/GithubService';
 
 @Directive({
   selector: 'input[type=text][ac-autosuggest-github]',
-  events:   [ 'results', 'loading' ]
+  events:   [ 'results', 'loading' ],
+  bindings: [ GithubService ]
 })
 export class AcAutosuggestGithub {
   results: EventEmitter = new EventEmitter();
@@ -28,22 +29,22 @@ export class AcAutosuggestGithub {
       .filter(text => text.length > 2)           // Only if the text is longer than 2 characters
       .debounce(250)                             // Pause for 250ms
       .distinctUntilChanged()                    // Only if the value has changed
-      .do(() => this.loading.next(true))
+      .do(zone.bind(() => this.loading.next(true)))
       .flatMapLatest(query => this.github.search(query)) // send query to search service
-      .do(() => this.loading.next(false))
+      .do(zone.bind(() => this.loading.next(false)))
       // here is the real action
       .subscribe(
         // onNext
-        repos => {
+        zone.bind(repos => {
           // fire "results" event
           // the Search component is the listener
           this.results.next(repos);
-        },
+        }),
         // onError
-        err => {
-          console.log(err);;
+        zone.bind(err => {
+          console.log(err);
           this.results.next(['ERROR, see console']);
-        },
+        }),
         // onComplete
         () => {
           console.log('complete');

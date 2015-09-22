@@ -20,7 +20,7 @@ import {SearchGithub} from './components/search-github';
   </main>
   `
 })
-class App {
+export class App {
   constructor() {
 
   }
