@@ -1,0 +1,449 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Angular 2 Webpack Starter by angular-class</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Angular 2 Webpack Starter</h1>
+        <p>An Angular 2 Webpack Starter kit featuring Angular 2 (Router, Http, Forms, Services, Tests, E2E), Karma, Protractor, Jasmine, TypeScript, and Webpack by @AngularClass</p>
+
+        <p class="view"><a href="https://github.com/angular-class/angular2-webpack-starter">View the Project on GitHub <small>angular-class/angular2-webpack-starter</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/angular-class/angular2-webpack-starter/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/angular-class/angular2-webpack-starter/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/angular-class/angular2-webpack-starter">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p><a href="http://badge.fury.io/gh/angular-class%2Fangular2-webpack-starter"><img src="https://badge.fury.io/gh/angular-class%2Fangular2-webpack-starter.svg" alt="GitHub version"></a>
+<a href="https://david-dm.org/angular-class/angular2-webpack-starter"><img src="https://david-dm.org/angular-class/angular2-webpack-starter.svg" alt="Dependency Status"></a>
+<a href="http://issuestats.com/github/angular-class/angular2-webpack-starter"><img src="http://issuestats.com/github/angular-class/angular2-webpack-starter/badge/pr?style=flat" alt="Issue Stats"></a>
+<a href="http://issuestats.com/github/angular-class/angular2-webpack-starter"><img src="http://issuestats.com/github/angular-class/angular2-webpack-starter/badge/issue?style=flat" alt="Issue Stats"></a></p>
+
+<p align="center">
+  <a href="https://angularclass.com" target="_blank">
+    <img src="https://cloud.githubusercontent.com/assets/1016365/9863762/a84fed4a-5af7-11e5-9dde-d5da01e797e7.png" alt="Webpack and Angular 2" width="500" height="320">
+  </a>
+</p>
+
+<h1>
+<a id="angular2-webpack-starter-" class="anchor" href="#angular2-webpack-starter-" aria-hidden="true"><span class="octicon octicon-link"></span></a>Angular2 Webpack Starter <a href="https://gitter.im/angular-class/angular2-webpack-starter?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Join the chat at https://gitter.im/angular-class/angular2-webpack-starter"></a>
+</h1>
+
+<blockquote>
+<p>A starter kit featuring <a href="https://angular.io">Angular 2</a> (<a href="https://angular.io/docs/js/latest/api/router/">Router</a>, <a href="https://angular.io/docs/js/latest/api/forms/">Forms</a>,
+<a href="https://angular.io/docs/js/latest/api/http/">Http</a>,
+<a href="https://gist.github.com/gdi2290/634101fec1671ee12b3e#_follow_@AngularClass_on_twitter">Services</a>,
+<a href="https://angular.io/docs/js/latest/api/test/">Tests</a>, <a href="https://angular.github.io/protractor/#/faq#what-s-the-difference-between-karma-and-protractor-when-do-i-use-which-">E2E</a>), <a href="https://karma-runner.github.io/">Karma</a>, <a href="https://angular.github.io/protractor/">Protractor</a>, <a href="https://github.com/jasmine/jasmine">Jasmine</a>, <a href="http://www.typescriptlang.org/">TypeScript</a>, and <a href="http://webpack.github.io/">Webpack</a> by <a href="https://angularclass.com">AngularClass</a>.</p>
+
+<p>If you're looking for Angular 1.x please use <a href="https://github.com/angular-class/NG6-starter">NG6-starter</a></p>
+</blockquote>
+
+<p>This repo serves as a starter for anyone looking to get up and running with Angular 2 and TypeScript fast. Using a <a href="http://webpack.github.io/">Webpack</a> for building our files and assisting with boilerplate. We're also using Protractor for our end-to-end story and Karma for our unit tests.</p>
+
+<ul>
+<li>Best practice in file and application organization for Angular 2.</li>
+<li>Ready to go build system using Webpack for working with TypeScript.</li>
+<li>Test and end-to-end system using Karma and Protractor.</li>
+</ul>
+
+<div class="highlight highlight-source-coffee"><pre><span class="pl-v"><span class="pl-v">Warning:</span></span> Angular <span class="pl-c1">2.0</span> <span class="pl-k">is</span> <span class="pl-k">not</span> production ready yet<span class="pl-k">!</span></pre></div>
+
+<p><a href="http://splintercode.github.io/is-angular-2-ready/">Is Angular 2 Ready Yet?</a></p>
+
+<h3>
+<a id="quick-start" class="anchor" href="#quick-start" aria-hidden="true"><span class="octicon octicon-link"></span></a>Quick start</h3>
+
+<blockquote>
+<p>Clone/Download the repo then edit <code>app.ts</code> inside <a href="/src/app/app.ts"><code>/src/app/app.ts</code></a></p>
+</blockquote>
+
+<div class="highlight highlight-source-shell"><pre><span class="pl-c"># clone our repo</span>
+git clone https://github.com/angular-class/angular2-webpack-starter.git 
+
+<span class="pl-c"># change directory to our repo</span>
+<span class="pl-c1">cd</span> angular2-webpack-starter
+
+<span class="pl-c"># then open your browser and go to http://localhost:3000</span>
+npm start </pre></div>
+
+<h1>
+<a id="table-of-contents" class="anchor" href="#table-of-contents" aria-hidden="true"><span class="octicon octicon-link"></span></a>Table of Contents</h1>
+
+<ul>
+<li><a href="#file-structure">File Structure</a></li>
+<li>
+<a href="#getting-started">Getting Started</a>
+
+<ul>
+<li><a href="#dependencies">Dependencies</a></li>
+<li><a href="#installing">Installing</a></li>
+<li><a href="#running-the-app">Running the app</a></li>
+</ul>
+</li>
+<li><a href="#contributing">Contributing</a></li>
+<li><a href="#typescript">TypeScript</a></li>
+<li><a href="#frequently-asked-questions">Frequently asked questions</a></li>
+<li><a href="#support-questions-or-feedback">Support, Questions, or Feedback</a></li>
+<li><a href="#license">License</a></li>
+</ul>
+
+<h2>
+<a id="file-structure" class="anchor" href="#file-structure" aria-hidden="true"><span class="octicon octicon-link"></span></a>File Structure</h2>
+
+<p>We use the component approach in our starter. This is the new standard for developing Angular apps and a great way to ensure maintainable code by encapsulation of our behavior logic. A component is basically a self contained app usually in a single file or a folder with each concern as a file: style, template, specs, e2e, and component class. Here's how it looks:</p>
+
+<pre><code>angular2-webpack-starter/
+ ├──src/                                   * our source files that will be compiled to javascript
+ │   │
+ │   ├──app/                               * WebApp: folder
+ │   │   ├──app.ts                         * App.ts: a simple version of our App component components
+ │   │   └──bootstrap.ts                   * entry file for app
+ │   │
+ │   ├──bindings/                          * where common files used throughout our app
+ │   │   ├──location_bindings.ts           * injectables to change the Router location Strategy
+ │   │   └──change_detection_bindings.ts   * injectables to change Angular's Change Detection Strategy
+ │   │
+ │   ├──public/                            * static assets are served here
+ │   │   ├──lib/                           * static libraries
+ │   │   │   └──es6-shim.js                * ignore this file. This is needed to polyfill the browser to for ES6 features to similarly
+ │   │   │
+ │   │   ├──favicon.ico                    * replace me with your own favicon.ico
+ │   │   ├──service-worker.js              * ignore this. Web App service worker that's not complete yet
+ │   │   ├──robots.txt                     * for search engines to crawl your website
+ │   │   ├──human.txt                      * for humans to know who the developers are
+ │   │   │
+ │   │   └──index.html                     * Index.html: where we place our script tags
+ │   │
+ │   └──typings/                           * where we define our custom types
+ │       ├──ng2.d.ts                       * where we patch angular2 types with our own types until it's fixed
+ │       └──_custom.d.ts                   * we include all of our custom types here
+ │
+ ├──tsd_typings/                           * ignore this auto generated file from tsd
+ │   └──tsd.d.ts                           * ignore this our main file for all of our type definitions
+ │
+ ├──test/                                  * this is our global unit tests and end-to-end tests
+ │
+ ├──spec.bundle.js                         * ignore this magic that sets up our angular 2 testing environment
+ ├──karma.config.js                        * karam config for our unit tests
+ ├──protractor.config.js                   * protractor config for our end-to-end tests
+ ├──tsconfig.json                          * config that webpack uses for typescript
+ ├──tsd.json                               * config that tsd uses for managing it's definitions
+ ├──package.json                           * what npm uses to manage it's dependencies
+ └──webpack.config.js                      * our webpack config
+</code></pre>
+
+<h1>
+<a id="getting-started" class="anchor" href="#getting-started" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getting Started</h1>
+
+<h2>
+<a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dependencies</h2>
+
+<p>What you need to run this app:</p>
+
+<ul>
+<li>
+<code>node</code> and <code>npm</code> (<code>brew install node</code>)</li>
+<li>Ensure you're running the latest versions Node <code>v0.12.2</code>+ and NPM <code>2.10.0</code>+</li>
+</ul>
+
+<p>Once you have those, you should install these globals with <code>npm install --global</code>:</p>
+
+<ul>
+<li>
+<code>webpack</code> (<code>npm install --global webpack</code>)</li>
+<li>
+<code>webpack-dev-server</code> (<code>npm install --global webpack-dev-server</code>)</li>
+<li>
+<code>karma</code> (<code>npm install --global karma-cli</code>)</li>
+<li>
+<code>protractor</code> (<code>npm install --global protractor</code>)</li>
+</ul>
+
+<h2>
+<a id="installing" class="anchor" href="#installing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installing</h2>
+
+<ul>
+<li>
+<code>fork</code> this repo</li>
+<li>
+<code>clone</code> your fork</li>
+<li>
+<code>npm install</code> to install all dependencies</li>
+<li>
+<code>npm run server</code> to start the dev server in another tab</li>
+</ul>
+
+<h2>
+<a id="running-the-app" class="anchor" href="#running-the-app" aria-hidden="true"><span class="octicon octicon-link"></span></a>Running the app</h2>
+
+<p>After you have installed all dependencies you can now run the app. Run <code>npm run server</code> to start a local server using <code>webpack-dev-server</code> which will watch, build (in-memory), and reload for you. The port will be displayed to you as <code>http://localhost:3000</code> (or if you prefer IPv6, if you're using <code>express</code> server, then it's <code>http://[::1]:3000/</code>).</p>
+
+<h3>
+<a id="server" class="anchor" href="#server" aria-hidden="true"><span class="octicon octicon-link"></span></a>server</h3>
+
+<div class="highlight highlight-source-shell"><pre>$ npm run server <span class="pl-c"># or either webpack-dev-server or npm run express</span></pre></div>
+
+<h2>
+<a id="other-commands" class="anchor" href="#other-commands" aria-hidden="true"><span class="octicon octicon-link"></span></a>Other commands</h2>
+
+<h3>
+<a id="build-files" class="anchor" href="#build-files" aria-hidden="true"><span class="octicon octicon-link"></span></a>build files</h3>
+
+<div class="highlight highlight-source-shell"><pre>$ npm run build  <span class="pl-c"># or webpack</span></pre></div>
+
+<h3>
+<a id="watch-and-build-files" class="anchor" href="#watch-and-build-files" aria-hidden="true"><span class="octicon octicon-link"></span></a>watch and build files</h3>
+
+<div class="highlight highlight-source-shell"><pre>$ npm run watch  <span class="pl-c"># or webpack --watch</span></pre></div>
+
+<h3>
+<a id="run-tests" class="anchor" href="#run-tests" aria-hidden="true"><span class="octicon octicon-link"></span></a>run tests</h3>
+
+<div class="highlight highlight-source-shell"><pre>$ npm run <span class="pl-c1">test</span>  <span class="pl-c"># or karma start</span></pre></div>
+
+<h3>
+<a id="run-webdriver-for-end-to-end" class="anchor" href="#run-webdriver-for-end-to-end" aria-hidden="true"><span class="octicon octicon-link"></span></a>run webdriver (for end-to-end)</h3>
+
+<div class="highlight highlight-source-shell"><pre>$ npm run webdriver-start  <span class="pl-c"># or webdriver-manager start</span></pre></div>
+
+<h3>
+<a id="run-end-to-end-tests" class="anchor" href="#run-end-to-end-tests" aria-hidden="true"><span class="octicon octicon-link"></span></a>run end-to-end tests</h3>
+
+<div class="highlight highlight-source-shell"><pre><span class="pl-c"># make sure you have webdriver running and a sever for the client app</span>
+$ npm run e2e  <span class="pl-c"># or protractor</span></pre></div>
+
+<h1>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributing</h1>
+
+<p>You can include more examples as components but they must introduce a new concept such as <code>Home</code> component (separate folders), and Todo (services). I'll accept pretty much everything so feel free to open a Pull-Request</p>
+
+<h1>
+<a id="typescript" class="anchor" href="#typescript" aria-hidden="true"><span class="octicon octicon-link"></span></a>TypeScript</h1>
+
+<blockquote>
+<p>To take full advantage of TypeScript with autocomplete you would have to install it globally and use an editor with the correct TypeScript plugins.</p>
+</blockquote>
+
+<h2>
+<a id="use-latest-typescript-compiler" class="anchor" href="#use-latest-typescript-compiler" aria-hidden="true"><span class="octicon octicon-link"></span></a>Use latest TypeScript compiler</h2>
+
+<p>TypeScript 1.5 includes everything you need. Make sure to upgrade, even if you installed TypeScript previously.</p>
+
+<pre><code>$ npm install --global typescript
+</code></pre>
+
+<h2>
+<a id="dts-typings" class="anchor" href="#dts-typings" aria-hidden="true"><span class="octicon octicon-link"></span></a>.d.ts Typings</h2>
+
+<p>The TSD typings in <code>tsd_typings/</code> are autogenerated.</p>
+
+<pre><code>$ npm install --global tsd
+</code></pre>
+
+<blockquote>
+<p>You may need to require <code>reference path</code> for your editor to autocomplete correctly</p>
+
+<pre><code> /// &lt;reference path="/src/typings/_custom.d.ts" /&gt;
+</code></pre>
+</blockquote>
+
+<p>If your editor only works with reference path here's the convention I'm using</p>
+
+<p><code>/src/typings/</code> hand written typings for when you need to create/update one for a library </p>
+
+<p><code>/src/typings/_custom.d.s</code> main file to require everything (reference path this file)</p>
+
+<p><code>/src/typings/tsd.d.ts</code> requires tsd_typings</p>
+
+<p><code>/tsd_typings/</code> tsd typings (like node_modules these files live and generates at root level)</p>
+
+<p>Otherwise including them in <code>tsd.json</code> is much prefered </p>
+
+<h2>
+<a id="use-a-typescript-aware-editor" class="anchor" href="#use-a-typescript-aware-editor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Use a TypeScript-aware editor</h2>
+
+<p>We have good experience using these editors:</p>
+
+<ul>
+<li><a href="https://code.visualstudio.com/">Visual Studio Code</a></li>
+<li><a href="https://www.jetbrains.com/webstorm/download/">Webstorm 10</a></li>
+<li>
+<a href="https://atom.io/">Atom</a> with <a href="https://atom.io/packages/atom-typescript">TypeScript plugin</a>
+</li>
+<li>
+<a href="http://www.sublimetext.com/3">Sublime Text</a> with <a href="https://github.com/Microsoft/Typescript-Sublime-plugin#installation">Typescript-Sublime-Plugin</a>
+</li>
+</ul>
+
+<h1>
+<a id="frequently-asked-questions" class="anchor" href="#frequently-asked-questions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Frequently asked questions</h1>
+
+<ul>
+<li>Why we are using traceur-runtime?
+
+<ul>
+<li>This for the ES6 polyfills.</li>
+</ul>
+</li>
+<li>If TypeScript compiles to ES5 why do we need traceur-runtime?
+
+<ul>
+<li>Angular 2 framework itself expects these ES6 features.</li>
+</ul>
+</li>
+<li>What's the current browser support for Angular 2 Alpha?
+
+<ul>
+<li>As of version 2.0.0-alpha.26: Chrome (43, 44, 45), Firefox (37, 39, 40), IE 11, Safari 8, iOS 8, Android 5.1 (Chrome Mobile 39).</li>
+</ul>
+</li>
+<li>What is the <code>TypeScript warning "Value of type 'typeof Directive' is not callable. Did you mean to include 'new'?</code>"?
+
+<ul>
+<li>This is an error with the typings defined in DefinitelyTyped (please ignore until it's fixed)</li>
+</ul>
+</li>
+<li>How do I use <code>moduleId</code> with <code>module.id</code> in webpack?
+
+<ul>
+<li>Please use <code>__filename</code> if you must use <code>templateUrl</code> and <code>styleUrls</code> rather than webpack's module system</li>
+</ul>
+</li>
+<li>Why is my service not injecting parameter correctly?
+
+<ul>
+<li>Please use <code>@Injectable()</code> for your service for typescript to corrrectly attach the metadata (this is a typescript beta problem)</li>
+</ul>
+</li>
+<li>Where do I write my tests? 
+
+<ul>
+<li>You can write your tests anywhere you like either next to your components or in the  <code>test/</code> folder</li>
+</ul>
+</li>
+<li>Is Angular 2 production ready yet?
+
+<ul>
+<li>No, please visit <a href="http://splintercode.github.io/is-angular-2-ready/">Is Angular 2 Ready Yet?</a> website.</li>
+</ul>
+</li>
+<li>How do I start the app when I get <code>EACCES</code> and <code>EADDRINUSE</code> errors? 
+
+<ul>
+<li>The <code>EADDRINUSE</code> error means the port <code>3000</code> is currently being used and <code>EACCES</code> is lack of permission for webpack to build files to <code>./__build__/</code>
+</li>
+</ul>
+</li>
+<li>Why am I getting lots of warnings when starting the repo?
+
+<ul>
+<li>You need to run <code>tsd install</code> this happens when tsd didn't install correctly or at all</li>
+</ul>
+</li>
+</ul>
+
+<h1>
+<a id="support-questions-or-feedback" class="anchor" href="#support-questions-or-feedback" aria-hidden="true"><span class="octicon octicon-link"></span></a>Support, Questions, or Feedback</h1>
+
+<blockquote>
+<p>Contact us anytime for anything about this repo or Angular 2</p>
+</blockquote>
+
+<ul>
+<li><a href="https://gitter.im/angular-class/angular2-webpack-starter">Gitter: angular-class/angular2-webpack-starter</a></li>
+<li><a href="https://twitter.com/AngularClass">Twitter: @AngularClass</a></li>
+</ul>
+
+<h1>
+<a id="other-seedstarterexample-repos" class="anchor" href="#other-seedstarterexample-repos" aria-hidden="true"><span class="octicon octicon-link"></span></a>Other Seed/Starter/Example Repos</h1>
+
+<ul>
+<li>
+<a href="https://github.com/angular-class/angular2-webpack-starter">angular2-webpack-starter (AngularClass)</a>
+
+<ul>
+<li>Client/Server, Webpack, TypeScript, TSD, Protractor, Karma, Jasmine, Env Dev/Prod, Server API</li>
+</ul>
+</li>
+<li>
+<a href="https://github.com/pkozlowski-opensource/ng2-play.ts">ng2-play.ts (Pawel Kozlowski)</a>
+
+<ul>
+<li>Client only, Minimalist, SystemJS, Gulp, TypeScript</li>
+</ul>
+</li>
+<li>
+<a href="https://github.com/mgechev/angular2-seed">angular2-seed (Minko Gechev)</a>
+
+<ul>
+<li>Client only, SystemJS, Gulp, TypeScript, TSD, Versioned, Env Dev/Prod</li>
+</ul>
+</li>
+<li>
+<a href="https://github.com/rolandjitsu/ng2-play">ng2-play (Roland Groza)</a>
+
+<ul>
+<li>Client only, ES6, TypeScript, Firebase, Gulp, Ci, TSD, TSLint</li>
+</ul>
+</li>
+<li>
+<a href="https://github.com/robwormald/ng2-jspm-seed">ng2-jspm-seed (Rob Wormald)</a>
+
+<ul>
+<li>Client only, TypeScript, TSD, Gulp, JSPM, Minimalist</li>
+</ul>
+</li>
+<li>
+<a href="https://github.com/shuhei/babel-angular2-app">babel-angular2-app (Shuhei Kagawa)</a>
+
+<ul>
+<li>Client only, Minimalist, Babel, ES6+, Webpack (outdated)</li>
+</ul>
+</li>
+</ul>
+
+<hr>
+
+<p>enjoy — <strong>AngularClass</strong> </p>
+
+<p><br><br></p>
+
+<p><a href="https://angularclass.com"><img src="https://cloud.githubusercontent.com/assets/1016365/9863770/cb0620fc-5af7-11e5-89df-d4b0b2cdfc43.png" alt="AngularClass" title="Angular Class"></a></p>
+
+<h2>
+<a id="angularclass" class="anchor" href="#angularclass" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://angularclass.com">AngularClass</a>
+</h2>
+
+<blockquote>
+<p>Learn AngularJS, Angular 2, and Modern Web Development form the best.
+Looking for corporate Angular training, want to host us, or Angular consulting? <a href="mailto:patrick@angularclass.com">patrick@angularclass.com</a></p>
+</blockquote>
+
+<h1>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h1>
+
+<p><a href="/LICENSE">MIT</a></p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/angular-class">angular-class</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
