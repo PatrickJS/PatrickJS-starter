@@ -1,4 +1,4 @@
-/// <reference path="../../../../typings/_custom.d.ts" />
+/// <reference path="../../../typings/_custom.d.ts" />
 
 // Angular 2
 import {Component, View, EventEmitter, CORE_DIRECTIVES} from 'angular2/angular2';
@@ -29,4 +29,7 @@ import {Component, View, EventEmitter, CORE_DIRECTIVES} from 'angular2/angular2'
 })
 export class Board {
   select: EventEmitter = new EventEmitter();
+  onChange() {
+    console.log('change')
+  }
 }

@@ -3,7 +3,7 @@
 // Angular 2
 import {Component, View} from 'angular2/angular2';
 
-import {Tictactoe} from './tictactoe';
+import {Tictactoe} from './components/tictactoe';
 
 /*
  * App Component
@@ -20,7 +20,7 @@ import {Tictactoe} from './tictactoe';
   </main>
   `
 })
-class App {
+export class App {
   constructor() {
 
   }

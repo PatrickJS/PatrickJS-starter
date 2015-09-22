@@ -1,4 +1,4 @@
-
+/// <reference path="../../typings/_custom.d.ts" />
 import {bind, Injectable} from 'angular2/angular2';
 
 type Triple = [ string, string, string ]; // tuple type
@@ -15,12 +15,12 @@ export class GameService {
   ];
   plays: Point[] = [];
 
-  static create(): GameService {
+  static create() {
     return new GameService();
   }
 
   dispose() {
-    this.board = null;
+    this.board = null
     this.plays = null;
   }
 
