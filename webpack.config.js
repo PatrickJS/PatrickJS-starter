@@ -83,9 +83,13 @@ module.exports = {
     'app': [
       // App
 
-      /*
-       * include any 3rd party js lib here
-       */
+      // './examples/  /bootstrap' <-- view examples
+
+      // './examples/rx-autosuggest/bootstrap'
+      // './examples/rx-draggable/bootstrap'
+      // './examples/rx-draggable/bootstrap'
+      // './examples/simple-component/bootstrap'
+      // './examples/simple-todo/bootstrap'
 
       './src/app/bootstrap'
     ]
