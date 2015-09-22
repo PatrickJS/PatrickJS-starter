@@ -136,6 +136,7 @@ export class App {
 
 /*
  * Please review the examples/ folder for more angular app examples
+ * you can change the `entry` in webpack.config to quickly view the examples
  * For help or questions please contact us at @AngularClass on twitter
  * or via chat on gitter at https://gitter.im/angular-class/angular2-webpack-starter
  */
