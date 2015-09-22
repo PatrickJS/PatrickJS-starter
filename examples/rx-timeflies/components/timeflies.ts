@@ -1,13 +1,12 @@
-/// <reference path="../../../../typings/_custom.d.ts" />
+/// <reference path="../../typings/_custom.d.ts" />
 
 // Angular 2
-import {Component, View, ElementRef, NgZone, LifecycleEvent, CORE_DIRECTIVES} from 'angular2/angular2';
+import {Component, View, ElementRef, NgZone, CORE_DIRECTIVES} from 'angular2/angular2';
 
 // Services
-import {MESSAGE_BINDINGS, Message} from './Message';
+import {MESSAGE_BINDINGS, Message} from '../services/Message';
 
 import * as Rx from 'rx';
-var Observable = Rx.Observable;
 
 interface LetterConfig {
   text: string;
@@ -17,8 +16,7 @@ interface LetterConfig {
 }
 
 @Component({
-  selector: 'timeflies',
-  lifecycle: [ LifecycleEvent.onInit ],
+  selector: 'ac-timeflies',
   bindings: [ MESSAGE_BINDINGS ]
 })
 @View({
@@ -35,13 +33,19 @@ interface LetterConfig {
   </div>
   `
 })
-export class Timeflies {
+export class AcTimeflies {
   pos   = 'absolute';
   color = 'red';
   letters: LetterConfig[];
 
-  constructor(private service: Message, private el: ElementRef, private zone: NgZone) {
+  constructor(
+    private service: Message,
+    private el: ElementRef,
+    private zone: NgZone) {
+  }
 
+
+  onInit() {
     // initial mapping (before mouse moves)
     this.letters = this.service.message.map(
       (val, idx) => ({
@@ -51,16 +55,12 @@ export class Timeflies {
         index: idx
       })
     );
-
-  }
-
-
-  onInit() {
     // run mouse move outside of Angular
     // got this hint from @mgonto
     this.zone.runOutsideAngular(() => {
-      (<any>Observable).fromEvent(this.el.nativeElement, 'mousemove').
-        map((e: MouseEvent) => {
+      (<any>Rx).Observable
+        .fromEvent(this.el.nativeElement, 'mousemove')
+        .map((e: MouseEvent) => {
           //var offset = getOffset(this.el);
 
           // subtract offset of the element
@@ -70,26 +70,27 @@ export class Timeflies {
             offsetX: e.clientX - o.left,
             offsetY: e.clientY - o.top
           };
-        }).
-        flatMap(delta => {
-          return (<any>Observable).fromArray(this.letters.map((val, index) => ({
-            letter: val.text,
-            delta: delta,
-            index: index
-          })));
-        }).
-        flatMap(letterConfig => {
-          return (<any>Observable).timer((letterConfig.index + 1) * 100).map(() => ({
-            text:  letterConfig.letter,
-            top:   letterConfig.delta.offsetY,
-            left:  letterConfig.delta.offsetX + letterConfig.index * 20 + 20,
-            index: letterConfig.index
-          }));
-        }).
-        subscribe(letterConfig => {
-
-          //console.log(letterConfig, this.letters);
-
+        })
+        .flatMap(delta => {
+          return (<any>Rx).Observable
+            .fromArray(this.letters
+              .map((val, index) => ({
+                letter: val.text,
+                delta,
+                index
+              })));
+        })
+        .flatMap(letterConfig => {
+          return (<any>Rx).Observable
+            .timer( (letterConfig.index + 1) * 100)
+            .map(() => ({
+              text:  letterConfig.letter,
+              top:   letterConfig.delta.offsetY,
+              left:  letterConfig.delta.offsetX + letterConfig.index * 20 + 20,
+              index: letterConfig.index
+            }));
+        })
+        .subscribe(letterConfig => {
           // to render the letters, put them back into app zone
           this.zone.run(() => this.letters[letterConfig.index] = letterConfig);
 
