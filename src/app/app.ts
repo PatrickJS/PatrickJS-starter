@@ -25,7 +25,7 @@ class XLarge {
   constructor(element: ElementRef) {
     // simple DOM manipulation to set font size to x-large
     // `nativeElement` is the direct reference to the DOM element
-    element.nativeElement.fontSize = 'x-large';
+    element.nativeElement.style.fontSize = 'x-large';
   }
 }
 
@@ -76,7 +76,7 @@ class XLarge {
 
   </main>
 
-  <footer>
+  <footer x-large>
     WebPack Angular 2 Starter by <a href="https://twitter.com/AngularClass">@AngularClass</a>
   </footer>
   `
