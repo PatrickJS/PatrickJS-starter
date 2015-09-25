@@ -10,6 +10,9 @@ import {ROUTER_BINDINGS} from 'angular2/router';
 import {ELEMENT_PROBE_BINDINGS} from 'angular2/debug';
 import {HTTP_BINDINGS} from 'angular2/http';
 
+// Include Bootstrap support
+require('bootstrap/dist/css/bootstrap.css');
+
 /*
  * App Component
  * our top level component that holds all of our components

@@ -128,8 +128,9 @@ module.exports = {
       // Support for *.json files.
       { test: /\.json$/,  loader: 'json' },
 
-      // Support for CSS as raw text
-      { test: /\.css$/,   loader: 'raw' },
+      // Support for CSS via css-loader + style-loader
+      // see also: https://github.com/webpack/style-loader
+      { test: /\.css$/,   loader: 'style!css' },
 
       // support for .html as raw text
       { test: /\.html$/,  loader: 'raw' },
@@ -152,7 +153,13 @@ module.exports = {
           /test/,
           /node_modules/
         ]
-      }
+      },
+
+      // Loader for fonts (required for Bootstrap)
+      { test: /\.woff2?($|\?)/, loader: "url?limit=10000&minetype=application/font-woff" },
+      { test: /\.ttf($|\?)/,    loader: "url?limit=10000&minetype=application/octet-stream" },
+      { test: /\.eot($|\?)/,    loader: "file" },
+      { test: /\.svg($|\?)/,    loader: "url?limit=10000&minetype=image/svg+xml" }
     ],
     noParse: [
       /rtts_assert\/src\/rtts_assert/,
