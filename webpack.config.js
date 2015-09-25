@@ -157,10 +157,10 @@ module.exports = {
       },
 
       // Loader for fonts (required for Bootstrap)
-      { test: /\.woff2?($|\?)/, loader: "url?limit=10000&minetype=application/font-woff" },
-      { test: /\.ttf($|\?)/,    loader: "url?limit=10000&minetype=application/octet-stream" },
+      { test: /\.woff2?($|\?)/, loader: "url?limit=10000&mimetype=application/font-woff" },
+      { test: /\.ttf($|\?)/,    loader: "url?limit=10000&mimetype=application/octet-stream" },
       { test: /\.eot($|\?)/,    loader: "file" },
-      { test: /\.svg($|\?)/,    loader: "url?limit=10000&minetype=image/svg+xml" }
+      { test: /\.svg($|\?)/,    loader: "url?limit=10000&mimetype=image/svg+xml" }
     ],
     noParse: [
       /rtts_assert\/src\/rtts_assert/,
