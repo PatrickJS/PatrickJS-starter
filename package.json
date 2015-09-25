@@ -38,6 +38,7 @@
   "dependencies": {
     "angular2": "2.0.0-alpha.37",
     "bootstrap": "^3.3.5",
+    "jquery": "^2.1.4",
     "reflect-metadata": "^0.1.1",
     "rx": "^2.5.3",
     "zone.js": "^0.5.4"

@@ -74,6 +74,18 @@ class XLarge {
     <pre>this.title = {{ title | json }}</pre>
     <pre>this.data = {{ data | json }}</pre>
 
+    <div>
+      <h3>Bootstrap example (with JS)</h3>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left"
+        title="Tooltip on left">Tooltip on left</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top"
+        title="Tooltip on top">Tooltip on top</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom"
+        title="Tooltip on bottom">Tooltip on bottom</button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right"
+        title="Tooltip on right">Tooltip on right</button>
+    </div>
+
   </main>
 
   <footer x-large>
@@ -113,6 +125,10 @@ export class App {
         // onError callback
         err  => this.errorMessage(err)
       );//end http
+
+
+    // Install Bootstrap's tooltip plugin
+    (<any>$('[data-toggle="tooltip"]')).tooltip();
 
   }
 

@@ -26,6 +26,7 @@ var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 var DedupePlugin   = webpack.optimize.DedupePlugin;
 var DefinePlugin   = webpack.DefinePlugin;
 var BannerPlugin   = webpack.BannerPlugin;
+var ProvidePlugin  = webpack.ProvidePlugin;
 
 
 /*
@@ -210,6 +211,10 @@ module.exports = {
           'development': 'common.js',
           'all': 'common.min.js'
         })
+      }),
+      new ProvidePlugin({
+        "$": "jquery",
+        "jQuery": "jquery"
       })
     ]
 

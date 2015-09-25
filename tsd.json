@@ -22,6 +22,12 @@
     },
     "rx/rx-lite.d.ts": {
       "commit": "f6c8ca47193fb67947944a3170912672ac3e908e"
+    },
+    "jquery/jquery.d.ts": {
+      "commit": "705b4cc80bced7c0cc95575741113667d210602f"
+    },
+    "bootstrap/bootstrap.d.ts": {
+      "commit": "54f064352a3615443f7bff4198078db15e28247b"
     }
   }
 }
