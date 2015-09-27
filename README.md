@@ -209,7 +209,7 @@ We have good experience using these editors:
 * How do I use `moduleId` with `module.id` in webpack?
   * Please use `__filename` if you must use `templateUrl` and `styleUrls` rather than webpack's module system
 * Why is my service not injecting parameter correctly?
-  * Please use `@Injectable()` for your service for typescript to corrrectly attach the metadata (this is a typescript beta problem)
+  * Please use `@Injectable()` for your service for typescript to correctly attach the metadata (this is a typescript beta problem)
 * Where do I write my tests? 
   * You can write your tests anywhere you like either next to your components or in the  `test/` folder
 * Is Angular 2 production ready yet?
