@@ -6,12 +6,12 @@ import {Directive, View, EventEmitter, ElementRef} from 'angular2/angular2';
 // RxJs
 import * as Rx from 'rx';
 
-import {GithubService} from '../services/GithubService';
+import {GITHUB_BINDINGS} from '../services/GithubService';
 
 @Directive({
   selector: 'input[type=text][ac-autosuggest-github]',
   events:   [ 'results', 'loading' ],
-  bindings: [ GithubService ]
+  bindings: [ GITHUB_BINDINGS ]
 })
 export class AcAutosuggestGithub {
   results: EventEmitter = new EventEmitter();
