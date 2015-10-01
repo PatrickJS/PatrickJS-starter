@@ -5,7 +5,7 @@
 		
 	"ignoreCompilerErrors" 		: "true",
 	"experimentalDecorators"	: "true",
-        "emitDecoratorMetadata"		: "true",
+	"emitDecoratorMetadata"		: "true",
 	"target"			: "ES5",
 	"moduleResolution"		: "node",
 	"preserveConstEnums"		: "true",
