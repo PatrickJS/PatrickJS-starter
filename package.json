@@ -21,6 +21,7 @@
     "test": "karma start",
     "remove-tsd-loader-typings": "rimraf node_modules/typescript-simple-loader/typescript-simple-loader.d.ts",
     "tsd-update": "npm run remove-tsd-loader-typings && tsd reinstall --overwrite",
+    "docs": "typedoc  --options typedoc.json  src/**/*.ts",
     "postinstall": "npm run tsd-update && tsd install && tsd link",
     "prestart": "npm install",
     "start": "npm run server"
@@ -62,6 +63,7 @@
     "rimraf": "^2.4.3",
     "style-loader": "^0.12.2",
     "tsd": "^0.6.4",
+    "typedoc": "^0.3.11",
     "typescript": "^1.6.2",
     "typescript-simple-loader": "^0.3.7",
     "url-loader": "^0.5.5",
