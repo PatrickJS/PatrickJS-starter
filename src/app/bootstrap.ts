@@ -10,6 +10,31 @@ import {ROUTER_BINDINGS} from 'angular2/router';
 import {ELEMENT_PROBE_BINDINGS} from 'angular2/debug';
 import {HTTP_BINDINGS} from 'angular2/http';
 
+// Include Bootstrap support
+// CSS
+require('bootstrap/dist/css/bootstrap.css');
+// Javascript
+// Use the next line to include all scripts (not recommended) ...
+//require('imports?jQuery=jquery!bootstrap/dist/js/bootstrap');
+// ... or include the scripts one by one (recommended)
+const requiredBootstrapPlugins = [
+  //'affix',
+  //'alert',
+  //'button',
+  //'carousel',
+  //'collapse',
+  //'dropdown',
+  //'modal',
+  //'popover',
+  //'scrollspy',
+  //'tab',
+  'tooltip',
+  //'transition'
+];
+requiredBootstrapPlugins.forEach(pluginName => {
+  require(`imports?jQuery=jquery!bootstrap/js/${pluginName}`);
+});
+
 /*
  * App Component
  * our top level component that holds all of our components
