@@ -3,7 +3,8 @@
 /*
  * Angular 2 decorators and services
  */
-import {Directive, Component, View, ElementRef} from 'angular2/angular2';
+import {Directive, Component, View} from 'angular2/angular2';
+import {ElementRef} from 'angular2/core';
 import {RouteConfig, Router} from 'angular2/router';
 import {Http, Headers} from 'angular2/http';
 
@@ -96,16 +97,14 @@ export class App {
 
     const BASE_URL = 'http://localhost:3001';
     const TODO_API_URL = '/api/todos';
-    const JSON_HEADERS = new Headers({
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    });
+    const JSON_HEADERS = new Headers()
+    JSON_HEADERS.append('Accept', 'application/json');
+    JSON_HEADERS.append('Content-Type', 'application/json');
 
     this.http
       .get(BASE_URL + TODO_API_URL, {
         headers: JSON_HEADERS
       })
-      .toRx()
       .map(res => res.json())
       .subscribe(
         // onNext callback

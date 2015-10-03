@@ -5,9 +5,8 @@ import {bootstrap} from 'angular2/angular2';
 /*
  * Bindings provided by Angular
  */
-import {FORM_BINDINGS} from 'angular2/angular2'
-import {ROUTER_BINDINGS} from 'angular2/router';
-import {ELEMENT_PROBE_BINDINGS} from 'angular2/debug';
+import {FORM_BINDINGS, ELEMENT_PROBE_BINDINGS} from 'angular2/angular2';
+import {ROUTER_BINDINGS, routerBindings} from 'angular2/router';
 import {HTTP_BINDINGS} from 'angular2/http';
 
 /*
@@ -22,6 +21,7 @@ import {App} from './app';
  */
 bootstrap(App, [
   // These are dependencies of our App
+  routerBindings(App),
   FORM_BINDINGS,
   ROUTER_BINDINGS,
   HTTP_BINDINGS,
