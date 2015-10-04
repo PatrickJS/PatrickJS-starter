@@ -9,6 +9,7 @@
     "clean": "rimraf node_modules tsd_typings",
     "clean-install": "npm run clean && npm install",
     "clean-start": "npm run clean && npm start",
+    "prequick-start": "npm install",
     "watch": "webpack --watch",
     "server": "webpack-dev-server --inline --colors --display-error-details --display-cached --port 3000",
     "express": "node ./examples/server/express-server-example.js",
@@ -23,7 +24,6 @@
     "tsd-update": "npm run remove-tsd-loader-typings && tsd reinstall --overwrite",
     "docs": "typedoc  --options typedoc.json  src/**/*.ts",
     "postinstall": "npm run tsd-update && tsd install && tsd link",
-    "prestart": "npm install",
     "start": "npm run server"
   },
   "repository": {
