@@ -3,7 +3,7 @@
 // Angular 2
 import {Component, View} from 'angular2/angular2';
 
-import {Draggable} from './components/draggable';
+import {DragElement} from './components/drag-element';
 
 /*
  * App Component
@@ -13,10 +13,10 @@ import {Draggable} from './components/draggable';
   selector: 'app'
 })
 @View({
-  directives: [ Draggable ],
+  directives: [ DragElement ],
   template: `
   <main>
-    <draggable></draggable>
+    <drag-element></drag-element>
   </main>
   `
 })

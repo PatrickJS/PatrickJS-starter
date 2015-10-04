@@ -3,16 +3,17 @@
 // Angular 2
 import {Component, View} from 'angular2/angular2';
 
-import {AcDragElement} from '../directives/ac-drag-element';
+// Directives
+import {Draggable} from '../directives/draggable';
 
 @Component({
-  selector: 'draggable'
+  selector: 'drag-element'
 })
 @View({
   // needed in order to tell Angular's compiler what's in the template
-  directives: [ AcDragElement ],
+  directives: [ Draggable ],
   styles: [`
-    [drag-element] {
+    [draggable] {
       -webkit-transform: translate3d(0, 0, 0);
       -moz-transform: translate3d(0, 0, 0);
       -ms-transform: translate3d(0, 0, 0);
@@ -26,19 +27,18 @@ import {AcDragElement} from '../directives/ac-drag-element';
       color: #000000;
       border: 1px solid #666666;
       padding: 10px;
-      position: fixed;
-      cursor: move;
     }
   `],
   template: `
 
-  <div drag-element>
+  <div draggable>
     Draggable Div
   </div>
 
   `
 })
-export class Draggable {
+export class DragElement {
   constructor() {
+
   }
 }
