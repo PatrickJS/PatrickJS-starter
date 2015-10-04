@@ -97,7 +97,8 @@ export class App {
 
     const BASE_URL = 'http://localhost:3001';
     const TODO_API_URL = '/api/todos';
-    const JSON_HEADERS = new Headers()
+    const JSON_HEADERS = new Headers();
+
     JSON_HEADERS.append('Accept', 'application/json');
     JSON_HEADERS.append('Content-Type', 'application/json');
 
@@ -110,7 +111,9 @@ export class App {
         // onNext callback
         data => this.serverData(data),
         // onError callback
-        err  => this.errorMessage(err)
+        err  => this.errorMessage(err),
+        // onComplete callback
+        ()   => console.log('complete')
       );//end http
 
   }
@@ -139,4 +142,3 @@ export class App {
  * For help or questions please contact us at @AngularClass on twitter
  * or via chat on gitter at https://gitter.im/angular-class/angular2-webpack-starter
  */
-
