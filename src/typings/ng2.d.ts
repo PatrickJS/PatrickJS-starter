@@ -4,6 +4,13 @@ interface Type extends Function {
   new (...args: any[]): any;
 }
 
+
+declare module "angular2/src/core/dom/dom_adapter" {
+  class DOM {
+    static defaultDoc(): any;
+  }
+}
+
 declare module "angular2/router" {
   var ROUTER_BINDINGS: any;
   var ROUTER_DIRECTIVES: any;
