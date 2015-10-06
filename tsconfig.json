@@ -14,9 +14,8 @@
     "outDir": "dist"
   },
   "files": [
-    "node_modules/typescript/lib/lib.dom.d.ts",
     "src/typings/_custom.d.ts",
-    "src/app/components/app.ts",
+    "src/app/app.ts",
     "src/app/bootstrap.ts"
   ]
 }
