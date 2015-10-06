@@ -32,28 +32,16 @@ var BannerPlugin   = webpack.BannerPlugin;
  * Config
  */
 module.exports = {
-  devtool: env({
-    'development': 'eval',
-    'all': 'source-map'
-  }),
-
-  debug: env({
-    'development': true,
-    'all': false
-  }),
-  cache: env({
-    // 'development': false
-    'all': true
-  }),
+  devtool: 'source-map',
+  debug: true,
+  cache: true,
   verbose: true,
   displayErrorDetails: true,
   context: __dirname,
-  stats: env({
-    'all': {
-      colors: true,
-      reasons: true
-    }
-  }),
+  stats: {
+    colors: true,
+    reasons: true
+  },
 
   // our Development Server config
   devServer: {
@@ -73,12 +61,9 @@ module.exports = {
       'reflect-metadata',
       // to ensure these modules are grouped together in one file
       'angular2/angular2',
-      // 'angular2/forms',
       'angular2/core',
       'angular2/router',
-      'angular2/http',
-      // 'angular2/debug',
-      // 'angular2/di'
+      'angular2/http'
     ],
     'app': [
       // App
@@ -98,14 +83,8 @@ module.exports = {
   // Config for our build files
   output: {
     path: root('__build__'),
-    filename: env({
-      'development': '[name].js',
-      'all': '[name].[hash].min.js'
-    }),
-    sourceMapFilename: env({
-      'development': '[name].js.map',
-      'all': '[name].[hash].min.js.map'
-    }),
+    filename: '[name].js',
+    sourceMapFilename: '[name].js.map',
     chunkFilename: '[id].chunk.js'
     // publicPath: 'http://mycdn.com/'
   },
@@ -158,53 +137,23 @@ module.exports = {
     ]
   },
 
-  plugins: env({
-    'production': [
-      new UglifyJsPlugin({
-        compress: {
-          warnings: false,
-          drop_debugger: env({
-            'development': false,
-            'all': true
-          })
-        },
-        output: {
-          comments: false
-        },
-        beautify: false
-      }),
-      new BannerPlugin(getBanner(), {entryOnly: true})
-    ],
-    'development': [
-      /* Dev Plugin */
-      // new webpack.HotModuleReplacementPlugin(),
-    ],
-    'all': [
-      new DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
-        'VERSION': JSON.stringify(pkg.version)
-      }),
-      new OccurenceOrderPlugin(),
-      new DedupePlugin(),
-
-      new CommonsChunkPlugin({
-        name: 'angular2',
-        minChunks: Infinity,
-        filename: env({
-          'development': 'angular2.js',
-          'all': 'angular2.min.js'
-        })
-      }),
-      new CommonsChunkPlugin({
-        name: 'common',
-        filename: env({
-          'development': 'common.js',
-          'all': 'common.min.js'
-        })
-      })
-    ]
-
-  }),
+  plugins: [
+    new DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
+      'VERSION': JSON.stringify(pkg.version)
+    }),
+    new OccurenceOrderPlugin(),
+    new DedupePlugin(),
+    new CommonsChunkPlugin({
+      name: 'angular2',
+      minChunks: Infinity,
+      filename: 'angular2.js'
+    }),
+    new CommonsChunkPlugin({
+      name: 'common',
+      filename: 'common.js'
+    })
+  ],
 
   /*
    * When using `templateUrl` and `styleUrls` please use `__filename`
