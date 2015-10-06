@@ -3,9 +3,15 @@
 /*
  * Angular 2
  */
-import {Component, View, Directive} from 'angular2/angular2';
-import {Validators, FormBuilder} from 'angular2/forms';
-import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/angular2';
+import {
+  Component,
+  View,
+  Directive,
+  Validators,
+  FormBuilder,
+  CORE_DIRECTIVES,
+  FORM_DIRECTIVES
+} from 'angular2/angular2';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
 
 /*
