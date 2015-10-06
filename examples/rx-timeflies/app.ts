@@ -3,7 +3,7 @@
 // Angular 2
 import {Component, View} from 'angular2/angular2';
 
-import {Timeflies} from './timeflies';
+import {Timeflies} from './components/timeflies';
 
 /*
  * App Component

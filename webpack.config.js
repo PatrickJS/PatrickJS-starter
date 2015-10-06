@@ -73,11 +73,11 @@ module.exports = {
 
       // './examples/rx-autosuggest/bootstrap'
       // './examples/rx-draggable/bootstrap'
-      // './examples/rx-timeflies/bootstrap'
+      './examples/rx-timeflies/bootstrap'
       // './examples/simple-component/bootstrap'
       // './examples/simple-todo/bootstrap'
 
-      './src/app/bootstrap'
+      // './src/app/bootstrap'
     ]
   },
 
