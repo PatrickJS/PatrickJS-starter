@@ -35,6 +35,7 @@ module.exports = {
   devtool: 'source-map',
   debug: true,
   cache: true,
+
   verbose: true,
   displayErrorDetails: true,
   context: __dirname,
@@ -72,7 +73,7 @@ module.exports = {
 
       // './examples/rx-autosuggest/bootstrap'
       // './examples/rx-draggable/bootstrap'
-      // './examples/rx-draggable/bootstrap'
+      // './examples/rx-timeflies/bootstrap'
       // './examples/simple-component/bootstrap'
       // './examples/simple-todo/bootstrap'
 
