@@ -89,9 +89,9 @@ module.exports = {
       // './examples/rx-draggable/bootstrap'
       // './examples/rx-draggable/bootstrap'
       // './examples/simple-component/bootstrap'
-      './examples/simple-todo/bootstrap'
+      // './examples/simple-todo/bootstrap'
 
-      // './src/app/bootstrap'
+      './src/app/bootstrap'
     ]
   },
 
