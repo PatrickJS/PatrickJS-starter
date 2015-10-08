@@ -1,7 +1,7 @@
 [![GitHub version](https://badge.fury.io/gh/angular-class%2Fangular2-webpack-starter.svg)](http://badge.fury.io/gh/angular-class%2Fangular2-webpack-starter)
 [![Dependency Status](https://david-dm.org/angular-class/angular2-webpack-starter.svg)](https://david-dm.org/angular-class/angular2-webpack-starter)
 [![Issue Stats](http://issuestats.com/github/angular-class/angular2-webpack-starter/badge/pr?style=flat)](http://issuestats.com/github/angular-class/angular2-webpack-starter)
-[![Issue Stats](http://issuestats.com/github/angular-class/angular2-webpack-starter/badge/issue?style=flat)](http://issuestats.com/github/angular-class/angular2-webpack-starter)
+[![Issue Stats](http://issuestats.com/github/angular-class/angular2-webpack-starter/badge/issue?style=flat)](http://issuestats.com/github/angular-class/angular2-webpack-starter) [![Stack Share](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](http://stackshare.io/angularclass/angular-2-webpack-starter)
 
 <p align="center">
   <a href="https://angularclass.com" target="_blank">
