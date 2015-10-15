@@ -17,7 +17,7 @@ import {ROUTER_DIRECTIVES} from 'angular2/router';
 
 /*
  * Directive
- * XLarge is a simple directive to show how one of made
+ * XLarge is a simple directive to show how one is made
  */
 @Directive({
   selector: '[x-large]' // using [ ] means selecting attributes
