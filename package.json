@@ -58,7 +58,7 @@
     "karma-webpack": "1.7.0",
     "object-assign": "4.0.1",
     "phantomjs": "1.9.17",
-    "protractor": "2.1.0",
+    "protractor": "2.5.1",
     "raw-loader": "0.5.1",
     "rimraf": "2.4.3",
     "style-loader": "0.12.2",
