@@ -1,13 +1,11 @@
 /// <reference path="../typings/_custom.d.ts" />
 
-// Angular 2
-import {bootstrap} from 'angular2/angular2';
 /*
- * Bindings provided by Angular
+ * Providers provided by Angular
  */
-import {FORM_BINDINGS, ELEMENT_PROBE_BINDINGS} from 'angular2/angular2';
-import {ROUTER_BINDINGS, routerBindings} from 'angular2/router';
-import {HTTP_BINDINGS} from 'angular2/http';
+import {bootstrap, FORM_PROVIDERS, ELEMENT_PROBE_PROVIDERS} from 'angular2/angular2';
+import {ROUTER_PROVIDERS} from 'angular2/router';
+import {HTTP_PROVIDERS} from 'angular2/http';
 
 /*
  * App Component
@@ -17,13 +15,12 @@ import {App} from './app';
 
 /*
  * Bootstrap our Angular app with a top level component `App` and inject
- * our Services and Bindings into Angular's dependency injection
+ * our Services and Providers into Angular's dependency injection
  */
 bootstrap(App, [
   // These are dependencies of our App
-  routerBindings(App),
-  FORM_BINDINGS,
-  ROUTER_BINDINGS,
-  HTTP_BINDINGS,
-  ELEMENT_PROBE_BINDINGS
+  FORM_PROVIDERS,
+  ROUTER_PROVIDERS,
+  HTTP_PROVIDERS,
+  ELEMENT_PROBE_PROVIDERS
 ]);

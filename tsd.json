@@ -5,12 +5,6 @@
   "path": "tsd_typings",
   "bundle": "tsd_typings/tsd.d.ts",
   "installed": {
-    "angular-protractor/angular-protractor.d.ts": {
-      "commit": "f6c8ca47193fb67947944a3170912672ac3e908e"
-    },
-    "selenium-webdriver/selenium-webdriver.d.ts": {
-      "commit": "f6c8ca47193fb67947944a3170912672ac3e908e"
-    },
     "rx/rx.d.ts": {
       "commit": "f6c8ca47193fb67947944a3170912672ac3e908e"
     },

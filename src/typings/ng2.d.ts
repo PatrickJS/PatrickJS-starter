@@ -1,5 +1,5 @@
-declare var zone: any;
-declare var Zone: any;
+// declare var zone: any;
+// declare var Zone: any;
 interface Type extends Function {
   new (...args: any[]): any;
 }
@@ -11,30 +11,30 @@ declare module "angular2/src/core/dom/dom_adapter" {
   }
 }
 
-declare module "angular2/router" {
-  var ROUTER_BINDINGS: any;
-  var ROUTER_DIRECTIVES: any;
-  var RouteConfig: any;
-  class Router {
-  }
+// declare module "angular2/router" {
+//   var ROUTER_BINDINGS: any;
+//   var ROUTER_DIRECTIVES: any;
+//   var RouteConfig: any;
+//   class Router {
+//   }
 
-  class Route {
-    new (config: any): any;
-    constructor(config: any);
-  }
-  class AuxRoute {
-    new (config: any): any;
-    constructor(config: any);
-  }
-  class AsyncRoute {
-    new (config: any): any;
-    constructor(config: any);
-  }
-  class Redirect {
-    new (config: any): any;
-    constructor(config: any);
-  }
-}
+//   class Route {
+//     new (config: any): any;
+//     constructor(config: any);
+//   }
+//   class AuxRoute {
+//     new (config: any): any;
+//     constructor(config: any);
+//   }
+//   class AsyncRoute {
+//     new (config: any): any;
+//     constructor(config: any);
+//   }
+//   class Redirect {
+//     new (config: any): any;
+//     constructor(config: any);
+//   }
+// }
 
 declare module "angular2/tools" {
   function enableDebugTools(appRef: any): any;
@@ -729,14 +729,14 @@ declare module "angular2/src/router/pipeline" {
   class Pipeline {}
 }
 
-declare module "angular2/src/router/instruction" {
-  class Instruction {
-    component: any;
-    params: any;
-    reuse: any;
-    child: any;
-  }
-}
+// declare module "angular2/src/router/instruction" {
+//   class Instruction {
+//     component: any;
+//     params: any;
+//     reuse: any;
+//     child: any;
+//   }
+// }
 
 declare module "angular2/src/dom/browser_adapter" {
     class BrowserDomAdapter {
