@@ -35,14 +35,15 @@ var corsOptions = {
 };
 app.use(cors(corsOptionsDelegate));
 
-
 // Your middleware
 app.use(history());
-app.use(express.static('src/public'));
 
 // your api middleware
 var api = require('./todo_api');
 app.use('/api', cors(), api());
+
+//Static files
+app.use(express.static('src/public'));
 
 /*
 // README: Uncomment only if you're not using `npm run server`
