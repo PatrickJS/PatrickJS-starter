@@ -1,5 +1,5 @@
 {
-  "version": "1.6.0",
+  "version": "1.6.2",
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
@@ -10,12 +10,10 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true,
-    "listFiles": true,
+    "listFiles": false,
     "outDir": "dist"
   },
   "files": [
-    "src/typings/_custom.d.ts",
-    "src/app/app.ts",
     "src/app/bootstrap.ts"
   ]
 }
