@@ -22,9 +22,9 @@ import {bootstrap} from 'angular2/angular2';
 /*
  * Angular Modules
  */
-import {HTTP_BINDINGS, } from 'angular2/http';
-import {FORM_BINDINGS} from 'angular2/src/core/forms'
-import {ROUTER_BINDINGS} from 'angular2/router';
+import {FORM_PROVIDERS} from 'angular2/angular2';
+import {HTTP_PROVIDERS} from 'angular2/http';
+import {ROUTER_PROVIDERS} from 'angular2/router';
 
 /*
  * App Services
@@ -45,9 +45,9 @@ import {App} from './components/app';
  */
 const UNIVERSAL_BINDINGS = [
   // Angular's http/form/router services/bindings
-  HTTP_BINDINGS,
-  FORM_BINDINGS,
-  ROUTER_BINDINGS,
+  HTTP_PROVIDERS,
+  FORM_PROVIDERS,
+  ROUTER_PROVIDERS,
 
   // Our collection of services from /services
   APP_SERVICES_BINDINGS
