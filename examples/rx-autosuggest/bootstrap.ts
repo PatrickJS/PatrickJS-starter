@@ -5,7 +5,7 @@ import {bootstrap} from 'angular2/angular2';
 
 import {FORM_BINDINGS} from 'angular2/angular2'
 import {ROUTER_BINDINGS} from 'angular2/router';
-import {ELEMENT_PROBE_BINDINGS} from 'angular2/debug';
+import {ELEMENT_PROBE_BINDINGS} from 'angular2/angular2';
 import {HTTP_BINDINGS} from 'angular2/http';
 
 import {App} from './app';

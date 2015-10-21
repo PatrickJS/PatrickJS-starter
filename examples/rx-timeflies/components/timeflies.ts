@@ -6,7 +6,7 @@ import {Component, View, ElementRef, NgZone, CORE_DIRECTIVES} from 'angular2/ang
 // Services
 import {MESSAGE_BINDINGS, Message} from '../services/Message';
 
-import * as Rx from 'rx';
+import * as Rx from '@reactiveX/rxjs';
 
 interface LetterConfig {
   text: string;

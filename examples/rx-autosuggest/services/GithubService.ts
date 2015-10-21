@@ -2,7 +2,7 @@
 
 import {Injectable} from 'angular2/angular2';
 import {Http} from 'angular2/http';
-import * as Rx from 'rx';
+import * as Rx from '@reactivex/rxjs';
 
 
 @Injectable()
