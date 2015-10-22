@@ -88,8 +88,12 @@ export class App {
 
   onInit() {
     // Our API
-    // npm run express-install
-    // npm run express
+    // Before you start the app, run these commands in another process:
+    //
+    // - npm run express-install
+    // - npm run express
+    //
+    // This will start a process that will listen for requests on port 3001
 
     const BASE_URL = 'http://localhost:3001';
     const TODO_API_URL = '/api/todos';
@@ -121,7 +125,7 @@ export class App {
 
   errorMessage(err) {
     console.info(`${'\n'
-      } // You must run these commands for the Http API to work in another process ${'\n'
+      } // You must run these commands in another process for the Http API to work  ${'\n'
       } npm run express-install ${'\n'
       } npm run express
     `);
