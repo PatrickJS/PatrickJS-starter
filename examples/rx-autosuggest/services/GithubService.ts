@@ -17,7 +17,6 @@ export class GithubService {
    */
   search(query: string): Rx.Observable<any[]> {
     return this.http.get(this.url + query)
-      .toRx()                  // convert it to pure Rx stream
       .map(res => res.json())  // make json
       .map(res => res.items)   // extract "items" only
       .filter(repos => repos); // only if there are results
