@@ -11,9 +11,11 @@ import * as Rx from '@reactivex/rxjs';
 import {GithubService} from '../services/GithubService';
 
 
+declare var zone: Zone;
+
 @Directive({
   selector: 'input[type=text][ac-autosuggest-github]',
-  events:   [ 'results', 'loading' ],
+  outputs: [ 'results', 'loading' ],
   bindings: [ GithubService ]
 })
 export class AcAutosuggestGithub {
@@ -27,13 +29,13 @@ export class AcAutosuggestGithub {
   // Lifecycle hook
   onInit() {
 
-    (<any>Rx).Observable.fromEvent(this.el.nativeElement, 'input')
+    (<any>Rx).Observable.fromEvent(this.el.nativeElement, 'keyup')
       .map(e => e.target.value)                  // Project the text from the input
       .filter(text => text.length > 2)           // Only if the text is longer than 2 characters
-      .debounce(250)                             // Pause for 250ms
+      .debounceTime(250)                         // Pause for 250ms
       .distinctUntilChanged()                    // Only if the value has changed
       .do(zone.bind(() => this.loading.next(true)))
-      .flatMapLatest(query => this.github.search(query)) // send query to search service
+      .flatMap(query => this.github.search(query)) // send query to search service
       .do(zone.bind(() => this.loading.next(false)))
       // here is the real action
       .subscribe(
