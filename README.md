@@ -239,7 +239,7 @@ We have good experience using these editors:
 # Other Seed/Starter/Example Repos
 * [angular2-webpack-starter (AngularClass)](https://github.com/angular-class/angular2-webpack-starter)
   * Client/Server, Webpack, TypeScript, TSD, Protractor, Karma, Jasmine, Env Dev/Prod, Server API
-* [ng2-play.ts (Pawel Kozlowski)](https://github.com/pkozlowski-opensource/ng2-play.ts)
+* [ng2-play (Pawel Kozlowski)](https://github.com/pkozlowski-opensource/ng2-play)
   * Client only, Minimalist, SystemJS, Gulp, TypeScript
 * [angular2-seed (Minko Gechev)](https://github.com/mgechev/angular2-seed)
   * Client only, SystemJS, Gulp, TypeScript, TSD, Versioned, Env Dev/Prod
