@@ -1,7 +1,7 @@
 /// <reference path="../../typings/_custom.d.ts" />
 import {Pipe, ChangeDetectorRef} from 'angular2/angular2';
-import {AsyncPipe} from "angular2/pipes";
-import * as Rx from 'rx';
+import {AsyncPipe} from "angular2/angular2";
+import * as Rx from '@reactivex/rxjs';
 
 export function isObservable(obs) {
   return obs && typeof obs.subscribe === 'function';

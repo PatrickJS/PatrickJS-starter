@@ -24,11 +24,11 @@ import {APP_PIPES} from '../pipes/pipes';
  * Components
  */
 // We use a folder if we want separate files
-import {Home} from './home/home';
+import {Home} from '../../simple-component/home/home';
 // Otherwise we only use one file for a component
 import {Dashboard} from './dashboard';
 // A simple example of a Component using a Service
-import {Todo} from './todo';
+import {Todo} from '../../simple-todo/components/todo';
 
 // RxJs examples
 import {RxJsExamples} from './rxjs_examples/rxjs-examples';

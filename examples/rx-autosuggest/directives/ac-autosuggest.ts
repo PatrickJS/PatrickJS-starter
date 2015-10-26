@@ -1,7 +1,7 @@
 /// <reference path="../../typings/_custom.d.ts" />
 
 // Angular 2
-import {Directive, View, EventEmitter, ElementRef, NgZone as zone} from 'angular2/angular2';
+import {Directive, View, EventEmitter, ElementRef} from 'angular2/angular2';
 
 
 

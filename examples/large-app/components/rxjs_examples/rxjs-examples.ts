@@ -1,27 +1,28 @@
 /// <reference path="../../../typings/_custom.d.ts" />
 
 // Angular 2
-import {Component, View, CSSClass} from 'angular2/angular2';
+import {Component, View} from 'angular2/angular2';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 
-import {Search} from './autosuggest/search';
-import {Timeflies} from './timeflies/timeflies';
-import {Tictactoe} from './tictactoe/tictactoe';
-import {DraggableDiv} from './draggable_div/draggable_div';
+import {SearchGithub} from '../../../rx-autosuggest/components/search-github';
+//import {Timeflies} from './timeflies/timeflies';
+//import {Tictactoe} from './tictactoe/tictactoe';
+//import {DraggableDiv} from './draggable_div/draggable_div';
+
 
 
 @Component({
   selector: 'rxjs-examples'
 })
 @RouteConfig([
-  { path: '/',              redirectTo: '/search' },
-  { path: '/search',        as: 'search',        component: Search },
-  { path: '/timeflies',     as: 'timeflies',     component: Timeflies },
-  { path: '/tictactoe',     as: 'tictactoe',     component: Tictactoe },
-  { path: '/draggable_div', as: 'draggable_div', component: DraggableDiv }
+  { path: '/',              redirectTo: '/search' }//,
+  //{ path: '/search',        as: 'search',        component: Search },
+  //{ path: '/timeflies',     as: 'timeflies',     component: Timeflies },
+  //{ path: '/tictactoe',     as: 'tictactoe',     component: Tictactoe },
+  //{ path: '/draggable_div', as: 'draggable_div', component: DraggableDiv }
 ])
 @View({
-  directives: [ ROUTER_DIRECTIVES, CSSClass ],
+  //directives: [ ROUTER_DIRECTIVES, CSSClass ],
   // include our .css file
   styles: [
     // Use webpack's `require` to get files as a raw string using raw-loader
