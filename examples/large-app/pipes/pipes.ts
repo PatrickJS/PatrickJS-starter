@@ -2,7 +2,7 @@
 /*
  * Angular 2
  */
-import {Pipes} from 'angular2/change_detection';
+import {Pipe} from 'angular2/angular2';
 
 /*
  * App Pipes

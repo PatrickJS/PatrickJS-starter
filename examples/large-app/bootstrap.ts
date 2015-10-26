@@ -8,21 +8,22 @@ import {bootstrap} from 'angular2/angular2';
  * Common Injectables
  * our custom helper injectables to configure our app differently using the dependency injection system
  */
-import {
-  JIT_CHANGEDETECTION_BINDINGS,
-  DYNAMIC_CHANGEDETECTION_BINDINGS,
-  PREGENERATED_CHANGEDETECTION_BINDINGS,
-  BEST_CHANGEDETECTION_BINDINGS
-} from '../common/change_detection_bindings';
-import {
-  HTML5_LOCATION_BINDINGS,
-  HASH_LOCATION_BINDINGS
-} from '../common/location_bindings';
+// import {
+//   JIT_CHANGEDETECTION_BINDINGS,
+//   DYNAMIC_CHANGEDETECTION_BINDINGS,
+//   PREGENERATED_CHANGEDETECTION_BINDINGS,
+//   BEST_CHANGEDETECTION_BINDINGS
+// } from '../common/change_detection_bindings';
+// import {
+//   HTML5_LOCATION_BINDINGS,
+//   HASH_LOCATION_BINDINGS
+// } from '../common/location_bindings';
 
 /*
  * Angular Modules
  */
-import {HTTP_BINDINGS, FORM_BINDINGS} from 'angular2/angular2';
+import {HTTP_BINDINGS, } from 'angular2/http';
+import {FORM_BINDINGS} from 'angular2/src/core/forms'
 import {ROUTER_BINDINGS} from 'angular2/router';
 
 /*
