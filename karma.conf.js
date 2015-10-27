@@ -33,7 +33,7 @@ module.exports = function(config) {
     },
 
     webpack: {
-
+      
       resolve: {
         root: __dirname,
         extensions: ['','.ts','.js','.json'],
@@ -45,7 +45,7 @@ module.exports = function(config) {
       devtool: 'inline-source-map',
       module: {
         loaders: [
-          { test: /\.ts$/,   loader: 'typescript-simple?ignoreWarnings[]=2345', exclude: [
+          { test: /\.tsx?$/,   loader: 'ts-loader', exclude: [
               /web_modules/,
               /node_modules/
             ]
