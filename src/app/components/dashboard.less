@@ -1,0 +1,77 @@
+
+h3 {
+  margin-top: 0;
+}
+
+.tabs-left { margin-top: 3rem; }
+
+.nav-tabs {
+  float: left;
+  border-bottom: 0;
+
+  li {
+    float: none;
+    margin: 1rem;
+    
+    a {
+      margin-right: 0;
+      padding: 3rem 0rem 3rem 0rem;
+      border: 0;
+      background-color: #333;
+      color: #fff;
+      
+      &:hover {
+        background-color: #444;
+      }
+      
+      span.glyphicon {
+        margin: 5px 0 0;
+        display:block;
+        text-align:center;
+      }
+      
+      span.nav-text {
+        display: block;
+        text-align:center;
+      }
+    }
+  }
+  
+  .glyphicon {
+    color: #fff;
+  }
+  
+  .active .glyphicon {
+    color: #333;
+  }
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+  border:0;
+}
+
+.tab-content {
+ /* margin-left: 45px;*/
+  
+  .tab-pane {
+    display: none;
+    background-color: #fff;
+    padding: 1.6rem;
+    overflow-y: auto;
+  }
+  
+  .active { display: block; }
+}
+
+.list-group {
+  width: 100%;
+  
+  .list-group-item {
+    height: 50px;
+    
+    h4, span {
+      line-height: 11px;
+    }
+  }
+}
+

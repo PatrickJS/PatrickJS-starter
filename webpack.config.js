@@ -113,7 +113,10 @@ module.exports = {
 
       // support for .html as raw text
       { test: /\.html$/,  loader: 'raw' },
-
+       
+      //support for LESS stylesheets loading
+      { test: /\.less$/, loader: 'style-loader!css-loader!less-loader' }, 
+       
       // Support for .ts files.
       { test: /\.ts$/,    loader: 'ts',
         query: {

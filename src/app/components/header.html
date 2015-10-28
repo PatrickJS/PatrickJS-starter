@@ -1,0 +1,64 @@
+   <header class="container container-header hidden-xs">
+    <div class="row">
+        <div class="top-bar clearfix">
+            <div class="header-brand pull-left"></div>
+            <span class="header-brand pull-left"><a href="/">
+                <img class="img-responsive" src="//www.shrm.org/external/silverpop/images/shrmLogo.png" /></a></span>
+            <div class="header-nav pull-right" id="nesto" runat="server">
+                <ul class="utility-links text-right">
+                    <asp:Panel ID="CustomerDropdownPanel" runat="server">
+                        <li class="dropdown shrm-role-customer-visible">
+                            <a id="customer-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-angle-down"></i><span class="customer-first-name"><asp:Literal ID="firstNameLiteral" runat="server" /></span></a> |
+				            <ul class="dropdown-menu" aria-labelledby="customer-options">
+                                <li><a href="https://apps.shrm.org/myshrm/accountprofile.aspx">Edit profile</a></li>
+                                <li><a href="https://apps.shrm.org/myshrm/accountsettings.aspx">Account Settings</a></li>
+                                <li class="divider"></li>
+                                <li><a href="">Sign Out</a></li>
+                            </ul>
+                        </li>
+                    </asp:Panel>                    
+                        <li class="shrm-role-member-hidden shrm-role-customer-hidden shrm-role-member-hidden">
+                            <asp:Panel ID="SignInPanel" runat="server">
+                                <a href="http://shrm.org/Pages/Login.aspx?returnUrl=%2fpages%2fdefault.aspx">Sign In</a> |
+                            </asp:Panel>
+                        </li>                    
+                    <li class="dropdown">
+                        <a id="language-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-globe">&nbsp;</i><i class="fa fa-angle-down"></i>
+                            <span id="language-id">U.S. - EN</span></a> |
+				        <ul class="dropdown-menu" aria-labelledby="language-options">
+                            <li><a href="http://www.shrm.org">SHRM GLOBAL</a></li>
+                            <li><a href="http://www.shrm.org/pages/china.aspx">SHRM China</a></li>
+                            <li><a href="http://www.shrmindia.org/">SHRM India</a></li>
+                            <li><a href="http://www.shrm.org/pages/mena.aspx">SHRM MENA</a></li>
+                            <li class="divider"></li>
+                            <li class="language-switch" data-language="en"><a href="javascript:void(0)">English</a></li>
+                            <li class="language-switch" data-language="fr"><a href="javascript:void(0)">French</a></li>
+                            <li class="language-switch" data-language="de"><a href="javascript:void(0)">German</a></li>
+                            <li class="language-switch" data-language="pt"><a href="javascript:void(0)">Portuguese</a></li>
+                            <li class="language-switch" data-language="es"><a href="javascript:void(0)">Spanish</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="http://shrm.org/templatestools/askanhrexpert/pages/default.aspx">HR Help</a> | </li>
+                    <li><a href="http://store.shrm.org/">Shop<span class="shop-items"><span>16</span></span></a></li>
+                </ul>
+                <div class="header-ctas text-right">
+                    <!-- Role Unautenthicated User	-->
+                    <asp:Panel ID="CallToActionNonMemberPanel" runat="server">
+                        <a class="btn btn-success btn-lg btn-cta shrm-role-member-hidden" href="https://membership.shrm.org">Join Now</a>
+                        <a class="btn btn-success btn-lg btn-member btn-cta shrm-role-member-hidden" href="https://membership.shrm.org">Get Certified</a>
+                    </asp:Panel>
+                    <!-- Role Customer -->
+                    <asp:Panel ID="CallToActionMemberPanel" runat="server">
+                        <a class="btn btn-success btn-lg btn-cta shrm-role-member-visible-ib"  href="https://membership.shrm.org">Renew Now</a>
+                        <a class="btn btn-success btn-lg btn-cta shrm-role-member-visible-ib" href="https://membership.shrm.org">Recertify</a>
+                    </asp:Panel>
+                </div>
+            </div>
+        </div>
+        <!--/ .top-bar	-->
+        <div class="header-bar">
+        </div>
+        <!--/ .header-bar	-->
+    </div>
+</header>
+<!--/ .row-header	-->
