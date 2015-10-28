@@ -9,11 +9,17 @@ import {ROUTER_DIRECTIVES} from 'angular2/router';
  * App
  */
 import {Autofocus} from './Autofocus';
+import {StaticHeader} from './header';
+import {StaticFooter} from './footer';
 
 export * from './Autofocus';
+export * from './header';
+export * from './footer';
 // global App only directives
 export var SERVICES_DIRECTIVES: Array<any> = [
-  Autofocus
+  Autofocus,
+  StaticFooter,
+  StaticHeader
 ];
 
 // global Angular core and other Angular module directives (form/router)

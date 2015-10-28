@@ -2,9 +2,6 @@
 
 import {Component, View} from 'angular2/angular2';
 
-//import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/angular2';
-
-
 const HEADER_HTML = require('./header.html');
 
 @Component({
@@ -16,6 +13,5 @@ const HEADER_HTML = require('./header.html');
 })
 export class StaticHeader {
   constructor() {
-
   }
 }

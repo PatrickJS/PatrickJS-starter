@@ -23,15 +23,7 @@ import {APP_PIPES} from '../pipes/pipes';
 /*
  * Components
  */
-// We use a folder if we want separate files
-//import {Home} from '../../../examples/simple-component/home/home';
-// Otherwise we only use one file for a component
-import {Dashboard} from './dashboard';
-// A simple example of a Component using a Service
-//import {Todo} from '../../../examples/simple-todo/components/todo';
-
-// RxJs examples
-//import {RxJsExamples} from './rxjs_examples/rxjs-examples';
+import {Dashboard} from './dashboard/dashboard';
 
 // Use webpack's `require` to get files as a raw string using raw-loader
 const APP_STYLES = require('./app.css');
@@ -50,12 +42,11 @@ const APP_STYLES = require('./app.css');
   directives: [ APP_DIRECTIVES ],
   styles:     [ APP_STYLES ],
   template: `
-    <static-header></static-header>
+    <static-header>header...</static-header>
     <main>
       <router-outlet></router-outlet>
     </main>
-    <static-footer></static-footer>
-    
+    <static-footer>footer...</static-footer>
   `
 })
 @RouteConfig([
