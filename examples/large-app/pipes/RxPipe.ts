@@ -1,6 +1,6 @@
 /// <reference path="../../typings/_custom.d.ts" />
 import {Pipe, ChangeDetectorRef} from 'angular2/angular2';
-import {AsyncPipe} from "angular2/angular2";
+import {AsyncPipe, Observable} from "angular2/angular2";
 import * as Rx from '@reactivex/rxjs';
 
 export function isObservable(obs) {
@@ -36,7 +36,7 @@ export class RxPipe extends AsyncPipe {
     return isObservable(obs);
   }
 
-  _selectStrategy(obj: Rx.Observable<any>) {
+  _selectStrategy(obj: Observable | Promise<any>) {
     return RX_STRATEGY;
   }
 

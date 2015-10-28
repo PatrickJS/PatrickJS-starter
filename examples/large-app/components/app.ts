@@ -56,16 +56,16 @@ const APP_STYLES = require('./app.css');
         <span class="logo">{{ name | capitalize }} + Webpack</span>
         <ul>
           <li class="l-left">
-            <a [router-link]=" ['/home'] "class="top-nav-button ac-default-theme">Home</a>
+            <a [router-link]=" ['/Home'] " class="top-nav-button ac-default-theme">Home</a>
           </li>
           <li class="l-left">
-            <a [router-link]=" ['/dashboard'] "class="top-nav-button ac-default-theme">Dashboard</a>
+            <a [router-link]=" ['/Dashboard'] " class="top-nav-button ac-default-theme">Dashboard</a>
           </li>
           <li class="l-left">
-            <a [router-link]=" ['/todo'] "class="top-nav-button ac-default-theme">Todo</a>
+            <a [router-link]=" ['/Todo'] " class="top-nav-button ac-default-theme">Todo</a>
           </li>
           <li class="l-left">
-            <a [router-link]=" ['/rxjs-examples', 'search'] "class="top-nav-button ac-default-theme">RxJs Examples</a>
+            <a [router-link]=" ['/RxjsExamples', 'Search'] " class="top-nav-button ac-default-theme">RxJs Examples</a>
           </li>
         </ul>
       </div>
@@ -81,10 +81,10 @@ const APP_STYLES = require('./app.css');
   `
 })
 @RouteConfig([
-  { path: '/',                  as: 'home',          component: Home },
-  { path: '/dashboard',         as: 'dashboard',     component: Dashboard },
-  { path: '/todo',              as: 'todo',          component: Todo },
-  { path: '/rxjs-examples/...', as: 'rxjs-examples', component: RxJsExamples }
+  { path: '/',                  as: 'Home',          component: Home },
+  { path: '/dashboard',         as: 'Dashboard',     component: Dashboard },
+  { path: '/todo',              as: 'Todo',          component: Todo },
+  { path: '/rxjs-examples/...', as: 'RxjsExamples', component: RxJsExamples }
 ])
 export class App {
   name: string;

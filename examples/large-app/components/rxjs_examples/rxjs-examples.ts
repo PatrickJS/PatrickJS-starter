@@ -1,28 +1,27 @@
 /// <reference path="../../../typings/_custom.d.ts" />
 
 // Angular 2
-import {Component, View} from 'angular2/angular2';
+import {Component, View, NgClass } from 'angular2/angular2';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 
 import {SearchGithub} from '../../../rx-autosuggest/components/search-github';
-//import {Timeflies} from './timeflies/timeflies';
-//import {Tictactoe} from './tictactoe/tictactoe';
-//import {DraggableDiv} from './draggable_div/draggable_div';
-
+import {Timeflies} from '../../../rx-timeflies/components/timeflies';
+import {Tictactoe} from '../../../game-tictactoe/components/tictactoe';
+//import {DragElement} from '../../../rx-draggable/components/drag-element';
 
 
 @Component({
   selector: 'rxjs-examples'
 })
 @RouteConfig([
-  { path: '/',              redirectTo: '/search' }//,
-  //{ path: '/search',        as: 'search',        component: Search },
-  //{ path: '/timeflies',     as: 'timeflies',     component: Timeflies },
-  //{ path: '/tictactoe',     as: 'tictactoe',     component: Tictactoe },
-  //{ path: '/draggable_div', as: 'draggable_div', component: DraggableDiv }
+  { path: '/',              redirectTo: '/search' },
+  { path: '/search',        as: 'Search',        component: SearchGithub},
+  { path: '/timeflies',     as: 'Timeflies',     component: Timeflies },
+  { path: '/tictactoe',     as: 'Tictactoe',     component: Tictactoe },
+  //{ path: '/draggable',     as: 'Draggable',     component: DragElement}
 ])
 @View({
-  //directives: [ ROUTER_DIRECTIVES, CSSClass ],
+  directives: [ ROUTER_DIRECTIVES, NgClass ],
   // include our .css file
   styles: [
     // Use webpack's `require` to get files as a raw string using raw-loader
@@ -34,7 +33,7 @@ import {SearchGithub} from '../../../rx-autosuggest/components/search-github';
       <ul class="rxjs-menu">
         <li>
           <a class="ac-button ac-default-theme"
-             [router-link]=" ['./search'] "
+             [router-link]=" ['./Search'] "
              (click)="active = 0"
              [class.active]="active === 0">
             Search Github
@@ -42,22 +41,22 @@ import {SearchGithub} from '../../../rx-autosuggest/components/search-github';
         </li>
         <li>
           <a class="ac-button md-default-theme"
-             [router-link]=" ['./timeflies'] "
+             [router-link]=" ['./Timeflies'] "
              (click)="active = 1"
              [class.active]="active === 1">Timeflies</a>
         </li>
         <li>
           <a class="ac-button md-default-theme"
-             [router-link]=" ['./tictactoe'] "
+             [router-link]=" ['./Tictactoe'] "
              (click)="active = 2"
              [class.active]="active === 2">Tic tac toe</a>
         </li>
-        <li>
-          <a class="ac-button md-default-theme"
-             [router-link]=" ['./draggable_div'] "
-             (click)="active = 3"
-             [class.active]="active === 3">Drag Element</a>
-        </li>
+        <!--<li>-->
+          <!--<a class="ac-button md-default-theme"-->
+             <!--[router-link]=" ['./Draggable'] "-->
+             <!--(click)="active = 3"-->
+             <!--[class.active]="active === 3">Drag Element</a>-->
+        <!--</li>-->
       </ul>
     </nav>
 
