@@ -4,35 +4,34 @@
   * TODO: ES5 for now until I make a webpack plugin for protractor
   */
 describe('App', function() {
-  var subject;
-  var result;
 
   beforeEach(function() {
     browser.get('/');
   });
 
-  afterEach(function() {
+
+  it('should have a title', function() {
+    var subject = browser.getTitle();
+    var result  = 'Angular2 Webpack Starter by @gdi2990 from @AngularClass';
     expect(subject).toEqual(result);
   });
 
-  it('should have a title', function() {
-    subject = browser.getTitle();
-    result  = 'Angular2 Webpack Starter by @gdi2990 from @AngularClass';
-  });
-
   it('should have <header>', function() {
-    subject = element(by.deepCss('app /deep/ header')).isPresent();
-    result  = true;
+    var subject = element(by.deepCss('app /deep/ header')).isPresent();
+    var result  = true;
+    expect(subject).toEqual(result);
   });
 
   it('should have <main>', function() {
-    subject = element(by.deepCss('app /deep/ main')).isPresent();
-    result  = true;
+    var subject = element(by.deepCss('app /deep/ main')).isPresent();
+    var result  = true;
+    expect(subject).toEqual(result);
   });
 
   it('should have <footer>', function() {
-    subject = element(by.deepCss('app /deep/ footer')).getText();
-    result  = 'WebPack Angular 2 Starter by @AngularClass';
+    var subject = element(by.deepCss('app /deep/ footer')).getText();
+    var result  = 'WebPack Angular 2 Starter by @AngularClass';
+    expect(subject).toEqual(result);
   });
 
 });
