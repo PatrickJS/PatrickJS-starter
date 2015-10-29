@@ -1,5 +1,5 @@
 /// <reference path="../../typings/_custom.d.ts" />
-import {bind, Injectable} from 'angular2/angular2';
+import {provide, Injectable} from 'angular2/angular2';
 
 type Triple = [ string, string, string ]; // tuple type
 type Rows   = [ Triple, Triple, Triple ];
@@ -51,7 +51,7 @@ export class GameService {
 }
 
 export var GAMESERVICE_BINDINGS = [
-  bind(GameService).toClass(GameService)
+  provide(GameService, {useClass: GameService})
 ];
 
 // Pure functions
