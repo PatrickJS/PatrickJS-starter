@@ -23,41 +23,28 @@ import {APP_PIPES} from '../pipes/pipes';
 /*
  * Components
  */
+import {Greeting} from './greeting/greeting';
 import {Dashboard} from './dashboard/dashboard';
 
-// Use webpack's `require` to get files as a raw string using raw-loader
-const APP_STYLES = require('./app.css');
+const APP_STYLES = require('!raw!less!./app.less');
+const APP_HTML = require('./app.html');
 
-/*
- * App Component
- * Top Level Component
- * Simple router component example
- */
 @Component({
-  selector: 'app', // without [ ] means we are selecting the tag directly
+  selector: 'app',
   viewBindings: []
 })
 @View({
   pipes:      [ APP_PIPES ],
-  directives: [ APP_DIRECTIVES ],
+  directives: [ APP_DIRECTIVES, Greeting ],
   styles:     [ APP_STYLES ],
-  template: `
-    <static-header>header...</static-header>
-    <main>
-      <router-outlet></router-outlet>
-    </main>
-    <static-footer>footer...</static-footer>
-  `
+  template:   APP_HTML
 })
 @RouteConfig([
-  //{ path: '/',                  as: 'Home',          component: Home },
   { path: '/',         as: 'Dashboard',     component: Dashboard },
   //{ path: '/todo',              as: 'Todo',          component: Todo },
   //{ path: '/rxjs-examples/...', as: 'RxjsExamples', component: RxJsExamples }
 ])
 export class App {
-  name: string;
   constructor() {
-    this.name = 'angular'; // used in logo
   }
 }
