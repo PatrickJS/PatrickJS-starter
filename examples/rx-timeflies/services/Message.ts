@@ -1,5 +1,5 @@
 /// <reference path="../../typings/_custom.d.ts" />
-import {bind, Injectable} from 'angular2/angular2';
+import {provide, Injectable} from 'angular2/angular2';
 
 @Injectable()
 export class Message {
@@ -12,6 +12,6 @@ export class Message {
 }
 
 
-export var MESSAGE_BINDINGS: Array<any> = [
-  bind(Message).toClass(Message)
+export var MESSAGE_PROVIDERS: Array<any> = [
+  provide(Message, {useClass: Message})
 ];

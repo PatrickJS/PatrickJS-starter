@@ -7,10 +7,7 @@ import {Component, View} from 'angular2/angular2';
 import {Draggable} from '../directives/draggable';
 
 @Component({
-  selector: 'drag-element'
-})
-@View({
-  // needed in order to tell Angular's compiler what's in the template
+  selector: 'drag-element',
   directives: [ Draggable ],
   styles: [`
     [draggable] {
