@@ -129,7 +129,6 @@ export class App {
       } npm run express-install ${'\n'
       } npm run express
     `);
-    console.error(err);
   }//errorMessage
 
 }
