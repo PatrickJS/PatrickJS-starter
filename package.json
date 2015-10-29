@@ -6,24 +6,21 @@
   "scripts": {
     "build": "npm run webpack --colors --display-error-details --display-cached",
     "webpack": "webpack",
-    "clean": "rimraf node_modules tsd_typings",
+    "clean": "rimraf node_modules doc",
     "clean-install": "npm run clean && npm install",
     "clean-start": "npm run clean && npm start",
-    "prequick-start": "npm install",
     "watch": "webpack --watch",
     "server": "webpack-dev-server --inline --colors --display-error-details --display-cached --port 3000",
     "express": "node ./examples/server/express-server-example.js",
-    "express-install": "npm install express connect-history-api-fallback morgan body-parser cors",
+    "express-install": "npm install express connect-history-api-fallback morgan body-parser cors --save",
     "webdriver-update": "webdriver-manager update",
     "webdriver-start": "webdriver-manager start",
     "preprotractor": "npm run webdriver-update",
     "protractor": "protractor",
-    "e2e": "npm run protractor",
+    "e2e": "protractor",
+    "ci": "npm run e2e && npm run test",
     "test": "karma start",
-    "remove-tsd-loader-typings": "rimraf node_modules/typescript-simple-loader/typescript-simple-loader.d.ts",
-    "tsd-update": "npm run remove-tsd-loader-typings && tsd reinstall --overwrite",
     "docs": "typedoc  --options typedoc.json  src/**/*.ts",
-    "postinstall": "npm run tsd-update && tsd install && tsd link",
     "start": "npm run server"
   },
   "repository": {
@@ -40,13 +37,10 @@
     "@reactivex/rxjs": "5.0.0-alpha.4",
     "angular2": "2.0.0-alpha.44",
     "reflect-metadata": "0.1.2",
-    "rimraf": "2.4.3",
-    "ts-loader": "0.5.6",
-    "tsd": "^0.6.5",
     "zone.js": "0.5.8"
   },
   "devDependencies": {
-    "css-loader": "0.19.0",
+    "css-loader": "^0.21.0",
     "exports-loader": "0.6.2",
     "expose-loader": "0.7.0",
     "file-loader": "^0.8.4",
@@ -63,11 +57,13 @@
     "phantomjs": "^1.9.18",
     "protractor": "2.5.1",
     "raw-loader": "0.5.1",
-    "style-loader": "^0.12.4",
+    "rimraf": "2.4.3",
+    "style-loader": "^0.13.0",
+    "ts-loader": "^0.6.0",
     "typedoc": "^0.3.12",
     "typescript": "1.6.2",
     "url-loader": "^0.5.6",
     "webpack": "1.12.2",
-    "webpack-dev-server": "1.12.0"
+    "webpack-dev-server": "^1.12.1"
   }
 }
