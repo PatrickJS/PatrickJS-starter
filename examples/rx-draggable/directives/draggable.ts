@@ -27,18 +27,18 @@ export class Draggable {
     this.element.nativeElement.style.position = 'relative';
     this.element.nativeElement.style.cursor = 'pointer';
 
-    this.mousedrag = this.mousedown._subject.map(event => {
+    this.mousedrag = this.mousedown.toRx().map(event => {
         event.preventDefault();
         return {
           left: event.clientX - this.element.nativeElement.getBoundingClientRect().left,
           top:  event.clientY - this.element.nativeElement.getBoundingClientRect().top
         };
       })
-      .flatMap(imageOffset => this.mousemove._subject.map(pos => ({
+      .flatMap(imageOffset => this.mousemove.toRx().map(pos => ({
         top:  pos.clientY - imageOffset.top,
         left: pos.clientX - imageOffset.left
       }))
-      .takeUntil(this.mouseup._subject));
+      .takeUntil(this.mouseup.toRx()));
 
   }
 
