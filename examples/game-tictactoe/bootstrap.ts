@@ -3,20 +3,19 @@
 // Angular 2
 import {bootstrap} from 'angular2/angular2';
 
-import {FORM_BINDINGS} from 'angular2/angular2'
-import {ROUTER_BINDINGS} from 'angular2/router';
-import {ELEMENT_PROBE_BINDINGS} from 'angular2/debug';
-import {HTTP_BINDINGS} from 'angular2/http';
+import {FORM_PROVIDERS, ELEMENT_PROBE_PROVIDERS} from 'angular2/angular2'
+import {ROUTER_PROVIDERS} from 'angular2/router';
+import {HTTP_PROVIDERS} from 'angular2/http';
 
 import {App} from './app';
 
 
-const APP_BINDINGS = [
+const APP_PROVIDERS = [
   // These are dependencies of our App
-  FORM_BINDINGS,
-  ROUTER_BINDINGS,
-  HTTP_BINDINGS,
-  ELEMENT_PROBE_BINDINGS
+  FORM_PROVIDERS,
+  ROUTER_PROVIDERS,
+  HTTP_PROVIDERS,
+  ELEMENT_PROBE_PROVIDERS
 ];
 /*
  * Bootstrap our Angular app with a top level component `App` and inject
@@ -26,5 +25,5 @@ bootstrap(
   // Top Level Component
   App,
   // AppBindings
-  APP_BINDINGS
+  APP_PROVIDERS
 );

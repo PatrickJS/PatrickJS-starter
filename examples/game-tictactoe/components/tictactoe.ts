@@ -1,7 +1,7 @@
 /// <reference path="../../typings/_custom.d.ts" />
 
 // Angular 2
-import {Component, View} from 'angular2/angular2';
+import {Component} from 'angular2/angular2';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/angular2';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
 
@@ -22,9 +22,7 @@ const ANGULAR_DIRECTIVES = [
 
 @Component({
   selector: 'tictactoe',
-  bindings: [ GameService ]
-})
-@View({
+  bindings: [ GameService ],
   directives: [
     ANGULAR_DIRECTIVES,
     //
