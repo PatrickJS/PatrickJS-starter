@@ -1,10 +1,10 @@
 /// <reference path="../../typings/_custom.d.ts" />
 
 // Angular 2
-import {Component, View, ElementRef, NgZone, CORE_DIRECTIVES} from 'angular2/angular2';
+import {Component, ElementRef, NgZone, CORE_DIRECTIVES} from 'angular2/angular2';
 
 // Services
-import {MESSAGE_BINDINGS, Message} from '../services/Message';
+import {MESSAGE_PROVIDERS, Message} from '../services/Message';
 
 import * as Rx from '@reactivex/rxjs';
 
@@ -17,9 +17,7 @@ interface LetterConfig {
 
 @Component({
   selector: 'timeflies',
-  bindings: [ MESSAGE_BINDINGS ]
-})
-@View({
+  providers: [ MESSAGE_PROVIDERS ],
   directives: [ CORE_DIRECTIVES ],
   template: `
   <div style="background-color: papayawhip; height: 500px;">

@@ -16,7 +16,7 @@ declare var zone: Zone;
 @Directive({
   selector: 'input[type=text][ac-autosuggest-github]',
   outputs: [ 'results', 'loading' ],
-  bindings: [ GithubService ]
+  providers: [ GithubService ]
 })
 export class AcAutosuggestGithub {
   results: EventEmitter = new EventEmitter();

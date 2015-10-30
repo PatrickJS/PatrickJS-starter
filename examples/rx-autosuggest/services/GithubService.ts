@@ -1,6 +1,6 @@
 /// <reference path="../../typings/_custom.d.ts" />
 
-import {Injectable} from 'angular2/angular2';
+import {provide, Injectable} from 'angular2/angular2';
 import {Http} from 'angular2/http';
 import * as Rx from '@reactivex/rxjs';
 
@@ -23,6 +23,6 @@ export class GithubService {
   }
 }
 
-export const GITHUB_BINDINGS = [
-  GithubService
+export var GITHUB_PROVIDERS: Array<any> = [
+  provide(GithubService, {useClass: GithubService})
 ];
