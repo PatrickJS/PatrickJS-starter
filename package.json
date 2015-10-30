@@ -25,14 +25,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/angular-class/angular2-webpack-starter.git"
+    "url": "https://github.com/angularclass/angular2-webpack-starter.git"
   },
   "author": "gdi2290 <github@gdi2290.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/angular-class/angular2-webpack-starter/issues"
+    "url": "https://github.com/angularclass/angular2-webpack-starter/issues"
   },
-  "homepage": "https://github.com/angular-class/angular2-webpack-starter",
+  "homepage": "https://github.com/angularclass/angular2-webpack-starter",
   "dependencies": {
     "@reactivex/rxjs": "5.0.0-alpha.4",
     "angular2": "2.0.0-alpha.45",
