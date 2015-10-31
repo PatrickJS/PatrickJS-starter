@@ -4,9 +4,9 @@
 import {Component, View, NgClass } from 'angular2/angular2';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 
-import {SearchGithub} from '../../../rx-autosuggest/components/search-github';
-import {Timeflies} from '../../../rx-timeflies/components/timeflies';
-import {Tictactoe} from '../../../game-tictactoe/components/tictactoe';
+import {SearchGithub} from '../../../../examples/rx-autosuggest/components/search-github';
+import {Timeflies} from '../../../../examples/rx-timeflies/components/timeflies';
+import {Tictactoe} from '../../../../examples/game-tictactoe/components/tictactoe';
 //import {DragElement} from '../../../rx-draggable/components/drag-element';
 
 
