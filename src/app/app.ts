@@ -1,14 +1,20 @@
 /*
  * Angular 2 decorators and services
  */
-import {Directive, Component, View, ElementRef} from 'angular2/web_worker/worker';
+import {
+  Directive,
+  Component,
+  View,
+  ElementRef,
+  CORE_DIRECTIVES,
+  FORM_DIRECTIVES
+} from 'angular2/web_worker/worker';
 import {RouteConfig, Router} from 'angular2/router';
 //import {Http, Headers} from 'angular2/http';
 
 /*
  * Angular Directives
  */
-import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/angular2';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
 
 
