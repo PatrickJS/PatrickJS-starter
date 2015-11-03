@@ -40,6 +40,7 @@
     "zone.js": "0.5.8"
   },
   "devDependencies": {
+    "css": "2.2.1",
     "css-loader": "^0.21.0",
     "exports-loader": "0.6.2",
     "expose-loader": "0.7.0",
@@ -53,11 +54,14 @@
     "karma-phantomjs-launcher": "^0.2.1",
     "karma-sourcemap-loader": "^0.3.6",
     "karma-webpack": "1.7.0",
+    "node-sass": "3.3.3",
     "object-assign": "4.0.1",
+    "parse5": "1.5.0",
     "phantomjs": "^1.9.18",
     "protractor": "2.5.1",
     "raw-loader": "0.5.1",
     "rimraf": "2.4.3",
+    "sass-loader": "3.0.0",
     "style-loader": "^0.13.0",
     "ts-loader": "^0.6.0",
     "typedoc": "^0.3.12",

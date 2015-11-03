@@ -15,6 +15,11 @@
     ES6 browser shim
   -->
   <script src="/lib/es6-shim.js"></script>
+  <!--
+    Angular 2 web worker UI bundle
+  -->
+  <script src="/lib/system.js"></script>
+  <script src="/lib/ui.dev.js"></script>
 </head>
 <body>
 
@@ -22,11 +27,7 @@
     Loading...
   </app>
 
-  <!-- Common files to be cached -->
-  <script src="/__build__/common.js"></script>
-  <!-- Angular2 files -->
-  <script src="/__build__/angular2.js"></script>
   <!-- App script -->
-  <script src="/__build__/app.js"></script>
+  <script src="/__build__/app-ui.js"></script>
 </body>
 </html>

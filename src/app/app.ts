@@ -1,9 +1,9 @@
 /*
  * Angular 2 decorators and services
  */
-import {Directive, Component, View, ElementRef} from 'angular2/angular2';
+import {Directive, Component, View, ElementRef} from 'angular2/web_worker/worker';
 import {RouteConfig, Router} from 'angular2/router';
-import {Http, Headers} from 'angular2/http';
+//import {Http, Headers} from 'angular2/http';
 
 /*
  * Angular Directives
@@ -15,6 +15,7 @@ import {ROUTER_DIRECTIVES} from 'angular2/router';
 /*
  * Directive
  * XLarge is a simple directive to show how one is made
+ * This won't work in a web worker because it access the DOM directly
  */
 @Directive({
   selector: '[x-large]' // using [ ] means selecting attributes
@@ -41,48 +42,16 @@ class XLarge {
   // Doing so will allow Angular to attach our behavior to an element
   directives: [ CORE_DIRECTIVES, FORM_DIRECTIVES, ROUTER_DIRECTIVES, XLarge ],
   // Our list of styles in our component. We may add more to compose many styles together
-  styles: [`
-    .title {
-      font-family: Arial, Helvetica, sans-serif;
-    }
-    main {
-      padding: 1em;
-    }
-  `],
+  styles: [require("!raw!sass!./app.scss")],
   // Every Angular template is first compiled by the browser before Angular runs it's compiler
-  template: `
-  <header>
-    <h1 class="title">Hello {{ title }}</h1>
-  </header>
-
-  <main>
-    Your Content Here
-    <div>
-
-      <input type="text" [value]="title" (input)="title = $event.target.value" autofocus>
-      <!--
-        Rather than wiring up two-way data-binding ourselves
-        we can use Angular's [(ng-model)] syntax
-        <input type="text" [(ng-model)]="title">
-      -->
-    </div>
-
-    <pre>this.title = {{ title | json }}</pre>
-    <pre>this.data = {{ data | json }}</pre>
-
-  </main>
-
-  <footer x-large>
-    WebPack Angular 2 Starter by <a href="https://twitter.com/AngularClass">@AngularClass</a>
-  </footer>
-  `
+  template: require('./app.html')
 })
 export class App {
   // These are member type
   title: string;
   data: Array<any> = []; // default data
   // TypeScript public modifiers
-  constructor(public http: Http) {
+  constructor() {
     this.title = 'Angular 2';
   }
 
@@ -95,9 +64,9 @@ export class App {
     //
     // This will start a process that will listen for requests on port 3001
 
-    const BASE_URL = 'http://localhost:3001';
+    /*const BASE_URL = 'http://localhost:3001';
     const TODO_API_URL = '/api/todos';
-    const JSON_HEADERS = new Headers();
+    //const JSON_HEADERS = new Headers();
 
     JSON_HEADERS.append('Accept', 'application/json');
     JSON_HEADERS.append('Content-Type', 'application/json');
@@ -115,7 +84,7 @@ export class App {
         // onComplete callback
         ()   => console.log('complete')
       );//end http
-
+    */
   }
 
   serverData(data) {

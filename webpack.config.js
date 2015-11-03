@@ -66,18 +66,11 @@ module.exports = {
       'angular2/router',
       'angular2/http'
     ],
-    'app': [
-      // App
-
-      // './examples/  /bootstrap' <-- view examples
-
-      // './examples/rx-autosuggest/bootstrap'
-      // './examples/rx-draggable/bootstrap'
-      // './examples/rx-timeflies/bootstrap'
-      // './examples/simple-component/bootstrap'
-      // './examples/simple-todo/bootstrap'
-
-      './src/app/bootstrap'
+    'app-ui': [
+      './src/app/app-ui'
+    ],
+    'app-worker': [
+      './src/app/app-worker'
     ]
   },
 
@@ -107,6 +100,9 @@ module.exports = {
     loaders: [
       // Support for *.json files.
       { test: /\.json$/,  loader: 'json' },
+
+      // Support for SASS files
+      { test: /\.scss$/, loaders: ['style', 'css', 'sass'] },
 
       // Support for CSS as raw text
       { test: /\.css$/,   loader: 'raw' },
@@ -145,7 +141,7 @@ module.exports = {
     }),
     new OccurenceOrderPlugin(),
     new DedupePlugin(),
-    new CommonsChunkPlugin({
+    /*new CommonsChunkPlugin({
       name: 'angular2',
       minChunks: Infinity,
       filename: 'angular2.js'
@@ -153,7 +149,7 @@ module.exports = {
     new CommonsChunkPlugin({
       name: 'common',
       filename: 'common.js'
-    })
+    })*/
   ],
 
   /*
