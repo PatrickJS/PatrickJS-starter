@@ -10,30 +10,12 @@ import {
   FORM_DIRECTIVES
 } from 'angular2/web_worker/worker';
 import {RouteConfig, Router} from 'angular2/router';
-//import {Http, Headers} from 'angular2/http';
+import {Http, Headers} from 'angular2/http';
 
 /*
  * Angular Directives
  */
 import {ROUTER_DIRECTIVES} from 'angular2/router';
-
-
-/*
- * Directive
- * XLarge is a simple directive to show how one is made
- * This won't work in a web worker because it access the DOM directly
- */
-@Directive({
-  selector: '[x-large]' // using [ ] means selecting attributes
-})
-class XLarge {
-  constructor(element: ElementRef) {
-    // simple DOM manipulation to set font size to x-large
-    // `nativeElement` is the direct reference to the DOM element
-    element.nativeElement.style.fontSize = 'x-large';
-  }
-}
-
 
 /*
  * App Component
@@ -46,7 +28,7 @@ class XLarge {
   selector: 'app', // <app></app>
   // We need to tell Angular's compiler which directives are in our template.
   // Doing so will allow Angular to attach our behavior to an element
-  directives: [ CORE_DIRECTIVES, FORM_DIRECTIVES, ROUTER_DIRECTIVES, XLarge ],
+  directives: [ CORE_DIRECTIVES, FORM_DIRECTIVES, ROUTER_DIRECTIVES ],
   // Our list of styles in our component. We may add more to compose many styles together
   styles: [require("!raw!sass!./app.scss")],
   // Every Angular template is first compiled by the browser before Angular runs it's compiler
@@ -57,7 +39,7 @@ export class App {
   title: string;
   data: Array<any> = []; // default data
   // TypeScript public modifiers
-  constructor() {
+  constructor(public http: Http) {
     this.title = 'Angular 2';
   }
 
@@ -70,9 +52,9 @@ export class App {
     //
     // This will start a process that will listen for requests on port 3001
 
-    /*const BASE_URL = 'http://localhost:3001';
+    const BASE_URL = 'http://localhost:3001';
     const TODO_API_URL = '/api/todos';
-    //const JSON_HEADERS = new Headers();
+    const JSON_HEADERS = new Headers();
 
     JSON_HEADERS.append('Accept', 'application/json');
     JSON_HEADERS.append('Content-Type', 'application/json');
@@ -90,7 +72,6 @@ export class App {
         // onComplete callback
         ()   => console.log('complete')
       );//end http
-    */
   }
 
   serverData(data) {
@@ -105,10 +86,7 @@ export class App {
       } npm run express
     `);
   }//errorMessage
-
 }
-
-
 
 /*
  * Please review the examples/ folder for more angular app examples
