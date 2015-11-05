@@ -1,5 +1,3 @@
-// @AngularClass
-
 /*
  * Helper
  * env(), getBanner(), root(), and rootDir()
@@ -182,7 +180,7 @@ function env(configEnv) {
 }
 
 function getBanner() {
-  return 'Angular2 Webpack Starter v'+ pkg.version +' by @gdi2990 from @AngularClass';
+  return 'mySHRM Dashboard v'+ pkg.version +'';
 }
 
 function root(args) {
