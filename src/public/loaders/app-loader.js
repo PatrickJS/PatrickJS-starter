@@ -1,1 +1,1 @@
-importScripts("/__build__/app-worker.js");
+importScripts('/__build__/bootstrap-worker.js');

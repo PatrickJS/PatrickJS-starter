@@ -1,5 +1,3 @@
-/// <reference path="../typings/_custom.d.ts" />
-
 /*
  * Providers provided by Angular
  */

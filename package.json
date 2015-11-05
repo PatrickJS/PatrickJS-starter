@@ -61,7 +61,6 @@
     "protractor": "2.5.1",
     "raw-loader": "0.5.1",
     "rimraf": "2.4.3",
-    "sass-loader": "3.0.0",
     "style-loader": "^0.13.0",
     "ts-loader": "^0.6.0",
     "typedoc": "^0.3.12",

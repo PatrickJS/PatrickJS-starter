@@ -38,7 +38,7 @@ module.exports = {
 
   verbose: true,
   displayErrorDetails: true,
-  context: __dirname,
+  context: root(),
   stats: {
     colors: true,
     reasons: true
@@ -55,22 +55,39 @@ module.exports = {
 
   //
   entry: {
-    'angular2': [
+    'bootstrap-client': [
       // Angular 2 Deps
-      '@reactivex/rxjs',
       'zone.js',
+      '@reactivex/rxjs',
       'reflect-metadata',
       // to ensure these modules are grouped together in one file
       'angular2/angular2',
       'angular2/core',
       'angular2/router',
-      'angular2/http'
+      'angular2/http',
+
+      './src/app/bootstrap-client'
     ],
-    'app-ui': [
-      './src/app/app-ui'
+    'bootstrap-ui': [
+      'zone.js',
+      '@reactivex/rxjs',
+      'reflect-metadata',
+
+      'angular2/web_worker/ui',
+
+      './src/app/bootstrap-ui'
     ],
-    'app-worker': [
-      './src/app/app-worker'
+    'bootstrap-worker': [
+      'zone.js',
+      '@reactivex/rxjs',
+      'reflect-metadata',
+
+      'angular2/web_worker/worker',
+      'angular2/angular2',
+      'angular2/router',
+      'angular2/http',
+
+      './src/app/bootstrap-worker'
     ]
   },
 
@@ -84,7 +101,7 @@ module.exports = {
   },
 
   resolve: {
-    root: __dirname,
+    root: root(),
     extensions: ['','.ts','.js','.json'],
     alias: {
       'rx': '@reactivex/rxjs'
@@ -100,9 +117,6 @@ module.exports = {
     loaders: [
       // Support for *.json files.
       { test: /\.json$/,  loader: 'json' },
-
-      // Support for SASS files
-      { test: /\.scss$/, loaders: ['style', 'css', 'sass'] },
 
       // Support for CSS as raw text
       { test: /\.css$/,   loader: 'raw' },
@@ -135,21 +149,12 @@ module.exports = {
   },
 
   plugins: [
-    new DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
-      'VERSION': JSON.stringify(pkg.version)
-    }),
-    new OccurenceOrderPlugin(),
-    new DedupePlugin(),
-    /*new CommonsChunkPlugin({
-      name: 'angular2',
-      minChunks: Infinity,
-      filename: 'angular2.js'
-    }),
-    new CommonsChunkPlugin({
-      name: 'common',
-      filename: 'common.js'
-    })*/
+    // new DefinePlugin({
+      // 'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
+      // 'VERSION': JSON.stringify(pkg.version)
+    // }),
+    // new OccurenceOrderPlugin(),
+    // new DedupePlugin()
   ],
 
   /*

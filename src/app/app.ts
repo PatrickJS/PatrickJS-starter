@@ -1,21 +1,33 @@
 /*
  * Angular 2 decorators and services
  */
-import {
-  Directive,
-  Component,
-  View,
-  ElementRef,
-  CORE_DIRECTIVES,
-  FORM_DIRECTIVES
-} from 'angular2/web_worker/worker';
+import {Directive, Component, View, ElementRef, Renderer} from 'angular2/web_worker/worker';
+// for WebWorker support we need to use the types in this directory
+
 import {RouteConfig, Router} from 'angular2/router';
 import {Http, Headers} from 'angular2/http';
 
 /*
  * Angular Directives
  */
+import {CORE_DIRECTIVES,FORM_DIRECTIVES} from 'angular2/web_worker/worker';
+
 import {ROUTER_DIRECTIVES} from 'angular2/router';
+
+
+/*
+ * Directive
+ * XLarge is a simple directive to show how one is made
+ */
+@Directive({
+  selector: '[x-large]' // using [ ] means selecting attributes
+})
+class XLarge {
+  constructor(element: ElementRef, renderer: Renderer) {
+    renderer.setElementStyle(element, 'fontSize', 'x-large');
+  }
+}
+
 
 /*
  * App Component
@@ -28,11 +40,44 @@ import {ROUTER_DIRECTIVES} from 'angular2/router';
   selector: 'app', // <app></app>
   // We need to tell Angular's compiler which directives are in our template.
   // Doing so will allow Angular to attach our behavior to an element
-  directives: [ CORE_DIRECTIVES, FORM_DIRECTIVES, ROUTER_DIRECTIVES ],
+  directives: [ CORE_DIRECTIVES, FORM_DIRECTIVES, ROUTER_DIRECTIVES, XLarge ],
   // Our list of styles in our component. We may add more to compose many styles together
-  styles: [require("!raw!sass!./app.scss")],
+  styles: [`
+    .title {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    main {
+      padding: 1em;
+    }
+  `],
   // Every Angular template is first compiled by the browser before Angular runs it's compiler
-  template: require('./app.html')
+  template: `
+  <header>
+    <h1 class="title">Hello {{ title }}</h1>
+  </header>
+
+  <main>
+    Your Content Here
+    <div>
+
+      <input type="text" [value]="title" (input)="title = $event.target.value" autofocus>
+      <!--
+        Rather than wiring up two-way data-binding ourselves
+        we can use Angular's [(ng-model)] syntax
+        <input type="text" [(ng-model)]="title">
+      -->
+
+    </div>
+
+    <pre>this.title = {{ title | json }}</pre>
+    <pre>this.data = {{ data | json }}</pre>
+
+  </main>
+
+  <footer x-large>
+    WebPack Angular 2 Starter by <a href="https://twitter.com/AngularClass">@AngularClass</a>
+  </footer>
+  `
 })
 export class App {
   // These are member type

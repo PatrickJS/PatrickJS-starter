@@ -13,6 +13,6 @@
     "outDir": "dist"
   },
   "files": [
-    "src/app/bootstrap.ts"
+    "src/app/app.ts"
   ]
 }
