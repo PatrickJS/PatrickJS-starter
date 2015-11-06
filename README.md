@@ -162,6 +162,11 @@ npm run webdriver-start  # or webdriver-manager start
 npm run e2e  # or protractor
 ```
 
+### bundle and serve
+```bash
+# builds a bundle and serves it on port 5000
+export PORT=5000 && npm run prod
+
 # Contributing
 You can include more examples as components but they must introduce a new concept such as `Home` component (separate folders), and Todo (services). I'll accept pretty much everything so feel free to open a Pull-Request
 
