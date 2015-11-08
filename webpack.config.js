@@ -76,6 +76,7 @@ module.exports = {
       // './examples/rx-timeflies/bootstrap'
       // './examples/simple-component/bootstrap'
       // './examples/simple-todo/bootstrap'
+      // './examples/ng2-bootstrap/bootstrap'
 
       './src/app/bootstrap'
     ]
@@ -127,10 +128,15 @@ module.exports = {
           /\.spec\.ts$/,
           /\.e2e\.ts$/,
           /web_modules/,
-          /test/,
-          /node_modules/
+          /test/
         ]
-      }
+      },
+
+      // Loader for fonts (required for Bootstrap)
+      { test: /\.woff2?($|\?)/, loader: "url?limit=10000&mimetype=application/font-woff" },
+      { test: /\.ttf($|\?)/,    loader: "url?limit=10000&mimetype=application/octet-stream" },
+      { test: /\.eot($|\?)/,    loader: "file" },
+      { test: /\.svg($|\?)/,    loader: "url?limit=10000&mimetype=image/svg+xml" }
     ],
     noParse: [
       /rtts_assert\/src\/rtts_assert/,

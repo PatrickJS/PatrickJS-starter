@@ -36,6 +36,8 @@
   "dependencies": {
     "@reactivex/rxjs": "5.0.0-alpha.4",
     "angular2": "2.0.0-alpha.45",
+    "bootstrap": "^3.3.5",
+    "ng2-bootstrap": "^0.44.6",
     "reflect-metadata": "0.1.2",
     "zone.js": "0.5.8"
   },
