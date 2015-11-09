@@ -128,7 +128,8 @@ module.exports = {
           /\.spec\.ts$/,
           /\.e2e\.ts$/,
           /web_modules/,
-          /test/
+          /test/,
+          /node_modules\/(?!(ng2-bootstrap))/ // exclude all node modules except ng2-bootstrap
         ]
       },
 
