@@ -19,7 +19,7 @@ import {ROUTER_DIRECTIVES} from 'angular2/router';
 @Directive({
   selector: '[x-large]' // using [ ] means selecting attributes
 })
-class XLarge {
+export class XLarge {
   constructor(element: ElementRef) {
     // simple DOM manipulation to set font size to x-large
     // `nativeElement` is the direct reference to the DOM element
