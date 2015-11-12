@@ -34,8 +34,8 @@
   },
   "homepage": "https://github.com/angularclass/angular2-webpack-starter",
   "dependencies": {
-    "@reactivex/rxjs": "5.0.0-alpha.4",
-    "angular2": "2.0.0-alpha.45",
+    "@reactivex/rxjs": "5.0.0-alpha.7",
+    "angular2": "2.0.0-alpha.46",
     "reflect-metadata": "0.1.2",
     "zone.js": "0.5.8"
   },

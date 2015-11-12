@@ -106,7 +106,6 @@ export class App {
       .get(BASE_URL + TODO_API_URL, {
         headers: JSON_HEADERS
       })
-      .map(res => res.json())
       .subscribe(
         // onNext callback
         data => this.serverData(data),
