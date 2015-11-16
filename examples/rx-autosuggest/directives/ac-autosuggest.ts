@@ -19,8 +19,8 @@ declare var zone: Zone;
   providers: [ GithubService ]
 })
 export class AcAutosuggestGithub {
-  results: EventEmitter = new EventEmitter();
-  loading: EventEmitter = new EventEmitter();
+  results: EventEmitter<string> = new EventEmitter();
+  loading: EventEmitter<boolean> = new EventEmitter();
 
   constructor(private el: ElementRef, public github: GithubService) {
 
