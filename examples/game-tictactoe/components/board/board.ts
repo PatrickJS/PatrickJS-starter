@@ -26,7 +26,7 @@ import {Component, EventEmitter, CORE_DIRECTIVES} from 'angular2/angular2';
   `
 })
 export class Board {
-  select: EventEmitter = new EventEmitter();
+  select: EventEmitter<any> = new EventEmitter();
   onChange() {
     console.log('change')
   }

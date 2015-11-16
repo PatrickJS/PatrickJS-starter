@@ -10,9 +10,9 @@ import {ElementRef} from 'angular2/core';
 })
 export class Draggable {
   mousedrag;
-  mouseup   = new EventEmitter();
-  mousedown = new EventEmitter();
-  mousemove = new EventEmitter();
+  mouseup: EventEmitter<MouseEvent>   = new EventEmitter();
+  mousedown: EventEmitter<MouseEvent> = new EventEmitter();
+  mousemove: EventEmitter<MouseEvent> = new EventEmitter();
 
   @HostListener('mouseup', ['$event'])
   onMouseup(event) { this.mouseup.next(event); }
@@ -27,18 +27,18 @@ export class Draggable {
     this.element.nativeElement.style.position = 'relative';
     this.element.nativeElement.style.cursor = 'pointer';
 
-    this.mousedrag = this.mousedown.toRx().map(event => {
+    this.mousedrag = this.mousedown.map((event: MouseEvent) => {
         event.preventDefault();
         return {
           left: event.clientX - this.element.nativeElement.getBoundingClientRect().left,
           top:  event.clientY - this.element.nativeElement.getBoundingClientRect().top
         };
       })
-      .flatMap(imageOffset => this.mousemove.toRx().map(pos => ({
+      .flatMap(imageOffset => this.mousemove.map((pos: MouseEvent) => ({
         top:  pos.clientY - imageOffset.top,
         left: pos.clientX - imageOffset.left
       }))
-      .takeUntil(this.mouseup.toRx()));
+      .takeUntil(this.mouseup));
 
   }
 
