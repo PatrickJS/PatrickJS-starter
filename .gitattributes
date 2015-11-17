@@ -1,8 +1,0 @@
-# @AngularClass
-*.ts	eol=lf
-*.js	eol=lf
-*.html	eol=lf
-*.css	eol=lf
-*.md	eol=lf
-*.json	eol=lf
-*.yml	eol=lf
