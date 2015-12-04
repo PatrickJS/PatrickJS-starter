@@ -1,14 +1,13 @@
 /*
  * Angular 2 decorators and services
  */
-import {Directive, Component, View, ElementRef} from 'angular2/angular2';
+import {Directive, Component, ElementRef} from 'angular2/angular2';
 import {RouteConfig, Router} from 'angular2/router';
 import {Http, Headers} from 'angular2/http';
 
 /*
  * Angular Directives
  */
-import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/angular2';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
 
 
@@ -39,7 +38,7 @@ export class XLarge {
   selector: 'app', // <app></app>
   // We need to tell Angular's compiler which directives are in our template.
   // Doing so will allow Angular to attach our behavior to an element
-  directives: [ CORE_DIRECTIVES, FORM_DIRECTIVES, ROUTER_DIRECTIVES, XLarge ],
+  directives: [ ROUTER_DIRECTIVES, XLarge ],
   // Our list of styles in our component. We may add more to compose many styles together
   styles: [`
     .title {
@@ -86,7 +85,7 @@ export class App {
     this.title = 'Angular 2';
   }
 
-  onInit() {
+  ngOnInit() {
     // Our API
     // Before you start the app, run these commands in another process:
     //
