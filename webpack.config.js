@@ -14,20 +14,11 @@ var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
  * Config
  */
 module.exports = {
-  devtool: 'source-map',
+  devtool: 'source-map', // for faster builds use eval
   debug: true,
-  cache: true,
-  verbose: true,
-  displayErrorDetails: true,
-  stats: {
-    colors: true,
-    reasons: true
-  },
 
-  // our Development Server config
+  // our Webpack Development Server config
   devServer: {
-    inline: true,
-    colors: true,
     historyApiFallback: true,
     contentBase: 'src/public',
     publicPath: '/__build__'
@@ -44,7 +35,7 @@ module.exports = {
       'angular2/router',
       'angular2/http'
     ],
-    'app': './src/app/bootstrap'
+    'app': './src/app/bootstrap' // our angular app
   },
 
   // Config for our build files
@@ -56,10 +47,8 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['','.ts','.js','.json'],
-    alias: {
-      'rxjs/operators/toPromise': 'rxjs/operator/toPromise.js'
-    }
+    extensions: ['','.ts','.js','.json', '.css', '.html'],  // match with loaders
+    alias: { 'rxjs/operators/toPromise': 'rxjs/operator/toPromise.js' } // ignore: will be fixed in next angular release
   },
 
   module: {
@@ -80,20 +69,12 @@ module.exports = {
         query: { 'ignoreDiagnostics': [ 2403 ] }, // 2403 -> Subsequent variable declarations
         exclude: [ /\.spec\.ts$/, /\.e2e\.ts$/, /node_modules/ ]
       }
-    ],
-    noParse: [ /reflect-metadata/ ]
+    ]
   },
 
   plugins: [
-    new CommonsChunkPlugin({
-      name: 'angular2',
-      minChunks: Infinity,
-      filename: 'angular2.js'
-    }),
-    new CommonsChunkPlugin({
-      name: 'common',
-      filename: 'common.js'
-    })
+    new CommonsChunkPlugin({ name: 'angular2', filename: 'angular2.js', minChunks: Infinity }),
+    new CommonsChunkPlugin({ name: 'common',   filename: 'common.js' })
   ]
 };
 
