@@ -2,45 +2,40 @@
   "name": "angular2-webpack-starter",
   "version": "0.0.0",
   "description": "An Angular 2 Webpack Starter kit featuring Angular 2 (Router, Http, Forms, Services, Tests, E2E), Karma, Protractor, Jasmine, TypeScript, and Webpack by AngularClass",
+  "author": "Patrick Stapleton <patrick@angularclass.com>",
+  "homepage": "https://github.com/angularclass/angular2-webpack-starter",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/angularclass/angular2-webpack-starter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/angularclass/angular2-webpack-starter/issues"
+  },
+  "license": "MIT",
   "main": "",
   "scripts": {
     "build": "npm run webpack --colors --display-error-details --display-cached",
-    "webpack": "webpack",
     "clean": "rimraf node_modules doc",
     "clean-install": "npm run clean && npm install",
     "clean-start": "npm run clean && npm start",
     "watch": "webpack --watch",
     "server": "webpack-dev-server --inline --colors --display-error-details --display-cached --port 3000",
-    "webdriver-update": "webdriver-manager update",
-    "webdriver-start": "webdriver-manager start",
-    "preprotractor": "npm run webdriver-update",
-    "protractor": "protractor",
     "e2e": "protractor",
     "ci": "npm run e2e && npm run test",
     "test": "karma start",
     "docs": "typedoc  --options typedoc.json  src/**/*.ts",
     "start": "npm run server"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/angularclass/angular2-webpack-starter.git"
-  },
-  "author": "Patrick Stapleton <patrick@angularclass.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/angularclass/angular2-webpack-starter/issues"
-  },
-  "homepage": "https://github.com/angularclass/angular2-webpack-starter",
   "dependencies": {
-    "@reactivex/rxjs": "5.0.0-alpha.7",
-    "angular2": "2.0.0-alpha.47",
+    "@reactivex/rxjs": "5.0.0-alpha.12",
+    "angular2": "2.0.0-alpha.48",
     "reflect-metadata": "0.1.2",
     "zone.js": "0.5.8"
   },
   "devDependencies": {
-    "css-loader": "^0.21.0",
+    "css-loader": "^0.23.0",
     "exports-loader": "0.6.2",
-    "expose-loader": "0.7.0",
+    "expose-loader": "^0.7.1",
     "file-loader": "^0.8.4",
     "imports-loader": "^0.6.4",
     "json-loader": "^0.5.3",
@@ -51,17 +46,16 @@
     "karma-phantomjs-launcher": "^0.2.1",
     "karma-sourcemap-loader": "^0.3.6",
     "karma-webpack": "1.7.0",
-    "object-assign": "4.0.1",
     "phantomjs": "^1.9.18",
-    "protractor": "2.5.1",
+    "protractor": "^3.0.0",
     "raw-loader": "0.5.1",
-    "rimraf": "2.4.3",
+    "rimraf": "^2.4.4",
     "style-loader": "^0.13.0",
-    "ts-loader": "^0.6.0",
+    "ts-loader": "^0.7.2",
     "typedoc": "^0.3.12",
-    "typescript": "1.6.2",
+    "typescript": "^1.7.3",
     "url-loader": "^0.5.6",
-    "webpack": "1.12.2",
+    "webpack": "^1.12.9",
     "webpack-dev-server": "^1.12.1"
   }
 }

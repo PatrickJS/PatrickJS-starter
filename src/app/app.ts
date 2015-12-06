@@ -1,7 +1,7 @@
 /*
  * Angular 2 decorators and services
  */
-import {Directive, Component, ElementRef} from 'angular2/angular2';
+import {Directive, Component, ElementRef, Renderer} from 'angular2/angular2';
 import {RouteConfig, Router} from 'angular2/router';
 import {Http, Headers} from 'angular2/http';
 
@@ -19,10 +19,13 @@ import {ROUTER_DIRECTIVES} from 'angular2/router';
   selector: '[x-large]' // using [ ] means selecting attributes
 })
 export class XLarge {
-  constructor(element: ElementRef) {
+  constructor(element: ElementRef, renderer: Renderer) {
     // simple DOM manipulation to set font size to x-large
     // `nativeElement` is the direct reference to the DOM element
-    element.nativeElement.style.fontSize = 'x-large';
+    // element.nativeElement.style.fontSize = 'x-large';
+
+    // for server/webworker support use the renderer
+    renderer.setElementStyle(element, 'fontSize', 'x-large');
   }
 }
 
@@ -67,7 +70,6 @@ export class XLarge {
     </div>
 
     <pre>this.title = {{ title | json }}</pre>
-    <pre>this.data = {{ data | json }}</pre>
 
   </main>
 
@@ -79,64 +81,20 @@ export class XLarge {
 export class App {
   // These are member type
   title: string;
-  data: Array<any> = []; // default data
+
   // TypeScript public modifiers
   constructor(public http: Http) {
     this.title = 'Angular 2';
   }
-
-  ngOnInit() {
-    // Our API
-    // Before you start the app, run these commands in another process:
-    //
-    // - npm run express-install
-    // - npm run express
-    //
-    // This will start a process that will listen for requests on port 3001
-
-    const BASE_URL = 'http://localhost:3001';
-    const TODO_API_URL = '/api/todos';
-    const JSON_HEADERS = new Headers();
-
-    JSON_HEADERS.append('Accept', 'application/json');
-    JSON_HEADERS.append('Content-Type', 'application/json');
-
-    this.http
-      .get(BASE_URL + TODO_API_URL, {
-        headers: JSON_HEADERS
-      })
-      .subscribe(
-        // onNext callback
-        data => this.serverData(data),
-        // onError callback
-        err  => this.errorMessage(err),
-        // onComplete callback
-        ()   => console.log('complete')
-      );//end http
-
-  }
-
-  serverData(data) {
-    console.log('data', data);
-    this.data = data;
-  }//serverData
-
-  errorMessage(err) {
-    console.info(`${'\n'
-      } // You must run these commands in another process for the Http API to work  ${'\n'
-      } npm run express-install ${'\n'
-      } npm run express
-    `);
-  }//errorMessage
 
 }
 
 
 
 /*
- * Please review the examples/ folder for more angular app examples
+ * Please review the https://github.com/AngularClass/angular2-examples/ repo for
+ * more angular app examples that you may copy/paste
  * (The examples may not be updated as quickly. Please open an issue on github for us to update it)
- * you can change the `entry` in webpack.config to quickly view the examples
  * For help or questions please contact us at @AngularClass on twitter
  * or our chat on Slack at https://AngularClass.com/slack-join
  * or via chat on Gitter at https://gitter.im/AngularClass/angular2-webpack-starter
