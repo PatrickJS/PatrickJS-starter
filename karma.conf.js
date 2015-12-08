@@ -14,8 +14,8 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      // we are building the test environment in spec.bundle.js
-      { pattern: 'spec.bundle.js', watched: false }
+      // we are building the test environment in ./spec-bundle.js
+      { pattern: 'spec-bundle.js', watched: false }
     ],
 
 
@@ -27,7 +27,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'spec.bundle.js': ['webpack', 'sourcemap']
+      'spec-bundle.js': ['webpack', 'sourcemap']
       // 'test/**/*.spec.ts': ['webpack', 'sourcemap']
     },
 
