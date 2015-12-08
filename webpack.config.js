@@ -14,7 +14,7 @@ var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
  * Config
  */
 module.exports = {
-  devtool: 'source-map', // for faster builds use eval
+  devtool: 'source-map', // for faster builds use 'eval'
   debug: true,
 
   // our Webpack Development Server config
@@ -27,7 +27,7 @@ module.exports = {
   entry: {
     'angular2': [
       // group angular2 deps into the angular2.js file
-      '@reactivex/rxjs',
+      'rxjs',
       'zone.js',
       'reflect-metadata',
       'angular2/angular2',
@@ -47,8 +47,10 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['','.ts','.js','.json', '.css', '.html'],  // match with loaders
-    alias: { 'rxjs/operators/toPromise': 'rxjs/operator/toPromise.js' } // ignore: will be fixed in next angular release
+    extensions: ['','.ts','.js','.json', '.css', '.html'],
+    alias: {
+      'rxjs/operators/toPromise': 'rxjs/operator/toPromise.js'
+    }
   },
 
   module: {
