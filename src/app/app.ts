@@ -87,6 +87,10 @@ export class App {
     this.title = 'Angular 2';
   }
 
+  ngOnInit() {
+
+  }
+
 }
 
 
