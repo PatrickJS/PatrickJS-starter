@@ -14,8 +14,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      { pattern: './src/public/lib/es6-shim.js', watched: false },
-      // { pattern: 'test/**/*.spec.ts', watched: false }
+      // we are building the test environment in spec.bundle.js
       { pattern: 'spec.bundle.js', watched: false }
     ],
 
