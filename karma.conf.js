@@ -32,22 +32,27 @@ module.exports = function(config) {
     },
 
     webpack: {
-      
+
       resolve: {
+        cache: false,
         root: __dirname,
-        extensions: ['','.ts','.js','.json'],
+        extensions: ['','.ts','.js','.json', '.css', '.html'],
         alias: {
           'app': 'src/app',
           'common': 'src/common',
+          'rxjs/operators/toPromise': 'rxjs/operator/toPromise.js',
+          'rxjs/subjects/ReplaySubject': 'rxjs/subject/ReplaySubject',
+          'rxjs/operators/take': 'rxjs/operator/take'
         }
       },
       devtool: 'inline-source-map',
       module: {
         loaders: [
-          { test: /\.tsx?$/,   loader: 'ts-loader', exclude: [
-              /web_modules/,
-              /node_modules/
-            ]
+          {
+            test: /\.tsx?$/,
+            loader: 'ts',
+            exclude: [/node_modules/],
+            query: { 'ignoreDiagnostics': [ 2403 ]  } // 2403 -> Subsequent variable declarations},
           },
           { test: /\.json$/, loader: 'json' },
           { test: /\.html$/, loader: 'raw' },
@@ -55,7 +60,12 @@ module.exports = function(config) {
         ]
       },
       stats: { colors: true, reasons: true },
-      debug: false
+      debug: false,
+      noParse: [
+        /zone\.js\/dist\/zone-microtask\.js/,
+        /zone\.js\/dist\/long-stack-trace-zone\.js/,
+        /zone\.js\/dist\/jasmine-patch\.js/
+      ]
     },
 
     webpackServer: {
