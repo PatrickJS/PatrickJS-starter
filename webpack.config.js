@@ -48,8 +48,11 @@ module.exports = {
 
   resolve: {
     extensions: ['','.ts','.js','.json', '.css', '.html'],
+    // ignore these since they will be fixed in the next release
     alias: {
-      'rxjs/operators/toPromise': 'rxjs/operator/toPromise.js'
+      'rxjs/operators/toPromise': 'rxjs/operator/toPromise.js',
+      'rxjs/subjects/ReplaySubject': 'rxjs/subject/ReplaySubject',
+      'rxjs/operators/take': 'rxjs/operator/take'
     }
   },
 
