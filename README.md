@@ -205,38 +205,29 @@ We have good experience using these editors:
 * [Sublime Text](http://www.sublimetext.com/3) with [Typescript-Sublime-Plugin](https://github.com/Microsoft/Typescript-Sublime-plugin#installation)
 
 # Frequently asked questions
-* Why we are using traceur-runtime?
-  * This for the ES6 polyfills.
-* If TypeScript compiles to ES5 why do we need traceur-runtime?
-  * Angular 2 framework itself expects these ES6 features.
 * What's the current browser support for Angular 2 Alpha?
   * Please view the updated list of [browser support for Angular 2](https://github.com/angularclass/awesome-angular2#current-browser-support-for-angular-2)
-* What is the `TypeScript warning "Value of type 'typeof Directive' is not callable. Did you mean to include 'new'?`"?
-  * This is an error with the typings defined in DefinitelyTyped (please ignore until it's fixed)
-* How do I use `moduleId` with `module.id` in webpack?
-  * Please use `__filename` if you must use `templateUrl` and `styleUrls` rather than webpack's module system
-* Why is my service not injecting parameter correctly?
+* Why is my service, aka provider, is not injecting parameter correctly?
   * Please use `@Injectable()` for your service for typescript to correctly attach the metadata (this is a typescript beta problem)
 * Where do I write my tests? 
-  * You can write your tests anywhere you like either next to your components or in the  `test/` folder
+  * You can write your tests anywhere you like in the `/src` directory next to your components or in the  `test/` folder
 * Is Angular 2 production ready yet?
   * No, please visit [Is Angular 2 Ready Yet?](http://splintercode.github.io/is-angular-2-ready/) website.
 * How do I start the app when I get `EACCES` and `EADDRINUSE` errors? 
   * The `EADDRINUSE` error means the port `3000` is currently being used and `EACCES` is lack of permission for webpack to build files to `./__build__/`
-* Why am I getting lots of warnings when starting the repo?
-  * You need to run `tsd install` this happens when tsd didn't install correctly or at all
 
 
 # Support, Questions, or Feedback
 > Contact us anytime for anything about this repo or Angular 2
 
-* [Gitter: angular-class/angular2-webpack-starter](https://gitter.im/angularclass/angular2-webpack-starter)
+* [Chat: AngularClass.slack](http://angularclass.com/member-join/)
 * [Twitter: @AngularClass](https://twitter.com/AngularClass)
+* [Gitter: AngularClass/angular2-webpack-starter](https://gitter.im/angularclass/angular2-webpack-starter)
 
 
 # Other Seed/Starter/Example Repos
 * [angular2-webpack-starter (AngularClass)](https://github.com/angularclass/angular2-webpack-starter)
-  * Client/Server, Webpack, TypeScript, TSD, Protractor, Karma, Jasmine, Env Dev/Prod, Server API
+  * Client/Server, Webpack, TypeScript, TSD, Protractor, Karma, Jasmine
 * [ng2-play (Pawel Kozlowski)](https://github.com/pkozlowski-opensource/ng2-play)
   * Client only, Minimalist, SystemJS, Gulp, TypeScript
 * [angular2-seed (Minko Gechev)](https://github.com/mgechev/angular2-seed)
