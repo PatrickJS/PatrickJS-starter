@@ -30,8 +30,8 @@
     "start": "npm run server"
   },
   "dependencies": {
-    "rxjs": "5.0.0-alpha.12",
-    "angular2": "2.0.0-alpha.48",
+    "rxjs": "5.0.0-alpha.14",
+    "angular2": "2.0.0-alpha.50",
     "reflect-metadata": "0.1.2",
     "zone.js": "0.5.8"
   },

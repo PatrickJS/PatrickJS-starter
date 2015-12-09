@@ -39,10 +39,7 @@ module.exports = function(config) {
         extensions: ['','.ts','.js','.json', '.css', '.html'],
         alias: {
           'app': 'src/app',
-          'common': 'src/common',
-          'rxjs/operators/toPromise': 'rxjs/operator/toPromise.js',
-          'rxjs/subjects/ReplaySubject': 'rxjs/subject/ReplaySubject',
-          'rxjs/operators/take': 'rxjs/operator/take'
+          'common': 'src/common'
         }
       },
       devtool: 'inline-source-map',
