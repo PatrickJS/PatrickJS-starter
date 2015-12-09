@@ -76,10 +76,6 @@ angular2-webpack-starter/
  │   │   ├──app.ts                         * App.ts: a simple version of our App component components
  │   │   └──bootstrap.ts                   * entry file for app
  │   │
- │   ├──bindings/                          * where common files used throughout our app
- │   │   ├──location_bindings.ts           * injectables to change the Router location Strategy
- │   │   └──change_detection_bindings.ts   * injectables to change Angular's Change Detection Strategy
- │   │
  │   ├──public/                            * static assets are served here
  │   │   ├──lib/                           * static libraries
  │   │   │   └──es6-shim.js                * ignore this file. This is needed to polyfill the browser to for ES6 features to similarly
@@ -100,7 +96,7 @@ angular2-webpack-starter/
  │
  ├──test/                                  * this is our global unit tests and end-to-end tests
  │
- ├──spec.bundle.js                         * ignore this magic that sets up our angular 2 testing environment
+ ├──spec-bundle.js                         * ignore this magic that sets up our angular 2 testing environment
  ├──karma.config.js                        * karma config for our unit tests
  ├──protractor.config.js                   * protractor config for our end-to-end tests
  ├──tsconfig.json                          * config that webpack uses for typescript
