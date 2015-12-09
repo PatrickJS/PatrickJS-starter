@@ -8,6 +8,7 @@
     "sourceMap": true
   },
   "files": [
+    "src/app/app.spec.ts",
     "src/app/app.ts",
     "src/app/bootstrap.ts"
   ]

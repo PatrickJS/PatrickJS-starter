@@ -1,3 +1,10 @@
+import {
+  it,
+  inject,
+  injectAsync,
+  beforeEachProviders,
+  TestComponentBuilder
+} from 'angular2/testing';
 import {APP_ID} from 'angular2/angular2';
 
 

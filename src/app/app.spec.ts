@@ -1,6 +1,12 @@
-/// <reference path="../../src/typings/_custom.d.ts" />
+import {
+  it,
+  inject,
+  injectAsync,
+  beforeEachProviders,
+  TestComponentBuilder
+} from 'angular2/testing';
 
-import { Component, provide} from 'angular2/angular2';
+import {Component, provide} from 'angular2/angular2';
 import {BaseRequestOptions, Http} from 'angular2/http';
 import {MockBackend} from 'angular2/http/testing';
 
