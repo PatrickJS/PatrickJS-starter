@@ -10,7 +10,6 @@ import {Http, Headers} from 'angular2/http';
  */
 import {ROUTER_DIRECTIVES} from 'angular2/router';
 
-
 /*
  * Directive
  * XLarge is a simple directive to show how one is made
@@ -28,7 +27,6 @@ export class XLarge {
     renderer.setElementStyle(element, 'fontSize', 'x-large');
   }
 }
-
 
 /*
  * App Component
@@ -87,13 +85,11 @@ export class App {
     this.title = 'Angular 2';
   }
 
-  ngOnInit() {
-
-  }
+  // ngOnInit() {
+  //
+  // }
 
 }
-
-
 
 /*
  * Please review the https://github.com/AngularClass/angular2-examples/ repo for
