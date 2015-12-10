@@ -51,6 +51,7 @@
     "karma-sourcemap-loader": "^0.3.6",
     "karma-webpack": "1.7.0",
     "phantomjs": "^1.9.18",
+    "phantomjs-polyfill": "0.0.1",
     "protractor": "^3.0.0",
     "raw-loader": "0.5.1",
     "rimraf": "^2.4.4",
