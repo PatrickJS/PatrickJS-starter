@@ -62,8 +62,8 @@ export class XLarge {
       <input type="text" [value]="title" (input)="title = $event.target.value" autofocus>
       <!--
         Rather than wiring up two-way data-binding ourselves
-        we can use Angular's [(ng-model)] syntax
-        <input type="text" [(ng-model)]="title">
+        we can use Angular's [(ngModel)] syntax
+        <input type="text" [(ngModel)]="title">
       -->
     </div>
 
