@@ -27,6 +27,7 @@ module.exports = {
   entry: {
     'angular2': [
       // group angular2 deps into the angular2.js file
+      'core-js',
       'rxjs',
       'zone.js',
       'reflect-metadata',
