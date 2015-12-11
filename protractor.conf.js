@@ -32,6 +32,17 @@ exports.config = {
     browser.ignoreSynchronization = true;
   },
 
+  /**
+   * For node v0.12.x
+   *
+   * One should install chromedriver locally with : ./node_modules/protractor/bin/webdriver-manager update --standalone
+   *
+   * Otherwise use the chromeDriver option to specify the path to external chromedriver if necessary
+   *
+   * Example : chromeDriver: '/usr/lib/node_modules/protractor/selenium/chromedriver'
+   */
+  directConnect: true,
+
 
   /**
    * Angular 2 configuration
