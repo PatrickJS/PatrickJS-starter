@@ -52,7 +52,7 @@
     "karma-webpack": "1.7.0",
     "phantomjs": "^1.9.18",
     "phantomjs-polyfill": "0.0.1",
-    "protractor": "^3.0.0",
+    "protractor": "^2.5.1",
     "raw-loader": "0.5.1",
     "rimraf": "^2.4.4",
     "style-loader": "^0.13.0",
