@@ -208,7 +208,7 @@ We have good experience using these editors:
 * [ng2-jspm-seed (Rob Wormald)](https://github.com/robwormald/ng2-jspm-seed)
   * Client only, TypeScript, TSD, Gulp, JSPM, Minimalist
 * [babel-angular2-app (Shuhei Kagawa)](https://github.com/shuhei/babel-angular2-app)
-  * Client only, Minimalist, Babel, ES6+, Webpack (outdated)
+  * Client only, Minimalist, Babel, ES6+, browserify
   
 ___
 
