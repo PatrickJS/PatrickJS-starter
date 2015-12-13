@@ -73,6 +73,7 @@ angular2-webpack-starter/
  ├──src/                                   * our source files that will be compiled to javascript
  │   │
  │   ├──app/                               * WebApp: folder
+ │   │   ├──app.spec.ts                    * a simple test of components in app.ts
  │   │   ├──app.ts                         * App.ts: a simple version of our App component components
  │   │   └──bootstrap.ts                   * entry file for app
  │   │
