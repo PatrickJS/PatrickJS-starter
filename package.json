@@ -32,7 +32,7 @@
   "dependencies": {
     "core-js": "^1.2.6",
     "rxjs": "5.0.0-alpha.14",
-    "angular2": "2.0.0-alpha.52",
+    "angular2": "2.0.0-alpha.53",
     "reflect-metadata": "0.1.2",
     "zone.js": "0.5.8"
   },

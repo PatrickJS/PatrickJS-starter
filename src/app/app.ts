@@ -1,7 +1,7 @@
 /*
  * Angular 2 decorators and services
  */
-import {Directive, Component, ElementRef, Renderer} from 'angular2/angular2';
+import {Directive, Component, ElementRef, Renderer} from 'angular2/core';
 import {RouteConfig, Router} from 'angular2/router';
 import {Http, Headers} from 'angular2/http';
 
