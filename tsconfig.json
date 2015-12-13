@@ -11,5 +11,9 @@
     "src/app/app.spec.ts",
     "src/app/app.ts",
     "src/app/bootstrap.ts"
-  ]
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "compileOnSave": false
 }
