@@ -10,7 +10,7 @@
 */
 Error.stackTraceLimit = Infinity;
 require('phantomjs-polyfill');
-require('es6-shim');
+require('core-js');
 require('reflect-metadata');
 require('zone.js/dist/zone-microtask.js');
 require('zone.js/dist/long-stack-trace-zone.js');
