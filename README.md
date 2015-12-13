@@ -229,6 +229,8 @@ We have good experience using these editors:
   * Client only, Minimalist, SystemJS, Gulp, TypeScript
 * [angular2-seed (Minko Gechev)](https://github.com/mgechev/angular2-seed)
   * Client only, SystemJS, Gulp, TypeScript, TSD, Versioned, Env Dev/Prod
+* [angular2-seed (ghpabs)](https://github.com/ghpabs/angular2-seed)
+  * Client only, Gulp 4, TypeScript 1.8, Protractor, Karma, Sass, Env Dev/Prod
 * [ng2-lab (Roland Groza)](https://github.com/rolandjitsu/ng2-lab)
   * Client only, ES6, TypeScript, Firebase, Gulp, Ci, TSD, TSLint
 * [ng2-jspm-seed (Rob Wormald)](https://github.com/robwormald/ng2-jspm-seed)
