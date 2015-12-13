@@ -178,6 +178,8 @@ We have good experience using these editors:
   * Please view the updated list of [browser support for Angular 2](https://github.com/angularclass/awesome-angular2#current-browser-support-for-angular-2)
 * Why is my service, aka provider, is not injecting parameter correctly?
   * Please use `@Injectable()` for your service for typescript to correctly attach the metadata (this is a typescript beta problem)
+* How do I run protractor with node 0.12.x?
+  * please check out this repo to use the old version of protractor https://github.com/AngularClass/angular2-webpack-starter/pull/146/files
 * Where do I write my tests? 
   * You can write your tests anywhere you like in the `/src` directory next to your components or in the  `test/` folder
 * Is Angular 2 production ready yet?
