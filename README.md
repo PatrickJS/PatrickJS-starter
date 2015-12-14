@@ -41,7 +41,7 @@ Warning: Angular 2.0 is not production ready yet!
 
 ```bash
 # clone our repo
-git clone https://github.com/angularclass/angular2-webpack-starter.git 
+git clone https://github.com/angularclass/angular2-webpack-starter.git
 
 # change directory to our repo
 cd angular2-webpack-starter
@@ -49,8 +49,11 @@ cd angular2-webpack-starter
 # install the repo with npm
 npm install
 
+# install typescript typings
+typings install
+
 # start the server
-npm start 
+npm start
 ```
 go to [http://localhost:3000](http://localhost:3000) in your browser
 
@@ -118,17 +121,18 @@ Once you have those, you should install these globals with `npm install --global
 * `fork` this repo
 * `clone` your fork
 * `npm install` to install all dependencies
+* `typings install` to install necessary typings
 * `npm run server` to start the dev server in another tab
 
 ## Running the app
 After you have installed all dependencies you can now run the app. Run `npm run server` to start a local server using `webpack-dev-server` which will watch, build (in-memory), and reload for you. The port will be displayed to you as `http://localhost:3000` (or if you prefer IPv6, if you're using `express` server, then it's `http://[::1]:3000/`).
- 
+
 ### server
 ```bash
 npm run server # or either webpack-dev-server
 ```
 
-## Other commands 
+## Other commands
 
 ### build files
 ```bash
@@ -140,7 +144,7 @@ npm run build
 npm run watch
 ```
 
-### run tests 
+### run tests
 ```bash
 npm run test
 ```
@@ -184,11 +188,11 @@ We have good experience using these editors:
   * Please use `@Injectable()` for your service for typescript to correctly attach the metadata (this is a typescript beta problem)
 * How do I run protractor with node 0.12.x?
   * please check out this repo to use the old version of protractor https://github.com/AngularClass/angular2-webpack-starter/pull/146/files
-* Where do I write my tests? 
+* Where do I write my tests?
   * You can write your tests anywhere you like in the `/src` directory next to your components or in the  `test/` folder
 * Is Angular 2 production ready yet?
   * No, please visit [Is Angular 2 Ready Yet?](http://splintercode.github.io/is-angular-2-ready/) website.
-* How do I start the app when I get `EACCES` and `EADDRINUSE` errors? 
+* How do I start the app when I get `EACCES` and `EADDRINUSE` errors?
   * The `EADDRINUSE` error means the port `3000` is currently being used and `EACCES` is lack of permission for webpack to build files to `./__build__/`
 
 
@@ -213,10 +217,10 @@ We have good experience using these editors:
   * Client only, TypeScript, TSD, Gulp, JSPM, Minimalist
 * [babel-angular2-app (Shuhei Kagawa)](https://github.com/shuhei/babel-angular2-app)
   * Client only, Minimalist, Babel, ES6+, browserify
-  
+
 ___
 
-enjoy — **AngularClass** 
+enjoy — **AngularClass**
 
 <br><br>
 
