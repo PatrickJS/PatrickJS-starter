@@ -72,6 +72,9 @@ We use the component approach in our starter. This is the new standard for devel
 ```
 angular2-webpack-starter/
  ├──src/                                   * our source files that will be compiled to javascript
+ |   ├──bootstrap.ts                       * our entry file for our browser environment
+ │   │
+ |   ├──vendor.ts                          * our vendor file
  │   │
  │   ├──app/                               * WebApp: folder
  │   │   ├──app.spec.ts                    * a simple test of components in app.ts
