@@ -22,5 +22,3 @@ export class Home {
   }
 
 }
-
-export const name = 'Home';
