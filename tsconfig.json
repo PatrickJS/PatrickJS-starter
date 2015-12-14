@@ -8,12 +8,18 @@
     "sourceMap": true
   },
   "files": [
+    "typings/main.d.ts",
+    "test/injector.spec.ts",
+    "test/sanity-test.spec.ts",
     "src/app/app.spec.ts",
     "src/app/app.ts",
-    "src/app/bootstrap.ts"
-  ],
-  "exclude": [
-    "node_modules"
+    "src/app/directives/x-large.ts",
+    "src/app/directives/x-large.spec.ts",
+    "src/app/providers/title.spec.ts",
+    "src/app/providers/title.ts",
+    "src/app/home/home.ts",
+    "src/bootstrap.ts",
+    "src/vendor.ts"
   ],
   "compileOnSave": false
 }

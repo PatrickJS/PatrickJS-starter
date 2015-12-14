@@ -46,14 +46,21 @@ module.exports = function(config) {
       module: {
         loaders: [
           {
-            test: /\.tsx?$/,
-            loader: 'ts',
-            exclude: [/node_modules/],
-            query: { 'ignoreDiagnostics': [ 2403 ]  } // 2403 -> Subsequent variable declarations},
+            test: /\.ts$/,
+            loader: 'ts-loader',
+            query: {
+              'ignoreDiagnostics': [
+                2403, // 2403 -> Subsequent variable declarations
+                2300, // 2300 Duplicate identifier
+                2374, // 2374 -> Duplicate number index signature
+                2375  // 2375 -> Duplicate string index signature
+              ]
+            },
+            exclude: [ /\.e2e\.ts$/, /node_modules/ ]
           },
-          { test: /\.json$/, loader: 'json' },
-          { test: /\.html$/, loader: 'raw' },
-          { test: /\.css$/,  loader: 'raw' }
+          { test: /\.json$/, loader: 'json-loader' },
+          { test: /\.html$/, loader: 'raw-loader' },
+          { test: /\.css$/,  loader: 'raw-loader' }
         ]
       },
       stats: { colors: true, reasons: true },

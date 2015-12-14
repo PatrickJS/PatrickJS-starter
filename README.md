@@ -16,7 +16,7 @@
 > An Angular 2 starter kit featuring [Angular 2](https://angular.io) ([Router](https://angular.io/docs/js/latest/api/router/), [Forms](https://angular.io/docs/js/latest/api/forms/),
 [Http](https://angular.io/docs/js/latest/api/http/),
 [Services](https://gist.github.com/gdi2290/634101fec1671ee12b3e#_follow_@AngularClass_on_twitter),
-[Tests](https://angular.io/docs/js/latest/api/test/), [E2E](https://angular.github.io/protractor/#/faq#what-s-the-difference-between-karma-and-protractor-when-do-i-use-which-)), [Karma](https://karma-runner.github.io/), [Protractor](https://angular.github.io/protractor/), [Jasmine](https://github.com/jasmine/jasmine), [TypeScript](http://www.typescriptlang.org/), and [Webpack](http://webpack.github.io/) by [AngularClass](https://angularclass.com).
+[Tests](https://angular.io/docs/js/latest/api/test/), [E2E](https://angular.github.io/protractor/#/faq#what-s-the-difference-between-karma-and-protractor-when-do-i-use-which-)), [Karma](https://karma-runner.github.io/), [Protractor](https://angular.github.io/protractor/), [Jasmine](https://github.com/jasmine/jasmine), [TypeScript](http://www.typescriptlang.org/), [Typings](https://github.com/typings/typings), and [Webpack](http://webpack.github.io/) by [AngularClass](https://angularclass.com).
 
 > If you're looking for Angular 1.x please use [NG6-starter](https://github.com/angularclass/NG6-starter)  
 > If you're looking to learn about Webpack and ES6 Build Tools check out [ES6-build-tools](https://github.com/AngularClass/ES6-build-tools)
@@ -28,6 +28,7 @@ This seed repo serves as an Angular 2 starter for anyone looking to get up and r
 * A great Angular 2 seed repo for anyone who wants to start their project.
 * Testing Angular 2 code with Jasmine and Karma.
 * end-to-end Angular 2 code using Protractor.
+* type manager with Typings
 
 
 ```coffeescript
@@ -71,23 +72,22 @@ We use the component approach in our starter. This is the new standard for devel
 ```
 angular2-webpack-starter/
  ├──src/                                   * our source files that will be compiled to javascript
+ |   ├──bootstrap.ts                       * our entry file for our browser environment
+ │   │
+ |   ├──vendor.ts                          * our vendor file
  │   │
  │   ├──app/                               * WebApp: folder
  │   │   ├──app.spec.ts                    * a simple test of components in app.ts
  │   │   ├──app.ts                         * App.ts: a simple version of our App component components
  │   │   └──bootstrap.ts                   * entry file for app
  │   │
- │   ├──public/                            * static assets are served here
- │   │   ├──favicon.ico                    * replace me with your own favicon.ico
- │   │   ├──service-worker.js              * ignore this. Web App service worker that's not complete yet
- │   │   ├──robots.txt                     * for search engines to crawl your website
- │   │   ├──human.txt                      * for humans to know who the developers are
- │   │   │
- │   │   └──index.html                     * Index.html: where we place our script tags
- │   │
- │   └──typings/                           * where we define our custom types
- │       ├──ng2.d.ts                       * where we patch angular2 types with our own types until it's fixed
- │       └──_custom.d.ts                   * we include all of our custom types here
+ │   └──public/                            * static assets are served here
+ │       ├──favicon.ico                    * replace me with your own favicon.ico
+ │       ├──service-worker.js              * ignore this. Web App service worker that's not complete yet
+ │       ├──robots.txt                     * for search engines to crawl your website
+ │       ├──human.txt                      * for humans to know who the developers are
+ │       │
+ │       └──index.html                     * Index.html: where we place our script tags
  │
  ├──test/                                  * this is our global unit tests and end-to-end tests
  │
@@ -95,6 +95,7 @@ angular2-webpack-starter/
  ├──karma.config.js                        * karma config for our unit tests
  ├──protractor.config.js                   * protractor config for our end-to-end tests
  ├──tsconfig.json                          * config that webpack uses for typescript
+ ├──typings.json                           * our typings manager
  ├──package.json                           * what npm uses to manage it's dependencies
  └──webpack.config.js                      * our webpack config
 ```
@@ -110,6 +111,8 @@ Once you have those, you should install these globals with `npm install --global
 * `webpack-dev-server` (`npm install --global webpack-dev-server`)
 * `karma` (`npm install --global karma-cli`)
 * `protractor` (`npm install --global protractor`)
+* `typings` (`npm install --global typings`)
+* `typescript` (`npm install --global typescript`)
 
 ## Installing
 * `fork` this repo
@@ -122,35 +125,35 @@ After you have installed all dependencies you can now run the app. Run `npm run 
  
 ### server
 ```bash
-npm run server # or either webpack-dev-server or npm run express
+npm run server # or either webpack-dev-server
 ```
 
 ## Other commands 
 
 ### build files
 ```bash
-npm run build  # or webpack
+npm run build
 ```
 
 ### watch and build files
 ```bash
-npm run watch  # or webpack --watch
+npm run watch
 ```
 
 ### run tests 
 ```bash
-npm run test  # or karma start
+npm run test
 ```
 
 ### run webdriver (for end-to-end)
 ```bash
-npm run webdriver-start  # or webdriver-manager start
+npm run webdriver-start
 ```
 
 ### run end-to-end tests
 ```bash
 # make sure you have webdriver running and a sever for the client app
-npm run e2e  # or protractor
+npm run e2e
 ```
 
 # Contributing

@@ -34,7 +34,7 @@ Thumbs.db
 /node_modules
 /bower_components
 
-# Typing TSD #
+# Typing #
 /src/typings/tsd/
 /typings/
 /tsd_typings/
