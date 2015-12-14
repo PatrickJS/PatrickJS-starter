@@ -61,6 +61,7 @@
     "style-loader": "^0.13.0",
     "ts-loader": "^0.7.2",
     "tsconfig-lint": "^0.2.0",
+    "tslint": "^3.2.0",
     "tslint-loader": "^2.1.0",
     "typedoc": "^0.3.12",
     "typescript": "^1.7.3",
