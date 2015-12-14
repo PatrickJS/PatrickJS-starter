@@ -54,6 +54,7 @@ module.exports = {
   },
 
   module: {
+    preLoaders: [ { test: /\.ts$/, loader: 'tslint-loader' } ],
     loaders: [
       // Support for *.json files.
       { test: /\.json$/,  loader: 'json' },
