@@ -24,6 +24,8 @@ import {Home} from './home/home';
   // We need to tell Angular's compiler which directives are in our template.
   // Doing so will allow Angular to attach our behavior to an element
   directives: [ ROUTER_DIRECTIVES, XLarge ],
+  // We need to tell Angular's compiler which custom pipes are in our template.
+  pipes: [],
   // Our list of styles in our component. We may add more to compose many styles together
   styles: [`
     .title {
