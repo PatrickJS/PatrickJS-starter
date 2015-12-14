@@ -1,32 +1,14 @@
 /*
  * Angular 2 decorators and services
  */
-import {Directive, Component, ElementRef, Renderer} from 'angular2/core';
-import {RouteConfig, Router} from 'angular2/router';
-import {Http, Headers} from 'angular2/http';
+import {Component} from 'angular2/core';
+import {RouteConfig, Router, ROUTER_DIRECTIVES} from 'angular2/router';
+import {Http} from 'angular2/http';
+import {FORM_PROVIDERS} from 'angular2/common';
 
-/*
- * Angular Directives
- */
-import {ROUTER_DIRECTIVES} from 'angular2/router';
-
-/*
- * Directive
- * XLarge is a simple directive to show how one is made
- */
-@Directive({
-  selector: '[x-large]' // using [ ] means selecting attributes
-})
-export class XLarge {
-  constructor(element: ElementRef, renderer: Renderer) {
-    // simple DOM manipulation to set font size to x-large
-    // `nativeElement` is the direct reference to the DOM element
-    // element.nativeElement.style.fontSize = 'x-large';
-
-    // for server/webworker support use the renderer
-    renderer.setElementStyle(element, 'fontSize', 'x-large');
-  }
-}
+import {Title} from './providers/title';
+import {XLarge} from './directives/x-large';
+import {Home} from './home/home';
 
 /*
  * App Component
@@ -37,6 +19,8 @@ export class XLarge {
   // for `document.querySelectorAll(selector)` in our index.html
   // where, in this case, selector is the string 'app'
   selector: 'app', // <app></app>
+  // We need to tell Angular's Dependency Injection which providers are in our app.
+  providers: [ FORM_PROVIDERS, Title],
   // We need to tell Angular's compiler which directives are in our template.
   // Doing so will allow Angular to attach our behavior to an element
   directives: [ ROUTER_DIRECTIVES, XLarge ],
@@ -48,47 +32,29 @@ export class XLarge {
     main {
       padding: 1em;
     }
+
   `],
   // Every Angular template is first compiled by the browser before Angular runs it's compiler
   template: `
-  <header>
-    <h1 class="title">Hello {{ title }}</h1>
-  </header>
+    <header>
+      <h1 class="title">Hello {{ title.value }}</h1>
+    </header>
 
-  <main>
-    Your Content Here
-    <div>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
 
-      <input type="text" [value]="title" (input)="title = $event.target.value" autofocus>
-      <!--
-        Rather than wiring up two-way data-binding ourselves
-        we can use Angular's [(ngModel)] syntax
-        <input type="text" [(ngModel)]="title">
-      -->
-    </div>
-
-    <pre>this.title = {{ title | json }}</pre>
-
-  </main>
-
-  <footer x-large>
-    WebPack Angular 2 Starter by <a href="https://twitter.com/AngularClass">@AngularClass</a>
-  </footer>
+    <footer x-large>
+      WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a>
+    </footer>
   `
 })
+@RouteConfig([
+  { path: '/', component: Home, name: 'Home' }
+])
 export class App {
-  // These are member type
-  title: string;
-
-  // TypeScript public modifiers
-  constructor(public http: Http) {
-    this.title = 'Angular 2';
-  }
-
-  // ngOnInit() {
-  //
-  // }
-
+  url: string = 'https://twitter.com/AngularClass';
+  constructor(public title: Title) {}
 }
 
 /*
