@@ -1,3 +1,10 @@
+import {
+  it,
+  inject,
+  injectAsync,
+  beforeEachProviders,
+  TestComponentBuilder
+} from 'angular2/testing';
 import {Title} from './title';
 
 describe('Title', () => {
