@@ -25,20 +25,7 @@ module.exports = {
   },
 
   entry: {
-    'angular2': [
-      // group angular2 deps into the angular2.js file
-      'core-js',
-      'rxjs',
-      'zone.js',
-      'reflect-metadata',
-      'angular2/bootstrap',
-      'angular2/platform/browser',
-      'angular2/platform/common_dom',
-      'angular2/core',
-      'angular2/router',
-      'angular2/http'
-    ],
-    'app': './src/app/bootstrap' // our angular app
+    'vendor': './src/vendor.ts',
   },
 
   // Config for our build files
@@ -76,9 +63,9 @@ module.exports = {
   },
 
   plugins: [
-    new CommonsChunkPlugin({ name: 'angular2', filename: 'angular2.js', minChunks: Infinity }),
-    new CommonsChunkPlugin({ name: 'common',   filename: 'common.js' })
-  ]
+    new CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.js', minChunks: Infinity }),
+    new CommonsChunkPlugin({ name: 'common', filename: 'common.js', minChunks: 2, chunks: ['app'] })
+  ],
 };
 
 // Helper functions
