@@ -40,6 +40,9 @@ import {Home} from './home/home';
   template: `
     <header>
       <h1 class="title">Hello {{ title.value }}</h1>
+      <nav>
+        <a [routerLink]=" ['Home'] ">Home</a>
+      </nav>
     </header>
 
     <main>

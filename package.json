@@ -19,6 +19,7 @@
     "clean-start": "npm run clean && npm start",
     "watch": "webpack --watch --progress --profile --colors --display-error-details --display-cached",
     "build": "webpack --progress --profile --colors --display-error-details --display-cached",
+    "build:prod": "webpack --progress --profile --colors --display-error-details --display-cached --optimize-occurence-order --optimize-minimize --optimize-dedupe",
     "server": "webpack-dev-server --inline --progress --profile --colors --display-error-details --display-cached --port 3000",
     "webdriver-update": "webdriver-manager update",
     "webdriver-start": "webdriver-manager start",
@@ -31,11 +32,11 @@
     "postinstall": "typings install"
   },
   "dependencies": {
-    "angular2": "2.0.0-alpha.53",
+    "angular2": "2.0.0-alpha.54",
     "core-js": "^1.2.6",
     "reflect-metadata": "0.1.2",
-    "rxjs": "5.0.0-alpha.14",
-    "zone.js": "0.5.8"
+    "rxjs": "5.0.0-beta.0",
+    "zone.js": "0.5.10"
   },
   "devDependencies": {
     "css-loader": "^0.23.0",
