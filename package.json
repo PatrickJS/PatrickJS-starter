@@ -14,7 +14,7 @@
   "license": "MIT",
   "main": "",
   "scripts": {
-    "clean": "rimraf node_modules doc && npm cache clean",
+    "clean": "rimraf node_modules doc typings && npm cache clean",
     "clean-install": "npm run clean && npm install",
     "clean-start": "npm run clean && npm start",
     "watch": "webpack --watch --progress --profile --colors --display-error-details --display-cached",
@@ -27,7 +27,8 @@
     "test": "karma start",
     "ci": "npm run e2e && npm run test",
     "docs": "typedoc  --options typedoc.json  src/**/*.ts",
-    "start": "npm run server"
+    "start": "npm run server",
+    "postinstall": "typings install"
   },
   "dependencies": {
     "angular2": "2.0.0-alpha.53",
