@@ -1,7 +1,7 @@
 /*
  * Providers provided by Angular
  */
-import {bootstrap} from 'angular2/bootstrap';
+import {bootstrap} from 'angular2/platform/browser';
 import {ELEMENT_PROBE_PROVIDERS} from 'angular2/platform/common_dom';
 import {ROUTER_PROVIDERS} from 'angular2/router';
 import {HTTP_PROVIDERS} from 'angular2/http';
