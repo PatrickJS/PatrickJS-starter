@@ -1,7 +1,7 @@
 // Polyfills
 import 'core-js';
 import 'reflect-metadata';
-import 'zone.js';
+import 'zone.js/dist/zone-microtask';
 
 // Angular 2
 import 'angular2/platform/browser';

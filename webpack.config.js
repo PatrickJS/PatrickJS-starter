@@ -61,7 +61,10 @@ module.exports = {
       { test: /\.css$/,   loader: 'raw-loader' },
 
       // support for .html as raw text
-      { test: /\.html$/,  loader: 'raw-loader' }
+      { test: /\.html$/,  loader: 'raw-loader' },
+    ],
+    noParse: [
+     /zone\.js\/dist\/zone-microtask/
     ]
   },
 
