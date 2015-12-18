@@ -14,7 +14,7 @@ var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 module.exports = {
   // for faster builds use 'eval'
   devtool: 'source-map',
-  debug: true,
+  debug: true, // remove in production
 
   entry: {
     'vendor': './src/vendor.ts',
@@ -67,6 +67,7 @@ module.exports = {
   plugins: [
     new CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.js', minChunks: Infinity }),
     new CommonsChunkPlugin({ name: 'common', filename: 'common.js', minChunks: 2, chunks: ['app', 'vendor'] })
+   // include uglify in production
   ],
 
   // Other module loader config
@@ -79,9 +80,7 @@ module.exports = {
     historyApiFallback: true,
     contentBase: 'src/public',
     publicPath: '/__build__'
-  },
-  // ignore node polyfills
-  // node: { console: false, process: false, buffer: false }
+  }
 };
 
 // Helper functions
