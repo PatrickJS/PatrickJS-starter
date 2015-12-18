@@ -3,8 +3,6 @@
 /*
  * Helper: root(), and rootDir() are defined at the bottom
  */
-var sliceArgs = Function.prototype.call.bind(Array.prototype.slice);
-var toString  = Function.prototype.call.bind(Object.prototype.toString);
 var path = require('path');
 var webpack = require('webpack');
 // Webpack Plugins
@@ -88,11 +86,11 @@ module.exports = {
 // Helper functions
 
 function root(args) {
-  args = sliceArgs(arguments, 0);
+  args = Function.prototype.call(arguments, 0);
   return path.join.apply(path, [__dirname].concat(args));
 }
 
 function rootNode(args) {
-  args = sliceArgs(arguments, 0);
+  args = Function.prototype.call(arguments, 0);
   return root.apply(path, ['node_modules'].concat(args));
 }
