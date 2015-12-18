@@ -32,7 +32,7 @@ This seed repo serves as an Angular 2 starter for anyone looking to get up and r
 
 
 ```coffeescript
-Warning: Angular 2.0 is not production ready yet!
+Warning: Make sure you're using the latest version of Node.js and NPM
 ```
 [Is Angular 2 Ready Yet?](http://splintercode.github.io/is-angular-2-ready/)
 
