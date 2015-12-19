@@ -20,7 +20,7 @@ import {App} from './app/app';
  * our Services and Providers into Angular's dependency injection
  */
 // enableProdMode() // include for production builds
-export function main() {
+function main() {
   return bootstrap(App, [
     // These are dependencies of our App
     HTTP_PROVIDERS,
