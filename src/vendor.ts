@@ -4,7 +4,7 @@ import 'es6-promise';
 // (these modules are what is in 'angular2/bundles/angular2-polyfills' so don't use that here)
 import 'es7-reflect-metadata/dist/browser';
 import 'zone.js/lib/browser/zone-microtask';
-import 'zone.js/lib/zones/long-stack-trace'; // in Production you may want to remove this module
+import 'zone.js/lib/browser/long-stack-trace-zone'; // in Production you may want to remove this
 
 // Angular 2
 import 'angular2/platform/browser';
