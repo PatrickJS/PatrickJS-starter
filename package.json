@@ -28,6 +28,7 @@
     "test": "karma start",
     "ci": "npm run e2e && npm run test",
     "docs": "typedoc  --options typedoc.json  src/**/*.ts",
+    "prestart": "npm install",
     "start": "npm run server",
     "postinstall": "typings install"
   },
