@@ -22,7 +22,7 @@
     "start": "npm run server",
     "postinstall": "typings install",
     "preview": "npm run build && ./node_modules/.bin/electron app",
-    "electron": "./node_modules/electron-packager/cli.js electron App --platform=darwin --arch=all --out=dist --overwrite --version='0.36.0'"
+    "electron": "./node_modules/electron-packager/cli.js app App --platform=darwin --arch=all --out=dist --overwrite --version='0.36.0'"
   },
   "dependencies": {
     "angular2": "2.0.0-beta.0",
