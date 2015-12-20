@@ -1,11 +1,19 @@
-forked [https://github.com/AngularClass/angular2-webpack-starter](https://github.com/AngularClass/angular2-webpack-starter)
 
+# Angular2 Electron Starter (with Webpack)
+forked from [https://github.com/AngularClass/angular2-webpack-starter](https://github.com/AngularClass/angular2-webpack-starter)
+
+
+```bash
+
+# install
 npm install
-typings install
+# run dev server localhost:3333
 npm start
 
-preview:
+# build:dev and open electron preview
 npm run preview
 
-build electron package:
+# build:prod and create electron package
 npm run build:dist
+
+```
