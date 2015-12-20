@@ -23,7 +23,7 @@
   ],
   "filesGlob": [
     "./src/**/*.ts",
-    "./test/**/*.ts"
+    "./test/**/*.ts",
     "!./node_modules/**/*.ts"
   ],
   "compileOnSave": false,
