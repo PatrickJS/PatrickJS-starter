@@ -1,6 +1,6 @@
 
 # Angular2 Electron Starter (with Webpack)
-forked from [https://github.com/AngularClass/angular2-webpack-starter](https://github.com/AngularClass/angular2-webpack-starter)
+forked from [angular2-webpack-starter](https://github.com/AngularClass/angular2-webpack-starter)
 
 
 ```bash
