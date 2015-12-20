@@ -59,7 +59,11 @@ import {Home} from './home/home';
 ])
 export class App {
   url: string = 'https://twitter.com/AngularClass';
-  constructor(public title: Title) {}
+  constructor(public title: Title, private router: Router) {}
+  ngOnInit() {
+    console.log('App Start');
+    this.router.navigate(['Home']);
+  }
 }
 
 /*

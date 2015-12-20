@@ -23,7 +23,7 @@ module.exports = {
 
   // Config for our build files
   output: {
-    path: root('__build__'),
+    path: root('electron/build'),
     filename: '[name].js',
     sourceMapFilename: '[name].map',
     chunkFilename: '[id].chunk.js'
@@ -78,8 +78,8 @@ module.exports = {
   // our Webpack Development Server config
   devServer: {
     historyApiFallback: true,
-    contentBase: 'src/public',
-    publicPath: '/__build__'
+    contentBase: 'electron',
+    publicPath: '/build'
   }
 };
 

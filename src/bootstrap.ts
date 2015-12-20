@@ -2,7 +2,8 @@
  * Providers provided by Angular
  */
 import {bootstrap} from 'angular2/platform/browser';
-import {ROUTER_PROVIDERS} from 'angular2/router';
+import {provide} from 'angular2/core';
+import {ROUTER_PROVIDERS, APP_BASE_HREF} from 'angular2/router';
 import {HTTP_PROVIDERS} from 'angular2/http';
 // include for development builds
 import {ELEMENT_PROBE_PROVIDERS} from 'angular2/platform/common_dom';
@@ -20,11 +21,12 @@ import {App} from './app/app';
  * our Services and Providers into Angular's dependency injection
  */
 // enableProdMode() // include for production builds
-function main() {
+export function main() {
   return bootstrap(App, [
     // These are dependencies of our App
     HTTP_PROVIDERS,
     ROUTER_PROVIDERS,
+    provide(APP_BASE_HREF, {useValue: '/'}),
     ELEMENT_PROBE_PROVIDERS // remove in production
   ])
   .catch(err => console.error(err));
