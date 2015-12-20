@@ -49,7 +49,7 @@ module.exports = {
             2375  // 2375 -> Duplicate string index signature
           ]
         },
-        exclude: [ /\.(spec|e2e)\.ts$/, /node_modules/ ]
+        exclude: [ /\.(spec|e2e)\.ts$/, /node_modules\/(?!(ng2-.+))/ ]
       },
 
       // Support for *.json files.
