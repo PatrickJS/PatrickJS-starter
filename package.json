@@ -25,12 +25,12 @@
     "electron": "./node_modules/electron-packager/cli.js app App --platform=darwin --arch=all --out=dist --overwrite --version='0.36.0'"
   },
   "dependencies": {
-    "angular2": "2.0.0-beta.0",
+    "angular2": "^2.0.0-beta.0",
     "es6-promise": "^3.0.2",
     "es6-shim": "^0.33.3",
     "es7-reflect-metadata": "^1.2.0",
-    "rxjs": "5.0.0-beta.0",
-    "zone.js": "0.5.10"
+    "rxjs": "^5.0.0-beta.0",
+    "zone.js": "^0.5.10"
   },
   "devDependencies": {
     "css-loader": "^0.23.0",
