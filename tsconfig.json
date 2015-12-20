@@ -21,5 +21,14 @@
     "src/bootstrap.ts",
     "src/vendor.ts"
   ],
-  "compileOnSave": false
+  "filesGlob": [
+    "./src/**/*.ts",
+    "./test/**/*.ts"
+    "!./node_modules/**/*.ts"
+  ],
+  "compileOnSave": false,
+  "buildOnSave": false,
+  "atom": {
+    "rewriteTsconfig": true
+  }
 }
