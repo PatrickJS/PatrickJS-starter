@@ -13,6 +13,10 @@
   },
   "license": "MIT",
   "main": "",
+  "engines": {
+    "node": ">= 4.2.1 <= 5",
+    "npm" : ">= 3"
+  },
   "scripts": {
     "clean": "rimraf node_modules doc typings && npm cache clean",
     "clean-install": "npm run clean && npm install",
