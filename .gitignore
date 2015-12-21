@@ -34,6 +34,9 @@ Thumbs.db
 /node_modules
 /bower_components
 
+# Coverage #
+/coverage/
+
 # Typing #
 /src/typings/tsd/
 /typings/
@@ -46,8 +49,8 @@ Thumbs.db
 __build__/**
 .webpack.json
 
-#doc
-/doc
+# Doc #
+/doc/
 
 # IDE #
 .idea/
