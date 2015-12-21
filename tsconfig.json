@@ -5,7 +5,7 @@
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "noEmitHelpers": true,
+    "noEmitHelpers": false,
     "sourceMap": true
   },
   "files": [
