@@ -21,4 +21,8 @@ describe('App', () => {
     expect(app.url).toEqual('https://twitter.com/AngularClass');
   }));
 
+  it('should have Title service', inject([ App ], (app) => {
+    expect(!!app.title).toEqual(true);
+  }));
+
 });
