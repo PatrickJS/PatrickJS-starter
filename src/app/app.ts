@@ -20,10 +20,10 @@ import {Home} from './home/home';
   // where, in this case, selector is the string 'app'
   selector: 'app', // <app></app>
   // We need to tell Angular's Dependency Injection which providers are in our app.
-  providers: [ FORM_PROVIDERS, Title],
+  providers: [ ...FORM_PROVIDERS, Title],
   // We need to tell Angular's compiler which directives are in our template.
   // Doing so will allow Angular to attach our behavior to an element
-  directives: [ ROUTER_DIRECTIVES, XLarge ],
+  directives: [ ...ROUTER_DIRECTIVES, XLarge ],
   // We need to tell Angular's compiler which custom pipes are in our template.
   pipes: [],
   // Our list of styles in our component. We may add more to compose many styles together
