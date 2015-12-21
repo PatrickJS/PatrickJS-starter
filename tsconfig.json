@@ -5,6 +5,7 @@
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "noEmitHelpers": true,
     "sourceMap": true
   },
   "files": [
@@ -19,7 +20,8 @@
     "src/app/providers/title.ts",
     "src/app/home/home.ts",
     "src/bootstrap.ts",
-    "src/vendor.ts"
+    "src/vendor.ts",
+    "src/polyfills.ts"
   ],
   "filesGlob": [
     "./src/**/*.ts",
