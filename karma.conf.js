@@ -1,4 +1,5 @@
 // @AngularClass
+var path = require('path');
 
 module.exports = function(config) {
   var _config = {
@@ -61,6 +62,15 @@ module.exports = function(config) {
           { test: /\.json$/, loader: 'json-loader' },
           { test: /\.html$/, loader: 'raw-loader' },
           { test: /\.css$/,  loader: 'raw-loader' }
+        ],
+        postLoaders: [
+          // instrument only testing sources with Istanbul
+          {
+            test: /\.(js|ts)$/,
+            include: path.resolve('src'),
+            loader: 'istanbul-instrumenter-loader',
+            exclude: [ /\.e2e\.ts$/, /node_modules/ ]
+          }
         ]
       },
       stats: { colors: true, reasons: true },
@@ -72,6 +82,14 @@ module.exports = function(config) {
       ]
     },
 
+    coverageReporter: {
+      dir : 'coverage/',
+      reporters: [
+        { type: 'text-summary' },
+        { type: 'html' }
+      ],
+    },
+
     webpackServer: {
       noInfo: true //please don't spam the console when running in karma!
     },
@@ -80,7 +98,7 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: [ 'progress', 'coverage' ],
 
 
     // web server port
@@ -109,5 +127,7 @@ module.exports = function(config) {
     // if true, Karma captures browsers, runs the tests and exits
     singleRun: true
   };
+
   config.set(_config);
+
 };
