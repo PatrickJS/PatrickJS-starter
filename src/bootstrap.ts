@@ -4,10 +4,8 @@
 import {bootstrap} from 'angular2/platform/browser';
 import {ROUTER_PROVIDERS} from 'angular2/router';
 import {HTTP_PROVIDERS} from 'angular2/http';
-// include for development builds
 import {ELEMENT_PROBE_PROVIDERS} from 'angular2/platform/common_dom';
-// include for production builds
-// import {enableProdMode} from 'angular2/core';
+import {enableProdMode} from 'angular2/core';
 
 /*
  * App Component
@@ -16,17 +14,31 @@ import {ELEMENT_PROBE_PROVIDERS} from 'angular2/platform/common_dom';
 import {App} from './app/app';
 
 /*
+ * Enable production mode for production build
+ */
+declare var __PRODUCTION__: any;
+
+if (__PRODUCTION__) {
+  enableProdMode();
+}
+
+/*
  * Bootstrap our Angular app with a top level component `App` and inject
  * our Services and Providers into Angular's dependency injection
  */
-// enableProdMode() // include for production builds
 function main() {
-  return bootstrap(App, [
-    // These are dependencies of our App
+
+  // These are dependencies of our App
+  var dependencies = [
     HTTP_PROVIDERS,
     ROUTER_PROVIDERS,
-    ELEMENT_PROBE_PROVIDERS // remove in production
-  ])
+  ];
+
+  if (!__PRODUCTION__) {
+    dependencies.push(ELEMENT_PROBE_PROVIDERS);
+  }
+
+  return bootstrap(App, dependencies)
   .catch(err => console.error(err));
 }
 

@@ -8,6 +8,10 @@ var webpack = require('webpack');
 // Webpack Plugins
 var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 
+var definePlugin = new webpack.DefinePlugin({
+  __PRODUCTION__: JSON.stringify(JSON.parse(process.env.BUILD_PROD || 'false'))
+});
+
 /*
  * Config
  */
@@ -66,7 +70,8 @@ module.exports = {
 
   plugins: [
     new CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.js', minChunks: Infinity }),
-    new CommonsChunkPlugin({ name: 'common', filename: 'common.js', minChunks: 2, chunks: ['app', 'vendor'] })
+    new CommonsChunkPlugin({ name: 'common', filename: 'common.js', minChunks: 2, chunks: ['app', 'vendor'] }),
+    definePlugin
    // include uglify in production
   ],
 
