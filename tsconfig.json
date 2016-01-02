@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES5",
+    "target": "es5",
     "module": "commonjs",
     "removeComments": true,
     "emitDecoratorMetadata": true,
@@ -13,12 +13,8 @@
     "test/injector.spec.ts",
     "test/sanity-test.spec.ts",
     "src/app/app.spec.ts",
-    "src/app/app.ts",
-    "src/app/directives/x-large.ts",
     "src/app/directives/x-large.spec.ts",
     "src/app/providers/title.spec.ts",
-    "src/app/providers/title.ts",
-    "src/app/home/home.ts",
     "src/bootstrap.ts",
     "src/vendor.ts",
     "src/polyfills.ts"
