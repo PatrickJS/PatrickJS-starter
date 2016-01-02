@@ -4,17 +4,27 @@
  * Helper: root(), and rootDir() are defined at the bottom
  */
 var path = require('path');
-var webpack = require('webpack');
 // Webpack Plugins
-var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
+var ProvidePlugin = require('webpack/lib/ProvidePlugin');
+var DefinePlugin  = require('webpack/lib/DefinePlugin');
+var CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
+var CopyWebpackPlugin  = require('copy-webpack-plugin');
+var HtmlWebpackPlugin  = require('html-webpack-plugin');
+var ENV = process.env.ENV || process.env.NODE_ENV || 'development';
 
 /*
  * Config
  */
 module.exports = {
+  // static data for index.html
+  metadata: {
+    title: 'Angular2 Webpack Starter by @gdi2990 from @AngularClass',
+    baseUrl: '/',
+    ENV: ENV
+  },
   // for faster builds use 'eval'
   devtool: 'source-map',
-  debug: true, // remove in production
+  debug: true,
 
   entry: {
     'vendor': './src/vendor.ts',
@@ -23,8 +33,8 @@ module.exports = {
 
   // Config for our build files
   output: {
-    path: root('__build__'),
-    filename: '[name].js',
+    path: root('dist'),
+    filename: '[name].bundle.js',
     sourceMapFilename: '[name].map',
     chunkFilename: '[id].chunk.js'
   },
@@ -35,7 +45,7 @@ module.exports = {
   },
 
   module: {
-    preLoaders: [ { test: /\.ts$/, loader: 'tslint-loader' } ],
+    preLoaders: [{ test: /\.ts$/, loader: 'tslint-loader', exclude: [/node_modules/] }],
     loaders: [
       // Support for .ts files.
       {
@@ -59,15 +69,28 @@ module.exports = {
       { test: /\.css$/,   loader: 'raw-loader' },
 
       // support for .html as raw text
-      { test: /\.html$/,  loader: 'raw-loader' },
-    ],
-    noParse: [ /.+zone\.js\/dist\/.+/, /.+angular2\/bundles\/.+/ ]
+      { test: /\.html$/,  loader: 'raw-loader' }
+
+      // if you add a loader include the resolve file extension above
+    ]
   },
 
   plugins: [
-    new CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.js', minChunks: Infinity }),
-    new CommonsChunkPlugin({ name: 'common', filename: 'common.js', minChunks: 2, chunks: ['app', 'vendor'] })
-   // include uglify in production
+    new CommonsChunkPlugin({ name: 'vendor',filename: 'vendor.bundle.js', minChunks: Infinity }),
+    // static assets
+    new CopyWebpackPlugin([ { from: 'src/assets', to: 'assets' } ]),
+    // generating html
+    new HtmlWebpackPlugin({ template: 'src/index.html', inject: false }),
+    // Reflect polyfill
+    new ProvidePlugin({ 'Reflect': 'es7-reflect-metadata/dist/browser' }),
+    // replace
+    new DefinePlugin({
+      'process.env': {
+        'ENV': JSON.stringify(ENV),
+        'NODE_ENV': JSON.stringify(ENV)
+      },
+      'global': 'window'
+    })
   ],
 
   // Other module loader config
@@ -77,10 +100,11 @@ module.exports = {
   },
   // our Webpack Development Server config
   devServer: {
-    historyApiFallback: true,
-    contentBase: 'src/public',
-    publicPath: '/__build__'
-  }
+    host: '0.0.0.0',
+    historyApiFallback: true
+  },
+  // we need this due to problems with es6-shim
+  node: {global: false, progress: false, crypto: 'empty', module: false, clearImmediate: false, setImmediate: false}
 };
 
 // Helper functions
