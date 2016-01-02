@@ -2,6 +2,7 @@
 var path = require('path');
 
 module.exports = function(config) {
+  var testWebpackConfig = require('./webpack.test.config.js');
   var _config = {
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -32,55 +33,7 @@ module.exports = function(config) {
       // 'test/**/*.spec.ts': ['webpack', 'sourcemap']
     },
 
-    webpack: {
-
-      resolve: {
-        cache: false,
-        root: __dirname,
-        extensions: ['','.ts','.js','.json', '.css', '.html'],
-        alias: {
-          'app': 'src/app',
-          'common': 'src/common'
-        }
-      },
-      devtool: 'inline-source-map',
-      module: {
-        loaders: [
-          {
-            test: /\.ts$/,
-            loader: 'ts-loader',
-            query: {
-              'ignoreDiagnostics': [
-                2403, // 2403 -> Subsequent variable declarations
-                2300, // 2300 Duplicate identifier
-                2374, // 2374 -> Duplicate number index signature
-                2375  // 2375 -> Duplicate string index signature
-              ]
-            },
-            exclude: [ /\.e2e\.ts$/, /node_modules/ ]
-          },
-          { test: /\.json$/, loader: 'json-loader' },
-          { test: /\.html$/, loader: 'raw-loader' },
-          { test: /\.css$/,  loader: 'raw-loader' }
-        ],
-        postLoaders: [
-          // instrument only testing sources with Istanbul
-          {
-            test: /\.(js|ts)$/,
-            include: path.resolve('src'),
-            loader: 'istanbul-instrumenter-loader',
-            exclude: [ /\.e2e\.ts$/, /node_modules/ ]
-          }
-        ]
-      },
-      stats: { colors: true, reasons: true },
-      debug: false,
-      noParse: [
-        /zone\.js\/dist\/zone-microtask\.js/,
-        /zone\.js\/dist\/long-stack-trace-zone\.js/,
-        /zone\.js\/dist\/jasmine-patch\.js/
-      ]
-    },
+    webpack: testWebpackConfig,
 
     coverageReporter: {
       dir : 'coverage/',
