@@ -13,11 +13,11 @@
     "test/injector.spec.ts",
     "test/sanity-test.spec.ts",
     "src/app/app.spec.ts",
-    "src/app/directives/x-large.spec.ts",
-    "src/app/providers/title.spec.ts",
+    "src/app/home/home.spec.ts",
+    "src/app/home/directives/x-large.spec.ts",
+    "src/app/home/providers/title.spec.ts",
     "src/bootstrap.ts",
-    "src/vendor.ts",
-    "src/polyfills.ts"
+    "src/vendor.ts"
   ],
   "filesGlob": [
     "./src/**/*.ts",
@@ -26,7 +26,5 @@
   ],
   "compileOnSave": false,
   "buildOnSave": false,
-  "atom": {
-    "rewriteTsconfig": true
-  }
+  "atom": { "rewriteTsconfig": true }
 }
