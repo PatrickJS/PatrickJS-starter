@@ -1,59 +1,56 @@
 {
   "name": "angular2-webpack-starter",
   "version": "0.0.0",
-  "description": "An Angular 2 Webpack Starter kit featuring Angular 2 (Router, Http, Forms, Services, Tests, E2E), Karma, Protractor, Jasmine, TypeScript, and Webpack by AngularClass",
+  "description": "An Angular 2 Webpack Starter kit featuring Angular 2 (Router, Http, Forms, Services, Tests, E2E, Coverage), Karma, Protractor, Jasmine, Istanbul, TypeScript, and Webpack by AngularClass",
   "author": "Patrick Stapleton <patrick@angularclass.com>",
   "homepage": "https://github.com/angularclass/angular2-webpack-starter",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/angularclass/angular2-webpack-starter.git"
-  },
-  "bugs": {
-    "url": "https://github.com/angularclass/angular2-webpack-starter/issues"
-  },
   "license": "MIT",
-  "main": "",
-  "engines": {
-    "node": ">= 4.2.1 <= 5",
-    "npm": ">= 3"
-  },
   "scripts": {
-    "clean": "rimraf node_modules doc typings && npm cache clean",
-    "clean-install": "npm run clean && npm install",
-    "clean-start": "npm run clean && npm start",
-    "watch": "webpack --watch --progress --profile --colors --display-error-details --display-cached",
-    "build": "webpack --progress --profile --colors --display-error-details --display-cached",
-    "build:prod": "webpack --progress --profile --colors --display-error-details --display-cached --optimize-occurence-order --optimize-minimize --optimize-dedupe",
-    "server": "webpack-dev-server --inline --progress --profile --colors --display-error-details --display-cached --port 3000",
-    "webdriver-update": "webdriver-manager update",
-    "webdriver-start": "webdriver-manager start",
+    "clean": "rimraf node_modules doc typings coverage dist && npm cache clean",
+    "clean:dist": "rimraf dist",
+    "clean:install": "npm run clean && npm install",
+    "clean:start": "npm run clean && npm start",
+    "watch": "npm run watch:dev",
+    "watch:dev": "webpack --watch --progress --profile --colors --display-error-details --display-cached",
+    "watch:prod": "webpack --watch --config webpack.prod.config.js --progress --profile --colors --display-error-details --display-cached",
+    "build": "npm run build:dev",
+    "build:dev": "npm run clean:dist && webpack --progress --profile --colors --display-error-details --display-cached",
+    "build:prod": "npm run clean:dist && webpack --config webpack.prod.config.js --progress --profile --colors --display-error-details --display-cached",
+    "server": "npm run server:dev",
+    "server:dev": "webpack-dev-server --inline --progress --profile --colors --display-error-details --display-cached --port 3000",
+    "server:prod": "http-server dist --cors",
+    "webdriver:update": "webdriver-manager update",
+    "webdriver:start": "webdriver-manager start",
     "lint": "tsconfig-lint",
     "e2e": "protractor",
     "test": "karma start",
     "ci": "npm run e2e && npm run test",
     "docs": "typedoc  --options typedoc.json  src/**/*.ts",
-    "start": "npm run server",
+    "start": "npm run server:dev",
     "postinstall": "typings install"
   },
   "dependencies": {
     "angular2": "2.0.0-beta.0",
-    "es6-promise": "^3.0.2",
     "es6-shim": "^0.33.3",
-    "es7-reflect-metadata": "^1.2.0",
+    "es6-promise": "^3.0.2",
+    "es7-reflect-metadata": "^1.4.0",
     "rxjs": "5.0.0-beta.0",
     "zone.js": "0.5.10"
   },
   "devDependencies": {
+    "copy-webpack-plugin": "^0.3.3",
     "css-loader": "^0.23.0",
     "exports-loader": "0.6.2",
     "expose-loader": "^0.7.1",
     "file-loader": "^0.8.4",
+    "html-webpack-plugin": "^1.7.0",
+    "http-server": "^0.8.5",
     "imports-loader": "^0.6.4",
     "istanbul-instrumenter-loader": "^0.1.3",
     "json-loader": "^0.5.3",
-    "karma": "^0.13.11",
+    "karma": "^0.13.15",
     "karma-chrome-launcher": "^0.2.1",
-    "karma-coverage": "^0.5.2",
+    "karma-coverage": "^0.5.3",
     "karma-jasmine": "^0.3.6",
     "karma-phantomjs-launcher": "^0.2.1",
     "karma-sourcemap-loader": "^0.3.6",
@@ -63,9 +60,11 @@
     "protractor": "^3.0.0",
     "raw-loader": "0.5.1",
     "reflect-metadata": "0.1.2",
+    "remap-istanbul": "^0.5.1",
     "rimraf": "^2.4.4",
     "style-loader": "^0.13.0",
     "ts-loader": "^0.7.2",
+    "ts-helper": "0.0.1",
     "tsconfig-lint": "^0.2.0",
     "tslint": "^3.2.0",
     "tslint-loader": "^2.1.0",
@@ -75,5 +74,16 @@
     "url-loader": "^0.5.6",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.12.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/angularclass/angular2-webpack-starter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/angularclass/angular2-webpack-starter/issues"
+  },
+  "engines": {
+    "node": ">= 4.2.1 <= 5",
+    "npm": ">= 3"
   }
 }
