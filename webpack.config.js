@@ -28,7 +28,6 @@ module.exports = {
   // for faster builds use 'eval'
   devtool: 'source-map',
   debug: true,
-  port: metadata.port,
 
   entry: {
     'vendor': './src/vendor.ts',
@@ -101,6 +100,7 @@ module.exports = {
   },
   // our Webpack Development Server config
   devServer: {
+    port: metadata.port,
     host: metadata.host,
     historyApiFallback: true,
     watchOptions: { aggregateTimeout: 300, poll: 1000 }
