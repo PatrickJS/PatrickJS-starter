@@ -7,7 +7,7 @@ var path = require('path');
 // Webpack Plugins
 var ProvidePlugin = require('webpack/lib/ProvidePlugin');
 var DefinePlugin  = require('webpack/lib/DefinePlugin');
-var ENV = process.env.ENV || process.env.NODE_ENV || 'test';
+var ENV = process.env.ENV = process.env.NODE_ENV = 'test';
 
 /*
  * Config
@@ -67,24 +67,35 @@ module.exports = {
   stats: { colors: true, reasons: true },
   debug: false,
   plugins: [
-    new ProvidePlugin({
-      'Reflect': 'es7-reflect-metadata/dist/browser' // Thanks Aaron (https://gist.github.com/Couto/b29676dd1ab8714a818f#gistcomment-1584602)
-    }),
     new DefinePlugin({
-      'process.env.ENV': JSON.stringify(ENV),
-      'process.env.NODE_ENV': JSON.stringify(ENV),
-      'global': 'window'
-    }),
-    new DefinePlugin({
+      // Environment helpers
+      'process.env': {
+        'ENV': JSON.stringify(ENV),
+        'NODE_ENV': JSON.stringify(ENV)
+      },
+      'global': 'window',
       // TypeScript helpers
       '__metadata': 'Reflect.metadata',
-      '__decorate': 'Reflect.decorate',
-      // Taken from TypeScript Source until I use a module
-      '__param': 'function (paramIndex, decorator) {\n    return function (target, key) { decorator(target, key, paramIndex); }\n}',
-      '__extends': '\nvar __extends = (this && this.__extends) || function (d, b) {\n    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];\n    function __() { this.constructor = d; }\n    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());\n};',
-      '__awaiter': '\nvar __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, Promise, generator) {\n    return new Promise(function (resolve, reject) {\n        generator = generator.call(thisArg, _arguments);\n        function cast(value) { return value instanceof Promise && value.constructor === Promise ? value : new Promise(function (resolve) { resolve(value); }); }\n        function onfulfill(value) { try { step(\"next\", value); } catch (e) { reject(e); } }\n        function onreject(value) { try { step(\"throw\", value); } catch (e) { reject(e); } }\n        function step(verb, value) {\n            var result = generator[verb](value);\n            result.done ? resolve(result.value) : cast(result.value).then(onfulfill, onreject);\n        }\n        step(\"next\", void 0);\n    });\n};'
+      '__decorate': 'Reflect.decorate'
+    }),
+    new ProvidePlugin({
+      // '__metadata': 'ts-helper/metadata',
+      // '__decorate': 'ts-helper/decorate',
+      '__awaiter': 'ts-helper/awaiter',
+      '__extends': 'ts-helper/extends',
+      '__param': 'ts-helper/param',
+      'Reflect': 'es7-reflect-metadata/dist/browser'
     })
-  ]
+  ],
+    // we need this due to problems with es6-shim
+  node: {
+    global: 'window',
+    progress: false,
+    crypto: 'empty',
+    module: false,
+    clearImmediate: false,
+    setImmediate: false
+  }
 };
 
 // Helper functions
