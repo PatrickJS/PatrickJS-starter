@@ -12,19 +12,23 @@ var CopyWebpackPlugin  = require('copy-webpack-plugin');
 var HtmlWebpackPlugin  = require('html-webpack-plugin');
 var ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 
+var metadata = {
+  title: 'Angular2 Webpack Starter by @gdi2990 from @AngularClass',
+  baseUrl: '/',
+  host: '0.0.0.0',
+  port: 3000,
+  ENV: ENV
+};
 /*
  * Config
  */
 module.exports = {
   // static data for index.html
-  metadata: {
-    title: 'Angular2 Webpack Starter by @gdi2990 from @AngularClass',
-    baseUrl: '/',
-    ENV: ENV
-  },
+  metadata: metadata,
   // for faster builds use 'eval'
   devtool: 'source-map',
   debug: true,
+  port: metadata.port,
 
   entry: {
     'vendor': './src/vendor.ts',
@@ -84,8 +88,8 @@ module.exports = {
     // replace
     new DefinePlugin({
       'process.env': {
-        'ENV': JSON.stringify(ENV),
-        'NODE_ENV': JSON.stringify(ENV)
+        'ENV': JSON.stringify(metadata.ENV),
+        'NODE_ENV': JSON.stringify(metadata.ENV)
       }
     })
   ],
@@ -97,8 +101,9 @@ module.exports = {
   },
   // our Webpack Development Server config
   devServer: {
-    host: '0.0.0.0',
-    historyApiFallback: true
+    host: metadata.host,
+    historyApiFallback: true,
+    watchOptions: { aggregateTimeout: 300, poll: 1000 }
   },
   // we need this due to problems with es6-shim
   node: {global: 'window', progress: false, crypto: 'empty', module: false, clearImmediate: false, setImmediate: false}

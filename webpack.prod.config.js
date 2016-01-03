@@ -15,17 +15,23 @@ var CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ENV = process.env.NODE_ENV = process.env.ENV = 'production';
+var HOST = process.env.HOST || '0.0.0.0';
+var PORT = process.env.PORT || 8080;
+
+var metadata = {
+  title: 'Angular2 Webpack Starter by @gdi2990 from @AngularClass',
+  baseUrl: '/',
+  host: HOST,
+  port: PORT,
+  ENV: ENV
+};
 
 /*
  * Config
  */
 module.exports = {
-  // static
-  metadata: {
-    title: 'Angular2 Webpack Starter by @gdi2990 from @AngularClass',
-    baseUrl: '/',
-    ENV: ENV
-  },
+  // static data for index.html
+  metadata: metadata,
   // for faster builds use 'eval'
   devtool: 'source-map',
   debug: true,
@@ -127,8 +133,8 @@ module.exports = {
     new DefinePlugin({
       // Environment helpers
       'process.env': {
-        'ENV': JSON.stringify(ENV),
-        'NODE_ENV': JSON.stringify(ENV)
+        'ENV': JSON.stringify(metadata.ENV),
+        'NODE_ENV': JSON.stringify(metadata.ENV)
       },
       // TypeScript helpers
       '__metadata': 'Reflect.metadata',
