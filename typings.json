@@ -10,6 +10,7 @@
     "jasmine": "github:angular/DefinitelyTyped/jasmine/jasmine.d.ts#31e7317c9a0793857109236ef7c7f223305a8aa9",
     "node": "github:angular/DefinitelyTyped/node/node.d.ts#31e7317c9a0793857109236ef7c7f223305a8aa9",
     "selenium-webdriver": "github:angular/DefinitelyTyped/selenium-webdriver/selenium-webdriver.d.ts#31e7317c9a0793857109236ef7c7f223305a8aa9",
+    "webpack": "github:DefinitelyTyped/DefinitelyTyped/webpack/webpack.d.ts#95c02169ba8fa58ac1092422efbd2e3174a206f4",
     "zone": "github:angular/DefinitelyTyped/zone/zone.d.ts#31e7317c9a0793857109236ef7c7f223305a8aa9"
   }
 }
