@@ -12,13 +12,13 @@ import {BaseRequestOptions, Http} from 'angular2/http';
 import {MockBackend} from 'angular2/http/testing';
 
 // Load the implementations that should be tested
-import { XLarge } from './x-large';
+import {XLarge} from './x-large';
 
 describe('x-large directive', () => {
   // Create a test component to test directives
   @Component({
     template: '',
-    directives: [XLarge]
+    directives: [ XLarge ]
   })
   class TestComponent {}
 

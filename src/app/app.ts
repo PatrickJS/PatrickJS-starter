@@ -6,8 +6,6 @@ import {RouteConfig, Router, ROUTER_DIRECTIVES} from 'angular2/router';
 import {Http} from 'angular2/http';
 import {FORM_PROVIDERS} from 'angular2/common';
 
-import {Title} from './providers/title';
-import {XLarge} from './directives/x-large';
 import {Home} from './home/home';
 
 /*
@@ -15,32 +13,16 @@ import {Home} from './home/home';
  * Top Level Component
  */
 @Component({
-  // The selector is what angular internally uses
-  // for `document.querySelectorAll(selector)` in our index.html
-  // where, in this case, selector is the string 'app'
-  selector: 'app', // <app></app>
-  // We need to tell Angular's Dependency Injection which providers are in our app.
-  providers: [ ...FORM_PROVIDERS, Title],
-  // We need to tell Angular's compiler which directives are in our template.
-  // Doing so will allow Angular to attach our behavior to an element
-  directives: [ ...ROUTER_DIRECTIVES, XLarge ],
-  // We need to tell Angular's compiler which custom pipes are in our template.
+  selector: 'app',
+  providers: [ ...FORM_PROVIDERS ],
+  directives: [ ...ROUTER_DIRECTIVES ],
   pipes: [],
-  // Our list of styles in our component. We may add more to compose many styles together
-  styles: [`
-    .title {
-      font-family: Arial, Helvetica, sans-serif;
-    }
-    main {
-      padding: 1em;
-    }
-
-  `],
-  // Every Angular template is first compiled by the browser before Angular runs it's compiler
+  styles: [],
   template: `
     <header>
-      <h1 class="title">Hello {{ title.value }}</h1>
       <nav>
+        <h1>Hello {{ name }}</h1>
+        <a [routerLink]=" ['Index'] ">Index</a>
         <a [routerLink]=" ['Home'] ">Home</a>
       </nav>
     </header>
@@ -49,17 +31,21 @@ import {Home} from './home/home';
       <router-outlet></router-outlet>
     </main>
 
-    <footer x-large>
+    <footer>
       WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a>
     </footer>
   `
 })
 @RouteConfig([
-  { path: '/', component: Home, name: 'Home' }
+  { path: '/', component: Home, name: 'Index' },
+  { path: '/home', component: Home, name: 'Home' }
 ])
 export class App {
-  url: string = 'https://twitter.com/AngularClass';
-  constructor(public title: Title) {}
+  name = 'Angular 2 Webpack Starter';
+  url = 'https://twitter.com/AngularClass';
+  constructor() {
+
+  }
 }
 
 /*
