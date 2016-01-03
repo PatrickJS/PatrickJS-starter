@@ -31,12 +31,6 @@ This seed repo serves as an Angular 2 starter for anyone looking to get up and r
 * End-to-end Angular 2 code using Protractor.
 * Type manager with Typings
 
-
-```coffeescript
-Warning: Make sure you're using the latest version of Node.js and NPM
-```
-[Is Angular 2 Ready Yet?](http://splintercode.github.io/is-angular-2-ready/)
-
 ### Quick start
 > Clone/Download the repo then edit `app.ts` inside [`/src/app/app.ts`](/src/app/app.ts)
 
@@ -195,16 +189,14 @@ We have good experience using these editors:
 * [Sublime Text](http://www.sublimetext.com/3) with [Typescript-Sublime-Plugin](https://github.com/Microsoft/Typescript-Sublime-plugin#installation)
 
 # Frequently asked questions
-* What's the current browser support for Angular 2 Alpha?
+* What's the current browser support for Angular 2 Beta?
   * Please view the updated list of [browser support for Angular 2](https://github.com/angularclass/awesome-angular2#current-browser-support-for-angular-2)
 * Why is my service, aka provider, is not injecting parameter correctly?
-  * Please use `@Injectable()` for your service for typescript to correctly attach the metadata (this is a typescript beta problem)
+  * Please use `@Injectable()` for your service for typescript to correctly attach the metadata (this is a TypeScript problem)
 * How do I run protractor with node 0.12.x?
-  * please check out this repo to use the old version of protractor https://github.com/AngularClass/angular2-webpack-starter/pull/146/files
+  * please check out this repo to use the old version of protractor [#146](https://github.com/AngularClass/angular2-webpack-starter/pull/146/files)
 * Where do I write my tests?
-  * You can write your tests anywhere you like in the `/src` directory next to your components or in the  `test/` folder
-* Is Angular 2 production ready yet?
-  * No, please visit [Is Angular 2 Ready Yet?](http://splintercode.github.io/is-angular-2-ready/) website.
+  * You can write your tests next do your component files see [`/src/app/home/home.spec.ts`](/src/app/home/home.spec.ts)
 * How do I start the app when I get `EACCES` and `EADDRINUSE` errors?
   * The `EADDRINUSE` error means the port `3000` is currently being used and `EACCES` is lack of permission for webpack to build files to `./dist/`
 * How to use `sass` for css?
