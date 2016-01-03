@@ -16,7 +16,7 @@
     "src/app/home/home.spec.ts",
     "src/app/home/directives/x-large.spec.ts",
     "src/app/home/providers/title.spec.ts",
-    "src/bootstrap.ts",
+    "src/main.ts",
     "src/vendor.ts"
   ],
   "filesGlob": [

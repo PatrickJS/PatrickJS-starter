@@ -71,7 +71,7 @@ We use the component approach in our starter. This is the new standard for devel
 ```
 angular2-webpack-starter/
  ├──src/                       * our source files that will be compiled to javascript
- |   ├──bootstrap.ts           * our entry file for our browser environment
+ |   ├──main.ts                * our entry file for our browser environment
  │   │
  |   ├──index.html             * Index.html: where we generate our index page
  │   │

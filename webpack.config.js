@@ -31,7 +31,7 @@ module.exports = {
 
   entry: {
     'vendor': './src/vendor.ts',
-    'app': './src/bootstrap.ts' // our angular app
+    'main': './src/main.ts' // our angular app
   },
 
   // Config for our build files
@@ -44,7 +44,7 @@ module.exports = {
 
   resolve: {
     // ensure loader extensions match
-    extensions: ['','.ts','.js','.json', '.css', '.html']
+    extensions: ['','.ts','.js','.json','.css','.html']
   },
 
   module: {
@@ -79,7 +79,7 @@ module.exports = {
   },
 
   plugins: [
-    new CommonsChunkPlugin({ name: 'vendor',filename: 'vendor.bundle.js', minChunks: Infinity }),
+    new CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.bundle.js', minChunks: Infinity }),
     // static assets
     new CopyWebpackPlugin([ { from: 'src/assets', to: 'assets' } ]),
     // generating html

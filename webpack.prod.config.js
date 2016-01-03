@@ -35,11 +35,10 @@ module.exports = {
   // for faster builds use 'eval'
   devtool: 'source-map',
   debug: true,
-  context: root(),
 
   entry: {
     'vendor':'./src/vendor.ts',
-    'app':'./src/bootstrap.ts' // our angular app
+    'main':'./src/main.ts' // our angular app
   },
 
   // Config for our build files
@@ -51,9 +50,9 @@ module.exports = {
   },
 
   resolve: {
-    root: root(),
+    cache: false,
     // ensure loader extensions match
-    extensions: ['','.ts','.js','.json', '.css', '.html']
+    extensions: ['','.ts','.js','.json','.css','.html']
   },
 
   module: {
@@ -84,7 +83,6 @@ module.exports = {
             2375  // 2375 -> Duplicate string index signature
           ]
         },
-        // include: [ root('node_modules'), root('src') ],
         exclude: [ /\.(spec|e2e)\.ts$/ ]
       },
 
@@ -112,11 +110,10 @@ module.exports = {
       filename: 'common.[hash].bundle.js',
       minChunks: 2,
       chunks: [
-        'app', // keep sync with entry
+        'main', // keep sync with entry
         'vendor'  // keep sync with entry
       ]
     }),
-    // new webpack.NormalModuleReplacementPlugin('angular2', 'angular2/ts'),
     // static assets
     new CopyWebpackPlugin([
       {
@@ -156,14 +153,7 @@ module.exports = {
         screw_ie8 : true
       },
       mangle: {
-        screw_ie8 : true,
-        except: [
-          // we cannot mangle Reflect or Zone
-          'Zone',
-          'zone',
-          'Reflect',
-          'window'
-        ]
+        screw_ie8 : true
       }
     })
    // include uglify in production

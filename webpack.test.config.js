@@ -15,12 +15,7 @@ var ENV = process.env.ENV = process.env.NODE_ENV = 'test';
 module.exports = {
   resolve: {
     cache: false,
-    root: root(),
-    extensions: ['','.ts','.js','.json', '.css', '.html'],
-    alias: {
-      'app': 'src/app',
-      'common': 'src/common'
-    }
+    extensions: ['','.ts','.js','.json','.css','.html']
   },
   devtool: 'inline-source-map',
   module: {
