@@ -10,7 +10,7 @@ var DefinePlugin  = require('webpack/lib/DefinePlugin');
 var CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 var CopyWebpackPlugin  = require('copy-webpack-plugin');
 var HtmlWebpackPlugin  = require('html-webpack-plugin');
-var ENV = process.env.ENV || process.env.NODE_ENV || 'development';
+var ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 
 /*
  * Config
@@ -81,15 +81,12 @@ module.exports = {
     new CopyWebpackPlugin([ { from: 'src/assets', to: 'assets' } ]),
     // generating html
     new HtmlWebpackPlugin({ template: 'src/index.html', inject: false }),
-    // Reflect polyfill
-    new ProvidePlugin({ 'Reflect': 'es7-reflect-metadata/dist/browser' }),
     // replace
     new DefinePlugin({
       'process.env': {
         'ENV': JSON.stringify(ENV),
         'NODE_ENV': JSON.stringify(ENV)
-      },
-      'global': 'window'
+      }
     })
   ],
 
@@ -104,7 +101,7 @@ module.exports = {
     historyApiFallback: true
   },
   // we need this due to problems with es6-shim
-  node: {global: false, progress: false, crypto: 'empty', module: false, clearImmediate: false, setImmediate: false}
+  node: {global: 'window', progress: false, crypto: 'empty', module: false, clearImmediate: false, setImmediate: false}
 };
 
 // Helper functions
