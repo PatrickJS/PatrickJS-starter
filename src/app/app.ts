@@ -37,7 +37,8 @@ import {Home} from './home/home';
 })
 @RouteConfig([
   { path: '/', component: Home, name: 'Index' },
-  { path: '/home', component: Home, name: 'Home' }
+  { path: '/home', component: Home, name: 'Home' },
+  { path: '/**', redirectTo: ['Index'] }
 ])
 export class App {
   name = 'Angular 2 Webpack Starter';
