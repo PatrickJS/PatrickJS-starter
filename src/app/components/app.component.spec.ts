@@ -7,15 +7,15 @@ import {
 } from 'angular2/testing';
 
 // Load the implementations that should be tested
-import {App} from './app';
+import {AppCmp} from './app.component';
 
 describe('App', () => {
   // provide our implementations or mocks to the dependency injector
   beforeEachProviders(() => [
-    App
+    AppCmp
   ]);
 
-  it('should have a url', inject([ App ], (app) => {
+  it('should have a url', inject([ AppCmp ], (app) => {
     expect(app.url).toEqual('https://twitter.com/AngularClass');
   }));
 

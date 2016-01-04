@@ -5,7 +5,7 @@ import {Component} from 'angular2/core';
 import {RouteConfig, Router, ROUTER_DIRECTIVES} from 'angular2/router';
 import {FORM_PROVIDERS} from 'angular2/common';
 
-import {Home} from './home/home';
+import {HomeCmp} from './home/home.component';
 
 /*
  * App Component
@@ -36,10 +36,10 @@ import {Home} from './home/home';
   `
 })
 @RouteConfig([
-  { path: '/', component: Home, name: 'Index' },
-  { path: '/home', component: Home, name: 'Home' }
+  { path: '/', component: HomeCmp, name: 'Index' },
+  { path: '/home', component: HomeCmp, name: 'Home' }
 ])
-export class App {
+export class AppCmp {
   name = 'Angular 2 Webpack Starter';
   url = 'https://twitter.com/AngularClass';
   constructor() {

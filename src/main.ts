@@ -10,13 +10,13 @@ import {HTTP_PROVIDERS} from 'angular2/http';
  * App Component
  * our top level component that holds all of our components
  */
-import {App} from './app/app';
+import {AppCmp} from './app/components/app.component';
 /*
  * Bootstrap our Angular app with a top level component `App` and inject
  * our Services and Providers into Angular's dependency injection
  */
 document.addEventListener('DOMContentLoaded', function main() {
-  bootstrap(App, [
+  bootstrap(AppCmp, [
     ...('production' === process.env.ENV ? [] : ELEMENT_PROBE_PROVIDERS),
     ...HTTP_PROVIDERS,
     ...ROUTER_PROVIDERS,
