@@ -100,19 +100,12 @@ module.exports = {
   },
 
   plugins: [
+    new DedupePlugin(),
+    new OccurenceOrderPlugin(true),
     new CommonsChunkPlugin({
       name: 'vendor',
       filename: 'vendor.[hash].bundle.js',
       minChunks: Infinity
-    }),
-    new CommonsChunkPlugin({
-      name: 'common',
-      filename: 'common.[hash].bundle.js',
-      minChunks: 2,
-      chunks: [
-        'main', // keep sync with entry
-        'vendor'  // keep sync with entry
-      ]
     }),
     // static assets
     new CopyWebpackPlugin([
@@ -122,8 +115,6 @@ module.exports = {
       }
     ]),
     // generating html
-    new DedupePlugin(),
-    new OccurenceOrderPlugin(true),
     new HtmlWebpackPlugin({
       template: 'src/index.html'
     }),
