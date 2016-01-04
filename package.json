@@ -63,8 +63,8 @@
     "remap-istanbul": "^0.5.1",
     "rimraf": "^2.4.4",
     "style-loader": "^0.13.0",
-    "ts-loader": "^0.7.2",
     "ts-helper": "0.0.1",
+    "ts-loader": "^0.7.2",
     "tsconfig-lint": "^0.2.0",
     "tslint": "^3.2.0",
     "tslint-loader": "^2.1.0",
@@ -73,7 +73,8 @@
     "typings": "^0.4.1",
     "url-loader": "^0.5.6",
     "webpack": "^1.12.9",
-    "webpack-dev-server": "^1.12.1"
+    "webpack-dev-server": "^1.12.1",
+    "webpack-md5-hash": "0.0.4"
   },
   "repository": {
     "type": "git",
