@@ -1,9 +1,9 @@
 {
-  "name": "angular2-webpack-starter",
-  "version": "0.0.0",
-  "description": "An Angular 2 Webpack Starter kit featuring Angular 2 (Router, Http, Forms, Services, Tests, E2E, Coverage), Karma, Protractor, Jasmine, Istanbul, TypeScript, and Webpack by AngularClass",
-  "author": "Patrick Stapleton <patrick@angularclass.com>",
-  "homepage": "https://github.com/angularclass/angular2-webpack-starter",
+  "name": "silbersoft.io",
+  "version": "0.0.1",
+  "description": "Codebase for silbersoft.io",
+  "author": "Matt Silbernagel <silbermm@gmail.com>",
+  "homepage": "https://silbersoft.io",
   "license": "MIT",
   "scripts": {
     "clean": "./node_modules/.bin/rimraf node_modules doc typings coverage dist && npm cache clean",
@@ -82,10 +82,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/angularclass/angular2-webpack-starter.git"
+    "url": "https://github.com/silbermm/silbersoft.io.git"
   },
   "bugs": {
-    "url": "https://github.com/angularclass/angular2-webpack-starter/issues"
+    "url": "https://github.com/silbermm/silbersoft.io/issues"
   },
   "engines": {
     "node": ">= 4.2.1 <= 5",

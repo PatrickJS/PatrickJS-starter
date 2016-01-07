@@ -1,9 +1,5 @@
-// @AngularClass
-
-/*
- * Helper: root(), and rootDir() are defined at the bottom
- */
 var path = require('path');
+
 // Webpack Plugins
 var webpack = require('webpack');
 var ProvidePlugin = require('webpack/lib/ProvidePlugin');
@@ -20,7 +16,7 @@ var HOST = process.env.HOST || '0.0.0.0';
 var PORT = process.env.PORT || 8080;
 
 var metadata = {
-  title: 'Angular2 Webpack Starter by @gdi2990 from @AngularClass',
+  title: 'silbersoft.io',
   baseUrl: '/',
   host: HOST,
   port: PORT,
@@ -33,13 +29,14 @@ var metadata = {
 module.exports = {
   // static data for index.html
   metadata: metadata,
+
   // for faster builds use 'eval'
   devtool: 'source-map',
   debug: true,
 
   entry: {
-    'vendor':'./src/vendor.ts',
-    'main':'./src/main.ts' // our angular app
+    vendor:'./src/vendor.ts',
+    main:'./src/main.ts' // our angular app
   },
 
   // Config for our build files
@@ -52,8 +49,9 @@ module.exports = {
 
   resolve: {
     cache: false,
+
     // ensure loader extensions match
-    extensions: ['','.ts','.js','.json','.css','.html']
+    extensions: ['', '.ts', '.js', '.json', '.css', '.html']
   },
 
   module: {
@@ -67,24 +65,25 @@ module.exports = {
       }
     ],
     loaders: [
+
       // Support for .ts files.
       {
         test: /\.ts$/,
         loader: 'ts-loader',
         query: {
           // remove TypeScript helpers to be injected below by DefinePlugin
-          'compilerOptions': {
-            'removeComments': true,
-            'noEmitHelpers': true,
+          compilerOptions: {
+            removeComments: true,
+            noEmitHelpers: true
           },
-          'ignoreDiagnostics': [
+          ignoreDiagnostics: [
             2403, // 2403 -> Subsequent variable declarations
             2300, // 2300 -> Duplicate identifier
             2374, // 2374 -> Duplicate number index signature
             2375  // 2375 -> Duplicate string index signature
           ]
         },
-        exclude: [ /\.(spec|e2e)\.ts$/ ]
+        exclude: [/\.(spec|e2e)\.ts$/]
       },
 
       // Support for *.json files.
@@ -109,6 +108,7 @@ module.exports = {
       filename: 'vendor.[chunkhash].bundle.js',
       minChunks: Infinity
     }),
+
     // static assets
     new CopyWebpackPlugin([
       {
@@ -116,6 +116,7 @@ module.exports = {
         to: 'assets'
       }
     ]),
+
     // generating html
     new HtmlWebpackPlugin({
       template: 'src/index.html'
@@ -123,39 +124,43 @@ module.exports = {
     new DefinePlugin({
       // Environment helpers
       'process.env': {
-        'ENV': JSON.stringify(metadata.ENV),
-        'NODE_ENV': JSON.stringify(metadata.ENV)
+        ENV: JSON.stringify(metadata.ENV),
+        NODE_ENV: JSON.stringify(metadata.ENV)
       },
+
       // TypeScript helpers
-      '__metadata': 'Reflect.metadata',
-      '__decorate': 'Reflect.decorate'
+      __metadata: 'Reflect.metadata',
+      __decorate: 'Reflect.decorate'
     }),
     new ProvidePlugin({
       // '__metadata': 'ts-helper/metadata',
       // '__decorate': 'ts-helper/decorate',
-      '__awaiter': 'ts-helper/awaiter',
-      '__extends': 'ts-helper/extends',
-      '__param': 'ts-helper/param',
-      'Reflect': 'es7-reflect-metadata/dist/browser'
+      __awaiter: 'ts-helper/awaiter',
+      __extends: 'ts-helper/extends',
+      __param: 'ts-helper/param',
+      Reflect: 'es7-reflect-metadata/dist/browser'
     }),
     new UglifyJsPlugin({
       // beautify: true,
       // mangle: false,
       comments: false,
-      compress : {
-        screw_ie8 : true
+      compress: {
+        screw_ie8: true
       },
       mangle: {
-        screw_ie8 : true
+        screw_ie8: true
       }
     })
+
    // include uglify in production
   ],
+
   // Other module loader config
   tslint: {
     emitErrors: true,
     failOnHint: true
   },
+
   // don't use devServer for production
 
   // we need this due to problems with es6-shim

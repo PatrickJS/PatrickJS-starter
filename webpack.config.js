@@ -1,9 +1,5 @@
-// @AngularClass
-
-/*
- * Helper: root(), and rootDir() are defined at the bottom
- */
 var path = require('path');
+
 // Webpack Plugins
 var ProvidePlugin = require('webpack/lib/ProvidePlugin');
 var DefinePlugin  = require('webpack/lib/DefinePlugin');
@@ -13,7 +9,7 @@ var HtmlWebpackPlugin  = require('html-webpack-plugin');
 var ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 
 var metadata = {
-  title: 'Angular2 Webpack Starter by @gdi2990 from @AngularClass',
+  title: 'silbersoft.io',
   baseUrl: '/',
   host: '0.0.0.0',
   port: 3000,
@@ -23,15 +19,17 @@ var metadata = {
  * Config
  */
 module.exports = {
+  
   // static data for index.html
   metadata: metadata,
+
   // for faster builds use 'eval'
   devtool: 'source-map',
   debug: true,
 
   entry: {
-    'vendor': './src/vendor.ts',
-    'main': './src/main.ts' // our angular app
+    vendor: './src/vendor.ts',
+    main: './src/main.ts' // our angular app
   },
 
   // Config for our build files
