@@ -227,6 +227,8 @@ We have good experience using these editors:
   * Client only, TypeScript, TSD, Gulp, JSPM, Minimalist
 * [babel-angular2-app (Shuhei Kagawa)](https://github.com/shuhei/babel-angular2-app)
   * Client only, Minimalist, Babel, ES6+, browserify
+* [angular2-starter (Antony Budianto)](https://github.com/antonybudianto/angular2-starter)
+  * Client only, TypeScript, Gulp, Bower, SASS, Karma, Jasmine, Istanbul, and SystemJS (with Builder)
 
 ___
 
