@@ -125,14 +125,12 @@ module.exports = {
       'process.env': {
         'ENV': JSON.stringify(metadata.ENV),
         'NODE_ENV': JSON.stringify(metadata.ENV)
-      },
-      // TypeScript helpers
-      '__metadata': 'Reflect.metadata',
-      '__decorate': 'Reflect.decorate'
+      }
     }),
     new ProvidePlugin({
-      // '__metadata': 'ts-helper/metadata',
-      // '__decorate': 'ts-helper/decorate',
+      // TypeScript helpers
+      '__metadata': 'ts-helper/metadata',
+      '__decorate': 'ts-helper/decorate',
       '__awaiter': 'ts-helper/awaiter',
       '__extends': 'ts-helper/extends',
       '__param': 'ts-helper/param',
