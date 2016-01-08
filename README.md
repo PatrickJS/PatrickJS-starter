@@ -46,12 +46,12 @@ cd angular2-webpack-starter
 npm install
 
 # install TypeScript typings
-./node_modules/.bin/typings install
+typings install
 
 # start the server
 npm start
 ```
-go to [http://0.0.0.0:3000](http://0.0.0.0:3000) in your browser
+go to [http://0.0.0.0:3000](http://0.0.0.0:3000) or [http://localhost:3000](http://localhost:3000) in your browser
 
 # Table of Contents
 * [File Structure](#file-structure)
