@@ -34,7 +34,7 @@
     "postinstall": "./node_modules/.bin/typings install"
   },
   "dependencies": {
-    "angular2": "2.0.0-beta.0",
+    "angular2": "2.0.0-beta.1",
     "es6-promise": "^3.0.2",
     "es6-shim": "^0.33.3",
     "es7-reflect-metadata": "^1.4.0",
