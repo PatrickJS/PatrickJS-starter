@@ -16,7 +16,7 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var WebpackMd5Hash    = require('webpack-md5-hash');
 var ENV = process.env.NODE_ENV = process.env.ENV = 'production';
-var HOST = process.env.HOST || '0.0.0.0';
+var HOST = process.env.HOST || 'localhost';
 var PORT = process.env.PORT || 8080;
 
 var metadata = {
