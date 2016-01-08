@@ -13,6 +13,6 @@ export class XLarge {
     // element.nativeElement.style.fontSize = 'x-large';
 
     // for server/webworker support use the renderer
-    renderer.setElementStyle(element, 'fontSize', 'x-large');
+    renderer.setElementStyle(element.nativeElement, 'fontSize', 'x-large');
   }
 }
