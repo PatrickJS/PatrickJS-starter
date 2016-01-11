@@ -209,7 +209,7 @@ We have good experience using these editors:
 * What are the naming conventions for Angular 2?
  * please see issue [#185](https://github.com/AngularClass/angular2-webpack-starter/issues/185) and PR [196](https://github.com/AngularClass/angular2-webpack-starter/pull/196)
 * How do I include bootstrap or jQuery?
- * please see issue [#214](https://github.com/AngularClass/angular2-webpack-starter/issues/214#event-511768416)
+ * please see issue [#215](https://github.com/AngularClass/angular2-webpack-starter/issues/215) and [#214](https://github.com/AngularClass/angular2-webpack-starter/issues/214#event-511768416)
 
 
 # Support, Questions, or Feedback
