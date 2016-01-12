@@ -138,14 +138,14 @@ module.exports = {
     }),
     new UglifyJsPlugin({
       // beautify: true,
-      // mangle: false,
+      mangle: false,
       comments: false,
       compress : {
         screw_ie8 : true
       },
-      mangle: {
-        screw_ie8 : true
-      }
+      //mangle: {
+      //  screw_ie8 : true
+      //}
     })
    // include uglify in production
   ],
