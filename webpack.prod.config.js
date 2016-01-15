@@ -35,7 +35,7 @@ module.exports = {
   metadata: metadata,
   // for faster builds use 'eval'
   devtool: 'source-map',
-  debug: true,
+  debug: false,
 
   entry: {
     'vendor':'./src/vendor.ts',
@@ -143,6 +143,7 @@ module.exports = {
       compress : {
         screw_ie8 : true
       },
+      // TODO(gdi2290): uncomment in beta.2
       //mangle: {
       //  screw_ie8 : true
       //}

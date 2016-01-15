@@ -26,10 +26,8 @@ module.exports = {
   devtool: 'source-map',
   debug: true,
 
-  entry: {
-    'vendor': './src/vendor.ts',
-    'main': './src/main.ts' // our angular app
-  },
+  // our angular app
+  entry: { 'vendor': './src/vendor.ts', 'main': './src/main.ts' },
 
   // Config for our build files
   output: {
