@@ -29,7 +29,7 @@
     "e2e": "./node_modules/.bin/protractor",
     "test": "./node_modules/.bin/karma start",
     "ci": "npm run e2e && npm run test",
-    "docs": "./node_modules/.bin/typedoc  --options typedoc.json  src/**/*.ts",
+    "docs": "./node_modules/.bin/typedoc  --options typedoc.json  src",
     "start": "npm run server:dev",
     "postinstall": "./node_modules/.bin/typings install"
   },
