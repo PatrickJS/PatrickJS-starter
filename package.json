@@ -46,6 +46,7 @@
     "bluebird": "*",
     "blueimp-tmpl": "*",
     "colors": "^1.1.2",
+    "compression-webpack-plugin": "^0.2.0",
     "copy-webpack-plugin": "^0.3.3",
     "css-loader": "^0.23.0",
     "enhanced-resolve": "0.9.1",

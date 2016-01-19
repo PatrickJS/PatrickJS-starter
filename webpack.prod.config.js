@@ -4,6 +4,7 @@
  * Helper: root(), and rootDir() are defined at the bottom
  */
 var path = require('path');
+var zlib = require('zlib');
 // Webpack Plugins
 var webpack = require('webpack');
 var ProvidePlugin = require('webpack/lib/ProvidePlugin');
@@ -12,6 +13,7 @@ var OccurenceOrderPlugin = require('webpack/lib/optimize/OccurenceOrderPlugin');
 var DedupePlugin = require('webpack/lib/optimize/DedupePlugin');
 var UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 var CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
+var CompressionPlugin = require('compression-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var WebpackMd5Hash    = require('webpack-md5-hash');
@@ -147,8 +149,13 @@ module.exports = {
       //mangle: {
       //  screw_ie8 : true
       //}
-    })
+    }),
    // include uglify in production
+    new CompressionPlugin({
+      algorithm: gzipMaxLevel,
+      regExp: /\.css$|\.html$|\.js$|\.map$/,
+      threshold: 2 * 1024
+    })
   ],
   // Other module loader config
   tslint: {
@@ -178,4 +185,8 @@ function root(args) {
 function rootNode(args) {
   args = Array.prototype.slice.call(arguments, 0);
   return root.apply(path, ['node_modules'].concat(args));
+}
+
+function gzipMaxLevel(buffer, callback) {
+  return zlib['gzip'](buffer, {level: 9}, callback)
 }
