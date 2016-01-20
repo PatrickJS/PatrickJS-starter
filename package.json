@@ -32,8 +32,7 @@
     "ci": "npm run e2e && npm run test",
     "docs": "./node_modules/.bin/typedoc --options typedoc.json --exclude **/*.spec.ts ./src/",
     "start": "npm run server:dev",
-    "postinstall": "npm run clean:ng2 && npm run install:typings",
-    "install:typings": "./node_modules/.bin/typings install"
+    "postinstall": "npm run clean:ng2 && typings install"
   },
   "dependencies": {
     "angular2": "2.0.0-beta.1",
