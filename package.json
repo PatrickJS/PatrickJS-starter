@@ -7,6 +7,7 @@
   "license": "MIT",
   "scripts": {
     "clean": "./node_modules/.bin/rimraf node_modules doc typings coverage dist && npm cache clean",
+    "clean:ng2": "./node_modules/.bin/rimraf node_modules/angular2/manual_typings",
     "clean:dist": "./node_modules/.bin/rimraf dist",
     "preclean:install": "npm run clean",
     "clean:install": "npm install",
@@ -31,7 +32,7 @@
     "ci": "npm run e2e && npm run test",
     "docs": "./node_modules/.bin/typedoc  --options typedoc.json  src",
     "start": "npm run server:dev",
-    "postinstall": "./node_modules/.bin/typings install"
+    "postinstall": "npm run clean:ng2 && ./node_modules/.bin/typings install"
   },
   "dependencies": {
     "angular2": "2.0.0-beta.1",
