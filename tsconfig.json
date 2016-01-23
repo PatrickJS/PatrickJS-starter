@@ -23,7 +23,8 @@
   "filesGlob": [
     "./src/**/*.ts",
     "./test/**/*.ts",
-    "!./node_modules/**/*.ts"
+    "!./node_modules/**/*.ts",
+    "typings/main.d.ts"
   ],
   "compileOnSave": false,
   "buildOnSave": false,
