@@ -85,6 +85,7 @@
     "remap-istanbul": "^0.5.1",
     "rimraf": "^2.4.4",
     "semver": "*",
+    "source-map-loader": "^0.1.5",
     "style-loader": "^0.13.0",
     "ts-helper": "0.0.1",
     "ts-loader": "^0.8.0",
