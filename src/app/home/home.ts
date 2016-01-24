@@ -1,8 +1,7 @@
 import {Component} from 'angular2/core';
 import {FORM_DIRECTIVES} from 'angular2/common';
-import {Http} from 'angular2/http';
 
-import {Title} from './providers/title';
+import {Title} from './services/title';
 import {XLarge} from './directives/x-large';
 
 @Component({
@@ -28,13 +27,16 @@ import {XLarge} from './directives/x-large';
   template: require('./home.html')
 })
 export class Home {
+  // Set our default values
+  data = { value: '' };
   // TypeScript public modifiers
-  constructor(public title: Title, public http: Http) {
+  constructor(public title: Title) {
 
   }
 
   ngOnInit() {
-    console.log('hello Home component');
+    console.log('hello `Home` component');
+    // this.title.getData().subscribe(data => this.data = data);
   }
 
 }
