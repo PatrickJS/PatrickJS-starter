@@ -189,7 +189,7 @@ We have good experience using these editors:
 * [Atom](https://atom.io/) with [TypeScript plugin](https://atom.io/packages/atom-typescript)
 * [Sublime Text](http://www.sublimetext.com/3) with [Typescript-Sublime-Plugin](https://github.com/Microsoft/Typescript-Sublime-plugin#installation)
 
-### Typings
+# Typings
 > When you include a module that doesn't include Type Definitions inside of the module you need to include external Type Definitions with Typings
 
 ## Use latest Typings module
