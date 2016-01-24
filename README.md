@@ -61,6 +61,7 @@ go to [http://0.0.0.0:3000](http://0.0.0.0:3000) or [http://localhost:3000](http
     * [Running the app](#running-the-app)
 * [Contributing](#contributing)
 * [TypeScript](#typescript)
+* [Typings](#typings)
 * [Frequently asked questions](#frequently-asked-questions)
 * [Support, Questions, or Feedback](#support-questions-or-feedback)
 * [License](#license)
@@ -187,6 +188,47 @@ We have good experience using these editors:
 * [Webstorm 10](https://www.jetbrains.com/webstorm/download/)
 * [Atom](https://atom.io/) with [TypeScript plugin](https://atom.io/packages/atom-typescript)
 * [Sublime Text](http://www.sublimetext.com/3) with [Typescript-Sublime-Plugin](https://github.com/Microsoft/Typescript-Sublime-plugin#installation)
+
+### Typings
+> When you include a module that doesn't include Type Definitions inside of the module you need to include external Type Definitions with Typings
+
+## Use latest Typings module
+```
+npm install --global typings
+```
+
+## Custom Type Definitions
+When including 3rd party modules you also need to include the type definition for the module
+if they don't provide one within the module. You can try to install it with typings
+
+```
+typings install node --save
+```
+
+If you can't find the type definition in the registry we can make an ambient definition in
+this file for now. For example
+
+```typescript
+declare module "my-module" {
+  export function doesSomething(value: string): string;
+}
+```
+
+
+If you're prototying and you will fix the types later you can also declare it as type any
+
+```typescript
+declare var assert: any;
+```
+
+If you're importing a module that uses Node.js modules which are CommonJS you need to import as
+
+```typescript
+import * as _ from 'lodash';
+```
+
+You can include your type definitions in this file until you create one for the typings registry
+see [typings/registry](https://github.com/typings/registry)
 
 # Frequently asked questions
 * What's the current browser support for Angular 2 Beta?
