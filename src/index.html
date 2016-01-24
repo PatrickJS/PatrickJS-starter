@@ -33,9 +33,11 @@
   <base href="{%= o.webpackConfig.metadata.baseUrl %}">
 
   {% for (var css in o.htmlWebpackPlugin.files.css) { %}
-  <link href="{%=o.htmlWebpackPlugin.files.css[css] %}" rel="stylesheet">
+  <link href="{%= o.htmlWebpackPlugin.files.css[css] %}" rel="stylesheet">
   {% } %}
+
 </head>
+
 <body>
 
   <app>
