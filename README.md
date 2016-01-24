@@ -46,7 +46,7 @@ cd angular2-webpack-starter
 npm install
 
 # install TypeScript typings
-./node_modules/.bin/typings install
+npm run typings-install
 
 # start the server
 npm start
