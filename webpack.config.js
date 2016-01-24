@@ -65,7 +65,7 @@ module.exports = {
       {
         test: /\.ts$/,
         loader: 'ts-loader',
-        exclude: [ /\.(spec|e2e)\.ts$/, /node_modules\/(?!(ng2-.+))/ ]
+        exclude: [ /\.(spec|e2e)\.ts$/ ]
       },
 
       // Support for *.json files.

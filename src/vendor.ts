@@ -6,7 +6,7 @@ import 'zone.js/lib/browser/zone-microtask';
 
 if ('production' !== process.env.ENV) {
   // Reflect Polyfill
-  require('es7-reflect-metadata/dist/browser');
+  require('es7-reflect-metadata/src/global/browser');
   Error['stackTraceLimit'] = Infinity;
   Zone['longStackTraceZone'] = require('zone.js/lib/zones/long-stack-trace.js');
 }

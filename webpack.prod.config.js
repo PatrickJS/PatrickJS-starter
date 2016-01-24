@@ -130,10 +130,10 @@ module.exports = {
       '__awaiter': 'ts-helper/awaiter',
       '__extends': 'ts-helper/extends',
       '__param': 'ts-helper/param',
-      'Reflect': 'es7-reflect-metadata/dist/browser'
+      'Reflect': 'es7-reflect-metadata/src/global/browser'
     }),
     new UglifyJsPlugin({
-      beautify: true,
+      beautify: false,
       mangle: false,
       comments: false,
       compress : {
