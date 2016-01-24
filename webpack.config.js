@@ -44,29 +44,13 @@ module.exports = {
 
   module: {
     preLoaders: [
-      {
-        test: /\.ts$/,
-        loader: 'tslint-loader',
-        exclude: [/node_modules/]
-      },
-      // rewire source map files of libraries, use to debug into 3rd party libraries
-      {
-        test: /\.js$/,
-        include: [
-          path.resolve(__dirname, "node_modules", "angular2")
-          // Add more as needed or replace to include all modules:
-          //path.resolve(__dirname, "node_modules2")
-        ],
-        loader: "source-map-loader"
-      }
+      // { test: /\.ts$/, loader: 'tslint-loader', exclude: [ /node_modules/ ] },
+      // TODO(gdi2290): `exclude: [ /node_modules\/rxjs/ ]` fixed with rxjs 5 beta.2 release
+      { test: /\.js$/, loader: "source-map-loader", exclude: [ /node_modules\/rxjs/ ] }
     ],
     loaders: [
       // Support for .ts files.
-      {
-        test: /\.ts$/,
-        loader: 'ts-loader',
-        exclude: [ /\.(spec|e2e)\.ts$/ ]
-      },
+      { test: /\.ts$/, loader: 'ts-loader', exclude: [ /\.(spec|e2e)\.ts$/ ] },
 
       // Support for *.json files.
       { test: /\.json$/,  loader: 'json-loader' },
@@ -100,7 +84,8 @@ module.exports = {
   // Other module loader config
   tslint: {
     emitErrors: false,
-    failOnHint: false
+    failOnHint: false,
+    resourcePath: 'src'
   },
   // our Webpack Development Server config
   devServer: {
