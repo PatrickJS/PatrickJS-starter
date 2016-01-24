@@ -106,6 +106,7 @@ module.exports = {
   devServer: {
     port: metadata.port,
     host: metadata.host,
+    contentBase: 'src/',
     historyApiFallback: true,
     watchOptions: { aggregateTimeout: 300, poll: 1000 }
   },
