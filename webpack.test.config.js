@@ -30,7 +30,7 @@ module.exports = {
             'noEmitHelpers': true,
           }
         },
-        exclude: [ /\.e2e\.ts$/, /node_modules/ ]
+        exclude: [ /\.e2e\.ts$/ ]
       },
       { test: /\.json$/, loader: 'json-loader' },
       { test: /\.html$/, loader: 'raw-loader' },
