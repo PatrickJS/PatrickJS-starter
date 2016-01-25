@@ -7,15 +7,10 @@ import 'zone.js/lib/browser/zone-microtask';
 if ('production' !== process.env.ENV) {
   // Reflect Polyfill
   require('es7-reflect-metadata/src/global/browser');
+  // In production Reflect with es7-reflect-metadata/reflect-metadata is added
+  // by webpack.prod.config ProvidePlugin
   Error['stackTraceLimit'] = Infinity;
   Zone['longStackTraceZone'] = require('zone.js/lib/zones/long-stack-trace.js');
-}
-
-if ('production' === process.env.ENV) {
-  // Reflect with es7-reflect-metadata/reflect-metadata is added
-  // by webpack.prod.config ProvidePlugin
-  let ngCore = require('angular2/core');
-  ngCore.enableProdMode();
 }
 
 // For vendors for example jQuery, Lodash, angular2-jwt just import them anywhere in your app
