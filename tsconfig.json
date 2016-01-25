@@ -6,11 +6,10 @@
     "experimentalDecorators": true,
     "sourceMap": true
   },
-  "files": [
-    "src/custom_typings.d.ts",
-    "typings/browser.d.ts",
-    "src/main.ts",
-    "src/vendor.ts"
+  "exclude": [
+    "node_modules",
+    "typings/main.d.ts",
+    "typings/main"
   ],
   "filesGlob": [
     "./src/**/*.ts",

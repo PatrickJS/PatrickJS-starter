@@ -40,7 +40,10 @@ module.exports = {
         test: /\.ts$/,
         loader: 'ts-loader',
         query: {
-          "configFileName": "tsconfig.test.json"
+          "compilerOptions": {
+            "noEmitHelpers": true,
+            "removeComments": true,
+          }
         },
         exclude: [ /\.e2e\.ts$/ ]
       },
