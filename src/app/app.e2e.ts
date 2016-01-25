@@ -5,7 +5,6 @@ describe('App', () => {
 
   beforeEach(() => {
     browser.get('/');
-    console.log('wat');
   });
 
 
