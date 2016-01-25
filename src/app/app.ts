@@ -8,7 +8,6 @@ import {FORM_PROVIDERS} from 'angular2/common';
 import {RouterActive} from './directives/router-active';
 import {Home} from './home/home';
 
-
 /*
  * App Component
  * Top Level Component
@@ -44,6 +43,9 @@ import {Home} from './home/home';
           <li router-active="active">
             <a [routerLink]=" ['Home'] ">Home</a>
           </li>
+          <li router-active="active">
+            <a [routerLink]=" ['About'] ">About</a>
+          </li>
         </ul>
       </nav>
     </header>
@@ -63,6 +65,8 @@ import {Home} from './home/home';
 @RouteConfig([
   { path: '/', component: Home, name: 'Index' },
   { path: '/home', component: Home, name: 'Home' },
+  // Async load a component using Webpack's require with es6-promise-loader
+  { path: '/about', loader: () => require('./about/about')('About'), name: 'About' },
   { path: '/**', redirectTo: ['Index'] }
 ])
 export class App {
