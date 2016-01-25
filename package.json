@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "clean": "rimraf node_modules doc typings coverage dist && npm cache clean",
-    "clean:ng2": "rimraf node_modules/angular2/manual_typings node_modules/angular2/typings",
+    "clean:ng2": "rimraf node_modules/angular2/manual_typings node_modules/angular2/typings node_modules/angular2/bundles/typings",
     "clean:dist": "rimraf dist",
     "preclean:install": "npm run clean",
     "clean:install": "npm install",
