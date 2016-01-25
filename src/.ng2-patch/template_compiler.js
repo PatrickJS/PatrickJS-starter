@@ -1,4 +1,3 @@
-console.log('\n\n\nHIHHHJHJHJHJKJKHJKHJKJKHJKJKH\n\n\n');
 var lang_1 = require('angular2/src/facade/lang');
 var exceptions_1 = require('angular2/src/facade/exceptions');
 var collection_1 = require('angular2/src/facade/collection');
