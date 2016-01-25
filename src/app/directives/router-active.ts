@@ -41,8 +41,10 @@ export class RouterActive {
 
   ngOnInit() {
     this.router.subscribe(() => {
-      let active = this.routerLink.first.isRouteActive;
-      this.renderer.setElementClass(this.element.nativeElement, this._attrOrProp(), active);
+      if (this.routerLink.first) {
+        let active = this.routerLink.first.isRouteActive;
+        this.renderer.setElementClass(this.element.nativeElement, this._attrOrProp(), active);
+      }
     });
 
   }

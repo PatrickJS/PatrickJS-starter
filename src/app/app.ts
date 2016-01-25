@@ -37,13 +37,13 @@ import {Home} from './home/home';
       <nav>
         <h1>Hello {{ name }}</h1>
         <ul>
-          <li router-active="active">
+          <li router-active>
             <a [routerLink]=" ['Index'] ">Index</a>
           </li>
-          <li router-active="active">
+          <li router-active>
             <a [routerLink]=" ['Home'] ">Home</a>
           </li>
-          <li router-active="active">
+          <li router-active>
             <a [routerLink]=" ['About'] ">About</a>
           </li>
         </ul>
