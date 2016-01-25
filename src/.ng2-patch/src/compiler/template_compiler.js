@@ -2,21 +2,34 @@ var lang_1 = require('angular2/src/facade/lang');
 var exceptions_1 = require('angular2/src/facade/exceptions');
 var collection_1 = require('angular2/src/facade/collection');
 var async_1 = require('angular2/src/facade/async');
-var directive_metadata_1 = require('./directive_metadata');
-var template_ast_1 = require('./template_ast');
 var di_1 = require('angular2/src/core/di');
-var source_module_1 = require('./source_module');
-var change_detector_compiler_1 = require('./change_detector_compiler');
-var style_compiler_1 = require('./style_compiler');
-var view_compiler_1 = require('./view_compiler');
-var proto_view_compiler_1 = require('./proto_view_compiler');
-var template_parser_1 = require('./template_parser');
-var template_normalizer_1 = require('./template_normalizer');
-var runtime_metadata_1 = require('./runtime_metadata');
 var view_1 = require('angular2/src/core/linker/view');
 var change_detection_1 = require('angular2/src/core/change_detection/change_detection');
 var resolved_metadata_cache_1 = require('angular2/src/core/linker/resolved_metadata_cache');
+
+
+var directive_metadata_1 = require('./directive_metadata');
+
+var template_ast_1 = require('./template_ast');
+
+var source_module_1 = require('./source_module');
+
+var change_detector_compiler_1 = require('./change_detector_compiler');
+
+var style_compiler_1 = require('./style_compiler');
+
+var view_compiler_1 = require('./view_compiler');
+
+var proto_view_compiler_1 = require('./proto_view_compiler');
+
+var template_parser_1 = require('./template_parser');
+
+var template_normalizer_1 = require('./template_normalizer');
+
+var runtime_metadata_1 = require('./runtime_metadata');
+
 var util_1 = require('./util');
+
 exports.METADATA_CACHE_MODULE_REF = source_module_1.moduleRef('package:angular2/src/core/linker/resolved_metadata_cache' + util_1.MODULE_SUFFIX);
 /**
  * An internal module of the Angular compiler that begins with component types,
@@ -140,7 +153,7 @@ var TemplateCompiler = (function () {
         var childCacheKey = childComponentDir.type.runtime;
         var childViewDirectives = this._runtimeMetadataResolver.getViewDirectivesMetadata(childComponentDir.type.runtime);
         var childViewPipes = this._runtimeMetadataResolver.getViewPipesMetadata(childComponentDir.type.runtime);
-        var childIsRecursive = collection_1.contains.has(compilingComponentsPath, childCacheKey);
+        var childIsRecursive = collection_1.ListWrapper.contains(compilingComponentsPath, childCacheKey);
         this._compileComponentRuntime(childCacheKey, childComponentDir, childViewDirectives, childViewPipes, compilingComponentsPath);
         if (!childIsRecursive) {
             // Only wait for a child if it is not a cycle

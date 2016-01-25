@@ -25,6 +25,7 @@ module.exports = {
   // for faster builds use 'eval'
   devtool: 'source-map',
   debug: true,
+  // cache: false,
 
   // our angular app
   entry: { 'polyfills': './src/polyfills.ts', 'main': './src/main.ts' },
@@ -37,13 +38,12 @@ module.exports = {
     chunkFilename: '[id].chunk.js'
   },
 
+
   resolve: {
     // ensure loader extensions match
     extensions: ['.ts','.js','.json','.css','.html'].reduce(function(memo, val) {
       return memo.concat('.async' + val, val); // ensure .async also works
-    }, ['']),
-    // TODO(gdi2290): remove after beta.2 release
-    alias: { 'node_modules/angular2/src/compiler/template_compiler.js': 'src/.ng2-patch/template_compiler.js' }
+    }, [''])
   },
 
   module: {
