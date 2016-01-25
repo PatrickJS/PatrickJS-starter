@@ -57,7 +57,9 @@ module.exports = {
     // ensure loader extensions match
     extensions: ['.ts','.js','.json','.css','.html'].reduce(function(memo, val) {
       return memo.concat('.async' + val, val); // ensure .async also works
-    }, [''])
+    }, ['']),
+    // TODO(gdi2290): remove after beta.2 release
+    alias: { 'node_modules/angular2/src/compiler/template_compiler.js': 'src/.ng2-patch/template_compiler.js' }
   },
 
   module: {
@@ -148,19 +150,17 @@ module.exports = {
       'Reflect': 'es7-reflect-metadata/src/global/browser'
     }),
     new UglifyJsPlugin({
-      // to debug prod builds use this
-      beautify: true,
-      // beautify: false,
-      mangle: false,
+      // to debug prod builds uncomment //debug lines and comment //prod lines
 
-      comments: false,
-      compress : {
-        screw_ie8 : true
-      },
-      // TODO(gdi2290): uncomment in beta.2
-      //mangle: {
-      //  screw_ie8 : true
-      //}
+      // beautify: true, // debug
+      // mangle: false,  // debug
+      // compress : { screw_ie8 : true, keep_fnames: true, drop_debugger: false }, // debug
+
+      beautify: false,//prod
+      mangle: { screw_ie8 : true },//prod
+      compress : { screw_ie8 : true},//prod
+
+      comments: false
     }),
    // include uglify in production
     new CompressionPlugin({
