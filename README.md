@@ -80,6 +80,7 @@ angular2-webpack-starter/
  │   │
  │   ├──app/                   * WebApp: folder
  │   │   ├──app.spec.ts        * a simple test of components in app.ts
+ │   │   ├──app.spec.ts        * a simple end-to-end test for /
  │   │   └──app.ts             * App.ts: a simple version of our App component components
  │   │
  │   └──assets/                * static assets are served here
@@ -87,8 +88,6 @@ angular2-webpack-starter/
  │       ├──service-worker.js  * ignore this. Web App service worker that's not complete yet
  │       ├──robots.txt         * for search engines to crawl your website
  │       └──human.txt          * for humans to know who the developers are
- │
- ├──test/                      * this is our global unit tests and end-to-end tests
  │
  ├──spec-bundle.js             * ignore this magic that sets up our angular 2 testing environment
  ├──karma.config.js            * karma config for our unit tests
@@ -156,17 +155,30 @@ npm run watch
 npm run test
 ```
 
+### watch and run our tests
+```bash
+npm run watch:test
+```
+
+### run end-to-end tests
+```bash
+# make sure you have your server running in another terminal
+npm run e2e
+```
+
 ### run webdriver (for end-to-end)
 ```bash
 npm run webdriver:update
 npm run webdriver:start
 ```
 
-### run end-to-end tests
+### run Protractor's elementExplorer (for end-to-end)
 ```bash
-# make sure you have webdriver running and a sever for the client app
-npm run e2e
+npm run webdriver:start
+# in another terminal
+npm run e2e:live
 ```
+
 
 # Contributing
 You can include more examples as components but they must introduce a new concept such as `Home` component (separate folders), and Todo (services). I'll accept pretty much everything so feel free to open a Pull-Request
