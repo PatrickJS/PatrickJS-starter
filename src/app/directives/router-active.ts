@@ -50,7 +50,7 @@ export class RouterActive {
   }
 
   private _defaultAttrValue(attr?: string) {
-    return this.routerActiveAttr = isPresent(attr) ? attr : this.routerActiveAttr;
+    return this.routerActiveAttr = attr || this.routerActiveAttr;
   }
 
   private _attrOrProp() {
