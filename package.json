@@ -30,6 +30,7 @@
     "lint": "tsconfig-lint",
     "pree2e": "npm run webdriver:update -- --standalone",
     "e2e": "ts-node node_modules/.bin/protractor --specs src/**/**.e2e.ts,src/**/*.e2e.ts",
+    "e2e:live": "protractor --elementExplorer",
     "test": "karma start",
     "ci": "npm run e2e && npm run test",
     "docs": "typedoc --options typedoc.json --exclude **/*.spec.ts ./src/",
