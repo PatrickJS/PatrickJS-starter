@@ -76,7 +76,7 @@ angular2-webpack-starter/
  │   │
  |   ├──index.html             * Index.html: where we generate our index page
  │   │
- |   ├──vendor.ts              * our vendor file
+ |   ├──polyfills.ts           * our polyfills file
  │   │
  │   ├──app/                   * WebApp: folder
  │   │   ├──app.spec.ts        * a simple test of components in app.ts
