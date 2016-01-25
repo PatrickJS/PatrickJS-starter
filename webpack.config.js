@@ -27,7 +27,7 @@ module.exports = {
   debug: true,
 
   // our angular app
-  entry: { 'vendor': './src/vendor.ts', 'main': './src/main.ts' },
+  entry: { 'polyfills': './src/polyfills.ts', 'main': './src/main.ts' },
 
   // Config for our build files
   output: {
@@ -39,7 +39,9 @@ module.exports = {
 
   resolve: {
     // ensure loader extensions match
-    extensions: ['','.ts','.js','.json','.css','.html']
+    extensions: ['.ts','.js','.json','.css','.html'].reduce(function(memo, val) {
+      return memo.concat('.async' + val, val); // ensure .async also works
+    }, [''])
   },
 
   module: {
@@ -49,8 +51,11 @@ module.exports = {
       { test: /\.js$/, loader: "source-map-loader", exclude: [ /node_modules\/rxjs/ ] }
     ],
     loaders: [
+      // Support Angular 2 async routes via .async.ts
+      { test: /\.async\.ts$/, loaders: ['es6-promise-loader', 'ts-loader'], exclude: [ /\.(spec|e2e)\.ts$/ ] },
+
       // Support for .ts files.
-      { test: /\.ts$/, loader: 'ts-loader', exclude: [ /\.(spec|e2e)\.ts$/ ] },
+      { test: /\.ts$/, loader: 'ts-loader', exclude: [ /\.(spec|e2e|async)\.ts$/ ] },
 
       // Support for *.json files.
       { test: /\.json$/,  loader: 'json-loader' },
@@ -67,7 +72,7 @@ module.exports = {
 
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(true),
-    new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.bundle.js', minChunks: Infinity }),
+    new webpack.optimize.CommonsChunkPlugin({ name: 'polyfills', filename: 'polyfills.bundle.js', minChunks: Infinity }),
     // static assets
     new CopyWebpackPlugin([ { from: 'src/assets', to: 'assets' } ]),
     // generating html
@@ -91,7 +96,7 @@ module.exports = {
   devServer: {
     port: metadata.port,
     host: metadata.host,
-    contentBase: 'src/',
+    // contentBase: 'src/',
     historyApiFallback: true,
     watchOptions: { aggregateTimeout: 300, poll: 1000 }
   },

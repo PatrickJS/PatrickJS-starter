@@ -17,15 +17,6 @@ if ('production' === process.env.ENV) {
   let ngCore = require('angular2/core');
   ngCore.enableProdMode();
 }
-// Angular 2
-import 'angular2/platform/browser';
-import 'angular2/platform/common_dom';
-import 'angular2/router';
-import 'angular2/http';
-import 'angular2/core';
 
-// RxJS
-import 'rxjs';
-
-// Other vendors for example jQuery, Lodash, angular2-jwt
+// For vendors for example jQuery, Lodash, angular2-jwt just import them anywhere in your app
 // Also see custom_typings.d.ts as you also need to do `typings install x` where `x` is your module

@@ -40,7 +40,7 @@ module.exports = {
   debug: false,
 
   entry: {
-    'vendor':'./src/vendor.ts',
+    'polyfills':'./src/polyfills.ts',
     'main':'./src/main.ts' // our angular app
   },
 
@@ -55,7 +55,9 @@ module.exports = {
   resolve: {
     cache: false,
     // ensure loader extensions match
-    extensions: ['','.ts','.js','.json','.css','.html']
+    extensions: ['.ts','.js','.json','.css','.html'].reduce(function(memo, val) {
+      return memo.concat('.async' + val, val); // ensure .async also works
+    }, [''])
   },
 
   module: {
@@ -76,6 +78,12 @@ module.exports = {
       }
     ],
     loaders: [
+      // Support Angular 2 async routes via .async.ts
+      {
+        test: /\.async\.ts$/,
+        loaders: ['es6-promise-loader', 'ts-loader'],
+        exclude: [ /\.(spec|e2e)\.ts$/ ]
+      },
       // Support for .ts files.
       {
         test: /\.ts$/,
@@ -87,7 +95,7 @@ module.exports = {
             'noEmitHelpers': true,
           }
         },
-        exclude: [ /\.(spec|e2e)\.ts$/ ]
+        exclude: [ /\.(spec|e2e|async)\.ts$/ ]
       },
 
       // Support for *.json files.
@@ -108,9 +116,9 @@ module.exports = {
     new DedupePlugin(),
     new OccurenceOrderPlugin(true),
     new CommonsChunkPlugin({
-      name: 'vendor',
-      filename: 'vendor.[chunkhash].bundle.js',
-      minChunks: Infinity
+      name: 'polyfills',
+      filename: 'polyfills.[chunkhash].bundle.js',
+      chunks: Infinity
     }),
     // static assets
     new CopyWebpackPlugin([
@@ -140,8 +148,11 @@ module.exports = {
       'Reflect': 'es7-reflect-metadata/src/global/browser'
     }),
     new UglifyJsPlugin({
-      beautify: false,
+      // to debug prod builds use this
+      beautify: true,
+      // beautify: false,
       mangle: false,
+
       comments: false,
       compress : {
         screw_ie8 : true

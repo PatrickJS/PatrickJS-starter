@@ -15,7 +15,9 @@ var ENV = process.env.ENV = process.env.NODE_ENV = 'test';
 module.exports = {
   resolve: {
     cache: false,
-    extensions: ['','.ts','.js','.json','.css','.html']
+    extensions: ['.ts','.js','.json','.css','.html'].reduce(function(memo, val) {
+      return memo.concat('.async' + val, val); // ensure .async also works
+    }, [''])
   },
   devtool: 'inline-source-map',
   module: {
@@ -36,6 +38,11 @@ module.exports = {
       }
     ],
     loaders: [
+      {
+        test: /\.async\.ts$/,
+        loaders: ['es6-promise-loader', 'ts-loader'],
+        exclude: [ /\.(spec|e2e)\.ts$/ ]
+      },
       {
         test: /\.ts$/,
         loader: 'ts-loader',
