@@ -43,7 +43,7 @@
     "angular2": "2.0.0-beta.1",
     "es6-promise": "^3.0.2",
     "es6-shim": "^0.33.3",
-    "es7-reflect-metadata": "^1.5.4",
+    "es7-reflect-metadata": "^1.5.5",
     "rxjs": "5.0.0-beta.0",
     "zone.js": "0.5.10"
   },
@@ -51,7 +51,7 @@
     "compression-webpack-plugin": "^0.3.0",
     "copy-webpack-plugin": "^1.0.0",
     "css-loader": "^0.23.0",
-    "es6-promise-loader": "^1.0.0",
+    "es6-promise-loader": "^1.0.1",
     "exports-loader": "^0.6.2",
     "expose-loader": "^0.7.1",
     "file-loader": "^0.8.4",
