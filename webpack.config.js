@@ -48,9 +48,9 @@ module.exports = {
 
   module: {
     preLoaders: [
-      // { test: /\.ts$/, loader: 'tslint-loader', exclude: [ /node_modules/ ] },
-      // TODO(gdi2290): `exclude: [ /node_modules\/rxjs/ ]` fixed with rxjs 5 beta.2 release
-      { test: /\.js$/, loader: "source-map-loader", exclude: [ /node_modules\/rxjs/ ] }
+      // { test: /\.ts$/, loader: 'tslint-loader', exclude: [ root('node_modules') ] },
+      // TODO(gdi2290): `exclude: [ root('node_modules/rxjs') ]` fixed with rxjs 5 beta.2 release
+      { test: /\.js$/, loader: "source-map-loader", exclude: [ root('node_modules/rxjs') ] }
     ],
     loaders: [
       // Support Angular 2 async routes via .async.ts

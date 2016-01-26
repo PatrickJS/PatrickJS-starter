@@ -26,14 +26,14 @@ module.exports = {
         test: /\.ts$/,
         loader: 'tslint-loader',
         exclude: [
-          /node_modules/
+          root('node_modules')
         ]
       },
       {
         test: /\.js$/,
         loader: "source-map-loader",
         exclude: [
-          /node_modules\/rxjs/
+          root('node_modules/rxjs')
         ]
       }
     ],
@@ -71,8 +71,8 @@ module.exports = {
       }
     ],
     noParse: [
-      /zone\.js\/dist\/.+/,
-      /angular2\/bundles\/.+/
+      root('zone.js/dist'),
+      root('angular2/bundles')
     ]
   },
   stats: { colors: true, reasons: true },

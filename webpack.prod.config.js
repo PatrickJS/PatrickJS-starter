@@ -66,14 +66,14 @@ module.exports = {
         test: /\.ts$/,
         loader: 'tslint-loader',
         exclude: [
-          /node_modules/
+          root('node_modules')
         ]
       },
       {
         test: /\.js$/,
         loader: "source-map-loader",
         exclude: [
-          /node_modules\/rxjs/
+          root('node_modules/rxjs')
         ]
       }
     ],
