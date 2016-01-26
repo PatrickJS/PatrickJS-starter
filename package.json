@@ -9,7 +9,7 @@
     "clean": "npm cache clean && rimraf node_modules doc typings coverage dist",
     "clean:dist": "rimraf dist",
     "preclean:install": "npm run clean",
-    "clean:install": "npm install",
+    "clean:install": "npm set progress=false && npm install",
     "preclean:start": "npm run clean",
     "clean:start": "npm start",
     "watch": "npm run watch:dev",
@@ -40,7 +40,7 @@
     "fix:ng2": "npm run fix:ng2-clean && npm run fix:ng2-patch && npm run fix:rx",
     "pretypings-install": "npm run fix:ng2",
     "typings-install": "typings install",
-    "postinstall": "npm run typings-install && npm run fix:ng2"
+    "postinstall": "npm run typings-install"
   },
   "dependencies": {
     "angular2": "2.0.0-beta.1",
