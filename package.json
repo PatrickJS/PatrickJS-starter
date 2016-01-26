@@ -6,7 +6,7 @@
   "homepage": "https://github.com/angularclass/angular2-webpack-starter",
   "license": "MIT",
   "scripts": {
-    "clean": "rimraf node_modules doc typings coverage dist && npm cache clean",
+    "clean": "npm cache clean && rimraf node_modules doc typings coverage dist",
     "clean:dist": "rimraf dist",
     "preclean:install": "npm run clean",
     "clean:install": "npm install",
@@ -34,7 +34,7 @@
     "ci": "npm run e2e && npm run test",
     "docs": "typedoc --options typedoc.json --exclude **/*.spec.ts ./src/",
     "start": "npm run server:dev",
-    "fix:ng2": "rimraf node_modules/angular2/manual_typings node_modules/angular2/typings node_modules/angular2/bundles/typings && cp -R src/.ng2-patch/. node_modules/angular2",
+    "fix:ng2": "rimraf node_modules/angular2/manual_typings node_modules/angular2/typings node_modules/angular2/bundles/typings && ncp src/.ng2-patch node_modules && replace '\"rxjs\": \"5.0.0-beta.0\"' '\"rxjs\": \"5.0.0-beta.1\"' node_modules/* -r",
     "pretypings-install": "npm run fix:ng2",
     "typings-install": "typings install",
     "postinstall": "npm run typings-install && npm run fix:ng2"
@@ -44,7 +44,7 @@
     "es6-promise": "^3.0.2",
     "es6-shim": "^0.33.3",
     "es7-reflect-metadata": "^1.5.5",
-    "rxjs": "5.0.0-beta.0",
+    "rxjs": "5.0.0-beta.1",
     "zone.js": "0.5.10"
   },
   "devDependencies": {
@@ -67,12 +67,14 @@
     "karma-phantomjs-launcher": "^0.2.1",
     "karma-sourcemap-loader": "^0.3.6",
     "karma-webpack": "1.7.0",
+    "ncp": "^2.0.0",
     "phantomjs": "^1.9.18",
     "phantomjs-polyfill": "0.0.1",
     "protractor": "^3.0.0",
     "raw-loader": "0.5.1",
     "reflect-metadata": "0.1.2",
     "remap-istanbul": "^0.5.1",
+    "replace": "^0.3.0",
     "rimraf": "^2.4.4",
     "source-map-loader": "^0.1.5",
     "style-loader": "^0.13.0",
