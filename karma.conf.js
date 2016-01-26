@@ -21,7 +21,7 @@ module.exports = function(config) {
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: { 'spec-bundle.js': ['webpack', 'sourcemap'] },
+    preprocessors: { 'spec-bundle.js': ['coverage', 'webpack', 'sourcemap'] },
 
     // Webpack Config at ./webpack.test.config.js
     webpack: testWebpackConfig,
@@ -29,9 +29,10 @@ module.exports = function(config) {
     coverageReporter: {
       dir : 'coverage/',
       reporters: [
-        { type: 'text-summary' },
+        { type: 'text' },
+        { type: 'json' },
         { type: 'html' }
-      ],
+      ]
     },
 
     // Webpack please don't spam the console when running in karma!
