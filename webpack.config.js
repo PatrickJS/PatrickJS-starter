@@ -41,9 +41,7 @@ module.exports = {
 
   resolve: {
     // ensure loader extensions match
-    extensions: ['.ts','.js','.json','.css','.html'].reduce(function(memo, val) {
-      return memo.concat('.async' + val, val); // ensure .async also works
-    }, [''])
+    extensions: prepend(['.ts','.js','.json','.css','.html'], '.async') // ensure .async.ts etc also works
   },
 
   module: {
@@ -113,6 +111,15 @@ function root(args) {
   return path.join.apply(path, [__dirname].concat(args));
 }
 
+function prepend(extensions, args) {
+  args = args || [];
+  if (!Array.isArray(args)) { args = [args] }
+  return extensions.reduce(function(memo, val) {
+    return memo.concat(val, args.map(function(prefix) {
+      return prefix + val
+    }));
+  }, ['']);
+}
 function rootNode(args) {
   args = Array.prototype.slice.call(arguments, 0);
   return root.apply(path, ['node_modules'].concat(args));

@@ -55,9 +55,7 @@ module.exports = {
   resolve: {
     cache: false,
     // ensure loader extensions match
-    extensions: ['.ts','.js','.json','.css','.html'].reduce(function(memo, val) {
-      return memo.concat('.async' + val, val); // ensure .async also works
-    }, [''])
+    extensions: prepend(['.ts','.js','.json','.css','.html'], '.async') // ensure .async.ts etc also works
   },
 
   module: {
@@ -190,6 +188,9 @@ module.exports = {
 };
 
 // Helper functions
+function gzipMaxLevel(buffer, callback) {
+  return zlib['gzip'](buffer, {level: 9}, callback)
+}
 
 function root(args) {
   args = Array.prototype.slice.call(arguments, 0);
@@ -201,6 +202,12 @@ function rootNode(args) {
   return root.apply(path, ['node_modules'].concat(args));
 }
 
-function gzipMaxLevel(buffer, callback) {
-  return zlib['gzip'](buffer, {level: 9}, callback)
+function prepend(extensions, args) {
+  args = args || [];
+  if (!Array.isArray(args)) { args = [args] }
+  return extensions.reduce(function(memo, val) {
+    return memo.concat(val, args.map(function(prefix) {
+      return prefix + val
+    }));
+  }, ['']);
 }
