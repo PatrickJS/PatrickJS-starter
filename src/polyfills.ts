@@ -4,7 +4,14 @@ import 'es6-shim';
 import 'es6-promise';
 import 'zone.js/lib/browser/zone-microtask';
 
-if ('production' !== process.env.ENV) {
+if ('production' === process.env.ENV) {
+
+  // RxJS
+  // In development manually include the operators you use
+
+  require('rxjs/add/operator/map');
+
+} else {
   // Reflect Polyfill
   require('es7-reflect-metadata/src/global/browser');
 
