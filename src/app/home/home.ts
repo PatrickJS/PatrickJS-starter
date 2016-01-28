@@ -3,6 +3,7 @@ import {FORM_DIRECTIVES} from 'angular2/common';
 
 import {Title} from './services/title';
 import {XLarge} from './directives/x-large';
+import {MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS} from "ng2-material/all";
 
 @Component({
   // The selector is what angular internally uses
