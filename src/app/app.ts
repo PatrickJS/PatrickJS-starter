@@ -17,7 +17,7 @@ import {Home} from './home/home';
   providers: [ ...FORM_PROVIDERS ],
   directives: [ ...ROUTER_DIRECTIVES, RouterActive ],
   pipes: [],
-  styles: [`
+  /*styles: [`
     nav ul {
       display: inline;
       list-style-type: none;
@@ -31,8 +31,9 @@ import {Home} from './home/home';
     nav li.active {
       background-color: lightgray;
     }
-  `],
-  template: `
+  `],*/
+  styles: require('./app.css'),
+  /*template: `
     <header>
       <nav>
         <h1>Hello {{ name }}</h1>
@@ -60,7 +61,8 @@ import {Home} from './home/home';
         <img [src]="angularclassLogo" width="10%">
       </div>
     </footer>
-  `
+  `*/
+  template: require('./app.css')
 })
 @RouteConfig([
   { path: '/', component: Home, name: 'Index' },
