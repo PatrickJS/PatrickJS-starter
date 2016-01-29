@@ -90,7 +90,7 @@ module.exports = {
         'NODE_ENV': JSON.stringify(metadata.ENV)
       }
     }),
-    new ProvidePlugin({
+    new webpack.ProvidePlugin({
       jQuery: 'jquery',
       $: 'jquery',
       jquery: 'jquery'
