@@ -18,6 +18,13 @@ require('zone.js/lib/browser/zone-microtask.js');
 require('zone.js/lib/browser/long-stack-trace-zone.js');
 require('zone.js/dist/jasmine-patch.js');
 
+
+var testing = require('angular2/testing');
+var browser = require('angular2/platform/testing/browser');
+testing.setBaseTestProviders(
+  browser.TEST_BROWSER_PLATFORM_PROVIDERS,
+  browser.TEST_BROWSER_APPLICATION_PROVIDERS);
+
 /*
   Ok, this is kinda crazy. We can use the the context method on
   require that webpack created in order to tell webpack
@@ -33,9 +40,3 @@ var testContext = require.context('./src', true, /\.spec\.ts/);
 // that will require the file and load it up here. Context will
 // loop and require those spec files here
 testContext.keys().forEach(testContext);
-
-// Select BrowserDomAdapter.
-// see https://github.com/AngularClass/angular2-webpack-starter/issues/124
-var domAdapter = require('angular2/src/platform/browser/browser_adapter');
-domAdapter.BrowserDomAdapter.makeCurrent();
-
