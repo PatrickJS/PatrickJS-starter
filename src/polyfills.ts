@@ -23,13 +23,11 @@ if ('production' === process.env.ENV) {
   // RxJS
   // In production manually include the operators you use
 
-  // Observable
+  // Observable Operators
   require('rxjs/add/operator/combineLatest-static');
   require('rxjs/add/operator/concat-static');
   require('rxjs/add/operator/merge-static');
-  require('rxjs/add/operator/race-static');
   require('rxjs/add/observable/bindCallback');
-  require('rxjs/add/observable/bindNodeCallback');
   require('rxjs/add/observable/defer');
   require('rxjs/add/observable/empty');
   require('rxjs/add/observable/forkJoin');
@@ -45,7 +43,7 @@ if ('production' === process.env.ENV) {
   require('rxjs/add/observable/timer');
   require('rxjs/add/operator/zip-static');
 
-  // Observable Operators
+  // Operators
   require('rxjs/add/operator/buffer');
   require('rxjs/add/operator/bufferCount');
   require('rxjs/add/operator/bufferTime');
@@ -78,6 +76,8 @@ if ('production' === process.env.ENV) {
   require('rxjs/add/operator/first');
   require('rxjs/add/operator/groupBy');
   require('rxjs/add/operator/ignoreElements');
+  require('rxjs/add/operator/inspect');
+  require('rxjs/add/operator/inspectTime');
   require('rxjs/add/operator/isEmpty');
   require('rxjs/add/operator/every');
   require('rxjs/add/operator/last');
@@ -93,14 +93,11 @@ if ('production' === process.env.ENV) {
   require('rxjs/add/operator/min');
   require('rxjs/add/operator/multicast');
   require('rxjs/add/operator/observeOn');
-  require('rxjs/add/operator/pairwise');
   require('rxjs/add/operator/partition');
-  require('rxjs/add/operator/pluck');
   require('rxjs/add/operator/publish');
   require('rxjs/add/operator/publishBehavior');
   require('rxjs/add/operator/publishReplay');
   require('rxjs/add/operator/publishLast');
-  require('rxjs/add/operator/race');
   require('rxjs/add/operator/reduce');
   require('rxjs/add/operator/repeat');
   require('rxjs/add/operator/retry');
