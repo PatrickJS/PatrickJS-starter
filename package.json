@@ -34,10 +34,8 @@
     "ci": "npm run e2e && npm run test",
     "docs": "typedoc --options typedoc.json --exclude **/*.spec.ts ./src/",
     "start": "npm run server:dev",
-    "fix:rx": "node_modules/.bin/replace '5.0.0-beta.0' '5.0.0-beta.1' node_modules -r --exclude=node_modules/rxjs",
-    "fix:rx-patch": "npm install rxjs@5.0.0-beta.1 --save --save-exact",
     "fix:ng2-clean": "node_modules/.bin/rimraf node_modules/angular2/manual_typings node_modules/angular2/typings node_modules/angular2/bundles/typings",
-    "fix:ng2": "npm run fix:ng2-clean && npm run fix:rx && npm run fix:rx-patch",
+    "fix:ng2": "npm run fix:ng2-clean",
     "pretypings-install": "npm run fix:ng2",
     "typings-install": "typings install",
     "postinstall": "npm run typings-install"
@@ -47,7 +45,7 @@
     "es6-promise": "^3.0.2",
     "es6-shim": "^0.33.3",
     "es7-reflect-metadata": "^1.5.5",
-    "rxjs": "5.0.0-beta.1",
+    "rxjs": "5.0.0-beta.0",
     "zone.js": "0.5.10"
   },
   "devDependencies": {
@@ -78,7 +76,6 @@
     "raw-loader": "0.5.1",
     "reflect-metadata": "0.1.2",
     "remap-istanbul": "^0.5.1",
-    "replace": "^0.3.0",
     "rimraf": "^2.4.4",
     "source-map-loader": "^0.1.5",
     "style-loader": "^0.13.0",
