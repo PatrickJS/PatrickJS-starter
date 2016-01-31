@@ -80,7 +80,7 @@ angular2-webpack-starter/
  │   │
  │   ├──app/                   * WebApp: folder
  │   │   ├──app.spec.ts        * a simple test of components in app.ts
- │   │   ├──app.spec.ts        * a simple end-to-end test for /
+ │   │   ├──app.e2e.ts        * a simple end-to-end test for /
  │   │   └──app.ts             * App.ts: a simple version of our App component components
  │   │
  │   └──assets/                * static assets are served here
