@@ -8,6 +8,7 @@ var webpack = require('webpack');
 var CopyWebpackPlugin  = require('copy-webpack-plugin');
 var HtmlWebpackPlugin  = require('html-webpack-plugin');
 var ENV = process.env.ENV = process.env.NODE_ENV = 'development';
+const autoprefixer = require('autoprefixer');
 
 var metadata = {
   title: 'Angular2 Webpack Starter by @gdi2990 from @AngularClass',
@@ -38,7 +39,6 @@ module.exports = {
     chunkFilename: '[id].chunk.js'
   },
 
-
   resolve: {
     // ensure loader extensions match
     extensions: prepend(['.ts','.js','.json','.css','.html'], '.async') // ensure .async.ts etc also works
@@ -64,11 +64,17 @@ module.exports = {
       { test: /\.css$/,   loader: 'raw-loader' },
 
       // support for .html as raw text
-      { test: /\.html$/,  loader: 'raw-loader' }
+      { test: /\.html$/,  loader: 'raw-loader' },
 
       // if you add a loader include the resolve file extension above
+      { test: /\.scss$/, loaders: ['style', 'css', 'postcss', 'sass'] },
+      { test: /\.(woff2?|ttf|eot|svg)$/, loader: 'url?limit=10000' },
+      // Bootstrap 4
+      { test: /bootstrap\/dist\/js\/umd\//, loader: 'imports?jQuery=jquery' }
     ]
   },
+  
+  postcss: [autoprefixer],  // this is inside module.exports object
 
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(true),
@@ -83,6 +89,11 @@ module.exports = {
         'ENV': JSON.stringify(metadata.ENV),
         'NODE_ENV': JSON.stringify(metadata.ENV)
       }
+    }),
+    new webpack.ProvidePlugin({
+      jQuery: 'jquery',
+      $: 'jquery',
+      jquery: 'jquery'
     })
   ],
 
