@@ -56,7 +56,11 @@
   "devDependencies": {
     "bootstrap-sass": "^3.3.6",
     "compression-webpack-plugin": "^0.3.0",
+<<<<<<< HEAD
     "copy-webpack-plugin": "^1.1.1",
+=======
+    "copy-webpack-plugin": "^1.0.0",
+>>>>>>> beb43996abac70a9a66b7e559c0a88000422c6d7
     "css-loader": "^0.23.1",
     "es6-promise-loader": "^1.0.1",
     "exports-loader": "^0.6.2",
