@@ -32,7 +32,7 @@ import {Home} from './home/home';
       background-color: lightgray;
     }
   `],*/
-  styles: require('./app.css'),
+  styles: [require('./app.css').toString()],
   /*template: `
     <header>
       <nav>
