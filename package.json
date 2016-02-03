@@ -38,7 +38,10 @@
     "fix:ng2": "npm run fix:ng2-clean",
     "pretypings-install": "npm run fix:ng2",
     "typings-install": "typings install",
-    "postinstall": "npm run typings-install"
+    "postinstall": "npm run typings-install",
+    "preversion": "npm test",
+    "version": "npm run build",
+    "postversion": "git push && git push --tags"
   },
   "dependencies": {
     "angular2": "2.0.0-beta.2",
