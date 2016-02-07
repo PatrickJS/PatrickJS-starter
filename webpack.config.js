@@ -46,25 +46,25 @@ module.exports = {
 
   module: {
     preLoaders: [
-      // { test: /\.ts$/, loader: 'tslint-loader', exclude: [ root('node_modules') ] },
+      // { test: /\.ts$/, loader: 'tslint', exclude: [ root('node_modules') ] },
       // TODO(gdi2290): `exclude: [ root('node_modules/rxjs') ]` fixed with rxjs 5 beta.2 release
-      { test: /\.js$/, loader: "source-map-loader", exclude: [ root('node_modules/rxjs') ] }
+      { test: /\.js$/, loader: "source-map", exclude: [ root('node_modules/rxjs') ] }
     ],
     loaders: [
       // Support Angular 2 async routes via .async.ts
-      { test: /\.async\.ts$/, loaders: ['es6-promise-loader', 'ts-loader'], exclude: [ /\.(spec|e2e)\.ts$/ ] },
+      { test: /\.async\.ts$/, loaders: ['es6-promise', 'ts'], exclude: [ /\.(spec|e2e)\.ts$/ ] },
 
       // Support for .ts files.
-      { test: /\.ts$/, loader: 'ts-loader', exclude: [ /\.(spec|e2e|async)\.ts$/ ] },
+      { test: /\.ts$/, loader: 'ts', exclude: [ /\.(spec|e2e|async)\.ts$/ ] },
 
       // Support for *.json files.
-      { test: /\.json$/,  loader: 'json-loader' },
+      { test: /\.json$/,  loader: 'json' },
 
       // Support for CSS as raw text
-      { test: /\.css$/,   loader: 'raw-loader' },
+      { test: /\.css$/,   loader: 'raw' },
 
       // support for .html as raw text
-      { test: /\.html$/,  loader: 'raw-loader', exclude: [ root('src/index.html') ] }
+      { test: /\.html$/,  loader: 'raw', exclude: [ root('src/index.html') ] }
 
       // if you add a loader include the resolve file extension above
     ]

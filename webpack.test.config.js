@@ -22,14 +22,14 @@ module.exports = {
     preLoaders: [
       {
         test: /\.ts$/,
-        loader: 'tslint-loader',
+        loader: 'tslint',
         exclude: [
           root('node_modules')
         ]
       },
       {
         test: /\.js$/,
-        loader: "source-map-loader",
+        loader: "source-map",
         exclude: [
           root('node_modules/rxjs')
         ]
@@ -38,12 +38,12 @@ module.exports = {
     loaders: [
       {
         test: /\.async\.ts$/,
-        loaders: ['es6-promise-loader', 'ts-loader'],
+        loaders: ['es6-promise', 'ts'],
         exclude: [ /\.(spec|e2e)\.ts$/ ]
       },
       {
         test: /\.ts$/,
-        loader: 'ts-loader',
+        loader: 'ts',
         query: {
           "compilerOptions": {
             "noEmitHelpers": true,
@@ -52,16 +52,16 @@ module.exports = {
         },
         exclude: [ /\.e2e\.ts$/ ]
       },
-      { test: /\.json$/, loader: 'json-loader' },
-      { test: /\.html$/, loader: 'raw-loader' },
-      { test: /\.css$/,  loader: 'raw-loader' }
+      { test: /\.json$/, loader: 'json' },
+      { test: /\.html$/, loader: 'raw' },
+      { test: /\.css$/,  loader: 'raw' }
     ],
     postLoaders: [
       // instrument only testing sources with Istanbul
       {
         test: /\.(js|ts)$/,
         include: root('src'),
-        loader: 'istanbul-instrumenter-loader',
+        loader: 'istanbul-instrumenter',
         exclude: [
           /\.(e2e|spec)\.ts$/,
           /node_modules/
