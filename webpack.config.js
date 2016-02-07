@@ -38,7 +38,6 @@ module.exports = {
     chunkFilename: '[id].chunk.js'
   },
 
-
   resolve: {
     // ensure loader extensions match
     extensions: prepend(['.ts','.js','.json','.css','.html'], '.async') // ensure .async.ts etc also works
@@ -64,7 +63,7 @@ module.exports = {
       { test: /\.css$/,   loader: 'raw-loader' },
 
       // support for .html as raw text
-      { test: /\.html$/,  loader: 'raw-loader' }
+      { test: /\.html$/,  loader: 'raw-loader', exclude: [ root('src/index.html') ] }
 
       // if you add a loader include the resolve file extension above
     ]
@@ -76,7 +75,7 @@ module.exports = {
     // static assets
     new CopyWebpackPlugin([ { from: 'src/assets', to: 'assets' } ]),
     // generating html
-    new HtmlWebpackPlugin({ template: 'src/index.html', inject: false }),
+    new HtmlWebpackPlugin({ template: 'src/index.html' }),
     // replace
     new webpack.DefinePlugin({
       'process.env': {
