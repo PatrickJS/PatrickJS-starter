@@ -103,7 +103,7 @@ module.exports = {
       { test: /\.css$/,   loader: 'raw-loader' },
 
       // support for .html as raw text
-      { test: /\.html$/,  loader: 'raw-loader' }
+      { test: /\.html$/,  loader: 'raw-loader', exclude: [ root('src/index.html') ] }
 
       // if you add a loader include the file extension
     ]
@@ -126,9 +126,7 @@ module.exports = {
       }
     ]),
     // generating html
-    new HtmlWebpackPlugin({
-      template: 'src/index.html'
-    }),
+    new HtmlWebpackPlugin({ template: 'src/index.html' }),
     new DefinePlugin({
       // Environment helpers
       'process.env': {
