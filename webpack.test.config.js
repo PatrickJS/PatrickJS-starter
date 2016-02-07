@@ -45,9 +45,9 @@ module.exports = {
         test: /\.ts$/,
         loader: 'ts',
         query: {
-          compilerOptions: {
-            noEmitHelpers: true,
-            removeComments: true,
+          "compilerOptions": {
+            "noEmitHelpers": true,
+            "removeComments": true,
           }
         },
         exclude: [ /\.e2e\.ts$/ ]
