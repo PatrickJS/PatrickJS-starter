@@ -95,7 +95,7 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.12.13",
     "webpack-dev-server": "^1.14.1",
-    "webpack-md5-hash": "0.0.4"
+    "webpack-md5-hash": "^0.0.4"
   },
   "repository": {
     "type": "git",

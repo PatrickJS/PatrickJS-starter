@@ -38,7 +38,6 @@ module.exports = {
     chunkFilename: '[id].chunk.js'
   },
 
-
   resolve: {
     // ensure loader extensions match
     extensions: prepend(['.ts','.js','.json','.css','.html'], '.async') // ensure .async.ts etc also works
