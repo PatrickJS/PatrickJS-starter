@@ -41,7 +41,8 @@
     "postinstall": "npm run typings-install",
     "preversion": "npm test",
     "version": "npm run build",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags",
+    "dev": "npm run watch:test & npm run server:dev"
   },
   "dependencies": {
     "angular2": "2.0.0-beta.3",
