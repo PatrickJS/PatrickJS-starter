@@ -42,13 +42,14 @@
     "preversion": "npm test",
     "version": "npm run build",
     "postversion": "git push && git push --tags",
-    "dev": "npm run watch:test & npm run server:dev"
+    "dev": "npm-run-all --parallel watch:test server:dev"
   },
   "dependencies": {
     "angular2": "2.0.0-beta.3",
     "es6-promise": "^3.0.2",
     "es6-shim": "^0.33.3",
     "es7-reflect-metadata": "^1.5.5",
+    "npm-run-all": "^1.5.1",
     "rxjs": "5.0.0-beta.0",
     "zone.js": "0.5.11"
   },
