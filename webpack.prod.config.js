@@ -103,7 +103,7 @@ module.exports = {
       { test: /\.css$/,   loader: 'raw-loader' },
 
       // support for .html as raw text
-      { test: /\.html$/,  loader: 'raw-loader' }
+      { test: /\.html$/,  loader: 'raw-loader', exclude: [ root('src/index.html') ] }
 
       // if you add a loader include the file extension
     ]
@@ -126,9 +126,7 @@ module.exports = {
       }
     ]),
     // generating html
-    new HtmlWebpackPlugin({
-      template: 'src/index.html'
-    }),
+    new HtmlWebpackPlugin({ template: 'src/index.html' }),
     new DefinePlugin({
       // Environment helpers
       'process.env': {
@@ -157,7 +155,7 @@ module.exports = {
       // comments: true,//debug
 
       beautify: false,//prod
-      // disable mangling because of a bug in angular2 beta.1, beta.2, and beta.3
+      // disable mangling because of a bug in angular2 beta.1, beta.2 and beta.3
       // TODO(mastertinner): enable mangling as soon as angular2 beta.4 is out
       // mangle: { screw_ie8 : true },//prod
       mangle: false,

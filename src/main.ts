@@ -19,6 +19,7 @@ if ('production' === process.env.ENV) {
  * our top level component that holds all of our components
  */
 import {App} from './app/app';
+
 /*
  * Bootstrap our Angular app with a top level component `App` and inject
  * our Services and Providers into Angular's dependency injection
