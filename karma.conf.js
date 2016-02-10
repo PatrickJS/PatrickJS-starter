@@ -49,11 +49,8 @@ module.exports = function (config) {
                     functions: 50,
                     lines: 50,
                     excludes: [
-                        'src/app/directives/router-active.js'
-                    ],
-                    overrides: {
-
-                    }
+                        'src/app/directives/router-active.ts'
+                    ]
                 }
             }
         },
