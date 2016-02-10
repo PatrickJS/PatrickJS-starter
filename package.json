@@ -24,6 +24,7 @@
     "server": "npm run server:dev",
     "server:dev": "webpack-dev-server --progress --profile --colors --display-error-details --display-cached  --content-base src/",
     "server:prod": "http-server dist --cors",
+    "server:testprod": "http-server dist --cors",
     "webdriver:update": "webdriver-manager update",
     "webdriver:start": "webdriver-manager start",
     "lint": "tsconfig-lint",
@@ -42,7 +43,8 @@
     "preversion": "npm test",
     "version": "npm run build",
     "postversion": "git push && git push --tags",
-    "dev": "npm-run-all --parallel watch:test server:dev"
+    "dev": "npm-run-all --parallel watch:test server:dev",
+    "testprod": "npm-run-all --parallel watch:prod server:testprod"
   },
   "dependencies": {
     "angular2": "2.0.0-beta.3",
