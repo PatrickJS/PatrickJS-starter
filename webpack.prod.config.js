@@ -53,6 +53,8 @@ module.exports = {
   },
 
   resolve: {
+    // TODO(gdi2290): remove after beta.6
+    alias: { 'rxjs/observable/fromPromise': 'rxjs/observable/PromiseObservable' },
     cache: false,
     // ensure loader extensions match
     extensions: prepend(['.ts','.js','.json','.css','.html'], '.async') // ensure .async.ts etc also works
