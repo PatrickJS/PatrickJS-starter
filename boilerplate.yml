@@ -15,7 +15,7 @@ install:
   - npm install
 
 build_script:
-  - gulp build
+  - gulp build 
 
 cache:
   - node_modules
