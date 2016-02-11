@@ -1,0 +1,23 @@
+{
+  "name": "angular2-webpack-starter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AcklenAvenue/angular2-webpack-starter.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AcklenAvenue/angular2-webpack-starter/issues"
+  },
+  "homepage": "https://github.com/AcklenAvenue/angular2-webpack-starter#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "typings": "^0.6.8"
+  }
+}

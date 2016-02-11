@@ -1,0 +1,29 @@
+environment:
+  environment: dev
+version: 1.0.{build}
+branches:
+  only:
+    - develop
+
+init:
+  - git config --global core.autocrlf input
+
+install:
+  - npm -g install npm@2.12.1
+  - set PATH=%APPDATA%\npm;%PATH%
+  - npm install -g gulp
+  - npm install
+
+build_script:
+  - gulp build
+
+cache:
+  - node_modules
+
+deploy_script:
+  
+after_deploy:
+  
+notifications:
+  - provider: Webhook
+    url: http://appharborservicehookendpoint.apphb.com/build/appveyor/boilerplate
