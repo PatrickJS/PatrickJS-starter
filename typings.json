@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "es6-promise": "github:typings/typed-es6-promise#9243c53f70fb4909ed7cce3094bec221b9fb6d5f"
+    "es6-promise": "github:typed-typings/npm-es6-promise#fb04188767acfec1defd054fc8024fafa5cd4de7"
   },
   "devDependencies": {},
   "ambientDependencies": {
