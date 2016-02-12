@@ -44,11 +44,11 @@
     "postversion": "git push && git push --tags"
   },
   "dependencies": {
-    "angular2": "2.0.0-beta.5",
+    "angular2": "2.0.0-beta.6",
     "es6-promise": "^3.0.2",
     "es6-shim": "^0.33.3",
     "es7-reflect-metadata": "^1.5.5",
-    "rxjs": "5.0.0-beta.2",
+    "rxjs": "5.0.0-beta.0",
     "zone.js": "0.5.14"
   },
   "devDependencies": {
