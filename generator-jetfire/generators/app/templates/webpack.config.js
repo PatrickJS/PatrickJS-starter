@@ -7,14 +7,14 @@ var path = require('path');
 var webpack = require('webpack');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ENV = process.env.ENV = process.env.NODE_ENV = 'development';
+var ENV = process.env.ENV = process.env.NODE_ENV = '<%= ENV %>';
 var failPlugin = require('webpack-fail-plugin');
 
 var metadata = {
-    title: 'Angular2 Webpack Starter by @gdi2990 from @AngularClass',
-    baseUrl: '/',
-    host: 'localhost',
-    port: 3000,
+    title: '<%= title%>',
+    baseUrl: '<%= baseUrl %>',
+    host: '<%= host %>',
+    port: '<%= port%>',
     ENV: ENV
 };
 /*

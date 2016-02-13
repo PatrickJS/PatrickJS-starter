@@ -2,12 +2,12 @@
 <html lang="">
 <head>
 
-  <title><%= webpackConfig.metadata.title %></title>
+  <title><%= title %></title>
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="<%= webpackConfig.metadata.title %>">
+  <meta name="description" content="<%= title %>">
 
   <!-- use http://www.favicon-generator.org/ to replace files in public/icon-->
   <link rel="apple-touch-icon" sizes="57x57" href="/assets/icon/apple-icon-57x57.png">
@@ -30,7 +30,7 @@
   <!-- end favicon -->
 
   <!-- base url -->
-  <base href="<%= webpackConfig.metadata.baseUrl %>">
+  <base href="<%= baseUrl %>">
 
 </head>
 
@@ -51,9 +51,9 @@
     ga('send', 'pageview');
   </script>
 
-  <% if (webpackConfig.metadata.ENV === 'development') { %>
+  <% if (ENV === 'development') { %>
   <!-- Webpack Dev Server reload -->
-  <script src="http://<%= webpackConfig.metadata.host %>:<%= webpackConfig.metadata.port %>/webpack-dev-server.js"></script>
+  <script src="http://<%= host %>:<%= port %>/webpack-dev-server.js"></script>
   <% } %>
 
 </body>
