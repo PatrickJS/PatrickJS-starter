@@ -18,7 +18,7 @@ build_script:
   - gulp build
   - cd generator-jetfire
   - npm install
-  - gulp test
+ 
  
   
 
