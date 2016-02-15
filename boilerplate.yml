@@ -15,13 +15,18 @@ install:
   - npm install
 
 build_script:
-  - gulp build 
+  - gulp build
+  - cd generator-jetfire
+  - gulp test
+ 
+  
 
 cache:
   - node_modules
 
 deploy_script:
-  
+  - cd generator-jetfire
+  - npm publish
 after_deploy:
   
 notifications:
