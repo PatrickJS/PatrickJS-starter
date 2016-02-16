@@ -27,6 +27,7 @@ cache:
 
 deploy_script:
   - cd generator-jetfire
+  - npm version patch
   - npm publish
 after_deploy:
   
