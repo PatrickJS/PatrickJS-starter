@@ -29,6 +29,11 @@
   <meta name="theme-color" content="#00bcd4">
   <!-- end favicon -->
 
+  <% if (webpackConfig.metadata.ENV === 'production') { %>
+  <!-- Webpack CSS chunks -->
+  <link rel="stylesheet" href="<%= webpackConfig.metadata.style %>">
+  <% } %>
+
   <!-- base url -->
   <base href="<%= webpackConfig.metadata.baseUrl %>">
 
