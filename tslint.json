@@ -3,7 +3,10 @@
     "class-name": true,
     "curly": false,
     "eofline": true,
-    "indent": "spaces",
+    "indent": [
+      true,
+      "spaces"
+    ],
     "max-line-length": [
       true,
       100
