@@ -2,27 +2,35 @@
 import 'es6-shim';
 // (these modules are what are in 'angular2/bundles/angular2-polyfills' so don't use that here)
 import 'es6-promise';
-import 'zone.js/lib/browser/zone-microtask';
 
-if ('production' !== process.env.ENV) {
-  // Reflect Polyfill
-  require('es7-reflect-metadata/src/global/browser');
-
+if ('production' === process.env.ENV) {
   // In production Reflect with es7-reflect-metadata/reflect-metadata is added
-  // by webpack.prod.config ProvidePlugin
-  Error['stackTraceLimit'] = Infinity;
-  Zone['longStackTraceZone'] = require('zone.js/lib/zones/long-stack-trace.js');
+
+  // Zone.js
+  require('zone.js/dist/zone-microtask.min');
 
   // RxJS
   // In production manually include the operators you use
+  require('rxjs/add/operator/map');
 
-  // Observable
+} else {
+  // Reflect Polyfill
+  require('es7-reflect-metadata/src/global/browser');
+  // In production Reflect with es7-reflect-metadata/reflect-metadata is added
+
+  // by webpack.prod.config ProvidePlugin
+  Error['stackTraceLimit'] = Infinity;
+  require('zone.js/dist/zone-microtask');
+  require('zone.js/dist/long-stack-trace-zone');
+
+  // RxJS
+  // In development we are including every operator
+
+  // Observable Operators
   require('rxjs/add/operator/combineLatest-static');
   require('rxjs/add/operator/concat-static');
   require('rxjs/add/operator/merge-static');
-  require('rxjs/add/operator/race-static');
   require('rxjs/add/observable/bindCallback');
-  require('rxjs/add/observable/bindNodeCallback');
   require('rxjs/add/observable/defer');
   require('rxjs/add/observable/empty');
   require('rxjs/add/observable/forkJoin');
@@ -38,7 +46,7 @@ if ('production' !== process.env.ENV) {
   require('rxjs/add/observable/timer');
   require('rxjs/add/operator/zip-static');
 
-  // Observable Operators
+  // Operators
   require('rxjs/add/operator/buffer');
   require('rxjs/add/operator/bufferCount');
   require('rxjs/add/operator/bufferTime');
@@ -71,6 +79,8 @@ if ('production' !== process.env.ENV) {
   require('rxjs/add/operator/first');
   require('rxjs/add/operator/groupBy');
   require('rxjs/add/operator/ignoreElements');
+  require('rxjs/add/operator/inspect');
+  require('rxjs/add/operator/inspectTime');
   require('rxjs/add/operator/isEmpty');
   require('rxjs/add/operator/every');
   require('rxjs/add/operator/last');
@@ -86,14 +96,11 @@ if ('production' !== process.env.ENV) {
   require('rxjs/add/operator/min');
   require('rxjs/add/operator/multicast');
   require('rxjs/add/operator/observeOn');
-  require('rxjs/add/operator/pairwise');
   require('rxjs/add/operator/partition');
-  require('rxjs/add/operator/pluck');
   require('rxjs/add/operator/publish');
   require('rxjs/add/operator/publishBehavior');
   require('rxjs/add/operator/publishReplay');
   require('rxjs/add/operator/publishLast');
-  require('rxjs/add/operator/race');
   require('rxjs/add/operator/reduce');
   require('rxjs/add/operator/repeat');
   require('rxjs/add/operator/retry');

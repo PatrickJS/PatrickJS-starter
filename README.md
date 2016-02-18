@@ -45,9 +45,6 @@ cd angular2-webpack-starter
 # install the repo with npm
 npm install
 
-# install TypeScript typings
-npm run typings-install
-
 # start the server
 npm start
 ```
@@ -80,7 +77,7 @@ angular2-webpack-starter/
  │   │
  │   ├──app/                   * WebApp: folder
  │   │   ├──app.spec.ts        * a simple test of components in app.ts
- │   │   ├──app.spec.ts        * a simple end-to-end test for /
+ │   │   ├──app.e2e.ts        * a simple end-to-end test for /
  │   │   └──app.ts             * App.ts: a simple version of our App component components
  │   │
  │   └──assets/                * static assets are served here
@@ -227,7 +224,7 @@ declare module "my-module" {
 ```
 
 
-If you're prototying and you will fix the types later you can also declare it as type any
+If you're prototyping and you will fix the types later you can also declare it as type any
 
 ```typescript
 declare var assert: any;
@@ -266,7 +263,7 @@ see [typings/registry](https://github.com/typings/registry)
 * How do I include bootstrap or jQuery?
  * please see issue [#215](https://github.com/AngularClass/angular2-webpack-starter/issues/215) and [#214](https://github.com/AngularClass/angular2-webpack-starter/issues/214#event-511768416)
 * I'm getting an error about not finding my module that I installed?
- * please see [custom_typings.d.ts](https://github.com/AngularClass/angular2-webpack-starter/blob/master/src/custom_typings.d.ts)
+ * please see [How to include or create custom type definitions](https://github.com/AngularClass/angular2-webpack-starter/wiki/How-to-include-or-create-custom-type-definitions) and [custom_typings.d.ts](https://github.com/AngularClass/angular2-webpack-starter/blob/master/src/custom_typings.d.ts)
 * How do I async load a component?
  * the component must have `.async.ts` and require using webpack `loader: () => require('./about/about')('About')`
 
