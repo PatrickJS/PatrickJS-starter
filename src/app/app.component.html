@@ -1,0 +1,18 @@
+<header>
+  <nav>
+    <h1>{{title}}</h1>
+    <a [routerLink]="['Dashboard']">Dashboard</a>
+    <a [routerLink]="['Heroes']">Heroes</a>
+  </nav>
+</header>
+
+<main>
+  <router-outlet></router-outlet>
+</main>
+
+<footer>
+  WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a>
+  <div>
+    <img [src]="angularclassLogo" width="10%">
+  </div>
+</footer>

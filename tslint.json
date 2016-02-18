@@ -37,7 +37,7 @@
       true,
       "single"
     ],
-    "semicolon": true,
+    "semicolon": false,
     "triple-equals": [
       true,
       "allow-null-check"
