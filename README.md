@@ -45,9 +45,6 @@ cd angular2-webpack-starter
 # install the repo with npm
 npm install
 
-# install TypeScript typings
-npm run typings-install
-
 # start the server
 npm start
 ```
@@ -227,7 +224,7 @@ declare module "my-module" {
 ```
 
 
-If you're prototying and you will fix the types later you can also declare it as type any
+If you're prototyping and you will fix the types later you can also declare it as type any
 
 ```typescript
 declare var assert: any;
