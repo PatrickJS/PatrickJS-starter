@@ -1,17 +1,22 @@
 /*
  * Providers provided by Angular
  */
-import {provide, enableProdMode} from 'angular2/core';
-import {bootstrap, ELEMENT_PROBE_PROVIDERS} from 'angular2/platform/browser';
+import * as ng from 'angular2/core';
+import * as browser from 'angular2/platform/browser';
 import {ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy} from 'angular2/router';
 import {HTTP_PROVIDERS} from 'angular2/http';
 
+/*
+ * App Environment Providers
+ * providers that only live in certain environment
+ */
 const ENV_PROVIDERS = [];
 
 if ('production' === process.env.ENV) {
-  enableProdMode();
+  ng.enableProdMode();
+  ENV_PROVIDERS.push(browser.ELEMENT_PROBE_PROVIDERS_PROD_MODE);
 } else {
-  ENV_PROVIDERS.push(ELEMENT_PROBE_PROVIDERS);
+  ENV_PROVIDERS.push(browser.ELEMENT_PROBE_PROVIDERS);
 }
 
 /*
@@ -24,44 +29,40 @@ import {App} from './app/app';
  * Bootstrap our Angular app with a top level component `App` and inject
  * our Services and Providers into Angular's dependency injection
  */
-
-document.addEventListener('DOMContentLoaded', function main() {
-  bootstrap(App, [
+export function main() {
+  return browser.bootstrap(App, [
     ...ENV_PROVIDERS,
     ...HTTP_PROVIDERS,
     ...ROUTER_PROVIDERS,
-    provide(LocationStrategy, { useClass: HashLocationStrategy })
+    ng.provide(LocationStrategy, { useClass: HashLocationStrategy })
   ])
   .catch(err => console.error(err));
+}
 
-});
+/*
+ * Vendors
+ * For vendors for example jQuery, Lodash, angular2-jwt just import them anywhere in your app
+ * Also see custom_typings.d.ts as you also need to do `typings install x` where `x` is your module
+ */
 
 
 /*
- * Modified for using hot module reload
+ * Hot Module Reload
+ * experimental version by @gdi2290
  */
+if ('development' === process.env.ENV) {
+  // activate hot module reload
+  if ('hot' in module) {
+    if (document.readyState === 'complete') {
+      main();
+    } else {
+      document.addEventListener('DOMContentLoaded', main);
+    }
+    module.hot.accept();
+  }
 
-// typescript lint error 'Cannot find name "module"' fix
-declare let module: any;
-
-// activate hot module reload
-if (module.hot) {
-
-  // bootstrap must not be called after DOMContentLoaded,
-  // otherwise it cannot be rerenderd after module replacement
-  //
-  // for testing try to comment the bootstrap function,
-  // open the dev tools and you'll see the reloader is replacing the module but cannot rerender it
-  bootstrap(App, [
-      ...ENV_PROVIDERS,
-      ...HTTP_PROVIDERS,
-      ...ROUTER_PROVIDERS,
-      provide(LocationStrategy, { useClass: HashLocationStrategy })
-    ])
-    .catch(err => console.error(err));
-
-  module.hot.accept();
+} else {
+  // bootstrap after document is ready
+  document.addEventListener('DOMContentLoaded', main);
 }
 
-// For vendors for example jQuery, Lodash, angular2-jwt just import them anywhere in your app
-// Also see custom_typings.d.ts as you also need to do `typings install x` where `x` is your module
