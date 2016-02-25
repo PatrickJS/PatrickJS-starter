@@ -28,7 +28,7 @@
     "webdriver:start": "webdriver-manager start",
     "lint": "tsconfig-lint",
     "pree2e": "npm run webdriver:update -- --standalone",
-    "e2e": "ts-node node_modules/.bin/protractor",
+    "e2e": "protractor",
     "e2e:live": "protractor --elementExplorer",
     "test": "karma start",
     "ci": "npm run e2e && npm run test",
