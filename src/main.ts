@@ -1,7 +1,7 @@
 /*
  * Providers provided by Angular
  */
-import * as ng from 'angular2/core';
+import * as ngCore from 'angular2/core';
 import * as browser from 'angular2/platform/browser';
 import {ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy} from 'angular2/router';
 import {HTTP_PROVIDERS} from 'angular2/http';
@@ -13,7 +13,7 @@ import {HTTP_PROVIDERS} from 'angular2/http';
 const ENV_PROVIDERS = [];
 
 if ('production' === process.env.ENV) {
-  ng.enableProdMode();
+  ngCore.enableProdMode();
   ENV_PROVIDERS.push(browser.ELEMENT_PROBE_PROVIDERS_PROD_MODE);
 } else {
   ENV_PROVIDERS.push(browser.ELEMENT_PROBE_PROVIDERS);
@@ -34,7 +34,7 @@ export function main() {
     ...ENV_PROVIDERS,
     ...HTTP_PROVIDERS,
     ...ROUTER_PROVIDERS,
-    ng.provide(LocationStrategy, { useClass: HashLocationStrategy })
+    ngCore.provide(LocationStrategy, { useClass: HashLocationStrategy })
   ])
   .catch(err => console.error(err));
 }
