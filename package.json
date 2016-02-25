@@ -57,7 +57,7 @@
     "expose-loader": "^0.7.1",
     "file-loader": "^0.8.5",
     "html-webpack-plugin": "^2.9.0",
-    "http-server": "^0.8.5",
+    "http-server": "^0.9.0",
     "imports-loader": "^0.6.5",
     "istanbul-instrumenter-loader": "^0.2.0",
     "json-loader": "^0.5.4",
@@ -84,13 +84,14 @@
     "tslint": "^3.3.0",
     "tslint-loader": "^2.1.0",
     "typedoc": "^0.3.12",
-    "typescript": "1.7.5",
-    "typings": "^0.6.7",
+    "typescript": "1.8.2",
+    "typings": "^0.6.8",
     "url-loader": "^0.5.7",
-    "webpack": "^1.12.13",
+    "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1",
     "webpack-load-plugins": "^0.1.2",
-    "webpack-md5-hash": "^0.0.5"
+    "webpack-md5-hash": "^0.0.5",
+    "webpack-validator": "^1.0.0-beta.4"
   },
   "repository": {
     "type": "git",
@@ -100,7 +101,7 @@
     "url": "https://github.com/angularclass/angular2-webpack-starter/issues"
   },
   "engines": {
-    "node": ">= 4.2.1 <= 5",
+    "node": ">= 4.2.1",
     "npm": ">= 3"
   }
 }
