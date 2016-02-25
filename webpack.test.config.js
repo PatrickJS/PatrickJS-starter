@@ -1,9 +1,6 @@
 // @AngularClass
 
-/*
- * Helper: root(), and rootDir() are defined at the bottom
- */
-var path = require('path');
+var helpers = require('./helpers');
 // Webpack Plugins
 var ProvidePlugin = require('webpack/lib/ProvidePlugin');
 var DefinePlugin  = require('webpack/lib/DefinePlugin');
@@ -12,10 +9,9 @@ var ENV = process.env.ENV = process.env.NODE_ENV = 'test';
 /*
  * Config
  */
-module.exports = {
+module.exports = helpers.validate({
   resolve: {
-    cache: false,
-    extensions: prepend(['.ts','.js','.json','.css','.html'], '.async') // ensure .async.ts etc also works
+    extensions: ['', '.ts','.js']
   },
   devtool: 'inline-source-map',
   module: {
@@ -24,23 +20,18 @@ module.exports = {
         test: /\.ts$/,
         loader: 'tslint-loader',
         exclude: [
-          root('node_modules')
+          helpers.root('node_modules')
         ]
       },
       {
         test: /\.js$/,
         loader: "source-map-loader",
         exclude: [
-          root('node_modules/rxjs')
+          helpers.root('node_modules/rxjs')
         ]
       }
     ],
     loaders: [
-      {
-        test: /\.async\.ts$/,
-        loaders: ['es6-promise-loader', 'ts-loader'],
-        exclude: [ /\.(spec|e2e)\.ts$/ ]
-      },
       {
         test: /\.ts$/,
         loader: 'ts-loader',
@@ -60,7 +51,7 @@ module.exports = {
       // instrument only testing sources with Istanbul
       {
         test: /\.(js|ts)$/,
-        include: root('src'),
+        include: helpers.root('src'),
         loader: 'istanbul-instrumenter-loader',
         exclude: [
           /\.(e2e|spec)\.ts$/,
@@ -69,8 +60,8 @@ module.exports = {
       }
     ],
     noParse: [
-      root('zone.js/dist'),
-      root('angular2/bundles')
+      helpers.root('zone.js/dist'),
+      helpers.root('angular2/bundles')
     ]
   },
   stats: { colors: true, reasons: true },
@@ -101,26 +92,5 @@ module.exports = {
     clearImmediate: false,
     setImmediate: false
   }
-};
+});
 
-// Helper functions
-
-function root(args) {
-  args = Array.prototype.slice.call(arguments, 0);
-  return path.join.apply(path, [__dirname].concat(args));
-}
-
-function rootNode(args) {
-  args = Array.prototype.slice.call(arguments, 0);
-  return root.apply(path, ['node_modules'].concat(args));
-}
-
-function prepend(extensions, args) {
-  args = args || [];
-  if (!Array.isArray(args)) { args = [args] }
-  return extensions.reduce(function(memo, val) {
-    return memo.concat(val, args.map(function(prefix) {
-      return prefix + val
-    }));
-  }, ['']);
-}

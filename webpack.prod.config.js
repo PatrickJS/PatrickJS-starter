@@ -3,8 +3,7 @@
 /*
  * Helper: root(), and rootDir() are defined at the bottom
  */
-var path = require('path');
-var zlib = require('zlib');
+var helpers = require('./helpers');
 // Webpack Plugins
 var webpack = require('webpack');
 var ProvidePlugin = require('webpack/lib/ProvidePlugin');
@@ -32,11 +31,12 @@ var metadata = {
 /*
  * Config
  */
-module.exports = {
+module.exports = helpers.validate({
   // static data for index.html
   metadata: metadata,
-  // for faster builds use 'eval'
+
   devtool: 'source-map',
+  cache: false,
   debug: false,
 
   entry: {
@@ -46,7 +46,7 @@ module.exports = {
 
   // Config for our build files
   output: {
-    path: root('dist'),
+    path: helpers.root('dist'),
     filename: '[name].[chunkhash].bundle.js',
     sourceMapFilename: '[name].[chunkhash].bundle.map',
     chunkFilename: '[id].[chunkhash].chunk.js'
@@ -55,7 +55,7 @@ module.exports = {
   resolve: {
     cache: false,
     // ensure loader extensions match
-    extensions: prepend(['.ts','.js','.json','.css','.html'], '.async') // ensure .async.ts etc also works
+    extensions: ['', '.ts','.js']
   },
 
   module: {
@@ -64,24 +64,19 @@ module.exports = {
         test: /\.ts$/,
         loader: 'tslint-loader',
         exclude: [
-          root('node_modules')
+          helpers.root('node_modules')
         ]
       },
       {
         test: /\.js$/,
-        loader: "source-map-loader",
+        loader: 'source-map-loader',
         exclude: [
-          root('node_modules/rxjs')
+          helpers.root('node_modules/rxjs')
         ]
       }
     ],
     loaders: [
       // Support Angular 2 async routes via .async.ts
-      {
-        test: /\.async\.ts$/,
-        loaders: ['es6-promise-loader', 'ts-loader'],
-        exclude: [ /\.(spec|e2e)\.ts$/ ]
-      },
       // Support for .ts files.
       {
         test: /\.ts$/,
@@ -93,19 +88,32 @@ module.exports = {
             'noEmitHelpers': true,
           }
         },
-        exclude: [ /\.(spec|e2e|async)\.ts$/ ]
+        exclude: [
+          /\.(spec|e2e)\.ts$/
+        ]
       },
 
       // Support for *.json files.
-      { test: /\.json$/,  loader: 'json-loader' },
+      {
+        test: /\.json$/,
+        loader: 'json-loader'
+      },
 
       // Support for CSS as raw text
-      { test: /\.css$/,   loader: 'raw-loader' },
+      {
+        test: /\.css$/,
+        loader: 'raw-loader'
+      },
 
       // support for .html as raw text
-      { test: /\.html$/,  loader: 'raw-loader', exclude: [ root('src/index.html') ] }
+      {
+        test: /\.html$/,
+        loader: 'raw-loader',
+        exclude: [
+          helpers.root('src/index.html')
+        ]
+      }
 
-      // if you add a loader include the file extension
     ]
   },
 
@@ -158,13 +166,13 @@ module.exports = {
       // TODO(mastertinner): enable mangling as soon as angular2 beta.4 is out
       // mangle: { screw_ie8 : true },//prod
       mangle: false,
-      compress : { screw_ie8 : true},//prod
+      compress : { screw_ie8 : true },//prod
       comments: false//prod
 
     }),
    // include uglify in production
     new CompressionPlugin({
-      algorithm: gzipMaxLevel,
+      algorithm: helpers.gzipMaxLevel,
       regExp: /\.css$|\.html$|\.js$|\.map$/,
       threshold: 2 * 1024
     })
@@ -185,29 +193,4 @@ module.exports = {
     clearImmediate: false,
     setImmediate: false
   }
-};
-
-// Helper functions
-function gzipMaxLevel(buffer, callback) {
-  return zlib['gzip'](buffer, {level: 9}, callback)
-}
-
-function root(args) {
-  args = Array.prototype.slice.call(arguments, 0);
-  return path.join.apply(path, [__dirname].concat(args));
-}
-
-function rootNode(args) {
-  args = Array.prototype.slice.call(arguments, 0);
-  return root.apply(path, ['node_modules'].concat(args));
-}
-
-function prepend(extensions, args) {
-  args = args || [];
-  if (!Array.isArray(args)) { args = [args] }
-  return extensions.reduce(function(memo, val) {
-    return memo.concat(val, args.map(function(prefix) {
-      return prefix + val
-    }));
-  }, ['']);
-}
+});
