@@ -65,8 +65,8 @@ import {Home} from './home/home';
 @RouteConfig([
   { path: '/', component: Home, name: 'Index' },
   { path: '/home', component: Home, name: 'Home' },
-  // Async load a component using Webpack's require with es6-promise-loader
-  { path: '/about', loader: () => require('./about/about')('About'), name: 'About' },
+  // Async load a component using Webpack's require with es6-promise-loader and webpack `require`
+  { path: '/about', loader: () => require('es6-promise!./about/about')('About'), name: 'About' },
   { path: '/**', redirectTo: ['Index'] }
 ])
 export class App {
@@ -84,5 +84,4 @@ export class App {
  * (The examples may not be updated as quickly. Please open an issue on github for us to update it)
  * For help or questions please contact us at @AngularClass on twitter
  * or our chat on Slack at https://AngularClass.com/slack-join
- * or via chat on Gitter at https://gitter.im/AngularClass/angular2-webpack-starter
  */
