@@ -44,7 +44,7 @@
     "angular2": "2.0.0-beta.7",
     "es6-promise": "^3.1.2",
     "es6-shim": "^0.33.3",
-    "es7-reflect-metadata": "^1.5.5",
+    "reflect-metadata": "0.1.2",
     "rxjs": "5.0.0-beta.2",
     "zone.js": "0.5.15"
   },
@@ -73,7 +73,6 @@
     "phantomjs-prebuilt": "^2.1.4",
     "protractor": "^3.1.1",
     "raw-loader": "0.5.1",
-    "reflect-metadata": "0.1.2",
     "remap-istanbul": "^0.5.1",
     "rimraf": "^2.5.2",
     "source-map-loader": "^0.1.5",

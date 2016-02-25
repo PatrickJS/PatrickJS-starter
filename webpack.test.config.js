@@ -90,7 +90,6 @@ module.exports = {
       '__awaiter': 'ts-helper/awaiter',
       '__extends': 'ts-helper/extends',
       '__param': 'ts-helper/param',
-      'Reflect': 'es7-reflect-metadata/src/global/browser'
     })
   ],
     // we need this due to problems with es6-shim
