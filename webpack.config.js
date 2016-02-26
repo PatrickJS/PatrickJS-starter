@@ -43,6 +43,7 @@ module.exports = helpers.validate({
 
   module: {
     preLoaders: [
+      // { test: /\.ts$/, loader: 'tslint-loader', exclude: [ helpers.root('node_modules') ] },
       // TODO(gdi2290): `exclude: [ helpers.root('node_modules/rxjs') ]` fixed with rxjs 5 beta.3 release
       { test: /\.js$/, loader: "source-map-loader", exclude: [ helpers.root('node_modules/rxjs') ] }
     ],
@@ -79,6 +80,11 @@ module.exports = helpers.validate({
   ],
 
   // Other module loader config
+  tslint: {
+    emitErrors: false,
+    failOnHint: false,
+    resourcePath: 'src',
+  },
 
   // our Webpack Development Server config
   devServer: {
