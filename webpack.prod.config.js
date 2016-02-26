@@ -19,10 +19,12 @@ var WebpackMd5Hash    = require('webpack-md5-hash');
 var ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 var HOST = process.env.HOST || 'localhost';
 var PORT = process.env.PORT || 8080;
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 var metadata = {
   title: 'Angular2 Webpack Starter by @gdi2990 from @AngularClass',
   baseUrl: '/',
+  style: 'styles.css',
   host: HOST,
   port: PORT,
   ENV: ENV
@@ -105,6 +107,9 @@ module.exports = helpers.validate({
         loader: 'raw-loader'
       },
 
+      // Collect all CSS chunks
+      { test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader") },
+
       // support for .html as raw text
       {
         test: /\.html$/,
@@ -175,6 +180,10 @@ module.exports = helpers.validate({
       algorithm: helpers.gzipMaxLevel,
       regExp: /\.css$|\.html$|\.js$|\.map$/,
       threshold: 2 * 1024
+    }),
+    // Generate CSS bundle
+    new ExtractTextPlugin(metadata.style, {
+      allChunks: true
     })
   ],
   // Other module loader config
