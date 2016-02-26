@@ -180,7 +180,16 @@ module.exports = helpers.validate({
   // Other module loader config
   tslint: {
     emitErrors: true,
-    failOnHint: true
+    failOnHint: true,
+    resourcePath: 'src',
+  },
+
+  htmlLoader: {
+    minimize: true,
+    removeAttributeQuotes: false,
+    caseSensitive: true,
+    customAttrSurround: [ [/#/, /(?:)/], [/\*/, /(?:)/], [/\[?\(?/, /(?:)/] ],
+    customAttrAssign: [ /\)?\]?=/ ]
   },
   // don't use devServer for production
 
