@@ -40,7 +40,7 @@ export class RouterActive {
   }
 
   ngOnInit() {
-    this.router.subscribe(() => {
+    this.routerLink.changes.subscribe(() => {
       if (this.routerLink.first) {
         let active = this.routerLink.first.isRouteActive;
         this.renderer.setElementClass(this.element.nativeElement, this._attrOrProp(), active);
