@@ -31,7 +31,10 @@ module.exports = helpers.validate({
 
   // Config for our build files
   output: {
-    path: helpers.root('dist')
+    path: helpers.root('dist'),
+    filename: '[name].bundle.js',
+    sourceMapFilename: '[name].map',
+    chunkFilename: '[id].chunk.js'
   },
 
   resolve: {
