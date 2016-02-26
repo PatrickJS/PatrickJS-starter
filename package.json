@@ -18,7 +18,7 @@
     "watch:prod": "webpack --watch --config webpack.prod.config.js --progress --profile --colors --display-error-details --display-cached",
     "build": "npm run build:dev",
     "prebuild:dev": "npm run clean:dist",
-    "build:dev": "webpack --progress --profile --colors --display-error-details --display-cached",
+    "build:dev": "webpack --progress --profile --colors --display-error-details --display-cached --bail",
     "prebuild:prod": "npm run clean:dist",
     "build:prod": "webpack --config webpack.prod.config.js --progress --profile --colors --display-error-details --display-cached",
     "server": "npm run server:dev",
