@@ -34,7 +34,7 @@
     "test": "karma start",
     "ci": "npm run e2e && npm run test",
     "docs": "typedoc --options typedoc.json --exclude **/*.spec.ts ./src/",
-    "start": "npm run server:dev",
+    "start": "npm run server",
     "typings-install": "typings install",
     "postinstall": "npm run typings-install",
     "preversion": "npm test",
