@@ -12,11 +12,12 @@ Error.stackTraceLimit = Infinity;
 require('phantomjs-polyfill');
 require('es6-promise');
 require('es6-shim');
-require('reflect-metadata');
+require('es7-reflect-metadata');
 
 require('zone.js/dist/zone-microtask.js');
 require('zone.js/dist/long-stack-trace-zone.js');
 require('zone.js/dist/jasmine-patch.js');
+
 
 var testing = require('angular2/testing');
 var browser = require('angular2/platform/testing/browser');
@@ -25,6 +26,7 @@ testing.setBaseTestProviders(
   browser.TEST_BROWSER_PLATFORM_PROVIDERS,
   browser.TEST_BROWSER_APPLICATION_PROVIDERS);
 
+Object.assign(global, testing);
 /*
   Ok, this is kinda crazy. We can use the the context method on
   require that webpack created in order to tell webpack
@@ -39,4 +41,9 @@ var testContext = require.context('./src', true, /\.spec\.ts/);
 // get all the files, for each file, call the context function
 // that will require the file and load it up here. Context will
 // loop and require those spec files here
-testContext.keys().forEach(testContext);
+function requireAll(requireContext) {
+  return requireContext.keys().map(requireContext);
+}
+
+var modules = requireAll(testContext);
+// requires and returns all modules that match
