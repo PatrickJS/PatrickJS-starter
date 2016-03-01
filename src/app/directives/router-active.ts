@@ -40,13 +40,27 @@ export class RouterActive {
   }
 
   ngOnInit() {
-    this.router.subscribe(() => {
+    this.routerLink.changes.subscribe(() => {
       if (this.routerLink.first) {
-        let active = this.routerLink.first.isRouteActive;
-        this.renderer.setElementClass(this.element.nativeElement, this._attrOrProp(), active);
+        this._updateClass();
+        this._findRootRouter().subscribe(() => {
+          this._updateClass();
+        });
       }
     });
+  }
 
+  private _findRootRouter(): Router{
+    var router: Router = this.router;
+    while (isPresent(router.parent)) {
+      router = router.parent;
+    }
+    return router;
+  }
+
+  private _updateClass(){
+    let active = this.routerLink.first.isRouteActive;
+    this.renderer.setElementClass(this.element.nativeElement, this._attrOrProp(), active);
   }
 
   private _defaultAttrValue(attr?: string) {
