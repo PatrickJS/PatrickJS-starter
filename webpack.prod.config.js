@@ -31,7 +31,7 @@ var metadata = {
 /*
  * Config
  */
-module.exports = helpers.validate({
+module.exports = helpers.defaults({
   // static data for index.html
   metadata: metadata,
 
@@ -54,8 +54,6 @@ module.exports = helpers.validate({
 
   resolve: {
     cache: false,
-    // ensure loader extensions match
-    extensions: ['', '.ts','.js']
   },
 
   module: {
@@ -193,13 +191,4 @@ module.exports = helpers.validate({
   },
   // don't use devServer for production
 
-  // we need this due to problems with es6-shim
-  node: {
-    global: 'window',
-    progress: false,
-    crypto: 'empty',
-    module: false,
-    clearImmediate: false,
-    setImmediate: false
-  }
 });

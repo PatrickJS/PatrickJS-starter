@@ -9,10 +9,7 @@ var ENV = process.env.ENV = process.env.NODE_ENV = 'test';
 /*
  * Config
  */
-module.exports = helpers.validate({
-  resolve: {
-    extensions: ['', '.ts','.js']
-  },
+module.exports = helpers.defaults({
   devtool: 'inline-source-map',
   module: {
     preLoaders: [
@@ -58,14 +55,8 @@ module.exports = helpers.validate({
           /node_modules/
         ]
       }
-    ],
-    noParse: [
-      helpers.root('zone.js/dist'),
-      helpers.root('angular2/bundles')
     ]
   },
-  stats: { colors: true, reasons: true },
-  debug: false,
   plugins: [
     new DefinePlugin({
       // Environment helpers
@@ -83,14 +74,5 @@ module.exports = helpers.validate({
       '__param': 'ts-helper/param',
     })
   ],
-    // we need this due to problems with es6-shim
-  node: {
-    global: 'window',
-    progress: false,
-    crypto: 'empty',
-    module: false,
-    clearImmediate: false,
-    setImmediate: false
-  }
 });
 
