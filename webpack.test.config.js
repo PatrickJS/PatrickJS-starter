@@ -9,8 +9,11 @@ var ENV = process.env.ENV = process.env.NODE_ENV = 'test';
 /*
  * Config
  */
-module.exports = helpers.defaults({
+module.exports = {
   devtool: 'inline-source-map',
+  resolve: {
+    extensions: ['', '.ts', '.js']
+  },
   module: {
     preLoaders: [
       {
@@ -34,15 +37,14 @@ module.exports = helpers.defaults({
         loader: 'ts-loader',
         query: {
           "compilerOptions": {
-            "noEmitHelpers": true,
             "removeComments": true,
           }
         },
-        exclude: [ /\.e2e\.ts$/ ]
+        exclude: [ /\.e2e\.ts$/, helpers.root('node_modules') ]
       },
-      { test: /\.json$/, loader: 'json-loader' },
-      { test: /\.html$/, loader: 'raw-loader' },
-      { test: /\.css$/,  loader: 'raw-loader' }
+      { test: /\.json$/, loader: 'json-loader', exclude: [ helpers.root('src/index.html'), helpers.root('node_modules') ] }
+      { test: /\.html$/, loader: 'raw-loader', exclude: [ helpers.root('src/index.html'), helpers.root('node_modules') ] }
+      { test: /\.css$/,  loader: 'raw-loader', exclude: [ helpers.root('src/index.html'), helpers.root('node_modules') ] }
     ],
     postLoaders: [
       // instrument only testing sources with Istanbul
@@ -64,15 +66,20 @@ module.exports = helpers.defaults({
         'ENV': JSON.stringify(ENV),
         'NODE_ENV': JSON.stringify(ENV)
       }
-    }),
-    new ProvidePlugin({
-      // TypeScript helpers
-      '__metadata': 'ts-helper/metadata',
-      '__decorate': 'ts-helper/decorate',
-      '__awaiter': 'ts-helper/awaiter',
-      '__extends': 'ts-helper/extends',
-      '__param': 'ts-helper/param',
     })
   ],
-});
+  node: {
+    global: 'window',
+    progress: false,
+    crypto: 'empty',
+    module: false,
+    clearImmediate: false,
+    setImmediate: false
+  },
+  tslint: {
+    emitErrors: false,
+    failOnHint: false,
+    resourcePath: 'src',
+  }
+};
 

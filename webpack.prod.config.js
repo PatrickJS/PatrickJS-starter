@@ -31,12 +31,11 @@ var metadata = {
 /*
  * Config
  */
-module.exports = helpers.defaults({
+module.exports = {
   // static data for index.html
   metadata: metadata,
 
   devtool: 'source-map',
-  cache: false,
   debug: false,
 
   entry: {
@@ -53,7 +52,7 @@ module.exports = helpers.defaults({
   },
 
   resolve: {
-    cache: false,
+    extensions: ['', '.ts', '.js']
   },
 
   module: {
@@ -82,25 +81,27 @@ module.exports = helpers.defaults({
         query: {
           // remove TypeScript helpers to be injected below by DefinePlugin
           'compilerOptions': {
-            'removeComments': true,
-            'noEmitHelpers': true,
+            'removeComments': true
           }
         },
         exclude: [
-          /\.(spec|e2e)\.ts$/
+          /\.(spec|e2e)\.ts$/,
+          helpers.root('node_modules')
         ]
       },
 
       // Support for *.json files.
       {
         test: /\.json$/,
-        loader: 'json-loader'
+        loader: 'json-loader',
+        exclude: [ helpers.root('node_modules') ]
       },
 
       // Support for CSS as raw text
       {
         test: /\.css$/,
-        loader: 'raw-loader'
+        loader: 'raw-loader',
+        exclude: [ helpers.root('node_modules') ]
       },
 
       // support for .html as raw text
@@ -112,7 +113,12 @@ module.exports = helpers.defaults({
         ]
       }
 
+    ],
+    noParse: [
+      helpers.root('zone.js', 'dist'),
+      helpers.root('angular2', 'bundles')
     ]
+
   },
 
   plugins: [
@@ -139,14 +145,6 @@ module.exports = helpers.defaults({
         'ENV': JSON.stringify(metadata.ENV),
         'NODE_ENV': JSON.stringify(metadata.ENV)
       }
-    }),
-    new ProvidePlugin({
-      // TypeScript helpers
-      '__metadata': 'ts-helper/metadata',
-      '__decorate': 'ts-helper/decorate',
-      '__awaiter': 'ts-helper/awaiter',
-      '__extends': 'ts-helper/extends',
-      '__param': 'ts-helper/param'
     }),
     new UglifyJsPlugin({
       // to debug prod builds uncomment //debug lines and comment //prod lines
@@ -193,5 +191,12 @@ module.exports = helpers.defaults({
     customAttrAssign: [ /\)?\]?=/ ]
   },
   // don't use devServer for production
-
-});
+  node: {
+    global: 'window',
+    progress: false,
+    crypto: 'empty',
+    module: false,
+    clearImmediate: false,
+    setImmediate: false
+  }
+};
