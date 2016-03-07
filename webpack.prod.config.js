@@ -165,7 +165,7 @@ module.exports = helpers.defaults({
       // mangle: { screw_ie8 : true },//prod
       mangle: {
         screw_ie8 : true,
-        except: ['RouterLink'] // needed for uglify RouterLink problem
+        except: ['RouterLink', 'NgFor', 'NgModel'] // needed for uglify RouterLink problem
       },// prod
       compress : { screw_ie8 : true },//prod
       comments: false//prod
