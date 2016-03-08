@@ -164,11 +164,15 @@ module.exports = {
       mangle: {
         screw_ie8 : true,
         except: [
+          'RouterActive',
           'RouterLink',
           'RouterOutlet',
           'NgFor',
           'NgIf',
+          'NgClass',
           'NgSwitch',
+          'NgStyle',
+          'NgSwitchDefault',
           'NgModel',
           'NgControl',
           'NgFormControl',
