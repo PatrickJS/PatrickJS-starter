@@ -165,7 +165,10 @@ module.exports = {
         screw_ie8 : true,
         except: [
           'RouterLink',
+          'RouterOutlet',
           'NgFor',
+          'NgIf',
+          'NgSwitch',
           'NgModel',
           'AsyncPipe',
           'DatePipe',
