@@ -163,7 +163,24 @@ module.exports = {
       // mangle: { screw_ie8 : true },//prod
       mangle: {
         screw_ie8 : true,
-        except: ['RouterLink', 'NgFor', 'NgModel'] // needed for uglify RouterLink problem
+        except: [
+          'RouterLink',
+          'NgFor',
+          'NgModel',
+          'AsyncPipe',
+          'DatePipe',
+          'JsonPipe',
+          'NumberPipe',
+          'DecimalPipe',
+          'PercentPipe',
+          'CurrencyPipe',
+          'LowerCasePipe',
+          'UpperCasePipe',
+          'SlicePipe',
+          'ReplacePipe',
+          'I18nPluralPipe',
+          'I18nSelectPipe'
+        ] // needed for uglify RouterLink problem
       },// prod
       compress : { screw_ie8 : true },//prod
       comments: false//prod
