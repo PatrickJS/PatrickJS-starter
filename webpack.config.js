@@ -51,7 +51,7 @@ module.exports = {
     ],
     loaders: [
       // Support for .ts files.
-      { test: /\.ts$/, loader: 'ts-loader', exclude: [ /\.(spec|e2e)\.ts$/, helpers.root('node_modules') ] },
+      { test: /\.ts$/, loader: 'awesome-typescript-loader', exclude: [ /\.(spec|e2e)\.ts$/, helpers.root('node_modules') ] },
 
       // Support for *.json files.
       { test: /\.json$/,  loader: 'json-loader', exclude: [ helpers.root('node_modules') ] },
