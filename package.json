@@ -50,6 +50,7 @@
     "zone.js": "0.5.15"
   },
   "devDependencies": {
+    "awesome-typescript-loader": "^0.16.0-rc.0",
     "compression-webpack-plugin": "^0.3.0",
     "copy-webpack-plugin": "^1.1.1",
     "css-loader": "^0.23.1",
@@ -81,7 +82,6 @@
     "source-map-loader": "^0.1.5",
     "style-loader": "^0.13.0",
     "ts-helper": "0.0.1",
-    "ts-loader": "^0.8.1",
     "ts-node": "^0.5.5",
     "tsconfig-lint": "^0.6.0",
     "tslint": "^3.3.0",
