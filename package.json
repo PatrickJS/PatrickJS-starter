@@ -14,6 +14,7 @@
     "clean:start": "npm start",
     "watch": "npm run watch:dev",
     "watch:dev": "webpack --watch --progress --profile --colors --display-error-details --display-cached",
+    "watch:dev:hmr": "npm run watch:dev -- --hot",
     "watch:test": "npm run test -- --auto-watch --no-single-run",
     "watch:prod": "webpack --watch --config webpack.prod.config.js --progress --profile --colors --display-error-details --display-cached",
     "build": "npm run build:dev",
