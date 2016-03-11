@@ -108,5 +108,5 @@ module.exports = {
     module: false,
     clearImmediate: false,
     setImmediate: false
-  },
+  }
 };
