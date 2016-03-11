@@ -25,7 +25,7 @@ var metadata = {
 module.exports = {
   // static data for index.html
   metadata: metadata,
-  devtool: 'source-map',
+  devtool: 'cheap-module-eval-source-map',
   debug: true,
   // devtool: 'eval' // for faster builds use 'eval'
 
