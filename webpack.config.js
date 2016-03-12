@@ -78,7 +78,7 @@ module.exports = {
     new CopyWebpackPlugin([ { from: 'src/assets', to: 'assets' } ]),
     // generating html
     new HtmlWebpackPlugin({ template: 'src/index.html' }),
-    // Environment helpers
+    // Environment helpers (when adding more properties make sure you include them in custom-typings.d.ts)
     new webpack.DefinePlugin({
       'ENV': JSON.stringify(metadata.ENV),
       'HMR': HMR
