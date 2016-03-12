@@ -7,7 +7,8 @@ import {
   Attribute,
   ElementRef,
   Renderer,
-  Optional
+  Optional,
+  Input
 } from 'angular2/core';
 import {Instruction, RouterLink} from 'angular2/router';
 
@@ -22,11 +23,10 @@ import {Instruction, RouterLink} from 'angular2/router';
  * ```
  */
 @Directive({
-  selector: '[router-active], [routerActive]',
-  inputs: ['routerActive']
+  selector: '[router-active], [routerActive]'
 })
 export class RouterActive {
-  routerActive: string = null;
+  @Input() routerActive: string = null;
   routerActiveAttr: string = 'active';
 
   constructor(
