@@ -1,19 +1,25 @@
 // For vendors for example jQuery, Lodash, angular2-jwt just import them here unless you plan on
-// chunking vendors to be async loaded later then you import them at the entry point of the async loaded file
-// Also see custom-typings.d.ts as you also need to do `typings install x` where `x` is your module
+// chunking vendors files for async loading. You would need to import the async loaded vendors
+// at the entry point of the async loaded file. Also see custom-typings.d.ts as you also need to
+// run `typings install x` where `x` is your module
 
+// Angular 2
+import 'angular2/core';
+import 'angular2/platform/browser';
+import 'angular2/common';
+import 'angular2/router';
+import 'angular2/http';
 
 // RxJS
-// In production manually include the operators you use
-require('rxjs/add/operator/map');
-require('rxjs/add/operator/mergeMap');
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/mergeMap';
 
 if ('production' === ENV) {
   // Production
 
 
 } else {
-  // Development or Testing
+  // Development
 
 }
 
