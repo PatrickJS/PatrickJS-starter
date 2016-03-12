@@ -40,11 +40,11 @@ module.exports = {
             "removeComments": true,
           }
         },
-        exclude: [ /\.e2e\.ts$/, helpers.root('node_modules') ]
+        exclude: [ /\.e2e\.ts$/ ]
       },
-      { test: /\.json$/, loader: 'json-loader', exclude: [ helpers.root('src/index.html'), helpers.root('node_modules') ] },
-      { test: /\.html$/, loader: 'raw-loader', exclude: [ helpers.root('src/index.html'), helpers.root('node_modules') ] },
-      { test: /\.css$/,  loader: 'raw-loader', exclude: [ helpers.root('src/index.html'), helpers.root('node_modules') ] }
+      { test: /\.json$/, loader: 'json-loader', exclude: [ helpers.root('src/index.html') ] },
+      { test: /\.html$/, loader: 'raw-loader', exclude: [ helpers.root('src/index.html') ] },
+      { test: /\.css$/,  loader: 'raw-loader', exclude: [ helpers.root('src/index.html') ] }
     ],
     postLoaders: [
       // instrument only testing sources with Istanbul
