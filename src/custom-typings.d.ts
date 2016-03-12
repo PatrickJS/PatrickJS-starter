@@ -32,7 +32,6 @@ import * as _ from 'lodash'
 // Extra variables that live on Global that will be replaced by webpack DefinePlugin
 declare var ENV: string;
 declare var HMR: boolean;
-
 interface GlobalEnvironment {
   ENV;
   HMR;
@@ -53,7 +52,18 @@ interface WebpackModule {
     removeStatusHandler(callback?: (status?: string) => void): void;
   };
 }
+interface WebpackRequire extends NodeRequireFunction {
+  context(file: string, flag?: boolean, exp?: RegExp): any;
+}
 
+
+interface ErrorStackTraceLimit {
+  stackTraceLimit: number;
+}
+
+
+// Extend typings
+interface NodeRequire extends WebpackRequire {}
+interface ErrorConstructor extends ErrorStackTraceLimit {}
 interface NodeModule extends WebpackModule {}
 interface Global extends GlobalEnvironment  {}
-
