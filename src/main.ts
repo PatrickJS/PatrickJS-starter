@@ -1,10 +1,15 @@
 /*
  * Providers provided by Angular
  */
-import * as ngCore from 'angular2/core';
 import * as browser from 'angular2/platform/browser';
+import * as ngCore from 'angular2/core';
+import {
+  ROUTER_PROVIDERS,
+  ROUTER_DIRECTIVES,
+  LocationStrategy,
+  HashLocationStrategy
+} from 'angular2/router';
 import {FORM_PROVIDERS} from 'angular2/common';
-import {ROUTER_PROVIDERS, ROUTER_DIRECTIVES, LocationStrategy, HashLocationStrategy} from 'angular2/router';
 import {HTTP_PROVIDERS} from 'angular2/http';
 
 /*
@@ -15,8 +20,8 @@ import {App} from './app/app';
 import {RouterActive} from './app/directives/router-active';
 
 /*
- * Application Providers
- * providers that only live in certain environment
+ * Application Providers/Directives/Pipes
+ * providers/directives/pipes that only live in our browser environment
  */
 // application_providers: providers that are global through out the application
 const APPLICATION_PROVIDERS = [

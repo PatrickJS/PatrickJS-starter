@@ -26,6 +26,7 @@ module.exports = {
   // static data for index.html
   metadata: metadata,
   devtool: 'cheap-module-eval-source-map',
+  // cache: true,
   debug: true,
   // devtool: 'eval' // for faster builds use 'eval'
 
@@ -33,7 +34,7 @@ module.exports = {
   entry: {
     'polyfills': './src/polyfills.ts',
     'vendor': './src/vendor.ts',
-    'main': './src/main.ts'
+    'app': './src/main.ts'
   },
 
   resolve: {
@@ -73,11 +74,11 @@ module.exports = {
   plugins: [
     new ForkCheckerPlugin(),
     new webpack.optimize.OccurenceOrderPlugin(true),
-    new webpack.optimize.CommonsChunkPlugin({ name: ['vendor', 'polyfills'], filename: '[name].bundle.js', minChunks: Infinity }),
+    new webpack.optimize.CommonsChunkPlugin({ name: ['app', 'vendor', 'polyfills'], minChunks: Infinity }),
     // static assets
     new CopyWebpackPlugin([ { from: 'src/assets', to: 'assets' } ]),
     // generating html
-    new HtmlWebpackPlugin({ template: 'src/index.html' }),
+    new HtmlWebpackPlugin({ template: 'src/index.html', chunksSortMode: 'none' }),
     // Environment helpers (when adding more properties make sure you include them in custom-typings.d.ts)
     new webpack.DefinePlugin({
       'ENV': JSON.stringify(metadata.ENV),
@@ -104,7 +105,7 @@ module.exports = {
   },
   node: {
     global: 'window',
-    process: HMR ? true : false,
+    process: true,
     crypto: 'empty',
     module: false,
     clearImmediate: false,

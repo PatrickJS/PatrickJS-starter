@@ -4,11 +4,10 @@
 // run `typings install x` where `x` is your module
 
 // Angular 2
-import 'angular2/core';
 import 'angular2/platform/browser';
-import 'angular2/common';
-import 'angular2/router';
+import 'angular2/core';
 import 'angular2/http';
+import 'angular2/router';
 
 // RxJS
 import 'rxjs/add/operator/map';

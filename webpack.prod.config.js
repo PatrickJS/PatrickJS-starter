@@ -126,7 +126,7 @@ module.exports = {
     new DedupePlugin(),
     new OccurenceOrderPlugin(true),
     new CommonsChunkPlugin({
-      name: ['vendor', 'polyfills'],
+      name: ['main', 'vendor', 'polyfills'],
       filename: '[name].bundle.js',
       minChunks: Infinity
     }),
@@ -138,11 +138,11 @@ module.exports = {
       }
     ]),
     // generating html
-    new HtmlWebpackPlugin({ template: 'src/index.html' }),
+    new HtmlWebpackPlugin({ template: 'src/index.html', chunksSortMode: 'none' }),
     new DefinePlugin({
       'ENV': JSON.stringify(metadata.ENV),
-      'HMR': HMR
-    })
+      'HMR': false
+    }),
     new UglifyJsPlugin({
       // to debug prod builds uncomment //debug lines and comment //prod lines
 
