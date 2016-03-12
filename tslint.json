@@ -8,7 +8,7 @@
     "host-parameter-decorator": true,
     "input-parameter-decorator": true,
     "output-parameter-decorator": true,
-    "attribute-parameter-decorator": true,
+    "attribute-parameter-decorator": false,
     "input-property-directive": true,
     "output-property-directive": true,
 
