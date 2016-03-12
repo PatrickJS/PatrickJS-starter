@@ -87,7 +87,6 @@ module.exports = {
         },
         exclude: [
           /\.(spec|e2e)\.ts$/,
-          helpers.root('node_modules')
         ]
       },
 
@@ -95,14 +94,12 @@ module.exports = {
       {
         test: /\.json$/,
         loader: 'json-loader',
-        exclude: [ helpers.root('node_modules') ]
       },
 
       // Support for CSS as raw text
       {
         test: /\.css$/,
         loader: 'raw-loader',
-        exclude: [ helpers.root('node_modules') ]
       },
 
       // support for .html as raw text
@@ -142,12 +139,10 @@ module.exports = {
     // generating html
     new HtmlWebpackPlugin({ template: 'src/index.html' }),
     new DefinePlugin({
-      // Environment helpers
-      'process.env': {
-        'ENV': JSON.stringify(metadata.ENV),
-        'NODE_ENV': JSON.stringify(metadata.ENV)
-      }
-    }),
+
+      'ENV': JSON.stringify(metadata.ENV),
+      'HMR': HMR
+    })
     new UglifyJsPlugin({
       // to debug prod builds uncomment //debug lines and comment //prod lines
 

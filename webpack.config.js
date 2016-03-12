@@ -52,16 +52,16 @@ module.exports = {
     ],
     loaders: [
       // Support for .ts files.
-      { test: /\.ts$/, loader: 'awesome-typescript-loader', exclude: [ /\.(spec|e2e)\.ts$/, helpers.root('node_modules') ] },
+      { test: /\.ts$/, loader: 'awesome-typescript-loader', exclude: [ /\.(spec|e2e)\.ts$/ ] },
 
       // Support for *.json files.
-      { test: /\.json$/,  loader: 'json-loader', exclude: [ helpers.root('node_modules') ] },
+      { test: /\.json$/,  loader: 'json-loader' },
 
       // Support for CSS as raw text
-      { test: /\.css$/,   loader: 'raw-loader', exclude: [ helpers.root('node_modules') ] },
+      { test: /\.css$/,   loader: 'raw-loader' },
 
       // support for .html as raw text
-      { test: /\.html$/,  loader: 'raw-loader', exclude: [ helpers.root('src/index.html'), helpers.root('node_modules') ] }
+      { test: /\.html$/,  loader: 'raw-loader', exclude: [ helpers.root('src/index.html') ] }
 
     ]
   },
@@ -74,13 +74,10 @@ module.exports = {
     new CopyWebpackPlugin([ { from: 'src/assets', to: 'assets' } ]),
     // generating html
     new HtmlWebpackPlugin({ template: 'src/index.html' }),
-    // replace
+    // Environment helpers
     new webpack.DefinePlugin({
-      'process.env': {
-        'ENV': JSON.stringify(metadata.ENV),
-        'NODE_ENV': JSON.stringify(metadata.ENV),
-        'HMR': HMR
-      }
+      'ENV': JSON.stringify(metadata.ENV),
+      'HMR': HMR
     })
   ],
 
@@ -103,7 +100,7 @@ module.exports = {
   },
   node: {
     global: 'window',
-    progress: false,
+    process: HMR ? true : false,
     crypto: 'empty',
     module: false,
     clearImmediate: false,
