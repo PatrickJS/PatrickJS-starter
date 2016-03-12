@@ -2,9 +2,9 @@
   <span x-large>Your Content Here</span>
   <input type="text" [value]="data.value" (input)="data.value = $event.target.value" autofocus>
   <!--
-    Rather than wiring up two-way data-binding ourselves
+    Rather than wiring up two-way data-binding ourselves with [value] and (input)
     we can use Angular's [(ngModel)] syntax
-    <input type="text" [(ngModel)]="title.value">
+    <input type="text" [(ngModel)]="data.value" autofocus>
   -->
 
   <pre>this.data = {{ data | json }}</pre>
