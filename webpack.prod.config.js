@@ -42,7 +42,7 @@ module.exports = {
   entry: {
     'polyfills': './src/polyfills.ts',
     'vendor': './src/vendor.ts',
-    'main': './src/main.ts'
+    'app': './src/main.ts'
   },
 
   // Config for our build files
