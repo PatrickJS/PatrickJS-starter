@@ -44,13 +44,14 @@
   },
   "dependencies": {
     "angular2": "2.0.0-beta.9",
-    "es6-promise": "^3.1.2",
-    "es6-shim": "^0.33.3",
-    "es7-reflect-metadata": "^1.6.0",
+    "core-js": "^2.1.5",
     "rxjs": "5.0.0-beta.2",
     "zone.js": "0.5.15"
   },
   "devDependencies": {
+    "es6-promise": "^3.1.2",
+    "es6-shim": "^0.33.3",
+    "es7-reflect-metadata": "^1.6.0",
     "awesome-typescript-loader": "^0.16.0-rc.0",
     "compression-webpack-plugin": "^0.3.0",
     "copy-webpack-plugin": "^1.1.1",
