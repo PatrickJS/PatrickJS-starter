@@ -10,7 +10,7 @@ var ENV = process.env.ENV = process.env.NODE_ENV = 'test';
  * Config
  */
 module.exports = {
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
   resolve: {
     extensions: ['', '.ts', '.js']
   },
@@ -68,7 +68,7 @@ module.exports = {
   ],
   node: {
     global: 'window',
-    progress: false,
+    process: false,
     crypto: 'empty',
     module: false,
     clearImmediate: false,

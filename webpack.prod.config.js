@@ -42,7 +42,7 @@ module.exports = {
   entry: {
     'polyfills': './src/polyfills.ts',
     'vendor': './src/vendor.ts',
-    'app': './src/main.ts'
+    'main': './src/main.ts'
   },
 
   // Config for our build files
@@ -228,6 +228,7 @@ module.exports = {
     resourcePath: 'src',
   },
 
+  //Needed to workaround Angular 2's html syntax => #id [bind] (event) *ngFor
   htmlLoader: {
     minimize: true,
     removeAttributeQuotes: false,
@@ -235,10 +236,11 @@ module.exports = {
     customAttrSurround: [ [/#/, /(?:)/], [/\*/, /(?:)/], [/\[?\(?/, /(?:)/] ],
     customAttrAssign: [ /\)?\]?=/ ]
   },
+
   // don't use devServer for production
   node: {
     global: 'window',
-    progress: false,
+    process: false,
     crypto: 'empty',
     module: false,
     clearImmediate: false,
