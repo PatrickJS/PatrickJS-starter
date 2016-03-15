@@ -270,6 +270,8 @@ see [typings/registry](https://github.com/typings/registry)
  * please see [How to include or create custom type definitions](https://github.com/AngularClass/angular2-webpack-starter/wiki/How-to-include-or-create-custom-type-definitions) and [custom-typings.d.ts](https://github.com/AngularClass/angular2-webpack-starter/blob/master/src/custom-typings.d.ts)
 * How do I async load a component?
  * see wiki [How-do-I-async-load-a-component-with-AsyncRoute](https://github.com/AngularClass/angular2-webpack-starter/wiki/How-do-I-async-load-a-component-with-AsyncRoute)
+* Error: Cannot find module 'tapable'
+ * Remove `node_modules/` and run `npm install` again
 
 # Support, Questions, or Feedback
 > Contact us anytime for anything about this repo or Angular 2
