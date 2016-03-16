@@ -33,6 +33,7 @@ This seed repo serves as an Angular 2 starter for anyone looking to get up and r
 * Hot Module Replacement with Webpack
 
 ### Quick start
+**Make sure you have node version >= 4.0**
 > Clone/Download the repo then edit `app.ts` inside [`/src/app/app.ts`](/src/app/app.ts)
 
 ```bash
@@ -44,7 +45,7 @@ git clone --depth 1 https://github.com/angularclass/angular2-webpack-starter.git
 cd angular2-webpack-starter
 
 # add required global libraries
-npm install typings webpack-dev-server -g
+npm install typings webpack-dev-server rimraf webpack -g
 
 # install the repo with npm
 npm install
