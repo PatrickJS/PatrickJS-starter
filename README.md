@@ -273,7 +273,7 @@ see [typings/registry](https://github.com/typings/registry)
 * How do I async load a component?
  * see wiki [How-do-I-async-load-a-component-with-AsyncRoute](https://github.com/AngularClass/angular2-webpack-starter/wiki/How-do-I-async-load-a-component-with-AsyncRoute)
 * Error: Cannot find module 'tapable'
- * Remove `node_modules/` and run `npm install` again
+ * Remove `node_modules/` and run `npm cache clean` then `npm install`
 * What about Webpack 2?
  * If you're looking for Webpack 2 version then see the [experimental version](https://github.com/gdi2290/angular2-webpack2-starter) that will be merged soon.
 
