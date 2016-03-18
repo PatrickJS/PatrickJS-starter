@@ -7,7 +7,7 @@ import {XLarge} from './directives/x-large';
 @Component({
   // The selector is what angular internally uses
   // for `document.querySelectorAll(selector)` in our index.html
-  // where, in this case, selector is the string 'app'
+  // where, in this case, selector is the string 'home'
   selector: 'home',  // <home></home>
   // We need to tell Angular's Dependency Injection which providers are in our app.
   providers: [
@@ -16,7 +16,6 @@ import {XLarge} from './directives/x-large';
   // We need to tell Angular's compiler which directives are in our template.
   // Doing so will allow Angular to attach our behavior to an element
   directives: [
-    ...FORM_DIRECTIVES,
     XLarge
   ],
   // We need to tell Angular's compiler which custom pipes are in our template.
