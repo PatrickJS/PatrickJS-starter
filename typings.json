@@ -1,9 +1,11 @@
 {
   "dependencies": {
-    "es6-promise": "github:typed-typings/npm-es6-promise#fb04188767acfec1defd054fc8024fafa5cd4de7"
+    "es6-promise": "github:typed-typings/npm-es6-promise#fb04188767acfec1defd054fc8024fafa5cd4de7",
+    "zone.js": "github:gdi2290/typed-zone.js/lib/zone.d.ts#225aa313388bdf78b18ed9f0b29f93a395146229"
   },
   "devDependencies": {},
   "ambientDependencies": {
+    "zone.js": "github:gdi2290/typed-zone.js/lib/zone.d.ts#225aa313388bdf78b18ed9f0b29f93a395146229",
     "angular-protractor": "github:DefinitelyTyped/DefinitelyTyped/angular-protractor/angular-protractor.d.ts#64b25f63f0ec821040a5d3e049a976865062ed9d",
     "es6-shim": "github:DefinitelyTyped/DefinitelyTyped/es6-shim/es6-shim.d.ts#6697d6f7dadbf5773cb40ecda35a76027e0783b2",
     "hammerjs": "github:DefinitelyTyped/DefinitelyTyped/hammerjs/hammerjs.d.ts#74a4dfc1bc2dfadec47b8aae953b28546cb9c6b7",
