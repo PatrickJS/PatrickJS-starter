@@ -23,6 +23,19 @@ export class About {
     var mockData = require('assets/mock-data/mock-data.json');
     console.log('mockData', mockData);
     // if you're working with mock data you can also use http.get('assets/mock-data/mock-data.json')
+    this.asyncDataWithWebpack();
+  }
+  asyncDataWithWebpack() {
+    // you can also async load mock data with 'es6-promise-loader'
+    var asyncMockData = require('es6-promise!assets/mock-data/mock-data.json');
+    setTimeout(() => {
+
+      let asyncData = asyncMockData();
+      asyncData.then(json => {
+        console.log('async mockData', json);
+      });
+      
+    });
   }
 
 }
