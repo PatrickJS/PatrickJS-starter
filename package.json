@@ -43,6 +43,14 @@
     "postversion": "git push && git push --tags"
   },
   "dependencies": {
+    "@angular2-material/button": "^2.0.0-alpha.1",
+    "@angular2-material/card": "^2.0.0-alpha.1",
+    "@angular2-material/checkbox": "^2.0.0-alpha.1",
+    "@angular2-material/core": "^2.0.0-alpha.1",
+    "@angular2-material/progress-circle": "^2.0.0-alpha.1",
+    "@angular2-material/radio": "^2.0.0-alpha.1",
+    "@angular2-material/sidenav": "^2.0.0-alpha.1",
+    "@angular2-material/toolbar": "^2.0.0-alpha.1",
     "angular2": "2.0.0-beta.11",
     "core-js": "^2.1.5",
     "rxjs": "5.0.0-beta.2",
