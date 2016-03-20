@@ -20,10 +20,8 @@
     "typings/browser.d.ts"
   ],
   "awesomeTypescriptLoaderOptions": {
-    "useCache": true,
     "resolveGlobs": true,
-    "forkChecker": true,
-    "cacheDirectory": "node_modules/.awesome-typescript-loader-cache"
+    "forkChecker": true
   },
   "compileOnSave": false,
   "buildOnSave": false,
