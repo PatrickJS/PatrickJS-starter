@@ -64,7 +64,7 @@ module.exports = {
 
     'polyfills': './src/polyfills.ts',
     'vendor': './src/vendor.ts',
-    'main': './src/main.ts'
+    'main': './src/main.browser.ts',
 
   },
 
@@ -129,7 +129,11 @@ module.exports = {
       // Extracts SourceMaps for source files that as added as sourceMappingURL comment.
       //
       // See: https://github.com/webpack/source-map-loader
-      {test: /\.js$/, loader: 'source-map-loader', exclude: [helpers.root('node_modules/rxjs')]}
+      {test: /\.js$/, loader: 'source-map-loader', exclude: [
+        // souremap problems with these packages
+        helpers.root('node_modules/rxjs'),
+        helpers.root('node_modules/@angular2-material')
+      ]}
 
     ],
 
@@ -161,7 +165,7 @@ module.exports = {
       // Returns file content as string
       //
       // See: https://github.com/webpack/raw-loader
-      {test: /\.html$/, loader: 'raw-loader', exclude: [helpers.root('src/index.html')]}
+      {test: /\.html$/, loader: 'raw-loader', exclude: [helpers.root('src/index.html')]},
 
     ]
 
