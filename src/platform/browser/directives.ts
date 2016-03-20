@@ -13,7 +13,7 @@ import {MdSpinner} from '@angular2-material/progress-circle';
 import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
 
 // platform common directives
-import {RouterActive} from '../common/router-active';
+import {RouterActive} from './router-active';
 
 // application_directives: directives that are global through out the application
 export const APPLICATION_DIRECTIVES = [
