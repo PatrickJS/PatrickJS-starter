@@ -2,36 +2,33 @@
  * Providers provided by Angular
  */
 import {bootstrap} from 'angular2/platform/browser';
-import {provide, enableProdMode} from 'angular2/core';
 
 /*
  * App Component
  * our top level component that holds all of our components
  */
 import {DIRECTIVES, PIPES, PROVIDERS} from './platform/browser';
+import {ENV_PROVIDERS} from './platform/environment';
 import {App} from './app/app';
-
-
-if ('production' === ENV) {
-  // Production
-  enableProdMode();
-} else {
-  // Development
-
-}
 
 /*
  * Bootstrap our Angular app with a top level component `App` and inject
  * our Services and Providers into Angular's dependency injection
  */
 export function main() {
+
   return bootstrap(App, [
+    ...ENV_PROVIDERS,
     ...PROVIDERS,
-    ...PIPES,
-    ...PROVIDERS
+    ...DIRECTIVES,
+    ...PIPES
   ])
   .catch(err => console.error(err));
+
 }
+
+
+
 
 
 /*
