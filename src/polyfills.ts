@@ -8,7 +8,7 @@
 
 // Prefer CoreJS over the polyfills above
 import 'core-js';
-import 'zone.js'; //  beta.10 problem
+import 'zone.js/lib/browser/browser'; //  beta.10 and beta.11 problem
 
 if ('production' === ENV) {
   // Production
