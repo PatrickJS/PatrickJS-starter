@@ -11,6 +11,7 @@ var helpers = require('./helpers');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
+var WriteFilePlugin = require('write-file-webpack-plugin');
 
 /**
  * Webpack Constants
@@ -47,7 +48,7 @@ module.exports = {
   //
   // See: http://webpack.github.io/docs/configuration.html#devtool
   // See: https://github.com/webpack/docs/wiki/build-performance#sourcemaps
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'cheap-module-inline-source-map',
 
   // Cache generated modules and chunks to improve performance for multiple incremental builds.
   // This is enabled by default in watch mode.
@@ -109,7 +110,28 @@ module.exports = {
     // inside the output.path directory.
     //
     // See: http://webpack.github.io/docs/configuration.html#output-chunkfilename
-    chunkFilename: '[id].chunk.js'
+    chunkFilename: '[id].chunk.js',
+    
+    // Filename template string of function for the sources
+    // array in a generated SourceMap.
+    //
+    // See: http://webpack.github.io/docs/configuration.html#output-devtoolmodulefilenametemplate
+    devtoolModuleFilenameTemplate: function (info) {
+      var resourcePath = info.absoluteResourcePath;
+      if (resourcePath.indexOf(__dirname) !== 0) {
+        // Normalize resouce path if it is not an absolute path
+        // (e.g. 'node_modules/rxjs/Observable.js')
+        resourcePath = helpers.root(resourcePath);
+      }
+      if (resourcePath.charAt(0) === '/') {
+        // Mac OS X absolute path has a leading slash already
+        // https://github.com/Microsoft/vscode-chrome-debug/issues/63#issuecomment-163524778
+        return 'file://' + resourcePath;
+      } else {
+        return 'file:///' + resourcePath;
+      }
+    }
+    
 
   },
 
@@ -225,7 +247,17 @@ module.exports = {
     //
     // See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
     // NOTE: when adding more properties make sure you include them in custom-typings.d.ts
-    new webpack.DefinePlugin({'ENV': JSON.stringify(METADATA.ENV), 'HMR': HMR})
+    new webpack.DefinePlugin({'ENV': JSON.stringify(METADATA.ENV), 'HMR': HMR}),
+
+    // Plugin: Write File Plugin
+    // Description: Write bundle files for debugging.
+    // Forces webpack-dev-server program to write bundle files to the file system.
+    //
+    // For use in conjuction with Visual Code debugger.
+    //
+    // See: https://github.com/AngularClass/angular2-webpack-starter/issues/297#issuecomment-193989148
+    // See: https://github.com/gajus/write-file-webpack-plugin
+    new WriteFilePlugin()
 
   ],
 
@@ -252,7 +284,8 @@ module.exports = {
     watchOptions: {
       aggregateTimeout: 300,
       poll: 1000
-    }
+    },
+    outputPath: helpers.root('dist')
   },
 
   // Include polyfills or mocks for various node stuff
