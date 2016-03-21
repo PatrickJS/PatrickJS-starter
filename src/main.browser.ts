@@ -2,26 +2,37 @@
  * Providers provided by Angular
  */
 import {bootstrap} from 'angular2/platform/browser';
-
+import {provideInitialState, hotModuleReplacement} from 'angular2-hmr';
 /*
- * App Component
- * our top level component that holds all of our components
- */
+* Platform and Environment
+* our providers/directives/pipes
+*/
 import {DIRECTIVES, PIPES, PROVIDERS} from './platform/browser';
 import {ENV_PROVIDERS} from './platform/environment';
+
+/*
+* App Component
+* our top level component that holds all of our components
+*/
+import {AppState} from './app/app.service';
 import {App} from './app/app';
 
 /*
  * Bootstrap our Angular app with a top level component `App` and inject
  * our Services and Providers into Angular's dependency injection
  */
-export function main() {
+export function main(initialState = {}) {
+  let APP_PROVIDERS = [
+    provideInitialState(initialState),
+    AppState
+  ];
 
   return bootstrap(App, [
     ...ENV_PROVIDERS,
     ...PROVIDERS,
     ...DIRECTIVES,
-    ...PIPES
+    ...PIPES,
+    ...APP_PROVIDERS,
   ])
   .catch(err => console.error(err));
 
@@ -43,24 +54,10 @@ export function main() {
  * Hot Module Reload
  * experimental version by @gdi2290
  */
-
-function bootstrapDomReady() {
-  // bootstrap after document is ready
-  return document.addEventListener('DOMContentLoaded', main);
-}
-
-if ('development' === ENV) {
+if ('development' === ENV && HMR === true) {
   // activate hot module reload
-  if (HMR) {
-    if (document.readyState === 'complete') {
-      main();
-    } else {
-      bootstrapDomReady();
-    }
-    module.hot.accept();
-  } else {
-    bootstrapDomReady();
-  }
+  hotModuleReplacement(main, module);
 } else {
-  bootstrapDomReady();
+  // bootstrap when documetn is ready
+  document.addEventListener('DOMContentLoaded', () => main());
 }
