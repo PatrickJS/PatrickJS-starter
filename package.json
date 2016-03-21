@@ -103,7 +103,8 @@
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1",
     "webpack-md5-hash": "^0.0.5",
-    "write-file-webpack-plugin": "^3.1.8"
+    "write-file-webpack-plugin": "^3.1.8",
+    "manifest-webpack-plugin": "^0.2.0"
   },
   "repository": {
     "type": "git",
