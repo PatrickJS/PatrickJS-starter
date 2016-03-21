@@ -36,7 +36,10 @@ module.exports = {
     // An array of extensions that should be used to resolve modules.
     //
     // See: http://webpack.github.io/docs/configuration.html#resolve-extensions
-    extensions: ['', '.ts', '.js']
+    extensions: ['', '.ts', '.js'],
+    
+    // Make sure root is src
+    root: helpers.root('src'),
 
   },
 
@@ -59,7 +62,11 @@ module.exports = {
       // Extracts SourceMaps for source files that as added as sourceMappingURL comment.
       //
       // See: https://github.com/webpack/source-map-loader
-      {test: /\.js$/, loader: "source-map-loader", exclude: [helpers.root('node_modules/rxjs')]}
+      {test: /\.js$/, loader: "source-map-loader", exclude: [
+        // these packages have problems with their sourcemaps
+        helpers.root('node_modules/rxjs'),
+        helpers.root('node_modules/@angular2-material')
+      ]}
 
     ],
 

@@ -1,11 +1,15 @@
 <div>
   <span x-large>Your Content Here</span>
-  <input type="text" [value]="data.value" (input)="data.value = $event.target.value" autofocus>
+  <form (ngSubmit)="submitState(localState.value)">
+    <input type="text" [value]="localState.value" (input)="localState.value = $event.target.value" autofocus>
+    <button>Submit Value</button>
+  </form>
   <!--
     Rather than wiring up two-way data-binding ourselves with [value] and (input)
     we can use Angular's [(ngModel)] syntax
-    <input type="text" [(ngModel)]="data.value" autofocus>
+    <input type="text" [(ngModel)]="localState.value" autofocus>
   -->
 
-  <pre>this.data = {{ data | json }}</pre>
+  <pre>this.localState = {{ localState | json }}</pre>
+
 </div>
