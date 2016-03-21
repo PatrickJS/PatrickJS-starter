@@ -1,3 +1,7 @@
+/*
+ * These are globally available directives in any template
+ */
+
 import {provide, PLATFORM_DIRECTIVES} from 'angular2/core';
 
 // Angular 2 Router
