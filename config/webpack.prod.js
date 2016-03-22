@@ -19,6 +19,8 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var WebpackMd5Hash = require('webpack-md5-hash');
 var ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
+var path = require('path');
+var Manifest = require('manifest-webpack-plugin');
 
 /**
  * Webpack Constants
@@ -354,7 +356,13 @@ module.exports = {
       algorithm: helpers.gzipMaxLevel,
       regExp: /\.css$|\.html$|\.js$|\.map$/,
       threshold: 2 * 1024
-    })
+    }),
+    
+    // Plugin: manifest-webpack-plugin
+    // Description: webpack plugin for generating asset manifests
+    //
+    // See: https://www.npmjs.com/package/manifest-webpack-plugin
+    new Manifest(path.join('dist', 'manifest.json'))
 
   ],
 
