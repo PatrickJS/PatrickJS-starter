@@ -6,7 +6,11 @@ var helpers = require('./helpers');
 var webpackMerge = require('webpack-merge'); //Used to merge webpack configs
 var commonConfig = require('./webpack.common.js'); //The settings that are common to prod and dev
 
-
+/**
+ * Webpack configuration
+ *
+ * See: http://webpack.github.io/docs/configuration.html#cli
+ */
 module.exports = webpackMerge(commonConfig, {
   // Switch loaders to debug mode.
   //

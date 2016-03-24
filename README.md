@@ -56,6 +56,19 @@ npm start
 ```
 go to [http://0.0.0.0:3000](http://0.0.0.0:3000) or [http://localhost:3000](http://localhost:3000) in your browser
 
+# Nitrous Quickstart
+
+You can quickly create a free development environment to get started using this
+starter kit in the cloud on [Nitrous](https://www.nitrous.io/):
+
+<a href="https://www.nitrous.io/quickstart?repo=https://github.com/nitrous-io/angular2-webpack-starter">
+  <img src="https://nitrous-image-icons.s3.amazonaws.com/quickstart.png" alt="Nitrous Quickstart" width=142 height=34>
+</a>
+
+Simply run `HOST=0.0.0.0 npm start` from the terminal inside of
+`~/code/angular2-webpack-starter` and access your site via the "Preview > 3000"
+link in the IDE.
+
 # Table of Contents
 * [File Structure](#file-structure)
 * [Getting Started](#getting-started)
