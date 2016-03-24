@@ -28,8 +28,8 @@ export function main(initialState = {}) {
   ];
 
   return bootstrap(App, [
-    ...ENV_PROVIDERS,
     ...PROVIDERS,
+    ...ENV_PROVIDERS,
     ...DIRECTIVES,
     ...PIPES,
     ...APP_PROVIDERS,
