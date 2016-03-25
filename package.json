@@ -51,10 +51,10 @@
     "@angular2-material/radio": "^2.0.0-alpha.1",
     "@angular2-material/sidenav": "^2.0.0-alpha.1",
     "@angular2-material/toolbar": "^2.0.0-alpha.1",
-    "angular2": "2.0.0-beta.11",
+    "angular2": "2.0.0-beta.12",
     "core-js": "^2.1.5",
     "rxjs": "5.0.0-beta.2",
-    "zone.js": "0.6.4"
+    "zone.js": "0.6.6"
   },
   "devDependencies": {
     "angular2-hmr": "~0.2.2",
