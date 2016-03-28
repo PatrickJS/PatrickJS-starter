@@ -53,6 +53,9 @@ npm install
 
 # start the server
 npm start
+
+# use Hot Module Replacement
+npm run server:dev:hmr
 ```
 go to [http://0.0.0.0:3000](http://0.0.0.0:3000) or [http://localhost:3000](http://localhost:3000) in your browser
 
@@ -295,6 +298,8 @@ see [typings/registry](https://github.com/typings/registry)
  * Remove `node_modules/` and run `npm cache clean` then `npm install`
 * What about Webpack 2?
  * If you're looking for Webpack 2 version then see the [experimental version](https://github.com/gdi2290/angular2-webpack2-starter) that will be merged soon.
+* How do I turn on Hot Module Replacement
+ * Run `npm run server:dev:hmr`
 
 # Support, Questions, or Feedback
 > Contact us anytime for anything about this repo or Angular 2
