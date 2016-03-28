@@ -6,9 +6,17 @@
   "homepage": "https://github.com/angularclass/angular2-webpack-starter",
   "license": "MIT",
   "scripts": {
+    "rimraf": "rimraf",
+    "tslint": "tslint",
+    "typedoc": "typedoc",
+    "typings": "typings",
+    "webpack": "webpack",
+    "webpack-dev-server": "webpack-dev-server",
+    "webdriver-manager": "webdriver-manager",
+    "protractor": "protractor",
 
-    "clean": "npm cache clean && rimraf node_modules doc typings coverage dist",
-      "clean:dist": "rimraf dist",
+    "clean": "npm cache clean && npm run rimraf -- node_modules doc typings coverage dist",
+      "clean:dist": "npm run rimraf -- dist",
         "preclean:install": "npm run clean",
       "clean:install": "npm set progress=false && npm install",
         "preclean:start": "npm run clean",
@@ -22,36 +30,34 @@
 
     "build": "npm run build:dev",
         "prebuild:dev": "npm run clean:dist",
-      "build:dev": "node --max-old-space-size=4096 webpack --config config/webpack.dev.js --progress --profile --colors --display-error-details --display-cached",
+      "build:dev": "node --max-old-space-size=4096 node_modules/.bin/webpack --config config/webpack.dev.js --progress --profile --colors --display-error-details --display-cached",
         "prebuild:prod": "npm run clean:dist",
-      "build:prod": "node --max-old-space-size=4096 webpack --config config/webpack.prod.js  --progress --profile --colors --display-error-details --display-cached --bail",
+      "build:prod": "node --max-old-space-size=4096 node_modules/.bin/webpack --config config/webpack.prod.js  --progress --profile --colors --display-error-details --display-cached --bail",
 
     "server": "npm run server:dev",
-      "server:dev": "node --max-old-space-size=4096 webpack-dev-server --config config/webpack.dev.js --inline --progress --profile --colors --watch --display-error-details --display-cached --content-base src/",
+      "server:dev": "node --max-old-space-size=4096 node_modules/.bin/webpack-dev-server --config config/webpack.dev.js --inline --progress --profile --colors --watch --display-error-details --display-cached --content-base src/",
       "server:dev:hmr": "npm run server:dev -- --hot",
       "server:prod": "http-server dist --cors",
 
-    "webdriver:update": "webdriver-manager update",
-    "webdriver:start": "webdriver-manager start",
+    "webdriver:update": "npm run webdriver-manager update",
+    "webdriver:start": "npm run webdriver-manager start",
 
-    "lint": "tslint 'src/**/*.ts'",
+    "lint": "npm run tslint 'src/**/*.ts'",
 
       "pree2e": "npm run webdriver:update -- --standalone",
-    "e2e": "protractor",
+    "e2e": "npm run protractor",
       "e2e:live": "npm run e2e -- --elementExplorer",
 
     "test": "node --max-old-space-size=4096 karma start",
 
     "ci": "npm run e2e && npm run test",
 
-    "docs": "typedoc --options typedoc.json --exclude '**/*.spec.ts' ./src/",
+    "docs": "npm run typedoc -- --options typedoc.json --exclude '**/*.spec.ts' ./src/",
 
     "start": "npm run server:dev",
       "start:hmr": "npm run server:dev:hmr",
 
-    "typings-install": "typings install",
-
-    "postinstall": "npm run typings-install",
+    "postinstall": "npm run typings -- install",
 
       "preversion": "npm test",
     "version": "npm run build",
