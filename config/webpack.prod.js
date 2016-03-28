@@ -237,7 +237,7 @@ module.exports = {
     //
     // See: https://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin
     // See: https://github.com/webpack/docs/wiki/optimization#multi-page-app
-    new CommonsChunkPlugin({name: ['main', 'vendor', 'polyfills'], minChunks: Infinity}),
+    new CommonsChunkPlugin({name: helpers.reverse(['polyfills', 'vendor', 'main']), minChunks: Infinity}),
 
     // Plugin: CopyWebpackPlugin
     // Description: Copy files and directories in webpack.
@@ -253,7 +253,7 @@ module.exports = {
     // which changes every compilation.
     //
     // See: https://github.com/ampedandwired/html-webpack-plugin
-    new HtmlWebpackPlugin({template: 'src/index.html', chunksSortMode: 'none'}),
+    new HtmlWebpackPlugin({template: 'src/index.html', chunksSortMode: helpers.packageSort(['polyfills', 'vendor', 'main'])}),
 
     // Plugin: DefinePlugin
     // Description: Define free variables.
