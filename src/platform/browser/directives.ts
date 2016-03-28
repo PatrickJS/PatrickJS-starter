@@ -22,14 +22,10 @@ import {ROUTER_DIRECTIVES} from 'angular2/router';
 //   ...MD_CARD_DIRECTIVES
 // ];
 
-// platform common directives
-import {RouterActive} from './router-active';
-
 // application_directives: directives that are global through out the application
 export const APPLICATION_DIRECTIVES = [
   ...ROUTER_DIRECTIVES,
   // ...MATERIAL_DIRECTIVES,
-  RouterActive
 ];
 
 export const DIRECTIVES = [

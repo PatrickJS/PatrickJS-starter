@@ -6,6 +6,7 @@ import {RouteConfig, Router} from 'angular2/router';
 
 import {Home} from './home';
 import {AppState} from './app.service';
+import {RouterActive} from './router-active';
 
 /*
  * App Component
@@ -15,8 +16,11 @@ import {AppState} from './app.service';
   selector: 'app',
   pipes: [ ],
   providers: [ ],
-  directives: [ ],
+  directives: [ RouterActive ],
   styles: [`
+    h1 {
+      font-family: Arial, Helvetica, sans-serif
+    }
     nav ul {
       display: inline;
       list-style-type: none;

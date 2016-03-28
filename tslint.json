@@ -1,6 +1,6 @@
 {
   "rulesDirectory": [
-    "node_modules/ng2lint/dist/src"
+    "node_modules/codelyzer/dist/src"
   ],
   "rules": {
     "component-selector-name": [true, "kebab-case"],
