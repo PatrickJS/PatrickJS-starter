@@ -27,10 +27,10 @@ const METADATA = {
 };
 
 /**
-* Webpack configuration
-*
-* See: http://webpack.github.io/docs/configuration.html#cli
-*/
+ * Webpack configuration
+ *
+ * See: http://webpack.github.io/docs/configuration.html#cli
+ */
 module.exports = {
 
   // Static metadata for index.html
@@ -180,7 +180,7 @@ module.exports = {
     // See: https://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin
     // See: https://github.com/webpack/docs/wiki/optimization#multi-page-app
     new webpack.optimize.CommonsChunkPlugin({
-      name: ['main', 'vendor', 'polyfills'],
+      name: helpers.reverse(['polyfills', 'vendor', 'main']),
       minChunks: Infinity
     }),
 
