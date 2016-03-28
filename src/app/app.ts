@@ -17,6 +17,9 @@ import {AppState} from './app.service';
   providers: [ ],
   directives: [ ],
   styles: [`
+    h1 {
+      font-family: Arial, Helvetica, sans-serif
+    }
     nav ul {
       display: inline;
       list-style-type: none;

@@ -10,7 +10,16 @@ console.log('`About` component loaded asynchronously');
 
 @Component({
   selector: 'about',
-  template: `patrick@AngularClass.com`
+  styles: [`
+    h1 {
+      font-family: Arial, Helvetica, sans-serif
+    }
+  `],
+  template: `
+    <h1>
+      patrick@AngularClass.com
+    </h1>
+  `
 })
 export class About {
   constructor() {
