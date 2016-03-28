@@ -78,6 +78,7 @@ link in the IDE.
     * [Dependencies](#dependencies)
     * [Installing](#installing)
     * [Running the app](#running-the-app)
+* [Configuration](#configuration)
 * [Contributing](#contributing)
 * [TypeScript](#typescript)
 * [Typings](#typings)
@@ -209,6 +210,8 @@ npm run webdriver:start
 npm run e2e:live
 ```
 
+# Configuration
+Configuration files live in `config/` we are currently using webpack, karma, and protractor for different stages of your application
 
 # Contributing
 You can include more examples as components but they must introduce a new concept such as `Home` component (separate folders), and Todo (services). I'll accept pretty much everything so feel free to open a Pull-Request
