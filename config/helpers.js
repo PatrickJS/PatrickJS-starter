@@ -61,9 +61,7 @@ function packageSort(packages) {
 }
 
 function reverse(arr) {
-  var wat = arr.reverse();
-  console.log('wat', wat)
-  return wat;
+  return arr.reverse();
 }
 
 exports.reverse = reverse;
