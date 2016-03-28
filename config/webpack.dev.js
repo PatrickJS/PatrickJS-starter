@@ -7,6 +7,23 @@ var webpackMerge = require('webpack-merge'); //Used to merge webpack configs
 var commonConfig = require('./webpack.common.js'); //The settings that are common to prod and dev
 
 /**
+ * Webpack Plugins
+ */
+var DefinePlugin = require('webpack/lib/DefinePlugin');
+
+/**
+ * Webpack Constants
+ */
+const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
+const HMR = helpers.hasProcessFlag('hot');
+const METADATA = webpackMerge(commonConfig.metadata, {
+  host: 'localhost',
+  port: 3000,
+  ENV: ENV,
+  HMR: HMR
+});
+
+/**
  * Webpack configuration
  *
  * See: http://webpack.github.io/docs/configuration.html#cli
@@ -53,6 +70,21 @@ module.exports = webpackMerge(commonConfig, {
 
   },
 
+  plugins: [
+    // Plugin: DefinePlugin
+    // Description: Define free variables.
+    // Useful for having development builds with debug logging or adding global constants.
+    //
+    // Environment helpers
+    //
+    // See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
+    // NOTE: when adding more properties make sure you include them in custom-typings.d.ts
+    new DefinePlugin({
+      'ENV': JSON.stringify(METADATA.ENV),
+      'HMR': METADATA.HMR
+    }),
+  ],
+
   // Static analysis linter for TypeScript advanced options configuration
   // Description: An extensible linter for the TypeScript language.
   //
@@ -70,8 +102,8 @@ module.exports = webpackMerge(commonConfig, {
   //
   // See: https://webpack.github.io/docs/webpack-dev-server.html
   devServer: {
-    port: commonConfig.metadata.port,
-    host: commonConfig.metadata.host,
+    port: METADATA.port,
+    host: METADATA.host,
     historyApiFallback: true,
     watchOptions: {
       aggregateTimeout: 300,
