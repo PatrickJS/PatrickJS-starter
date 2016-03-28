@@ -9,7 +9,7 @@ import {
 import {WebpackState} from 'angular2-hmr';
 
 // Load the implementations that should be tested
-import {App} from './app';
+import {App} from './app.component';
 import {AppState} from './app.service';
 
 describe('App', () => {
