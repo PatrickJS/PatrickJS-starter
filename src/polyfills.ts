@@ -8,7 +8,7 @@
 
 // Prefer CoreJS over the polyfills above
 import 'core-js';
-require('zone.js/lib/zone');
+require('zone.js/dist/zone');
 
 if ('production' === ENV) {
   // Production
