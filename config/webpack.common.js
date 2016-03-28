@@ -15,15 +15,9 @@ var ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 /**
  * Webpack Constants
  */
-const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
-const HMR = helpers.hasProcessFlag('hot');
 const METADATA = {
   title: 'Angular2 Webpack Starter by @gdi2990 from @AngularClass',
-  baseUrl: '/',
-  host: 'localhost',
-  port: 3000,
-  ENV: ENV,
-  HMR: HMR
+  baseUrl: '/'
 };
 
 /**
@@ -204,19 +198,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       chunksSortMode: 'none'
-    }),
-
-    // Plugin: DefinePlugin
-    // Description: Define free variables.
-    // Useful for having development builds with debug logging or adding global constants.
-    //
-    // Environment helpers
-    //
-    // See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
-    // NOTE: when adding more properties make sure you include them in custom-typings.d.ts
-    new webpack.DefinePlugin({
-      'ENV': JSON.stringify(METADATA.ENV),
-      'HMR': HMR
     })
 
   ],
