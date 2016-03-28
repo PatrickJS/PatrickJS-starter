@@ -170,6 +170,11 @@ npm run build:dev
 npm run build:prod
 ```
 
+### hot module replacement
+```bash
+npm run server:dev:hmr
+```
+
 ### watch and build files
 ```bash
 npm run watch
