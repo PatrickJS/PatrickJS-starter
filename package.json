@@ -47,7 +47,7 @@
     "docs": "typedoc --options typedoc.json --exclude '**/*.spec.ts' ./src/",
 
     "start": "npm run server:dev",
-      "start:hmr": "npm run server:dev/hmr",
+      "start:hmr": "npm run server:dev:hmr",
 
     "typings-install": "typings install",
 
