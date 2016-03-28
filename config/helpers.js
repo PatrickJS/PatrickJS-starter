@@ -1,5 +1,4 @@
 var path = require('path');
-var zlib = require('zlib');
 
 
 // Helper functions
@@ -9,10 +8,6 @@ console.log('root directory:', root());
 
 function hasProcessFlag(flag) {
   return process.argv.join('').indexOf(flag) > -1;
-}
-
-function gzipMaxLevel(buffer, callback) {
-  return zlib['gzip'](buffer, {level: 9}, callback);
 }
 
 function root(args) {
@@ -66,7 +61,6 @@ function reverse(arr) {
 
 exports.reverse = reverse;
 exports.hasProcessFlag = hasProcessFlag;
-exports.gzipMaxLevel = gzipMaxLevel;
 exports.root = root;
 exports.rootNode = rootNode;
 exports.prependExt = prependExt;
