@@ -130,6 +130,8 @@ module.exports = webpackMerge(commonConfig, {
       beautify: false, //prod
 
       // mangle: { screw_ie8 : true }, //prod
+      mangle: false,
+      /*
       mangle: {
         screw_ie8: true,
         except: [
@@ -182,6 +184,7 @@ module.exports = webpackMerge(commonConfig, {
             'I18nSelectPipe'
           ] // Needed for uglify RouterLink problem
       }, // prod
+      */
       compress: {
         screw_ie8: true
       }, //prod
