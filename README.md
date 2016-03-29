@@ -308,6 +308,8 @@ see [typings/registry](https://github.com/typings/registry)
  * If you're looking for Webpack 2 version then see the [experimental version](https://github.com/gdi2290/angular2-webpack2-starter) that will be merged soon.
 * How do I turn on Hot Module Replacement
  * Run `npm run server:dev:hmr`
+* `RangeError: Maximum call stack size exceeded`
+ * This is a problem with minifying Angular 2 and it's recent JIT templates. If you set `mangle` to `false` then you should be good.
 
 # Support, Questions, or Feedback
 > Contact us anytime for anything about this repo or Angular 2
