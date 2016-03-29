@@ -10,24 +10,30 @@ var commonConfig = require('./webpack.common.js'); //The settings that are commo
  * Webpack Plugins
  */
 var ProvidePlugin = require('webpack/lib/ProvidePlugin');
+var DefinePlugin = require('webpack/lib/DefinePlugin');
 var DedupePlugin = require('webpack/lib/optimize/DedupePlugin');
 var UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 var CompressionPlugin = require('compression-webpack-plugin');
 var WebpackMd5Hash = require('webpack-md5-hash');
 
-const ENV = process.env.ENV = process.env.NODE_ENV = 'production';
+/**
+ * Webpack Constants
+ */
+const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
+const HOST = process.env.HOST || 'localhost';
+const PORT = process.env.PORT || 8080;
+const METADATA = webpackMerge(commonConfig.metadata, {
+  host: HOST,
+  port: PORT,
+  ENV: ENV,
+  HMR: false
+});
 
 module.exports = webpackMerge(commonConfig, {
   // Switch loaders to debug mode.
   //
   // See: http://webpack.github.io/docs/configuration.html#debug
   debug: false,
-
-  // Metadata specific to this build type, will inherit from common and extend
-  // with what you put in as the second argument.
-  metadata: Object.assign(commonConfig.metadata, {
-    ENV: ENV
-  }),
 
   // Developer tool to enhance debugging
   //
@@ -83,6 +89,19 @@ module.exports = webpackMerge(commonConfig, {
     // See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
     // See: https://github.com/webpack/docs/wiki/optimization#deduplication
     new DedupePlugin(),
+
+    // Plugin: DefinePlugin
+    // Description: Define free variables.
+    // Useful for having development builds with debug logging or adding global constants.
+    //
+    // Environment helpers
+    //
+    // See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
+    // NOTE: when adding more properties make sure you include them in custom-typings.d.ts
+    new DefinePlugin({
+      'ENV': JSON.stringify(METADATA.ENV),
+      'HMR': METADATA.HMR
+    }),
 
     // Plugin: UglifyJsPlugin
     // Description: Minimize all JavaScript output of chunks.
@@ -172,7 +191,6 @@ module.exports = webpackMerge(commonConfig, {
     //
     // See: https://github.com/webpack/compression-webpack-plugin
     new CompressionPlugin({
-      algorithm: helpers.gzipMaxLevel,
       regExp: /\.css$|\.html$|\.js$|\.map$/,
       threshold: 2 * 1024
     })

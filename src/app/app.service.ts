@@ -1,11 +1,10 @@
 import {Injectable} from 'angular2/core';
-import {WebpackState} from 'angular2-hmr';
+import {HmrState} from 'angular2-hmr';
 
 @Injectable()
 export class AppState {
-  _state = {}; // you must set the initial value
-  constructor(webpackState: WebpackState) {
-    this._state = webpackState.select('AppState', () => this._state);
+  @HmrState() _state = {}; // you must set the initial value
+  constructor() {
   }
 
   get(prop?: any) {
