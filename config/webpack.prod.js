@@ -15,11 +15,17 @@ var UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 var CompressionPlugin = require('compression-webpack-plugin');
 var WebpackMd5Hash = require('webpack-md5-hash');
 
+const ENV = process.env.ENV = process.env.NODE_ENV = 'production';
+
 module.exports = webpackMerge(commonConfig, {
   // Switch loaders to debug mode.
   //
   // See: http://webpack.github.io/docs/configuration.html#debug
   debug: false,
+
+  metadata: Object.assign(commonConfig.metadata, {
+    ENV: ENV
+  }),
 
   // Developer tool to enhance debugging
   //
