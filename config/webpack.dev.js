@@ -6,8 +6,6 @@ var helpers = require('./helpers');
 var webpackMerge = require('webpack-merge'); //Used to merge webpack configs
 var commonConfig = require('./webpack.common.js'); //The settings that are common to prod and dev
 
-const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
-
 /**
  * Webpack Plugins
  */
@@ -42,11 +40,8 @@ module.exports = webpackMerge(commonConfig, {
   // See: https://github.com/webpack/docs/wiki/build-performance#sourcemaps
   devtool: 'cheap-module-eval-source-map',
 
-  // Metadata specific to this build type, will inherit from common and extend
-  // with what you put in as the second argument.
-  metadata: Object.assign(commonConfig.metadata, {
-    ENV: ENV
-  }),
+  // Metadata specific to this build type
+  metadata: METADATA,
 
   // Options affecting the output of the compilation.
   //

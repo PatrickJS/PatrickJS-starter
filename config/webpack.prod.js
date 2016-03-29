@@ -41,6 +41,9 @@ module.exports = webpackMerge(commonConfig, {
   // See: https://github.com/webpack/docs/wiki/build-performance#sourcemaps
   devtool: 'source-map',
 
+  // Metadata specific to this build type
+  metadata: METADATA,
+
   // Options affecting the output of the compilation.
   //
   // See: http://webpack.github.io/docs/configuration.html#output
