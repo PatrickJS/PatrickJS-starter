@@ -23,6 +23,8 @@ module.exports = webpackMerge(commonConfig, {
   // See: http://webpack.github.io/docs/configuration.html#debug
   debug: false,
 
+  // Metadata specific to this build type, will inherit from common and extend
+  // with what you put in as the second argument.
   metadata: Object.assign(commonConfig.metadata, {
     ENV: ENV
   }),
