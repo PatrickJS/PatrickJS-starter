@@ -64,7 +64,7 @@ import {RouterActive} from './router-active';
       </div>
     </footer>
 
-    <pre>this.state = {{ state | json }}</pre>
+    <pre>this.appState.state = {{ appState.state | json }}</pre>
   `
 })
 @RouteConfig([
@@ -80,12 +80,8 @@ export class App {
 
   constructor(public appState: AppState) {}
 
-  get state() {
-    return this.appState.get();
-  }
-
   ngOnInit() {
-    console.log('Initial App State', this.state);
+    console.log('Initial App State', this.appState.state);
   }
 
 }
