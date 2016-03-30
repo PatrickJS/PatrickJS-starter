@@ -30,12 +30,12 @@
 
     "build": "npm run build:dev",
         "prebuild:dev": "npm run clean:dist",
-      "build:dev": "node --max-old-space-size=4096 node_modules/webpack/bin/webpack --config config/webpack.dev.js --progress --profile --colors --display-error-details --display-cached",
+      "build:dev": "webpack --config config/webpack.dev.js --progress --profile --colors --display-error-details --display-cached",
         "prebuild:prod": "npm run clean:dist",
-      "build:prod": "node --max-old-space-size=4096 node_modules/webpack/bin/webpack --config config/webpack.prod.js  --progress --profile --colors --display-error-details --display-cached --bail",
+      "build:prod": "webpack --config config/webpack.prod.js  --progress --profile --colors --display-error-details --display-cached --bail",
 
     "server": "npm run server:dev",
-      "server:dev": "node --max-old-space-size=4096 node_modules/webpack-dev-server/bin/webpack-dev-server --config config/webpack.dev.js --inline --progress --profile --colors --watch --display-error-details --display-cached --content-base src/",
+      "server:dev": "webpack-dev-server --config config/webpack.dev.js --inline --progress --profile --colors --watch --display-error-details --display-cached --content-base src/",
       "server:dev:hmr": "npm run server:dev -- --hot",
       "server:prod": "http-server dist --cors",
 
@@ -62,6 +62,7 @@
       "preversion": "npm test",
     "version": "npm run build",
       "postversion": "git push && git push --tags"
+
   },
   "dependencies": {
     "@angular2-material/button": "^2.0.0-alpha.1",
@@ -74,7 +75,7 @@
     "@angular2-material/toolbar": "^2.0.0-alpha.1",
     "angular2": "2.0.0-beta.12",
     "core-js": "^2.1.5",
-    "rxjs": "5.0.0-beta.2",
+    "rxjs": "5.0.0-beta.4",
     "zone.js": "0.6.6"
   },
   "devDependencies": {
