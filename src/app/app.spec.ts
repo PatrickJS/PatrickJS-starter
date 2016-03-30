@@ -6,8 +6,6 @@ import {
   TestComponentBuilder
 } from 'angular2/testing';
 
-import {WebpackState} from 'angular2-hmr';
-
 // Load the implementations that should be tested
 import {App} from './app.component';
 import {AppState} from './app.service';
@@ -15,7 +13,6 @@ import {AppState} from './app.service';
 describe('App', () => {
   // provide our implementations or mocks to the dependency injector
   beforeEachProviders(() => [
-    WebpackState,
     AppState,
     App
   ]);
