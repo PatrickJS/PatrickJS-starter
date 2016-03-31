@@ -100,8 +100,14 @@ module.exports = webpackMerge(commonConfig, {
     // NOTE: when adding more properties make sure you include them in custom-typings.d.ts
     new DefinePlugin({
       'ENV': JSON.stringify(METADATA.ENV),
-      'HMR': METADATA.HMR
+      'HMR': METADATA.HMR,
+      'process.env': {
+        'ENV': JSON.stringify(METADATA.ENV),
+        'NODE_ENV': JSON.stringify(METADATA.ENV),
+        'HMR': METADATA.HMR,
+      }
     }),
+
 
     // Plugin: UglifyJsPlugin
     // Description: Minimize all JavaScript output of chunks.
