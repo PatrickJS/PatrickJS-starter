@@ -2,19 +2,19 @@
  * @author: @AngularClass
  */
 
-var helpers = require('./helpers'); // Helper: root(), and rootDir() are defined at the bottom
-var webpackMerge = require('webpack-merge'); //Used to merge webpack configs
-var commonConfig = require('./webpack.common.js'); //The settings that are common to prod and dev
+const helpers = require('./helpers'); // Helper: root(), and rootDir() are defined at the bottom
+const webpackMerge = require('webpack-merge'); //Used to merge webpack configs
+const commonConfig = require('./webpack.common.js'); //The settings that are common to prod and dev
 
 /**
  * Webpack Plugins
  */
-var ProvidePlugin = require('webpack/lib/ProvidePlugin');
-var DefinePlugin = require('webpack/lib/DefinePlugin');
-var DedupePlugin = require('webpack/lib/optimize/DedupePlugin');
-var UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
-var CompressionPlugin = require('compression-webpack-plugin');
-var WebpackMd5Hash = require('webpack-md5-hash');
+const ProvidePlugin = require('webpack/lib/ProvidePlugin');
+const DefinePlugin = require('webpack/lib/DefinePlugin');
+const DedupePlugin = require('webpack/lib/optimize/DedupePlugin');
+const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
+const CompressionPlugin = require('compression-webpack-plugin');
+const WebpackMd5Hash = require('webpack-md5-hash');
 
 /**
  * Webpack Constants

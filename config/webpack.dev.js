@@ -2,14 +2,14 @@
  * @author: @AngularClass
  */
 
-var helpers = require('./helpers');
-var webpackMerge = require('webpack-merge'); //Used to merge webpack configs
-var commonConfig = require('./webpack.common.js'); //The settings that are common to prod and dev
+const helpers = require('./helpers');
+const webpackMerge = require('webpack-merge'); //Used to merge webpack configs
+const commonConfig = require('./webpack.common.js'); //The settings that are common to prod and dev
 
 /**
  * Webpack Plugins
  */
-var DefinePlugin = require('webpack/lib/DefinePlugin');
+const DefinePlugin = require('webpack/lib/DefinePlugin');
 
 /**
  * Webpack Constants
