@@ -87,7 +87,7 @@ module.exports = webpackMerge(commonConfig, {
         'NODE_ENV': JSON.stringify(METADATA.ENV),
         'HMR': METADATA.HMR,
       }
-    }),
+    })
   ],
 
   // Static analysis linter for TypeScript advanced options configuration
@@ -124,4 +124,5 @@ module.exports = webpackMerge(commonConfig, {
     clearImmediate: false,
     setImmediate: false
   }
+
 });

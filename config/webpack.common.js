@@ -47,7 +47,7 @@ module.exports = {
 
     'polyfills': './src/polyfills.ts',
     'vendor': './src/vendor.ts',
-    'main': './src/main.browser.ts',
+    'main': './src/main.browser.ts'
 
   },
 
@@ -65,7 +65,7 @@ module.exports = {
     root: helpers.root('src'),
 
     // remove other default values
-    modulesDirectories: ['node_modules'],
+    modulesDirectories: ['node_modules']
 
   },
 
@@ -142,7 +142,7 @@ module.exports = {
         test: /\.html$/,
         loader: 'raw-loader',
         exclude: [helpers.root('src/index.html')]
-      },
+      }
 
     ]
 
@@ -212,5 +212,6 @@ module.exports = {
     module: false,
     clearImmediate: false,
     setImmediate: false
-  },
+  }
+
 };
