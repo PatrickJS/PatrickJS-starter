@@ -70,7 +70,11 @@ module.exports = {
        *
        * See: https://github.com/wbuchwalter/tslint-loader
        */
-      {test: /\.ts$/, loader: 'tslint-loader', exclude: [helpers.root('node_modules')]},
+      {
+        test: /\.ts$/,
+        loader: 'tslint-loader',
+        exclude: [helpers.root('node_modules')]
+      },
 
       /**
        * Source map loader support for *.js files
@@ -78,7 +82,10 @@ module.exports = {
        *
        * See: https://github.com/webpack/source-map-loader
        */
-      {test: /\.js$/, loader: "source-map-loader", exclude: [
+      {
+        test: /\.js$/,
+        loader: 'source-map-loader',
+        exclude: [
         // these packages have problems with their sourcemaps
         helpers.root('node_modules/rxjs'),
         helpers.root('node_modules/@angular2-material')
@@ -105,11 +112,11 @@ module.exports = {
         test: /\.ts$/,
         loader: 'awesome-typescript-loader',
         query: {
-          "compilerOptions": {
+          compilerOptions: {
 
             // Remove TypeScript helpers to be injected
             // below by DefinePlugin
-            "removeComments": true
+            removeComments: true
 
           }
         },
