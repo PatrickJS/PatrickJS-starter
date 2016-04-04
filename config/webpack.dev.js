@@ -94,7 +94,7 @@ module.exports = webpackMerge(commonConfig, {
      *
      * See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
      */
-    // NOTE: when adding more properties make sure you include them in custom-typings.d.ts
+    // NOTE: when adding more properties, make sure you include them in custom-typings.d.ts
     new DefinePlugin({
       'ENV': JSON.stringify(METADATA.ENV),
       'HMR': METADATA.HMR,
