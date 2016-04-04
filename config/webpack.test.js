@@ -22,46 +22,62 @@ const ENV = process.env.ENV = process.env.NODE_ENV = 'test';
  */
 module.exports = {
 
-  // Developer tool to enhance debugging
-  //
-  // See: http://webpack.github.io/docs/configuration.html#devtool
-  // See: https://github.com/webpack/docs/wiki/build-performance#sourcemaps
+  /**
+   * Developer tool to enhance debugging
+   *
+   * See: http://webpack.github.io/docs/configuration.html#devtool
+   * See: https://github.com/webpack/docs/wiki/build-performance#sourcemaps
+   */
   devtool: 'source-map',
 
-  // Options affecting the resolving of modules.
-  //
-  // See: http://webpack.github.io/docs/configuration.html#resolve
+  /**
+   * Options affecting the resolving of modules.
+   *
+   * See: http://webpack.github.io/docs/configuration.html#resolve
+   */
   resolve: {
 
-    // An array of extensions that should be used to resolve modules.
-    //
-    // See: http://webpack.github.io/docs/configuration.html#resolve-extensions
+    /**
+     * An array of extensions that should be used to resolve modules.
+     *
+     * See: http://webpack.github.io/docs/configuration.html#resolve-extensions
+     */
     extensions: ['', '.ts', '.js'],
 
-    // Make sure root is src
+    /**
+     * Make sure root is src
+     */
     root: helpers.root('src'),
 
   },
 
-  // Options affecting the normal modules.
-  //
-  // See: http://webpack.github.io/docs/configuration.html#module
+  /**
+   * Options affecting the normal modules.
+   *
+   * See: http://webpack.github.io/docs/configuration.html#module
+   */
   module: {
 
-    // An array of applied pre and post loaders.
-    //
-    // See: http://webpack.github.io/docs/configuration.html#module-preloaders-module-postloaders
+    /**
+     * An array of applied pre and post loaders.
+     *
+     * See: http://webpack.github.io/docs/configuration.html#module-preloaders-module-postloaders
+     */
     preLoaders: [
 
-      // Tslint loader support for *.ts files
-      //
-      // See: https://github.com/wbuchwalter/tslint-loader
+      /**
+       * Tslint loader support for *.ts files
+       *
+       * See: https://github.com/wbuchwalter/tslint-loader
+       */
       {test: /\.ts$/, loader: 'tslint-loader', exclude: [helpers.root('node_modules')]},
 
-      // Source map loader support for *.js files
-      // Extracts SourceMaps for source files that as added as sourceMappingURL comment.
-      //
-      // See: https://github.com/webpack/source-map-loader
+      /**
+       * Source map loader support for *.js files
+       * Extracts SourceMaps for source files that as added as sourceMappingURL comment.
+       *
+       * See: https://github.com/webpack/source-map-loader
+       */
       {test: /\.js$/, loader: "source-map-loader", exclude: [
         // these packages have problems with their sourcemaps
         helpers.root('node_modules/rxjs'),
@@ -70,17 +86,21 @@ module.exports = {
 
     ],
 
-    // An array of automatically applied loaders.
-    //
-    // IMPORTANT: The loaders here are resolved relative to the resource which they are applied to.
-    // This means they are not resolved relative to the configuration file.
-    //
-    // See: http://webpack.github.io/docs/configuration.html#module-loaders
+    /**
+     * An array of automatically applied loaders.
+     *
+     * IMPORTANT: The loaders here are resolved relative to the resource which they are applied to.
+     * This means they are not resolved relative to the configuration file.
+     *
+     * See: http://webpack.github.io/docs/configuration.html#module-loaders
+     */
     loaders: [
 
-      // Typescript loader support for .ts and Angular 2 async routes via .async.ts
-      //
-      // See: https://github.com/s-panferov/awesome-typescript-loader
+      /**
+       * Typescript loader support for .ts and Angular 2 async routes via .async.ts
+       *
+       * See: https://github.com/s-panferov/awesome-typescript-loader
+       */
       {
         test: /\.ts$/,
         loader: 'awesome-typescript-loader',
@@ -96,34 +116,44 @@ module.exports = {
         exclude: [/\.e2e\.ts$/]
       },
 
-      // Json loader support for *.json files.
-      //
-      // See: https://github.com/webpack/json-loader
+      /**
+       * Json loader support for *.json files.
+       *
+       * See: https://github.com/webpack/json-loader
+       */
       {test: /\.json$/, loader: 'json-loader', exclude: [helpers.root('src/index.html')]},
 
-      // Raw loader support for *.css files
-      // Returns file content as string
-      //
-      // See: https://github.com/webpack/raw-loader
+      /**
+       * Raw loader support for *.css files
+       * Returns file content as string
+       *
+       * See: https://github.com/webpack/raw-loader
+       */
       {test: /\.html$/, loader: 'raw-loader', exclude: [helpers.root('src/index.html')]},
 
-      // Raw loader support for *.html
-      // Returns file content as string
-      //
-      // See: https://github.com/webpack/raw-loader
+      /**
+       * Raw loader support for *.html
+       * Returns file content as string
+       *
+       * See: https://github.com/webpack/raw-loader
+       */
       {test: /\.css$/, loader: 'raw-loader', exclude: [helpers.root('src/index.html')]}
 
     ],
 
-    // An array of applied pre and post loaders.
-    //
-    // See: http://webpack.github.io/docs/configuration.html#module-preloaders-module-postloaders
+    /**
+     * An array of applied pre and post loaders.
+     *
+     * See: http://webpack.github.io/docs/configuration.html#module-preloaders-module-postloaders
+     */
     postLoaders: [
 
-      // Instruments JS files with Istanbul for subsequent code coverage reporting.
-      // Instrument only testing sources.
-      //
-      // See: https://github.com/deepsweet/istanbul-instrumenter-loader
+      /**
+       * Instruments JS files with Istanbul for subsequent code coverage reporting.
+       * Instrument only testing sources.
+       *
+       * See: https://github.com/deepsweet/istanbul-instrumenter-loader
+       */
       {
         test: /\.(js|ts)$/, loader: 'istanbul-instrumenter-loader',
         include: helpers.root('src'),
@@ -136,18 +166,22 @@ module.exports = {
     ]
   },
 
-  // Add additional plugins to the compiler.
-  //
-  // See: http://webpack.github.io/docs/configuration.html#plugins
+  /**
+   * Add additional plugins to the compiler.
+   *
+   * See: http://webpack.github.io/docs/configuration.html#plugins
+   */
   plugins: [
 
-    // Plugin: DefinePlugin
-    // Description: Define free variables.
-    // Useful for having development builds with debug logging or adding global constants.
-    //
-    // Environment helpers
-    //
-    // See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
+    /**
+     * Plugin: DefinePlugin
+     * Description: Define free variables.
+     * Useful for having development builds with debug logging or adding global constants.
+     *
+     * Environment helpers
+     *
+     * See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
+     */
     // NOTE: when adding more properties make sure you include them in custom-typings.d.ts
     new DefinePlugin({
       'ENV': JSON.stringify(ENV),
@@ -162,20 +196,24 @@ module.exports = {
 
   ],
 
-  // Static analysis linter for TypeScript advanced options configuration
-  // Description: An extensible linter for the TypeScript language.
-  //
-  // See: https://github.com/wbuchwalter/tslint-loader
+  /**
+   * Static analysis linter for TypeScript advanced options configuration
+   * Description: An extensible linter for the TypeScript language.
+   *
+   * See: https://github.com/wbuchwalter/tslint-loader
+   */
   tslint: {
     emitErrors: false,
     failOnHint: false,
     resourcePath: 'src'
   },
 
-  // Include polyfills or mocks for various node stuff
-  // Description: Node configuration
-  //
-  // See: https://webpack.github.io/docs/configuration.html#node
+  /**
+   * Include polyfills or mocks for various node stuff
+   * Description: Node configuration
+   *
+   * See: https://webpack.github.io/docs/configuration.html#node
+   */
   node: {
     global: 'window',
     process: false,
