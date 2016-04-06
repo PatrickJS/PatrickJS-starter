@@ -311,6 +311,8 @@ see [typings/registry](https://github.com/typings/registry)
  * Run `npm run server:dev:hmr`
 * `RangeError: Maximum call stack size exceeded`
  * This is a problem with minifying Angular 2 and it's recent JIT templates. If you set `mangle` to `false` then you should be good.
+* Why is the size of my app larger in development?
+ * We are using inline source-maps and hot module replacement which will increase the bundle size.
 
 # Support, Questions, or Feedback
 > Contact us anytime for anything about this repo or Angular 2
