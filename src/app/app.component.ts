@@ -1,7 +1,7 @@
 /*
  * Angular 2 decorators and services
  */
-import {Component} from 'angular2/core';
+import {Component, ViewEncapsulation} from 'angular2/core';
 import {RouteConfig, Router} from 'angular2/router';
 
 import {Home} from './home';
@@ -17,6 +17,7 @@ import {RouterActive} from './router-active';
   pipes: [ ],
   providers: [ ],
   directives: [ RouterActive ],
+  encapsulation: ViewEncapsulation.None,
   styles: [`
     h1 {
       font-family: Arial, Helvetica, sans-serif
