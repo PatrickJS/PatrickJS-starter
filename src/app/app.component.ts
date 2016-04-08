@@ -19,44 +19,48 @@ import {RouterActive} from './router-active';
   directives: [ RouterActive ],
   encapsulation: ViewEncapsulation.None,
   styles: [`
-    h1 {
-      font-family: Arial, Helvetica, sans-serif
+    body {
+      margin: 0;
     }
-    nav ul {
+    md-toolbar ul {
       display: inline;
       list-style-type: none;
       margin: 0;
       padding: 0;
       width: 60px;
     }
-    nav li {
+    md-toolbar li {
       display: inline;
     }
-    nav li.active {
+    md-toolbar li.active {
       background-color: lightgray;
     }
   `],
   template: `
-    <header>
+    <md-toolbar color="primary">
+      <span>{{ name }}</span>
       <nav>
-        <h1>Hello {{ name }}</h1>
         <ul>
           <li router-active>
             <a [routerLink]=" ['Index'] ">Index</a>
           </li>
+          |
           <li router-active>
             <a [routerLink]=" ['Home'] ">Home</a>
           </li>
+          |
           <li router-active>
             <a [routerLink]=" ['About'] ">About</a>
           </li>
         </ul>
       </nav>
-    </header>
+    </md-toolbar>
 
     <main>
       <router-outlet></router-outlet>
     </main>
+
+    <pre>this.appState.state = {{ appState.state | json }}</pre>
 
     <footer>
       WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a>
@@ -64,8 +68,6 @@ import {RouterActive} from './router-active';
         <img [src]="angularclassLogo" width="10%">
       </div>
     </footer>
-
-    <pre>this.appState.state = {{ appState.state | json }}</pre>
   `
 })
 @RouteConfig([
