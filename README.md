@@ -36,7 +36,7 @@ This seed repo serves as an Angular 2 starter for anyone looking to get up and r
 * Material Design with [angular/material2](https://github.com/angular/material2)
 
 ### Quick start
-**Make sure you have node version >= 4.0**
+**Make sure you have Node version >= 4.0 and NPM >= 3**
 > Clone/Download the repo then edit `app.ts` inside [`/src/app/app.ts`](/src/app/app.ts)
 
 ```bash
@@ -134,7 +134,7 @@ angular2-webpack-starter/
 ## Dependencies
 What you need to run this app:
 * `node` and `npm` (`brew install node`)
-* Ensure you're running the latest versions Node `v4.1.x`+ and NPM `2.14.x`+
+* Ensure you're running the latest versions Node `v4.x.x`+ (or `v5.x.x`) and NPM `3.x.x`+
 
 Once you have those, you should install these globals with `npm install --global`:
 * `webpack` (`npm install --global webpack`)
