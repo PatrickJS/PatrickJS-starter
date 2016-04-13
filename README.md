@@ -7,11 +7,12 @@ forked from [angular2-webpack-starter](https://github.com/AngularClass/angular2-
 
 # install
 npm install
+
 # run dev server localhost:3333
 npm start
 
-# build:dev and open electron preview
-npm run preview
+# build and open electron preview
+npm test
 
 # build:prod and create electron package
 npm run build:dist
