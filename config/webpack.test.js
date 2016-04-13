@@ -22,11 +22,11 @@ const ENV = process.env.ENV = process.env.NODE_ENV = 'test';
  */
 module.exports = {
 
-  // Developer tool to enhance debugging
+  // Source map for Karma from the help of karma-sourcemap-loader &  karma-webpack
   //
-  // See: http://webpack.github.io/docs/configuration.html#devtool
-  // See: https://github.com/webpack/docs/wiki/build-performance#sourcemaps
-  devtool: 'source-map',
+  // Do not change, leave as is or it wont work.
+  // See: https://github.com/webpack/karma-webpack#source-maps
+  devtool: 'inline-source-map',
 
   // Options affecting the resolving of modules.
   //
