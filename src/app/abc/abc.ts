@@ -5,19 +5,22 @@ import {Http} from 'angular2/http';
 import {Title} from '../providers/title';
 
 @Component({
-  selector: 'home',
+  selector: 'abc',
   directives: [ FORM_DIRECTIVES ],
   providers: [ Title ],
   pipes: [],
-  template: require('./home.html')
+  template: require('./abc.html'),
+  styles: [`
+    * {background: #f00}
+  `]
 })
-export class Home {
+export class Abc {
   // TypeScript public modifiers
   constructor(public title: Title, public http: Http) {
   }
 
   ngOnInit() {
-    console.log('hello Home');
+    console.log('hello Abc');
   }
 
 }
