@@ -37,24 +37,26 @@ import {RouterActive} from './router-active';
     }
   `],
   template: `
-    <md-toolbar color="primary">
-      <span>{{ name }}</span>
-      <nav>
-        <ul>
-          <li router-active>
-            <a [routerLink]=" ['Index'] ">Index</a>
-          </li>
-          |
-          <li router-active>
-            <a [routerLink]=" ['Home'] ">Home</a>
-          </li>
-          |
-          <li router-active>
-            <a [routerLink]=" ['About'] ">About</a>
-          </li>
-        </ul>
-      </nav>
-    </md-toolbar>
+    <header>
+      <md-toolbar color="primary">
+        <span>{{ name }}</span>
+        <nav>
+          <ul>
+            <li router-active>
+              <a [routerLink]=" ['Index'] ">Index</a>
+            </li>
+            |
+            <li router-active>
+              <a [routerLink]=" ['Home'] ">Home</a>
+            </li>
+            |
+            <li router-active>
+              <a [routerLink]=" ['About'] ">About</a>
+            </li>
+          </ul>
+        </nav>
+      </md-toolbar>
+    </header>
 
     <main>
       <router-outlet></router-outlet>

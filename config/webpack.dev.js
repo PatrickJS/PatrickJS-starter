@@ -29,6 +29,14 @@ const METADATA = webpackMerge(commonConfig.metadata, {
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
 module.exports = webpackMerge(commonConfig, {
+
+  /**
+   * Merged metadata from webpack.common.js for index.html
+   *
+   * See: (custom attribute)
+   */
+  metadata: METADATA,
+
   /**
    * Switch loaders to debug mode.
    *

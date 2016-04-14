@@ -23,12 +23,12 @@ const ENV = process.env.ENV = process.env.NODE_ENV = 'test';
 module.exports = {
 
   /**
-   * Developer tool to enhance debugging
+   * Source map for Karma from the help of karma-sourcemap-loader &  karma-webpack
    *
-   * See: http://webpack.github.io/docs/configuration.html#devtool
-   * See: https://github.com/webpack/docs/wiki/build-performance#sourcemaps
+   * Do not change, leave as is or it wont work.
+   * See: https://github.com/webpack/karma-webpack#source-maps
    */
-  devtool: 'source-map',
+  devtool: 'inline-source-map',
 
   /**
    * Options affecting the resolving of modules.
@@ -128,7 +128,7 @@ module.exports = {
        *
        * See: https://github.com/webpack/json-loader
        */
-      {test: /\.json$/, loader: 'json-loader', exclude: [helpers.root('src/index.html')]},
+      { test: /\.json$/, loader: 'json-loader', exclude: [helpers.root('src/index.html')] },
 
       /**
        * Raw loader support for *.css files
@@ -136,7 +136,7 @@ module.exports = {
        *
        * See: https://github.com/webpack/raw-loader
        */
-      {test: /\.html$/, loader: 'raw-loader', exclude: [helpers.root('src/index.html')]},
+      { test: /\.css$/, loader: 'raw-loader', exclude: [helpers.root('src/index.html')] },
 
       /**
        * Raw loader support for *.html
@@ -144,7 +144,7 @@ module.exports = {
        *
        * See: https://github.com/webpack/raw-loader
        */
-      {test: /\.css$/, loader: 'raw-loader', exclude: [helpers.root('src/index.html')]}
+      { test: /\.html$/, loader: 'raw-loader', exclude: [helpers.root('src/index.html')] }
 
     ],
 
