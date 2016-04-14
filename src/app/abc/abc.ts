@@ -10,9 +10,6 @@ import {Title} from '../providers/title';
   providers: [ Title ],
   pipes: [],
   template: require('./abc.html'),
-  styles: [`
-    * {background: #f00}
-  `]
 })
 export class Abc {
   // TypeScript public modifiers

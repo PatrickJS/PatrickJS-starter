@@ -5,6 +5,8 @@ import {Component} from 'angular2/core';
 import {RouteConfig, Router, ROUTER_DIRECTIVES} from 'angular2/router';
 import {Http} from 'angular2/http';
 import {FORM_PROVIDERS} from 'angular2/common';
+import {ViewEncapsulation} from 'angular2/core';
+
 
 import {Title} from './providers/title';
 import {Home} from './home/home';
@@ -15,6 +17,12 @@ import {Abc} from './abc/abc';
  * Top Level Component
  */
 @Component({
+
+  styles: [require('./styles/style.scss')],
+  // global css styles
+  encapsulation: ViewEncapsulation.None,
+
+
   // The selector is what angular internally uses
   // for `document.querySelectorAll(selector)` in our index.html
   // where, in this case, selector is the string 'app'
@@ -24,6 +32,7 @@ import {Abc} from './abc/abc';
   // We need to tell Angular's compiler which directives are in our template.
   // Doing so will allow Angular to attach our behavior to an element
   directives: [ ROUTER_DIRECTIVES ],
+
   // We need to tell Angular's compiler which custom pipes are in our template.
   pipes: [],
   // Every Angular template is first compiled by the browser before Angular runs it's compiler
