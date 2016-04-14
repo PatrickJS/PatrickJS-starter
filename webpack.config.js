@@ -1,6 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
-
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 // Webpack Config
 var webpackConfig = {
@@ -22,9 +22,15 @@ var webpackConfig = {
 		loaders: [
 			{ test: /\.ts$/,   loader: 'awesome-typescript-loader' },
 			{ test: /\.html$/, loader: 'html-loader' },
-			{ test: /\.scss$/, loader: 'raw-loader!sass-loader', exclude: /node_modules/ },
+			{ test: /\.scss$/,
+				loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!sass-loader?sourceMap')
+			},
 		]
 	},
+
+	plugins: [
+		new ExtractTextPlugin("style.css")
+	],
 
 	devServer: {
 		contentBase: 'app',
@@ -36,7 +42,7 @@ var webpackConfig = {
 
 // Our Webpack Defaults
 var defaultConfig = {
-	devtool: 'cheap-module-eval-source-map',
+	devtool: 'source-map',
 	cache: true,
 	debug: true,
 	output: {
