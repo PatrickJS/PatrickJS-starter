@@ -136,7 +136,6 @@
   "bugs": {
     "url": "https://github.com/angularclass/angular2-webpack-starter/issues"
   },
-  "engineStrict": true,
   "engines": {
     "node": ">= 4.2.1",
     "npm": ">= 3"
