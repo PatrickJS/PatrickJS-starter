@@ -8,7 +8,7 @@
     "typings-install": "./node_modules/.bin/typings install",
     "postinstall": "npm run typings-install",
     "build": "./node_modules/.bin/webpack --inline --colors --progress --display-error-details --display-cached",
-    "build:prod": "./node_modules/.bin/webpack --progress --profile --colors --display-error-details --display-cached --optimize-occurence-order --optimize-minimize --optimize-dedupe && npm run electron",
+    "build:prod": "./node_modules/.bin/webpack --progress --profile --colors --display-error-details --display-cached --optimize-occurence-order --optimize-minimize --optimize-dedupe",
     "build:dist": "npm run build:prod && npm run electron",
     "start": "./node_modules/.bin/webpack-dev-server --inline --colors --progress --display-error-details --display-cached --port 3333  --content-base app",
     "test": "npm run build && electron app",
