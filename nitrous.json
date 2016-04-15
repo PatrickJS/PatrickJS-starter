@@ -1,6 +1,0 @@
-{
-  "name": "angular2-webpack-starter",
-  "description": "An Angular 2 Webpack Starter kit featuring Angular 2 (Router, Http, Forms, Services, Tests, E2E, Coverage), Karma, Protractor, Jasmine, Istanbul, TypeScript, and Webpack by AngularClass",
-  "template": "nodejs",
-  "ports": [3000]
-}
