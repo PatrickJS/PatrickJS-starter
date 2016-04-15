@@ -1,5 +1,8 @@
-var path = require('path');
+/**
+ * @author: @AngularClass
+ */
 
+var path = require('path');
 
 // Helper functions
 var _root = path.resolve(__dirname, '..');
