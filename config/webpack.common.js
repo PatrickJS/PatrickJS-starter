@@ -207,8 +207,7 @@ module.exports = {
      * See: https://github.com/webpack/docs/wiki/optimization#multi-page-app
      */
     new webpack.optimize.CommonsChunkPlugin({
-      name: helpers.reverse(['polyfills', 'vendor', 'main']),
-      minChunks: Infinity
+      name: helpers.reverse(['polyfills', 'vendor'])
     }),
 
     /*
