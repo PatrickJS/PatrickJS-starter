@@ -60,6 +60,9 @@ npm start
 
 # use Hot Module Replacement
 npm run server:dev:hmr
+
+# if you're in China use cnpm
+# https://github.com/cnpm/cnpm
 ```
 go to [http://0.0.0.0:3000](http://0.0.0.0:3000) or [http://localhost:3000](http://localhost:3000) in your browser
 
@@ -303,6 +306,8 @@ see [typings/registry](https://github.com/typings/registry)
  * This is a problem with minifying Angular 2 and it's recent JIT templates. If you set `mangle` to `false` then you should be good.
 * Why is the size of my app larger in development?
  * We are using inline source-maps and hot module replacement which will increase the bundle size.
+* If you're in China
+ * check out https://github.com/cnpm/cnpm
 
 # Support, Questions, or Feedback
 > Contact us anytime for anything about this repo or Angular 2
