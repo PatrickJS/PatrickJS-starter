@@ -18,10 +18,9 @@ import {RouterActive} from './router-active';
   providers: [ ],
   directives: [ RouterActive ],
   encapsulation: ViewEncapsulation.None,
-  styles: [`
-    body {
-      margin: 0;
-    }
+  styles: [
+    require('normalize.css'),
+    `
     md-toolbar ul {
       display: inline;
       list-style-type: none;
