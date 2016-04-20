@@ -1,6 +1,6 @@
 {
   "rulesDirectory": [
-    "node_modules/codelyzer/dist/src"
+    "node_modules/codelyzer"
   ],
   "rules": {
     "member-access": false,
