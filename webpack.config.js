@@ -15,6 +15,7 @@ var webpackConfig = {
 	},
 
 	plugins: [
+		new ExtractTextPlugin("style.css"),
 		new webpack.optimize.CommonsChunkPlugin({ name: ['app', 'vendor', 'polyfills'], minChunks: Infinity }),
 	],
 
@@ -27,10 +28,6 @@ var webpackConfig = {
 			},
 		]
 	},
-
-	plugins: [
-		new ExtractTextPlugin("style.css")
-	],
 
 	devServer: {
 		contentBase: 'app',

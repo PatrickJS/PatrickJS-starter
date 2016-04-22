@@ -4,7 +4,7 @@ import {Http} from 'angular2/http';
 import {Title} from '../../providers/title';
 
 @Component({
-	selector: 'page1',
+	selector: 'page2',
 	providers: [ Title ],
 	template: require('./page2.html'),
 })
@@ -17,7 +17,7 @@ export class Page2 {
 	) {}
 
 	ngOnInit() {
-		console.log('Page 1');
+		console.log('Page 2');
 	}
 
 }
