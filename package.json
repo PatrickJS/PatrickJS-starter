@@ -48,6 +48,7 @@
     "e2e": "npm run protractor",
       "e2e:live": "npm run e2e -- --elementExplorer",
 
+      "pretest": "npm run lint",
     "test": "node --max-old-space-size=4096 node_modules/karma/bin/karma start",
 
     "ci": "npm run e2e && npm run test",
