@@ -7,11 +7,12 @@ import {provide} from 'angular2/core';
 
 // Angular 2
 import {FORM_PROVIDERS} from 'angular2/common';
+import {LocationStrategy, HashLocationStrategy} from 'angular2/platform/common';
 
 // Angular 2 Http
 import {HTTP_PROVIDERS} from 'angular2/http';
 // Angular 2 Router
-import {ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy} from 'angular2/router';
+import {ROUTER_PROVIDERS} from 'angular2/router';
 
 // Angular 2 Material
 // TODO(gdi2290): replace with @angular2-material/all
