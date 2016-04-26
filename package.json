@@ -77,11 +77,11 @@
     "@angular2-material/radio": "2.0.0-alpha.3",
     "@angular2-material/sidenav": "2.0.0-alpha.3",
     "@angular2-material/toolbar": "2.0.0-alpha.3",
-    "angular2": "2.0.0-beta.15",
+    "angular2": "2.0.0-beta.16",
     "core-js": "^2.2.2",
     "normalize.css": "^4.1.1",
     "rxjs": "5.0.0-beta.2",
-    "zone.js": "~0.6.11"
+    "zone.js": "~0.6.12"
   },
   "devDependencies": {
     "angular2-hmr": "~0.5.5",
