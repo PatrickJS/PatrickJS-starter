@@ -1,7 +1,4 @@
 {
-  "rulesDirectory": [
-    "node_modules/codelyzer"
-  ],
   "rules": {
     "member-access": false,
     "member-ordering": [
@@ -132,20 +129,7 @@
       "check-operator",
       "check-separator",
       "check-type"
-    ],
+    ]
 
-    "directive-selector-name": [true, "kebab-case"],
-    "component-selector-name": [true, "kebab-case"],
-    "directive-selector-type": [true, "attribute"],
-    "component-selector-type": [true, "element"],
-    "directive-selector-prefix": false,
-    "component-selector-prefix": false,
-    "host-parameter-decorator": true,
-    "input-parameter-decorator": true,
-    "output-parameter-decorator": true,
-    "attribute-parameter-decorator": false,
-    "input-property-directive": true,
-    "output-property-directive": true,
-    "call-forward-ref":true
   }
 }
