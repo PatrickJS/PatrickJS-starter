@@ -84,7 +84,7 @@
     "zone.js": "~0.6.12"
   },
   "devDependencies": {
-    "angular2-hmr": "~0.5.5",
+    "angular2-hmr": "~0.5.6",
     "awesome-typescript-loader": "~0.17.0",
     "codelyzer": "0.0.15",
     "compression-webpack-plugin": "^0.3.1",
