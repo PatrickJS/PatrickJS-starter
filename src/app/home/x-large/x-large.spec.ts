@@ -1,7 +1,6 @@
 import {
   it,
   inject,
-  injectAsync,
   describe,
   beforeEachProviders,
   TestComponentBuilder
@@ -22,7 +21,7 @@ describe('x-large directive', () => {
   })
   class TestComponent {}
 
-  it('should sent font-size to x-large', injectAsync([TestComponentBuilder], (tcb) => {
+  it('should sent font-size to x-large', inject([TestComponentBuilder], (tcb) => {
     return tcb.overrideTemplate(TestComponent, '<div x-large>Content</div>')
       .createAsync(TestComponent).then((fixture: any) => {
         fixture.detectChanges();
