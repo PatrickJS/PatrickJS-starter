@@ -50,7 +50,7 @@ module.exports = webpackMerge(commonConfig, {
    * See: http://webpack.github.io/docs/configuration.html#devtool
    * See: https://github.com/webpack/docs/wiki/build-performance#sourcemaps
    */
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'cheap-module-source-map',
 
   /**
    * Options affecting the output of the compilation.
@@ -141,7 +141,8 @@ module.exports = webpackMerge(commonConfig, {
     watchOptions: {
       aggregateTimeout: 300,
       poll: 1000
-    }
+    },
+    outputPath: helpers.root('dist')
   },
 
   /*

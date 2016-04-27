@@ -25,6 +25,8 @@
 
 > If you're looking for Webpack 2 version then see the experimental version [angular2-webpack2-starter](https://github.com/gdi2290/angular2-webpack2-starter) that will be merged
 
+> If you're looking for something easier to get started with then see the offical angular2-seed that I also maintain [angular/angular2-seed](https://github.com/angular/angular2-seed)
+
 This seed repo serves as an Angular 2 starter for anyone looking to get up and running with Angular 2 and TypeScript fast. Using a [Webpack](http://webpack.github.io/) for building our files and assisting with boilerplate. We're also using Protractor for our end-to-end story and Karma for our unit tests.
 * Best practices in file and application organization for Angular 2.
 * Ready to go build system using Webpack for working with TypeScript.
@@ -60,6 +62,9 @@ npm start
 
 # use Hot Module Replacement
 npm run server:dev:hmr
+
+# if you're in China use cnpm
+# https://github.com/cnpm/cnpm
 ```
 go to [http://0.0.0.0:3000](http://0.0.0.0:3000) or [http://localhost:3000](http://localhost:3000) in your browser
 
@@ -303,6 +308,8 @@ see [typings/registry](https://github.com/typings/registry)
  * This is a problem with minifying Angular 2 and it's recent JIT templates. If you set `mangle` to `false` then you should be good.
 * Why is the size of my app larger in development?
  * We are using inline source-maps and hot module replacement which will increase the bundle size.
+* If you're in China
+ * check out https://github.com/cnpm/cnpm
 
 # Support, Questions, or Feedback
 > Contact us anytime for anything about this repo or Angular 2

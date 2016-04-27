@@ -18,10 +18,9 @@ import {RouterActive} from './router-active';
   providers: [ ],
   directives: [ RouterActive ],
   encapsulation: ViewEncapsulation.None,
-  styles: [`
-    body {
-      margin: 0;
-    }
+  styles: [
+    require('normalize.css'),
+    `
     md-toolbar ul {
       display: inline;
       list-style-type: none;
@@ -57,6 +56,7 @@ import {RouterActive} from './router-active';
         </nav>
       </md-toolbar>
     </header>
+    <md-progress-bar mode="indeterminate" color="primary" *ngIf="loading"></md-progress-bar>
 
     <main>
       <router-outlet></router-outlet>
@@ -80,10 +80,15 @@ import {RouterActive} from './router-active';
 ])
 export class App {
   angularclassLogo = 'assets/img/angularclass-avatar.png';
+  loading = false;
   name = 'Angular 2 Webpack Starter';
   url = 'https://twitter.com/AngularClass';
 
-  constructor(public appState: AppState) {}
+  constructor(
+    public appState: AppState,
+    public router: Router) {
+
+  }
 
   ngOnInit() {
     console.log('Initial App State', this.appState.state);
