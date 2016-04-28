@@ -85,8 +85,7 @@ export class App {
   url = 'https://twitter.com/AngularClass';
 
   constructor(
-    public appState: AppState,
-    public router: Router) {
+    public appState: AppState) {
 
   }
 
