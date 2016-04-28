@@ -46,6 +46,34 @@ module.exports = webpackMerge(commonConfig, {
    */
   devtool: 'source-map',
 
+  // modify common loaders
+  module: {
+     loaders: [
+        // Optimize images
+        //
+        // See: https://github.com/tcoopman/image-webpack-loader
+        {
+           test: /\.(jpe?g|png|gif|svg)$/i,
+           loaders: [
+              'file?hash=sha512&digest=hex&name=[hash].[ext]',
+              'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+           ]
+        },
+
+        // minify html
+        //
+        // see: https://github.com/bestander/html-minify-loader
+        {
+          test: /\.html$/,
+          name: "mandrillTemplates",
+          loader: 'raw!html-minify'
+        }
+     ]
+  },
+  'html-minify-loader': {
+     comments: false
+  },
+
   /**
    * Options affecting the output of the compilation.
    *
