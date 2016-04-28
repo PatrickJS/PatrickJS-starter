@@ -5,10 +5,13 @@ import {
 } from 'angular2/platform/browser';
 
 // Angular 2
-import {enableProdMode} from 'angular2/core';
+import {provide, enableProdMode} from 'angular2/core';
+import {LocationStrategy, HashLocationStrategy} from 'angular2/platform/common';
 
 // Environment Providers
-let PROVIDERS = [];
+let PROVIDERS: any[] = [
+  provide(LocationStrategy, { useClass: HashLocationStrategy })
+];
 
 if ('production' === ENV) {
   // Production
