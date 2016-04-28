@@ -27,6 +27,8 @@
 
 > If you're looking for something easier to get started with then see the offical angular2-seed that I also maintain [angular/angular2-seed](https://github.com/angular/angular2-seed)
 
+> If you're looking for Angular 2 in Javascript(ES6/ES7) with Webpack see [angular2-esnext-starter](https://github.com/blacksonic/angular2-esnext-starter)
+
 This seed repo serves as an Angular 2 starter for anyone looking to get up and running with Angular 2 and TypeScript fast. Using a [Webpack](http://webpack.github.io/) for building our files and assisting with boilerplate. We're also using Protractor for our end-to-end story and Karma for our unit tests.
 * Best practices in file and application organization for Angular 2.
 * Ready to go build system using Webpack for working with TypeScript.
