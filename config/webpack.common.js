@@ -78,8 +78,10 @@ module.exports = {
     alias: {
       'angular2/core': helpers.rootNode('@angular/core/index.js'),
       'angular2/platform/browser': helpers.rootNode('@angular/platform-browser/index.js'),
+      'angular2/testing': helpers.rootNode('@angular/testing/index.js'),
       'angular2/router': helpers.rootNode('@angular/router-deprecated/index.js'),
       'angular2/http': helpers.rootNode('@angular/http/index.js')
+      'angular2/http/testing': helpers.rootNode('@angular/http/testing.js')
     },
 
   },
