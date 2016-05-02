@@ -73,7 +73,14 @@ module.exports = {
     root: helpers.root('src'),
 
     // remove other default values
-    modulesDirectories: ['node_modules']
+    modulesDirectories: ['node_modules'],
+
+    alias: {
+      'angular/core': path.resolve(__dirname, 'node_modules/angular/core/index.js'),
+      'angular/platform/browser': path.resolve(__dirname, 'node_modules/@angular/platform-browser/index.js'),
+      'angular/router': path.resolve(__dirname, 'node_modules/@angular/router-deprecated/index.js'),
+      'angular/http': path.resolve(__dirname, 'node_modules/@angular/http/index.js')
+    },
 
   },
 
