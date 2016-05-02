@@ -4,11 +4,11 @@ import {
   injectAsync,
   beforeEachProviders,
   TestComponentBuilder
-} from 'angular2/testing';
+} from '@angular/testing';
 
-import {Component, provide} from 'angular2/core';
-import {BaseRequestOptions, Http} from 'angular2/http';
-import {MockBackend} from 'angular2/http/testing';
+import {Component, provide} from '@angular/core';
+import {BaseRequestOptions, Http} from '@angular/http';
+import {MockBackend} from '@angular/http/testing';
 
 
 import {Title} from './title.service';

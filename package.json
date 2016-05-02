@@ -86,6 +86,7 @@
     "@angular/platform-server": "0.0.0-7",
     "@angular/router": "0.0.0-7",
     "@angular/router-deprecated": "0.0.0-7",
+    "@angular/testing": "0.0.0-0",
     "core-js": "^2.2.2",
     "normalize.css": "^4.1.1",
     "rxjs": "5.0.0-beta.6",
