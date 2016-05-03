@@ -2,10 +2,10 @@
  * These are globally available directives in any template
  */
 
-import {provide, PLATFORM_DIRECTIVES} from 'angular2/core';
+import {PLATFORM_DIRECTIVES} from '@angular/core';
 
 // Angular 2 Router
-import {ROUTER_DIRECTIVES} from 'angular2/router';
+import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 
 // Angular 2 Material 2
 // TODO(gdi2290): replace with @angular2-material/all
@@ -18,5 +18,5 @@ export const APPLICATION_DIRECTIVES = [
 ];
 
 export const DIRECTIVES = [
-  provide(PLATFORM_DIRECTIVES, { multi: true, useValue: APPLICATION_DIRECTIVES })
+  {provide: PLATFORM_DIRECTIVES, multi: true, useValue: APPLICATION_DIRECTIVES }
 ];
