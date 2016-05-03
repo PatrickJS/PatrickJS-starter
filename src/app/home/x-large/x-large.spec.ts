@@ -1,15 +1,15 @@
 import {
   it,
   inject,
-  injectAsync,
+  async,
   describe,
-  beforeEachProviders,
-  TestComponentBuilder
-} from 'angular2/testing';
+  beforeEachProviders
+} from '@angular/core/testing';
+import {TestComponentBuilder} from '@angular/compiler/testing';
 
-import {Component, provide} from 'angular2/core';
-import {BaseRequestOptions, Http} from 'angular2/http';
-import {MockBackend} from 'angular2/http/testing';
+import {Component, provide} from '@angular/core';
+import {BaseRequestOptions, Http} from '@angular/http';
+import {MockBackend} from '@angular/http/testing';
 
 // Load the implementations that should be tested
 import {XLarge} from './x-large.directive';
@@ -22,13 +22,13 @@ describe('x-large directive', () => {
   })
   class TestComponent {}
 
-  it('should sent font-size to x-large', injectAsync([TestComponentBuilder], (tcb) => {
+  it('should sent font-size to x-large', async(inject([TestComponentBuilder], (tcb) => {
     return tcb.overrideTemplate(TestComponent, '<div x-large>Content</div>')
       .createAsync(TestComponent).then((fixture: any) => {
         fixture.detectChanges();
         let compiled = fixture.debugElement.nativeElement.children[0];
         expect(compiled.style.fontSize).toBe('x-large');
       });
-  }));
+  })));
 
 });

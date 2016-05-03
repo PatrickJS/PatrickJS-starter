@@ -25,6 +25,7 @@ export const MATERIAL_DIRECTIVES = [
     MdToolbar,
     MdCheckbox,
     MdRadioButton,
+    MdRadioGroup,
     MdSpinner,
     MdProgressBar,
     MdProgressCircle
