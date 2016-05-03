@@ -2,9 +2,9 @@ import {
   it,
   inject,
   injectAsync,
-  beforeEachProviders,
-  TestComponentBuilder
-} from '@angular/testing';
+  beforeEachProviders
+} from '@angular/core/testing';
+import {TestComponentBuilder} from '@angular/compiler/testing';
 
 import {Component, provide} from '@angular/core';
 import {BaseRequestOptions, Http} from '@angular/http';
@@ -17,12 +17,13 @@ describe('Title', () => {
   beforeEachProviders(() => [
     BaseRequestOptions,
     MockBackend,
-    provide(Http, {
+    {
+      provide: Http,
       useFactory: function(backend, defaultOptions) {
         return new Http(backend, defaultOptions);
       },
       deps: [MockBackend, BaseRequestOptions]
-    }),
+    },
 
     Title
   ]);

@@ -3,9 +3,9 @@ import {
   inject,
   async,
   describe,
-  beforeEachProviders,
-  TestComponentBuilder
-} from '@angular/testing';
+  beforeEachProviders
+} from '@angular/core/testing';
+import {TestComponentBuilder} from '@angular/compiler/testing';
 
 import {Component, provide} from '@angular/core';
 import {BaseRequestOptions, Http} from '@angular/http';

@@ -3,11 +3,10 @@ import {
   inject,
   injectAsync,
   describe,
-  beforeEachProviders,
-  TestComponentBuilder
-} from '@angular/testing';
+  beforeEachProviders
+} from '@angular/core/testing';
 
-import {Component, provide} from '@angular/core';
+import {Component} from '@angular/core';
 import {BaseRequestOptions, Http} from '@angular/http';
 import {MockBackend} from '@angular/http/testing';
 
@@ -21,12 +20,13 @@ describe('Home', () => {
   beforeEachProviders(() => [
     BaseRequestOptions,
     MockBackend,
-    provide(Http, {
+    {
+      provide: Http,
       useFactory: function(backend, defaultOptions) {
         return new Http(backend, defaultOptions);
       },
       deps: [MockBackend, BaseRequestOptions]
-    }),
+    },
 
     AppState,
     Title,
