@@ -51,7 +51,7 @@
        "pretest": "npm run lint",
      "test": "karma start",
 
-     "ci": "npm run e2e && npm run test",
+     "ci": "npm test && npm run e2e",
 
      "docs": "npm run typedoc -- --options typedoc.json --exclude '**/*.spec.ts' ./src/",
 
