@@ -93,7 +93,7 @@
   },
   "devDependencies": {
     "angular2": "2.0.0-beta.17",
-    "angular2-hmr": "~0.5.7",
+    "angular2-hmr": "~0.6.0",
     "awesome-typescript-loader": "~0.17.0",
     "codelyzer": "~0.0.19",
     "compression-webpack-plugin": "^0.3.1",
