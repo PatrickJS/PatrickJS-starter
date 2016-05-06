@@ -14,12 +14,19 @@ console.log('`About` component loaded asynchronously');
     h1 {
       font-family: Arial, Helvetica, sans-serif
     }
+    md-card{
+      margin: 25px;
+    }
   `],
   template: `
   <md-card>
-    <h1>
+    For hot module reloading run
+    <pre>npm run start:hmr</pre>
+  </md-card>
+  <md-card>
+    <h3>
       patrick@AngularClass.com
-    </h1>
+    </h3>
   </md-card>
 
   `
