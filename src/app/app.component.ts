@@ -20,56 +20,68 @@ import {RouterActive} from './router-active';
   encapsulation: ViewEncapsulation.None,
   styles: [
     require('normalize.css'),
-    `
-    md-toolbar ul {
-      display: inline;
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      width: 60px;
+    `html, body{
+      height: 100%;
+      background: #F4FAFA;
     }
-    md-toolbar li {
-      display: inline;
+    button.active{
+      background: #fff;
+      color: #009688;
     }
-    md-toolbar li.active {
-      background-color: lightgray;
+    button.active:hover{
+      color: #fff;
     }
-  `],
+    .fill{
+      flex: 1 1 auto;
+    }
+    .app-state{
+      margin: 15px;
+      flex: 1;
+    }
+    .home{
+      flex: 1;
+    }
+    md-content{
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    footer{
+      flex: 0 0 60px;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+    }`
+  ],
   template: `
-    <header>
+    <md-content>
       <md-toolbar color="primary">
-        <span>{{ name }}</span>
-        <nav>
-          <ul>
-            <li router-active>
-              <a [routerLink]=" ['Index'] ">Index</a>
-            </li>
-            |
-            <li router-active>
-              <a [routerLink]=" ['Home'] ">Home</a>
-            </li>
-            |
-            <li router-active>
-              <a [routerLink]=" ['About'] ">About</a>
-            </li>
-          </ul>
-        </nav>
+          <span>{{ name }}</span>
+          <span class="fill"></span>
+          <button md-button router-active [routerLink]=" ['Index'] ">
+            Index
+          </button>
+          <button md-button router-active [routerLink]=" ['Home'] ">
+            Home
+          </button>
+          <button md-button router-active [routerLink]=" ['About'] ">
+            About
+          </button>
       </md-toolbar>
-    </header>
-    <md-progress-bar mode="indeterminate" color="primary" *ngIf="loading"></md-progress-bar>
+      
+      <md-progress-bar mode="indeterminate" color="primary" *ngIf="loading"></md-progress-bar>
 
-    <main>
       <router-outlet></router-outlet>
-    </main>
 
-    <pre>this.appState.state = {{ appState.state | json }}</pre>
+      <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
 
-    <footer>
-      WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a>
-      <div>
-        <img [src]="angularclassLogo" width="10%">
-      </div>
-    </footer>
+      <footer>
+        <img [src]="angularclassLogo" width="6%">
+        WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a>
+      </footer>
+      </md-content>
   `
 })
 @RouteConfig([
