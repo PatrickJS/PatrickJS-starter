@@ -22,7 +22,7 @@ import {RouterActive} from './router-active';
     require('normalize.css'),
     `html, body{
       height: 100%;
-      background: #D0EBE8;
+      background: #F4FAFA;
     }
     button.active{
       background: #fff;
