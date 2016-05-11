@@ -3,7 +3,7 @@ import {HmrState} from 'angular2-hmr';
 
 @Injectable()
 export class AppState {
-  // HmrState uis used by HMR to track the any state during reloading
+  // @HmrState() is used by HMR to track the state of any object during a hot module replacement
   @HmrState() _state = { };
 
   constructor() {

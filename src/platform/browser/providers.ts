@@ -2,9 +2,6 @@
  * These are globally available services in any component or any other service
  */
 
-
-import {provide} from '@angular/core';
-
 // Angular 2
 import {FORM_PROVIDERS, LocationStrategy, HashLocationStrategy} from '@angular/common';
 
