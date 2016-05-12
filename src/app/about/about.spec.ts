@@ -5,12 +5,12 @@ import {
   describe,
   beforeEachProviders
 } from '@angular/core/testing';
-import {TestComponentBuilder} from '@angular/compiler/testing';
+import { TestComponentBuilder } from '@angular/compiler/testing';
 
-import {Component, provide} from '@angular/core';
+import { Component, provide } from '@angular/core';
 
 // Load the implementations that should be tested
-import {About} from './about.component';
+import { About } from './about.component';
 
 describe('About', () => {
   // provide our implementations or mocks to the dependency injector

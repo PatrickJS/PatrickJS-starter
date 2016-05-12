@@ -5,14 +5,14 @@ import {
   describe,
   beforeEachProviders
 } from '@angular/core/testing';
-import {TestComponentBuilder} from '@angular/compiler/testing';
+import { TestComponentBuilder } from '@angular/compiler/testing';
 
-import {Component, provide} from '@angular/core';
-import {BaseRequestOptions, Http} from '@angular/http';
-import {MockBackend} from '@angular/http/testing';
+import { Component, provide } from '@angular/core';
+import { BaseRequestOptions, Http } from '@angular/http';
+import { MockBackend } from '@angular/http/testing';
 
 // Load the implementations that should be tested
-import {XLarge} from './x-large.directive';
+import { XLarge } from './x-large.directive';
 
 describe('x-large directive', () => {
   // Create a test component to test directives
