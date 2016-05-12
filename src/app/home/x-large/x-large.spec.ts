@@ -1,13 +1,12 @@
-import {
-  it,
-  inject,
-  async,
-  describe,
-  beforeEachProviders
-} from '@angular/core/testing';
 import { TestComponentBuilder } from '@angular/compiler/testing';
-
 import { Component, provide } from '@angular/core';
+import {
+  async,
+  beforeEachProviders,
+  describe,
+  inject,
+  it
+} from '@angular/core/testing';
 import { BaseRequestOptions, Http } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 

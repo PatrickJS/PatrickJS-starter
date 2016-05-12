@@ -3,7 +3,6 @@
  */
 
 import { PLATFORM_DIRECTIVES } from '@angular/core';
-
 // Angular 2 Router
 import { ROUTER_DIRECTIVES } from '@angular/router-deprecated';
 

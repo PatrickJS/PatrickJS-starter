@@ -4,8 +4,8 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { RouteConfig, Router } from '@angular/router-deprecated';
 
-import { Home } from './home';
 import { AppState } from './app.service';
+import { Home } from './home';
 import { RouterActive } from './router-active';
 
 /*
