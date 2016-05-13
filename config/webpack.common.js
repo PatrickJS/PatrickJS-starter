@@ -245,7 +245,7 @@ module.exports = {
      */
     new HtmlWebpackPlugin({
       template: 'src/index.html',
-      chunksSortMode: helpers.packageSort(['polyfills', 'vendor', 'main'])
+      chunksSortMode: 'dependency'
     })
 
   ],
