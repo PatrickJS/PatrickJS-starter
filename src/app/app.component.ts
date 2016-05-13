@@ -1,12 +1,12 @@
 /*
  * Angular 2 decorators and services
  */
-import {Component, ViewEncapsulation} from '@angular/core';
-import {RouteConfig, Router} from '@angular/router-deprecated';
+import { Component, ViewEncapsulation } from '@angular/core';
+import { RouteConfig, Router } from '@angular/router-deprecated';
 
-import {Home} from './home';
-import {AppState} from './app.service';
-import {RouterActive} from './router-active';
+import { AppState } from './app.service';
+import { Home } from './home';
+import { RouterActive } from './router-active';
 
 /*
  * App Component
