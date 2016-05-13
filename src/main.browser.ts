@@ -53,6 +53,6 @@ if ('development' === ENV && HMR === true) {
   let ngHmr = require('angular2-hmr');
   ngHmr.hotModuleReplacement(main, module);
 } else {
-  // bootstrap when documetn is ready
+  // bootstrap when document is ready
   document.addEventListener('DOMContentLoaded', () => main());
 }
