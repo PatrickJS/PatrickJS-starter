@@ -8,7 +8,8 @@ const helpers = require('./helpers');
 /*
  * Webpack Plugins
  */
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+// problem with copy-webpack-plugin
+var CopyWebpackPlugin = (CopyWebpackPlugin = require('copy-webpack-plugin'), CopyWebpackPlugin.default || CopyWebpackPlugin);
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 
@@ -80,7 +81,6 @@ module.exports = {
       'angular2/testing': helpers.root('node_modules/@angular/core/testing.js'),
       '@angular/testing': helpers.root('node_modules/@angular/core/testing.js'),
       'angular2/platform/browser': helpers.root('node_modules/@angular/platform-browser/index.js'),
-      'angular2/testing': helpers.root('node_modules/@angular/testing/index.js'),
       'angular2/router': helpers.root('node_modules/@angular/router-deprecated/index.js'),
       'angular2/http': helpers.root('node_modules/@angular/http/index.js'),
       'angular2/http/testing': helpers.root('node_modules/@angular/http/testing.js')
@@ -219,7 +219,7 @@ module.exports = {
      * See: https://github.com/webpack/docs/wiki/optimization#multi-page-app
      */
     new webpack.optimize.CommonsChunkPlugin({
-      name: helpers.reverse(['polyfills', 'vendor'])
+      name: ['polyfills', 'vendor'].reverse()
     }),
 
     /*
@@ -245,7 +245,7 @@ module.exports = {
      */
     new HtmlWebpackPlugin({
       template: 'src/index.html',
-      chunksSortMode: helpers.packageSort(['polyfills', 'vendor', 'main'])
+      chunksSortMode: 'dependency'
     })
 
   ],

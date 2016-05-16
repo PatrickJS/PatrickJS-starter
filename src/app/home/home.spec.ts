@@ -1,19 +1,18 @@
+import { Component } from '@angular/core';
 import {
-  it,
+  beforeEachProviders,
+  describe,
   inject,
   injectAsync,
-  describe,
-  beforeEachProviders
+  it
 } from '@angular/core/testing';
-
-import {Component} from '@angular/core';
-import {BaseRequestOptions, Http} from '@angular/http';
-import {MockBackend} from '@angular/http/testing';
+import { BaseRequestOptions, Http } from '@angular/http';
+import { MockBackend } from '@angular/http/testing';
 
 // Load the implementations that should be tested
-import {Home} from './home.component';
-import {Title} from './title';
-import {AppState} from '../app.service';
+import { AppState } from '../app.service';
+import { Home } from './home.component';
+import { Title } from './title';
 
 describe('Home', () => {
   // provide our implementations or mocks to the dependency injector

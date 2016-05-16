@@ -3,16 +3,15 @@
  */
 
 // Angular 2
-import {FORM_PROVIDERS, LocationStrategy, HashLocationStrategy} from '@angular/common';
-
+import { FORM_PROVIDERS, HashLocationStrategy, LocationStrategy } from '@angular/common';
 // Angular 2 Http
-import {HTTP_PROVIDERS} from '@angular/http';
+import { HTTP_PROVIDERS } from '@angular/http';
 // Angular 2 Router
-import {ROUTER_PROVIDERS} from '@angular/router-deprecated';
+import { ROUTER_PROVIDERS } from '@angular/router-deprecated';
 
 // Angular 2 Material
 // TODO(gdi2290): replace with @angular2-material/all
-import {MATERIAL_PROVIDERS} from './angular2-material2';
+import { MATERIAL_PROVIDERS } from './angular2-material2';
 
 /*
 * Application Providers/Directives/Pipes
