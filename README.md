@@ -141,6 +141,7 @@ Once you have those, you should install these globals with `npm install --global
 ## Installing
 * `fork` this repo
 * `clone` your fork
+* `npm install typings webpack-dev-server rimraf webpack -g` to install required global dependencies
 * `npm install` to install all dependencies
 * `typings install` to install necessary typings
 * `npm run server` to start the dev server in another tab
