@@ -8,7 +8,15 @@
     "noEmitHelpers": true
   },
   "exclude": [
-    "node_modules"
+    "./node_modules",
+    "./typings/main.d.ts",
+    "./typings/main"
+  ],
+  "filesGlob": [
+    "./src/client/**/*.ts",
+    "!./node_modules/**",
+    "./src/client/custom-typings.d.ts",
+    "./typings/index.d.ts"
   ],
   "awesomeTypescriptLoaderOptions": {
     "resolveGlobs": true,
@@ -18,3 +26,4 @@
   "buildOnSave": false,
   "atom": { "rewriteTsconfig": false }
 }
+
