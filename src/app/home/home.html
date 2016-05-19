@@ -1,2 +1,27 @@
-<h1 x-large>Home</h1>
-<div>Your Content Here</div>
+<div class="card-container">
+  <h1 x-large class="sample-content">Your Content Here</h1>
+  <div>
+    <h4>Local State</h4>
+
+      <form (ngSubmit)="submitState(localState.value)" autocomplete="off">
+
+        <input
+          placeholder="Submit Local State to App State"
+          [value]="localState.value"
+          (input)="localState.value = $event.target.value"
+          autofocus>
+
+        <button md-raised-button color="primary">Submit Value</button>
+      </form>
+      <!--
+        <input type="text" [value]="localState.value" (input)="localState.value = $event.target.value" autofocus>
+        Rather than wiring up two-way data-binding ourselves with [value] and (input)
+        we can use Angular's [(ngModel)] syntax
+        <input type="text" [(ngModel)]="localState.value" autofocus>
+      -->
+
+      <pre>this.localState = {{ localState | json }}</pre>
+
+  </div>
+
+</div>
