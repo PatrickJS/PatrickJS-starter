@@ -19,37 +19,21 @@ import { RouterActive } from './router-active';
   directives: [ RouterActive ],
   encapsulation: ViewEncapsulation.None,
   styles: [
-    require('normalize.css'),
     require('./app.css')
   ],
   template: `
-    <md-content>
-      <md-toolbar color="primary">
-          <span>{{ name }}</span>
-          <span class="fill"></span>
-          <button md-button router-active [routerLink]=" ['Index'] ">
-            Index
-          </button>
-          <button md-button router-active [routerLink]=" ['Home'] ">
-            Home
-          </button>
-          <button md-button router-active [routerLink]=" ['About'] ">
-            About
-          </button>
-      </md-toolbar>
-
-      <md-progress-bar mode="indeterminate" color="primary" *ngIf="loading"></md-progress-bar>
-
+      <button router-active [routerLink]=" ['Index'] ">
+        Index
+      </button>
+      <button router-active [routerLink]=" ['Home'] ">
+        Home
+      </button>
+      <button router-active [routerLink]=" ['About'] ">
+        About
+      </button>
       <router-outlet></router-outlet>
-
       <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
-
-      <footer>
-        <img [src]="angularclassLogo" width="6%">
-        WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a>
-      </footer>
-      </md-content>
-  `
+    `
 })
 @RouteConfig([
   { path: '/',      name: 'Index', component: Home, useAsDefault: true },
