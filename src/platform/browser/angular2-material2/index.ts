@@ -9,7 +9,7 @@ import { MdProgressCircle, MdSpinner } from '@angular2-material/progress-circle'
 import { MdRadioButton, MdRadioDispatcher, MdRadioGroup } from '@angular2-material/radio';
 import { MD_SIDENAV_DIRECTIVES } from '@angular2-material/sidenav';
 import { MdToolbar } from '@angular2-material/toolbar';
-import {MdIconRegistry} from '@angular2-material/icon/icon-registry';
+import { MdIconRegistry } from '@angular2-material/icon/icon-registry';
 
 
 /*
