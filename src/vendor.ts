@@ -22,6 +22,7 @@ import '@angular2-material/checkbox';
 import '@angular2-material/sidenav';
 import '@angular2-material/input';
 import '@angular2-material/list';
+import '@angular2-material/icon';
 import '@angular2-material/radio';
 import '@angular2-material/progress-bar';
 import '@angular2-material/progress-circle';
