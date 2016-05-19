@@ -32,6 +32,7 @@ import { RouterActive } from './router-active';
         About
       </button>
       <router-outlet></router-outlet>
+      <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
     `
 })
 @RouteConfig([
