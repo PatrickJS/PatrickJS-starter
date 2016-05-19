@@ -11,24 +11,9 @@ console.log('`About` component loaded asynchronously');
 @Component({
   selector: 'about',
   styles: [`
-    h1 {
-      font-family: Arial, Helvetica, sans-serif
-    }
-    md-card{
-      margin: 25px;
-    }
   `],
   template: `
-  <md-card>
-    For hot module reloading run
-    <pre>npm run start:hmr</pre>
-  </md-card>
-  <md-card>
-    <h3>
-      patrick@AngularClass.com
-    </h3>
-  </md-card>
-
+    <h1>About</h1>
   `
 })
 export class About {
