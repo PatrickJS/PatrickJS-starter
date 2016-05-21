@@ -22,18 +22,28 @@ import { RouterActive } from './router-active';
     require('./app.css')
   ],
   template: `
-      <button router-active [routerLink]=" ['Index'] ">
+    <span router-active>
+      <button [routerLink]=" ['Index'] ">
         Index
       </button>
-      <button router-active [routerLink]=" ['Home'] ">
+    </span>
+    <span router-active>
+      <button [routerLink]=" ['Home'] ">
         Home
       </button>
-      <button router-active [routerLink]=" ['About'] ">
+    </span>
+    <span router-active>
+      <button [routerLink]=" ['About'] ">
         About
       </button>
+    </span>
+
+    <main>
       <router-outlet></router-outlet>
-      <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
-    `
+    </main>
+
+    <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
+  `
 })
 @RouteConfig([
   { path: '/',      name: 'Index', component: Home, useAsDefault: true },
