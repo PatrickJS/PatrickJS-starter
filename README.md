@@ -315,6 +315,8 @@ see [typings/registry](https://github.com/typings/registry)
  * check out https://github.com/cnpm/cnpm
 * If you're looking to add Angular 2 Material Design
  * check out the [material2](https://github.com/AngularClass/angular2-webpack-starter/tree/material2) branch
+* node-pre-gyp ERR in npm install (Windows)
+ * install Python x86 version between 2.5 and 3.0 on windows see issue [#626](https://github.com/AngularClass/angular2-webpack-starter/issues/626)
 
 # Support, Questions, or Feedback
 > Contact us anytime for anything about this repo or Angular 2
