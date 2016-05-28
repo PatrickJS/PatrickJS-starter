@@ -8,6 +8,7 @@
     "selenium-webdriver": "registry:dt/selenium-webdriver#2.44.0+20160317120654",
     "source-map": "registry:dt/source-map#0.0.0+20160317120654",
     "uglify-js": "registry:dt/uglify-js#2.6.1+20160316155526",
-    "webpack": "registry:dt/webpack#1.12.9+20160321060707"
+    "webpack": "registry:dt/webpack#1.12.9+20160321060707",
+    "angular2-beta-to-rc-alias": "file:./node_modules/@angularclass/angular2-beta-to-rc-alias/src/beta-17/typings.d.ts"
   }
 }
