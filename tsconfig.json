@@ -7,12 +7,12 @@
     "sourceMap": true,
     "noEmitHelpers": true
   },
-  "exclude": [
-    "./node_modules",
-    "./typings/main.d.ts",
-    "./typings/main"
-  ],
-  "filesGlob": [
+  // "exclude": [
+  //   "./node_modules",
+  //   "./typings/main.d.ts",
+  //   "./typings/main"
+  // ],
+  "files": [
     "./src/app/**/*.ts",
     "./src/platform/**/*.ts",
     "!./node_modules/**",

@@ -46,7 +46,7 @@ import { RouterActive } from './router-active';
 
       <footer>
         <img [src]="angularclassLogo" width="6%">
-        WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a>
+        <span id="footerText">WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a></span>
       </footer>
       </md-content>
   `
