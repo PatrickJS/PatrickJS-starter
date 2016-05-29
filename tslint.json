@@ -1,5 +1,5 @@
 {
-  "rulesDirectory": "rules/",
+  "rulesDirectory": "config/rules/",
   "rules": {
     "member-access": false,
     "member-ordering": [

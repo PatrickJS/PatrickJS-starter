@@ -1,7 +1,7 @@
 /**
  * custom TSLint rule: Import Destructuring Spacing Rule
  * rules written in TypeScript must be compiled to JavaScript before invoking TSLint. to compile:
- * tsc -m commonjs --noImplicitAny importDestructuringSpacingRule.ts ../node_modules/tslint/lib/tslint.d.ts
+ * tsc -m commonjs --noImplicitAny importDestructuringSpacingRule.ts ../../node_modules/tslint/lib/tslint.d.ts
  *
  * enforces Angular Style Guide Rule 03-05: Import Destructuring Spacing
  * -- Do leave one whitespace character inside of the import statements' curly braces when destructuring.
@@ -45,7 +45,7 @@ var ImportDestructuringSpacingWalker = (function (_super) {
         _super.prototype.visitImportDeclaration.call(this, node);
     };
     ImportDestructuringSpacingWalker.prototype.checkForWhiteSpace = function (text) {
-        return (/{\s[\s\S]*\s}/).test(text);
+        return /{\s[^]*\s}/.test(text);
     };
     return ImportDestructuringSpacingWalker;
 })(Lint.SkippableTokenAwareRuleWalker);
