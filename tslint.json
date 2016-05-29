@@ -1,4 +1,5 @@
 {
+  "rulesDirectory": "config/rules/",
   "rules": {
     "member-access": false,
     "member-ordering": [
@@ -129,7 +130,7 @@
       "check-operator",
       "check-separator",
       "check-type"
-    ]
-
+    ],
+    "import-destructuring-spacing": true
   }
 }
