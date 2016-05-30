@@ -39,7 +39,6 @@ This seed repo serves as an Angular 2 starter for anyone looking to get up and r
 * End-to-end Angular 2 code using Protractor.
 * Type manager with Typings
 * Hot Module Replacement with Webpack
-* Material Design with [angular/material2](https://github.com/angular/material2)
 
 ### Quick start
 **Make sure you have Node version >= 4.0 and NPM >= 3**
