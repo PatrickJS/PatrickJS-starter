@@ -13,9 +13,6 @@ var CopyWebpackPlugin = (CopyWebpackPlugin = require('copy-webpack-plugin'), Cop
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 
-if (helpers.hasProcessFlag())
-console.log(process.argv);
-
 /*
  * Webpack Constants
  */
