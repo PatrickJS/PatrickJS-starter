@@ -53,9 +53,6 @@ git clone --depth 1 https://github.com/angularclass/angular2-webpack-starter.git
 # change directory to our repo
 cd angular2-webpack-starter
 
-# add required global libraries
-npm install typings webpack-dev-server rimraf webpack -g
-
 # install the repo with npm
 npm install
 
