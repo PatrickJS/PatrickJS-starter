@@ -1,7 +1,7 @@
-import {Component} from 'angular2/core';
-import {RouteConfig, Router, ROUTER_DIRECTIVES} from 'angular2/router';
-import {Http} from 'angular2/http';
-import {FORM_PROVIDERS} from 'angular2/common';
+import {Component} from '@angular/core';
+import {RouteConfig, Router, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
+import {Http} from '@angular/http';
+import {FORM_PROVIDERS} from '@angular/common';
 
 
 import {Title} from './providers/title';
