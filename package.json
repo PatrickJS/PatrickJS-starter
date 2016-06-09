@@ -112,7 +112,7 @@
     "remap-istanbul": "^0.6.3",
     "rimraf": "^2.5.2",
 
-    "codelyzer": "~0.0.19",
+    "codelyzer": "~0.0.21",
 
     "tslint": "^3.7.1",
     "ts-helpers": "1.1.1",
