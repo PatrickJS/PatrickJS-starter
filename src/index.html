@@ -52,11 +52,11 @@
     ga('send', 'pageview');
   </script>
 
-  <% if (webpackConfig.metadata.ENV === 'development') { %>
+  <% if (webpackConfig.metadata.isDevServer) { %>
   <!-- Webpack Dev Server reload -->
   <script src="/webpack-dev-server.js"></script>
   <% } %>
-  
+
 
 </body>
 </html>
