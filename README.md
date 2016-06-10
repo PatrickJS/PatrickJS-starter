@@ -123,7 +123,9 @@ angular2-webpack-starter/
  ├──typedoc.json               * typescript documentation generator
  ├──tsconfig.json              * config that webpack uses for typescript
  ├──typings.json               * our typings manager
- └──package.json               * what npm uses to manage it's dependencies
+ ├──package.json               * what npm uses to manage it's dependencies
+ └──webpack.config.js          * webpack main configuration file
+ 
 ```
 
 # Getting Started
