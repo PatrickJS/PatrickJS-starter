@@ -11,7 +11,7 @@
     For hot module reloading run
     <pre>npm run start:hmr</pre>
   </div>
-  
+
   <hr>
 
   <div>
@@ -19,7 +19,10 @@
 
     <form (ngSubmit)="submitState(localState.value)" autocomplete="off">
 
-      <input placeholder="Submit Local State to App State" [value]="localState.value" (input)="localState.value = $event.target.value"
+      <input
+        [value]="localState.value"
+        (input)="localState.value = $event.target.value"
+        placeholder="Submit Local State to App State"
         autofocus>
 
       <button md-raised-button color="primary">Submit Value</button>
