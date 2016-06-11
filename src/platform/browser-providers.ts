@@ -17,7 +17,7 @@ export const APPLICATION_PROVIDERS = [
   ...FORM_PROVIDERS,
   ...HTTP_PROVIDERS,
   ...ROUTER_PROVIDERS,
-  {provide: LocationStrategy, useClass: HashLocationStrategy }
+  { provide: LocationStrategy, useClass: HashLocationStrategy }
 ];
 
 export const PROVIDERS = [
