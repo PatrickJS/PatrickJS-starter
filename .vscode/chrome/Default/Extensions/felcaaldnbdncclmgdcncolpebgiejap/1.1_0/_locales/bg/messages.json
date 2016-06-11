@@ -1,0 +1,10 @@
+{
+   "appDesc": {
+      "description": "App description.",
+      "message": "Създавайте и редактирайте електронни таблици"
+   },
+   "appName": {
+      "description": "App name.",
+      "message": "Електронни таблици от Google"
+   }
+}

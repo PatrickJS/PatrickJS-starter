@@ -1,0 +1,10 @@
+{
+   "appDesc": {
+      "description": "App description.",
+      "message": "إنشاء مستندات وتحريرها"
+   },
+   "appName": {
+      "description": "App name.",
+      "message": "محرّر مستندات Google"
+   }
+}

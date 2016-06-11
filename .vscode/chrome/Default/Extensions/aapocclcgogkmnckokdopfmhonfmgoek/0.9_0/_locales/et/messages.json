@@ -1,0 +1,10 @@
+{
+   "appDesc": {
+      "description": "App description.",
+      "message": "Looge ja muutke esitlusi"
+   },
+   "appName": {
+      "description": "App name.",
+      "message": "Google'i esitlused"
+   }
+}

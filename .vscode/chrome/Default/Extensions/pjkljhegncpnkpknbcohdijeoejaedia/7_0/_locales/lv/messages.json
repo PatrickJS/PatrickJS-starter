@@ -1,0 +1,10 @@
+{
+   "appDesc": {
+      "description": "App description.",
+      "message": "Ātrs un pārlūkojams e-pasts ar mazāku mēstuļu daudzumu."
+   },
+   "appName": {
+      "description": "App name.",
+      "message": "Gmail"
+   }
+}

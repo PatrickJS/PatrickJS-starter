@@ -1,0 +1,10 @@
+﻿{
+  "appName": {
+    "message": "YouTube",
+    "description": "App name."
+  },
+  "appDesc": {
+    "message": "",
+    "description":"App description."
+  }
+}

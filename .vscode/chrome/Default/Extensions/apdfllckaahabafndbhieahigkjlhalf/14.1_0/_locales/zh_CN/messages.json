@@ -1,0 +1,10 @@
+{
+   "appDesc": {
+      "description": "App description.",
+      "message": "Google 云端硬盘：在一个位置创建、共享和存储您的所有资料。"
+   },
+   "appName": {
+      "description": "App name.",
+      "message": "Google 云端硬盘"
+   }
+}

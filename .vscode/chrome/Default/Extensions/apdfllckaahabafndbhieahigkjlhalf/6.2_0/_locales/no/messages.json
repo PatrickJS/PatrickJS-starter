@@ -1,0 +1,10 @@
+﻿{
+  "appName": {
+    "message": "Google Disk",
+    "description": "App name."
+  },
+  "appDesc": {
+    "message": "Google Disk: opprett, del og oppbevar alt på ett sted.",
+    "description":"App description."
+  }
+}

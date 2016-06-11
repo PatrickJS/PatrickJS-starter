@@ -1,0 +1,10 @@
+{
+   "appDesc": {
+      "description": "App description.",
+      "message": "문서 만들기 및 수정"
+   },
+   "appName": {
+      "description": "App name.",
+      "message": "Google 문서도구"
+   }
+}

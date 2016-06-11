@@ -1,0 +1,10 @@
+{
+   "appDesc": {
+      "description": "App description.",
+      "message": "创建和编辑电子表格"
+   },
+   "appName": {
+      "description": "App name.",
+      "message": "Google 表格"
+   }
+}

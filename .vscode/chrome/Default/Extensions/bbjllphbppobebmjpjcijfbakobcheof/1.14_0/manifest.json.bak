@@ -1,0 +1,28 @@
+{
+  "key" : "eYxnPzfSPtfL3ji4nQX3ujTXpzz3YQ6dVlvHWf1gvW8=",
+  "name": "Rapport",
+  "version": "1.13",
+  "background": { "scripts": ["background.js"] },
+  "page_action" :
+  {
+	"default_icon" : "rtmon_disable.png",
+    "default_title" : "Unprotected site (press ALT+R to open Trusteer Endpoint Protection real time console)",
+	"default_popup" : "popup.html"
+  },
+  "icons" : {
+	"128": "rapport_128_circular.png",
+	"48" : "rapport_48_circular.png",
+	"16" : "rapport_16_circular.png",
+	"12":"rtmon_disable.png",
+	"24":"rtmon.png",
+	"36":"rtmon_acc.png"
+  },
+  "permissions" : [
+  ],
+  "commands": {
+  "_execute_page_action": {
+    "suggested_key": { "default": "Alt+R" }
+    }
+  },
+  "manifest_version": 2
+}

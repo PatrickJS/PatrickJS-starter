@@ -1,0 +1,10 @@
+{
+   "appDesc": {
+      "description": "App description.",
+      "message": "Crea y edita documentos"
+   },
+   "appName": {
+      "description": "App name.",
+      "message": "Google Docs"
+   }
+}

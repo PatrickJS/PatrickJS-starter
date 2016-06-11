@@ -1,0 +1,10 @@
+{
+   "appDesc": {
+      "description": "App description.",
+      "message": "Greitas el. paštas, kuriame galima ieškoti ir pateikiama mažiau slamšto."
+   },
+   "appName": {
+      "description": "App name.",
+      "message": "Gmail"
+   }
+}

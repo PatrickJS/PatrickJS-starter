@@ -1,0 +1,10 @@
+{
+   "appDesc": {
+      "description": "App description.",
+      "message": "Créez et modifiez des feuilles de calcul"
+   },
+   "appName": {
+      "description": "App name.",
+      "message": "Google Sheets"
+   }
+}

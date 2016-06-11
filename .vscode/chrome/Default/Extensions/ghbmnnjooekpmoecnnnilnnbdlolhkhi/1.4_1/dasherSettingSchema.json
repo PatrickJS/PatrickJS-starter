@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "properties": {
+    "allowedDocsOfflineDomains": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "title": "Allow users to enable Docs offline for the specified managed domains.",
+      "description": "Users on managed devices will be able to enable docs offline if they are part of the specified managed domains."
+    },
+    "autoEnabledDocsOfflineDomains": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "title": "Auto enable Docs offline for the specified managed domains in certain eligible situations.",
+      "description": "Users on managed devices, in certain eligible situations, will be able to automatically access and edit recent files offline for the managed domains set in this property. They can still disable it from Drive settings."
+    }
+  }
+}

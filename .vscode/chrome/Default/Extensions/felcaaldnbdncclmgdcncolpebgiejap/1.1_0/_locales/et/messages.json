@@ -1,0 +1,10 @@
+{
+   "appDesc": {
+      "description": "App description.",
+      "message": "Looge ja muutke arvutustabeleid"
+   },
+   "appName": {
+      "description": "App name.",
+      "message": "Google'i arvutustabelid"
+   }
+}

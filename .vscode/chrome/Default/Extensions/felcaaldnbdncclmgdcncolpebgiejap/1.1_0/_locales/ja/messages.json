@@ -1,0 +1,10 @@
+{
+   "appDesc": {
+      "description": "App description.",
+      "message": "スプレッドシートの作成と編集"
+   },
+   "appName": {
+      "description": "App name.",
+      "message": "Google スプレッドシート"
+   }
+}

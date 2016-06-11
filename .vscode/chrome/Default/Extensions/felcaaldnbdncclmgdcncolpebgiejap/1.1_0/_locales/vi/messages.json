@@ -1,0 +1,10 @@
+{
+   "appDesc": {
+      "description": "App description.",
+      "message": "Tạo và chỉnh sửa bảng tính"
+   },
+   "appName": {
+      "description": "App name.",
+      "message": "Google Bảng tính"
+   }
+}

@@ -1,0 +1,10 @@
+{
+   "appDesc": {
+      "description": "App description.",
+      "message": "إنشاء عروض تقديمية وتحريرها"
+   },
+   "appName": {
+      "description": "App name.",
+      "message": "عروض Google التقديمية"
+   }
+}

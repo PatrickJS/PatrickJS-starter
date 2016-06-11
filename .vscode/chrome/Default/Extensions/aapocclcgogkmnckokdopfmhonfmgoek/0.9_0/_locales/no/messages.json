@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "Google Presentasjoner",
+    "description": "App name."
+  },
+  "appDesc": {
+    "message": "Opprett og rediger presentasjoner",
+    "description": "App description."
+  }
+}

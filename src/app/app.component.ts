@@ -17,10 +17,10 @@ import { RouterActive } from './router-active';
   pipes: [ ],
   providers: [ ],
   directives: [ RouterActive ],
-  encapsulation: ViewEncapsulation.None,
   styles: [
-    require('./app.css')
+    require('./app.scss')
   ],
+  encapsulation: ViewEncapsulation.None,
   template: `
     <span router-active>
       <button [routerLink]=" ['Index'] ">

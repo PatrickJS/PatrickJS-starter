@@ -1,0 +1,10 @@
+{
+   "appDesc": {
+      "description": "App description.",
+      "message": "Looge ja muutke dokumente"
+   },
+   "appName": {
+      "description": "App name.",
+      "message": "Google'i dokumendid"
+   }
+}

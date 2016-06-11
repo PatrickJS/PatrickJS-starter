@@ -1,0 +1,30 @@
+{
+   "background": {
+      "persistent": false,
+      "scripts": [ "eventpage_bin_prod.js" ]
+   },
+   "content_capabilities": {
+      "matches": [ "https://docs.google.com/*", "https://drive.google.com/*" ],
+      "permissions": [ "clipboardRead", "clipboardWrite", "unlimitedStorage" ]
+   },
+   "content_security_policy": "script-src 'self'; object-src 'self'",
+   "default_locale": "en_US",
+   "description": "__MSG_extDesc__",
+   "externally_connectable": {
+      "matches": [ "https://docs.google.com/*", "https://drive.google.com/*" ]
+   },
+   "icons": {
+      "128": "128.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnF7RGLAxIon0/XeNZ4MLdP3DMkoORzEAKVg0sb89JpA/W2osTHr91Wqwdc9lW0mFcSpCYS9Y3e7cUMFo/M2ETASIuZncMiUzX2/0rrWtGQ3UuEj3KSe5PdaVZfisyJw/FebvHwirEWrhqcgzVUj9fL9YjE0G45d1zMKcc1umKvLqPyTznNuKBZ9GJREdGLRJCBmUgCkI8iwtwC+QZTUppmaD50/ksnEUXv+QkgGN07/KoNA5oAgo49Jf1XBoMv4QXtVZQlBYZl84zAsI82hb63a6Gu29U/4qMWDdI7+3Ne5TRvo6Zi3EI4M2NQNplJhik105qrz+eTLJJxvf4slrWwIDAQAB",
+   "manifest_version": 2,
+   "minimum_chrome_version": "43",
+   "name": "__MSG_extName__",
+   "permissions": [ "alarms", "clipboardRead", "clipboardWrite", "identity", "power", "storage", "unlimitedStorage" ],
+   "storage": {
+      "managed_schema": "dasherSettingSchema.json"
+   },
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.4",
+   "web_accessible_resources": [ "page_embed_script.js" ]
+}
