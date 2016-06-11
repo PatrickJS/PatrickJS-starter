@@ -116,10 +116,10 @@
 
     "tslint": "^3.7.1",
     "ts-helpers": "1.1.1",
-    "ts-node": "^0.7.3",
-    "typedoc": "^0.3.12",
+    "ts-node": "^0.9.0",
+    "typedoc": "^0.4.2",
     "typescript": "~1.8.9",
-    "typings": "~1.0.3",
+    "typings": "~1.0.5",
 
     "awesome-typescript-loader": "~0.17.0",
     "tslint-loader": "^2.1.3",
