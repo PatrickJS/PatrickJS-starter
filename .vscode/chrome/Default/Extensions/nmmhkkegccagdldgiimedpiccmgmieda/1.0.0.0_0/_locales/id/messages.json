@@ -1,0 +1,23 @@
+{
+   "app_description": {
+      "message": "Pembayaran Toko Web Chrome"
+   },
+   "app_name": {
+      "message": "Pembayaran Toko Web Chrome"
+   },
+   "craw_app_unavailable": {
+      "message": "Aplikasi tidak tersedia saat ini."
+   },
+   "craw_connect_to_network": {
+      "message": "Sambungkan ke jaringan."
+   },
+   "iap_unavailable": {
+      "message": "Pembayaran Dalam Aplikasi saat ini tidak tersedia."
+   },
+   "jwt_retrieve_failed": {
+      "message": "Transaksi tidak dapat diselesaikan. Coba lagi nanti."
+   },
+   "please_sign_in": {
+      "message": "Harap masuk ke Chrome."
+   }
+}

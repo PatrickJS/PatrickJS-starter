@@ -1,0 +1,31 @@
+{
+   "background": {
+      "scripts": [ "background.js" ]
+   },
+   "commands": {
+      "_execute_page_action": {
+         "suggested_key": {
+            "default": "Alt+R"
+         }
+      }
+   },
+   "icons": {
+      "1": "rtmon_disable.png",
+      "128": "rapport_128_circular.png",
+      "16": "rapport_16_circular.png",
+      "2": "rtmon.png",
+      "3": "rtmon_acc.png",
+      "48": "rapport_48_circular.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnxT02YhtD5aXE1dtEvxBxaRjRnyie0pnRZSDL8jDUjFvEFYK1UVK2wBERyPO8li9Pgn488eHcCuI2A2mc1O13Jh/fKlIAKyOreO2x73hfVDH6BSZ80QPjHf9YgpQ7Mf9ifaP+PpzkoVxOgF/zRuN1LO9G87EoQKqOilCV2xelZMQoO74jM0a7PHssyheokND/hTnNYrut0jF4zKVu9r0gQyLCnNX7N0fIIn2AWnVOpCvGJqBPd6V7m/lqOZbj5dJkHqXgf6F6dN0Tlxzy8Snff6gKf6Msah+UU7qnMkczIoUDZA+iaVXy9w8cvU8O/W8y0hBe+1civt4Cod8R35rzwIDAQAB",
+   "manifest_version": 2,
+   "name": "Rapport",
+   "page_action": {
+      "default_icon": "rtmon_disable.png",
+      "default_popup": "popup.html",
+      "default_title": "Unprotected site (press ALT+R to open Trusteer Endpoint Protection real time console)"
+   },
+   "permissions": [  ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.14"
+}

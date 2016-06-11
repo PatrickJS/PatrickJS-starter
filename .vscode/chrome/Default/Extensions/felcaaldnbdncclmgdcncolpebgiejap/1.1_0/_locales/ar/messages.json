@@ -1,0 +1,10 @@
+{
+   "appDesc": {
+      "description": "App description.",
+      "message": "إنشاء جداول بيانات وتحريرها"
+   },
+   "appName": {
+      "description": "App name.",
+      "message": "جداول بيانات Google "
+   }
+}

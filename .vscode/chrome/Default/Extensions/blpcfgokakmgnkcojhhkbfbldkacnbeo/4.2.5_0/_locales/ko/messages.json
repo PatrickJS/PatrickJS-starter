@@ -1,0 +1,10 @@
+{
+   "appDesc": {
+      "description": "App description.",
+      "message": "세계에서 가장 인기있는 온라인 동영상 커뮤니티입니다."
+   },
+   "appName": {
+      "description": "App name.",
+      "message": "YouTube"
+   }
+}

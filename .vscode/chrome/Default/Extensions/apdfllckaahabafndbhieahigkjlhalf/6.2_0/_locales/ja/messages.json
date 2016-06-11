@@ -1,0 +1,10 @@
+{
+   "appDesc": {
+      "description": "App description.",
+      "message": "Google ドライブ: あらゆるファイルの作成、共有、保存を 1 か所で行えます。"
+   },
+   "appName": {
+      "description": "App name.",
+      "message": "Google ドライブ"
+   }
+}

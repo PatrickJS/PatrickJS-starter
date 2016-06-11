@@ -1,0 +1,10 @@
+{
+   "appDesc": {
+      "description": "App description.",
+      "message": "Создание и редактирование таблиц"
+   },
+   "appName": {
+      "description": "App name.",
+      "message": "Google Таблицы"
+   }
+}

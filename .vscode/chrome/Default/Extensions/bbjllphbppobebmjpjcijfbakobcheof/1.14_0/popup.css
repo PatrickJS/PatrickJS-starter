@@ -1,0 +1,9 @@
+BODY {
+  width: 477px;
+  height: 176px;
+  font-size: 10pt;
+}
+
+BODY.popup {
+  margin: 0px;
+}

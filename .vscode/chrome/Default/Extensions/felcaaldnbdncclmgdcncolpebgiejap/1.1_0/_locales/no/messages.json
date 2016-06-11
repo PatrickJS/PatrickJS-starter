@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "Google Regneark",
+    "description": "App name."
+  },
+  "appDesc": {
+    "message": "Opprett og rediger regneark",
+    "description": "App description."
+  }
+}

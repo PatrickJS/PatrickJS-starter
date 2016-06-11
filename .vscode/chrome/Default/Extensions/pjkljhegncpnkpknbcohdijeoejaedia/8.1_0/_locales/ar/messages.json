@@ -1,0 +1,10 @@
+{
+   "appDesc": {
+      "description": "App description.",
+      "message": "بريد إلكتروني يوفر إمكانية البحث مع مقدار أقل من الرسائل غير المرغوب فيها."
+   },
+   "appName": {
+      "description": "App name.",
+      "message": "Gmail"
+   }
+}

@@ -1,0 +1,21 @@
+{
+   "app": {
+      "launch": {
+         "container": "tab",
+         "web_url": "https://mail.google.com/mail/ca"
+      },
+      "urls": [ "*://mail.google.com/mail/ca" ]
+   },
+   "default_locale": "en",
+   "description": "__MSG_appDesc__",
+   "icons": {
+      "128": "128.png"
+   },
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDCuGglK43iAz3J9BEYK/Mz6ZhloIMMDqQSAaf3vJt4eHbTbSDsu4WdQ9dQDRcKlg8nwQdePBt0C3PSUBtiSNSS37Z3qEGfS7LCju3h6pI1Yr9MQtxw+jUa7kXXIS09VV73pEFUT/F7c6Qe8L5ZxgAcBvXBh1Fie63qb02I9XQ/CQIDAQAB",
+   "manifest_version": 2,
+   "name": "__MSG_appName__",
+   "options_page": "https://mail.google.com/mail/ca/#settings",
+   "permissions": [ "notifications" ],
+   "update_url": "http://clients2.google.com/service/update2/crx",
+   "version": "8.1"
+}

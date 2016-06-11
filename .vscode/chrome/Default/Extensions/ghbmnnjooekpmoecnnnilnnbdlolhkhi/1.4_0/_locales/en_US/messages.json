@@ -1,0 +1,10 @@
+{
+   "extDesc": {
+      "description": "Extension description",
+      "message": "Get things done offline with the Google Docs family of products."
+   },
+   "extName": {
+      "description": "Extension name",
+      "message": "Google Docs Offline"
+   }
+}

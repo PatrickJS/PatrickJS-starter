@@ -1,0 +1,10 @@
+{
+   "appDesc": {
+      "description": "App description.",
+      "message": "Luo ja muokkaa esityksiä"
+   },
+   "appName": {
+      "description": "App name.",
+      "message": "Google-presentaatiot"
+   }
+}

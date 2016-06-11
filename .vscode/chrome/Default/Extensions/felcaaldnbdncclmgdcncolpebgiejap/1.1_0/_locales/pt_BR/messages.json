@@ -1,0 +1,10 @@
+{
+   "appDesc": {
+      "description": "App description.",
+      "message": "Crie e edite planilhas"
+   },
+   "appName": {
+      "description": "App name.",
+      "message": "Planilhas do Google"
+   }
+}

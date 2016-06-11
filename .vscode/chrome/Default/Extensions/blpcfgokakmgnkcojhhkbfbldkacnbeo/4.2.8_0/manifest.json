@@ -1,0 +1,22 @@
+{
+   "app": {
+      "launch": {
+         "container": "tab",
+         "web_url": "http://www.youtube.com"
+      },
+      "web_content": {
+         "enabled": true,
+         "origin": "http://www.youtube.com"
+      }
+   },
+   "default_locale": "en",
+   "description": "__MSG_appDesc__",
+   "icons": {
+      "128": "128.png"
+   },
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDC/HotmFlyuz5FaHaIbVBhhL4BwbcUtsfWwzgUMpZt5ZsLB2nW/Y5xwNkkPANYGdVsJkT2GPpRRIKBO5QiJ7jPMa3EZtcZHpkygBlQLSjMhdrAKevpKgIl6YTkwzNvExY6rzVDzeE9zqnIs33eppY4S5QcoALMxuSWlMKqgFQjHQIDAQAB",
+   "manifest_version": 2,
+   "name": "__MSG_appName__",
+   "update_url": "http://clients2.google.com/service/update2/crx",
+   "version": "4.2.8"
+}

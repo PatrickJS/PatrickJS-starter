@@ -138,6 +138,14 @@ module.exports = {
        */
       { test: /\.css$/, loader: 'raw-loader', exclude: [helpers.root('src/index.html')] },
 
+      /*
+       * SASS loader support for *.scss files
+       * Returns file content as string
+       *
+       * See: https://github.com/jtangelder/sass-loader
+       */
+      { test: /\.scss$/, loaders: ['css-to-string-loader', 'style', 'css?sourceMap', 'sass?sourceMap'] },
+
       /**
        * Raw loader support for *.html
        * Returns file content as string

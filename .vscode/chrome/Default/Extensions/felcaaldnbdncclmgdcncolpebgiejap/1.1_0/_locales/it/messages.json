@@ -1,0 +1,10 @@
+{
+   "appDesc": {
+      "description": "App description.",
+      "message": "Crea e modifica fogli di lavoro"
+   },
+   "appName": {
+      "description": "App name.",
+      "message": "Fogli Google"
+   }
+}

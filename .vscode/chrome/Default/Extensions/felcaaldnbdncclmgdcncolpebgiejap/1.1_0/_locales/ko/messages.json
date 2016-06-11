@@ -1,0 +1,10 @@
+{
+   "appDesc": {
+      "description": "App description.",
+      "message": "스프레드시트 만들기 및 수정"
+   },
+   "appName": {
+      "description": "App name.",
+      "message": "Google 시트"
+   }
+}

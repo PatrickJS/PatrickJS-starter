@@ -1,0 +1,10 @@
+{
+   "appDesc": {
+      "description": "App description.",
+      "message": "יצירת גיליונות עבודה ועריכתם"
+   },
+   "appName": {
+      "description": "App name.",
+      "message": "Google Sheets"
+   }
+}

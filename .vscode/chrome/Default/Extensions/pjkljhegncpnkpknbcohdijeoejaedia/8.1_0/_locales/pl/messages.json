@@ -1,0 +1,10 @@
+{
+   "appDesc": {
+      "description": "App description.",
+      "message": "Szybka usługa poczty e-mail z możliwością wyszukiwania i mniejszą ilością spamu."
+   },
+   "appName": {
+      "description": "App name.",
+      "message": "Gmail"
+   }
+}

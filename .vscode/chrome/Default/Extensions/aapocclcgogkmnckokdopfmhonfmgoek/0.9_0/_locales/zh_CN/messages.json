@@ -1,0 +1,10 @@
+{
+   "appDesc": {
+      "description": "App description.",
+      "message": "创建和编辑演示文稿"
+   },
+   "appName": {
+      "description": "App name.",
+      "message": "Google 幻灯片"
+   }
+}

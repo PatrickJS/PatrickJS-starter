@@ -1,0 +1,10 @@
+{
+   "appDesc": {
+      "description": "App description.",
+      "message": "Δημιουργία και επεξεργασία εγγράφων"
+   },
+   "appName": {
+      "description": "App name.",
+      "message": "Έγγραφα Google"
+   }
+}

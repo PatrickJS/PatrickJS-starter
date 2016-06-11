@@ -1,0 +1,10 @@
+{
+   "appDesc": {
+      "description": "App description.",
+      "message": "สร้างและแก้ไขสเปรดชีต"
+   },
+   "appName": {
+      "description": "App name.",
+      "message": "Google สเปรดชีต"
+   }
+}

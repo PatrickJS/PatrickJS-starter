@@ -1,0 +1,10 @@
+{
+   "appDesc": {
+      "description": "App description.",
+      "message": "Luo ja muokkaa laskentataulukoita"
+   },
+   "appName": {
+      "description": "App name.",
+      "message": "Google-taulukot"
+   }
+}

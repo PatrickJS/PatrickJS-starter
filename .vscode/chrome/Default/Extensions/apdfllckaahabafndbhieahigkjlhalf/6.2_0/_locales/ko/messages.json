@@ -1,0 +1,10 @@
+{
+   "appDesc": {
+      "description": "App description.",
+      "message": "Google 드라이브: 모든 콘텐츠를 한 곳에서 작성, 공유 및 보관하세요."
+   },
+   "appName": {
+      "description": "App name.",
+      "message": "Google 드라이브"
+   }
+}
