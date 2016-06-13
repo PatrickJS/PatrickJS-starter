@@ -39,7 +39,11 @@
          "prebuild:prod": "npm run clean:dist",
        "build:prod": "webpack --config config/webpack.prod.js  --progress --profile --colors --display-error-details --display-cached --bail",
 
-     "server": "npm run server:dev",
+    "github-deploy": "npm run github-deploy:dev",
+      "github-deploy:dev": "webpack --config config/webpack.github-deploy.js --progress --profile --colors --display-error-details --display-cached --github-dev",
+      "github-deploy:prod": "webpack --config config/webpack.github-deploy.js --progress --profile --colors --display-error-details --display-cached --github-prod",
+
+    "server": "npm run server:dev",
        "server:dev": "webpack-dev-server --config config/webpack.dev.js --inline --progress --profile --colors --watch --display-error-details --display-cached --content-base src/",
        "server:dev:hmr": "npm run server:dev -- --hot",
        "server:prod": "http-server dist --cors",
@@ -90,6 +94,7 @@
     "@angularclass/angular2-beta-to-rc-alias": "~0.0.3",
 
     "angular2-hmr": "~0.7.0",
+    "gh-pages": "^0.11.0",
 
     "es6-promise": "^3.1.2",
     "es6-shim": "^0.35.0",

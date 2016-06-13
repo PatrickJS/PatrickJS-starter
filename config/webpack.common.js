@@ -59,7 +59,7 @@ module.exports = {
     'main':      './src/main.browser.ts'
 
   },
-
+  
   /*
    * Options affecting the resolving of modules.
    *
