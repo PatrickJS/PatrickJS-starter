@@ -102,6 +102,7 @@
     "karma-mocha-reporter": "^2.0.0",
     "karma-phantomjs-launcher": "^1.0.0",
     "karma-sourcemap-loader": "^0.3.7",
+    "karma-remap-istanbul": "^0.1.0",
     "karma-webpack": "1.7.0",
 
     "protractor": "^3.2.2",
@@ -117,7 +118,7 @@
     "tslint": "^3.7.1",
     "ts-helpers": "1.1.1",
     "ts-node": "^0.9.0",
-    "typedoc": "^0.4.2",
+    "typedoc": "^0.3.12",
     "typescript": "~1.8.9",
     "typings": "~1.0.5",
 
