@@ -51,7 +51,7 @@
      "webdriver:update": "npm run webdriver-manager update",
      "webdriver:start": "npm run webdriver-manager start",
 
-     "lint": "npm run tslint src/**/*.ts",
+     "lint": "npm run tslint \"src/**/*.ts\"",
 
        "pree2e": "npm run webdriver:update -- --standalone",
      "e2e": "npm run protractor",
