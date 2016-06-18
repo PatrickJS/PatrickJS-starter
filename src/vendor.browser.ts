@@ -21,5 +21,6 @@ if ('production' === ENV) {
 
 } else {
   // Development
+  require('angular2-hmr');
 
 }
