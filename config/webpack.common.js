@@ -59,7 +59,7 @@ module.exports = {
     'main':      './src/main.browser.ts'
 
   },
-  
+
   /*
    * Options affecting the resolving of modules.
    *
@@ -72,7 +72,7 @@ module.exports = {
      *
      * See: http://webpack.github.io/docs/configuration.html#resolve-extensions
      */
-    extensions: ['', '.ts', '.js'],
+    extensions: ['', '.ts', '.js', '.json'],
 
     // Make sure root is src
     root: helpers.root('src'),
@@ -121,6 +121,8 @@ module.exports = {
           // these packages have problems with their sourcemaps
           helpers.root('node_modules/rxjs'),
           helpers.root('node_modules/@angular'),
+          helpers.root('node_modules/@ngrx'),
+          helpers.root('node_modules/@angular2-material'),
         ]
       }
 
@@ -158,14 +160,13 @@ module.exports = {
       },
 
       /*
-       * Raw loader support for *.css files
+       * to string and css loader support for *.css files
        * Returns file content as string
        *
-       * See: https://github.com/webpack/raw-loader
        */
       {
         test: /\.css$/,
-        loader: 'raw-loader'
+        loaders: ['to-string-loader', 'css-loader']
       },
 
       /* Raw loader support for *.html
@@ -270,7 +271,8 @@ module.exports = {
      */
     new HtmlElementsPlugin({
       headTags: require('./head-config.common')
-    })
+    }),
+
   ],
 
   /*

@@ -96,6 +96,9 @@
 
     "angular2-hmr": "~0.7.0",
     "gh-pages": "^0.11.0",
+    "parse5": "^1.5.1",
+    "rimraf": "^2.5.2",
+    "http-server": "^0.9.0",
 
     "karma": "^0.13.22",
     "karma-chrome-launcher": "^1.0.1",
@@ -106,13 +109,11 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "1.7.0",
 
-    "protractor": "^3.2.2",
-
-    "parse5": "^1.5.1",
     "phantomjs-polyfill": "0.0.2",
     "phantomjs-prebuilt": "^2.1.7",
     "remap-istanbul": "^0.6.3",
-    "rimraf": "^2.5.2",
+
+    "protractor": "^3.2.2",
 
     "codelyzer": "~0.0.21",
 
@@ -137,7 +138,7 @@
     "exports-loader": "^0.6.3",
     "expose-loader": "^0.7.1",
     "file-loader": "^0.8.5",
-    "http-server": "^0.9.0",
+    "to-string-loader": "^1.1.4",
 
     "html-webpack-plugin": "^2.17.0",
     "copy-webpack-plugin": "^3.0.1",
