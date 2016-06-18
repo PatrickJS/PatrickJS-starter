@@ -90,7 +90,7 @@
     "trailing-comma": [
       true,
       {
-        "multiline": "never",
+        "multiline": false,
         "singleline": "never"
       }
     ],
