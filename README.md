@@ -49,8 +49,8 @@ git clone --depth 1 https://github.com/angularclass/angular2-webpack-starter.git
 cd angular2-webpack-starter
 
 # WINDOWS ONLY
-# add required global libraries
-npm install typings webpack-dev-server rimraf webpack -g
+# add required global libraries `typings webpack-dev-server rimraf webpack`
+npm install -g typings webpack-dev-server rimraf webpack
 
 # install the repo with npm
 npm install
