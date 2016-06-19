@@ -124,7 +124,8 @@
     "typescript": "~1.8.9",
     "typings": "~1.3.0",
 
-    "awesome-typescript-loader": "^1.0.0",
+    "istanbul-instrumenter-loader": "^0.2.0",
+    "awesome-typescript-loader": "^1.1.1",
     "tslint-loader": "^2.1.3",
     "url-loader": "^0.5.7",
     "style-loader": "^0.13.1",
