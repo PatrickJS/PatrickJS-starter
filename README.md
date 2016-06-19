@@ -38,7 +38,7 @@ This seed repo serves as an Angular 2 starter for anyone looking to get up and r
 
 ### Quick start
 **Make sure you have Node version >= 4.0 and NPM >= 3**
-> Clone/Download the repo then edit `app.ts` inside [`/src/app/app.ts`](/src/app/app.ts)
+> Clone/Download the repo then edit `index.ts` inside [`/src/app/index.ts`](/src/app/index.ts)
 
 ```bash
 # clone our repo
@@ -103,9 +103,9 @@ angular2-webpack-starter/
  |   ├──vendor.ts              * our vendor file
  │   │
  │   ├──app/                   * WebApp: folder
- │   │   ├──app.spec.ts        * a simple test of components in app.ts
+ │   │   ├──app.spec.ts        * a simple test of components in index.ts
  │   │   ├──app.e2e.ts         * a simple end-to-end test for /
- │   │   └──app.ts             * App.ts: a simple version of our App component components
+ │   │   └──index.ts             * Index.ts: a simple version of our App component components
  │   │
  │   └──assets/                * static assets are served here
  │       ├──icon/              * our list of icons from www.favicon-generator.org
