@@ -141,7 +141,7 @@
     "file-loader": "^0.8.5",
     "to-string-loader": "^1.1.4",
 
-    "html-webpack-plugin": "^2.17.0",
+    "html-webpack-plugin": "^2.21.0",
     "copy-webpack-plugin": "^3.0.1",
 
     "webpack": "^1.13.1",
