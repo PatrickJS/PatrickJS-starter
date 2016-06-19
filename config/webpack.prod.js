@@ -171,7 +171,7 @@ module.exports = webpackMerge(commonConfig, {
 
     new NormalModuleReplacementPlugin(
       /angular2-hmr/,
-      helpers.root('config/modules/angular2-hmr-prod.js')
+      helpers.root('node_modules/angular2-hmr/prod.js')
     ),
 
     /**
