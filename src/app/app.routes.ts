@@ -11,5 +11,5 @@ export const routes: RouterConfig = [
 
 
 export const asyncRoutes = {
-  'About': require('es6-promise!./about')
+  'About': require('es6-promise-loader!./about')
 };
