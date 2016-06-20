@@ -1,6 +1,7 @@
+import { RouterConfig } from '@angular/router';
 import { Home } from './home';
 
-export const routes = [
+export const routes: RouterConfig = [
   { path: '',      component: Home },
   { path: 'home',  component: Home },
   // Async load a component using Webpack's require with es6-promise-loader and webpack `require`
