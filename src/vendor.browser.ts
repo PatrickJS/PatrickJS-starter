@@ -10,7 +10,9 @@ import '@angular/core';
 import '@angular/common';
 import '@angular/forms';
 import '@angular/http';
-import '@angular/router-deprecated';
+import '@angular/router';
+
+import '@angularclass/webpack-toolkit';
 
 // RxJS
 import 'rxjs/add/operator/map';

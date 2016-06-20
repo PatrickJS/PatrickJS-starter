@@ -2,10 +2,8 @@
  * Angular 2 decorators and services
  */
 import { Component, ViewEncapsulation } from '@angular/core';
-import { RouteConfig, Router } from '@angular/router-deprecated';
 
 import { AppState } from './app.service';
-import { Home } from './home';
 
 /*
  * App Component
@@ -21,17 +19,22 @@ import { Home } from './home';
     require('./app.style.css')
   ],
   template: `
-      <button [routerLink]=" ['Index'] ">
+    <span>
+      <a [routerLink]=" ['./'] ">
         Index
-      </button>
+      </a>
     </span>
-      <button [routerLink]=" ['Home'] ">
+    |
+    <span>
+      <a [routerLink]=" ['./home'] ">
         Home
-      </button>
+      </a>
     </span>
-      <button [routerLink]=" ['About'] ">
+    |
+    <span>
+      <a [routerLink]=" ['./about'] ">
         About
-      </button>
+      </a>
     </span>
 
     <main>
@@ -41,12 +44,6 @@ import { Home } from './home';
     <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
   `
 })
-@RouteConfig([
-  { path: '/',      name: 'Index', component: Home, useAsDefault: true },
-  { path: '/home',  name: 'Home',  component: Home },
-  // Async load a component using Webpack's require with es6-promise-loader and webpack `require`
-  { path: '/about', name: 'About', loader: () => require('es6-promise!./about')('About') }
-])
 export class App {
   angularclassLogo = 'assets/img/angularclass-avatar.png';
   loading = false;
