@@ -15,8 +15,8 @@ import { AppState } from './app.service';
   providers: [ ],
   directives: [ ],
   encapsulation: ViewEncapsulation.None,
-  styles: [
-    require('./app.style.css')
+  styleUrls: [
+    './app.style.css'
   ],
   template: `
     <span>
