@@ -18,7 +18,7 @@ import { Home } from './home';
   directives: [ ],
   encapsulation: ViewEncapsulation.None,
   styles: [
-    require('./app.css')
+    require('./app.style.css')
   ],
   template: `
       <button [routerLink]=" ['Index'] ">
