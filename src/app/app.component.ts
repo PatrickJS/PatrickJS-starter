@@ -6,7 +6,6 @@ import { RouteConfig, Router } from '@angular/router-deprecated';
 
 import { AppState } from './app.service';
 import { Home } from './home';
-import { RouterActive } from './router-active';
 
 /*
  * App Component
@@ -16,23 +15,20 @@ import { RouterActive } from './router-active';
   selector: 'app',
   pipes: [ ],
   providers: [ ],
-  directives: [ RouterActive ],
+  directives: [ ],
   encapsulation: ViewEncapsulation.None,
   styles: [
     require('./app.css')
   ],
   template: `
-    <span router-active>
       <button [routerLink]=" ['Index'] ">
         Index
       </button>
     </span>
-    <span router-active>
       <button [routerLink]=" ['Home'] ">
         Home
       </button>
     </span>
-    <span router-active>
       <button [routerLink]=" ['About'] ">
         About
       </button>
