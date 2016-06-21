@@ -11,7 +11,7 @@ export const routes: RouterConfig = [
   { path: '**',    component: NoContent },
 ];
 
-
+// asyncRoutes is needed for our webpack-toolkit to allow us to resolve the component correctly
 export const asyncRoutes = {
   'About': require('es6-promise-loader!./about')
 };
