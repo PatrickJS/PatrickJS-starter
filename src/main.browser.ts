@@ -7,7 +7,7 @@ import { bootstrap } from '@angular/platform-browser-dynamic';
 * our providers/directives/pipes
 */
 import { PLATFORM_PROVIDERS } from './platform/browser';
-import { ENV_PROVIDERS } from './platform/environment';
+import { ENV_PROVIDERS, decorateComponentRef } from './platform/environment';
 
 
 /*
@@ -27,6 +27,7 @@ export function main(initialHmrState?: any): Promise<any> {
     ...ENV_PROVIDERS,
     ...APP_PROVIDERS,
   ])
+  .then(decorateComponentRef)
   .catch(err => console.error(err));
 
 }
