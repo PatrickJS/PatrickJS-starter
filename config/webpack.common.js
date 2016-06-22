@@ -80,11 +80,6 @@ module.exports = {
     // remove other default values
     modulesDirectories: ['node_modules'],
 
-    alias: {
-      // legacy imports pre-rc releases
-      'angular2': helpers.root('node_modules/@angularclass/angular2-beta-to-rc-alias/dist/beta-17')
-    },
-
   },
 
   /*
