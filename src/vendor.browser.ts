@@ -12,7 +12,9 @@ import '@angular/forms';
 import '@angular/http';
 import '@angular/router';
 
+// AngularClass
 import '@angularclass/webpack-toolkit';
+import '@angularclass/request-idle-callback';
 
 // RxJS
 import 'rxjs/add/operator/map';

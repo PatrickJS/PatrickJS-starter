@@ -92,6 +92,7 @@
   "devDependencies": {
     "@angularclass/angular2-beta-to-rc-alias": "~0.0.3",
     "@angularclass/webpack-toolkit": "^1.0.0",
+    "@angularclass/request-idle-callback": "^1.0.3",
 
     "angular2-hmr": "~0.8.0",
     "gh-pages": "^0.11.0",
