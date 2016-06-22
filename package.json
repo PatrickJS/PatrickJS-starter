@@ -85,7 +85,7 @@
     "@angular/router": "3.0.0-alpha.7",
 
     "@angularclass/webpack-toolkit": "^1.0.0",
-    "@angularclass/request-idle-callback": "^1.0.3",
+    "@angularclass/request-idle-callback": "^1.0.4",
 
     "ie-shim": "^0.1.0",
     "core-js": "^2.4.0",
