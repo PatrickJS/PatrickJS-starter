@@ -84,20 +84,22 @@
     "@angular/platform-server": "2.0.0-rc.3",
     "@angular/router": "3.0.0-alpha.7",
 
+    "@angularclass/webpack-toolkit": "^1.0.0",
+    "@angularclass/request-idle-callback": "^1.0.3",
+
     "ie-shim": "^0.1.0",
     "core-js": "^2.4.0",
     "rxjs": "5.0.0-beta.6",
-    "zone.js": "~0.6.12"
+    "zone.js": "~0.6.12",
+
+    "http-server": "^0.9.0"
   },
   "devDependencies": {
-    "@angularclass/webpack-toolkit": "^1.0.0",
-    "@angularclass/request-idle-callback": "^1.0.3",
 
     "angular2-hmr": "~0.8.0",
     "gh-pages": "^0.11.0",
     "parse5": "^1.5.1",
     "rimraf": "^2.5.2",
-    "http-server": "^0.9.0",
 
     "karma": "^0.13.22",
     "karma-chrome-launcher": "^1.0.1",
