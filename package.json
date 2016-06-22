@@ -84,7 +84,7 @@
     "@angular/platform-server": "2.0.0-rc.3",
     "@angular/router": "3.0.0-alpha.7",
 
-    "@angularclass/webpack-toolkit": "^1.0.0",
+    "@angularclass/webpack-toolkit": "^1.0.1",
     "@angularclass/request-idle-callback": "^1.0.6",
 
     "ie-shim": "^0.1.0",
