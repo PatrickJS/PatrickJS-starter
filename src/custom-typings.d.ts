@@ -41,6 +41,13 @@ interface GlobalEnvironment {
   HMR;
 }
 
+interface Es6PromiseLoader {
+  (id: string): () => Promise<any>;
+}
+
+type AsyncRoutes = {[component: string]: Es6PromiseLoader};
+
+
 interface WebpackModule {
   hot: {
     data?: any,
@@ -71,5 +78,6 @@ interface ErrorStackTraceLimit {
 // Extend typings
 interface NodeRequire extends WebpackRequire {}
 interface ErrorConstructor extends ErrorStackTraceLimit {}
+interface NodeRequireFunction extends Es6PromiseLoader  {}
 interface NodeModule extends WebpackModule {}
 interface Global extends GlobalEnvironment  {}

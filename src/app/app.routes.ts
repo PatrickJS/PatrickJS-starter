@@ -12,6 +12,14 @@ export const routes: RouterConfig = [
 ];
 
 // asyncRoutes is needed for our webpack-toolkit to allow us to resolve the component correctly
-export const asyncRoutes = {
+export const asyncRoutes: AsyncRoutes = {
   'About': require('es6-promise-loader!./about')
 };
+
+// An array of callbacks to be invoked after bootstrap to prefetch async routes
+export const prefetchRouteCallbacks: Array<Es6PromiseLoader | Function> = [
+  asyncRoutes['About'] // es6-promise-loader returns a function
+];
+
+
+// Es6PromiseLoader and AsyncRoutes interfaces are defined in custom-typings
