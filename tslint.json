@@ -1,4 +1,7 @@
 {
+  "rulesDirectory": [
+    "node_modules/codelyzer"
+  ],
   "rules": {
     "member-access": false,
     "member-ordering": [
@@ -52,9 +55,9 @@
     "no-duplicate-variable": true,
     "no-empty": false,
     "no-eval": true,
-    "no-null-keyword": true,
+    "no-null-keyword": false,
     "no-shadowed-variable": true,
-    "no-string-literal": true,
+    "no-string-literal": false,
     "no-switch-case-fall-through": true,
     "no-unreachable": true,
     "no-unused-expression": true,
@@ -87,7 +90,7 @@
     "trailing-comma": [
       true,
       {
-        "multiline": "never",
+        "multiline": false,
         "singleline": "never"
       }
     ],
@@ -129,7 +132,7 @@
       "check-operator",
       "check-separator",
       "check-type"
-    ]
-
+    ],
+    "import-destructuring-spacing": true
   }
 }
