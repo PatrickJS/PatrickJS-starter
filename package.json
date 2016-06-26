@@ -11,8 +11,8 @@
     "build:prod": "./node_modules/.bin/webpack --progress --profile --colors --display-error-details --display-cached --optimize-occurence-order --optimize-dedupe",
     "build:dist": "npm run build:prod && npm run electron",
     "start": "./node_modules/.bin/webpack-dev-server --inline --colors --progress --display-error-details --display-cached --port 3333  --content-base app",
-    "test": "npm run build && electron app",
-    "electron": "./node_modules/electron-packager/cli.js app App --platform=win32 --arch=all --out=dist --overwrite --version='1.2.1'"
+    "electron": "npm run build && electron app",
+    "package": "./node_modules/electron-packager/cli.js app App --platform=win32 --arch=all --out=dist --overwrite --version='1.2.1'"
   },
   "devDependencies": {
     "awesome-typescript-loader": "~1.1.1",
