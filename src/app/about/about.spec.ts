@@ -1,5 +1,5 @@
 import { TestComponentBuilder } from '@angular/compiler/testing';
-import { Component, provide } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   beforeEachProviders,
   describe,
