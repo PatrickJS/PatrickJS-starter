@@ -1,4 +1,5 @@
 
+[![Build Status](https://travis-ci.org/xelfe/angular2-electron-starter.svg?branch=master)](https://travis-ci.org/xelfe/angular2-electron-starter)
 # Angular2 Electron Starter (with Webpack)
 forked from [angular2-webpack-starter](https://github.com/AngularClass/angular2-webpack-starter)
 
