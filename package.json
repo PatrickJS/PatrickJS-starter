@@ -15,7 +15,7 @@
     "electron": "./node_modules/electron-packager/cli.js app App --platform=win32 --arch=all --out=dist --overwrite --version='1.2.1'"
   },
   "devDependencies": {
-    "awesome-typescript-loader": "~0.19.0",
+    "awesome-typescript-loader": "~1.1.1",
     "css-loader": "^0.23.1",
     "electron-packager": "^7.0.3",
     "electron-prebuilt": "^1.2.1",
@@ -35,15 +35,15 @@
     "webpack-merge": "^0.14.0"
   },
   "dependencies": {
-    "@angular/http": "2.0.0-rc.1",
-    "@angular/common": "2.0.0-rc.1",
-    "@angular/compiler": "2.0.0-rc.1",
-    "@angular/core": "2.0.0-rc.1",
-    "@angular/platform-browser": "2.0.0-rc.1",
-    "@angular/platform-browser-dynamic": "2.0.0-rc.1",
-    "@angular/platform-server": "2.0.0-rc.1",
-    "@angular/router": "2.0.0-rc.1",
-    "@angular/router-deprecated": "2.0.0-rc.1",
+    "@angular/http": "2.0.0-rc.3",
+    "@angular/common": "2.0.0-rc.3",
+    "@angular/compiler": "2.0.0-rc.3",
+    "@angular/core": "2.0.0-rc.3",
+    "@angular/platform-browser": "2.0.0-rc.3",
+    "@angular/platform-browser-dynamic": "2.0.0-rc.3",
+    "@angular/platform-server": "2.0.0-rc.3",
+    "@angular/router": "3.0.0-alpha.8",
+    "@angular/router-deprecated": "2.0.0-rc.2",
     "core-js": "^2.2.0",
     "rxjs": "5.0.0-beta.6",
     "zone.js": "~0.6.10"
