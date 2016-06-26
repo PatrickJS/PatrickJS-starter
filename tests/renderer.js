@@ -21,7 +21,7 @@ describe('demo app', function () {
 
   const startApp = function () {
     app = new Application({
-      path: path.join(__dirname, '..', 'node_modules', '.bin', 'electron.cmd'),
+      path: path.join(__dirname, '..', 'node_modules', '.bin', 'electron'),
       args: [
         path.join(__dirname, '..', 'app')
       ],
