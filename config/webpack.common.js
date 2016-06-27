@@ -173,6 +173,18 @@ module.exports = {
         test: /\.html$/,
         loader: 'raw-loader',
         exclude: [helpers.root('src/index.html')]
+      },
+      {
+        test: /\.scss$/,
+        loaders: ['style', 'css', 'postcss', 'sass']
+      },
+      {
+        test: /\.(woff2?|ttf|eot|svg)$/,
+        loader: 'url?limit=10000'
+      },
+      {
+        test: /bootstrap\/dist\/js\/umd\//,
+        loader: 'imports?jQuery=jquery'
       }
 
     ]
@@ -266,6 +278,12 @@ module.exports = {
      */
     new HtmlElementsPlugin({
       headTags: require('./head-config.common')
+    }),
+
+    new webpack.ProvidePlugin({
+        jQuery: 'jquery',
+        $: 'jquery',
+        jquery: 'jquery'
     }),
 
   ],
