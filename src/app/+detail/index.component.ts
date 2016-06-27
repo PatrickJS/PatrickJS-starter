@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 
-console.log('async DEATILS');
-
 @Component({
   selector: 'index',
   directives: [
