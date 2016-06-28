@@ -118,7 +118,7 @@
     "tslint": "^3.7.1",
     "ts-helpers": "1.1.1",
     "ts-node": "^0.9.1",
-    "typedoc": "^0.4.3",
+    "typedoc": "^0.4.4",
     "typescript": "~1.8.10",
     "typings": "~1.3.0",
 
