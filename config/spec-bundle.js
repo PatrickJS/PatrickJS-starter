@@ -13,7 +13,8 @@
  */
 Error.stackTraceLimit = Infinity;
 
-require('core-js');
+require('core-js/es6');
+require('core-js/es7/reflect');
 
 // Typescript emit helpers polyfill
 require('ts-helpers');
@@ -35,8 +36,6 @@ testing.setBaseTestProviders(
   browser.TEST_BROWSER_DYNAMIC_PLATFORM_PROVIDERS,
   browser.TEST_BROWSER_DYNAMIC_APPLICATION_PROVIDERS
 );
-
-Object.assign(global, testing);
 
 /*
  * Ok, this is kinda crazy. We can use the the context method on
