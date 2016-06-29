@@ -17,16 +17,11 @@
 [Services](https://gist.github.com/gdi2290/634101fec1671ee12b3e#_follow_@AngularClass_on_twitter),
 [Tests](https://angular.io/docs/js/latest/api/test/), [E2E](https://angular.github.io/protractor/#/faq#what-s-the-difference-between-karma-and-protractor-when-do-i-use-which-)), [Material](https://github.com/angular/material2), [Karma](https://karma-runner.github.io/), [Protractor](https://angular.github.io/protractor/), [Jasmine](https://github.com/jasmine/jasmine), [Istanbul](https://github.com/gotwarlost/istanbul), [TypeScript](http://www.typescriptlang.org/), [Typings](https://github.com/typings/typings), [TsLint](http://palantir.github.io/tslint/), [Codelyzer](https://github.com/mgechev/codelyzer), [Hot Module Replacement](https://webpack.github.io/docs/hot-module-replacement-with-webpack.html), and [Webpack](http://webpack.github.io/) by [AngularClass](https://angularclass.com).
 
-> If you're looking for Angular 1.x please use [NG6-starter](https://github.com/angularclass/NG6-starter)
-
-> If you're looking to learn about Webpack and ES6 Build Tools check out [ES6-build-tools](https://github.com/AngularClass/ES6-build-tools)
-
-> If you're looking to learn TypeScript see [TypeStrong/learn-typescript](https://github.com/TypeStrong/learn-typescript)
-
-> If you're looking for Webpack 2 version then see the experimental version [angular2-webpack2-starter](https://github.com/gdi2290/angular2-webpack2-starter) that will be merged
-
-> If you're looking for something easier to get started with then see the offical angular2-seed that I also maintain [angular/angular2-seed](https://github.com/angular/angular2-seed)
-
+> If you're looking for Angular 1.x please use [NG6-starter](https://github.com/angularclass/NG6-starter)  
+> If you're looking to learn about Webpack and ES6 Build Tools check out [ES6-build-tools](https://github.com/AngularClass/ES6-build-tools)  
+> If you're looking to learn TypeScript see [TypeStrong/learn-typescript](https://github.com/TypeStrong/learn-typescript)  
+> If you're looking for Webpack 2 version then see the experimental version [angular2-webpack2-starter](https://github.com/gdi2290/angular2-webpack2-starter) that will be merged  
+> If you're looking for something easier to get started with then see the offical angular2-seed that I also maintain [angular/angular2-seed](https://github.com/angular/angular2-seed)  
 > If you're looking to add Angular 2 Material Design we have a branch [material2](https://github.com/AngularClass/angular2-webpack-starter/tree/material2)
 
 This seed repo serves as an Angular 2 starter for anyone looking to get up and running with Angular 2 and TypeScript fast. Using a [Webpack](http://webpack.github.io/) for building our files and assisting with boilerplate. We're also using Protractor for our end-to-end story and Karma for our unit tests.
@@ -42,7 +37,7 @@ This seed repo serves as an Angular 2 starter for anyone looking to get up and r
 * Material Design with [angular/material2](https://github.com/angular/material2)
 
 ### Quick start
-**Make sure you have Node version >= 4.0 and NPM >= 3**
+**Make sure you have Node version >= 5.0 and NPM >= 3**
 > Clone/Download the repo then edit `app.ts` inside [`/src/app/app.ts`](/src/app/app.ts)
 
 ```bash
@@ -53,11 +48,16 @@ git clone --depth 1 https://github.com/angularclass/angular2-webpack-starter.git
 # change directory to our repo
 cd angular2-webpack-starter
 
-# add required global libraries
-npm install typings webpack-dev-server rimraf webpack -g
+# WINDOWS ONLY
+# add required global libraries `typings webpack-dev-server rimraf webpack`
+npm install -g typings webpack-dev-server rimraf webpack
 
 # install the repo with npm
 npm install
+
+# WINDOWS ONLY
+# install typings
+npm run typings-install
 
 # start the server
 npm start
@@ -123,7 +123,9 @@ angular2-webpack-starter/
  ├──typedoc.json               * typescript documentation generator
  ├──tsconfig.json              * config that webpack uses for typescript
  ├──typings.json               * our typings manager
- └──package.json               * what npm uses to manage it's dependencies
+ ├──package.json               * what npm uses to manage it's dependencies
+ └──webpack.config.js          * webpack main configuration file
+
 ```
 
 # Getting Started
@@ -246,7 +248,7 @@ When including 3rd party modules you also need to include the type definition fo
 if they don't provide one within the module. You can try to install it with typings
 
 ```
-typings install node --save
+typings install dt~node --save --global
 ```
 
 If you can't find the type definition in the registry we can make an ambient definition in
@@ -263,6 +265,8 @@ If you're prototyping and you will fix the types later you can also declare it a
 
 ```typescript
 declare var assert: any;
+declare var _: any;
+declare var $: any;
 ```
 
 If you're importing a module that uses Node.js modules which are CommonJS you need to import as
@@ -315,6 +319,8 @@ see [typings/registry](https://github.com/typings/registry)
  * check out https://github.com/cnpm/cnpm
 * If you're looking to add Angular 2 Material Design
  * check out the [material2](https://github.com/AngularClass/angular2-webpack-starter/tree/material2) branch
+* node-pre-gyp ERR in npm install (Windows)
+ * install Python x86 version between 2.5 and 3.0 on windows see issue [#626](https://github.com/AngularClass/angular2-webpack-starter/issues/626)
 
 # Support, Questions, or Feedback
 > Contact us anytime for anything about this repo or Angular 2
