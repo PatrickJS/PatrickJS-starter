@@ -28,9 +28,9 @@ export const routes: RouterConfig = [
 
 export const asyncRoutes: AsyncRoutes = {
   // we have to use the alternative syntax for es6-promise-loader to grab the routes
-  'About': require('es6-promise-loader?,about!./about'),
-  'Detail': require('es6-promise-loader?,detail!./+detail'),
-  'Index': require('es6-promise-loader?,detail!./+detail'), // must be exported with detail/index.ts
+  'About': require('es6-promise-loader!./about'),
+  'Detail': require('es6-promise-loader!./+detail'),
+  'Index': require('es6-promise-loader!./+detail'), // must be exported with detail/index.ts
 };
 
 
