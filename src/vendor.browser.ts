@@ -20,9 +20,13 @@ import '@angularclass/request-idle-callback';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 
+// Swiss Styleguide
+import 'swiss-styleguide/build/css/print.css';
+import 'swiss-styleguide/build/css/admin.css';
+import 'swiss-styleguide/build/img/logo-CH.svg';
+
 if ('production' === ENV) {
   // Production
-
 
 } else {
   // Development
