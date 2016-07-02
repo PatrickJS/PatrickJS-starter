@@ -32,7 +32,7 @@ import {ZasTranslationService} from './shared-zas/services/zas-translation.servi
   `
 })
 export class App {
-    angularclassLogo = 'assets/img/angularclass-avatar.png';
+    angularclassLogo = 'img/angularclass-avatar.png';
     name = 'Angular 2 Webpack Starter';
     url = 'https://twitter.com/AngularClass';
 

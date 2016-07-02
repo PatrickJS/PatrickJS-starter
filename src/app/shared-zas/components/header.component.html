@@ -1,54 +1,45 @@
-<header class="application-header">
-    <div class="navbar">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#void">
-                    <span class="brand-logo">
-										<img alt="Back to home" src="assets/img/logo.png">
-									</span>
-                    <span class="app-title" data-version="1.2.7">
-                        {{ 'title' | translate }}
-                    </span>
-                </a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <h2 class="sr-only">Header controls menu</h2>
-                <!-- <oblique-ui:header-controls> -->
-                <ul class="nav navbar-nav navbar-right navbar-controls" role="menu">
-                    <!-- TODO align with style to enable active selection -->
-                    <li>
-                        <a (click)="changeLang('de')" [class.active]="currentLang==='de'">DE</a>
-                    </li>
-                    <li>
-                        <a (click)="changeLang('fr')" [class.active]="currentLang==='fr'">FR</a>
-                    </li>
-                    <li>
-                        <a (click)="changeLang('it')" [class.active]="currentLang==='it'">IT</a>
-                    </li>
+<header>
+    <a href="/" class="brand hidden-xs" title="back to home">
+        <img src="img/logo-CH.svg" alt="back to home"/>
 
-
-                </ul>
-                <!-- </oblique-ui:header-controls> -->
-            </div>
-        </div>
-    </div>
-    <div id="navigation">
-        <div class="navbar-collapse collapse" role="navigation">
-            <h2 class="sr-only">Global navigation</h2>
-            <!-- <oblique-ui:header-navbar> -->
-            <div role="navigation">
-                <ul id="nav-global" class="nav navbar-nav navbar-primary navbar-fw" role="menubar">
-                    <li role="presentation">
-                        <a [routerLink]="['HomeComponent']" href="#" role="menuitem">Home</a>
-                    </li>
-                    <li role="presentation">
-                        <a [routerLink]="['DemoComponent']" href="#" role="menuitem">Demo</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- </oblique-ui:header-navbar> -->
-        </div>
-    </div>
+        <h1>{{ 'department' | translate }}</h1>
+    </a>
+    <section class="nav-services clearfix">
+        <nav class="nav-lang">
+            <ul>
+                <li>
+                    <a (click)="changeLang('de')" [class.active]="currentLang==='de'">DE</a>
+                </li>
+                <li>
+                    <a (click)="changeLang('fr')" [class.active]="currentLang==='fr'">FR</a>
+                </li>
+                <li>
+                    <a (click)="changeLang('it')" [class.active]="currentLang==='it'">IT</a>
+                </li>
+            </ul>
+        </nav>
+        <nav class="nav-service">
+            <ul>
+                <li>
+                    <a href="#/contact">{{ 'contact' | translate }}</a>
+                </li>
+            </ul>
+        </nav>
+    </section>
 </header>
 
+
+<nav class="nav-main">
+    <ul>
+        <li>
+            <a [routerLink]="['BatchDefinition']">{{ 'batches' | translate }}</a>
+        </li>
+        <li>
+            <a [routerLink]="['Fichiers']">{{ 'fichiers' | translate }}</a>
+        </li>
+        <li>
+            <a [routerLink]="['Pools-et-caisses']">{{ 'pools-et-caisses' | translate }}</a>
+        </li>
+    </ul>
+</nav>
 

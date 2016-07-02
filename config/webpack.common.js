@@ -196,10 +196,10 @@ module.exports = {
             // copy those assets to output
             {
                 test: /\.(png|jpe?g|svg|gif|ico)$/,
-                loader: 'file?name=assets/img/[name].[ext]?[hash]'
+                loader: 'file?name=img/[name].[ext]?[hash]'
             },
             {
-                test: /\.(woff|woff2|ttf|svg|eot)(\?.*$|$)/,
+                test: /\.(woff|woff2|ttf|eot)(\?.*$|$)/,
                 loader: 'file?name=fonts/[name].[ext]?[hash]'
             },
 
@@ -265,7 +265,7 @@ module.exports = {
          */
         new CopyWebpackPlugin([{
             from: 'src/assets',
-            to: 'assets'
+            to: ''
         }]),
 
         /*
