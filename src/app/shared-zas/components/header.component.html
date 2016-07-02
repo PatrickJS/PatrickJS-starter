@@ -1,0 +1,54 @@
+<header class="application-header">
+    <div class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#void">
+                    <span class="brand-logo">
+										<img alt="Back to home" src="img/logo.png">
+									</span>
+                    <span class="app-title" data-version="1.2.7">
+                        {{ 'title' | translate }}
+                    </span>
+                </a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <h2 class="sr-only">Header controls menu</h2>
+                <!-- <oblique-ui:header-controls> -->
+                <ul class="nav navbar-nav navbar-right navbar-controls" role="menu">
+                    <!-- TODO align with style to enable active selection -->
+                    <li>
+                        <a (click)="changeLang('de')" [class.active]="currentLang==='de'">DE</a>
+                    </li>
+                    <li>
+                        <a (click)="changeLang('fr')" [class.active]="currentLang==='fr'">FR</a>
+                    </li>
+                    <li>
+                        <a (click)="changeLang('it')" [class.active]="currentLang==='it'">IT</a>
+                    </li>
+
+
+                </ul>
+                <!-- </oblique-ui:header-controls> -->
+            </div>
+        </div>
+    </div>
+    <div id="navigation">
+        <div class="navbar-collapse collapse" role="navigation">
+            <h2 class="sr-only">Global navigation</h2>
+            <!-- <oblique-ui:header-navbar> -->
+            <div role="navigation">
+                <ul id="nav-global" class="nav navbar-nav navbar-primary navbar-fw" role="menubar">
+                    <li role="presentation">
+                        <a [routerLink]="['HomeComponent']" href="#" role="menuitem">Home</a>
+                    </li>
+                    <li role="presentation">
+                        <a [routerLink]="['DemoComponent']" href="#" role="menuitem">Demo</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- </oblique-ui:header-navbar> -->
+        </div>
+    </div>
+</header>
+
+
