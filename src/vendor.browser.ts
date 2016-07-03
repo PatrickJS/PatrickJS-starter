@@ -3,6 +3,12 @@
 // at the entry point of the async loaded file. Also see custom-typings.d.ts as you also need to
 // run `typings install x` where `x` is your module
 
+// PrimeNG
+import 'script!primeui/primeui-ng-all.min.js';
+import 'primeui/primeui-ng-all.min.css';
+import 'primeui/themes/bluesky/theme.css';
+
+
 // Angular 2
 import '@angular/platform-browser';
 import '@angular/platform-browser-dynamic';
