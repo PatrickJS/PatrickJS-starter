@@ -20,7 +20,7 @@ const autoprefixer = require('autoprefixer');
  * Webpack Constants
  */
 const METADATA = {
-    title: 'Angular2 Webpack Starter by @gdi2290 from @AngularClass',
+    title: 'Angular2 Webpack Starter for ZAS - from @AngularClass starter',
     baseUrl: '/',
     isDevServer: helpers.isWebpackDevServer()
 };

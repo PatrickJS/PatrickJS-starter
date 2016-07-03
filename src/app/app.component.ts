@@ -32,9 +32,9 @@ import {ZasTranslationService} from './shared-zas/services/zas-translation.servi
   `
 })
 export class App {
-    angularclassLogo = 'img/angularclass-avatar.png';
-    name = 'Angular 2 Webpack Starter';
-    url = 'https://twitter.com/AngularClass';
+    angularclassLogo = 'img/cdc-logo.png';
+    name = 'CdC - Angular 2 Webpack Starter';
+    url = 'http://www.zas.admin.ch';
 
     constructor(public appState: AppState, private translate: ZasTranslationService) {
 

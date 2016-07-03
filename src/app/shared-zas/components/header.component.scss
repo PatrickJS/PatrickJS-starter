@@ -24,9 +24,11 @@ nav.nav-main ul {
 
 nav.nav-main ul > li {
   font-size: large;
-  transition: font 0.3s ease;
+  transition: font ease-out .3s;
+  transition-delay: .3s;
 }
 
 nav.nav-main ul > li:hover {
   font-size: x-large;
+  transition: font ease-out .3s;
 }

@@ -1,4 +1,4 @@
-html, body{
+html, body {
   height: 100%;
   font-family: Arial, Helvetica, sans-serif
 }
@@ -9,4 +9,10 @@ span.active {
 
 main {
   padding: 10px 10px 10px 10px;
+}
+
+.btn.active:focus, .btn:focus, .carousel-control:focus, .chosen-container-active .chosen-single,
+.dropdown-toggle:focus, .form-control:focus, :not([class*=col-]):focus, a:focus, button:focus,
+input[type=checkbox]:focus, input[type=file]:focus, input[type=radio]:focus {
+  outline: none;
 }

@@ -60,6 +60,9 @@
 
   <div>
     <h4>Local State</h4>
+    Le localState illustre un contexte commun entre les composants d'une même application.
+    <br>
+
 
     <form (ngSubmit)="submitState(localState.value)" autocomplete="off">
 
@@ -69,7 +72,7 @@
         placeholder="Submit Local State to App State"
         autofocus>
 
-      <button md-raised-button color="primary">Submit Value</button>
+      <button color="primary">Submit Value</button>
     </form>
     <!--
         <input type="text" [value]="localState.value" (input)="localState.value = $event.target.value" autofocus>
