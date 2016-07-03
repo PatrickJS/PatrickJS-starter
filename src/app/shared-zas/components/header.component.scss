@@ -6,6 +6,22 @@ div.zas-header nav {
   padding-left: 15px;
 }
 
+nav.nav-main ul > li:focus {
+  outline: none;
+}
+
+a {
+  color: blue;
+}
+
+a:visited {
+  color: inherit;
+}
+
+nav.nav-main ul {
+  padding-top: 10px;
+}
+
 nav.nav-main ul > li {
   font-size: large;
   transition: font 0.3s ease;
@@ -13,5 +29,4 @@ nav.nav-main ul > li {
 
 nav.nav-main ul > li:hover {
   font-size: x-large;
-  transition: font 0.3s ease;
 }
