@@ -57,7 +57,7 @@ npm install
 
 # WINDOWS ONLY
 # install typings
-npm run typings install
+npm run typings-install
 
 # start the server
 npm start
