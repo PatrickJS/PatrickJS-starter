@@ -1,55 +1,53 @@
-<header>
+<div class="zas-header">
+  <header>
     <a href="/" class="brand hidden-xs" title="back to home">
-        <img src="img/logo-CH.svg" alt="back to home"/>
+      <img src="img/logo-CH.svg" alt="back to home"/>
 
-        <h1>{{ 'department' | translate }}</h1>
+      <h1>{{ 'department' | translate }}</h1>
     </a>
     <section class="nav-services clearfix">
-        <nav class="nav-lang">
-            <ul>
-                <li>
-                    <a (click)="changeLang('de')" [class.active]="currentLang==='de'">DE</a>
-                </li>
-                <li>
-                    <a (click)="changeLang('fr')" [class.active]="currentLang==='fr'">FR</a>
-                </li>
-                <li>
-                    <a (click)="changeLang('it')" [class.active]="currentLang==='it'">IT</a>
-                </li>
-            </ul>
-        </nav>
-        <nav class="nav-service">
-            <ul>
-                <li>
-                    <a href="#/contact">{{ 'contact' | translate }}</a>
-                </li>
-            </ul>
-        </nav>
+      <nav class="nav-lang">
+        <ul>
+          <li>
+            <a (click)="changeLang('de')" [class.active]="currentLang==='de'">DE</a>
+          </li>
+          <li>
+            <a (click)="changeLang('fr')" [class.active]="currentLang==='fr'">FR</a>
+          </li>
+          <li>
+            <a (click)="changeLang('it')" [class.active]="currentLang==='it'">IT</a>
+          </li>
+        </ul>
+      </nav>
+      <nav class="nav-service">
+        <ul>
+          <li>
+            <a href="#/contact">{{ 'contact' | translate }}</a>
+          </li>
+        </ul>
+      </nav>
     </section>
-</header>
+  </header>
 
-<nav class="nav-main">
-      <span>
+  <nav class="nav-main">
+    <ul>
+      <li>
         <a [routerLink]=" ['./'] ">
-          Index
-        </a>
-      </span>
-    |
-    <span>
-        <a [routerLink]=" ['./home'] ">
           Home
         </a>
-      </span>
-    |
-    <span>
+      </li>
+
+      <li>
         <a [routerLink]=" ['./detail'] ">
           Detail
         </a>
-      </span>
-    |
-    <span>
+      </li>
+
+      <li>
         <a [routerLink]=" ['./about'] ">
           About
         </a>
-      </span>
-</nav>
+      </li>
+    </ul>
+  </nav>
+</div>

@@ -1,3 +1,17 @@
 .active {
     background: lightgray;
 }
+
+div.zas-header nav {
+  padding-left: 15px;
+}
+
+nav.nav-main ul > li {
+  font-size: large;
+  transition: font 0.3s ease;
+}
+
+nav.nav-main ul > li:hover {
+  font-size: x-large;
+  transition: font 0.3s ease;
+}
