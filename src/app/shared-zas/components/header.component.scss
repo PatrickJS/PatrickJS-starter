@@ -1,0 +1,34 @@
+.active {
+    background: lightgray;
+}
+
+div.zas-header nav {
+  padding-left: 15px;
+}
+
+nav.nav-main ul > li:focus {
+  outline: none;
+}
+
+a {
+  color: blue;
+}
+
+a:visited {
+  color: inherit;
+}
+
+nav.nav-main ul {
+  padding-top: 10px;
+}
+
+nav.nav-main ul > li {
+  font-size: large;
+  transition: font ease-out .3s;
+  transition-delay: .3s;
+}
+
+nav.nav-main ul > li:hover {
+  font-size: x-large;
+  transition: font ease-out .3s;
+}

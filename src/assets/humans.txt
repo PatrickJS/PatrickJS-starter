@@ -10,8 +10,9 @@
   <name>
   PatrickJS -- @gdi2290
   AngularClass -- @AngularClass
+  Loic Salou -- @loicsalou
 
 # TECHNOLOGY COLOPHON
 
-  HTML5, CSS3
+  HTML5, CSS3, SASS
   Angular2, TypeScript, Webpack

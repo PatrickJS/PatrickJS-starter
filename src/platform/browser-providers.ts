@@ -3,38 +3,46 @@
  */
 
 // Angular 2
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import {HashLocationStrategy, LocationStrategy} from '@angular/common';
+import {HTTP_PROVIDERS, Http} from '@angular/http';
+import {provideRouter} from '@angular/router';
+import {disableDeprecatedForms, provideForms} from '@angular/forms';
+import {provideWebpack} from '@angularclass/webpack-toolkit';
+import {providePrefetchIdleCallbacks} from '@angularclass/request-idle-callback';
+import {routes, asyncRoutes, prefetchRouteCallbacks} from '../app/app.routes';
+import {TranslateLoader, TranslateStaticLoader, TranslateService} from 'ng2-translate/ng2-translate';
+import {ZasTranslationService} from '../app/shared-zas/services/zas-translation.service';
 // Angular 2 Http
-import { HTTP_PROVIDERS } from '@angular/http';
 // Angular 2 Router
-import { provideRouter } from '@angular/router';
 // Angular 2 forms
-import { disableDeprecatedForms, provideForms } from '@angular/forms';
 
 // AngularClass
-import { provideWebpack } from '@angularclass/webpack-toolkit';
-import { providePrefetchIdleCallbacks } from '@angularclass/request-idle-callback';
-
-
-import { routes, asyncRoutes, prefetchRouteCallbacks } from '../app/app.routes';
 /*
-* Application Providers/Directives/Pipes
-* providers/directives/pipes that only live in our browser environment
-*/
+ * Application Providers/Directives/Pipes
+ * providers/directives/pipes that only live in our browser environment
+ */
 export const APPLICATION_PROVIDERS = [
-  // new Angular 2 forms
-  disableDeprecatedForms(),
-  provideForms(),
+    // new Angular 2 forms
+    disableDeprecatedForms(),
+    provideForms(),
 
-  provideRouter(routes),
-  provideWebpack(asyncRoutes),
-  providePrefetchIdleCallbacks(prefetchRouteCallbacks),
+    provideRouter(routes),
+    provideWebpack(asyncRoutes),
+    providePrefetchIdleCallbacks(prefetchRouteCallbacks),
 
-  ...HTTP_PROVIDERS,
+    ...HTTP_PROVIDERS,
 
-  { provide: LocationStrategy, useClass: HashLocationStrategy }
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
+
+    {
+        provide: TranslateLoader,
+        useFactory: (http: Http) => new TranslateStaticLoader(http, 'i18n', '.json'),
+        deps: [Http]
+    },
+    TranslateService,
+    ZasTranslationService
 ];
 
 export const PROVIDERS = [
-  ...APPLICATION_PROVIDERS
+    ...APPLICATION_PROVIDERS
 ];
