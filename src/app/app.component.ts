@@ -16,7 +16,7 @@ import {ZasTranslationService} from './shared-zas/services/zas-translation.servi
     encapsulation: ViewEncapsulation.None,
     directives: [HeaderComponent, FooterComponent],
     styleUrls: [
-        './app.component.css'
+        './app.component.scss'
     ],
     template: `<div class="application application-scrolling">
     <zas-header (langChanged)="translate.setLang($event)" [currentLang]="translate.getLang()"></zas-header>

@@ -15,4 +15,5 @@ main {
 .dropdown-toggle:focus, .form-control:focus, :not([class*=col-]):focus, a:focus, button:focus,
 input[type=checkbox]:focus, input[type=file]:focus, input[type=radio]:focus {
   outline: none;
+  text-decoration: none;
 }
