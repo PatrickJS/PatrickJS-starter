@@ -195,6 +195,11 @@ module.exports = {
 
             // copy those assets to output
             {
+                test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+                loader: 'url?limit=10000&mimetype=image/svg+xml'
+            },
+            // copy those assets to output
+            {
                 test: /\.(png|jpe?g|svg|gif|ico)$/,
                 loader: 'file?name=img/[name].[ext]?[hash]'
             },

@@ -132,6 +132,7 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1",
+    "webpack-isomorphic-tools": "^2.3.2",
     "webpack-md5-hash": "^0.0.5",
     "webpack-merge": "^0.14.0"
   },
