@@ -17,7 +17,7 @@ import {TranslatePipe} from "ng2-translate/ng2-translate";
   // We need to tell Angular's compiler which custom pipes are in our template.
   pipes: [ TranslatePipe ],
   // Our list of styles in our component. We may add more to compose many styles together
-  styleUrls: [ './home.component.css' ],
+  styleUrls: [ './home.component.scss' ],
   // Every Angular template is first compiled by the browser before Angular runs it's compiler
   templateUrl: './home.component.html'
 })

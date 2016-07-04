@@ -22,13 +22,22 @@ nav.nav-main ul {
   padding-top: 10px;
 }
 
-nav.nav-main ul > li {
+nav.nav-main ul > li > a {
   font-size: large;
-  transition: font ease-out .3s;
-  transition-delay: .3s;
+  padding-bottom: 4px;
+  outline: none;
+  transition: .2s;
+  border-bottom: solid 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: rgba(#DC0018, 0);
 }
 
-nav.nav-main ul > li:hover {
-  font-size: x-large;
-  transition: font ease-out .3s;
+nav.nav-main ul > li > a:hover {
+  text-decoration: none;
+  border-bottom-color: #DC0018;
+}
+
+nav.nav-main ul > li > a:focus {
+  text-decoration: none;
 }
