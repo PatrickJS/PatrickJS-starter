@@ -77,14 +77,11 @@ interface WebpackModule {
   };
 }
 
-interface WebpackRequireEnsureCallback {
-    (req: WebpackRequire): void
-}
 
 interface WebpackRequire {
     (id: string): any;
     (paths: string[], callback: (...modules: any[]) => void): void;
-    ensure(ids: string[], callback: WebpackRequireEnsureCallback, chunkName?: string): void;
+    ensure(ids: string[], callback: (req: WebpackRequire) => void, chunkName?: string): void;
     context(directory: string, useSubDirectories?: boolean, regExp?: RegExp): WebpackContext;
 }
 
