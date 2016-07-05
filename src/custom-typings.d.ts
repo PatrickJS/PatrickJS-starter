@@ -5,12 +5,22 @@
 
 typings install dt~node --save --global
 
- * If you can't find the type definition in the registry we can make an ambient definition in
+ * If you can't find the type definition in the registry we can make an ambient/global definition in
  * this file for now. For example
 
- declare module "my-module" {
-   export function doesSomething(value: string): string;
- }
+declare module "my-module" {
+ export function doesSomething(value: string): string;
+}
+
+ * If you are using a CommonJS module that is using module.exports then you will have to write your
+ * types using export = yourObjectOrFunction with a namespace above it
+ * notice how we have to create a namespace that is equal to the function we're assigning the export to
+
+declare module "jwt-decode" {
+  function jwtDecode(token: string): any;
+  namespace jwtDecode {}
+  export = jwtDecode;
+}
 
  *
  * If you're prototying and you will fix the types later you can also declare it as type any
