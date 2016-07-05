@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
 @Component({
   selector: 'detail',
-
+  directives: [
+    ...ROUTER_DIRECTIVES
+  ],
   template: `
-    <h1>Hello from Detail</h1>
+    <router-outlet></router-outlet>
   `
 })
 export class Detail {
@@ -15,4 +18,5 @@ export class Detail {
   ngOnInit() {
     console.log('hello `Detail` component');
   }
+
 }

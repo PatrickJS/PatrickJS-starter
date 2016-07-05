@@ -20,6 +20,8 @@
      "webdriver-manager": "webdriver-manager",
      "protractor": "protractor",
 
+     "typings-install": "npm run typings -- install",
+
      "clean": "npm cache clean && npm run rimraf -- node_modules doc typings coverage dist",
        "clean:dist": "npm run rimraf -- dist",
          "preclean:install": "npm run clean",
@@ -66,7 +68,7 @@
      "start": "npm run server:dev",
        "start:hmr": "npm run server:dev:hmr",
 
-     "postinstall": "npm run typings -- install",
+     "postinstall": "npm run typings-install",
 
        "preversion": "npm test",
      "version": "npm run build",
@@ -74,15 +76,15 @@
 
    },
   "dependencies": {
-    "@angular/http": "2.0.0-rc.3",
-    "@angular/common": "2.0.0-rc.3",
-    "@angular/compiler": "2.0.0-rc.3",
-    "@angular/core": "2.0.0-rc.3",
-    "@angular/forms": "^0.1.1",
-    "@angular/platform-browser": "2.0.0-rc.3",
-    "@angular/platform-browser-dynamic": "2.0.0-rc.3",
-    "@angular/platform-server": "2.0.0-rc.3",
-    "@angular/router": "3.0.0-alpha.8",
+    "@angular/http": "2.0.0-rc.4",
+    "@angular/common": "2.0.0-rc.4",
+    "@angular/compiler": "2.0.0-rc.4",
+    "@angular/core": "2.0.0-rc.4",
+    "@angular/forms": "^0.2.0",
+    "@angular/platform-browser": "2.0.0-rc.4",
+    "@angular/platform-browser-dynamic": "2.0.0-rc.4",
+    "@angular/platform-server": "2.0.0-rc.4",
+    "@angular/router": "3.0.0-beta.2",
     "@angular2-material/button": "2.0.0-alpha.6",
     "@angular2-material/card": "2.0.0-alpha.6",
     "@angular2-material/checkbox": "2.0.0-alpha.6",

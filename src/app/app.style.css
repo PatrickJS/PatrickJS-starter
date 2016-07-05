@@ -1,7 +1,12 @@
 html, body{
   height: 100%;
-  background: #F4FAFA;
+  font-family: Arial, Helvetica, sans-serif
 }
+
+span.active {
+  background-color: gray;
+}
+
 button.active{
   background: #fff;
   color: #009688;
