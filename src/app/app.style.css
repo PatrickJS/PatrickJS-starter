@@ -1,6 +1,7 @@
 html, body{
   height: 100%;
   background: #F4FAFA;
+  font-family: Arial, Helvetica, sans-serif;
 }
 button.active{
   background: #fff;
