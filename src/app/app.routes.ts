@@ -3,11 +3,16 @@ import { RouterConfig } from '@angular/router';
 import { Home } from './home';
 import { NoContent } from './no-content';
 
+import { DataResolver } from './app.resolver';
+
 export const routes: RouterConfig = [
   { path: '',      component: Home },
   { path: 'home',  component: Home },
   // make sure you match the component type string to the require in asyncRoutes
-  { path: 'about', component: 'About' },
+  { path: 'about', component: 'About',
+    resolve: {
+      'yourData': DataResolver
+    }},
   // async components with children routes must use WebpackAsyncRoute
   { path: 'detail', component: 'Detail',
     canActivate: [ WebpackAsyncRoute ],

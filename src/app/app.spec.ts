@@ -1,7 +1,6 @@
 import {
   beforeEachProviders,
   inject,
-  injectAsync,
   it
 } from '@angular/core/testing';
 
