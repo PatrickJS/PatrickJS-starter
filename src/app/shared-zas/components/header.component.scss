@@ -1,0 +1,43 @@
+.active {
+    background: lightgray;
+}
+
+div.zas-header nav {
+  padding-left: 15px;
+}
+
+nav.nav-main ul > li:focus {
+  outline: none;
+}
+
+a {
+  color: blue;
+}
+
+a:visited {
+  color: inherit;
+}
+
+nav.nav-main ul {
+  padding-top: 10px;
+}
+
+nav.nav-main ul > li > a {
+  font-size: large;
+  padding-bottom: 4px;
+  outline: none;
+  transition: .2s;
+  border-bottom: solid 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: rgba(#DC0018, 0);
+}
+
+nav.nav-main ul > li > a:hover {
+  text-decoration: none;
+  border-bottom-color: #DC0018;
+}
+
+nav.nav-main ul > li > a:focus {
+  text-decoration: none;
+}

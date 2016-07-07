@@ -1,0 +1,40 @@
+<div class='container-fluid'>
+  <div class='panel panel-default'>
+    <h1>Démo</h1>
+    <div>
+      <h2>table, triable, filtrable, colonnes déplaçables</h2>
+      <p-dataTable [value]="assures" sortMode="multiple" reorderableColumns="true" (onColReorder)="colReorder($event)">
+        <p-column field="nom" header="Nom" [filter]="true" filterMatchMode="contains" [sortable]="true">
+        </p-column>
+        <p-column field="prenom" header="Prenom" [filter]="true" filterMatchMode="contains" [sortable]="true">
+        </p-column>
+        <p-column field="sexe" header="Sexe" [filter]="true" filterMatchMode="contains" [sortable]="true">
+        </p-column>
+      </p-dataTable>
+    </div>
+    <h2>Autocomplete</h2>
+    <div style="display: flex; flex-direction: row;">
+      <div class="subcontainer">
+        <h3>Basic</h3>
+        <p-autoComplete [(ngModel)]="personne" [suggestions]="filteredPeople"
+                        (completeMethod)="onFilterPerson($event)" [size]="30"
+                        placeholder="assuré" field="nom" [minLength]="1"></p-autoComplete>
+      </div>
+      <div class="subcontainer">
+        <h3>Advanced</h3>
+        <p-autoComplete [(value)]="ngModel" [suggestions]="filteredPeopleAdv"
+                        (completeMethod)="onFilterPersonAdv($event)" [size]="30"
+                        [minLength]="1" placeholder="ex: tapez 'l' ou 'p'" [dropdown]="true" field="prenom"
+                        (onDropdownClick)="handleDropdownClickAdv($event)">
+          <template let-person>
+            <li class="ui-autocomplete-list-item ui-helper-clearfix" style="border-bottom:1px solid #D5D5D5">
+              <img src="img/{{person.sexe}}.jpg" style="width:32px;display:inline-block;margin:2px 0 2px
+                            2px"/>
+              <div style="font-size:18px;float:right;margin:10px 10px 0 0">{{person.prenom}}</div>
+            </li>
+          </template>
+        </p-autoComplete>
+      </div>
+    </div>
+  </div>
+</div>

@@ -19,6 +19,8 @@ export const routes: RouterConfig = [
     children: [
       { path: '', component: 'Index' }  // must be included
     ]},
+  // async components with children routes must use WebpackAsyncRoute
+  {path: 'demo', component: 'DemoComponent'},
   { path: '**',    component: NoContent },
 ];
 
@@ -30,6 +32,7 @@ export const asyncRoutes: AsyncRoutes = {
   // we have to use the alternative syntax for es6-promise-loader to grab the routes
   'About': require('es6-promise-loader!./about'),
   'Detail': require('es6-promise-loader!./+detail'),
+  'DemoComponent': require('es6-promise-loader!./+demo'),
   'Index': require('es6-promise-loader!./+detail'), // must be exported with detail/index.ts
 };
 
@@ -39,6 +42,7 @@ export const asyncRoutes: AsyncRoutes = {
 export const prefetchRouteCallbacks: Array<IdleCallbacks> = [
   asyncRoutes['About'],
   asyncRoutes['Detail'],
+  asyncRoutes['DemoComponent'],
    // es6-promise-loader returns a function
 ];
 
