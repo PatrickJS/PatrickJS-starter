@@ -1,20 +1,16 @@
 import {
   beforeEachProviders,
-  describe,
   inject,
   it
 } from '@angular/core/testing';
+import { TestComponentBuilder } from '@angular/compiler/testing';
 import { Component } from '@angular/core';
 import { BaseRequestOptions, Http } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 
-// Load the implementations that should be tested
-import { AppState } from '../app.service';
-import { Home } from './home.component';
-import { Title } from './title/index';
+import { Title } from './title.service';
 
-describe('Home', () => {
-  // provide our implementations or mocks to the dependency injector
+describe('Title', () => {
   beforeEachProviders(() => [
     BaseRequestOptions,
     MockBackend,
@@ -26,25 +22,21 @@ describe('Home', () => {
       deps: [MockBackend, BaseRequestOptions]
     },
 
-    AppState,
-    Title,
-    Home
+    Title
   ]);
 
-  it('should have default data', inject([ Home ], (home) => {
-    expect(home.localState).toEqual({ value: '' });
+
+  it('should have http', inject([ Title ], (title) => {
+    expect(!!title.http).toEqual(true);
   }));
 
-  it('should have a title', inject([ Home ], (home) => {
-    expect(!!home.title).toEqual(true);
-  }));
-
-  it('should log ngOnInit', inject([ Home ], (home) => {
+  it('should get data from the server', inject([ Title ], (title) => {
     spyOn(console, 'log');
     expect(console.log).not.toHaveBeenCalled();
 
-    home.ngOnInit();
+    title.getData();
     expect(console.log).toHaveBeenCalled();
+    expect(title.getData()).toEqual({ value: 'AngularClass' });
   }));
 
 });
