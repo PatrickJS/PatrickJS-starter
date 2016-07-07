@@ -49,7 +49,6 @@ import 'swiss-styleguide/build/img/ico/mstile-144x144.png';
 // FA
 import 'font-awesome/css/font-awesome.css';
 
-
 if ('production' === ENV) {
   // Production
 

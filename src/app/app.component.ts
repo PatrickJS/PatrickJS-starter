@@ -4,8 +4,8 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import {AppState} from './app.service';
 import {HeaderComponent} from './shared-zas/components/header.component';
-import {FooterComponent} from './shared-zas/components/footer.component';
 import {ZasTranslationService} from './shared-zas/services/zas-translation.service';
+import {FooterComponent} from 'ma-librairie';
 
 /*
  * App Component
