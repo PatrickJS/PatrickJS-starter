@@ -19,7 +19,7 @@
      "webpack-dev-server": "webpack-dev-server",
      "webdriver-manager": "webdriver-manager",
      "protractor": "protractor",
-     
+
      "typings-install": "npm run typings -- install",
 
      "clean": "npm cache clean && npm run rimraf -- node_modules doc typings coverage dist",
@@ -46,8 +46,8 @@
       "github-deploy:prod": "webpack --config config/webpack.github-deploy.js --progress --profile --colors --display-error-details --display-cached --github-prod",
 
     "server": "npm run server:dev",
-       "server:dev": "webpack-dev-server --config config/webpack.dev.js --inline --progress --profile --colors --watch --display-error-details --display-cached --content-base src/",
-       "server:dev:hmr": "npm run server:dev -- --hot",
+       "server:dev": "webpack-dev-server --config config/webpack.dev.js  --progress --profile --colors --watch --display-error-details --display-cached --content-base src/",
+       "server:dev:hmr": "npm run server:dev -- --hot --inline",
        "server:prod": "http-server dist --cors",
 
      "webdriver:update": "npm run webdriver-manager update",
@@ -130,7 +130,6 @@
     "url-loader": "^0.5.7",
     "style-loader": "^0.13.1",
     "raw-loader": "0.5.1",
-    "source-map-loader": "^0.1.5",
     "imports-loader": "^0.6.5",
     "istanbul-instrumenter-loader": "^0.2.0",
     "json-loader": "^0.5.4",
