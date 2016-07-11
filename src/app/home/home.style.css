@@ -3,7 +3,6 @@
     display: flex;
     flex-direction: column;
     margin: 15px;
-    
     border: 2px dashed #FBC02D;
 }
 .sample-content{

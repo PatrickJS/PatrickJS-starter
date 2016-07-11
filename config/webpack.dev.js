@@ -87,8 +87,10 @@ module.exports = webpackMerge(commonConfig, {
      *
      * See: http://webpack.github.io/docs/configuration.html#output-chunkfilename
      */
-    chunkFilename: '[id].chunk.js'
+    chunkFilename: '[id].chunk.js',
 
+    library: 'ac_[name]',
+    libraryTarget: 'var',
   },
 
   plugins: [
