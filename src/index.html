@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="">
+<html ⚡>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -23,10 +23,12 @@
 <body>
 
   <app>
-    Loading...
+    <img src="assets/img/angularclass-avatar.png" width="10%">
+    <div>Loading...</div>
   </app>
 
-  <!-- Google Analytics: change UA-71073175-1 to be your site's ID -->
+  <!--
+   Google Analytics: change UA-71073175-1 to be your site's ID
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -36,8 +38,9 @@
     ga('create', 'UA-71073175-1', 'auto');
     ga('send', 'pageview');
   </script>
+   -->
 
-  <% if (webpackConfig.metadata.isDevServer) { %>
+  <% if (webpackConfig.metadata.isDevServer && webpackConfig.metadata.HMR === false) { %>
   <!-- Webpack Dev Server reload -->
   <script src="/webpack-dev-server.js"></script>
   <% } %>
