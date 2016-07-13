@@ -43,8 +43,8 @@
       "github-deploy:prod": "webpack --config config/webpack.github-deploy.js --progress --profile --colors --display-error-details --display-cached --github-prod",
 
     "server": "npm run server:dev",
-       "server:dev": "webpack-dev-server --config config/webpack.dev.js --inline --progress --profile --colors --watch --display-error-details --display-cached --content-base src/",
-       "server:dev:hmr": "npm run server:dev -- --hot",
+       "server:dev": "webpack-dev-server --config config/webpack.dev.js --progress --profile --colors --watch --display-error-details --display-cached --content-base src/",
+       "server:dev:hmr": "npm run server:dev -- --inline --hot",
        "server:prod": "http-server dist --cors",
 
      "webdriver:update": "npm run webdriver-manager update",
