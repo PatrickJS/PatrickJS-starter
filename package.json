@@ -125,7 +125,7 @@
     "ts-helpers": "1.1.1",
     "ts-node": "^0.9.1",
     "typedoc": "^0.4.4",
-    "typescript": "^2.0.0",
+    "typescript": "^2.0.0-beta",
 
     "awesome-typescript-loader": "1.1.1",
     "angular2-template-loader": "^0.4.0",
