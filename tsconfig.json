@@ -12,8 +12,13 @@
     "baseUrl": "./src",
     "paths": [
     ],
+    "lib": [
+      "dom",
+      "es5",
+      "es2015.promise",
+      "es2015.collection"
+    ],
     "types": [
-      "core-js",
       "hammerjs",
       "jasmine",
       "node",
