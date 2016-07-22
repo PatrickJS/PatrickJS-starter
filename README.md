@@ -302,6 +302,8 @@ import * as _ from 'lodash';
  * check out the [material2](https://github.com/AngularClass/angular2-webpack-starter/tree/material2) branch
 * node-pre-gyp ERR in npm install (Windows)
  * install Python x86 version between 2.5 and 3.0 on windows see issue [#626](https://github.com/AngularClass/angular2-webpack-starter/issues/626)
+* `Error:Error: Parse tsconfig error [{"messageText":"Unknown compiler option 'lib'.","category":1,"code":5023},{"messageText":"Unknown compiler option 'strictNullChecks'.","category":1,"code":5023},{"messageText":"Unknown compiler option 'baseUrl'.","category":1,"code":5023},{"messageText":"Unknown compiler option 'paths'.","category":1,"code":5023},{"messageText":"Unknown compiler option 'types'.","category":1,"code":5023}]`
+ * remove `node_modules/typescript` and run `npm install typescript@beta`. This repo now uses ts 2.0 
 
 # Support, Questions, or Feedback
 > Contact us anytime for anything about this repo or Angular 2
