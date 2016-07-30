@@ -83,7 +83,8 @@
 
     "@angularclass/webpack-toolkit": "^1.3.3",
     "@angularclass/request-idle-callback": "^1.0.7",
-
+    "@angularclass/conventions-loader": "^1.0.2",
+    
     "ie-shim": "^0.1.0",
     "core-js": "^2.4.0",
     "rxjs": "5.0.0-beta.6",
@@ -128,7 +129,6 @@
     "typescript": "^2.0.0-beta",
 
     "awesome-typescript-loader": "1.1.1",
-    "angular2-template-loader": "^0.4.0",
     "tslint-loader": "^2.1.3",
     "url-loader": "^0.5.7",
     "style-loader": "^0.13.1",
