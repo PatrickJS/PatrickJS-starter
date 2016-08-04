@@ -173,8 +173,14 @@ module.exports = {
         test: /\.html$/,
         loader: 'raw-loader',
         exclude: [helpers.root('src/index.html')]
+      },
+      
+      /* File loader for supporting images, for example, in CSS files.
+      */
+      {
+        test: /\.(jpg|png|gif)$/,
+        loader: 'file'
       }
-
     ]
 
   },
