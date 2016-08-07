@@ -7,16 +7,13 @@
     "experimentalDecorators": true,
     "sourceMap": true,
     "noEmitHelpers": true,
-    "lib": ["es6", "dom"],
     "strictNullChecks": false,
     "baseUrl": "./src",
     "paths": [
     ],
     "lib": [
       "dom",
-      "es5",
-      "es2015.promise",
-      "es2015.collection"
+      "es6"
     ],
     "types": [
       "hammerjs",
