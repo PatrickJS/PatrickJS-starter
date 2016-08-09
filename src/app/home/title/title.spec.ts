@@ -1,7 +1,6 @@
 import {
-  beforeEachProviders,
-  inject,
-  it
+  addProviders,
+  inject
 } from '@angular/core/testing';
 import { TestComponentBuilder } from '@angular/compiler/testing';
 import { Component } from '@angular/core';
@@ -11,7 +10,7 @@ import { MockBackend } from '@angular/http/testing';
 import { Title } from './title.service';
 
 describe('Title', () => {
-  beforeEachProviders(() => [
+  beforeEach(() => addProviders([
     BaseRequestOptions,
     MockBackend,
     {
@@ -23,7 +22,7 @@ describe('Title', () => {
     },
 
     Title
-  ]);
+  ]));
 
 
   it('should have http', inject([ Title ], (title) => {
