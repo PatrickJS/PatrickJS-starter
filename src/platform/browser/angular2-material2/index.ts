@@ -12,6 +12,7 @@ import { MD_SIDENAV_DIRECTIVES } from '@angular2-material/sidenav';
 import { MD_SLIDE_TOGGLE_DIRECTIVES } from '@angular2-material/slide-toggle';
 import { MD_TABS_DIRECTIVES } from '@angular2-material/tabs';
 import { MdToolbar } from '@angular2-material/toolbar';
+import { MD_RIPPLE_DIRECTIVES } from '@angular2-material/core';
 /*
  * we are grouping the module so we only need to manage the imports in one location
  */
@@ -39,7 +40,8 @@ export const MATERIAL_DIRECTIVES = [
   ...MD_LIST_DIRECTIVES,
   ...MD_SIDENAV_DIRECTIVES,
   ...MD_SLIDE_TOGGLE_DIRECTIVES,
-  ...MD_TABS_DIRECTIVES
+  ...MD_TABS_DIRECTIVES,
+  ...MD_RIPPLE_DIRECTIVES
 ];
 
 export const MATERIAL_PROVIDERS = [
