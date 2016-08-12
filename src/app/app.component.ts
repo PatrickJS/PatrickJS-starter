@@ -12,11 +12,11 @@ import { AppState } from './app.service';
 @Component({
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
-  styleUrls: [
-    './app.style.css'
-  ],
+  styles: [ require('@angular2-material/core/style/core.css')
+          , require('@angular2-material/core/overlay/overlay.css')
+         , require('./app.scss')],
   template: `
-    <md-content>
+
       <md-toolbar color="primary">
           <span>{{ name }}</span>
           <span class="fill"></span>
@@ -26,6 +26,9 @@ import { AppState } from './app.service';
           <a md-button [routerLink]=" ['./home'] ">
             Home
           </a>
+          <a md-button [routerLink]=" ['./demo'] ">
+            Material Demo
+          </a>
           <a md-button [routerLink]=" ['./detail'] ">
             Detail
           </a>
@@ -33,20 +36,12 @@ import { AppState } from './app.service';
             About
           </a>
       </md-toolbar>
+      <router-outlet></router-outlet>
 
-      <md-progress-bar mode="indeterminate" color="primary" *ngIf="loading"></md-progress-bar>
-    
-      <main>
-        <router-outlet></router-outlet>
-      </main>
 
-      <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
 
-      <footer>
-        <span id="footerText">WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a></span>
-        <img [src]="angularclassLogo" width="6%">
-      </footer>
-    </md-content>
+
+
   `
 })
 export class App {

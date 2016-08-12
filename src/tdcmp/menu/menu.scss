@@ -1,0 +1,72 @@
+.tdpopup {
+  $swift-ease-out-duration: 0.4s !default;
+  $swift-ease-out-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1) !default;
+  $swift-ease-out: all $swift-ease-out-duration $swift-ease-out-timing-function !default;
+  $swift-ease-out-quick: all 0.2 $swift-ease-out-timing-function !default;
+  color: rgba(0, 0, 0, 0.870588);
+  transition: $swift-ease-out;
+  transform: scaleY(0);
+  transform-origin: right top;
+  box-sizing: border-box;
+  font-family: Roboto, sans-serif;
+  box-shadow: rgba(0, 0, 0, 0.247059) 0 14px 45px, rgba(0, 0, 0, 0.219608) 0 10px 18px;
+  // box-shadow: rgba(0, 0, 0, 0.117647) 0 1px 6px, rgba(0, 0, 0, 0.117647) 0 1px 4px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 2px;
+  opacity: 0;
+  position: fixed;
+  z-index: 2100;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  &.upper {
+    transform-origin: right bottom;
+  }
+  &.active {
+    transform: scaleY(1.0);
+    opacity: 1;
+  }
+  &:not(.active) {
+    transition: $swift-ease-out-quick;
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  div {
+    z-index: 1000;
+    top: 0;
+    right: 0;
+    max-height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-width: 500px;
+    min-width: 192px;
+    // padding: 16px 0;
+  }
+  .item {
+    border: 10px;
+    box-sizing: border-box;
+    display: block;
+    font-family: Roboto, sans-serif;
+    cursor: pointer;
+    text-decoration: none;
+    outline: none;
+    font-size: 15px;
+    font-weight: inherit;
+    color: rgba(0, 0, 0, 0.870588);
+    line-height: 32px;
+    position: relative;
+    white-space: nowrap;
+    background: none;
+    &:hover {
+      background-color: rgba(0,0,0,0.0980392);
+    }
+    &.selected {
+      color: rgb(64,64,155);
+      font-weight: bold;
+    }
+    span {
+      margin-left: 0;
+      padding: 0 24px;
+      position: relative;
+    }
+  }
+}

@@ -1,0 +1,38 @@
+.footerButton {
+  border: 10px;
+  box-sizing: border-box;
+  display: inline-block;
+  font-family: Roboto, sans-serif;
+  cursor: pointer;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  font-size: inherit;
+  font-weight: inherit;
+  transform: translate3d(0px, 0px, 0px);
+  height: 36px;
+  line-height: 36px;
+  min-width: 88px;
+  color: rgb(0, 188, 212);
+  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1);
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  -webkit-user-select: none;
+  background-color: rgba(0, 0, 0, 0);
+  &:hover {
+    background-color: rgba(153, 153, 153, 0.2);
+  }
+  span {
+    position: relative;
+    padding-left: 16px;
+    padding-right: 16px;
+    vertical-align: middle;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 14px;
+  }
+}

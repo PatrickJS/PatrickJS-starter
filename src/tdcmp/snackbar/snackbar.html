@@ -1,0 +1,10 @@
+<div class="snackbar" [class.open]="opened" >
+    <div width="2" class="snackbarbody" [class.small]="small" [class.error]=error>
+        <div class="content" [class.open]="opened">
+          <span>{{message}}</span>
+          <button *ngIf="action" tabindex="0" class="actionbutton" [class.error]=error (click)="opened = false">
+              <div><span>{{action}}</span></div>
+          </button>
+        </div>
+    </div>
+</div>

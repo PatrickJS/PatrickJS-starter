@@ -1,0 +1,20 @@
+.orgchart {
+  $swift-ease-out-duration: 0.4s !default;
+  $swift-ease-out-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1) !default;
+  $swift-ease-out: all $swift-ease-out-duration $swift-ease-out-timing-function !default;
+  $swift-ease-out-quick: all 0.2s $swift-ease-out-timing-function !default;
+  transition: $swift-ease-out;
+
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: right top;
+  &.active {
+    opacity: 1;
+    transform: scaleY(1.0);
+  }
+  &:not(.active) {
+    transition: $swift-ease-out-quick;
+    transform: scaleY(0);
+    opacity: 0;
+  }
+}

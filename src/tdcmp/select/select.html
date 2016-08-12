@@ -1,0 +1,51 @@
+<div class="select" style="margin-right:2px">
+
+  <div (click)=clicked($event) class="inputpopup" >
+    <!-- <div style="position: absolute; opacity: 0; color: rgba(0, 0, 0, 0.298039); transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1); bottom: 12px;"> </div> -->
+    <label class="labela" [class.upper]="selectedItem || selectedItems.length>0">
+      {{placeHolder}}
+      <span [hidden]="!required" style="color:#9c27b0">*</span>
+    </label>
+
+    <div style="display: inline-block; font-size: inherit; height: 100%; font-family: inherit; outline: none; position: relative; transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1); -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; width: 100%; border: none; color: rgba(0, 0, 0, 0.870588); font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; background-color: rgba(0, 0, 0, 0)">
+      <div class="inputcursor" [class.disabled]="disabled">
+
+        <div class="textItem">
+          {{getDisplayItemLabel()}}
+        </div>
+
+      </div>
+      <div style="position:relative; height:20px">
+        <span style="position:absolute;top:-15px;font-size: 0.70em;color:red"><ng-content select="error"></ng-content></span>
+      </div>
+    </div>
+
+
+
+    <div [hidden]="hidedivider" style="position:relative">
+      <hr style="border-bottom-width: 1px; border-style: none none solid; border-color: rgb(158, 158, 158);  bottom: 15px; box-sizing: content-box; position: absolute; width: 100%;">
+      <div [hidden]="hidedivider">
+        <svg viewBox="0 0 24 24" class="arrow">
+          <path d="M7 10l5 5 5-5z"></path>
+        </svg>
+      </div>
+      <md-icon *ngIf="clearable && getDisplayItemLabel()" (click)="clear()" class="md-16 clearable ">cancel</md-icon>
+    </div>
+  </div>
+
+
+  <div [hidden]=!showPopup [class.active]=active [class.upper]=upper class="popup">
+    <td-searchbox *ngIf=search (click)="_justClicked=true" style="margin-left: -17px;margin-bottom: 7px; margin-right: -12px;" flex placeholder="search" (textChange)="searchTerm=$event"></td-searchbox>
+    <div *ngIf="!multi"  class="monodiv">
+        <span *ngFor="let item of filteredItems" (click)="itemClicked(item)" class="item" [class.selected]="item==selectedItem">
+          <span>{{getDisplayItem(item)}}</span>
+        </span>
+    </div>
+    <div *ngIf="multi" class="multidiv" layout="column">
+        <span *ngFor="let item of filteredItems" class="multiitem">
+          <label class="item" (click)="_justClicked=true;" style="position:relative;padding-left: 20px;"><input type="checkbox" style="position: absolute;left: 0px;top: 9px;" [checked]="isChecked(item)" (change)="checkClicked(item, $event.target.checked)" (click)="_justClicked=true">{{getDisplayItem(item)}}</label>
+        </span>
+    </div>
+  </div>
+
+</div>

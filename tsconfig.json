@@ -6,14 +6,44 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true,
-    "noEmitHelpers": true
+    "noEmitHelpers": true,
+    "strictNullChecks": false,
+    "baseUrl": "./src",
+    "paths": [
+    ],
+    "lib": [
+      "es6",
+      "dom"
+    ],
+    "types": [
+     "core-js",
+     "hammerjs",
+     "jasmine",
+     "node",
+     "protractor",
+     "selenium-webdriver",
+     "source-map",
+     "uglify-js",
+     "webpack"
+   ]
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "dist"
   ],
   "awesomeTypescriptLoaderOptions": {
-    "forkChecker": true,
-    "useWebpackText": true
+  "forkChecker": true,
+  "useWebpackText": true
+},
+  "filesGlob": [
+    "./src/**/*.ts",
+    "!./node_modules/**",
+    "./src/custom-typings.d.ts",
+    "./typings/index.d.ts"
+  ],
+  "awesomeTypescriptLoaderOptions": {
+    "resolveGlobs": true,
+    "forkChecker": true
   },
   "compileOnSave": false,
   "buildOnSave": false,

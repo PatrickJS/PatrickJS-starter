@@ -1,16 +1,24 @@
-import { Component } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
+import { Component, NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { MaterialModule } from '../../platform/browser/angular2-material2';
+import { FormsModule } from '@angular/forms';
+import { Index } from './index.component';
 
 @Component({
   selector: 'detail',
-  directives: [
-    ...ROUTER_DIRECTIVES
-  ],
   template: `
+  Detail
     <router-outlet></router-outlet>
   `
 })
 export class Detail {
+  items = [
+   {text: 'Refresh'},
+   {text: 'Settings'},
+   {text: 'Help'},
+   {text: 'Sign Out', disabled: true}
+ ];
+
   constructor() {
 
   }
@@ -20,3 +28,11 @@ export class Detail {
   }
 
 }
+
+@NgModule({
+  imports: [BrowserModule, FormsModule, MaterialModule],
+  exports: [Detail],
+  declarations: [Detail],
+  entryComponents: [Detail]
+})
+export class DetailModule { }

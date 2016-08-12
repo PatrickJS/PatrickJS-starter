@@ -1,0 +1,151 @@
+md-calendar {
+
+z-index: 3000;
+
+$swift-ease-out-duration: 0.4s !default;
+$swift-ease-out-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1) !default;
+$swift-ease-out: all $swift-ease-out-duration $swift-ease-out-timing-function !default;
+$swift-ease-out-quick: all 0.2 $swift-ease-out-timing-function !default;
+
+.calendar {
+  box-sizing: border-box;
+  transition: $swift-ease-out;
+  transform: scaleY(0);
+  transform-origin: right top;
+  position: relative;
+  width: 310px;
+  max-width: 768px;
+  margin: 0 auto;
+  z-index: 3000;
+  opacity: 0;
+  top: -5px;
+&.upper {
+  transform-origin: right bottom;
+}
+  &.active {
+      transform: scaleY(1.0);
+      opacity: 1;
+  }
+  &:not(.active) {
+    transition: $swift-ease-out-quick;
+      transform: scaleY(0);
+      opacity: 0;
+  }
+
+  div[calendar-border] {
+    color: rgba(0, 0, 0, 0.870588);
+    transition: $swift-ease-out;
+    box-sizing: border-box;
+    font-family: Roboto, sans-serif;
+    box-shadow: rgba(0, 0, 0, 0.247059) 0 14px 45px, rgba(0, 0, 0, 0.219608) 0 10px 18px;
+    border-radius: 2px;
+    background-color: rgb(255, 255, 255);
+    div[calendar-inner-border] {
+      font-size: 16px;
+      color: rgba(0, 0, 0, 0.6);
+      padding: 0;
+      box-sizing: border-box;
+      overflow-y: hidden;
+      min-height: 434px;
+      min-width: 310px;
+      max-height: 859px;
+      div[calendar-text-color] {
+        color: rgba(0, 0, 0, 0.870588);
+        width: 310px;
+      }
+    }
+  }
+  div[calendar-days] {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-weight: 500;
+    height: 20px;
+    line-height: 15px;
+    opacity: 0.5;
+    text-align: center;
+    span {
+      width: 42px;
+    }
+  }
+  div[calendar-upper-block] {
+    width: 270px;
+    height: auto;
+    float: none;
+    font-weight: 700;
+    display: inline-block;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    border-bottom-left-radius: 0;
+    color: rgb(255, 255, 255);
+    padding: 20px;
+    background-color: #00648c;
+    div[calendar-year-block] {
+      position: relative;
+      overflow: hidden;
+      height: 16px;
+      margin: 0 0 10px;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 16px;
+      opacity: 0.7;
+      transition: $swift-ease-out;
+    }
+  }
+  div[calendar-date-block] {
+    position: relative;
+    overflow: hidden;
+    height: 38px;
+    display: block;
+    font-size: 36px;
+    line-height: 36px;
+    opacity: 1;
+    width: 100%;
+    font-weight: 500;
+  }
+  .pointer {
+    cursor: pointer;
+  }
+  .defaultcursor {
+    cursor: default;
+    width: 100%;
+    display: block;
+  }
+  .fullabsolute {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+  .okcancelbutton {
+    border: 10px;
+    box-sizing: border-box;
+    display: inline-block;
+    font-family: Roboto, sans-serif;
+    cursor: pointer;
+    text-decoration: none;
+    outline: none;
+    font-size: inherit;
+    font-weight: inherit;
+    transform: translate3d(0px, 0px, 0px);
+    height: 36px;
+    line-height: 36px;
+    min-width: 64px;
+    color: #00648c;
+    transition: $swift-ease-out;
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+    margin: 4px 8px 8px 0;
+    text-align: center;
+    max-height: 36px;
+    -webkit-user-select: none;
+    background-color: rgba(0, 0, 0, 0);
+    &:hover {
+      background-color: rgba(153, 153, 153, 0.2);
+    }
+  }
+}
+}

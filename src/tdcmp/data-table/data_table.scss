@@ -1,0 +1,134 @@
+@import "../../styles/core/variables";
+@import "../../styles/core/default-theme";
+
+$data-table-font-size: rem(1.3) !default;
+$data-table-header-font-size: rem(1.2) !default;
+$data-table-header-sort-icon-size: rem(1.6) !default;
+
+//TODO (ollwenjones) somewhere support dark themeing for these colors?
+$data-table-header-sorted-icon-hover-color: rgba(#000, 0.38) !default;
+$data-table-divider-color: rgba(#000, 0.12) !default;
+$first-last-cell-padding: rem(0) !default;
+$check-cell-width: rem(1.8) !default;
+
+$data-table-hover-color: md-color($md-grey, 200) !default;
+$data-table-selection-color: md-color($md-grey, 100) !default;
+
+$data-table-dividers: 1px solid $data-table-divider-color !default;
+
+$data-table-row-height: rem(2.800) !default;
+$data-table-last-row-height: rem(2.800) !default;
+$data-table-column-padding: rem(0) !default;
+$data-table-column-spacing: rem(0) !default;
+//column spacing + column padding = the prescribed 56dp
+
+md-data-table, .md-data-table {
+  display: table;
+  border-spacing: 0;
+  border-collapse: collapse;
+  font-size: $data-table-font-size;
+
+  box-sizing: border-box;
+  width: 100%;
+
+  md-checkbox {
+    margin: 0;
+    width: $check-cell-width;
+    vertical-align: middle;
+  }
+  tr {
+    vertical-align: middle;
+    &:last-child {
+      height: $data-table-last-row-height;
+    }
+  }
+  th, td {
+    padding: 0 $data-table-column-spacing 0 $data-table-column-padding;
+    text-align: right;
+
+    &:first-of-type {
+      padding-left: $first-last-cell-padding;
+    }
+
+    &:last-of-type {
+      padding-right: $first-last-cell-padding;
+    }
+
+    &.md-text-cell { text-align: left; }
+
+    &.md-data-check-cell {
+      padding: 0 0 0 $data-table-column-padding;
+      width: $check-cell-width;
+    }
+  }
+  th {
+    font-size: $data-table-header-font-size;
+    font-weight: 600;
+    color: md-color($md-foreground, secondary-text);
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+
+    &.sortable {
+      cursor: pointer;
+    }
+
+    /*
+     TODO (ollwenjones) sorting functionality pending, but these class names
+     were tested, and can be used outside of the library component structures.
+     */
+    &.sorted-ascending,
+    &.sorted-descending {
+      color: md-color($md-foreground, text);
+      &:before {
+        font-family: 'Material Icons';
+        font-size: $data-table-header-sort-icon-size;
+        content: "\e5d8";
+        margin-right: 5px;
+        vertical-align: sub;
+      }
+      &:hover {
+        cursor: pointer;
+        &:before {
+          color: $data-table-header-sorted-icon-hover-color;
+        }
+      }
+    }
+    &.sorted-descending:before {
+      content: "\e5db";
+    }
+  }
+  td {
+    position: relative;
+    vertical-align: middle;
+    height: $data-table-row-height;
+    border-top: $data-table-dividers;
+    border-bottom: $data-table-dividers;
+    box-sizing: border-box;
+    color: md-color($md-foreground, text);
+  }
+  th:first-child, td:first-child {
+    padding-left: 24px;
+  }
+  th:last-child, td:last-child {
+    padding-right: 24px;
+  }
+
+  tr {
+    position: relative;
+    height: $data-table-row-height;
+  }
+
+  tbody, .md-data-tbody {
+    tr {
+      &.selected, &.active {
+        background-color: $data-table-selection-color;
+      }
+
+      &:hover {
+        background-color: $data-table-hover-color;
+        cursor: pointer;
+      }
+    }
+  }
+
+}

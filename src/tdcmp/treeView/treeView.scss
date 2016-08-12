@@ -1,0 +1,95 @@
+.treeview {
+  height: 100%;
+  width: 100%;
+  border: solid 1px #00648c;
+  padding-right: 5px;
+  ul {
+    list-style: none;
+
+  }
+  .content {
+    position: relative;
+  }
+  .arrow {
+    position: absolute;
+    top: -5px;
+    left: -27px;
+    transform: rotate(90deg) scale(0.8);
+    cursor: pointer;
+    color: #00648c;
+    opacity: 0.8;
+    // transition: all 0.2s ease 0.1s;
+    &.collapsed {
+      transform: scale(0.8);
+      top: -3px;
+    }
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+  .horizontalLine {
+    width: 40px;
+    height: 1px;
+    position: absolute;
+    left: -51px;
+    top:10px;
+     border-bottom-style: dotted;
+     border-bottom-width: 1px;
+     border-bottom-color: black;
+    &.hasArrow {
+      width: 30px;
+    }
+  }
+  .children {
+    display: block;
+    position: relative;
+    &.collapsed {
+      display: none;
+    }
+
+  }
+  .verticalLine {
+    width: 100px;
+    // height: 100%;
+    position: absolute;
+    left: -14px;
+    top: -7px;
+    border-left-style: dotted;
+    border-left-width: 1px;
+    border-left-color: black;
+  }
+
+  .iconContainer {
+    position: relative;
+    display: inline-block;
+    .icon {
+      position: absolute;
+      top: -17px;
+      left: -5px;
+      transform: scale(0.6);
+      color: #00648c;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+
+  .separator {
+    width:10px;
+    display:inline-block
+  }
+
+  .label {
+    cursor: pointer;
+    &:hover {
+      color: #00648c;
+      // opacity: 0.6;
+    }
+    &.selected {
+        color: #00648c;
+    }
+  }
+
+
+}

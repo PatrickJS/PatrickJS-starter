@@ -1,0 +1,7 @@
+<div class="yearcontainer">
+  <div class="yearborder">
+    <div>
+      <button *ngFor="let y of years" class="year" [class.selected]="y==year" (click)="year=y"><span>{{y}}</span></button>
+    </div>
+  </div>
+</div>

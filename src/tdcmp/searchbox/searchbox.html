@@ -1,0 +1,10 @@
+<div class="searchBox" style="max-width:{{width}}">
+  <span>
+
+    <span><i class="fa fa-search"></i></span>
+    <input placeholder={{placeholder}} [(ngModel)]="text" />
+                <a *ngIf="text!==''"  (click)="clearText()">
+                    <span><i class="fa fa-times-circle"></i></span>
+                </a>
+  </span>
+</div>

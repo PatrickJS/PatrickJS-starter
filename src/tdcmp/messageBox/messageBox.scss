@@ -1,0 +1,115 @@
+.messageBox {
+  position: fixed;
+  z-index: 1500;
+  top: 20%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transform: scale(0.2);
+  &.active {
+    opacity: 1;
+    transform: perspective(1px) scale(1.0);
+  }
+  .border {
+    box-sizing: border-box;
+    position: relative;
+    max-width: 512px;
+    margin: 0 auto;
+    z-index: 1500;
+    opacity: 1;
+    .container {
+      color: rgba(0, 0, 0, 0.870588);
+      box-sizing: border-box;
+      font-family: Roboto, sans-serif;
+      box-shadow: rgba(0, 0, 0, 0.247059) 0 14px 45px, rgba(0, 0, 0, 0.219608) 0 10px 18px;
+      border-radius: 2px;
+      background-color: rgb(255, 255, 255);
+      h3 {
+        margin: 0;
+        padding: 24px 24px 20px;
+        color: rgba(0, 0, 0, 0.870588);
+        font-size: 22px;
+        line-height: 32px;
+        font-weight: 400;
+        border-bottom-style: none;
+        md-icon {
+          &:hover {
+            opacity: 0.7;
+            cursor: pointer;
+          }
+        }
+      }
+      .inkbartitle {
+        position: absolute;
+        top: 60px;
+        left: 15px;
+        height: 1px;
+        background-color: #00648c;
+        width: calc(100% - 30px);
+        opacity: 0.8;
+      }
+      .footer {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        padding: 8px;
+        width: 100%;
+        text-align: right;
+        margin-top: 0;
+        border-top-style: none;
+        button {
+          border: 10px;
+          box-sizing: border-box;
+          display: inline-block;
+          font-family: Roboto, sans-serif;
+          -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+          cursor: pointer;
+          text-decoration: none;
+          margin: 0;
+          padding: 0;
+          outline: none;
+          font-size: inherit;
+          font-weight: inherit;
+          transform: translate3d(0px, 0px, 0px);
+          height: 36px;
+          line-height: 36px;
+          min-width: 88px;
+          color: rgb(0, 188, 212);
+          transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0;
+          border-radius: 2px;
+          position: relative;
+          overflow: hidden;
+          text-align: center;
+          -webkit-user-select: none;
+          background-color: rgba(0, 0, 0, 0);
+          &:hover {
+            background-color: rgba(153, 153, 153, 0.2);
+          }
+          span {
+            position: relative;
+            padding-left: 16px;
+            padding-right: 16px;
+            vertical-align: middle;
+            letter-spacing: 0;
+            text-transform: uppercase;
+            font-weight: 500;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+.backdrop {
+  position: fixed;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.2;
+  background-color: black;
+}
