@@ -1,0 +1,13 @@
+<div>
+  <md-input
+    placeholder={{placeHolder}}
+    [(ngModel)]=internalDate
+    (click)=clicked($event)
+    [required]="required"
+    style="width:100%"
+    >
+    <md-hint align="start"><span><ng-content select="error"></ng-content></span></md-hint>
+  </md-input>
+  <md-calendar style="position:fixed; top:0; left:0" [(date)]="CalendarDate" (dateChanged)="date = $event"
+  [hidden]="!displayCalendar" [active]="active" [upper]=upper> </md-calendar>
+</div>

@@ -1,0 +1,30 @@
+<div class="messageBox" [class.active]="active" *ngIf="opened">
+  <div class="border">
+    <div class="container">
+      <h3>
+        <div layout="row">
+          <div>
+            <ng-content select="md-title"></ng-content>
+          </div>
+
+          <div flex style="text-align:right">
+              <md-icon class="md-24 close"  (click)="closeDialog(false)">close</md-icon>
+          </div>
+      </div>
+      </h3>
+      <div class="inkbartitle"></div>
+      <div style="font-size: 16px; padding: 16px 0px 16px; box-sizing: border-box; overflow-y: hidden; max-height: 731px;text-align:center">
+        <ng-content></ng-content>
+      </div>
+
+    <div class="footer">
+        <button (click)=closeDialog(false)><div><span>Cancel</span></div></button>
+        <button (click)=closeDialog(true)><div><span>Ok</span></div></button>
+    </div>
+    </div>
+  </div>
+
+</div>
+<div *ngIf="opened" class="backdrop">
+
+</div>

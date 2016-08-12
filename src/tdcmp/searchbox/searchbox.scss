@@ -1,0 +1,36 @@
+.searchBox{
+	padding: 0 10px 0px 0px;
+	span{
+	 border-radius: 20px;
+	 border: 1px solid #CACACA;
+	 position:relative;
+	 margin: 0 10px;
+	 display: block;
+	 span{
+	 	border: none;
+	 	box-shadow: none;
+	 	display: inline-block;
+	 	text-align: center;
+	 }
+ }
+ span i{
+ 	color:#cacaca;
+ }
+ input{
+ 	height: 25px;
+ 	width : calc(100% - 70px);
+ 	background: transparent;
+ 	outline-style: none;
+ 	border:none;
+ 	display: inline-block;
+     color: #5e5e5e;
+ }
+ a{
+     cursor:pointer;
+		 span {
+		     right:3px;
+		     top:5px;
+		     position:absolute;
+		 }
+ }
+}

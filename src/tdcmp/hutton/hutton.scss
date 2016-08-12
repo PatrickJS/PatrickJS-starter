@@ -1,0 +1,47 @@
+.hutton {
+
+  span {
+    position: relative;
+    cursor: pointer;
+    // color: #00648c;
+    &:hover {
+      color: #00648c;
+    }
+  }
+
+  .hlabel {
+    &:hover {
+      color: #00648c;
+    }
+  }
+
+
+  .hmd-icon {
+    position: absolute;
+    top: -2px;
+    right: -30px;
+    color: #00648c;
+    transform: scale(0.2);
+    opacity: 0;
+    cursor:default;
+    transition: all 0.4s ease;
+    &.visible {
+      opacity: 1;
+      transform: scale(0.8);
+      cursor: pointer;
+    }
+  }
+
+  .hmd-menu {
+    position: absolute;
+    top: -10px;
+    right: -40px;
+    opacity: 0;
+    cursor:default;
+    transition: all 0.4s ease;
+    &.visible {
+      opacity: 1;
+      cursor: pointer;
+    }
+  }
+}

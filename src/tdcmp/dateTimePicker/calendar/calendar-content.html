@@ -1,0 +1,41 @@
+<div style="display: flex; align-content: space-between; justify-content: space-between; flex-direction: column; font-size: 12px; font-weight: 400; padding: 0px 8px; transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms; width: auto;">
+<div style="display: flex; justify-content: space-between; height: 48px; background-color: inherit;">
+  <button (click)="changeMonth(-1)" style="border: 10px; box-sizing: border-box; display: inline-block; font-family: Roboto, sans-serif; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; text-decoration: none; outline: none; font-size: 0px; font-weight: inherit; transform: translate3d(0px, 0px, 0px); position: relative; overflow: visible; transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms; padding: 12px; width: 48px; height: 48px; background: none;">
+    <div>
+      <svg viewBox="0 0 24 24" style="display: inline-block; fill: rgba(0, 0, 0, 0.870588); height: 24px; width: 24px; transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms; -webkit-user-select: none;">
+        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
+      </svg>
+    </div>
+  </button>
+  <div style="position: relative; overflow: hidden; height: 100%; font-size: 14px; font-weight: 500; text-align: center; width: 100%;">
+    <div direction="up" style="position: absolute; height: 100%; width: 100%; top: 0px; left: 0px; transition: transform 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms, opacity 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;">
+      <div style="height: inherit; padding-top: 12px;">{{_displayDate | date:"MMMM"}} {{_displayDate.getFullYear()}}</div>
+    </div>
+  </div>
+  <button (click)="changeMonth(1)" style="border: 10px; box-sizing: border-box; display: inline-block; font-family: Roboto, sans-serif; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; text-decoration: none; outline: none; font-size: 0px; font-weight: inherit; transform: translate3d(0px, 0px, 0px); position: relative; overflow: visible; transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms; padding: 12px; width: 48px; height: 48px; background: none;">
+    <div>
+      <svg viewBox="0 0 24 24" style="display: inline-block; fill: rgba(0, 0, 0, 0.870588); height: 24px; width: 24px; transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms; -webkit-user-select: none;">
+        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>
+      </svg>
+    </div>
+  </button>
+</div>
+
+<div calendar-days>
+  <span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div>
+<div style="position: relative; overflow: hidden; height: 214px;">
+  <div style="position: absolute; height: 100%; width: 100%; top: 0px; left: 0px; transition: transform 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms, opacity 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;">
+    <div style="display: flex; flex-direction: column; justify-content: flex-start; font-weight: 400; height: 228px; line-height: 2; position: relative; text-align: center;">
+      <div *ngFor="let w of monthCalendar" style="display: flex; flex-direction: row; justify-content: space-around; height: 34px; margin-bottom: 2px;">
+        <div *ngFor="let d of w" style="box-sizing: border-box; font-weight: 400; padding: 4px 0px; position: relative; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 42px;">
+          <span *ngIf="d == undefined"></span>
+          <button day-button *ngIf="d != undefined" (click)="changeDate($event, d)" [class.selected] = "_selectedDate.toLocaleDateString() === d.toLocaleDateString()">
+            <div></div>
+            <span>{{d | date:"dd"}}</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

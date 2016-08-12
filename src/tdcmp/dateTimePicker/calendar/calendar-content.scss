@@ -1,0 +1,54 @@
+$swift-ease-out-duration: 0.4s !default;
+$swift-ease-out-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1) !default;
+$swift-ease-out: all $swift-ease-out-duration $swift-ease-out-timing-function !default;
+
+    button[day-button] {
+        border: 10px;
+        box-sizing: border-box;
+        display: inline-block;
+        font-family: Roboto, sans-serif;
+        cursor: pointer;
+        text-decoration: none;
+        outline: none;
+        font-size: inherit;
+        font-weight: 400;
+        padding: 4px 0;
+        position: relative;
+        width: 42px;
+        background: none;
+        div {
+            border-radius: 50%;
+            height: 34px;
+            left: 4px;
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            transform: scale(0);
+            transition:  $swift-ease-out;
+            width: 34px;
+            background-color: #00648c;
+        }
+        span {
+            color: rgba(0, 0, 0, 0.870588);
+            font-weight: 400;
+            position: relative;
+        }
+        &.selected {
+            div {
+                opacity: 1;
+                transform: scale(1);
+            }
+            span {
+                color: rgb(255, 255, 255);
+            }
+        }
+        &:hover {
+          div {
+              opacity: 0.6;
+              transform: scale(1);
+          }
+          span {
+              color: rgb(255, 255, 255);
+          }
+        }
+    }

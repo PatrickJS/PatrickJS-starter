@@ -1,0 +1,44 @@
+<!-- <md-content> -->
+<div class="calendar" style="overflow:auto;margin-top:10px;">
+  <div flex layout="row" style="position:relative">
+    <div class="header-year">
+      {{yearSelected}}
+    </div>
+
+    <div layout="column" class="header-weekdays">
+      <div flex *ngFor="let d of days">{{d}}</div>
+    </div>
+
+    <div layout="column">
+      <div layout="row" class="header-month">
+        <div *ngFor="let m of monthsNumber" [class.sixDayWeek]="getNbWeekOfMonth(yearSelected,m) === 6" [class.fiveDayWeek]="getNbWeekOfMonth(yearSelected,m) === 5" [class.fourDayWeek]="getNbWeekOfMonth(yearSelected,m) === 4">
+          {{monthsValue[m-1]}}
+        </div>
+      </div>
+      <div *ngFor="let day of dayOfWeeks" class="body">
+        <div layout="row">
+          <div *ngFor="let week of weeks" (click)="displayDialogAdd($event)" [class.lastWeek]="isLastWeek(yearSelected,week,day) === true" [class.firstWeek]="isFirstWeek(yearSelected,week,day) === true" [class.dayNotInYear]="dayNotInYear(yearSelected,week,day) === true || dayIsWeekEnd(yearSelected,week,day) === true"
+              [class.dayInYear]="dayNotInYear(yearSelected,week,day) === false" [class.firstDay]="isFirstDay(yearSelected,week,day) === true" [class.isHoliday]="isHoliday(yearSelected,week,day) === true">
+            <div [class.tooltipCal]="isHoliday(yearSelected,week,day)==true">
+              <span id={{getDate(yearSelected,week,day)}}>{{getDate(yearSelected,week,day).getDate()}}</span>
+              <span *ngIf="isHoliday(yearSelected,week,day)==true" class="tooltiptextCal">{{isHolidayName(yearSelected,week,day)}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<md-dialog *ngIf="displayAddDayOff" (close)="displayAddDayOff = false">
+  <md-dialog-title flex>New day off {{dateSelected | date:'dd-MM-yyyy'}}</md-dialog-title>
+  <div layout="row" layout-margin layout-align="center center">
+    <!-- <tdcombobox flex="80" placeholder="Holiday Name" [items]=holidayNameResults [selectedItem]=dateNewdayOffName (selectedItemChanged)="dateNewdayOffName = $event" (inputChanged)="searchHolidayName($event)"></tdcombobox> -->
+    <md-input flex placeholder="Holiday Name" [(ngModel)]="dateNewdayOffName" required></md-input>
+  </div>
+
+  <md-dialog-footer>
+    <button md-raised-button class="md-raised md-primary" (click)="confirmAddDayOff()" style="margin:5px">Ok</button>
+    <button *ngIf="dayOffExist" md-raised-button class="md-raised md-warn" (click)="deleteDayOff()" style="margin:5px">delete</button>
+  </md-dialog-footer>
+</md-dialog>

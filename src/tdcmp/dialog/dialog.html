@@ -1,0 +1,30 @@
+<div class="tddialog" [class.active]=active>
+  <div style="position: relative;">
+    <div class="border">
+      <div style=" color: rgba(0, 0, 0, 0.870588); transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms; box-sizing: border-box; font-family: Roboto, sans-serif; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); box-shadow: rgba(0, 0, 0, 0.247059) 0px 14px 45px, rgba(0, 0, 0, 0.219608) 0px 10px 18px; border-radius: 2px; background-color: rgb(255, 255, 255);">
+        <h3 style="margin: 0px; padding: 24px 24px 20px; color: rgba(0, 0, 0, 0.870588); font-size: 22px; line-height: 32px; font-weight: 400; border-bottom-style: none;">
+          <div layout="row">
+            <div flex style="white-space: nowrap;">
+              <ng-content select="md-dialog-title"></ng-content>
+            </div>
+            <div flex></div>
+            <div flex style="text-align:right">
+                <md-icon class="md-24 close"  (click)="closeDialog()">close</md-icon>
+            </div>
+        </div>
+        </h3>
+        <div class="inkbartitle"></div>
+        <div style="font-size: 16px; color: rgba(0, 0, 0, 0.6); padding: 0px 24px 24px; box-sizing: border-box; overflow-y: hidden; max-height: 731px;">
+          <ng-content></ng-content>
+        </div>
+        <div class="inkbarfooter"></div>
+        <div class="footer">
+            <ng-content select="md-dialog-footer"></ng-content>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="overlay" [class.active]=active>
+</div>

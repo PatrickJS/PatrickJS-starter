@@ -1,0 +1,72 @@
+.chip {
+  border: 10px;
+  box-sizing: border-box;
+  display: flex;
+  font-family: Roboto, sans-serif;
+  text-decoration: none;
+  margin: 4px;
+  padding: 0;
+  outline: none;
+  font-size: inherit;
+  font-weight: inherit;
+  border-radius: 16px;
+  white-space: nowrap;
+  width: fit-content;
+  background-color: rgb(224, 224, 224);
+  opacity: 0.5;
+  transform: scaleX(0.5);
+  transition: all 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
+  &.active {
+    opacity: 1;
+    transform: scaleX(1);    
+  }
+  .avatar {
+    color: rgb(68, 68, 68);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    border-radius: 50%;
+    height: 32px;
+    width: 32px;
+    margin-right: -4px;
+    background-color: rgb(188, 188, 188);
+    svg {
+      display: inline-block;
+      color: rgb(68, 68, 68);
+      fill: rgb(68, 68, 68);
+      height: 19.2px;
+      width: 19.2px;
+      transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0;
+      font-size: 19.2px;
+      margin: 6.4px;
+      -webkit-user-select: none;
+    }
+  }
+  span {
+    color: rgba(0, 0, 0, 0.870588);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 32px;
+    padding-left: 12px;
+    padding-right: 12px;
+    white-space: nowrap;
+    -webkit-user-select: none;
+  }
+  svg {
+    display: inline-block;
+    color: rgba(0, 0, 0, 0.258824);
+    fill: rgba(0, 0, 0, 0.258824);
+    height: 24px;
+    width: 24px;
+    transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0;
+    cursor: pointer;
+    margin: 4px 4px 0 -8px;
+    -webkit-user-select: none;
+    opacity: 1;
+    &:hover {
+      opacity: 0.8;
+      color: white;
+    }
+  }
+}

@@ -1,0 +1,43 @@
+<ul>
+  <li>
+    <div class="content">
+      <div class="horizontalLine" [class.hasArrow]="hasChildren" *ngIf=parent></div>
+      <span *ngIf=hasChildren class="arrow" [class.collapsed]=collapsed (click)=toggleCollapse()>
+        <md-icon>play_arrow</md-icon>
+      </span>
+      <div style="margin-bottom: 10px;">
+        <span *ngIf="node.icon" class="iconContainer">
+          <md-icon class="icon" (click)="select(node)">{{node.icon}}</md-icon>
+        </span>
+        <span *ngIf="node.icon" class="separator"></span>
+        <span class="label" [class.selected]="node==selectedNode">
+          <hutton (huttonClick)=huttonClick(node) (labelClick)=select(node)>
+              {{node.label}}
+              <trigger>
+                <td-menu (menuSelected)="menuClick(node, $event)">
+                  <md-icon >{{node.huttonIcon}}</md-icon>
+                    <button *ngIf="node.huttonIcon" md-mini-fab style="transform: scale(0.5); background-color: #00648c"><md-icon style="color:white">{{node.huttonIcon}}</md-icon></button>
+                  <!-- <button md-mini-fab style="transform: scale(0.5); background-color: #00648c"><md-icon style="transform: scale(2); background-color: white;">{{node.huttonIcon}}</md-icon></button> -->
+                  <td-menu-items>
+                    <span *ngFor="let item of node.menuItems">
+                      <td-menu-item *ngIf="item!='-'">{{item}}</td-menu-item>
+                      <md-divider *ngIf="item=='-'"></md-divider>
+                  </span>
+                </td-menu-items>
+                </td-menu>
+              </trigger>
+              <!-- <trigger>
+                <md-icon *ngIf="node.huttonIcon">{{node.huttonIcon}}</md-icon>
+              </trigger> -->
+        </hutton>
+
+        </span>
+      </div>
+    </div>
+    <div class="children" [class.collapsed]=collapsed [hidden]="!hasChildren">
+      <div class="verticalLine" [style.height.px]="lineHight"></div>
+      <treeviewnode *ngFor="let child of node.children" [node]=child [parent]=node [root]=root>
+      </treeviewnode>
+    </div>
+  </li>
+</ul>

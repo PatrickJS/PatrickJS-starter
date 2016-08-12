@@ -1,0 +1,42 @@
+<div class="calendar" [class.active]=active [class.upper]=upper>
+  <div calendar-border>
+    <div calendar-inner-border>
+      <div calendar-text-color>
+
+        <div calendar-upper-block>
+          <div calendar-year-block>
+            <div class="fullabsolute">
+              <div [class.defaultcursor]=showYears [class.pointer]=!showYears (click)="showYears=true">{{date.getFullYear()}}</div>
+            </div>
+          </div>
+          <div calendar-date-block>
+            <div class="fullabsolute">
+              <div [class.defaultcursor]=!showYears [class.pointer]=showYears (click)="showYears=false">{{date | date:"EEE"}}, {{date | date:"MMM"}} {{date.getDate()}}</div>
+            </div>
+          </div>
+        </div>
+
+
+        <div style="display: flex; flex-direction: column;">
+
+          <md-calendar-year *ngIf=showYears [(date)]="date" (dateChanged)="date = $event"></md-calendar-year>
+          <md-calendar-content *ngIf=!showYears [(date)]="date" (dateChanged)="date = $event" [displayDate]="displayDate"></md-calendar-content>
+
+
+          <div style="display: flex; flex-direction: row; justify-content: flex-end; margin: 0px; max-height: 48px; padding: 0px;">
+            <button (click)="abort()" class="okcancelbutton">
+              <div><span style="position: relative; padding-left: 16px; padding-right: 16px; vertical-align: middle; letter-spacing: 0px; text-transform: uppercase; font-weight: 500; font-size: 14px;">Cancel</span></div>
+            </button>
+            <button (click)="selectDate()" class="okcancelbutton">
+              <div><span style="position: relative; padding-left: 16px; padding-right: 16px; vertical-align: middle; letter-spacing: 0px; text-transform: uppercase; font-weight: 500; font-size: 14px;">OK</span></div>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+  <div *ngIf=fullpage style="position: fixed; height: 100%; width: 100%; top: 0px; left: 0px; opacity: 1; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); will-change: opacity; transform: translateZ(0px); transition: left 0ms cubic-bezier(0.23, 1, 0.32, 1) 0ms, opacity 400ms cubic-bezier(0.23, 1, 0.32, 1) 0ms; z-index: 1400; background-color: rgba(0, 0, 0, 0.541176);">
+  </div>

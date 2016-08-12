@@ -1,0 +1,55 @@
+.yearcontainer {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 272px;
+  margin-top: 10px;
+  overflow: hidden;
+  width: 310px;
+}
+.yearborder {
+  height: inherit;
+  line-height: 35px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: relative;
+  display: flex;
+  //flex-direction: column;
+  justify-content: center;
+  background-color: rgb(255, 255, 255);
+}
+.year {
+  border: 10px;
+  box-sizing: border-box;
+  display: block;
+  font-family: Roboto, sans-serif;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  text-decoration: none;
+  outline: none;
+  font-size: 14px;
+  font-weight: inherit;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+  line-height: inherit;
+  background: none;
+  span {
+    align-self: center;
+    color: rgba(0, 0, 0, 0.870588);
+    font-size: 17px;
+    font-weight: 400;
+    position: relative;
+    top: -1px;
+  }
+  &.selected {
+    span {
+      align-self: center;
+      color: rgb(0, 188, 212);
+      font-size: 26px;
+      font-weight: 500;
+      position: relative;
+      top: -1px;
+    }
+  }
+}

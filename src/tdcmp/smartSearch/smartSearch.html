@@ -1,0 +1,39 @@
+<div class="smart-search">
+  <div layout="row">
+
+    <!-- search icon -->
+    <div [hidden]="focused || text">
+      <md-icon class="md-16 search-icon" style="cursor: pointer" (click)="inp.focus(); openPopup()">search</md-icon>
+    </div>
+
+    <!-- chips -->
+    <div layout="row" style="margin-top:-10px;">
+      <md-chip *ngFor="let key of dico.keys" (onClose)="deleteKey(key)"><i>{{key}}:</i> {{dico[key]}}</md-chip>
+    </div>
+
+    <div flex>
+      <input #inp class="md-input-element"
+        [(ngModel)]="text" (focus)="focused=true"
+        (blur)="blur()"
+        (ngModelChange)=textChange($event)
+        (keydown)="keyPress($event.code, $event.ctrlKey)"
+      >
+      <div class="md-input-holder">{{text}}{{_suggestion}}</div>
+    </div>
+
+  </div>
+
+  <div class="md-input-underline">
+    <span class="md-input-ripple" [class.md-focused]="focused"></span>
+  </div>
+
+</div>
+
+<!-- popup -->
+<div class="smart-search-popup" [class.active]=_active [hidden]="!_popupVisible || _items.length==0">
+  <div class="overflow">
+    <span class="item" [class.selected]="item==_selectedItem" *ngFor="let item of _items" (click)="itemClick(item)">
+        <span>{{item}}</span>
+    </span>
+  </div>
+</div>

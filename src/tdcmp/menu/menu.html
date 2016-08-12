@@ -1,0 +1,6 @@
+<div (click)="togglePopup()"><ng-content select="button" ></ng-content></div>
+
+
+<div class="tdpopup" [class.active]=active [class.upper]=upper [style.top]=top [style.left]=left >
+  <div (click)="active=false"><ng-content select="td-menu-items"></ng-content></div>
+</div>

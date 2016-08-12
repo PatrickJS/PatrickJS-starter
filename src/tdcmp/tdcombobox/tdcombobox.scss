@@ -1,0 +1,35 @@
+@import "../../styles/promethee";
+
+.tdcombobox {
+  $item-height : 32px;
+
+   position: relative;
+   display: block;
+   width: 100%;
+   padding:0;
+
+  md-input{
+    width: 100%;
+  }
+
+  .list-container{
+    background-color: rgb(255,255,255);
+    box-shadow: 0 0 3px #505050;
+    // display: block;
+    z-index: 1000;
+    position: absolute;
+    left:1px;
+    top: 45px;
+    min-height: $item-height;
+    max-height: 5*$item-height;
+    overflow-y: auto;
+    width: calc(100% - 2px);
+     md-nav-list {
+       md-list-item{
+         .md-list-item{
+           height: $item-height !important;
+         }
+       }
+     }
+  }
+}
