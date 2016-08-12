@@ -1,17 +1,21 @@
-import { Component } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
+import { Component, NgModule } from '@angular/core';
+import { Index } from './index.component';
 
 @Component({
   selector: 'detail',
-  directives: [
-    ...ROUTER_DIRECTIVES
-  ],
   template: `
   Detail
     <router-outlet></router-outlet>
   `
 })
 export class Detail {
+  items = [
+   {text: 'Refresh'},
+   {text: 'Settings'},
+   {text: 'Help'},
+   {text: 'Sign Out', disabled: true}
+ ];
+
   constructor() {
 
   }
