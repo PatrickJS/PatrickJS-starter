@@ -1,4 +1,7 @@
 import { Component, NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { MaterialModule } from '../../platform/browser/angular2-material2';
+import { FormsModule } from '@angular/forms';
 import { Index } from './index.component';
 
 @Component({
@@ -25,3 +28,11 @@ export class Detail {
   }
 
 }
+
+@NgModule({
+  imports: [BrowserModule, FormsModule, MaterialModule],
+  exports: [Detail],
+  declarations: [Detail],
+  entryComponents: [Detail]
+})
+export class DetailModule { }

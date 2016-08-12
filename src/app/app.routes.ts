@@ -1,7 +1,7 @@
 import { provideRouter, Routes } from '@angular/router';
 import { Home } from './home';
 import { About } from './about';
-import { Detail, Index } from './+detail';
+import { detailRoutes  } from './+detail';
 import { Demo } from './demo';
 
 import { NoContent } from './no-content';
@@ -13,10 +13,7 @@ export const routes: Routes  = [
   { path: 'home',  component: Home },
   { path: 'demo',  component: Demo },
   { path: 'about', component: About},
-  { path: 'detail', component: Detail,
-    children: [
-      { path: '', component: Index }  // must be included
-   ]},
+  ...detailRoutes,
   { path: '**',    component: NoContent },
 ];
 

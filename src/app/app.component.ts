@@ -12,7 +12,9 @@ import { AppState } from './app.service';
 @Component({
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
-  styles: [ require('@angular2-material/core/style/core.css') ],
+  styles: [ require('@angular2-material/core/style/core.css')
+          , require('@angular2-material/core/overlay/overlay.css')
+         , require('./app.scss')],
   template: `
 
       <md-toolbar color="primary">

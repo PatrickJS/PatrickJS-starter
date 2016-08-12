@@ -9,7 +9,8 @@ import { Home } from './app/home';
 import { About } from './app/about';
 import { NoContent } from './app/no-content';
 import { Detail, Index } from './app/+detail';
-import { Demo } from './app/demo';
+import { DemoModule } from './app/demo';
+
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { Demo } from './app/demo';
     FormsModule,
     HttpModule,
     MaterialModule,
-    RouterModule
+    RouterModule,
+    DemoModule
   ],
   providers: [
     AppState,
@@ -29,7 +31,6 @@ import { Demo } from './app/demo';
     About,
     Detail,
     Index,
-    Demo,
     NoContent
   ],
   entryComponents: [

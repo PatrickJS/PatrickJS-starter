@@ -1,17 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { MaterialModule } from '../../platform/browser/angular2-material2';
+import { FormsModule } from '@angular/forms';
+import { Menu } from './menu/menu';
+import { TooltipDemo } from './tooltip/tooltip';
+import { Layout } from './layout/layout';
 
 @Component({
   selector: 'demo',
-  template: require('./menu.html'),
-  styles: [require('./menu.scss')]
+  template: require('./demo.html'),
 })
 export class Demo {
-  items = [
-   {text: 'Refresh'},
-   {text: 'Settings'},
-   {text: 'Help'},
-   {text: 'Sign Out', disabled: true}
- ];
+
 
   constructor() {
 
@@ -19,3 +19,11 @@ export class Demo {
 
 
 }
+
+@NgModule({
+  imports: [BrowserModule, FormsModule, MaterialModule],
+  exports: [Demo],
+  declarations: [Demo, Menu, TooltipDemo, Layout],
+  entryComponents: [Demo]
+})
+export class DemoModule { }

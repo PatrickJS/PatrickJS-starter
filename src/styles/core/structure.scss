@@ -1,0 +1,196 @@
+@import 'variables';
+
+html, body {
+  height: 100%;
+  color: rgba(0, 0, 0, 0.87);
+  background: white;
+  position: relative;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+[tabindex='-1']:focus {
+  outline: none;
+}
+
+.inset {
+  padding: 10px;
+}
+
+button.md-no-style {
+  font-weight: normal;
+  background-color: inherit;
+  text-align: left;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+select,
+button,
+textarea,
+input {
+  vertical-align: baseline;
+}
+
+// Fix Android 4.0 button bugs
+input[type="reset"],
+input[type="submit"],
+html input[type="button"],
+button {
+  cursor: pointer;
+  -webkit-appearance: button;
+
+  &[disabled] {
+    cursor: default;
+  }
+}
+
+textarea {
+  vertical-align: top;
+  overflow: auto;
+}
+
+input {
+  &[type="search"] {
+    -webkit-appearance: textfield;
+    box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button {
+      -webkit-appearance: none;
+    }
+  }
+}
+
+.md-visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  text-transform: none;
+  width: 1px;
+}
+
+.md-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.md-shadow-bottom-z-1 {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.md-shadow-bottom-z-2 {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+}
+
+.md-shadow-animated.md-shadow {
+  transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/*
+ * A container inside of a rippling element (eg a button),
+ * which contains all of the individual ripples
+ */
+.md-ripple-container {
+  pointer-events: none;
+  position: absolute;
+  overflow: hidden;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/*
+ * A container inside of a rippling element (eg a button),
+ * which contains all of the individual ripples
+ */
+.md-ripple-container {
+  pointer-events: none;
+  position: absolute;
+  overflow: hidden;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transition: all 0.55s $swift-ease-out-timing-function;
+}
+
+.md-ripple {
+  position: absolute;
+  transform: translate(-50%, -50%) scale(0);
+  transform-origin: 50% 50%;
+  opacity: 0;
+  border-radius: 50%;
+  &.md-ripple-placed {
+    $sizeDuration: 0.45s * 2;
+    transition: margin $sizeDuration $swift-ease-out-timing-function,
+    border $sizeDuration $swift-ease-out-timing-function,
+    width $sizeDuration $swift-ease-out-timing-function,
+    height $sizeDuration $swift-ease-out-timing-function,
+    opacity $sizeDuration $swift-ease-out-timing-function,
+    transform $sizeDuration $swift-ease-out-timing-function;
+  }
+  &.md-ripple-scaled {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  &.md-ripple-active, &.md-ripple-full, &.md-ripple-visible {
+    opacity: 0.20;
+  }
+}
+
+.md-padding {
+  padding: 8px;
+}
+
+.md-margin {
+  margin: 8px;
+}
+
+.md-scroll-mask {
+  position: absolute;
+  background-color: transparent;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  > .md-scroll-mask-bar {
+    display: block;
+    position: absolute;
+    background-color: #fafafa;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: $z-index-scroll-mask;
+    box-shadow: inset 0px 0px 1px rgba(0, 0, 0, 0.3)
+  }
+}
+
+.md-no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@media (min-width: $layout-breakpoint-sm) {
+  .md-padding {
+    padding: 16px;
+  }
+}

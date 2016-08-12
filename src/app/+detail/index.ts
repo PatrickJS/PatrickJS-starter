@@ -1,4 +1,4 @@
-export { Detail } from './detail.component';
-export { Index } from './index.component';
+export * from './detail.component';
+export * from './index.component';
 
 export * from './routes';
