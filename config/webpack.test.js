@@ -149,7 +149,7 @@ module.exports = {
        *
        * See: https://github.com/webpack/raw-loader
        */
-      {test: /\.css$/, loaders: ['to-string-loader', 'css-loader'], include: helpers.root('src', 'app')},
+      {test: /\.css$/, loaders: ['exports-loader?module.exports.toString()', 'css-loader'], include: helpers.root('src', 'app')},
 
       /**
        * Raw loader support for *.html

@@ -176,7 +176,7 @@ module.exports = {
       {
         test: /\.css$/,
         include: helpers.root('src', 'app'),
-        loaders: ['to-string-loader', 'css-loader']
+        loaders: ['exports-loader?module.exports.toString()', 'css-loader']
       },
 
       /* Raw loader support for *.html
