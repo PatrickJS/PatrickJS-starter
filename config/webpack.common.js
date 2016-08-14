@@ -193,7 +193,7 @@ module.exports = {
       /* File loader for supporting images, for example, in CSS files.
        */
       {
-        test: /\.(jpg|png|gif)$/,
+        test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
         loader: 'file'
       }
     ]
