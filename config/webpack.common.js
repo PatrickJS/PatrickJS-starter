@@ -13,6 +13,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 const HtmlElementsPlugin = require('./html-elements-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 /*
  * Webpack Constants
@@ -44,7 +45,7 @@ module.exports = {
    *
    * See: http://webpack.github.io/docs/configuration.html#cache
    */
-   //cache: false,
+  //cache: false,
 
   /*
    * The entry point for the bundle
@@ -55,8 +56,8 @@ module.exports = {
   entry: {
 
     'polyfills': './src/polyfills.browser.ts',
-    'vendor':    './src/vendor.browser.ts',
-    'main':      './src/main.browser.ts'
+    'vendor': './src/vendor.browser.ts',
+    'main': './src/main.browser.ts'
 
   },
 
@@ -101,7 +102,7 @@ module.exports = {
        *
        * See: https://github.com/wbuchwalter/tslint-loader
        */
-       // { test: /\.ts$/, loader: 'tslint-loader', exclude: [ helpers.root('node_modules') ] },
+      // { test: /\.ts$/, loader: 'tslint-loader', exclude: [ helpers.root('node_modules') ] },
 
       /*
        * Source map loader support for *.js files
@@ -136,7 +137,7 @@ module.exports = {
       /*
        * Typescript loader support for .ts and Angular 2 async routes via .async.ts
        * Replace templateUrl and stylesUrl with require()
-       * 
+       *
        * See: https://github.com/s-panferov/awesome-typescript-loader
        * See: https://github.com/TheLarkInn/angular2-template-loader
        */
@@ -157,12 +158,24 @@ module.exports = {
       },
 
       /*
+       * ExtractTextPlugin, style loader and css loader support for global *.css files
+       * Inject css files as globally in a bundle
+       *
+       */
+      {
+        test: /\.css$/,
+        exclude: helpers.root('src', 'app'),
+        loader: ExtractTextPlugin.extract('style-loader', 'css?sourceMap')
+      },
+
+      /*
        * to string and css loader support for *.css files
        * Returns file content as string
        *
        */
       {
         test: /\.css$/,
+        include: helpers.root('src', 'app'),
         loaders: ['to-string-loader', 'css-loader']
       },
 
@@ -176,9 +189,9 @@ module.exports = {
         loader: 'raw-loader',
         exclude: [helpers.root('src/index.html')]
       },
-      
+
       /* File loader for supporting images, for example, in CSS files.
-      */
+       */
       {
         test: /\.(jpg|png|gif)$/,
         loader: 'file'

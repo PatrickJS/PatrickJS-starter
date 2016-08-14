@@ -85,7 +85,7 @@
     "@angularclass/request-idle-callback": "^1.0.7",
     "@angularclass/conventions-loader": "^1.0.2",
     "angular2-template-loader": "^0.4.0",
-    
+
     "ie-shim": "^0.1.0",
     "core-js": "^2.4.0",
     "rxjs": "5.0.0-beta.6",
@@ -144,6 +144,7 @@
     "expose-loader": "^0.7.1",
     "file-loader": "^0.9.0",
     "to-string-loader": "^1.1.4",
+    "extract-text-webpack-plugin": "^1.0.1",
 
     "html-webpack-plugin": "^2.21.0",
     "copy-webpack-plugin": "^3.0.1",

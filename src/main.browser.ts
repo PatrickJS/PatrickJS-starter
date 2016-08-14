@@ -9,6 +9,10 @@ import { bootstrap } from '@angular/platform-browser-dynamic';
 import { PLATFORM_PROVIDERS } from './platform/browser';
 import { ENV_PROVIDERS, decorateComponentRef } from './platform/environment';
 
+/*
+* Global styles
+*/
+import './styles/style.css';
 
 /*
 * App Component
