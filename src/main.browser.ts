@@ -1,35 +1,24 @@
 /*
- * Providers provided by Angular
+ * Angular bootstraping
  */
-import { bootstrap } from '@angular/platform-browser-dynamic';
-/*
-* Platform and Environment
-* our providers/directives/pipes
-*/
-import { PLATFORM_PROVIDERS } from './platform/browser';
-import { ENV_PROVIDERS, decorateComponentRef } from './platform/environment';
-
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { decorateComponentRef } from './platform/environment';
 
 /*
-* App Component
-* our top level component that holds all of our components
-*/
-import { App, APP_PROVIDERS } from './app';
+ * App Module
+ * our top level module that holds all of our components
+ */
+import { AppModule } from './app';
 
 /*
- * Bootstrap our Angular app with a top level component `App` and inject
- * our Services and Providers into Angular's dependency injection
+ * Bootstrap our Angular app with a top level NgModule
  */
 export function main(initialHmrState?: any): Promise<any> {
 
-  return bootstrap(App, [
-    // To add more vendor providers please look in the platform/ folder
-    ...PLATFORM_PROVIDERS,
-    ...ENV_PROVIDERS,
-    ...APP_PROVIDERS,
-  ])
-  .then(decorateComponentRef)
-  .catch(err => console.error(err));
+  return platformBrowserDynamic()
+    .bootstrapModule(AppModule)
+    .then(decorateComponentRef)
+    .catch(err => console.error(err));
 
 }
 
