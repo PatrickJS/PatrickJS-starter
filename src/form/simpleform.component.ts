@@ -1,4 +1,4 @@
-import { Component} from "@angular/core";
+import {Component, ViewChild, ViewChild} from "@angular/core";
 import { Form } from "angular2-schema-form";
 import { ActivatedRoute } from "@angular/router";
 import { WidgetRegistry } from "angular2-schema-form";
@@ -27,6 +27,9 @@ export class SimpleForm {
   formChosen = false;
   submission: string;
   haveSubmitted = false;
+
+  @ViewChild('chart') child;
+
   private postUrl = "http://127.0.0.1:5000/rx/tricky";
   formActions = {
     "submit": (form) => {this.onSubmit(form.value)},
@@ -38,6 +41,7 @@ export class SimpleForm {
               private http: Http) {
     // this.schema = require("./sampleschema.json");
     // this.model = require("./samplemodel.json");
+
   }
 
   ngOnInit() {
@@ -75,17 +79,12 @@ export class SimpleForm {
       .catch(this.handleError);
   }
 
-  // private transformData(dataPoint: Object): Object {
-  //   return [new Date(dataPoint.date).getTime()]
-  // }
-
   private handlePostResponse(response: Response): void {
     if (this.haveSubmitted) {
       let data = response.json().data;
-      // let epoch = new Date(data[0].date).getTime();
       console.log(data);
-      console.log(new Date(data[0].epoch).getTime());
-      // console.log(epoch);
+      // this.chartTsData = data;
+      this.child.populateChart(data);
     }
   }
 
