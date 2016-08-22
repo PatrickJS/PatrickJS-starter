@@ -1,0 +1,202 @@
+{
+	"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+	"type": "object",
+	"properties": {
+		"firstName": {
+			"type": "string",
+			"minLength": 2,
+			"maxLength": 40,
+			"title": "First name",
+			"description": "First name"
+		},
+		"lastName": {
+			"type": "string",
+			"minLength": 2,
+			"maxLength": 40,
+			"title": "Last name",
+			"description": "Last name"
+		},
+		"bornOn": {
+			"type": "string",
+			"format": "date",
+			"widget": "date",
+			"placeholder": "Ex: 2009-03-11",
+			"description": "Born on"
+		},
+		"moreInfo":{
+			"type": "boolean",
+			"widget": "checkbox",
+			"description":"More information?",
+			"default": true
+		},
+		"favoriteColor": {
+			"type": "string",
+			"pattern": "^#[0-9a-fA-F]{6}$",
+			"widget": "color",
+			"description": "Favorite color",
+			"visibleIf": {
+				"moreInfo": [true]
+			}
+		},
+		"transactionNumber": {
+			"type": "integer",
+			"minimum": 0,
+			"description": "Transaction number"
+		},
+		"transactionDescription": {
+			"type": "string",
+			"widget": "textline",
+			"description": "What is being transacted"
+		},
+		"category": {
+			"type":"string",
+			"widget": "select",
+			"oneOf": [{
+				"description": "Design",
+				"enum": ["design"]
+			},
+			{
+				"description": "High-Tech",
+				"enum": ["hightech"]
+			},
+			{
+				"description": "Materials",
+				"enum": ["materials"]
+			},
+			{
+				"description": "Services",
+				"enum": ["services"]
+			}],
+			"description": "Category"
+		},
+		"promotion": {
+			"type":"string",
+			"description": "Promotion",
+			"widget": "radio",
+			"oneOf": [{
+				"description": "Student discount (20%)",
+				"enum": ["student"]
+			},
+			{
+				"description": "Summer 2016 discount (15%)",
+				"enum": ["summer"]
+			},{
+				"description": "None",
+				"enum": ["none"]
+			}]
+		},
+		"confirmationMail": {
+			"type": "string",
+			"description": "Email",
+			"format": "email"
+		},
+		"password": {
+			"type": "string",
+			"widget": "password",
+			"description": "Password"
+		},
+		"numberOfBoxes": {
+			"type": "number",
+			"widget": "range",
+			"description": "Number of boxes required",
+			"minimum": 1,
+			"maximum": 10
+		},
+		"deliveryService": {
+			"type":"string",
+			"widget":"select",
+			"description": "Delivery service",
+			"oneOf":[{
+				"description": "UPS",
+				"enum": ["ups"]
+			},
+			{
+				"description": "FedEx",
+				"enum": ["fedex"]
+			},{
+				"description":"Other",
+				"enum": ["other"]
+			}],
+			"default":"fedex"
+		},
+		"otherDeliveryService":{
+			"type": "string",
+			"minLength":2,
+			"visibleIf": {
+				"deliveryService":["other"]
+			}
+		},
+		"freeShipping": {
+			"type": "boolean",
+			"widget": "checkbox",
+			"description":"Free shipping",
+			"visibleIf":{
+				"deliveryService":["other","ups"]
+			}
+		},
+		"shippingPrice": {
+			"type": "number",
+			"description":"ShippingCost",
+			"minimum":0,
+			"maximum":200,
+			"visibleIf":{
+				"freeShipping":[false]
+			}
+		},
+		"sendApologies":{
+			"type": "boolean",
+			"widget": "checkbox",
+			"description":"Send apologies for the shipping cost",
+			"visibleIf":{
+				"shippingPrice":[22,23]
+			}
+		},
+		"useCustomEmail": {
+			"type": "boolean",
+			"description": "Write a custom email ?"
+		},
+		"customEmail":{
+			"type": "string",
+			"widget": "richtext",
+			"visibleIf": {
+				"useCustomEmail": [true]
+			},
+			"pattern": "^<h1>"
+		}
+	},
+	"buttons":[{
+    "id": "submit",
+    "label": "Submit"
+    },
+    {
+      "id": "reset",
+      "label": "Reset"
+    }],
+	"fieldsets":[{
+		"id": "part_1",
+		"title": "Part 1 - Recipient",
+		"fields":[ "firstName", "lastName", "bornOn","moreInfo", "favoriteColor"]
+	},
+	{
+		"id": "part_2",
+
+		"title": "Part 2 - Transaction",
+		"fields":["transactionNumber", "transactionDescription","promotion","category"]
+	},
+	{
+		"id": "part_3",
+		"title": "Part 3 - Shipping",
+		"fields": ["numberOfBoxes","deliveryService","otherDeliveryService","freeShipping","shippingPrice","sendApologies"]
+	},
+	{
+		"id": "part_4",
+		"title": "Part 4 - Email",
+		"fields": ["useCustomEmail","customEmail"]
+	},
+	{
+		"id": "part_4",
+		"title": "Part 4 - Confirmation",
+		"fields": ["confirmationMail","password"]
+	}],
+	"required": ["firstName", "lastName", "transactionNumber","password"]
+}

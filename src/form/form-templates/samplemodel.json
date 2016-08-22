@@ -1,0 +1,11 @@
+{
+	"firstName": "John",
+	"lastName": "Doe",
+	"transactionNumber":123456,
+	"favoriteColor": "#aaafff",
+	"transactionDescription": "Payment for your subscription",
+	"password": "admin",
+	"category": "hightech",
+	"freeShipping": false,
+	"customEmail": "Nothing here..."
+}

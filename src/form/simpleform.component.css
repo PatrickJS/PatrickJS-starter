@@ -1,0 +1,13 @@
+input, textarea {
+	border:1px solid black;
+	border-radius:3px;
+}
+
+.ng-invalid {
+	background-color:#ffeeee;
+}
+
+.ng-valid {
+	background-color:#eeffee;
+}
+

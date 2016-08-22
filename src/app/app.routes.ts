@@ -8,23 +8,30 @@ import { DataResolver } from './app.resolver';
 // AngularClass
 import { provideWebpack } from '@angularclass/webpack-toolkit';
 import { providePrefetchIdleCallbacks } from '@angularclass/request-idle-callback';
+import { About } from "./about/about.component";
+import { Detail } from "./+detail/detail.component";
+import { Index } from "./+detail/index.component";
+import { SimpleForm } from "../form/simpleform.component";
 
 
 export const ROUTES: Routes = [
   { path: '',      component: Home },
   { path: 'home',  component: Home },
   // make sure you match the component type string to the require in asyncRoutes
-  { path: 'about', component: 'About',
+  { path: 'about', component: About,
     resolve: {
       'yourData': DataResolver
     }},
   // async components with children routes must use WebpackAsyncRoute
-  { path: 'detail', component: 'Detail',
+  { path: 'detail', component: Detail,
     canActivate: [ WebpackAsyncRoute ],
     children: [
-      { path: '', component: 'Index' }  // must be included
+      { path: '', component: Index }  // must be included
     ]},
-  { path: '**',    component: NoContent },
+  { path: 'form', component: SimpleForm },
+  // needs to come last - this must go through in order
+  { path: '**',    component: NoContent }
+
 ];
 
 // Async load a component using Webpack's require with es6-promise-loader and webpack `require`

@@ -9,11 +9,25 @@ import { decorateComponentRef } from './platform/environment';
  * our top level module that holds all of our components
  */
 import { AppModule } from './app';
+import { SimpleFormModule } from './form';
 
+/*
+ * Forms Module
+ */
+import { disableDeprecatedForms, provideForms } from "@angular/forms"
+
+import { WidgetRegistry } from "angular2-schema-form";
 /*
  * Bootstrap our Angular app with a top level NgModule
  */
 export function main(initialHmrState?: any): Promise<any> {
+
+  // platformBrowserDynamic()
+  //   .bootstrapModule(SimpleFormModule)
+  //   .then(decorateComponentRef)
+  //   .catch(err => console.error(err));
+
+  console.log('Bootstrapped SimpleFormModule successfully');
 
   return platformBrowserDynamic()
     .bootstrapModule(AppModule)
