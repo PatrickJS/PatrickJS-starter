@@ -1,0 +1,39 @@
+{
+	"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+	"type": "object",
+	"properties": {
+		"firstName": {
+			"type": "string",
+			"minLength": 2,
+			"maxLength": 40,
+			"title": "First name",
+			"description": "First name"
+		},
+		"lastName": {
+			"type": "string",
+			"minLength": 2,
+			"maxLength": 40,
+			"title": "Last name",
+			"description": "Last name"
+		},
+		"amount": {
+			"type": "integer",
+			"minimum": 0,
+			"description": "Amount"
+		}
+  },
+	"buttons":[{
+    "id": "submit",
+    "label": "Submit"
+  },
+    {
+      "id": "reset",
+      "label": "Reset"
+    }],
+	"fieldsets":[{
+		"id": "part_1",
+		"title": "Part 1 - Recipient",
+		"fields":[ "firstName", "lastName", "amount"]
+	}],
+	"required": ["firstName", "lastName", "amount"]
+}

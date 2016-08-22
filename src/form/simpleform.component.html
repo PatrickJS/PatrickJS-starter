@@ -1,0 +1,18 @@
+<h2 *ngIf="!active">Loading Forms...</h2>
+<div class="dropdown" *ngIf="active" dropdown>
+  <button class="btn btn-primary" dropdown-open>Available Forms</button>
+  <ul class="dropdown-menu">
+    <li *ngFor="let schema of schemaForms" (click)="chooseForm(schema)"><a>{{ schema.id }}</a></li>
+  </ul>
+</div>
+<select [ngModel]="schema" (ngModelChange)="chooseForm($event)">
+  <option [ngValue]="i" *ngFor="let i of schemaForms">{{ i.id }}</option>
+</select>
+<schema-form *ngIf="formChosen" [schema]="schema" [model]="model" [actions]="formActions"></schema-form>
+
+<chart-app></chart-app>
+
+<div *ngIf="haveSubmitted">
+  {{ submission }}
+  {{ haveSubmitted }}
+</div>
