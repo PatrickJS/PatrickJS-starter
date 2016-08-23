@@ -3,7 +3,7 @@
  */
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { decorateComponentRef } from './platform/environment';
-
+import { ApplicationRef } from '@angular/core';
 /*
  * App Module
  * our top level module that holds all of our components
@@ -17,6 +17,10 @@ export function main(initialHmrState?: any): Promise<any> {
 
   return platformBrowserDynamic()
     .bootstrapModule(AppModule)
+    .then((modRef: any) => {
+      var appRef = modRef.injector.get(ApplicationRef);
+      return appRef.components[0];
+    })
     .then(decorateComponentRef)
     .catch(err => console.error(err));
 
