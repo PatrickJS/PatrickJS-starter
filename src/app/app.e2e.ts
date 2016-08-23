@@ -23,9 +23,9 @@ describe('App', () => {
     expect(subject).toEqual(result);
   });
 
-  it('should have text in footer', () => {
-    let subject = element(by.css('app #footerText')).getText();
-    let result  = 'WebPack Angular 2 Starter by @AngularClass';
+  it('should have buttons', () => {
+    let subject = element(by.css('button')).getText();
+    let result  = 'Submit Value';
     expect(subject).toEqual(result);
   });
 
