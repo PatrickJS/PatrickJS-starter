@@ -2,8 +2,6 @@ import {
   addProviders,
   inject
 } from '@angular/core/testing';
-import { TestComponentBuilder } from '@angular/compiler/testing';
-import { Component } from '@angular/core';
 import { BaseRequestOptions, Http } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 
