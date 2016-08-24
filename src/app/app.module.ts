@@ -53,7 +53,7 @@ export class AppModule {
   hmrOnInit(store) {
     if (!store || !store.state) return;
     console.log('HMR store', store);
-    this.appState.state = store.state;
+    this.appState.set('state', store.state);
     delete store.state;
   }
   hmrOnDestroy(store) {
