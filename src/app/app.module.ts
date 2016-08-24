@@ -49,7 +49,7 @@ const APP_PROVIDERS = [
 export class AppModule {
   constructor(public appRef: ApplicationRef, public appState: AppState) {}
   hmrOnInit(store) {
-    if (!store && !store.state) return;
+    if (!store || !store.state) return;
     console.log('HMR store', store);
     this.appState.state = store.state;
     delete store.state;
