@@ -13,6 +13,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 const HtmlElementsPlugin = require('./html-elements-plugin');
+const OfflinePlugin = require('offline-plugin');
 
 /*
  * Webpack Constants
@@ -227,6 +228,8 @@ module.exports = {
       template: 'src/index.html',
       chunksSortMode: 'dependency'
     }),
+
+    new OfflinePlugin(),
 
     /*
      * Plugin: HtmlHeadConfigPlugin

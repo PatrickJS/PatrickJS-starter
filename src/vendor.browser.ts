@@ -21,6 +21,8 @@ import '@angularclass/hmr';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 
+require('offline-plugin/runtime').install();
+
 if ('production' === ENV) {
   // Production
 
