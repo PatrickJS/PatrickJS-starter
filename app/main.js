@@ -1,110 +1,50 @@
-var app = require('app');  // Module to control application life.
-var BrowserWindow = require('browser-window');  // Module to create native browser window.
-var Menu = require('menu');
-var fs = require('fs');
-var shell = require('shell');
-
-// Report crashes to our server.
-require('crash-reporter').start();
+const electron = require('electron');
+// Module to control application life.
+const {app} = electron;
+// Module to create native browser window.
+const {BrowserWindow} = electron;
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-var mainWindow = null;
+let win;
 
+function createWindow() {
+  // Create the browser window.
+  win = new BrowserWindow({width: 1200, height: 750});
 
-// Quit when all windows are closed.
-app.on('window-all-closed', function () {
-	// On OS X it is common for applications and their menu bar
-	// to stay active until the user quits explicitly with Cmd + Q
-	if (process.platform !== 'darwin') {
-		app.quit();
-	}
-});
+  // and load the index.html of the app.
+  win.loadURL(`file://${__dirname}/index.html`);
 
-app.on('activate-with-no-open-windows', function () {
-	newWindow();
-});
+  // Open the DevTools.
+  win.webContents.openDevTools();
+
+  // Emitted when the window is closed.
+  win.on('closed', () => {
+    // Dereference the window object, usually you would store windows
+    // in an array if your app supports multi windows, this is the time
+    // when you should delete the corresponding element.
+    win = null;
+  });
+}
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
-app.on('ready', function () {
+// Some APIs can only be used after this event occurs.
+app.on('ready', createWindow);
 
-	newWindow();
-
-	var template = [
-		{
-			label: "Application",
-			submenu: [
-				{label: "About", selector: "orderFrontStandardAboutPanel:"},
-				{type: "separator"},
-				{label: "Quit", accelerator: "Command+Q", click: app.quit}
-			]
-		},
-		{
-			label: "Edit",
-			submenu: [
-				{label: "Undo", accelerator: "CmdOrCtrl+Z", selector: "undo:"},
-				{label: "Redo", accelerator: "Shift+CmdOrCtrl+Z", selector: "redo:"},
-				{type: "separator"},
-				{label: "Cut", accelerator: "CmdOrCtrl+X", selector: "cut:"},
-				{label: "Copy", accelerator: "CmdOrCtrl+C", selector: "copy:"},
-				{label: "Paste", accelerator: "CmdOrCtrl+V", selector: "paste:"},
-				{label: "Select All", accelerator: "CmdOrCtrl+A", selector: "selectAll:"}
-			]
-		},
-		{
-			label: "Print",
-			submenu: [
-				{label: "Print to PDF", accelerator: "CmdOrCtrl+P", click: function () {
-					printPdf('/tmp/medibox.pdf');
-				}}
-			]
-		}
-	];
-
-	Menu.setApplicationMenu(Menu.buildFromTemplate(template));
-
+// Quit when all windows are closed.
+app.on('window-all-closed', () => {
+  // On OS X it is common for applications and their menu bar
+  // to stay active until the user quits explicitly with Cmd + Q
+  if (process.platform !== 'darwin') {
+    app.quit();
+  }
 });
 
-
-function newWindow () {
-	mainWindow = new BrowserWindow({
-		"use-content-size": true,
-		width: 1200,
-		height: 750,
-		"web-preferences": {
-			"node-integration": false // loads jquery as global not module
-		}
-	});
-
-	// and load the index.html of the app.
-	mainWindow.loadUrl('file://' + __dirname + '/index.html');
-
-	// Open the DevTools.
-	mainWindow.openDevTools();
-
-	// Emitted when the window is closed.
-	mainWindow.on('closed', function () {
-		// Dereference the window object, usually you would store windows
-		// in an array if your app supports multi windows, this is the time
-		// when you should delete the corresponding element.
-		mainWindow = null;
-	});
-
-}
-
-function printPdf (path) {
-	var opts = {
-		marginsType: 0,
-		printBackground: true,
-		printSelectionOnly: false,
-		landscape: true
-	};
-	mainWindow.printToPDF(opts, function (pdf_err, result, a) {
-		console.log('pdf_err', pdf_err);
-		fs.writeFile(path, result, function (write_err) {
-			console.log('write_err', write_err);
-			shell.openItem(path);
-		});
-	});
-}
+app.on('activate', () => {
+  // On OS X it's common to re-create a window in the app when the
+  // dock icon is clicked and there are no other windows open.
+  if (win === null) {
+    createWindow();
+  }
+});
