@@ -17,6 +17,10 @@ import { AppState } from './app.service';
 import { Home } from './home';
 import { About } from './about';
 import { NoContent } from './no-content';
+import { Alert } from './alert';
+import {DatePicker} from "./datepicker";
+
+import { Ng2BootstrapModule } from 'ng2-bootstrap-rc5-unofficial/components';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -33,9 +37,12 @@ const APP_PROVIDERS = [
     App,
     About,
     Home,
-    NoContent
+    NoContent,
+    Alert,
+    DatePicker
   ],
   imports: [ // import Angular's modules
+    Ng2BootstrapModule,
     BrowserModule,
     FormsModule,
     HttpModule,
