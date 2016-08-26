@@ -2,3 +2,15 @@ html, body {
   height: 100%;
   font-family: Arial, Helvetica, sans-serif
 }
+
+body:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.02;
+  background-image: url(../assets/img/angular-logo.png);
+}

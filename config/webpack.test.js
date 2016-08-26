@@ -140,7 +140,10 @@ module.exports = {
       {
         test: /\.css$/,
         exclude: [helpers.root('src/index.html'), helpers.root('src', 'app')],
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+        loader: ExtractTextPlugin.extract({
+          fallbackLoader: 'style-loader',
+          loader: 'css-loader?-url'
+        })
       },
 
       /**
@@ -149,7 +152,7 @@ module.exports = {
        *
        * See: https://github.com/webpack/raw-loader
        */
-      {test: /\.css$/, loaders: ['exports-loader?module.exports.toString()', 'css-loader'], include: helpers.root('src', 'app')},
+      {test: /\.css$/, loaders: ['exports-loader?module.exports.toString()', 'css-loader?-url'], include: helpers.root('src', 'app')},
 
       /**
        * Raw loader support for *.html

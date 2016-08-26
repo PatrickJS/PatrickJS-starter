@@ -154,7 +154,10 @@ module.exports = {
       {
         test: /\.css$/,
         exclude: helpers.root('src', 'app'),
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+        loader: ExtractTextPlugin.extract({
+          fallbackLoader: 'style-loader',
+          loader: 'css-loader?-url'
+        })
       },
 
       /*
@@ -165,7 +168,7 @@ module.exports = {
       {
         test: /\.css$/,
         include: helpers.root('src', 'app'),
-        loaders: ['exports-loader?module.exports.toString()', 'css-loader']
+        loaders: ['exports-loader?module.exports.toString()', 'css-loader?-url']
       },
 
       /* Raw loader support for *.html
@@ -180,7 +183,7 @@ module.exports = {
       },
 
       /* File loader for supporting images, for example, in CSS files.
-      */
+       */
       {
         test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
         loader: 'file'
