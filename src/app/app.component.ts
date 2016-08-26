@@ -40,6 +40,18 @@ import { AppState } from './app.service';
           About
         </a>
       </span>
+      |
+      <span>
+        <a [routerLink]=" ['./alert'] ">
+          Alert
+        </a>
+      </span>
+      |
+      <span>
+        <a [routerLink]=" ['./date-picker'] ">
+          Date Picker
+        </a>
+      </span>
     </nav>
 
     <main>
