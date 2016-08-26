@@ -115,6 +115,7 @@
     "remap-istanbul": "^0.6.3",
     "rimraf": "^2.5.2",
     "source-map-loader": "^0.1.5",
+    "string-replace-loader": "^1.0.3",
     "style-loader": "^0.13.1",
     "to-string-loader": "^1.1.4",
     "ts-helpers": "1.1.1",
