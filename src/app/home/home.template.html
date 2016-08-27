@@ -1,34 +1,56 @@
 <div class="card-container">
-  <md-card x-large class="sample-content">Your Content Here</md-card>
-  <md-card>
+  <h1 x-large class="sample-content">Your Content Here</h1>
+
+  <div>
+    For material design components use the <a href="https://github.com/AngularClass/angular2-webpack-starter/tree/material2"><b>material2</b></a> branch
+  </div>
+
+  <hr>
+
+  <div>
     For hot module reloading run
     <pre>npm run start:hmr</pre>
-  </md-card>
-  <md-card>
-    <md-card-title>Local State</md-card-title>
-    <md-card-content>
+  </div>
 
-      <form (ngSubmit)="submitState(localState.value)" autocomplete="off">
+  <hr>
 
-        <md-input
-          placeholder="Submit Local State to App State"
-          [value]="localState.value"
-          (input)="localState.value = $event.target.value"
-          autofocus>
-        </md-input>
+  <div>
+    <h4>Local State</h4>
 
-        <button md-raised-button color="primary">Submit Value</button>
-      </form>
-      <!--
+    <form (ngSubmit)="submitState(localState.value)" autocomplete="off">
+
+      <input
+        [value]="localState.value"
+        (input)="localState.value = $event.target.value"
+        placeholder="Submit Local State to App State"
+        autofocus>
+
+      <button md-raised-button color="primary">Submit Value</button>
+    </form>
+    <!--
         <input type="text" [value]="localState.value" (input)="localState.value = $event.target.value" autofocus>
         Rather than wiring up two-way data-binding ourselves with [value] and (input)
         we can use Angular's [(ngModel)] syntax
         <input type="text" name="textInput" [(ngModel)]="localState.value" autofocus>
       -->
 
-      <pre>this.localState = {{ localState | json }}</pre>
+    <pre>this.localState = {{ localState | json }}</pre>
 
-    </md-card-content>
-  </md-card>
+    <md-card>
+        <md-card-title>Slider with Value</md-card-title>
+        <md-card-content>
+            <md-slider value="24"></md-slider>
+        </md-card-content>
+    </md-card>
+
+     <md-card>
+      <md-card-title>Tooltips</md-card-title>
+      <md-card-content>
+        <button md-raised-button md-tooltip="This is a tooltip!">Hello</button>
+        <button md-raised-button md-tooltip="Another tooltip">World</button>
+      </md-card-content>
+    </md-card>
+
+  </div>
 
 </div>
