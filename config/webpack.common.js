@@ -13,6 +13,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 const HtmlElementsPlugin = require('./html-elements-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 /*
  * Webpack Constants
@@ -44,7 +45,7 @@ module.exports = {
    *
    * See: http://webpack.github.io/docs/configuration.html#cache
    */
-   //cache: false,
+  //cache: false,
 
   /*
    * The entry point for the bundle
@@ -55,8 +56,8 @@ module.exports = {
   entry: {
 
     'polyfills': './src/polyfills.browser.ts',
-    'vendor':    './src/vendor.browser.ts',
-    'main':      './src/main.browser.ts'
+    'vendor': './src/vendor.browser.ts',
+    'main': './src/main.browser.ts'
 
   },
 
@@ -146,13 +147,28 @@ module.exports = {
       },
 
       /*
+       * ExtractTextPlugin, style loader and css loader support for global *.css files
+       * Inject css files as globally in a bundle
+       *
+       */
+      {
+        test: /\.css$/,
+        exclude: helpers.root('src', 'app'),
+        loader: ExtractTextPlugin.extract({
+          fallbackLoader: 'style-loader',
+          loader: 'css-loader?-url'
+        })
+      },
+
+      /*
        * to string and css loader support for *.css files
        * Returns file content as string
        *
        */
       {
         test: /\.css$/,
-        loaders: ['to-string-loader', 'css-loader']
+        include: helpers.root('src', 'app'),
+        loaders: ['exports-loader?module.exports.toString()', 'css-loader?-url']
       },
 
       /* Raw loader support for *.html
@@ -167,9 +183,9 @@ module.exports = {
       },
 
       /* File loader for supporting images, for example, in CSS files.
-      */
+       */
       {
-        test: /\.(jpg|png|gif)$/,
+        test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
         loader: 'file'
       }
     ]

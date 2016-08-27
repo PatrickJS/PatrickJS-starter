@@ -10,6 +10,7 @@ const commonConfig = require('./webpack.common.js'); // the settings that are co
  * Webpack Plugins
  */
 const DefinePlugin = require('webpack/lib/DefinePlugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 /**
  * Webpack Constants
@@ -52,7 +53,7 @@ module.exports = webpackMerge(commonConfig, {
    * See: http://webpack.github.io/docs/configuration.html#devtool
    * See: https://github.com/webpack/docs/wiki/build-performance#sourcemaps
    */
-  devtool: 'cheap-module-source-map',
+  devtool: 'cheap-module-eval-source-map',
 
   /**
    * Options affecting the output of the compilation.
@@ -116,6 +117,14 @@ module.exports = webpackMerge(commonConfig, {
         'HMR': METADATA.HMR,
       }
     }),
+
+    /**
+     * Plugin: ExtractTextPlugin
+     * Description: Load css file separately in a bundle
+     *
+     * See: https://github.com/webpack/extract-text-webpack-plugin
+     */
+    new ExtractTextPlugin('[name].css'),
   ],
 
   /**
