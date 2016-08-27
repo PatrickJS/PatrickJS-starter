@@ -3,6 +3,8 @@
 // at the entry point of the async loaded file. Also see custom-typings.d.ts as you also need to
 // run `typings install x` where `x` is your module
 
+// TODO(gdi2290): switch to DLLs
+
 // Angular 2
 import '@angular/platform-browser';
 import '@angular/platform-browser-dynamic';
@@ -12,9 +14,36 @@ import '@angular/forms';
 import '@angular/http';
 import '@angular/router';
 
+// Angular2 Material
+import '@angular2-material/core';
+import '@angular2-material/button';
+import '@angular2-material/button-toggle';
+import '@angular2-material/card';
+import '@angular2-material/checkbox';
+import '@angular2-material/grid-list';
+import '@angular2-material/icon';
+import '@angular2-material/input';
+import '@angular2-material/list';
+import '@angular2-material/menu';
+import '@angular2-material/progress-bar';
+import '@angular2-material/progress-circle';
+import '@angular2-material/radio';
+import '@angular2-material/sidenav';
+import '@angular2-material/slide-toggle';
+import '@angular2-material/slider';
+import '@angular2-material/tabs';
+import '@angular2-material/toolbar';
+import '@angular2-material/tooltip';
+
+
+
+// Hammer.js
+// We need to import this library in order for Material to work
+// Material needs this for md-tooltips
+import 'hammerjs/hammer.js';
+
 // AngularClass
-import '@angularclass/webpack-toolkit';
-import '@angularclass/request-idle-callback';
+import '@angularclass/hmr';
 
 // RxJS
 import 'rxjs/add/operator/map';
@@ -26,6 +55,5 @@ if ('production' === ENV) {
 
 } else {
   // Development
-  require('angular2-hmr');
 
 }

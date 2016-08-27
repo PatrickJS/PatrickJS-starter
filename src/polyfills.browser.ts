@@ -1,3 +1,5 @@
+// TODO(gdi2290): switch to DLLs
+
 // Polyfills
 
 // import 'ie-shim'; // Internet Explorer 9 support
