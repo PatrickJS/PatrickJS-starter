@@ -1,7 +1,7 @@
 const helpers = require('../helpers');
 const execSync = require('child_process').execSync;
 
-const REPO_NAME_RE = /Push  URL: https:\/\/github\.com\/.*\/(.*)\.git/;
+const REPO_NAME_RE = /Push {2}URL: https:\/\/github\.com\/.*\/(.*)\.git/;
 
 function getWebpackConfigModule() {
   if (helpers.hasProcessFlag('github-dev')) {
@@ -32,7 +32,7 @@ function stripTrailing(str, char) {
     str = str.substr(1);
   }
 
-  if(str.substr(-1) === char) {
+  if (str.substr(-1) === char) {
     str = str.substr(0, str.length - 1);
   }
 
@@ -51,7 +51,7 @@ function stripTrailing(str, char) {
  */
 function safeUrl(url) {
   const stripped = stripTrailing(url || '', '/');
-  return stripped ? stripped + '/' : ''
+  return stripped ? stripped + '/' : '';
 }
 
 exports.getWebpackConfigModule = getWebpackConfigModule;
