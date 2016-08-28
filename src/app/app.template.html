@@ -1,0 +1,19 @@
+
+<banner *ngIf="!introPage"></banner>
+
+<div id="main-wrapper">
+
+  <div id="menu-wrap" *ngIf="!introPage">
+    <img  src="assets/img/menu.svg" (click)="toggleMenu()" [ngClass]="{moveMenuBtn: isMenuVisible}" id="menu-btn">
+    <navbar id="navbar" [ngClass]="{showMenu: isMenuVisible}"></navbar>
+  </div>
+
+
+  <main [ngClass]="{moveMain: isMenuVisible}">
+    <content >
+      <router-outlet></router-outlet>
+    </content>
+  </main>
+</div>
+
+<my-footer *ngIf="!introPage"></my-footer>

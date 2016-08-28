@@ -1,0 +1,17 @@
+
+#intro-img{
+  position: absolute;
+  top:0;left:0;
+  margin: auto;
+  width: 100vw;
+  height: 100vh;
+
+}
+
+:host{
+  text-align: center;
+}
+
+#scroll-span{
+  margin: 0 auto;
+}

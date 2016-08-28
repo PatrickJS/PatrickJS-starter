@@ -1,0 +1,41 @@
+:host{
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  height: 200px;
+  margin: auto;
+  text-align: center;
+  overflow: hidden;
+}
+
+#social-media{
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+}
+
+.social-link{
+  margin: 0 10px;
+}
+
+img{
+  width: 50px;
+  height: 50px;
+}
+
+@media (min-width: 700px) {
+  :host{
+    flex-flow: row;
+    height: 30px;
+  }
+
+  img{
+    width: 30px;
+    height: 100%;
+  }
+
+  #copyright-text,#contact-text{
+    margin-top: 5px;
+  }
+
+}

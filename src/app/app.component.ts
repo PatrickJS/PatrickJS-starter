@@ -1,76 +1,66 @@
 /*
  * Angular 2 decorators and services
  */
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, HostListener} from '@angular/core';
+import {Router, NavigationStart, NavigationEnd } from '@angular/router';
 
-import { AppState } from './app.service';
 
+import {Navbar} from './navbar';
+import {About} from './about';
+import {Banner} from './Banner';
+import {Footer} from './footer';
+import {Home} from './home';
 /*
  * App Component
  * Top Level Component
  */
 @Component({
   selector: 'app',
-  encapsulation: ViewEncapsulation.None,
+  directives:[Navbar,About,Banner,Footer,Home],
   styleUrls: [
     './app.style.css'
   ],
-  template: `
-    <nav>
-      <span>
-        <a [routerLink]=" ['./'] ">
-          Index
-        </a>
-      </span>
-      |
-      <span>
-        <a [routerLink]=" ['./home'] ">
-          Home
-        </a>
-      </span>
-      |
-      <span>
-        <a [routerLink]=" ['./detail'] ">
-          Detail
-        </a>
-      </span>
-      |
-      <span>
-        <a [routerLink]=" ['./about'] ">
-          About
-        </a>
-      </span>
-    </nav>
-
-    <main>
-      <router-outlet></router-outlet>
-    </main>
-
-    <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
-
-    <footer>
-      <span>WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a></span>
-      <div>
-        <a [href]="url">
-          <img [src]="angularclassLogo" width="25%">
-        </a>
-      </div>
-    </footer>
-  `
+  templateUrl:'./app.template.html'
 })
 export class App {
-  angularclassLogo = 'assets/img/angularclass-avatar.png';
-  name = 'Angular 2 Webpack Starter';
-  url = 'https://twitter.com/AngularClass';
 
-  constructor(
-    public appState: AppState) {
+  isMenuVisible:boolean = false;
+  introPage:boolean = true;
+  imgSrc = 'assets/img/night time pastry house.jpg';
+  videoSrc = 'https://player.vimeo.com/video/179535585?color=ffffff&title=0&byline=0&portrait=0&badge=0';
 
+  constructor(private router: Router){
   }
 
-  ngOnInit() {
-    console.log('Initial App State', this.appState.state);
+  ngOnInit(){
+
+ 
+
+    this.router.events.subscribe(event=>{
+      if(event instanceof NavigationEnd){
+        console.log(`the url is ${this.router} `,this.router);
+        if(this.router.url === "/"){
+
+          this.introPage = true;
+          console.log('intro');
+        }
+        else{
+          this.introPage = false;
+          console.log('not intro');
+        }
+      }
+    });
   }
+
+  toggleMenu(){
+    this.isMenuVisible = !this.isMenuVisible;
+  }
+  //
+  // @HostListener('scroll', ['$event.target'])
+  // onClick(btn) {
+  //   console.log("button");
+  // }
+
 
 }
 

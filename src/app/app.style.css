@@ -1,8 +1,83 @@
-html, body{
-  height: 100%;
-  font-family: Arial, Helvetica, sans-serif
+#menu-btn, main{
+  transition: all 0.5s;
+  margin: 5px;
 }
 
-span.active {
-  background-color: gray;
+.showMenu{
+  display: block;
+  opacity: 1;
+}
+
+.moveMenuBtn,.moveMain{
+  transform: translate3d(150px,0,0);
+}
+
+navbar{
+  position: absolute;
+  margin: 10px;
+  top:75px;
+  left: 0;
+  z-index: 0;
+  display: none;
+  opacity: 0;
+  width: 100px;
+}
+
+#main-wrapper{
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  background: white;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  padding-top: 20px;
+}
+
+main{
+  display: flex;
+  flex-flow: column;
+  margin: 0 auto;
+  min-width: 80%;
+}
+
+:host /deep/ .page-title{
+  font-size: 2em;
+}
+
+content{
+  min-width: 100%;
+  margin: 0 auto;
+}
+
+@media (min-width: 700px) {
+
+  :host /deep/ .page-title{
+    font-size: 4em;
+  }
+
+  #main-wrapper{
+    flex-flow: row;
+  }
+
+  main{
+    margin: 0 auto;
+    margin-top: 50px;
+  }
+
+  .moveMenuBtn,.moveMain{
+    transform: translate3d(100px,0,0);
+  }
+
+}
+
+@media (min-width: 960px) {
+
+  .moveMain{
+    transform: translate3d(0,0,0);
+  }
+
+  main {
+  }
+
 }
