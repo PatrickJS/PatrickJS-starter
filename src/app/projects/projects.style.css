@@ -1,0 +1,39 @@
+
+#projects-gallery{
+  max-width: 800px;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  margin-bottom: 125px;
+}
+
+.project-item{
+  box-sizing: border-box;
+  width: 100%;
+  padding: 15px;
+  height: 300px;
+}
+
+overlay-img{
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+
+@media (min-width: 700px) {
+
+  #projects-gallery{
+  flex-flow: row wrap;
+  justify-content: center;
+
+  }
+
+  .project-item{
+  width: 30%;
+  max-width: 400px;
+  height: 200px;
+  }
+
+
+}

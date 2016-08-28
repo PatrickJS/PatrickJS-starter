@@ -1,0 +1,16 @@
+
+nav{
+  display: flex;
+  flex-flow: column;
+  border-right: solid #848C8B 2px;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+  padding: 3px;
+  font-size: 1.25rem;
+}
+
+
+

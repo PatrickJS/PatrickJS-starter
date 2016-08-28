@@ -1,41 +1,54 @@
-<div class="card-container">
-  <h1 x-large class="sample-content">Your Content Here</h1>
+<span class="page-title">Featured Videos</span>
 
-  <div>
-    For material design components use the <a href="https://github.com/AngularClass/angular2-webpack-starter/tree/material2"><b>material2</b></a> branch
+<div [ngClass]="{testClass:somebool}">
+<div id="featured-videos-gallery">
+  <div id="featured-col-1" class="featured-col">
+    <div id="featured-video-1" class="featured-video">
+
+      <overlay-video-img class="featured-video-img" imgsource="assets/img/videos_img.jpg"
+                         videosource="https://player.vimeo.com/video/178179939">
+        <overlay-title>A title</overlay-title>
+        <overlay-description>some description</overlay-description>
+      </overlay-video-img>
+
+    </div>
   </div>
-
-  <hr>
-
-  <div>
-    For hot module reloading run
-    <pre>npm run start:hmr</pre>
+  <div id="featured-col-2" class="featured-col">
+    <div id="featured-video-2" class="featured-video">
+      <overlay-video-img class="featured-video-img" imgsource="assets/img/videos_img.jpg"
+                         videosource="https://player.vimeo.com/video/178179939">
+        <overlay-title>A title</overlay-title>
+        <overlay-description>some description</overlay-description>
+      </overlay-video-img>
+    </div>
+    <div id="featured-video-3" class="featured-video">
+      <overlay-video-img class="featured-video-img" imgsource="assets/img/videos_img.jpg"
+                         videosource="https://player.vimeo.com/video/178179939">
+        <overlay-title>A title</overlay-title>
+        <overlay-description>some description</overlay-description>
+      </overlay-video-img>
+    </div>
   </div>
+</div>
+<div id="more-projects-div"><a id="more-projects-link" [routerLink]=" ['./projects'] ">
+  More Projects
+</a></div>
 
-  <hr>
+<div id="line-break-div">
+  <img id="line-break-img">
+</div>
 
-  <div>
-    <h4>Local State</h4>
-
-    <form (ngSubmit)="submitState(localState.value)" autocomplete="off">
-
-      <input
-        [value]="localState.value"
-        (input)="localState.value = $event.target.value"
-        placeholder="Submit Local State to App State"
-        autofocus>
-
-      <button md-raised-button color="primary">Submit Value</button>
-    </form>
-    <!--
-        <input type="text" [value]="localState.value" (input)="localState.value = $event.target.value" autofocus>
-        Rather than wiring up two-way data-binding ourselves with [value] and (input)
-        we can use Angular's [(ngModel)] syntax
-        <input type="text" name="textInput" [(ngModel)]="localState.value" autofocus>
-      -->
-
-    <pre>this.localState = {{ localState | json }}</pre>
-
-  </div>
+<div id="intro-div">
+  <p id="intro-title">Hello.</p>
+  <p id="intro-text">
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+    when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+    It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+    It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+    with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+  </p>
+</div>
 
 </div>
+

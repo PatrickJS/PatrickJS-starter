@@ -22,8 +22,48 @@
 
 <body>
 
+
+  <style scoped>
+
+    @font-face {
+      font-family: bigJohn;
+      src: url(/assets/fonts/big_john.otf);
+    }
+
+    @font-face {
+      font-family: avenir;
+      src: url(/assets/fonts/Avenir.ttc);
+    }
+
+    html,body{
+      font-family: avenir;
+      color: #848C8B;
+      overflow-x: hidden;
+      background-color: #EFEFEF;
+      width: 100%;
+      height: 100%;
+    }
+
+  </style>
+
   <app>
-    Loading...
+    <img id="loading-gif" src="assets/img/Lazy-Panda-loading.gif" >
+    <style>
+      #loading-gif{
+        position: absolute;
+        top:0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        transition: 1s all;
+        opacity: 1;
+      }
+      .fadeout{
+        opacity: 0;
+      }
+
+
+    </style>
   </app>
 
   <!-- Google Analytics: change UA-71073175-1 to be your site's ID -->

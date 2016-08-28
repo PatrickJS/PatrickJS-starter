@@ -1,0 +1,14 @@
+<span class="page-title">Projects</span>
+
+
+<div id="projects-gallery">
+  <div class="project-item" *ngFor="let project of projects">
+
+      <overlay-img [source]="project.mainImg" (click)="selectProject(project)">
+        <overlay-title>{{project.name}}</overlay-title>
+      </overlay-img>
+
+  </div>
+</div>
+
+

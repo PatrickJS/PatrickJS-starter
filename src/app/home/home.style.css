@@ -1,1 +1,133 @@
 /*styles for home content only*/
+
+.something{
+  background: grey;
+}
+
+#featured-videos-gallery{
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+}
+
+.featured-col{
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+}
+
+.featured-video{
+  width: 100%;
+  height: 300px;
+  margin: 5px 0;
+  overflow: hidden;
+}
+
+.featured-video-img{
+  width: 100%;
+  height: 100%;
+  object-position: 50% 50%;
+  object-fit: cover;
+}
+
+#more-projects-div{
+  margin-top: 10px;
+  text-align: center;
+}
+
+#more-projects-link{
+  font-family: bigJohn;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-decoration: underline;
+  color: black;
+}
+
+#line-break-div{
+  margin-top: 15px;
+  max-width: 600px;
+  border-top: dashed black 5px;
+}
+#line-break-img{
+  width: 100%;
+}
+
+#intro-div{
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 100px;
+}
+
+
+#intro-title,#intro-text{
+  display: block;
+  padding: 0;  margin: 0;
+}
+
+#intro-title{
+  text-transform: uppercase;
+  font-family: bigJohn;
+  font-size: 4em;
+}
+
+#intro-text{
+  max-width: 700px;
+  text-align: justify;
+}
+
+@media (min-width: 700px) {
+
+  #featured-videos-gallery{
+    justify-content: center;
+    height: 400px;
+    flex-flow: row;
+  }
+
+  #featured-videos-gallery,#more-projects-div{
+    max-width: 800px;
+  }
+
+  #featured-col-1{
+    width: 66%;
+  }
+
+  #featured-col-2{
+    width: 33%;
+  }
+
+  .featured-video{
+    box-sizing: border-box;
+    width:100%;
+    height: 200px;
+    margin: 0;
+    padding: 2px;
+  }
+
+  #featured-video-1{
+    height: 400px;
+  }
+
+
+  #more-projects-div{
+    margin-top: 10px;
+    text-align: right;
+  }
+
+  #more-projects-link{
+    margin-right: 5px;
+  }
+
+  #intro-title{
+    font-size: 6em;
+  }
+}
+
+@media (min-width:1000px) {
+
+  #intro-title {
+    font-size: 8em;
+  }
+}

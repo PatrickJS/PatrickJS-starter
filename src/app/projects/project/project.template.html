@@ -1,0 +1,33 @@
+<span class="project-name page-title">{{project.name}}</span>
+
+<div class="project-wrapper">
+
+  <overlay-video-img class="project-image"
+                     [imgsource]="project.mainImg"
+                     [videosource]="project.videoUrl">
+    <overlay-title>some play image?</overlay-title>
+  </overlay-video-img>
+
+  <div class="project-details">
+    <div>
+      <span class="project-label">Director: </span>
+      <span class="project-director">{{project.director}}</span>
+    </div>
+
+    <div>
+      <span class="project-label">Client: </span>
+      <span class="project-client"> {{project.client}}</span>
+    </div>
+
+  </div>
+  <p class="project-description">{{project.description}}</p>
+  <div class="project-gallery">
+    <img *ngFor="let image of project.gallery"
+         [src]="image.imageUrl"
+         class="project-gallery-img"
+         data-zoom="zoom-in"
+    >
+  </div>
+
+
+</div>
