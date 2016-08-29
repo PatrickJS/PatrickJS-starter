@@ -159,6 +159,7 @@ module.exports = webpackMerge(commonConfig, {
       beautify: false, //prod
       mangle: { screw_ie8 : true, keep_fnames: true }, //prod
       compress: { screw_ie8: true }, //prod
+      /* eslint-enable camelcase */
       comments: false //prod
     }),
 
