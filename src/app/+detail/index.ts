@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser'
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
+import { MdModule } from "../md.module";
 import { Detail } from './detail.component';
 
 console.log('`Detail` bundle loaded asynchronously');
@@ -20,8 +20,9 @@ export const routes = [
     BrowserModule,
     FormsModule,
     RouterModule.forChild(routes),
+    MdModule.forRoot()
   ]
 })
-export default class AboutModule {
+export default class DetailModule {
   static routes = routes;
 }
