@@ -3,6 +3,8 @@
 // at the entry point of the async loaded file. Also see custom-typings.d.ts as you also need to
 // run `typings install x` where `x` is your module
 
+// TODO(gdi2290): switch to DLLs
+
 // Angular 2
 import '@angular/platform-browser';
 import '@angular/platform-browser-dynamic';
@@ -12,9 +14,13 @@ import '@angular/forms';
 import '@angular/http';
 import '@angular/router';
 
+// Hammer.js
+// We need to import this library in order for Material to work
+// Material needs this for md-tooltips
+import 'hammerjs/hammer.js';
+
 // AngularClass
-import '@angularclass/webpack-toolkit';
-import '@angularclass/request-idle-callback';
+import '@angularclass/hmr';
 
 // RxJS
 import 'rxjs/add/operator/map';
@@ -26,6 +32,5 @@ if ('production' === ENV) {
 
 } else {
   // Development
-  require('angular2-hmr');
 
 }
