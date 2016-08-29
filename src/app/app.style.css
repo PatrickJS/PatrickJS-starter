@@ -1,8 +1,53 @@
 html, body{
   height: 100%;
-  font-family: Arial, Helvetica, sans-serif
+  background: #F4FAFA;
+  font-family: Arial, Helvetica, sans-serif;
+}
+button.active{
+  background: #fff;
+  color: #009688;
+}
+button.active:hover{
+  color: #fff;
+}
+.fill{
+  flex: 1 1 auto;
+}
+.app-state{
+  margin: 15px;
+  flex: 1;
+}
+.home{
+  flex: 1;
+}
+md-content{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+footer{
+  flex: 0 0 60px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
 }
 
-span.active {
-  background-color: gray;
-}
+
+/** remove when fixed in angular2-material **/
+/** The overlay-container is an invisible element which contains all individual overlays. */
+.md-overlay-container {
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%; }
+
+/** A single overlay pane. */
+.md-overlay-pane {
+  position: absolute;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000; }
