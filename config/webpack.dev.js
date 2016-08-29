@@ -9,7 +9,6 @@ const commonConfig = require('./webpack.common.js'); // the settings that are co
 /**
  * Webpack Plugins
  */
-const DashboardPlugin = require('webpack-dashboard/plugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 
@@ -126,15 +125,6 @@ module.exports = webpackMerge(commonConfig, {
        * See: https://github.com/webpack/webpack/commit/a04ffb928365b19feb75087c63f13cadfc08e1eb
        */
       new NamedModulesPlugin(),
-
-      /**
-       * Plugin: DashboardPlugin
-       * Description: View progress.
-       * `'It's like to work at NASA.'`
-       *
-       * See: https://github.com/FormidableLabs/webpack-dashboard
-       */
-      new DashboardPlugin(),
 
   ],
 
