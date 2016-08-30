@@ -20,7 +20,7 @@ export const routes = [
     BrowserModule,
     FormsModule,
     RouterModule.forChild(routes),
-    MdModule.forRoot()
+    MdModule
   ]
 })
 export default class DetailModule {
