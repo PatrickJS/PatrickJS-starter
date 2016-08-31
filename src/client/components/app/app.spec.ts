@@ -5,7 +5,7 @@ import {
 
 // Load the implementations that should be tested
 import { App } from './app.component';
-import { AppState } from './app.service';
+import { AppState } from '../../services';
 
 describe('App', () => {
   // provide our implementations or mocks to the dependency injector

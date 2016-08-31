@@ -3,7 +3,8 @@
  */
 import { Component, ViewEncapsulation } from '@angular/core';
 
-import { AppState } from './app.service';
+import { AppState } from '../../services';
+import { AppConfig } from '../../config';
 
 /*
  * App Component
@@ -59,16 +60,17 @@ import { AppState } from './app.service';
   `
 })
 export class App {
+
+  name: string = AppConfig.HTML5_TITLE;
   angularclassLogo = 'assets/img/angularclass-avatar.png';
-  name = 'Angular 2 Webpack Starter';
   url = 'https://twitter.com/AngularClass';
 
-  constructor(
-    public appState: AppState) {
+  constructor(public appState: AppState) {
 
   }
 
   ngOnInit() {
+    document.title = this.name;
     console.log('Initial App State', this.appState.state);
   }
 
