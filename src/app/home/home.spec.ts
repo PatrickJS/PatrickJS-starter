@@ -1,7 +1,15 @@
-import { TestComponentBuilder, addProviders, inject } from '@angular/core/testing';
+import {
+  addProviders,
+  inject,
+  TestComponentBuilder
+} from '@angular/core/testing';
 import { TestBed } from '@angular/core/testing/test_bed';
 import { Component } from '@angular/core';
-import { BaseRequestOptions, Http, ConnectionBackend } from '@angular/http';
+import {
+  BaseRequestOptions,
+  ConnectionBackend,
+  Http
+} from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 
 // Load the implementations that should be tested
@@ -11,24 +19,21 @@ import { Title } from './title';
 
 describe('Home', () => {
   // provide our implementations or mocks to the dependency injector
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [
-        BaseRequestOptions,
-        MockBackend,
-        {
-          provide: Http,
-          useFactory: function(backend: ConnectionBackend, defaultOptions: BaseRequestOptions) {
-            return new Http(backend, defaultOptions);
-          },
-          deps: [MockBackend, BaseRequestOptions]
+  beforeEach(() => TestBed.configureTestingModule({
+    providers: [
+      BaseRequestOptions,
+      MockBackend,
+      {
+        provide: Http,
+        useFactory: function(backend: ConnectionBackend, defaultOptions: BaseRequestOptions) {
+          return new Http(backend, defaultOptions);
         },
-        AppState,
-        Title,
-        Home
-      ]
-    });
-  });
+        deps: [MockBackend, BaseRequestOptions]
+      },
+      AppState,
+      Title,
+      Home
+    ]}));
 
   it('should have default data', inject([ Home ], (home) => {
     expect(home.localState).toEqual({ value: '' });
