@@ -1,9 +1,7 @@
 import {
-  addProviders,
   inject,
-  TestComponentBuilder
+  TestBed
 } from '@angular/core/testing';
-import { TestBed } from '@angular/core/testing/test_bed';
 import { Component } from '@angular/core';
 import {
   BaseRequestOptions,
@@ -33,7 +31,8 @@ describe('Home', () => {
       AppState,
       Title,
       Home
-    ]}));
+    ]
+  }));
 
   it('should have default data', inject([ Home ], (home) => {
     expect(home.localState).toEqual({ value: '' });

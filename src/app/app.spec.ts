@@ -1,9 +1,7 @@
 import {
-  addProviders,
   inject,
-  TestComponentBuilder
+  TestBed
 } from '@angular/core/testing';
-import { TestBed } from '@angular/core/testing/test_bed';
 
 // Load the implementations that should be tested
 import { App } from './app.component';
