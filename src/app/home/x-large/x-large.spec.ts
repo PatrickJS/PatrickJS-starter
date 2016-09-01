@@ -41,18 +41,4 @@ describe('x-large directive', () => {
     });
   }));
 
-  // TestBed.overrideComponent(TestComponent, {
-  //   set: {
-  //     template: '<div x-large>Content</div>'}
-  //   });
-
-  // it('should sent font-size to x-large', async(inject([TestBed], (tcb) => {
-  //   return tcb.overrideComponent(TestComponent, '<div x-large>Content</div>')
-  //     .createAsync(TestComponent).then((fixture: any) => {
-  //       fixture.detectChanges();
-  //       let compiled = fixture.debugElement.nativeElement.children[0];
-  //       expect(compiled.style.fontSize).toBe('x-large');
-  //     });
-  // })));
-
 });
