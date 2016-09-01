@@ -17,7 +17,6 @@ export const routes = [
     Detail
   ],
   imports: [
-    BrowserModule,
     FormsModule,
     RouterModule.forChild(routes),
   ]

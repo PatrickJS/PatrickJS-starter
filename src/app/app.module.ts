@@ -17,6 +17,7 @@ import { AppState } from './app.service';
 import { Home } from './home';
 import { About } from './about';
 import { NoContent } from './no-content';
+import { XLarge } from './home/x-large';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -33,7 +34,8 @@ const APP_PROVIDERS = [
     App,
     About,
     Home,
-    NoContent
+    NoContent,
+    XLarge
   ],
   imports: [ // import Angular's modules
     BrowserModule,
