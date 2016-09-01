@@ -242,6 +242,17 @@ The included `.vscode` automatically connects to the webpack development server 
 # Types
 > When you include a module that doesn't include Type Definitions inside of the module you can include external Type Definitions with @types
 
+i.e, to have youtube api support, run this command in terminal: 
+```shell
+npm i @types/youtube @types/gapi @types/gapi.youtube
+``` 
+In some cases where your code editor doesn't support Typescript 2 yet or these types weren't listed in ```tsconfig.json```, add these to **"src/custom-typings.d.ts"** to make peace with the compile check: 
+```es6
+import '@types/gapi.youtube';
+import '@types/gapi';
+import '@types/youtube';
+```
+
 ## Custom Type Definitions
 When including 3rd party modules you also need to include the type definition for the module
 if they don't provide one within the module. You can try to install it with @types
