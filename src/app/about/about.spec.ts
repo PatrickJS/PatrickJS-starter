@@ -1,30 +1,30 @@
-import { TestComponentBuilder } from '@angular/core/testing';
-import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {
-  addProviders,
-  inject
-} from '@angular/core/testing';
+import { Component } from '@angular/core';
+import { inject, TestBed } from '@angular/core/testing';
 
 // Load the implementations that should be tested
 import { About } from './about.component';
 
 describe('About', () => {
   // provide our implementations or mocks to the dependency injector
-  beforeEach(() => addProviders([
-    // provide a better mock
-    {
-      provide: ActivatedRoute,
-      useValue: {
-        data: {
-          subscribe: (fn) => fn({yourData: 'yolo'})
+  beforeEach(() => TestBed.configureTestingModule({
+    providers: [
+      // provide a better mock
+      {
+        provide: ActivatedRoute,
+        useValue: {
+          data: {
+            subscribe: (fn) => fn({
+              yourData: 'yolo'
+            })
+          }
         }
-      }
-    },
-    About
-  ]));
+      },
+      About
+    ]
+  }));
 
-  it('should log ngOnInit', inject([ About ], (about) => {
+  it('should log ngOnInit', inject([About], (about) => {
     spyOn(console, 'log');
     expect(console.log).not.toHaveBeenCalled();
 

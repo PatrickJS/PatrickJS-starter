@@ -1,7 +1,7 @@
-import { BrowserModule } from '@angular/platform-browser'
-import { RouterModule } from '@angular/router';
-import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 import { Detail } from './detail.component';
 
@@ -17,7 +17,7 @@ export const routes = [
     Detail
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
     FormsModule,
     RouterModule.forChild(routes),
   ]

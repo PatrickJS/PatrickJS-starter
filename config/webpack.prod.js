@@ -110,7 +110,7 @@ module.exports = webpackMerge(commonConfig, {
      * See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
      * See: https://github.com/webpack/docs/wiki/optimization#deduplication
      */
-    new DedupePlugin(),
+    // new DedupePlugin(), // see: https://github.com/angular/angular-cli/issues/1587
 
     /**
      * Plugin: DefinePlugin
@@ -157,7 +157,7 @@ module.exports = webpackMerge(commonConfig, {
 
 
       beautify: false, //prod
-      mangle: { screw_ie8 : true }, //prod
+      mangle: { screw_ie8 : true, keep_fnames: true }, //prod
       compress: { screw_ie8: true }, //prod
       comments: false //prod
     }),

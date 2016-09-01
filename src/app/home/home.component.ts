@@ -13,13 +13,6 @@ import { XLarge } from './x-large';
   providers: [
     Title
   ],
-  // We need to tell Angular's compiler which directives are in our template.
-  // Doing so will allow Angular to attach our behavior to an element
-  directives: [
-    XLarge
-  ],
-  // We need to tell Angular's compiler which custom pipes are in our template.
-  pipes: [ ],
   // Our list of styles in our component. We may add more to compose many styles together
   styleUrls: [ './home.style.css' ],
   // Every Angular template is first compiled by the browser before Angular runs it's compiler
@@ -43,5 +36,4 @@ export class Home {
     this.appState.set('value', value);
     this.localState.value = '';
   }
-
 }
