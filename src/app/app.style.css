@@ -34,6 +34,9 @@ footer{
   background: #fff;
 }
 
+span.active {
+  background-color: gray;
+}
 
 /** remove when fixed in angular2-material **/
 /** The overlay-container is an invisible element which contains all individual overlays. */
