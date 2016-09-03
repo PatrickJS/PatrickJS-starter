@@ -12,8 +12,8 @@ import { AppState } from './app.service';
 @Component({
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
-  styleUrls: [
-    './app.style.css'
+  styles: [
+    require('./app.style.css')
   ],
   template: `
     <nav>
