@@ -11,7 +11,7 @@
   "homepage": "https://github.com/angularclass/angular2-webpack-starter",
   "license": "MIT",
   "scripts": {
-    "build:dll": "webpack --config src/webpack.dll.ts --env.ENV development",
+    "dll": "webpack --config src/webpack.dll.ts --env.ENV development",
     "server:withdll": "webpack-dev-server --config src/webpack.config.ts --env.ENV development --progress --profile --watch --content-base src/" ,
     "build:dev": "webpack --config config/webpack.dev.js --progress --profile",
     "build:docker": "npm run build:prod && docker build -t angular2-webpack-start:latest .",
@@ -98,6 +98,7 @@
     "awesome-typescript-loader": "^2.2.1",
     "codelyzer": "~0.0.28",
     "copy-webpack-plugin": "^3.0.1",
+     "cross-spawn": "^4.0.0",
     "css-loader": "^0.24.0",
     "exports-loader": "^0.6.3",
     "expose-loader": "^0.7.1",
