@@ -26,7 +26,7 @@ const AssetsPlugin = require('assets-webpack-plugin');
 const path = require('path');
 
 function root(__path = '.') {
-  return path.join(__dirname, __path);
+  return path.join(__dirname+'/..', __path);
 }
 
 import {polyfills, vendors} from './dll';
@@ -41,7 +41,7 @@ function webpackConfig(options: EnvOptions = {}): WebpackConfig {
     },
 
     output: {
-      path: root('../dist/dll'),
+      path: root('dist/dll'),
       filename: '[name].[hash].js',
       sourceMapFilename: '[name].[hash].map',
       library: "__[name]"
@@ -96,13 +96,13 @@ function webpackConfig(options: EnvOptions = {}): WebpackConfig {
 
     plugins: [
       new AssetsPlugin({
-        path: root('../dist/dll'),
+        path: root('dist/dll'),
         filename: 'webpack-assets.json',
         prettyPrint: true
       }),
       new DllPlugin({
         name: '__[name]',
-        path: root('../dist/dll/[name]-manifest.json'),
+        path: root('dist/dll/[name]-manifest.json'),
       }),
 
       // fix angular2
