@@ -210,6 +210,11 @@ npm run webdriver:start
 npm run e2e:live
 ```
 
+### build Docker
+```bash
+npm run build:docker
+```
+
 # Configuration
 Configuration files live in `config/` we are currently using webpack, karma, and protractor for different stages of your application
 
