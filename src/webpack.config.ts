@@ -122,7 +122,7 @@ function webpackConfig(options: EnvOptions = {}): WebpackConfig {
       setup: (app) => {
         // express middleware
         app.get('/', (req, res) => {
-          res.sendFile(root('src/index.html'));
+          res.sendFile(root('src/index-dll.html'));
         });
         app.get('/dll/*', (req, res) => {
           var files = req.path.split('/');
