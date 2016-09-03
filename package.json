@@ -12,6 +12,7 @@
   "license": "MIT",
   "scripts": {
     "dll": "webpack --config src/webpack.dll.ts --env.ENV development",
+    "server:dll": "webpack-dev-server --config src/webpack.config.ts --env.ENV development --progress --profile --watch --content-base src/" ,
     "build:dev": "webpack --config config/webpack.dev.js --progress --profile",
     "build:docker": "npm run build:prod && docker build -t angular2-webpack-start:latest .",
     "build:prod": "webpack --config config/webpack.prod.js  --progress --profile --bail",

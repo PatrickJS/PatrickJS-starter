@@ -123,49 +123,34 @@ interface NodeModule extends WebpackModule {}
 interface Global extends GlobalEnvironment  {}
 
 
-type EnvOptions = any;
-
-
-interface WebpackConfig {
-  cache?: boolean;
-  target?: string;
-  devtool?: string;
-  entry: Entry;
-  output: any;
-  module?: any;
-  // module?: {
-  //   preLoaders?: Array<any>;
-  //   loaders?: Array<any>;
-  //   postLoaders?: Array<any>
-  // };
-  plugins?: Array<any>;
-  resolve?: {
-    unsafeCache?: boolean | Array<string>;
-    root?: string;
-    extensions?: Array<string>;
-  };
-  devServer?: {
-    staticOptions?: any;
-    setup?: (app: any, fs?: any) => any;
-    compress?: boolean;
-    quiet?: boolean,
-    contentBase?: string;
-    port?: number;
-    historyApiFallback?: boolean;
-    hot?: boolean;
-    inline?: boolean;
-    host?: string;
-    https?: boolean;
-  };
-  node?: {
-    process?: boolean;
-    global?: boolean | string;
-    Buffer?: boolean;
-    crypto?: string | boolean;
-    module?: boolean;
-    clearImmediate?: boolean;
-    setImmediate?: boolean
-    clearTimeout?: boolean;
-    setTimeout?: boolean
-  };
+/*
+ * Custom Type Definitions
+ * When including 3rd party modules you also need to include the type definition for the module
+ * if they don't provide one within the module. You can try to install it with typings
+typings install node --save
+ * If you can't find the type definition in the registry we can make an ambient definition in
+ * this file for now. For example
+declare module "my-module" {
+  export function doesSomething(value: string): string;
 }
+ *
+ * If you're prototying and you will fix the types later you can also declare it as type any
+ *
+declare var assert: any;
+ *
+ * If you're importing a module that uses Node.js modules which are CommonJS you need to import as
+ *
+import * as _ from 'lodash'
+ * You can include your type definitions in this file until you create one for the typings registry
+ * see https://github.com/typings/registry
+ *
+ */
+
+
+
+
+// interface ErrorStackTraceLimit {
+//   stackTraceLimit: number;
+// }
+
+
