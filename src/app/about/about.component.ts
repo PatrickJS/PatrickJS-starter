@@ -27,7 +27,7 @@ console.log('`About` component loaded asynchronously');
   `
 })
 export class About {
-  localState;
+  localState: any;
   constructor(public route: ActivatedRoute) {
 
   }

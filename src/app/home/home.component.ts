@@ -31,7 +31,7 @@ export class Home {
     // this.title.getData().subscribe(data => this.data = data);
   }
 
-  submitState(value) {
+  submitState(value: string) {
     console.log('submitState', value);
     this.appState.set('value', value);
     this.localState.value = '';
