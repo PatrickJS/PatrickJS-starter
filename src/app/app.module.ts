@@ -13,7 +13,7 @@ import { ROUTES } from './app.routes';
 // App is our top level component
 import { App } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
-import { AppState } from './app.service';
+import { AppState, InteralStateType } from './app.service';
 import { Home } from './home';
 import { About } from './about';
 import { NoContent } from './no-content';
@@ -24,6 +24,11 @@ const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
   AppState
 ];
+
+type StoreType = {
+  state: InteralStateType,
+  disposeOldHosts: () => void
+};
 
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
@@ -50,14 +55,14 @@ const APP_PROVIDERS = [
 })
 export class AppModule {
   constructor(public appRef: ApplicationRef, public appState: AppState) {}
-  hmrOnInit(store) {
+  hmrOnInit(store: StoreType) {
     if (!store || !store.state) return;
     console.log('HMR store', store);
     this.appState._state = store.state;
     this.appRef.tick();
     delete store.state;
   }
-  hmrOnDestroy(store) {
+  hmrOnDestroy(store: StoreType) {
     const cmpLocation = this.appRef.components.map(cmp => cmp.location.nativeElement);
     // recreate elements
     const state = this.appState._state;
@@ -66,7 +71,7 @@ export class AppModule {
     // remove styles
     removeNgStyles();
   }
-  hmrAfterDestroy(store) {
+  hmrAfterDestroy(store: StoreType) {
     // display new elements
     store.disposeOldHosts();
     delete store.disposeOldHosts;
