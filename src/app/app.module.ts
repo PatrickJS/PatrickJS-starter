@@ -26,6 +26,7 @@ const APP_PROVIDERS = [
 ];
 
 type StoreType = {
+  $inputs: any[],
   state: InteralStateType,
   disposeOldHosts: () => void
 };
@@ -55,25 +56,48 @@ type StoreType = {
 })
 export class AppModule {
   constructor(public appRef: ApplicationRef, public appState: AppState) {}
+
   hmrOnInit(store: StoreType) {
     if (!store || !store.state) return;
     console.log('HMR store', store);
+    // set state
     this.appState._state = store.state;
+
+    // set input values
+    const inputs = document.querySelectorAll('input');
+    if (store.$inputs && inputs.length === store.$inputs.length) {
+      store.$inputs.forEach((value, i) => {
+        let el = inputs[i];
+        el.value = value;
+        el.dispatchEvent(new CustomEvent('input', {detail: el.value}));
+      });
+    }
+
     this.appRef.tick();
     delete store.state;
   }
+
   hmrOnDestroy(store: StoreType) {
     const cmpLocation = this.appRef.components.map(cmp => cmp.location.nativeElement);
     // recreate elements
+    // save state
     const state = this.appState._state;
     store.state = state;
     store.disposeOldHosts = createNewHosts(cmpLocation);
+
+    // save input values
+    const inputs = document.querySelectorAll('input');
+    const $inputs = [].slice.call(inputs).map(input => input.value);
+    store.$inputs = $inputs;
     // remove styles
     removeNgStyles();
   }
+
   hmrAfterDestroy(store: StoreType) {
     // display new elements
     store.disposeOldHosts();
     delete store.disposeOldHosts;
   }
+
 }
+
