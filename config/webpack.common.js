@@ -176,8 +176,19 @@ module.exports = function(options) {
           test: /\.(jpg|png|gif)$/,
           loader: 'file'
         }
-      ]
+      ],
 
+      postLoaders: [
+        {
+          test: /\.js$/,
+          loader: 'string-replace-loader',
+          query: {
+            search: 'var sourceMappingUrl = extractSourceMappingUrl\\(cssText\\);',
+            replace: 'var sourceMappingUrl = "";',
+            flags: 'g'
+          }
+        }
+      ]
     },
 
     /*
