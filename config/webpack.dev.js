@@ -130,6 +130,12 @@ module.exports = function(options) {
          */
         new NamedModulesPlugin(),
 
+      /**
+       * Plugin: HardSourceWebpackPlugin
+       * Description: a plugin to cache an intermediate step modules reach during a webpack.
+       *
+       * See: https://github.com/mzgoddard/hard-source-webpack-plugin
+       */
         new HardSourceWebpackPlugin({
           // Either an absolute path or relative to output.path.
           cacheDirectory: helpers.root('hard-source-cache'),
