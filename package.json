@@ -11,9 +11,9 @@
   "homepage": "https://github.com/angularclass/angular2-webpack-starter",
   "license": "MIT",
   "scripts": {
-    "build:dev": "webpack --config config/webpack.dev.js --progress --profile",
+    "build:dev": "webpack-dashboard --config config/webpack.dev.js --progress --profile",
     "build:docker": "npm run build:prod && docker build -t angular2-webpack-start:latest .",
-    "build:prod": "webpack --config config/webpack.prod.js  --progress --profile --bail",
+    "build:prod": "webpack-dashboard --config config/webpack.prod.js  --progress --profile --bail",
     "build": "npm run build:dev",
     "ci": "npm run lint && npm test && npm run e2e",
     "clean:dist": "npm run rimraf -- dist",
@@ -24,8 +24,8 @@
     "docs": "npm run typedoc -- --options typedoc.json --exclude '**/*.spec.ts' ./src/",
     "e2e:live": "npm run e2e -- --elementExplorer",
     "e2e": "npm run protractor",
-    "github-deploy:dev": "webpack --config config/webpack.github-deploy.js --progress --profile --github-dev",
-    "github-deploy:prod": "webpack --config config/webpack.github-deploy.js --progress --profile --github-prod",
+    "github-deploy:dev": "webpack-dashboard --config config/webpack.github-deploy.js --progress --profile --github-dev",
+    "github-deploy:prod": "webpack-dashboard --config config/webpack.github-deploy.js --progress --profile --github-prod",
     "github-deploy": "npm run github-deploy:dev",
     "lint": "npm run tslint \"src/**/*.ts\"",
     "postversion": "git push && git push --tags",
@@ -38,7 +38,7 @@
     "protractor": "protractor",
     "rimraf": "rimraf",
     "server:dev:hmr": "npm run server:dev -- --inline --hot",
-    "server:dev": "webpack-dev-server --config config/webpack.dev.js --progress --profile --watch --content-base src/",
+    "server:dev": "webpack-dashboard -- webpack-dev-server --config config/webpack.dev.js --progress --profile --watch --content-base src/",
     "server:prod": "http-server dist --cors",
     "server": "npm run server:dev",
     "start:hmr": "npm run server:dev:hmr",
@@ -56,7 +56,7 @@
     "webdriver:start": "npm run webdriver-manager start",
     "webdriver:update": "npm run webdriver-manager update",
     "webpack-dev-server": "webpack-dev-server",
-    "webpack": "webpack"
+    "webpack": "webpack-dashboard"
   },
   "dependencies": {
     "@angular/common": "2.0.0-rc.6",
@@ -128,6 +128,7 @@
     "typescript": "2.0.0",
     "url-loader": "^0.5.7",
     "webpack": "^2.1.0-beta.21",
+    "webpack-dashboard": "^0.1.8",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-dev-server": "^2.1.0-beta.2",
     "webpack-md5-hash": "^0.0.5",

@@ -15,6 +15,7 @@ const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin
 const HtmlElementsPlugin = require('./html-elements-plugin');
 const AssetsPlugin = require('assets-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
+const DashboardPlugin = require('webpack-dashboard/plugin');
 
 /*
  * Webpack Constants
@@ -275,6 +276,9 @@ module.exports = function(options) {
         headTags: require('./head-config.common')
       }),
 
+      new OfflinePlugin(),
+
+      new DashboardPlugin()
     ],
 
     /*
