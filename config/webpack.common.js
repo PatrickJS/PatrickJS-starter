@@ -33,7 +33,7 @@ const METADATA = {
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
 module.exports = function(options) {
-  isProd = options.env === 'production';
+  const isProd = options.env === 'production';
   return {
 
     /*
@@ -50,7 +50,7 @@ module.exports = function(options) {
      *
      * See: http://webpack.github.io/docs/configuration.html#cache
      */
-     //cache: false,
+     // cache: false,
 
     /*
      * The entry point for the bundle
@@ -84,7 +84,7 @@ module.exports = function(options) {
       root: helpers.root('src'),
 
       // remove other default values
-      modulesDirectories: ['node_modules'],
+      modulesDirectories: ['node_modules']
 
     },
 
@@ -110,7 +110,7 @@ module.exports = function(options) {
             flags: 'g'
           },
           include: [helpers.root('src')]
-        },
+        }
 
       ],
 
@@ -297,4 +297,4 @@ module.exports = function(options) {
     }
 
   };
-}
+};
