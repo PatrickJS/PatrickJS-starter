@@ -78,11 +78,8 @@ module.exports = function(options) {
        */
       extensions: ['', '.ts', '.js', '.json'],
 
-      // Make sure root is src
-      root: helpers.root('src'),
-
-      // remove other default values
-      modules: ['node_modules'],
+      // An array of directory names to be resolved to the current directory
+      modules: [helpers.root('src'), 'node_modules'],
 
     },
 
