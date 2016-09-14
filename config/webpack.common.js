@@ -222,6 +222,19 @@ module.exports = function(options) {
         name: ['polyfills', 'vendor'].reverse()
       }),
 
+      /**
+       * Plugin: ContextReplacementPlugin
+       * Description: Provides context to Angular's use of System.import
+       * 
+       * See: https://webpack.github.io/docs/list-of-plugins.html#contextreplacementplugin
+       * See: https://github.com/angular/angular/issues/11580
+       */
+      new webpack.ContextReplacementPlugin(
+        // The (\\|\/) piece accounts for path separators in *nix and Windows
+        /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+        __dirname // location of your src
+      ),
+
       /*
        * Plugin: CopyWebpackPlugin
        * Description: Copy files and directories in webpack.
