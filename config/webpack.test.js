@@ -113,6 +113,9 @@ module.exports = function(options) {
           test: /\.ts$/,
           loader: 'awesome-typescript-loader',
           query: {
+            // use inline sourcemaps to map coverage results to original ts files
+            sourceMap: false,
+            inlineSourceMap: true,
             compilerOptions: {
 
               // Remove TypeScript helpers to be injected
