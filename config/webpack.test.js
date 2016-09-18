@@ -113,7 +113,7 @@ module.exports = function(options) {
           test: /\.ts$/,
           loader: 'awesome-typescript-loader',
           query: {
-            // use inline sourcemaps to map coverage results to original ts files
+            // use inline sourcemaps for "karma-remap-coverage" reporter
             sourceMap: false,
             inlineSourceMap: true,
             compilerOptions: {
