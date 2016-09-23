@@ -1,4 +1,4 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Data } from '@angular/router';
 import { Component } from '@angular/core';
 import { inject, TestBed } from '@angular/core/testing';
 
@@ -14,7 +14,7 @@ describe('About', () => {
         provide: ActivatedRoute,
         useValue: {
           data: {
-            subscribe: (fn) => fn({
+            subscribe: (fn: (value: Data) => void) => fn({
               yourData: 'yolo'
             })
           }
@@ -24,7 +24,7 @@ describe('About', () => {
     ]
   }));
 
-  it('should log ngOnInit', inject([About], (about) => {
+  it('should log ngOnInit', inject([About], (about: About) => {
     spyOn(console, 'log');
     expect(console.log).not.toHaveBeenCalled();
 

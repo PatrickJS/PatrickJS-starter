@@ -27,11 +27,11 @@ describe('Title', () => {
       Title
     ]}));
 
-  it('should have http', inject([ Title ], (title) => {
+  it('should have http', inject([ Title ], (title: Title) => {
     expect(!!title.http).toEqual(true);
   }));
 
-  it('should get data from the server', inject([ Title ], (title) => {
+  it('should get data from the server', inject([ Title ], (title: Title) => {
     spyOn(console, 'log');
     expect(console.log).not.toHaveBeenCalled();
 
