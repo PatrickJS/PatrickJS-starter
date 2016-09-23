@@ -116,7 +116,7 @@
     "raw-loader": "0.5.1",
     "rimraf": "^2.5.2",
     "source-map-loader": "^0.1.5",
-    "string-replace-loader": "github:gdi2290/string-replace-loader",
+    "string-replace-loader": "1.0.5",
     "style-loader": "^0.13.1",
     "to-string-loader": "^1.1.4",
     "ts-helpers": "1.1.1",
