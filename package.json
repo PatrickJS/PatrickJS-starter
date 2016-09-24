@@ -81,7 +81,6 @@
     "zone.js": "~0.6.17"
   },
   "devDependencies": {
-    "@types/core-js": "^0.9.34",
     "@types/hammerjs": "^2.0.33",
     "@types/jasmine": "^2.2.34",
     "@types/node": "^6.0.38",
