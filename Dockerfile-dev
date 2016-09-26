@@ -1,0 +1,15 @@
+# This image will be based on the official nodejs docker image
+FROM node:latest
+
+# Set in what directory commands will run
+WORKDIR /home/app
+
+# Put all our code inside that directory that lives in the container
+ADD ./ /home/app
+
+# Install dependencies
+RUN npm install
+
+EXPOSE 3000
+
+CMD npm start && npm run server:dev
