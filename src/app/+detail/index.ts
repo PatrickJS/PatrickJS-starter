@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { Detail } from './detail.component';
+import {CommonModule} from "@angular/common";
 
 console.log('`Detail` bundle loaded asynchronously');
 // async components must be named routes for WebpackAsyncRoute
@@ -17,7 +18,7 @@ export const routes = [
     Detail
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
     FormsModule,
     RouterModule.forChild(routes),
   ]

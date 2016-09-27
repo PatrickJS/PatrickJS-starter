@@ -16,7 +16,7 @@ import { AppState } from './app.service';
     './app.style.css'
   ],
   template: `
-    <md-content>
+    <div>
       <md-toolbar color="primary">
           <span>{{ name }}</span>
           <span class="fill"></span>
@@ -46,7 +46,7 @@ import { AppState } from './app.service';
         <span id="footerText">WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a></span>
         <img [src]="angularclassLogo" width="6%">
       </footer>
-    </md-content>
+    </div>
   `
 })
 export class App {

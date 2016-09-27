@@ -21,28 +21,33 @@ import { MdSlideToggleModule }                from '@angular2-material/slide-tog
 import { MdTabsModule }                       from '@angular2-material/tabs';
 import { MdToolbarModule }                    from '@angular2-material/toolbar';
 import { MdTooltipModule }                    from '@angular2-material/tooltip';
+import {OverlayModule, MdRippleModule, PortalModule, RtlModule} from "@angular2-material/core";
 
 @NgModule({
 
     exports: [
-        MdButtonModule,
-        MdButtonToggleModule,
-        MdCardModule,
-        MdCheckboxModule,
-        MdGridListModule,
-        MdIconModule,
-        MdInputModule,
-        MdListModule,
-        MdMenuModule,
-        MdProgressBarModule,
-        MdProgressCircleModule,
-        MdRadioModule,
-        MdSidenavModule,
-        MdSliderModule,
-        MdSlideToggleModule,
-        MdTabsModule,
-        MdToolbarModule,
-        MdTooltipModule
+      MdButtonModule,
+      MdButtonToggleModule,
+      MdCardModule,
+      MdCheckboxModule,
+      MdGridListModule,
+      MdIconModule,
+      MdInputModule,
+      MdListModule,
+      MdMenuModule,
+      MdProgressBarModule,
+      MdProgressCircleModule,
+      MdRadioModule,
+      MdRippleModule,
+      MdSidenavModule,
+      MdSliderModule,
+      MdSlideToggleModule,
+      MdTabsModule,
+      MdToolbarModule,
+      MdTooltipModule,
+      OverlayModule,
+      PortalModule,
+      RtlModule,
     ]
 })
 
