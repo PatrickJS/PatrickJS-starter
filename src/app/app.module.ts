@@ -21,6 +21,8 @@ import { NoContent } from './no-content';
 
 // Import diretives
 import { XLarge } from './home/x-large';
+import {OVERLAY_PROVIDERS} from "@angular2-material/core";
+import {CommonModule} from "@angular/common";
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -41,6 +43,7 @@ const APP_PROVIDERS = [
     XLarge
   ],
   imports: [ // import Angular's modules
+    CommonModule,
     BrowserModule,
     FormsModule,
     HttpModule,
@@ -48,6 +51,7 @@ const APP_PROVIDERS = [
     MdModule.forRoot()
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
+    OVERLAY_PROVIDERS,
     ENV_PROVIDERS,
     APP_PROVIDERS
   ]

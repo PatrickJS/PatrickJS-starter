@@ -157,7 +157,8 @@ module.exports = {
 
       {
         test: /\.scss$/,
-        loader: 'style!css!sass'
+        exclude: /node_modules/,
+        loaders: ['raw-loader', 'sass-loader']
       },
 
       /* Raw loader support for *.html
@@ -232,6 +233,11 @@ module.exports = {
       template: 'src/index.html',
       chunksSortMode: 'dependency'
     }),
+
+    new webpack.ContextReplacementPlugin(
+      /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+      __dirname
+    ),
 
     /*
      * Plugin: HtmlHeadConfigPlugin
