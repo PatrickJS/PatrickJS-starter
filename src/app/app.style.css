@@ -1,7 +1,13 @@
+@import '~https://fonts.googleapis.com/icon?family=Material+Icons';
+@import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';
+
 html, body{
   height: 100%;
   background: #F4FAFA;
   font-family: Arial, Helvetica, sans-serif;
+}
+span.active {
+  background-color: gray;
 }
 button.active{
   background: #fff;
@@ -20,11 +26,6 @@ button.active:hover{
 .home{
   flex: 1;
 }
-md-content{
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
 footer{
   flex: 0 0 60px;
   padding: 10px;
@@ -33,21 +34,3 @@ footer{
   justify-content: center;
   background: #fff;
 }
-
-
-/** remove when fixed in angular2-material **/
-/** The overlay-container is an invisible element which contains all individual overlays. */
-.md-overlay-container {
-  position: absolute;
-  pointer-events: none;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%; }
-
-/** A single overlay pane. */
-.md-overlay-pane {
-  position: absolute;
-  pointer-events: auto;
-  box-sizing: border-box;
-  z-index: 1000; }

@@ -17,8 +17,8 @@ describe('App', () => {
     expect(subject).toEqual(result);
   });
 
-  it('should have <md-content>', () => {
-    let subject = element(by.css('app md-content')).isPresent();
+  it('should have <home>', () => {
+    let subject = element(by.css('app home')).isPresent();
     let result  = true;
     expect(subject).toEqual(result);
   });
