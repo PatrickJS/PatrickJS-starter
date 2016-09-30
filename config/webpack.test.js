@@ -14,6 +14,37 @@ const DefinePlugin = require('webpack/lib/DefinePlugin');
  * Webpack Constants
  */
 const ENV = process.env.ENV = process.env.NODE_ENV = 'test';
+const NO_COVERAGE = process.env.NO_COVERAGE;
+
+let postLoaders = [];
+
+/**
+ * Instruments JS files with Istanbul for subsequent code coverage reporting.
+ * Instrument only testing sources.
+ *
+ * See: https://github.com/deepsweet/istanbul-instrumenter-loader
+ *
+ * @hack: Disabling coverage if NO_COVERAGE env var is set to 'true'.
+ * This is useful for karma debug.
+ *
+ * See: https://github.com/AngularClass/angular2-webpack-starter/issues/361?_pjax=%23js-repo-pjax-container
+ * See: https://github.com/gotwarlost/istanbul/issues/212
+ *
+ */
+const coverageEnabled = NO_COVERAGE !== 'true';
+
+if (coverageEnabled) {
+
+  postLoaders.push({
+    test: /\.(js|ts)$/, loader: 'istanbul-instrumenter-loader',
+    include: helpers.root('src'),
+    exclude: [
+      /\.(e2e|spec)\.ts$/,
+      /node_modules/
+    ]
+  })
+
+}
 
 /**
  * Webpack configuration
@@ -114,8 +145,8 @@ module.exports = function(options) {
           loader: 'awesome-typescript-loader',
           query: {
             // use inline sourcemaps for "karma-remap-coverage" reporter
-            sourceMap: false,
-            inlineSourceMap: true,
+            sourceMap: !coverageEnabled,
+            inlineSourceMap: coverageEnabled,
             compilerOptions: {
 
               // Remove TypeScript helpers to be injected
@@ -157,24 +188,8 @@ module.exports = function(options) {
        *
        * See: http://webpack.github.io/docs/configuration.html#module-preloaders-module-postloaders
        */
-      postLoaders: [
+      postLoaders: postLoaders
 
-        /**
-         * Instruments JS files with Istanbul for subsequent code coverage reporting.
-         * Instrument only testing sources.
-         *
-         * See: https://github.com/deepsweet/istanbul-instrumenter-loader
-         */
-        {
-          test: /\.(js|ts)$/, loader: 'istanbul-instrumenter-loader',
-          include: helpers.root('src'),
-          exclude: [
-            /\.(e2e|spec)\.ts$/,
-            /node_modules/
-          ]
-        }
-
-      ]
     },
 
     /**
@@ -235,4 +250,4 @@ module.exports = function(options) {
     }
 
   };
-}
+};
