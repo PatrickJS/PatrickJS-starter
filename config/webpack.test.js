@@ -16,7 +16,7 @@ const DefinePlugin = require('webpack/lib/DefinePlugin');
 const ENV = process.env.ENV = process.env.NODE_ENV = 'test';
 const NO_COVERAGE = process.env.NO_COVERAGE;
 
-let postLoaders = [];
+var postLoaders = [];
 
 /**
  * Instruments JS files with Istanbul for subsequent code coverage reporting.
