@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
     <router-outlet></router-outlet>
   `
 })
-export class Detail {
+export class DetailComponent {
   constructor() {
 
   }
