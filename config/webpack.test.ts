@@ -9,6 +9,7 @@ const helpers = require('./helpers');
  */
 const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
+const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
 
 /**
  * Webpack Constants
@@ -20,7 +21,7 @@ const ENV = process.env.ENV = process.env.NODE_ENV = 'test';
  *
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
-module.exports = function(options) {
+module.exports = function (options) {
   return {
 
     /**
@@ -87,10 +88,11 @@ module.exports = function(options) {
           test: /\.js$/,
           loader: 'source-map-loader',
           exclude: [
-          // these packages have problems with their sourcemaps
-          helpers.root('node_modules/rxjs'),
-          helpers.root('node_modules/@angular')
-        ]}
+            // these packages have problems with their sourcemaps
+            helpers.root('node_modules/rxjs'),
+            helpers.root('node_modules/@angular')
+          ]
+        }
 
       ],
 
@@ -132,7 +134,11 @@ module.exports = function(options) {
          *
          * See: https://github.com/webpack/json-loader
          */
-        { test: /\.json$/, loader: 'json-loader', exclude: [helpers.root('src/index.html')] },
+        {
+          test: /\.json$/,
+          loader: 'json-loader',
+          exclude: [helpers.root('src/index.html')]
+        },
 
         /**
          * Raw loader support for *.css files
@@ -140,7 +146,11 @@ module.exports = function(options) {
          *
          * See: https://github.com/webpack/raw-loader
          */
-        { test: /\.css$/, loaders: ['to-string-loader', 'css-loader'], exclude: [helpers.root('src/index.html')] },
+        {
+          test: /\.css$/,
+          loaders: ['to-string-loader', 'css-loader'],
+          exclude: [helpers.root('src/index.html')]
+        },
 
         /**
          * Raw loader support for *.html
@@ -148,7 +158,11 @@ module.exports = function(options) {
          *
          * See: https://github.com/webpack/raw-loader
          */
-        { test: /\.html$/, loader: 'raw-loader', exclude: [helpers.root('src/index.html')] }
+        {
+          test: /\.html$/,
+          loader: 'raw-loader',
+          exclude: [helpers.root('src/index.html')]
+        }
 
       ],
 
@@ -166,7 +180,8 @@ module.exports = function(options) {
          * See: https://github.com/deepsweet/istanbul-instrumenter-loader
          */
         {
-          test: /\.(js|ts)$/, loader: 'istanbul-instrumenter-loader',
+          test: /\.(js|ts)$/,
+          loader: 'istanbul-instrumenter-loader',
           include: helpers.root('src'),
           exclude: [
             /\.(e2e|spec)\.ts$/,
@@ -203,6 +218,11 @@ module.exports = function(options) {
           'HMR': false,
         }
       }),
+
+      new ContextReplacementPlugin(
+        /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+        __dirname
+      ),
 
 
     ],

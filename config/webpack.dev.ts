@@ -2,15 +2,15 @@
  * @author: @AngularClass
  */
 
-const helpers = require('./helpers');
-const webpackMerge = require('webpack-merge'); // used to merge webpack configs
-const commonConfig = require('./webpack.common.js'); // the settings that are common to prod and dev
+import * as webpackMerge from 'webpack-merge';
+import * as helpers from './helpers';
+import { commonConfig } from './webpack.common'; // the settings that are common to prod and dev
 
 /**
  * Webpack Plugins
  */
-const DefinePlugin = require('webpack/lib/DefinePlugin');
-const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
+import * as DefinePlugin from 'webpack/lib/DefinePlugin';
+import * as NamedModulesPlugin from 'webpack/lib/NamedModulesPlugin';
 
 /**
  * Webpack Constants
@@ -19,7 +19,7 @@ const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3000;
 const HMR = helpers.hasProcessFlag('hot');
-const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
+const METADATA = webpackMerge(commonConfig({env: ENV})['metadata'], {
   host: HOST,
   port: PORT,
   ENV: ENV,

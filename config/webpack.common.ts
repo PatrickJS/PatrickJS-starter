@@ -2,19 +2,19 @@
  * @author: @AngularClass
  */
 
-const webpack = require('webpack');
-const helpers = require('./helpers');
+import * as webpack from 'webpack';
+import * as helpers from './helpers';
 
 /*
  * Webpack Plugins
  */
 // problem with copy-webpack-plugin
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
-const HtmlElementsPlugin = require('./html-elements-plugin');
-const AssetsPlugin = require('assets-webpack-plugin');
-const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin'); 
+import { ForkCheckerPlugin } from 'awesome-typescript-loader';
+import * as AssetsPlugin from 'assets-webpack-plugin';
+import * as ContextReplacementPlugin from 'webpack/lib/ContextReplacementPlugin';
+import * as CopyWebpackPlugin from 'copy-webpack-plugin';
+import * as HtmlElementsPlugin from './html-elements-plugin';
+import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 
 /*
  * Webpack Constants
@@ -31,16 +31,9 @@ const METADATA = {
  *
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
-module.exports = function(options) {
-  isProd = options.env === 'production';
+export const commonConfig = function(options) {
+  const isProd = options.env === 'production';
   return {
-
-    /*
-     * Static metadata for index.html
-     *
-     * See: (custom attribute)
-     */
-    metadata: METADATA,
 
     /*
      * Cache generated modules and chunks to improve performance for multiple incremental builds.
@@ -90,25 +83,6 @@ module.exports = function(options) {
      * See: http://webpack.github.io/docs/configuration.html#module
      */
     module: {
-
-      /*
-       * An array of applied pre and post loaders.
-       *
-       * See: http://webpack.github.io/docs/configuration.html#module-preloaders-module-postloaders
-       */
-      preLoaders: [
-        {
-          test: /\.ts$/,
-          loader: 'string-replace-loader',
-          query: {
-            search: '(System|SystemJS)(.*[\\n\\r]\\s*\\.|\\.)import\\((.+)\\)',
-            replace: '$1.import($3).then(mod => (mod.__esModule && mod.default) ? mod.default : mod)',
-            flags: 'g'
-          },
-          include: [helpers.root('src')]
-        },
-
-      ],
 
       /*
        * An array of automatically applied loaders.
@@ -176,17 +150,6 @@ module.exports = function(options) {
         }
       ],
 
-      postLoaders: [
-        {
-          test: /\.js$/,
-          loader: 'string-replace-loader',
-          query: {
-            search: 'var sourceMappingUrl = extractSourceMappingUrl\\(cssText\\);',
-            replace: 'var sourceMappingUrl = "";',
-            flags: 'g'
-          }
-        }
-      ]
     },
 
     /*
@@ -223,7 +186,7 @@ module.exports = function(options) {
       /**
        * Plugin: ContextReplacementPlugin
        * Description: Provides context to Angular's use of System.import
-       * 
+       *
        * See: https://webpack.github.io/docs/list-of-plugins.html#contextreplacementplugin
        * See: https://github.com/angular/angular/issues/11580
        */
@@ -250,10 +213,10 @@ module.exports = function(options) {
           'robots.txt'
         ]
       }),
-      new CopyWebpackPlugin([{ 
+      new CopyWebpackPlugin([{
         from: 'src/assets/robots.txt'
-      }, { 
-        from: 'src/assets/humans.txt' 
+      }, {
+        from: 'src/assets/humans.txt'
       }]),
 
       /*
@@ -304,7 +267,6 @@ module.exports = function(options) {
      * See: https://webpack.github.io/docs/configuration.html#node
      */
     node: {
-      global: 'window',
       crypto: 'empty',
       process: true,
       module: false,
@@ -313,4 +275,4 @@ module.exports = function(options) {
     }
 
   };
-}
+};
