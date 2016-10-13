@@ -20,8 +20,6 @@ import * as LoaderOptionsPlugin from 'webpack/lib/LoaderOptionsPlugin';
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
 export default function (options = { env: 'development' }) {
-  // init
-  helpers.init(options);
   // config
   return webpackMerge(commonConfig(options), {
 
@@ -87,11 +85,12 @@ export default function (options = { env: 'development' }) {
        */
       // NOTE: when adding more properties, make sure you include them in custom-typings.d.ts
       new DefinePlugin({
-        'ENV': process.env.ENV,
+        'GLOBALS': globals,
+        'ENV': JSON.stringify(process.env.ENV),
         'HMR': helpers.shouldBeHMR(),
         'process.env': {
-          'ENV': process.env.ENV,
-          'NODE_ENV': process.env.NODE_ENV,
+          'ENV': JSON.stringify(process.env.ENV),
+          'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
           'HMR': helpers.shouldBeHMR(),
         }
       }),
@@ -105,13 +104,13 @@ export default function (options = { env: 'development' }) {
       new NamedModulesPlugin(),
 
       new LoaderOptionsPlugin({
+        debug: true,
         options: {
-          debug: true,
           tslint: {
             emitErrors: false,
             failOnHint: false,
             resourcePath: 'src'
-          },
+          }
         }
       })
 

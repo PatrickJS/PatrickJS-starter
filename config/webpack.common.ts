@@ -23,6 +23,9 @@ import * as HtmlWebpackPlugin from 'html-webpack-plugin';
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
 export default function(options) {
+  // init
+  helpers.init(options);
+  // config
   return {
 
     /*
@@ -217,10 +220,12 @@ export default function(options) {
        *
        * See: https://github.com/ampedandwired/html-webpack-plugin
        */
-      new HtmlWebpackPlugin({
+      new HtmlWebpackPlugin(Object.assign({
         template: 'src/index.html',
-        chunksSortMode: 'dependency'
-      }),
+        chunksSortMode: 'dependency',
+        isDevServer: helpers.isDev(),
+        HMR: helpers.shouldBeHMR()
+      }, globals, )),
 
       /*
        * Plugin: HtmlHeadConfigPlugin

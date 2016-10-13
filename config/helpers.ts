@@ -19,7 +19,10 @@ export const init = function({ env }) {
   process.env.PORT = process.env.PORT || 3000;
 };
 
-export const isProd = () => process.env.ENV || process.env.NODE_ENV === 'production';
+export const isProd = () => this.isEnv('production');
+export const isDev = () => this.isEnv('development');
+
+export const isEnv = (env) => process.env.ENV || process.env.NODE_ENV === env;
 
 export const isWebpackDevServer = function() {
   return process.argv[1] && !! (/webpack-dev-server/.exec(process.argv[1]));
