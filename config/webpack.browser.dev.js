@@ -4,7 +4,7 @@
 
 const helpers = require('./helpers');
 const webpackMerge = require('webpack-merge'); // used to merge webpack configs
-const commonConfig = require('./webpack.common.js'); // the settings that are common to prod and dev
+const commonConfig = require('./webpack.browser.common.js'); // the settings that are common to prod and dev
 
 /**
  * Webpack Plugins
@@ -35,7 +35,7 @@ module.exports = function(options) {
   return webpackMerge(commonConfig({env: ENV}), {
 
     /**
-     * Merged metadata from webpack.common.js for index.html
+     * Merged metadata from webpack.browser.common.js for index.html
      *
      * See: (custom attribute)
      */
