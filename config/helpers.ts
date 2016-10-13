@@ -11,6 +11,8 @@ export const hasProcessFlag = function(flag) {
   return process.argv.join('').indexOf(flag) > -1;
 };
 
+export const hasHMR = this.hasProcessFlag('hot');
+
 export const isWebpackDevServer = function() {
   return process.argv[1] && !! (/webpack-dev-server/.exec(process.argv[1]));
 };

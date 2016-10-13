@@ -4,6 +4,7 @@
 
 import * as webpack from 'webpack';
 import * as helpers from './helpers';
+import { metaData } from './globals';
 
 /*
  * Webpack Plugins
@@ -17,21 +18,11 @@ import * as HtmlElementsPlugin from './html-elements-plugin';
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 
 /*
- * Webpack Constants
- */
-const HMR = helpers.hasProcessFlag('hot');
-const METADATA = {
-  title: 'Angular2 Webpack Starter by @gdi2290 from @AngularClass',
-  baseUrl: '/',
-  isDevServer: helpers.isWebpackDevServer()
-};
-
-/*
  * Webpack configuration
  *
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
-export const commonConfig = function(options) {
+export default function(options) {
   const isProd = options.env === 'production';
   return {
 
@@ -52,9 +43,9 @@ export const commonConfig = function(options) {
      */
     entry: {
 
-      'polyfills': './src/polyfills.browser.ts',
-      'vendor':    './src/vendor.browser.ts',
-      'main':      './src/main.browser.ts'
+      'polyfills': './src/polyfills.browser',
+      'vendor':    './src/vendor.browser',
+      'main':      './src/main.browser'
 
     },
 

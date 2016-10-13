@@ -4,7 +4,8 @@
 
 import * as webpackMerge from 'webpack-merge';
 import * as helpers from './helpers';
-import { commonConfig } from './webpack.common'; // the settings that are common to prod and dev
+import commonConfig from './webpack.common'; // the settings that are common to prod and dev
+import { config, metaData } from './globals';
 
 /**
  * Webpack Plugins
@@ -13,25 +14,11 @@ import * as DefinePlugin from 'webpack/lib/DefinePlugin';
 import * as NamedModulesPlugin from 'webpack/lib/NamedModulesPlugin';
 
 /**
- * Webpack Constants
- */
-const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
-const HOST = process.env.HOST || 'localhost';
-const PORT = process.env.PORT || 3000;
-const HMR = helpers.hasProcessFlag('hot');
-const METADATA = webpackMerge(commonConfig({env: ENV})['metadata'], {
-  host: HOST,
-  port: PORT,
-  ENV: ENV,
-  HMR: HMR
-});
-
-/**
  * Webpack configuration
  *
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
-module.exports = function(options) {
+export default function(options) {
   return webpackMerge(commonConfig({env: ENV}), {
 
     /**
@@ -120,12 +107,12 @@ module.exports = function(options) {
       }),
 
       /**
-         * Plugin: NamedModulesPlugin (experimental)
-         * Description: Uses file names as module name.
-         *
-         * See: https://github.com/webpack/webpack/commit/a04ffb928365b19feb75087c63f13cadfc08e1eb
-         */
-        new NamedModulesPlugin(),
+       * Plugin: NamedModulesPlugin (experimental)
+       * Description: Uses file names as module name.
+       *
+       * See: https://github.com/webpack/webpack/commit/a04ffb928365b19feb75087c63f13cadfc08e1eb
+       */
+      new NamedModulesPlugin(),
 
     ],
 
