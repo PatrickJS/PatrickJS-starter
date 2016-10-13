@@ -4,7 +4,7 @@
 
 import * as webpack from 'webpack';
 import * as helpers from './helpers';
-import { metaData } from './globals';
+import globals from './globals';
 
 /*
  * Webpack Plugins
@@ -23,7 +23,6 @@ import * as HtmlWebpackPlugin from 'html-webpack-plugin';
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
 export default function(options) {
-  const isProd = options.env === 'production';
   return {
 
     /*
@@ -61,7 +60,7 @@ export default function(options) {
        *
        * See: http://webpack.github.io/docs/configuration.html#resolve-extensions
        */
-      extensions: ['', '.ts', '.js', '.json'],
+      extensions: ['.ts', '.js', '.json'],
 
       // An array of directory names to be resolved to the current directory
       modules: [helpers.root('src'), 'node_modules'],
@@ -95,7 +94,7 @@ export default function(options) {
         {
           test: /\.ts$/,
           loaders: [
-            '@angularclass/hmr-loader?pretty=' + !isProd + '&prod=' + isProd,
+            '@angularclass/hmr-loader?pretty=' + !helpers.isProd() + '&prod=' + helpers.isProd(),
             'awesome-typescript-loader',
             'angular2-template-loader'
           ],

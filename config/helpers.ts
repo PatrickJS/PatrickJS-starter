@@ -11,7 +11,15 @@ export const hasProcessFlag = function(flag) {
   return process.argv.join('').indexOf(flag) > -1;
 };
 
-export const hasHMR = this.hasProcessFlag('hot');
+export const shouldBeHMR = () => this.hasProcessFlag('hot');
+
+export const init = function({ env }) {
+  process.env.ENV = process.env.NODE_ENV = env;
+  process.env.HOST = process.env.HOST || 'localhost';
+  process.env.PORT = process.env.PORT || 3000;
+};
+
+export const isProd = () => process.env.ENV || process.env.NODE_ENV === 'production';
 
 export const isWebpackDevServer = function() {
   return process.argv[1] && !! (/webpack-dev-server/.exec(process.argv[1]));
