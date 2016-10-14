@@ -1,17 +1,14 @@
-import { Routes, RouterModule } from '@angular/router';
-import { Home } from './home';
-import { About } from './about';
-import { NoContent } from './no-content';
-
-import { DataResolver } from './app.resolver';
-
+import { Routes } from '@angular/router';
+import { HomeComponent } from './home';
+import { AboutComponent } from './about';
+import { NoContentComponent } from './no-content';
 
 export const ROUTES: Routes = [
-  { path: '',      component: Home },
-  { path: 'home',  component: Home },
-  { path: 'about', component: About },
+  { path: '',      component: HomeComponent },
+  { path: 'home',  component: HomeComponent },
+  { path: 'about', component: AboutComponent },
   {
-    path: 'detail', loadChildren: () => System.import('./+detail')
+    path: 'detail', loadChildren: () => System.import('./+detail'),
   },
-  { path: '**',    component: NoContent },
+  { path: '**',    component: NoContentComponent },
 ];
