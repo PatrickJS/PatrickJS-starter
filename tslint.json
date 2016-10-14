@@ -1,6 +1,7 @@
 {
   "extends": [
     "tslint:recommended",
+    "./config/tslint/codelizer.tslint.json"
   ],
   "rules": {
     "label-undefined": true,
