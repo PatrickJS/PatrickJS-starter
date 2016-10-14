@@ -4,6 +4,12 @@
     "./config/tslint/codelizer.tslint.json"
   ],
   "rules": {
+    "no-console": [true,
+      "log",
+      "time",
+      "timeEnd",
+      "trace"
+    ],
     "label-undefined": true,
     "max-line-length": [
       true,
