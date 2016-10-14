@@ -12,7 +12,8 @@ import globals from './globals';
 // problem with copy-webpack-plugin
 import { ForkCheckerPlugin } from 'awesome-typescript-loader';
 import * as AssetsPlugin from 'assets-webpack-plugin';
-import * as ContextReplacementPlugin from 'webpack/lib/ContextReplacementPlugin';
+import { ContextReplacementPlugin } from 'webpack';
+import * as CommonsChunkPlugin from 'webpack/lib/optimize/CommonsChunkPlugin';
 import * as CopyWebpackPlugin from 'copy-webpack-plugin';
 import * as HtmlElementsPlugin from './html-elements-plugin';
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
@@ -22,7 +23,7 @@ import * as HtmlWebpackPlugin from 'html-webpack-plugin';
  *
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
-export default function(options) {
+export default function (options) {
   // init
   helpers.init(options);
   // config
@@ -35,7 +36,7 @@ export default function(options) {
      *
      * See: http://webpack.github.io/docs/configuration.html#cache
      */
-     //cache: false,
+    // cache: false,
 
     /*
      * The entry point for the bundle
@@ -46,8 +47,8 @@ export default function(options) {
     entry: {
 
       'polyfills': './src/polyfills.browser',
-      'vendor':    './src/vendor.browser',
-      'main':      './src/main.browser'
+      'vendor': './src/vendor.browser',
+      'main': './src/main.browser'
 
     },
 
@@ -85,7 +86,7 @@ export default function(options) {
        *
        * See: http://webpack.github.io/docs/configuration.html#module-loaders
        */
-      loaders: [
+      rules: [
 
         /*
          * Typescript loader support for .ts and Angular 2 async routes via .async.ts
@@ -164,6 +165,7 @@ export default function(options) {
        * See: https://github.com/s-panferov/awesome-typescript-loader#forkchecker-boolean-defaultfalse
        */
       new ForkCheckerPlugin(),
+
       /*
        * Plugin: CommonsChunkPlugin
        * Description: Shares common code between the pages.
@@ -172,7 +174,7 @@ export default function(options) {
        * See: https://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin
        * See: https://github.com/webpack/docs/wiki/optimization#multi-page-app
        */
-      new webpack.optimize.CommonsChunkPlugin({
+      new CommonsChunkPlugin({
         name: ['polyfills', 'vendor'].reverse()
       }),
 
@@ -197,20 +199,15 @@ export default function(options) {
        *
        * See: https://www.npmjs.com/package/copy-webpack-plugin
        */
-      new CopyWebpackPlugin([{
-        from: 'src/assets',
-        to: 'assets'
-      }], {
-        ignore: [
-          'humans.txt',
-          'robots.txt'
-        ]
-      }),
-      new CopyWebpackPlugin([{
-        from: 'src/assets/robots.txt'
-      }, {
-        from: 'src/assets/humans.txt'
-      }]),
+      new CopyWebpackPlugin([
+        {
+          from: 'src/assets',
+          to: 'assets'
+        },
+        {
+          from: 'src/meta'
+        }
+      ]),
 
       /*
        * Plugin: HtmlWebpackPlugin

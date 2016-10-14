@@ -33,8 +33,6 @@ import 'zone.js/dist/zone';
 // Typescript emit helpers polyfill
 import 'ts-helpers';
 
-console.log('ENV');
-
 if ('production' === ENV) {
   // Production
 
