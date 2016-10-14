@@ -16,13 +16,13 @@ export const shouldBeHMR = () => this.hasProcessFlag('hot');
 export const init = function({ env }) {
   process.env.ENV = process.env.NODE_ENV = env;
   process.env.HOST = process.env.HOST || 'localhost';
-  process.env.PORT = process.env.PORT || 3000;
+  process.env.PORT = process.env.PORT ||
+    env === 'production' ? 8080 : 3000;
 };
 
-export const isProd = () => this.isEnv('production');
-export const isDev = () => this.isEnv('development');
-
-export const isEnv = (env) => process.env.ENV || process.env.NODE_ENV === env;
+export const isProd = () => process.env.ENV !== 'development' ||
+  process.env.NODE_ENV !== 'development';
+export const isDev = () => !this.isProd();
 
 export const isWebpackDevServer = function() {
   return process.argv[1] && !! (/webpack-dev-server/.exec(process.argv[1]));

@@ -2,43 +2,26 @@
  * @author: @AngularClass
  */
 
-const helpers = require('./helpers');
-const webpackMerge = require('webpack-merge'); // used to merge webpack configs
-const commonConfig = require('./webpack.common.js'); // the settings that are common to prod and dev
+import * as helpers from './helpers';
+import * as webpackMerge from 'webpack-merge';
+import commonConfig from './webpack.common'; // the settings that are common to prod and dev
+import globals from './globals';
 
 /**
  * Webpack Plugins
  */
-const ProvidePlugin = require('webpack/lib/ProvidePlugin');
-const DefinePlugin = require('webpack/lib/DefinePlugin');
-const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplacementPlugin');
-const IgnorePlugin = require('webpack/lib/IgnorePlugin');
-const DedupePlugin = require('webpack/lib/optimize/DedupePlugin');
-const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
-const WebpackMd5Hash = require('webpack-md5-hash');
+import * as ProvidePlugin from 'webpack/lib/ProvidePlugin';
+import * as DefinePlugin from 'webpack/lib/DefinePlugin';
+import * as NormalModuleReplacementPlugin from 'webpack/lib/NormalModuleReplacementPlugin';
+import * as IgnorePlugin from 'webpack/lib/IgnorePlugin';
+import * as DedupePlugin from 'webpack/lib/optimize/DedupePlugin';
+import * as UglifyJsPlugin from 'webpack/lib/optimize/UglifyJsPlugin';
+import * as WebpackMd5Hash from 'webpack-md5-hash';
+import * as LoaderOptionsPlugin from 'webpack/lib/LoaderOptionsPlugin';
 
-/**
- * Webpack Constants
- */
-const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
-const HOST = process.env.HOST || 'localhost';
-const PORT = process.env.PORT || 8080;
-const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
-  host: HOST,
-  port: PORT,
-  ENV: ENV,
-  HMR: false
-});
-
-module.exports = function(env) {
-  return webpackMerge(commonConfig({env: ENV}), {
-
-    /**
-     * Switch loaders to debug mode.
-     *
-     * See: http://webpack.github.io/docs/configuration.html#debug
-     */
-    debug: false,
+export default function (options = { env: 'production' }) {
+  // config
+  return webpackMerge(commonConfig(options), {
 
     /**
      * Developer tool to enhance debugging
@@ -124,12 +107,13 @@ module.exports = function(env) {
        */
       // NOTE: when adding more properties make sure you include them in custom-typings.d.ts
       new DefinePlugin({
-        'ENV': JSON.stringify(METADATA.ENV),
-        'HMR': METADATA.HMR,
+        'GLOBALS': globals,
+        'ENV': JSON.stringify(process.env.ENV),
+        'HMR': helpers.shouldBeHMR(),
         'process.env': {
-          'ENV': JSON.stringify(METADATA.ENV),
-          'NODE_ENV': JSON.stringify(METADATA.ENV),
-          'HMR': METADATA.HMR,
+          'ENV': JSON.stringify(process.env.ENV),
+          'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+          'HMR': helpers.shouldBeHMR(),
         }
       }),
 
@@ -158,8 +142,13 @@ module.exports = function(env) {
 
 
         beautify: false, //prod
-        mangle: { screw_ie8 : true, keep_fnames: true }, //prod
-        compress: { screw_ie8: true }, //prod
+        mangle: {
+          screw_ie8: true,
+          keep_fnames: true
+        }, //prod
+        compress: {
+          screw_ie8: true
+        }, //prod
         comments: false //prod
       }),
 
@@ -197,37 +186,28 @@ module.exports = function(env) {
       //   threshold: 2 * 1024
       // })
 
+      new LoaderOptionsPlugin({
+        debug: false,
+        options: {
+          tslint: {
+            emitErrors: true,
+            failOnHint: true,
+            resourcePath: 'src'
+          },
+          htmlLoader: {
+            minimize: true,
+            removeAttributeQuotes: false,
+            caseSensitive: true,
+            customAttrSurround: [
+              [/#/, /(?:)/],
+              [/\*/, /(?:)/],
+              [/\[?\(?/, /(?:)/]
+            ],
+            customAttrAssign: [/\)?\]?=/]
+          },
+        }
+      })
     ],
-
-    /**
-     * Static analysis linter for TypeScript advanced options configuration
-     * Description: An extensible linter for the TypeScript language.
-     *
-     * See: https://github.com/wbuchwalter/tslint-loader
-     */
-    tslint: {
-      emitErrors: true,
-      failOnHint: true,
-      resourcePath: 'src'
-    },
-
-    /**
-     * Html loader advanced options
-     *
-     * See: https://github.com/webpack/html-loader#advanced-options
-     */
-    // TODO: Need to workaround Angular 2's html syntax => #id [bind] (event) *ngFor
-    htmlLoader: {
-      minimize: true,
-      removeAttributeQuotes: false,
-      caseSensitive: true,
-      customAttrSurround: [
-        [/#/, /(?:)/],
-        [/\*/, /(?:)/],
-        [/\[?\(?/, /(?:)/]
-      ],
-      customAttrAssign: [/\)?\]?=/]
-    },
 
     /*
      * Include polyfills or mocks for various node stuff
@@ -236,7 +216,7 @@ module.exports = function(env) {
      * See: https://webpack.github.io/docs/configuration.html#node
      */
     node: {
-      global: 'window',
+      global: true,
       crypto: 'empty',
       process: false,
       module: false,
