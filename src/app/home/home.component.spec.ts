@@ -12,7 +12,7 @@ import { MockBackend } from '@angular/http/testing';
 
 // Load the implementations that should be tested
 import { AppState } from '../app.service';
-import { Home } from './home.component';
+import { HomeComponent } from './home.component';
 import { Title } from './title';
 
 describe('Home', () => {
@@ -30,19 +30,19 @@ describe('Home', () => {
       },
       AppState,
       Title,
-      Home
+      HomeComponent
     ]
   }));
 
-  it('should have default data', inject([ Home ], (home: Home) => {
+  it('should have default data', inject([ HomeComponent ], (home: HomeComponent) => {
     expect(home.localState).toEqual({ value: '' });
   }));
 
-  it('should have a title', inject([ Home ], (home: Home) => {
+  it('should have a title', inject([ HomeComponent ], (home: HomeComponent) => {
     expect(!!home.title).toEqual(true);
   }));
 
-  it('should log ngOnInit', inject([ Home ], (home: Home) => {
+  it('should log ngOnInit', inject([ HomeComponent ], (home: HomeComponent) => {
     spyOn(console, 'log');
     expect(console.log).not.toHaveBeenCalled();
 

@@ -246,6 +246,16 @@ module.exports = function(options) {
       new CopyWebpackPlugin([{
         from: 'src/assets',
         to: 'assets'
+      }], {
+        ignore: [
+          'humans.txt',
+          'robots.txt'
+        ]
+      }),
+      new CopyWebpackPlugin([{ 
+        from: 'src/assets/robots.txt'
+      }, { 
+        from: 'src/assets/humans.txt' 
       }]),
 
       /*
