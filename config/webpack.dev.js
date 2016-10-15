@@ -11,6 +11,7 @@ const commonConfig = require('./webpack.common.js'); // the settings that are co
  */
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 
 /**
  * Webpack Constants
@@ -55,6 +56,8 @@ module.exports = function(options) {
      * See: https://github.com/webpack/docs/wiki/build-performance#sourcemaps
      */
     devtool: 'cheap-module-source-map',
+
+    recordsPath: helpers.root('') + '/records.json',
 
     /**
      * Options affecting the output of the compilation.
@@ -126,6 +129,26 @@ module.exports = function(options) {
          * See: https://github.com/webpack/webpack/commit/a04ffb928365b19feb75087c63f13cadfc08e1eb
          */
         new NamedModulesPlugin(),
+
+      /**
+       * Plugin: HardSourceWebpackPlugin
+       * Description: a plugin to cache an intermediate step modules reach during a webpack.
+       *
+       * See: https://github.com/mzgoddard/hard-source-webpack-plugin
+       */
+        new HardSourceWebpackPlugin({
+          // Either an absolute path or relative to output.path.
+          cacheDirectory: helpers.root('hard-source-cache'),
+          // Optional field. This field determines when to throw away the whole
+          // cache if for example npm modules were updated.
+          environmentPaths: {
+            root: process.cwd(),
+            directories: ['node_modules'],
+            // Add your webpack configuration paths here so changes to loader
+            // configuration and other details will cause a fresh build to occur.
+            files: ['package.json', 'config/webpack.dev.js'],
+          },
+        }),
 
     ],
 

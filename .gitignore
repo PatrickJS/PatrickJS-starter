@@ -59,3 +59,7 @@ npm-debug.log
 # IDE #
 .idea/
 *.swp
+
+# hard-source-cache #
+hard-source-cache/
+records.json
