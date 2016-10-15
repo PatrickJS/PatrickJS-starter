@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 /*
  * We're loading this component asynchronously
@@ -6,10 +6,10 @@ import { ActivatedRoute } from '@angular/router';
  * see https://github.com/gdi2290/es6-promise-loader for more info
  */
 
-console.log('`About` component loaded asynchronously');
+console.info('`About` component loaded asynchronously');
 
 @Component({
-  selector: 'about',
+  selector: 'my-about',
   styles: [`
   `],
   template: `
@@ -24,15 +24,15 @@ console.log('`About` component loaded asynchronously');
       </h3>
     </div>
     <pre>this.localState = {{ localState | json }}</pre>
-  `
+  `,
 })
-export class About {
-  localState: any;
+export class AboutComponent implements OnInit {
+  public localState: any;
   constructor(public route: ActivatedRoute) {
 
   }
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.route
       .data
       .subscribe((data: any) => {
@@ -40,14 +40,14 @@ export class About {
         this.localState = data.yourData;
       });
 
-    console.log('hello `About` component');
+    console.info('hello `About` component');
     // static data that is bundled
     // var mockData = require('assets/mock-data/mock-data.json');
-    // console.log('mockData', mockData);
+    // console.debug('mockData', mockData);
     // if you're working with mock data you can also use http.get('assets/mock-data/mock-data.json')
     this.asyncDataWithWebpack();
   }
-  asyncDataWithWebpack() {
+  private asyncDataWithWebpack(): void {
     // you can also async load mock data with 'es6-promise-loader'
     // you would do this if you don't want the mock-data bundled
     // remember that 'es6-promise-loader' is a promise
@@ -55,7 +55,7 @@ export class About {
 
       System.import('../../assets/mock-data/mock-data.json')
         .then(json => {
-          console.log('async mockData', json);
+          console.info('async mockData', json);
           this.localState = json;
         });
 

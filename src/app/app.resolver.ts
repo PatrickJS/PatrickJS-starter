@@ -5,15 +5,15 @@ import 'rxjs/add/observable/of';
 
 @Injectable()
 export class DataResolver implements Resolve<any> {
-  constructor() {
-
-  }
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+  public resolve(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot,
+  ): Observable<{res}> {
     return Observable.of({ res: 'I am data'});
   }
 }
 
 // an array of services to resolve routes with data
 export const APP_RESOLVER_PROVIDERS = [
-  DataResolver
+  DataResolver,
 ];

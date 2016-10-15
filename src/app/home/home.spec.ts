@@ -1,18 +1,17 @@
 import {
   inject,
-  TestBed
+  TestBed,
 } from '@angular/core/testing';
-import { Component } from '@angular/core';
 import {
   BaseRequestOptions,
   ConnectionBackend,
-  Http
+  Http,
 } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 
 // Load the implementations that should be tested
 import { AppState } from '../app.service';
-import { Home } from './home.component';
+import { HomeComponent } from './home.component';
 import { Title } from './title';
 
 describe('Home', () => {
@@ -23,31 +22,34 @@ describe('Home', () => {
       MockBackend,
       {
         provide: Http,
-        useFactory: function(backend: ConnectionBackend, defaultOptions: BaseRequestOptions) {
+        useFactory: function(
+          backend: ConnectionBackend,
+          defaultOptions: BaseRequestOptions,
+        ): Http {
           return new Http(backend, defaultOptions);
         },
-        deps: [MockBackend, BaseRequestOptions]
+        deps: [MockBackend, BaseRequestOptions],
       },
       AppState,
       Title,
-      Home
-    ]
+      HomeComponent,
+    ],
   }));
 
-  it('should have default data', inject([ Home ], (home: Home) => {
+  it('should have default data', inject([ HomeComponent ], (home: HomeComponent) => {
     expect(home.localState).toEqual({ value: '' });
   }));
 
-  it('should have a title', inject([ Home ], (home: Home) => {
+  it('should have a title', inject([ HomeComponent ], (home: HomeComponent) => {
     expect(!!home.title).toEqual(true);
   }));
 
-  it('should log ngOnInit', inject([ Home ], (home: Home) => {
-    spyOn(console, 'log');
-    expect(console.log).not.toHaveBeenCalled();
+  it('should log ngOnInit with info', inject([ HomeComponent ], (home: HomeComponent) => {
+    spyOn(console, 'info');
+    expect(console.info).not.toHaveBeenCalled();
 
     home.ngOnInit();
-    expect(console.log).toHaveBeenCalled();
+    expect(console.info).toHaveBeenCalled();
   }));
 
 });
