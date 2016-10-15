@@ -18,7 +18,7 @@ import { XLarge } from './x-large';
   // Every Angular template is first compiled by the browser before Angular runs it's compiler
   templateUrl: './home.component.html'
 })
-export class Home {
+export class HomeComponent {
   // Set our default values
   localState = { value: '' };
   // TypeScript public modifiers

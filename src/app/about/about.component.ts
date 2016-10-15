@@ -26,7 +26,7 @@ console.log('`About` component loaded asynchronously');
     <pre>this.localState = {{ localState | json }}</pre>
   `
 })
-export class About {
+export class AboutComponent {
   localState: any;
   constructor(public route: ActivatedRoute) {
 
