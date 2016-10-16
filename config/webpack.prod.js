@@ -9,11 +9,12 @@ const commonConfig = require('./webpack.common.js'); // the settings that are co
 /**
  * Webpack Plugins
  */
-const ProvidePlugin = require('webpack/lib/ProvidePlugin');
-const DefinePlugin = require('webpack/lib/DefinePlugin');
-const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplacementPlugin');
-const IgnorePlugin = require('webpack/lib/IgnorePlugin');
 const DedupePlugin = require('webpack/lib/optimize/DedupePlugin');
+const DefinePlugin = require('webpack/lib/DefinePlugin');
+const IgnorePlugin = require('webpack/lib/IgnorePlugin');
+const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
+const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplacementPlugin');
+const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
 
@@ -30,15 +31,8 @@ const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
   HMR: false
 });
 
-module.exports = function(env) {
+module.exports = function (env) {
   return webpackMerge(commonConfig({env: ENV}), {
-
-    /**
-     * Switch loaders to debug mode.
-     *
-     * See: http://webpack.github.io/docs/configuration.html#debug
-     */
-    debug: false,
 
     /**
      * Developer tool to enhance debugging
@@ -158,8 +152,13 @@ module.exports = function(env) {
 
 
         beautify: false, //prod
-        mangle: { screw_ie8 : true, keep_fnames: true }, //prod
-        compress: { screw_ie8: true }, //prod
+        mangle: {
+          screw_ie8: true,
+          keep_fnames: true
+        }, //prod
+        compress: {
+          screw_ie8: true
+        }, //prod
         comments: false //prod
       }),
 
@@ -197,37 +196,50 @@ module.exports = function(env) {
       //   threshold: 2 * 1024
       // })
 
+      /**
+       * Plugin LoaderOptionsPlugin (experimental)
+       *
+       * See: https://gist.github.com/sokra/27b24881210b56bbaff7
+       */
+      new LoaderOptionsPlugin({
+        debug: false,
+        options: {
+
+          /**
+           * Static analysis linter for TypeScript advanced options configuration
+           * Description: An extensible linter for the TypeScript language.
+           *
+           * See: https://github.com/wbuchwalter/tslint-loader
+           */
+          tslint: {
+            emitErrors: true,
+            failOnHint: true,
+            resourcePath: 'src'
+          },
+
+
+          /**
+           * Html loader advanced options
+           *
+           * See: https://github.com/webpack/html-loader#advanced-options
+           */
+          // TODO: Need to workaround Angular 2's html syntax => #id [bind] (event) *ngFor
+          htmlLoader: {
+            minimize: true,
+            removeAttributeQuotes: false,
+            caseSensitive: true,
+            customAttrSurround: [
+              [/#/, /(?:)/],
+              [/\*/, /(?:)/],
+              [/\[?\(?/, /(?:)/]
+            ],
+            customAttrAssign: [/\)?\]?=/]
+          },
+
+        }
+      }),
+
     ],
-
-    /**
-     * Static analysis linter for TypeScript advanced options configuration
-     * Description: An extensible linter for the TypeScript language.
-     *
-     * See: https://github.com/wbuchwalter/tslint-loader
-     */
-    tslint: {
-      emitErrors: true,
-      failOnHint: true,
-      resourcePath: 'src'
-    },
-
-    /**
-     * Html loader advanced options
-     *
-     * See: https://github.com/webpack/html-loader#advanced-options
-     */
-    // TODO: Need to workaround Angular 2's html syntax => #id [bind] (event) *ngFor
-    htmlLoader: {
-      minimize: true,
-      removeAttributeQuotes: false,
-      caseSensitive: true,
-      customAttrSurround: [
-        [/#/, /(?:)/],
-        [/\*/, /(?:)/],
-        [/\[?\(?/, /(?:)/]
-      ],
-      customAttrAssign: [/\)?\]?=/]
-    },
 
     /*
      * Include polyfills or mocks for various node stuff
@@ -236,7 +248,7 @@ module.exports = function(env) {
      * See: https://webpack.github.io/docs/configuration.html#node
      */
     node: {
-      global: 'window',
+      global: true,
       crypto: 'empty',
       process: false,
       module: false,
