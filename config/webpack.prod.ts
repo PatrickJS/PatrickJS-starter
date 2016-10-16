@@ -19,9 +19,16 @@ import * as UglifyJsPlugin from 'webpack/lib/optimize/UglifyJsPlugin';
 import * as WebpackMd5Hash from 'webpack-md5-hash';
 import * as LoaderOptionsPlugin from 'webpack/lib/LoaderOptionsPlugin';
 
-export default function (options = { env: 'production' }) {
+/**
+ * Webpack init
+ */
+process.env.ENV = process.env.NODE_ENV = 'production';
+process.env.HOST = process.env.HOST || 'localhost';
+process.env.PORT = process.env.PORT || 8080;
+
+export default function () {
   // config
-  return webpackMerge(commonConfig(options), {
+  return webpackMerge(commonConfig(), {
 
     /**
      * Developer tool to enhance debugging

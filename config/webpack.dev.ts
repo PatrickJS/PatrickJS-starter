@@ -14,14 +14,19 @@ import * as DefinePlugin from 'webpack/lib/DefinePlugin';
 import * as NamedModulesPlugin from 'webpack/lib/NamedModulesPlugin';
 import * as LoaderOptionsPlugin from 'webpack/lib/LoaderOptionsPlugin';
 
+// init
+process.env.ENV = process.env.NODE_ENV = 'development';
+process.env.HOST = process.env.HOST || 'localhost';
+process.env.PORT = process.env.PORT || 3000;
+
 /**
  * Webpack configuration
  *
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
-export default function (options = { env: 'development' }) {
+export default function () {
   // config
-  return webpackMerge(commonConfig(options), {
+  return webpackMerge(commonConfig(), {
 
     /**
      * Developer tool to enhance debugging

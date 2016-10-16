@@ -17,7 +17,7 @@ import * as LoaderOptionsPlugin from 'webpack/lib/LoaderOptionsPlugin';
 /**
  * Webpack Constants
  */
-const ENV = process.env.ENV = process.env.NODE_ENV = 'test';
+process.env.ENV = process.env.NODE_ENV = 'testing';
 
 /**
  * Webpack configuration
@@ -197,11 +197,11 @@ module.exports = function (options) {
        */
       // NOTE: when adding more properties make sure you include them in custom-typings.d.ts
       new DefinePlugin({
-        'ENV': JSON.stringify(ENV),
+        'ENV': JSON.stringify(process.env),
         'HMR': false,
         'process.env': {
-          'ENV': JSON.stringify(ENV),
-          'NODE_ENV': JSON.stringify(ENV),
+          'ENV': JSON.stringify(process.env),
+          'NODE_ENV': JSON.stringify(process.env),
           'HMR': false,
         }
       }),

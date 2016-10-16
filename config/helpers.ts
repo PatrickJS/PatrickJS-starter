@@ -2,7 +2,7 @@
  * @author: @AngularClass
  */
 
-export const path = require('path');
+import * as path from 'path';
 
 // Helper functions
 export const ROOT = path.resolve(__dirname, '..');
@@ -12,13 +12,6 @@ export const hasProcessFlag = function(flag) {
 };
 
 export const shouldBeHMR = () => this.hasProcessFlag('hot');
-
-export const init = function({ env }) {
-  process.env.ENV = process.env.NODE_ENV = env;
-  process.env.HOST = process.env.HOST || 'localhost';
-  process.env.PORT = process.env.PORT ||
-    env === 'production' ? 8080 : 3000;
-};
 
 export const isProd = () => process.env.ENV !== 'development' ||
   process.env.NODE_ENV !== 'development';

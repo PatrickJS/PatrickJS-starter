@@ -3,7 +3,7 @@
  */
 
 module.exports = function(config) {
-  var testWebpackConfig = require('./webpack.test')({env: 'test'});
+  var testWebpackConfig = require('./webpack.test')();
 
   var configuration = {
 

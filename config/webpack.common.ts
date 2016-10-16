@@ -23,12 +23,8 @@ import * as HtmlWebpackPlugin from 'html-webpack-plugin';
  *
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
-export default function (options) {
-  // init
-  helpers.init(options);
-  // config
+export default function () {
   return {
-
     /*
      * Cache generated modules and chunks to improve performance for multiple incremental builds.
      * This is enabled by default in watch mode.
