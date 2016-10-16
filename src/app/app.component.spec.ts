@@ -4,7 +4,7 @@ import {
 } from '@angular/core/testing';
 
 // Load the implementations that should be tested
-import { App } from './app.component';
+import { AppComponent } from './app.component';
 import { AppState } from './app.service';
 
 describe('App', () => {
@@ -12,10 +12,10 @@ describe('App', () => {
   beforeEach(() => TestBed.configureTestingModule({
     providers: [
       AppState,
-      App
+      AppComponent
     ]}));
 
-  it('should have a url', inject([ App ], (app: App) => {
+  it('should have a url', inject([ AppComponent ], (app: AppComponent) => {
     expect(app.url).toEqual('https://twitter.com/AngularClass');
   }));
 
