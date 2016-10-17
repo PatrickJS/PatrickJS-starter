@@ -55,6 +55,9 @@ npm-debug.log
 /aot
 /src/**/*.js
 /src/**/*.js.map
+/src/**/*.ngfactory.ts
+/src/**/*.css.shim.ts
+/src/**/*.css.ts
 
 # Doc #
 /doc/

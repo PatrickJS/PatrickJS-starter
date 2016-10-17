@@ -10,18 +10,19 @@
     "sourceMap": true,
     "noEmitHelpers": true,
     "strictNullChecks": false,
-    "baseUrl": "./src",
+    "rootDir": "./src",
+    "outDir": "./dist",
     "lib": [
       "dom",
       "es6"
     ],
     "types": [
-      "hammerjs"
+      "hammerjs",
+      "node"
     ]
   },
   "files": [
     "src/app/app.module.ts",
-    "src/main.browser.ts",
     "src/custom-typings.d.ts"
   ],
   "exclude": [
@@ -30,6 +31,6 @@
   ],
   "angularCompilerOptions": {
     "genDir": "aot",
-    "skipMetadataEmit": true
+    "skipMetadataEmit" : true
   }
 }
