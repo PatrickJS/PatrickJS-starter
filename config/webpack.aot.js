@@ -55,8 +55,8 @@ module.exports = function (env) {
      */
     entry: {
 
-      // 'polyfills': './src/polyfills.browser',
-      // 'vendor': './src/vendor.browser',
+      'polyfills': './src/polyfills.browser',
+      'vendor': './src/vendor.browser',
       'main': './src/main.browser.aot'
 
     },

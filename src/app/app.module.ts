@@ -53,7 +53,10 @@ type StoreType = {
     ENV_PROVIDERS,
     APP_PROVIDERS
   ],
-  entryComponents: [HomeComponent]
+  entryComponents: [
+    HomeComponent,
+    AboutComponent,
+  ]
 })
 export class AppModule {
   constructor(public appRef: ApplicationRef, public appState: AppState) {}
