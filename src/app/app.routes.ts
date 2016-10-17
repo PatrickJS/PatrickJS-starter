@@ -5,8 +5,7 @@ import { NoContentComponent } from './no-content';
 
 import { DataResolver } from './app.resolver';
 
-
-export const ROUTES: Routes = [
+const ROUTES: Routes = [
   { path: '',      component: HomeComponent },
   { path: 'home',  component: HomeComponent },
   { path: 'about', component: AboutComponent },
@@ -18,3 +17,5 @@ export const ROUTES: Routes = [
   },
   { path: '**',    component: NoContentComponent },
 ];
+
+export { ROUTES };

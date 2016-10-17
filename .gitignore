@@ -52,6 +52,9 @@ npm-debug.log
 /src/*/dist/
 /dist/**
 .webpack.json
+/aot
+/src/**/*.js
+/src/**/*.js.map
 
 # Doc #
 /doc/
