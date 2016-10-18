@@ -12,8 +12,7 @@ const ROUTES: Routes = [
   {
     path: 'detail', loadChildren: () => System.import('./+detail').then((comp: any) => {
       return comp.default;
-    })
-    ,
+    }),
   },
   { path: '**',    component: NoContentComponent },
 ];
