@@ -20,7 +20,6 @@ const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
 const DashboardPlugin = require('webpack-dashboard/plugin');
-const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin'); 
 
 /*
  * Webpack Constants
