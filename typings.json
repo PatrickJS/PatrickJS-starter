@@ -1,13 +1,7 @@
 {
-  "name": "angular2-seed",
-  "version": false,
-  "dependencies": {},
-  "ambientDependencies": {
-    "es6-collections": "registry:dt/es6-collections#0.5.1+20160316155526",
-    "es6-promise": "registry:dt/es6-promise#3.0.0+20160211003958"
-  },
   "globalDependencies": {
-    "core-js": "registry:dt/core-js#0.0.0+20160602141332",
-    "node": "registry:dt/node#6.0.0+20160621231320"
+    "core-js": "registry:dt/core-js#0.0.0+20160725163759",
+    "jasmine": "registry:dt/jasmine#2.2.0+20160621224255",
+    "node": "registry:dt/node#6.0.0+20160909174046"
   }
 }
