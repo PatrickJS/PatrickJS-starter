@@ -4,12 +4,25 @@
  */
 import 'ts-helpers';
 
-const EVENT   = process.env.npm_lifecycle_event;
-const ENV     = process.env.NODE_ENV || 'development';
+import {
+  CUSTOM_COPY_FOLDERS,
+  CUSTOM_COMMON_PLUGINS,
+} from './config/env';
 
-const PORT    = process.env.PORT ||
+const EVENT    = process.env.npm_lifecycle_event;
+const ENV      = process.env.NODE_ENV || 'development';
+
+const PORT     = process.env.PORT ||
   ENV === 'development' ? 3000 : 8080;
-const HOST    = process.env.HOST || 'localhost';
+const HOST     = process.env.HOST || 'localhost';
+
+const COPY_FOLDERS = [
+  { from: 'src/assets' },
+  { from: 'src/meta' },
+  // { from: 'node_modules/hammerjs/hammer.min.js' },
+  // { from: 'node_modules/hammerjs/hammer.min.js.map' },
+  ...CUSTOM_COPY_FOLDERS,
+];
 
 console.info(`Env: ${ENV}`);
 
