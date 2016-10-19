@@ -15,7 +15,8 @@
     ],
     "lib": [
       "dom",
-      "es5"
+      "es5",
+      "es6"
     ],
     "types": [
       "hammerjs",

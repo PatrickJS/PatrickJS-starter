@@ -1,3 +1,4 @@
+/* tslint:disable: variable-name max-line-length */
 /**
  * Configuration for head elements added during the creation of index.html.
  *
@@ -13,9 +14,8 @@
  * Will not prefix the publicPath on href (href attributes are added by default
  *
  */
-module.exports = {
+export default {
   link: [
-    /** <link> tags for 'apple-touch-icon' (AKA Web Clips). **/
     { rel: 'apple-touch-icon', sizes: '57x57', href: '/assets/icon/apple-icon-57x57.png' },
     { rel: 'apple-touch-icon', sizes: '60x60', href: '/assets/icon/apple-icon-60x60.png' },
     { rel: 'apple-touch-icon', sizes: '72x72', href: '/assets/icon/apple-icon-72x72.png' },
@@ -26,20 +26,17 @@ module.exports = {
     { rel: 'apple-touch-icon', sizes: '152x152', href: '/assets/icon/apple-icon-152x152.png' },
     { rel: 'apple-touch-icon', sizes: '180x180', href: '/assets/icon/apple-icon-180x180.png' },
 
-    /** <link> tags for android web app icons **/
     { rel: 'icon', type: 'image/png', sizes: '192x192', href: '/assets/icon/android-icon-192x192.png' },
 
-    /** <link> tags for favicons **/
     { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/assets/icon/favicon-32x32.png' },
     { rel: 'icon', type: 'image/png', sizes: '96x96', href: '/assets/icon/favicon-96x96.png' },
     { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/assets/icon/favicon-16x16.png' },
 
-    /** <link> tags for a Web App Manifest **/
-    { rel: 'manifest', href: '/assets/manifest.json' }
+    { rel: 'manifest', href: '/assets/manifest.json' },
   ],
   meta: [
     { name: 'msapplication-TileColor', content: '#00bcd4' },
     { name: 'msapplication-TileImage', content: '/assets/icon/ms-icon-144x144.png', '=content': true },
-    { name: 'theme-color', content: '#00bcd4' }
-  ]
+    { name: 'theme-color', content: '#00bcd4' },
+  ],
 };

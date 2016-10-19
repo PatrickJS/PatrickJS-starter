@@ -48,7 +48,7 @@ export function vendors(env?: any) {
     '@angular/core',
     '@angular/http',
 
-    '@angularclass/form-validators',
+    // '@angularclass/form-validators',
     '@angularclass/hmr',
   ];
 }

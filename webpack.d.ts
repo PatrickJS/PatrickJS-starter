@@ -9,6 +9,7 @@ interface WebpackConfig {
   plugins?: Array<any>;
   resolve?: {
     extensions?: Array<string>;
+    modules?: Array<string>;
   };
   devServer?: {
     contentBase?: string;

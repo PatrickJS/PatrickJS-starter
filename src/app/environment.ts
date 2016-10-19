@@ -12,6 +12,8 @@ let PROVIDERS: any[] = [
 // https://github.com/angular/angular/blob/86405345b781a9dc2438c0fbe3e9409245647019/TOOLS_JS.md
 let _decorateModuleRef = function identity<T>(value: T): T { return value; };
 
+console.log(ENV);
+
 if ('production' === ENV) {
   // Production
   disableDebugTools();
