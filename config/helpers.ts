@@ -19,8 +19,6 @@ export function root(args) {
   return path.join.apply(path, [_root].concat(args));
 }
 
-// export function tryDll()
-
 // function tryDll(cb) {
 //   try {
 //     return cb();

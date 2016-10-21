@@ -10,9 +10,8 @@ import {
   CUSTOM_COMMON_RULES,
   CUSTOM_DEV_SERVER_OPTIONS,
   CUSTOM_DEV_PLUGINS,
-  SRC,
-  DIST,
-  BASE_URL,
+  CUSTOM_PROD_PLUGINS,
+  HTML5_BASE_URL,
 } from './config/env';
 
 import {
@@ -33,13 +32,14 @@ import meta from './config/meta';
 const { ContextReplacementPlugin } = require('webpack');
 const { ProgressPlugin } = require('webpack');
 const { DefinePlugin } = require('webpack');
+const { DllPlugin } = require('webpack');
+const { DllReferencePlugin } = require('webpack');
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 
 const { ForkCheckerPlugin } = require('awesome-typescript-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlElementsPlugin = require('./config/html-elements-plugin');
 const webpackMerge = require('webpack-merge');
@@ -54,11 +54,13 @@ const PORT = process.env.PORT ||
 const HOST = process.env.HOST || 'localhost';
 
 const COPY_FOLDERS = [
-  { from: `${SRC}/assets` },
-  { from: `${SRC}/meta` },
+  { from: `src/assets` },
+  { from: `src/meta` },
   // { from: 'node_modules/hammerjs/hammer.min.js' },
   // { from: 'node_modules/hammerjs/hammer.min.js.map' },
+
   ...CUSTOM_COPY_FOLDERS,
+
 ];
 
 console.info(`${SCOPE}ing ${TASK} \u2192 ${ENV}`);
@@ -66,20 +68,13 @@ console.info(`${SCOPE}ing ${TASK} \u2192 ${ENV}`);
 const commonConfig = function webpackConfig(): WebpackConfig {
 
   const config: WebpackConfig = {} as WebpackConfig;
-  const isProd = ENV === 'production';
-
-  config.entry = {
-    polyfills: polyfills(),
-    rxjs: rxjs(),
-    vendors: vendors(),
-  };
 
   config.module = {
     rules: [
       {
         test: /\.ts$/,
         loaders: [
-          '@angularclass/hmr-loader?pretty=' + !isProd + '&prod=' + isProd,
+          '@angularclass/hmr-loader',
           'awesome-typescript-loader',
           'angular2-template-loader',
         ],
@@ -112,36 +107,18 @@ const commonConfig = function webpackConfig(): WebpackConfig {
   config.plugins = [
     new ContextReplacementPlugin(
       /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
-      root(SRC),
+      root(`src`),
     ),
     new ProgressPlugin(),
     new ForkCheckerPlugin(),
-    new CommonsChunkPlugin({
-      name: ['polyfills', 'vendor', 'rxjs'].reverse(),
-    }),
-    // new DefinePlugin(CONSTANTS),
-    new NamedModulesPlugin(),
-    new HtmlWebpackPlugin({
-      template: `${SRC}/index.html`,
-      title: meta.title,
-      chunksSortMode: 'dependency',
-      metadata: Object.assign(meta, { baseUrl: BASE_URL }),
-      inject: 'head',
-    }),
-    new HtmlElementsPlugin({
-      headTags: head,
-    }),
-    new ScriptExtHtmlWebpackPlugin({
-      defaultAttribute: 'defer',
-    }),
 
     ...CUSTOM_COMMON_PLUGINS,
 
   ];
 
-  config.plugins.push(
-    new CopyWebpackPlugin(COPY_FOLDERS),
-  );
+  // config.plugins.push(
+  //   new CopyWebpackPlugin(COPY_FOLDERS),
+  // );
 
   config.node = {
     Buffer: false,
@@ -166,16 +143,14 @@ const devConfig = function () {
   config.devtool = 'cheap-module-source-map';
 
   config.entry = {
-    main: ['.', SRC, 'main.browser'].join('/'),
+    main: [].concat(polyfills(), './src/main.browser', rxjs()),
   };
 
   config.output = {
-    path: root(DIST),
+    path: root(`dist`),
     filename: '[name].bundle.js',
     sourceMapFilename: '[name].map',
     chunkFilename: '[id].chunk.js',
-    library: 'ac_[name]',
-    libraryTarget: 'var',
   };
 
   config.plugins = [
@@ -195,17 +170,94 @@ const devConfig = function () {
       'HMR': false,
       'process.env': JSON.stringify(process.env),
     }),
+    new NamedModulesPlugin(),
+    // new HtmlWebpackPlugin({
+    //   template: `${SRC}/index.html`,
+    //   title: meta.title,
+    //   chunksSortMode: 'dependency',
+    //   metadata: Object.assign(meta, { baseUrl: BASE_URL }),
+    //   inject: true,
+    // }),
+    new HtmlElementsPlugin({
+      headTags: head,
+    }),
+    new DllReferencePlugin({
+      context: '.',
+      manifest: require(`./dll/polyfills-manifest.json`),
+    }),
+    new DllReferencePlugin({
+      context: '.',
+      manifest: require(`./dll/vendors-manifest.json`),
+    }),
+    new DllReferencePlugin({
+      context: '.',
+      manifest: require(`./dll/rxjs-manifest.json`),
+    }),
+    new HtmlWebpackPlugin({
+      template: 'src/index.html',
+      inject: true,
+    }),
+    new CopyWebpackPlugin(COPY_FOLDERS.concat([{ from: `dll`, ignore: ['*.json'] }])),
+
     ...CUSTOM_DEV_PLUGINS,
+
   ];
 
   if (DEV_SERVER) {
     config.devServer = Object.assign({
-      contentBase: root(DIST),
+      contentBase: root(`src`),
       historyApiFallback: true,
       host: HOST,
       port: PORT,
     }, CUSTOM_DEV_SERVER_OPTIONS);
   }
+
+  return config;
+
+} ();
+
+const dllConfig = function () {
+
+  const config: WebpackConfig = {} as WebpackConfig;
+
+  config.entry = {
+    polyfills: polyfills(),
+    rxjs: rxjs(),
+    vendors: vendors(),
+  };
+
+  config.output = {
+    path: root(`dll`),
+    filename: '[name].dll.js',
+    sourceMapFilename: '[name].dll.map',
+    library: '__[name]',
+  };
+
+  config.plugins = [
+    new DllPlugin({
+      name: '__[name]',
+      path: root('dll/[name]-manifest.json'),
+    }),
+  ];
+
+  return config;
+
+} ();
+
+const prodConfig = function() {
+
+  const config: WebpackConfig = {} as WebpackConfig;
+
+  config.plugins = [
+
+    // new CommonsChunkPlugin({
+    //   name: ['polyfills', 'vendor', 'rxjs'].reverse(),
+    // }),
+    // new DefinePlugin(CONSTANTS),
+
+    ...CUSTOM_PROD_PLUGINS
+
+  ];
 
   return config;
 
@@ -217,7 +269,6 @@ const defaultConfig = function () {
 
   config.resolve = {
     extensions: ['.ts', '.js', '.json'],
-    modules: [root(SRC), 'node_modules'],
   };
 
   return config;

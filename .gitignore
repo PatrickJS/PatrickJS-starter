@@ -47,6 +47,7 @@ npm-debug.log
 /src/*/dist/
 /dist/**
 .webpack.json
+.awcache
 /aot
 /src/**/*.js
 /src/**/*.js.map
