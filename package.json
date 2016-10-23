@@ -90,7 +90,7 @@
     "angular2-template-loader": "^0.5.0",
     "awesome-typescript-loader": "^2.2.1",
     "codelyzer": "~1.0.0-beta.2",
-    "copy-webpack-plugin": "^3.0.1",
+    "copy-webpack-plugin": "^4.0.0",
     "css-loader": "^0.25.0",
     "exports-loader": "^0.6.3",
     "expose-loader": "^0.7.1",
