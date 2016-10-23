@@ -204,6 +204,8 @@ module.exports = function (options) {
         from: 'src/assets',
         to: 'assets',
       }, {
+        from: 'src/electron',
+      }, {
         from: 'src/meta',
       }, ]),
 

@@ -57,6 +57,8 @@ module.exports = function (options) {
        */
       path: helpers.root('dist'),
 
+      publicPath: helpers.root('dist')+'/',
+
       /**
        * Specifies the name of each output file on disk.
        * IMPORTANT: You must not specify an absolute path here!
