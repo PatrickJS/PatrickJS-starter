@@ -384,9 +384,7 @@ const defaultConfig = function () {
 switch (ENV) { // it is the most simple logic
   case 'prod':
   case 'production':
-    module.exports = !isAot
-      ? webpackMerge.smart({}, defaultConfig(), commonConfig(), prodConfig())
-      : webpackMerge.smart({}, defaultConfig(), commonConfig(), prodConfig(), aotConfig());
+    module.exports = webpackMerge({}, defaultConfig(), commonConfig(), prodConfig());
     break;
   case 'dev':
   case 'development':
