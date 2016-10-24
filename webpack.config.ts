@@ -14,6 +14,7 @@ import {
   CUSTOM_PLUGINS_COMMON,
   CUSTOM_PLUGINS_DEV,
   CUSTOM_PLUGINS_PROD,
+  EXCLUDE_SOURCEMAPS,
 } from './config/env';
 
 import {
@@ -37,14 +38,20 @@ const { ProgressPlugin } = require('webpack');
 const { DefinePlugin } = require('webpack');
 const { DllPlugin } = require('webpack');
 const { DllReferencePlugin } = require('webpack');
+const { NoErrorsPlugin } = require('webpack');
+const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
+const DedupePlugin = require('webpack/lib/optimize/DedupePlugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 
 const { ForkCheckerPlugin } = require('awesome-typescript-loader');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlElementsPlugin = require('./config/html-elements-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ngtools = require('@ngtools/webpack');
+const WebpackMd5Hash = require('webpack-md5-hash');
 const webpackMerge = require('webpack-merge');
 
 const EVENT = process.env.npm_lifecycle_event;
@@ -52,10 +59,12 @@ const ENV = process.env.NODE_ENV || 'development';
 
 const isDev = EVENT.includes('dev');
 const isDll = EVENT.includes('dll');
+const isAot = EVENT.includes('aot');
 
 const PORT = process.env.PORT ||
   ENV === 'development' ? 3000 : 8080;
 const HOST = process.env.HOST || 'localhost';
+
 
 const COPY_FOLDERS = [
   { from: `src/assets` },
@@ -84,6 +93,11 @@ const commonConfig = function webpackConfig(): WebpackConfig {
         loaders: [
           'tslint',
         ],
+      },
+      {
+        test: /\.js$/,
+        loader: 'source-map-loader',
+        exclude: [EXCLUDE_SOURCEMAPS]
       },
       {
         test: /\.ts$/,
@@ -128,6 +142,10 @@ const commonConfig = function webpackConfig(): WebpackConfig {
     new NamedModulesPlugin(),
     new HtmlElementsPlugin({
       headTags: head,
+    }),
+    new DefinePlugin({
+      'ENV': JSON.stringify(ENV),
+      'process.env': JSON.stringify(process.env),
     }),
 
     ...CUSTOM_PLUGINS_COMMON,
@@ -188,18 +206,6 @@ const devConfig = function () {
         },
       },
     }),
-    new DefinePlugin({
-      'ENV': JSON.stringify(ENV),
-      'HMR': false,
-      'process.env': JSON.stringify(process.env),
-    }),
-    // new HtmlWebpackPlugin({
-    //   template: `${SRC}/index.html`,
-    //   title: meta.title,
-    //   chunksSortMode: 'dependency',
-    //   metadata: Object.assign(meta, { baseUrl: BASE_URL }),
-    //   inject: true,
-    // }),
     new DllReferencePlugin({
       context: '.',
       manifest: require(`./dll/polyfills-manifest.json`),
@@ -271,23 +277,83 @@ const prodConfig = function () {
 
   const config: WebpackConfig = {} as WebpackConfig;
 
-  config.module = {
-    rules: [
+  config.devtool = 'source-map';
 
-      ...CUSTOM_RULES_PROD,
+  config.entry = {
+    main: !isAot ? `./src/main.browser` : `./src/main.browser.aot`,
+    polyfills: polyfills(),
+    rxjs: rxjs(),
+    vendors: vendors(),
+  };
 
-    ],
+  config.output = {
+    path: root(`dist`),
+    filename: '[name].[chunkhash].bundle.js',
+    sourceMapFilename: '[name].[chunkhash].bundle.map',
+    chunkFilename: '[id].[chunkhash].chunk.js',
   };
 
   config.plugins = [
+    // new NoErrorsPlugin(),
+    new WebpackMd5Hash(),
+    new UglifyJsPlugin({
+      // beautify: true, //debug
+      // mangle: false, //debug
+      // dead_code: false, //debug
+      // unused: false, //debug
+      // deadCode: false, //debug
+      // compress: {
+      //   screw_ie8: true,
+      //   keep_fnames: true,
+      //   drop_debugger: false,
+      //   dead_code: false,
+      //   unused: false
+      // }, // debug
+      // comments: true, //debug
 
-    // new CommonsChunkPlugin({
-    //   name: ['polyfills', 'vendor', 'rxjs'].reverse(),
-    // }),
-    // new DefinePlugin(CONSTANTS),
+
+      beautify: false, //prod
+      mangle: {
+        screw_ie8: true,
+        keep_fnames: true
+      }, //prod
+      compress: {
+        screw_ie8: true
+      }, //prod
+      comments: false //prod
+    }),
+    new CompressionPlugin({
+      asset: '[path].gz[query]',
+      algorithm: 'gzip',
+      test: /\.js$|\.html$/,
+      threshold: 10240,
+      minRatio: 0.8,
+    }),
+    new LoaderOptionsPlugin({
+      debug: false,
+    }),
+    new CommonsChunkPlugin({
+      name: ['polyfills', 'vendors', 'rxjs'].reverse(),
+    }),
 
     ...CUSTOM_PLUGINS_PROD,
 
+  ];
+
+  return config;
+
+};
+
+const aotConfig = function () {
+
+  const config: WebpackConfig = {} as WebpackConfig;
+
+  config.plugins = [
+    new ngtools.AotPlugin({
+      tsConfigPath: './tsconfig.aot.json',
+      baseDir: root(`src`),
+      entryModule: root(`src/app/app.module`) + '#AppModule',
+    }),
   ];
 
   return config;
@@ -307,6 +373,12 @@ const defaultConfig = function () {
 };
 
 switch (ENV) { // it is the most simple logic
+  case 'prod':
+  case 'production':
+    module.exports = !isAot
+      ? webpackMerge.smart({}, defaultConfig(), commonConfig(), prodConfig())
+      : webpackMerge.smart({}, defaultConfig(), commonConfig(), prodConfig(), aotConfig());
+    break;
   case 'dev':
   case 'development':
   default:

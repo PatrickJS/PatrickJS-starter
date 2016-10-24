@@ -1,3 +1,16 @@
+/**
+ * @author: @AngularClass
+ */
+import {
+  root,
+} from './helpers.ts';
+
+export const EXCLUDE_SOURCEMAPS = [
+  // these packages have problems with their sourcemaps
+  root('node_modules/@angular'),
+  root('node_modules/rxjs'),
+];
+
 export const CUSTOM_COPY_FOLDERS = [
 
 ];

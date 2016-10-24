@@ -1,3 +1,4 @@
+export declare const EXCLUDE_SOURCEMAPS: any[];
 export declare const CUSTOM_COPY_FOLDERS: any[];
 export declare const CUSTOM_PLUGINS_COMMON: any[];
 export declare const CUSTOM_PLUGINS_PROD: any[];

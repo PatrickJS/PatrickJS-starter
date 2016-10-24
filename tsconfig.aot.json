@@ -11,7 +11,7 @@
     "noEmitHelpers": true,
     "strictNullChecks": false,
     "rootDir": "./src",
-    "outDir": "./dist",
+    "outDir": "./aot",
     "lib": [
       "dom",
       "es6"
