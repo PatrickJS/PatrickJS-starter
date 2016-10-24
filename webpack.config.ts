@@ -93,9 +93,7 @@ const commonConfig = function webpackConfig(): WebpackConfig {
       {
         enforce: 'pre',
         test: /\.ts$/,
-        loaders: [
-          'tslint',
-        ],
+        loader: 'tslint',
       },
       {
         test: /\.js$/,

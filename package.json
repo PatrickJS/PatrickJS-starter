@@ -47,7 +47,7 @@
     "server": "npm run server:dev",
     "start:hmr": "npm run server:dev:hmr",
     "start": "npm run server:dev",
-    "test": "karma start",
+    "test": "cross-env NODE_ENV=testing karma start",
     "tslint": "tslint",
     "typedoc": "typedoc",
     "version": "npm run build",
