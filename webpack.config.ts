@@ -1,4 +1,4 @@
-/* tslint:disable: variable-name max-line-length */
+/* tslint:disable: variable-name max-line-length no-var-requires no-unused-variable */
 /**
  * @author: @AngularClass
  */
@@ -6,18 +6,21 @@ import 'ts-helpers';
 
 import {
   CUSTOM_COPY_FOLDERS,
-  CUSTOM_COMMON_PLUGINS,
-  CUSTOM_COMMON_RULES,
   CUSTOM_DEV_SERVER_OPTIONS,
-  CUSTOM_DEV_PLUGINS,
-  CUSTOM_PROD_PLUGINS,
   HTML5_BASE_URL,
+  CUSTOM_RULES_COMMON,
+  CUSTOM_RULES_PROD,
+  CUSTOM_RULES_DEV,
+  CUSTOM_PLUGINS_COMMON,
+  CUSTOM_PLUGINS_DEV,
+  CUSTOM_PLUGINS_PROD,
 } from './config/env';
 
 import {
   root,
   isWebpackDevServer,
   hasProcessFlag,
+  tryDll,
 } from './config/helpers';
 
 import {
@@ -46,8 +49,9 @@ const webpackMerge = require('webpack-merge');
 
 const EVENT = process.env.npm_lifecycle_event;
 const ENV = process.env.NODE_ENV || 'development';
-const DEV_SERVER = isWebpackDevServer();
-const [SCOPE, TASK] = EVENT.split(/:/i) || 'build';
+
+const isDev = EVENT.includes('dev');
+const isDll = EVENT.includes('dll');
 
 const PORT = process.env.PORT ||
   ENV === 'development' ? 3000 : 8080;
@@ -63,7 +67,10 @@ const COPY_FOLDERS = [
 
 ];
 
-console.info(`${SCOPE}ing ${TASK} \u2192 ${ENV}`);
+if (!isDll
+  && isDev) { // if we not aim for creating dll
+  tryDll(['polyfills', 'vendors', 'rxjs']);
+}
 
 const commonConfig = function webpackConfig(): WebpackConfig {
 
@@ -72,9 +79,16 @@ const commonConfig = function webpackConfig(): WebpackConfig {
   config.module = {
     rules: [
       {
+        enforce: 'pre',
         test: /\.ts$/,
         loaders: [
-          '@angularclass/hmr-loader',
+          'tslint',
+        ],
+      },
+      {
+        test: /\.ts$/,
+        loaders: [
+          // '@angularclass/hmr-loader',
           'awesome-typescript-loader',
           'angular2-template-loader',
         ],
@@ -98,7 +112,7 @@ const commonConfig = function webpackConfig(): WebpackConfig {
         loader: 'file',
       },
 
-      ...CUSTOM_COMMON_RULES,
+      ...CUSTOM_RULES_COMMON,
 
     ],
 
@@ -111,8 +125,12 @@ const commonConfig = function webpackConfig(): WebpackConfig {
     ),
     new ProgressPlugin(),
     new ForkCheckerPlugin(),
+    new NamedModulesPlugin(),
+    new HtmlElementsPlugin({
+      headTags: head,
+    }),
 
-    ...CUSTOM_COMMON_PLUGINS,
+    ...CUSTOM_PLUGINS_COMMON,
 
   ];
 
@@ -134,13 +152,17 @@ const commonConfig = function webpackConfig(): WebpackConfig {
 
   return config;
 
-} ();
+};
 
 const devConfig = function () {
 
   const config: WebpackConfig = {} as WebpackConfig;
 
   config.devtool = 'cheap-module-source-map';
+
+  config.resolve = {
+    modules: [root(`src`), `node_modules`],
+  };
 
   config.entry = {
     main: [].concat(polyfills(), './src/main.browser', rxjs()),
@@ -153,16 +175,17 @@ const devConfig = function () {
     chunkFilename: '[id].chunk.js',
   };
 
+  COPY_FOLDERS.push({ from: `dll`, ignore: ['*.json'] });
+
   config.plugins = [
-    new NamedModulesPlugin(),
     new LoaderOptionsPlugin({
       debug: true,
       options: {
-        // tslint: {
-        //   emitErrors: false,
-        //   failOnHint: false,
-        //   resourcePath: SRC,
-        // },
+        tslint: {
+          emitErrors: false,
+          failOnHint: false,
+          resourcePath: `src`,
+        },
       },
     }),
     new DefinePlugin({
@@ -170,7 +193,6 @@ const devConfig = function () {
       'HMR': false,
       'process.env': JSON.stringify(process.env),
     }),
-    new NamedModulesPlugin(),
     // new HtmlWebpackPlugin({
     //   template: `${SRC}/index.html`,
     //   title: meta.title,
@@ -178,9 +200,6 @@ const devConfig = function () {
     //   metadata: Object.assign(meta, { baseUrl: BASE_URL }),
     //   inject: true,
     // }),
-    new HtmlElementsPlugin({
-      headTags: head,
-    }),
     new DllReferencePlugin({
       context: '.',
       manifest: require(`./dll/polyfills-manifest.json`),
@@ -195,26 +214,30 @@ const devConfig = function () {
     }),
     new HtmlWebpackPlugin({
       template: 'src/index.html',
+      meta: meta,
       inject: true,
     }),
-    new CopyWebpackPlugin(COPY_FOLDERS.concat([{ from: `dll`, ignore: ['*.json'] }])),
+    new CopyWebpackPlugin(COPY_FOLDERS),
 
-    ...CUSTOM_DEV_PLUGINS,
+    ...CUSTOM_PLUGINS_DEV,
 
   ];
 
-  if (DEV_SERVER) {
-    config.devServer = Object.assign({
-      contentBase: root(`src`),
-      historyApiFallback: true,
-      host: HOST,
-      port: PORT,
-    }, CUSTOM_DEV_SERVER_OPTIONS);
+  if (isWebpackDevServer) {
+    config.devServer = Object.assign(
+      {
+        contentBase: root(`src`),
+        historyApiFallback: true,
+        host: HOST,
+        port: PORT,
+      },
+      CUSTOM_DEV_SERVER_OPTIONS
+    );
   }
 
   return config;
 
-} ();
+};
 
 const dllConfig = function () {
 
@@ -242,11 +265,19 @@ const dllConfig = function () {
 
   return config;
 
-} ();
+};
 
-const prodConfig = function() {
+const prodConfig = function () {
 
   const config: WebpackConfig = {} as WebpackConfig;
+
+  config.module = {
+    rules: [
+
+      ...CUSTOM_RULES_PROD,
+
+    ],
+  };
 
   config.plugins = [
 
@@ -255,13 +286,13 @@ const prodConfig = function() {
     // }),
     // new DefinePlugin(CONSTANTS),
 
-    ...CUSTOM_PROD_PLUGINS
+    ...CUSTOM_PLUGINS_PROD,
 
   ];
 
   return config;
 
-} ();
+};
 
 const defaultConfig = function () {
 
@@ -273,28 +304,13 @@ const defaultConfig = function () {
 
   return config;
 
-} ();
+};
 
 switch (ENV) { // it is the most simple logic
   case 'dev':
   case 'development':
   default:
-    module.exports = webpackMerge({}, defaultConfig, commonConfig, devConfig);
+    module.exports = isDll
+      ? webpackMerge.smart({}, defaultConfig(), commonConfig(), dllConfig())
+      : webpackMerge.smart({}, defaultConfig(), commonConfig(), devConfig());
 }
-
-
-// // Look in ./config folder for webpack.dev.js
-// switch (process.env.NODE_ENV) {
-//   case 'prod':
-//   case 'production':
-//     module.exports = require('./config/webpack.prod')({env: 'production'});
-//     break;
-//   case 'test':
-//   case 'testing':
-//     module.exports = require('./config/webpack.test')({env: 'test'});
-//     break;
-//   case 'dev':
-//   case 'development':
-//   default:
-//     module.exports = require('./config/webpack.dev')({env: 'development'});
-// }

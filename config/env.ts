@@ -2,11 +2,35 @@ export const CUSTOM_COPY_FOLDERS = [
 
 ];
 
-export const CUSTOM_COMMON_PLUGINS = [
+export const CUSTOM_PLUGINS_COMMON = [
 
 ];
 
-export const CUSTOM_COMMON_RULES = [
+export const CUSTOM_PLUGINS_DEV = [
+
+];
+
+export const CUSTOM_PLUGINS_PROD = [
+
+];
+
+export const CUSTOM_RULES_COMMON = [
+
+];
+
+export const CUSTOM_RULES_DEV = [
+
+];
+
+export const CUSTOM_RULES_PROD = [
+
+];
+
+export const CUSTOM_DEV_RULES = [
+
+];
+
+export const CUSTOM_PROD_RULES = [
 
 ];
 

@@ -19,6 +19,20 @@ export function root(args) {
   return path.join.apply(path, [_root].concat(args));
 }
 
+export function tryDll(manifests) {
+  try {
+    manifests
+      .forEach(manifest => {
+        fs.accessSync(`dll/${manifest}-manifest.json`);
+      });
+  } catch (e) {
+    console.info(`Initializing Dll's`);
+    const spawn: any = require('cross-spawn');
+    spawn.sync('npm', ['run', 'dll'], { stdio: 'inherit' });
+    return true;
+  }
+}
+
 // function tryDll(cb) {
 //   try {
 //     return cb();
