@@ -22,6 +22,7 @@ import {
   isWebpackDevServer,
   hasProcessFlag,
   tryDll,
+  tryAot,
 } from './config/helpers';
 
 import {
@@ -65,7 +66,6 @@ const PORT = process.env.PORT ||
   ENV === 'development' ? 3000 : 8080;
 const HOST = process.env.HOST || 'localhost';
 
-
 const COPY_FOLDERS = [
   { from: `src/assets` },
   { from: `src/meta` },
@@ -76,9 +76,12 @@ const COPY_FOLDERS = [
 
 ];
 
-if (!isDll
-  && isDev) { // if we not aim for creating dll
+if (!isDll && isDev) { // if we not aim for creating dll
   tryDll(['polyfills', 'vendors', 'rxjs']);
+}
+
+if (!isDev && isAot) {
+  tryAot();
 }
 
 const commonConfig = function webpackConfig(): WebpackConfig {
@@ -221,6 +224,8 @@ const devConfig = function () {
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       meta: meta,
+      isDev: isDev,
+      isWebpackDevServer: isWebpackDevServer,
       inject: true,
     }),
     new CopyWebpackPlugin(COPY_FOLDERS),
@@ -237,7 +242,7 @@ const devConfig = function () {
         host: HOST,
         port: PORT,
       },
-      CUSTOM_DEV_SERVER_OPTIONS
+      CUSTOM_DEV_SERVER_OPTIONS,
     );
   }
 
@@ -334,6 +339,12 @@ const prodConfig = function () {
     }),
     new CommonsChunkPlugin({
       name: ['polyfills', 'vendors', 'rxjs'].reverse(),
+    }),
+    new CopyWebpackPlugin(COPY_FOLDERS),
+    new HtmlWebpackPlugin({
+      template: `src/index.html`,
+      meta: meta,
+      inject: true,
     }),
 
     ...CUSTOM_PLUGINS_PROD,

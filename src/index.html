@@ -27,12 +27,17 @@
   </app>
 
 
+  <% if (htmlWebpackPlugin.options.isWebpackDevServer) { %>
   <!-- Webpack Dev Server reload -->
   <script src="/webpack-dev-server.js"></script>
+  <% } %>
 
+  <% if (htmlWebpackPlugin.options.isDev) { %>
+  <!-- Webpack Dev Server reload -->
   <script src="/polyfills.dll.js"></script>
   <script src="/vendors.dll.js"></script>
   <script src="/rxjs.dll.js"></script>
+  <% } %>
 
 </body>
 </html>
