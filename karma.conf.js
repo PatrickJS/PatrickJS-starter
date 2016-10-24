@@ -54,12 +54,14 @@ module.exports = config => {
         modules: [path.resolve(__dirname, 'src'), 'node_modules']
       },
       module: {
-        rules: [{
-            enforce: 'pre',
-            test: /\.ts$/,
-            loader: 'tslint-loader',
-            exclude: [helpers.root('node_modules')]
-          }, {
+        rules: [
+          // {
+          //   enforce: 'pre',
+          //   test: /\.ts$/,
+          //   loader: 'tslint-loader',
+          //   exclude: [helpers.root('node_modules')]
+          // },
+          {
             enforce: 'pre',
             test: /\.js$/,
             loader: 'source-map-loader',
@@ -163,11 +165,11 @@ module.exports = config => {
       type: 'in-memory'
     },
 
-    remapCoverageReporter: {
-      'text-summary': null,
-      json: './coverage/coverage.json',
-      html: './coverage/html'
-    },
+    // remapCoverageReporter: {
+    //   'text-summary': null,
+    //   json: './coverage/coverage.json',
+    //   html: './coverage/html'
+    // },
 
     // Webpack please don't spam the console when running in karma!
     webpackMiddleware: {
@@ -180,7 +182,7 @@ module.exports = config => {
      * possible values: 'dots', 'progress'
      * available reporters: https://npmjs.org/browse/keyword/karma-reporter
      */
-    reporters: ['mocha', 'coverage', 'remap-coverage'],
+    reporters: ['mocha', 'coverage'],
 
     // web server port
     port: 9876,
@@ -201,9 +203,9 @@ module.exports = config => {
      * start these browsers
      * available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
      */
-    browsers: [
-      'Chrome'
-    ],
+    browsers: !process.env.TRAVIS
+      ? ['Chrome']
+      : ['ChromeTravisCi'],
 
     customLaunchers: {
       ChromeTravisCi: {
