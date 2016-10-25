@@ -31,7 +31,6 @@
     "use-pipe-transform-interface": true,
     // General
     "no-console": [true,
-      "log",
       "time",
       "timeEnd",
       "trace"

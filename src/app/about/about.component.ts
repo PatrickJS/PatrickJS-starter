@@ -10,7 +10,7 @@ import { OnInit } from '@angular/core';
 console.log('`About` component loaded asynchronously');
 
 @Component({
-  selector: 'about',
+  selector: 'my-about',
   styles: [`
   `],
   template: `
@@ -21,12 +21,12 @@ console.log('`About` component loaded asynchronously');
       </h3>
     </div>
     <pre>this.localState = {{ localState | json }}</pre>
-  `
+  `,
 })
 export class AboutComponent implements OnInit {
   public localState: any;
-  constructor(public route: ActivatedRoute) {
 
+  constructor(public route: ActivatedRoute) {
   }
 
   public ngOnInit() {

@@ -1,7 +1,5 @@
-import {
-  inject,
-  TestBed
-} from '@angular/core/testing';
+import { inject } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
 // Load the implementations that should be tested
 import { AppComponent } from './app.component';
@@ -12,7 +10,7 @@ describe('App', () => {
   beforeEach(() => TestBed.configureTestingModule({
     providers: [
       AppState,
-      AppComponent
+      AppComponent,
     ]}));
 
   it('should have a url', inject([ AppComponent ], (app: AppComponent) => {

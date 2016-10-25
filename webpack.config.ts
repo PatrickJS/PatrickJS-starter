@@ -35,16 +35,17 @@ import head from './config/head';
 import meta from './config/meta';
 
 const { ContextReplacementPlugin } = require('webpack');
-const { ProgressPlugin } = require('webpack');
 const { DefinePlugin } = require('webpack');
 const { DllPlugin } = require('webpack');
 const { DllReferencePlugin } = require('webpack');
 const { NoErrorsPlugin } = require('webpack');
-const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
+const { ProgressPlugin } = require('webpack');
+
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
-const DedupePlugin = require('webpack/lib/optimize/DedupePlugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
+const OccurrenceOrderPlugin = require('webpack/lib/optimize/OccurrenceOrderPlugin');
+const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 
 const { ForkCheckerPlugin } = require('awesome-typescript-loader');
 const CompressionPlugin = require('compression-webpack-plugin');
@@ -98,7 +99,7 @@ const commonConfig = function webpackConfig(): WebpackConfig {
       {
         test: /\.js$/,
         loader: 'source-map-loader',
-        exclude: [EXCLUDE_SOURCEMAPS]
+        exclude: [EXCLUDE_SOURCEMAPS],
       },
       {
         test: /\.ts$/,
@@ -152,10 +153,6 @@ const commonConfig = function webpackConfig(): WebpackConfig {
     ...CUSTOM_PLUGINS_COMMON,
 
   ];
-
-  // config.plugins.push(
-  //   new CopyWebpackPlugin(COPY_FOLDERS),
-  // );
 
   config.node = {
     Buffer: false,
@@ -315,15 +312,15 @@ const prodConfig = function () {
       // comments: true, //debug
 
 
-      beautify: false, //prod
+      beautify: false,
       mangle: {
         screw_ie8: true,
-        keep_fnames: true
-      }, //prod
+        keep_fnames: true,
+      },
       compress: {
-        screw_ie8: true
-      }, //prod
-      comments: false //prod
+        screw_ie8: true,
+      },
+      comments: false,
     }),
     new CompressionPlugin({
       asset: '[path].gz[query]',
@@ -353,22 +350,6 @@ const prodConfig = function () {
 
 };
 
-const aotConfig = function () {
-
-  const config: WebpackConfig = {} as WebpackConfig;
-
-  config.plugins = [
-    new ngtools.AotPlugin({
-      tsConfigPath: './tsconfig.aot.json',
-      baseDir: root(`src`),
-      entryModule: root(`src/app/app.module`) + '#AppModule',
-    }),
-  ];
-
-  return config;
-
-};
-
 const defaultConfig = function () {
 
   const config: WebpackConfig = {} as WebpackConfig;
@@ -390,6 +371,6 @@ switch (ENV) { // it is the most simple logic
   case 'development':
   default:
     module.exports = isDll
-      ? webpackMerge.smart({}, defaultConfig(), commonConfig(), dllConfig())
-      : webpackMerge.smart({}, defaultConfig(), commonConfig(), devConfig());
+      ? webpackMerge({}, defaultConfig(), commonConfig(), dllConfig())
+      : webpackMerge({}, defaultConfig(), commonConfig(), devConfig());
 }
