@@ -45,7 +45,6 @@ const LoaderOptionsPlugin     = require('webpack/lib/LoaderOptionsPlugin');
 const NamedModulesPlugin      = require('webpack/lib/NamedModulesPlugin');
 
 const CommonsChunkPlugin      = require('webpack/lib/optimize/CommonsChunkPlugin');
-const OccurrenceOrderPlugin   = require('webpack/lib/optimize/OccurrenceOrderPlugin');
 const MinChunkSizePlugin      = require('webpack/lib/optimize/MinChunkSizePlugin');
 
 const { ForkCheckerPlugin }   = require('awesome-typescript-loader');

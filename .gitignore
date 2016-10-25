@@ -47,14 +47,9 @@ npm-debug.log
 /src/*/dist/
 /dist/**
 .webpack.json
-.awcache
+/.awcache
 /dll
 /aot
-/src/**/*.js
-/src/**/*.js.map
-/src/**/*.ngfactory.ts
-/src/**/*.css.shim.ts
-/src/**/*.css.ts
 
 # Doc #
 /doc/
