@@ -18,6 +18,8 @@ const HtmlElementsPlugin = require('./html-elements-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+const OfflinePlugin = require('offline-plugin');
+const DashboardPlugin = require('webpack-dashboard/plugin');
 
 /*
  * Webpack Constants
@@ -268,6 +270,9 @@ module.exports = function (options) {
        */
       new LoaderOptionsPlugin({}),
 
+      new OfflinePlugin(),
+
+      new DashboardPlugin()
     ],
 
     /*
@@ -286,4 +291,4 @@ module.exports = function (options) {
     }
 
   };
-}
+};

@@ -38,7 +38,7 @@
     "protractor": "protractor",
     "rimraf": "rimraf",
     "server:dev:hmr": "npm run server:dev -- --inline --hot",
-    "server:dev": "webpack-dev-server --config config/webpack.dev.js --progress --profile --watch --content-base src/",
+    "server:dev": "webpack-dashboard -- webpack-dev-server --config config/webpack.dev.js --progress --profile --watch --content-base src/",
     "server:prod": "http-server dist --cors",
     "server": "npm run server:dev",
     "start:hmr": "npm run server:dev:hmr",
@@ -56,7 +56,7 @@
     "webdriver:start": "npm run webdriver-manager start",
     "webdriver:update": "npm run webdriver-manager update",
     "webpack-dev-server": "webpack-dev-server",
-    "webpack": "webpack"
+    "webpack": "webpack-dashboard"
   },
   "dependencies": {
     "@angular/common": "2.1.1",
@@ -108,6 +108,7 @@
     "karma-remap-coverage": "^0.1.1",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "1.8.0",
+    "offline-plugin": "^3.4.2",
     "parse5": "^2.2.2",
     "protractor": "^4.0.9",
     "raw-loader": "0.5.1",
@@ -125,6 +126,7 @@
     "typescript": "^2.0.6",
     "url-loader": "^0.5.7",
     "webpack": "2.1.0-beta.25",
+    "webpack-dashboard": "^0.1.8",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-dev-server": "^2.1.0-beta.9",
     "webpack-md5-hash": "^0.0.5",

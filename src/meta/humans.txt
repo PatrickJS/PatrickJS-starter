@@ -8,6 +8,7 @@
 # THANKS
 
   <name>
+  Luchillo -- @the_luchillo
   PatrickJS -- @gdi2290
   AngularClass -- @AngularClass
 
