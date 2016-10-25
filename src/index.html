@@ -5,9 +5,9 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title><%= htmlWebpackPlugin.options.title %></title>
+  <title><%= htmlWebpackPlugin.options.meta.title %></title>
 
-  <meta name="description" content="<%= htmlWebpackPlugin.options.title %>">
+  <meta name="description" content="<%= htmlWebpackPlugin.options.meta.title %>">
 
   <% if (webpackConfig.htmlElements.headTags) { %>
   <!-- Configured Head Tags  -->
@@ -15,33 +15,29 @@
   <% } %>
 
   <!-- base url -->
-  <base href="<%= htmlWebpackPlugin.options.metadata.baseUrl %>">
+  <base href="/">
 
 
 </head>
 
 <body>
 
-  <app>
+  <my-app>
     Loading...
-  </app>
+  </my-app>
 
-  <!-- Google Analytics: change UA-71073175-1 to be your site's ID -->
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-71073175-1', 'auto');
-    ga('send', 'pageview');
-  </script>
-
-  <% if (htmlWebpackPlugin.options.metadata.isDevServer && htmlWebpackPlugin.options.metadata.HMR !== true) { %>
+  <% if (htmlWebpackPlugin.options.isWebpackDevServer) { %>
   <!-- Webpack Dev Server reload -->
   <script src="/webpack-dev-server.js"></script>
   <% } %>
 
+  <% if (htmlWebpackPlugin.options.isDev) { %>
+  <!-- Webpack Dev Server reload -->
+  <script src="/polyfills.dll.js"></script>
+  <script src="/vendors.dll.js"></script>
+  <script src="/rxjs.dll.js"></script>
+  <% } %>
 
 </body>
 </html>

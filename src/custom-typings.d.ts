@@ -49,40 +49,39 @@ declare module '*';
 // Extra variables that live on Global that will be replaced by webpack DefinePlugin
 declare var ENV: string;
 declare var HMR: boolean;
-declare var System: SystemJS;
+declare var System: ISystemJS;
 
-interface SystemJS {
+interface ISystemJS {
   import: (path?: string) => Promise<any>;
 }
 
-interface GlobalEnvironment {
+interface IGlobalEnvironment {
   ENV: string;
   HMR: boolean;
-  SystemJS: SystemJS;
-  System: SystemJS;
+  SystemJS: ISystemJS;
+  System: ISystemJS;
 }
 
-interface Es6PromiseLoader {
+interface IEs6PromiseLoader {
   (id: string): (exportName?: string) => Promise<any>;
 }
 
-type FactoryEs6PromiseLoader = () => Es6PromiseLoader;
+type FactoryEs6PromiseLoader = () => IEs6PromiseLoader;
 type FactoryPromise = () => Promise<any>;
 
 type AsyncRoutes = {
-  [component: string]: Es6PromiseLoader |
-                               Function |
-                FactoryEs6PromiseLoader |
-                         FactoryPromise
+  [component: string]: IEs6PromiseLoader |
+  Function |
+  FactoryEs6PromiseLoader |
+  FactoryPromise,
 };
 
+type IdleCallbacks = IEs6PromiseLoader |
+  Function |
+  FactoryEs6PromiseLoader |
+  FactoryPromise;
 
-type IdleCallbacks = Es6PromiseLoader |
-                             Function |
-              FactoryEs6PromiseLoader |
-                       FactoryPromise ;
-
-interface WebpackModule {
+interface IWebpackModule {
   hot: {
     data?: any,
     idle: any,
@@ -98,26 +97,24 @@ interface WebpackModule {
   };
 }
 
-
-interface WebpackRequire {
-    (id: string): any;
-    (paths: string[], callback: (...modules: any[]) => void): void;
-    ensure(ids: string[], callback: (req: WebpackRequire) => void, chunkName?: string): void;
-    context(directory: string, useSubDirectories?: boolean, regExp?: RegExp): WebpackContext;
+interface IWebpackRequire {
+  (id: string): any;
+  (paths: string[], callback: (...modules: any[]) => void): void;
+  ensure(ids: string[], callback: (req: IWebpackRequire) => void, chunkName?: string): void;
+  context(directory: string, useSubDirectories?: boolean, regExp?: RegExp): IWebpackContext;
 }
 
-interface WebpackContext extends WebpackRequire {
-    keys(): string[];
+interface IWebpackContext extends IWebpackRequire {
+  keys(): string[];
 }
 
-interface ErrorStackTraceLimit {
+interface IErrorStackTraceLimit {
   stackTraceLimit: number;
 }
 
-
 // Extend typings
-interface NodeRequire extends WebpackRequire {}
-interface ErrorConstructor extends ErrorStackTraceLimit {}
-interface NodeRequireFunction extends Es6PromiseLoader  {}
-interface NodeModule extends WebpackModule {}
-interface Global extends GlobalEnvironment  {}
+interface INodeRequire extends IWebpackRequire { }
+interface IErrorConstructor extends IErrorStackTraceLimit { }
+interface INodeRequireFunction extends IEs6PromiseLoader { }
+interface INodeModule extends IWebpackModule { }
+interface IGlobal extends IGlobalEnvironment { }

@@ -1,7 +1,9 @@
 /*
  * Angular 2 decorators and services
  */
-import { Component, ViewEncapsulation } from '@angular/core';
+import { ViewEncapsulation } from '@angular/core';
+import { OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { AppState } from './app.service';
 
@@ -10,10 +12,10 @@ import { AppState } from './app.service';
  * Top Level Component
  */
 @Component({
-  selector: 'app',
+  selector: 'my-app',
   encapsulation: ViewEncapsulation.None,
   styleUrls: [
-    './app.component.css'
+    './app.component.css',
   ],
   template: `
     <nav>
@@ -56,19 +58,22 @@ import { AppState } from './app.service';
         </a>
       </div>
     </footer>
-  `
+  `,
 })
-export class AppComponent {
-  angularclassLogo = 'assets/img/angularclass-avatar.png';
-  name = 'Angular 2 Webpack Starter';
-  url = 'https://twitter.com/AngularClass';
+export class AppComponent implements OnInit {
+
+  public angularclassLogo = 'img/angularclass-avatar.png';
+  public name = 'Angular 2 Webpack Starter';
+  public url = 'https://twitter.com/AngularClass';
+  public appState;
 
   constructor(
-    public appState: AppState) {
-
+    appState: AppState,
+  ) {
+    this.appState = appState;
   }
 
-  ngOnInit() {
+  public ngOnInit() {
     console.log('Initial App State', this.appState.state);
   }
 

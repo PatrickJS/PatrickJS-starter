@@ -3,17 +3,16 @@ import { Http } from '@angular/http';
 
 @Injectable()
 export class Title {
-  value = 'Angular 2';
+  public value = 'Angular 2';
   constructor(public http: Http) {
-
   }
 
-  getData() {
+  public getData() {
     console.log('Title#getData(): Get Data');
     // return this.http.get('/assets/data.json')
     // .map(res => res.json());
     return {
-      value: 'AngularClass'
+      value: 'AngularClass',
     };
   }
 

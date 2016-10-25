@@ -1,18 +1,16 @@
 import { Component } from '@angular/core';
+import { OnInit } from '@angular/core';
 
 @Component({
-  selector: 'detail',
+  selector: 'my-detail',
   template: `
     <h1>Hello from Detail</h1>
     <router-outlet></router-outlet>
-  `
+  `,
 })
-export class DetailComponent {
-  constructor() {
+export class DetailComponent implements OnInit {
 
-  }
-
-  ngOnInit() {
+  public ngOnInit() {
     console.log('hello `Detail` component');
   }
 

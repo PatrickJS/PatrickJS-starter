@@ -1,0 +1,11 @@
+export declare const EXCLUDE_SOURCEMAPS: any[];
+export declare const CUSTOM_COPY_FOLDERS: any[];
+export declare const CUSTOM_PLUGINS_COMMON: any[];
+export declare const CUSTOM_PLUGINS_PROD: any[];
+export declare const CUSTOM_PLUGINS_DEV: any[];
+export declare const CUSTOM_DEV_SERVER_OPTIONS: any;
+export declare const CUSTOM_RULES_COMMON: any[];
+export declare const CUSTOM_RULES_DEV: any[];
+export declare const CUSTOM_RULES_PROD: any[];
+export declare const BASE_URL: string;
+export declare const CUSTOM_DEV_PLUGINS: any[];
