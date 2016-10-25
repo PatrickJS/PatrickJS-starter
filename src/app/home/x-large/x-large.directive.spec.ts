@@ -1,30 +1,25 @@
-import {
-  fakeAsync,
-  inject,
-  tick,
-  TestBed
-} from '@angular/core/testing';
+import { fakeAsync } from '@angular/core/testing';
+import { tick } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { Component } from '@angular/core';
-import { BaseRequestOptions, Http } from '@angular/http';
 import { By } from '@angular/platform-browser/src/dom/debug/by';
-import { MockBackend } from '@angular/http/testing';
 
 // Load the implementations that should be tested
-import { XLarge } from './x-large.directive';
+import { XLargeDirective } from './x-large.directive';
 
 describe('x-large directive', () => {
   // Create a test component to test directives
   @Component({
-    template: '<div x-large>Content</div>'
+    template: '<div myXLarge>Content</div>',
   })
   class TestComponent { }
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
-        XLarge,
-        TestComponent
-      ]
+        XLargeDirective,
+        TestComponent,
+      ],
     });
   });
 

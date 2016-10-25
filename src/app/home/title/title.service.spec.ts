@@ -1,13 +1,8 @@
-import {
-  inject,
-  TestBed
-} from '@angular/core/testing';
-import { Component } from '@angular/core';
-import {
-  BaseRequestOptions,
-  ConnectionBackend,
-  Http
-} from '@angular/http';
+import { inject } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
+import { BaseRequestOptions } from '@angular/http';
+import { ConnectionBackend } from '@angular/http';
+import { Http } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 
 import { Title } from './title.service';
@@ -22,9 +17,9 @@ describe('Title', () => {
         useFactory: function(backend: ConnectionBackend, defaultOptions: BaseRequestOptions) {
           return new Http(backend, defaultOptions);
         },
-        deps: [MockBackend, BaseRequestOptions]
+        deps: [MockBackend, BaseRequestOptions],
       },
-      Title
+      Title,
     ]}));
 
   it('should have http', inject([ Title ], (title: Title) => {

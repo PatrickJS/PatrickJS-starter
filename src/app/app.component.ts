@@ -65,10 +65,12 @@ export class AppComponent implements OnInit {
   public angularclassLogo = 'img/angularclass-avatar.png';
   public name = 'Angular 2 Webpack Starter';
   public url = 'https://twitter.com/AngularClass';
+  public appState;
 
   constructor(
-    public appState: AppState) {
-
+    appState: AppState,
+  ) {
+    this.appState = appState;
   }
 
   public ngOnInit() {
