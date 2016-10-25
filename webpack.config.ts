@@ -34,27 +34,28 @@ import {
 import head from './config/head';
 import meta from './config/meta';
 
-const { ContextReplacementPlugin } = require('webpack');
-const { DefinePlugin } = require('webpack');
-const { DllPlugin } = require('webpack');
-const { DllReferencePlugin } = require('webpack');
-const { NoErrorsPlugin } = require('webpack');
-const { ProgressPlugin } = require('webpack');
+const { ContextReplacementPlugin }  = require('webpack');
+const { DefinePlugin }        = require('webpack');
+const { DllPlugin }           = require('webpack');
+const { DllReferencePlugin }  = require('webpack');
+const { NoErrorsPlugin }      = require('webpack');
+const { ProgressPlugin }      = require('webpack');
 
-const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
-const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
-const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
-const OccurrenceOrderPlugin = require('webpack/lib/optimize/OccurrenceOrderPlugin');
-const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
+const LoaderOptionsPlugin     = require('webpack/lib/LoaderOptionsPlugin');
+const NamedModulesPlugin      = require('webpack/lib/NamedModulesPlugin');
 
-const { ForkCheckerPlugin } = require('awesome-typescript-loader');
-const CompressionPlugin = require('compression-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlElementsPlugin = require('./config/html-elements-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ngtools = require('@ngtools/webpack');
-const WebpackMd5Hash = require('webpack-md5-hash');
-const webpackMerge = require('webpack-merge');
+const CommonsChunkPlugin      = require('webpack/lib/optimize/CommonsChunkPlugin');
+const OccurrenceOrderPlugin   = require('webpack/lib/optimize/OccurrenceOrderPlugin');
+const MinChunkSizePlugin      = require('webpack/lib/optimize/MinChunkSizePlugin');
+
+const { ForkCheckerPlugin }   = require('awesome-typescript-loader');
+const CompressionPlugin       = require('compression-webpack-plugin');
+const CopyWebpackPlugin       = require('copy-webpack-plugin');
+const HtmlElementsPlugin      = require('./config/html-elements-plugin');
+const HtmlWebpackPlugin       = require('html-webpack-plugin');
+const ngtools                 = require('@ngtools/webpack');
+const WebpackMd5Hash          = require('webpack-md5-hash');
+const webpackMerge            = require('webpack-merge');
 
 const EVENT = process.env.npm_lifecycle_event;
 const ENV = process.env.NODE_ENV || 'development';
@@ -296,32 +297,6 @@ const prodConfig = function () {
   config.plugins = [
     // new NoErrorsPlugin(),
     new WebpackMd5Hash(),
-    new UglifyJsPlugin({
-      // beautify: true, //debug
-      // mangle: false, //debug
-      // dead_code: false, //debug
-      // unused: false, //debug
-      // deadCode: false, //debug
-      // compress: {
-      //   screw_ie8: true,
-      //   keep_fnames: true,
-      //   drop_debugger: false,
-      //   dead_code: false,
-      //   unused: false
-      // }, // debug
-      // comments: true, //debug
-
-
-      beautify: false,
-      mangle: {
-        screw_ie8: true,
-        keep_fnames: true,
-      },
-      compress: {
-        screw_ie8: true,
-      },
-      comments: false,
-    }),
     new CompressionPlugin({
       asset: '[path].gz[query]',
       algorithm: 'gzip',
@@ -334,6 +309,9 @@ const prodConfig = function () {
     }),
     new CommonsChunkPlugin({
       name: ['polyfills', 'vendors', 'rxjs'].reverse(),
+    }),
+    new MinChunkSizePlugin({
+      minChunkSize: 10000,
     }),
     new CopyWebpackPlugin(COPY_FOLDERS),
     new HtmlWebpackPlugin({
