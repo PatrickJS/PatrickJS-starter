@@ -1,0 +1,6 @@
+
+<h1>Login</h1>
+<p>
+	<button *ngIf="!isLogged" (click)="submitLogin()">login</button>
+	<button *ngIf="isLogged" (click)="submitLogout()">logout</button>
+</p>
