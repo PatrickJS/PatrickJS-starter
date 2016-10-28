@@ -105,7 +105,7 @@ angular2-webpack-starter/
  │   │
  |   ├──polyfills.ts           * our polyfills file
  │   │
- |   ├──vendor.ts              * our vendor file
+ |   ├──vendor.browser.ts      * our vendor file
  │   │
  │   ├──app/                   * WebApp: folder
  │   │   ├──app.spec.ts        * a simple test of components in app.ts
