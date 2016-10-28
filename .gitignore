@@ -1,4 +1,4 @@
-
+*.log
 /node_modules
 /typings
 /dist

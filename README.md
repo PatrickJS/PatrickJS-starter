@@ -5,7 +5,11 @@ forked from [angular2-webpack-starter](https://github.com/AngularClass/angular2-
 
 ```bash
 
-# Install
+# angular2 cli required
+npm install -g angular-cli
+
+
+# install
 npm install
 
 # run webpack dev server

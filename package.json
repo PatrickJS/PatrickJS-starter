@@ -1,22 +1,20 @@
 {
   "name": "angular2-electron-starter",
-  "version": "0.2.0",
-  "description": "Angular2 Electron Starter",
+  "version": "0.3.0",
+  "license": "MIT",
+  "angular-cli": {},
   "scripts": {
-    "start": "webpack-dev-server --inline --progress --port 8080",
-    "test": "karma start",
-    "build": "rimraf dist && webpack --config config/webpack.prod.js --progress --profile --bail",
-    "postinstall": "typings install",
+    "start": "ng serve",
+    "lint": "tslint \"src/**/*.ts\"",
+    "test": "ng test",
+    "pree2e": "webdriver-manager update",
+    "e2e": "protractor",
+    "build": "ng build",
     "prepare": "cp -a electron/. dist",
-    "electron": "prepare && electron dist",
+    "electron": "npm run prepare && electron dist",
     "package": "npm run build && npm run prepare && ./node_modules/electron-packager/cli.js dist App --platform=darwin --arch=all --out=dist-app --overwrite"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/angular/angular.io/blob/master/LICENSE"
-    }
-  ],
+  "private": true,
   "dependencies": {
     "@angular/common": "~2.1.0",
     "@angular/compiler": "~2.1.0",
@@ -28,35 +26,26 @@
     "@angular/router": "~3.1.0",
     "core-js": "^2.4.1",
     "rxjs": "5.0.0-beta.12",
-    "zone.js": "^0.6.25"
+    "ts-helpers": "^1.1.1",
+    "zone.js": "^0.6.23"
   },
   "devDependencies": {
-    "angular2-template-loader": "^0.4.0",
-    "awesome-typescript-loader": "^2.2.4",
-    "css-loader": "^0.23.1",
-    "electron": "^1.4.1",
+    "@types/jasmine": "^2.2.30",
+    "@types/node": "^6.0.42",
+    "angular-cli": "1.0.0-beta.18",
+    "codelyzer": "1.0.0-beta.1",
+    "electron": "^1.4.4",
     "electron-packager": "^8.1.0",
-    "extract-text-webpack-plugin": "^1.0.1",
-    "file-loader": "^0.8.5",
-    "html-loader": "^0.4.3",
-    "html-webpack-plugin": "^2.15.0",
-    "jasmine-core": "^2.4.1",
-    "karma": "^1.2.0",
+    "jasmine-core": "2.4.1",
+    "jasmine-spec-reporter": "2.5.0",
+    "karma": "1.2.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-cli": "^1.0.1",
     "karma-jasmine": "^1.0.2",
-    "karma-phantomjs-launcher": "^1.0.2",
-    "karma-sourcemap-loader": "^0.3.7",
-    "karma-webpack": "^1.8.0",
-    "node-sass": "^3.10.1",
-    "null-loader": "^0.1.1",
-    "phantomjs-prebuilt": "^2.1.7",
-    "raw-loader": "^0.5.1",
-    "rimraf": "^2.5.2",
-    "sass-loader": "^4.0.2",
-    "style-loader": "^0.13.1",
-    "typescript": "^2.0.2",
-    "typings": "^1.3.2",
-    "webpack": "^1.13.0",
-    "webpack-dev-server": "^1.14.1",
-    "webpack-merge": "^0.14.0"
+    "karma-remap-istanbul": "^0.2.1",
+    "protractor": "4.0.9",
+    "ts-node": "1.2.1",
+    "tslint": "3.13.0",
+    "typescript": "~2.0.3"
   }
 }

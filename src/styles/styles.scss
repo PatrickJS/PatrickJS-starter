@@ -1,0 +1,10 @@
+body {
+	font-family: sans-serif;
+	background: #448;
+	color: #fff;
+}
+a {
+	color: #fb0;
+	&:hover {text-decoration: none;}
+	&.active {text-decoration: none; color: #fd8;}
+}
