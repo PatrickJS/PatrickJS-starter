@@ -52,7 +52,6 @@ const CompressionPlugin       = require('compression-webpack-plugin');
 const CopyWebpackPlugin       = require('copy-webpack-plugin');
 const HtmlElementsPlugin      = require('./config/html-elements-plugin');
 const HtmlWebpackPlugin       = require('html-webpack-plugin');
-const ngtools                 = require('@ngtools/webpack');
 const WebpackMd5Hash          = require('webpack-md5-hash');
 const webpackMerge            = require('webpack-merge');
 
