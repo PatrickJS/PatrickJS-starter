@@ -34,26 +34,29 @@ import {
 import head from './config/head';
 import meta from './config/meta';
 
-const { ContextReplacementPlugin }  = require('webpack');
-const { DefinePlugin }        = require('webpack');
-const { DllPlugin }           = require('webpack');
-const { DllReferencePlugin }  = require('webpack');
-const { NoErrorsPlugin }      = require('webpack');
-const { ProgressPlugin }      = require('webpack');
+import { AotPlugin } from '@ngtools/webpack';
 
-const LoaderOptionsPlugin     = require('webpack/lib/LoaderOptionsPlugin');
-const NamedModulesPlugin      = require('webpack/lib/NamedModulesPlugin');
+const { ContextReplacementPlugin } = require('webpack');
+const { DefinePlugin } = require('webpack');
+const { DllPlugin } = require('webpack');
+const { DllReferencePlugin } = require('webpack');
+const { NoErrorsPlugin } = require('webpack');
+const { ProgressPlugin } = require('webpack');
 
-const CommonsChunkPlugin      = require('webpack/lib/optimize/CommonsChunkPlugin');
-const MinChunkSizePlugin      = require('webpack/lib/optimize/MinChunkSizePlugin');
+const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
+const NamedModulesPlugin  = require('webpack/lib/NamedModulesPlugin');
 
-const { ForkCheckerPlugin }   = require('awesome-typescript-loader');
-const CompressionPlugin       = require('compression-webpack-plugin');
-const CopyWebpackPlugin       = require('copy-webpack-plugin');
-const HtmlElementsPlugin      = require('./config/html-elements-plugin');
-const HtmlWebpackPlugin       = require('html-webpack-plugin');
-const WebpackMd5Hash          = require('webpack-md5-hash');
-const webpackMerge            = require('webpack-merge');
+const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
+const MinChunkSizePlugin = require('webpack/lib/optimize/MinChunkSizePlugin');
+const UglifyJsPlugin     = require('webpack/lib/optimize/UglifyJsPlugin');
+
+const { ForkCheckerPlugin } = require('awesome-typescript-loader');
+const CompressionPlugin = require('compression-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlElementsPlugin = require('./config/html-elements-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebpackMd5Hash = require('webpack-md5-hash');
+const webpackMerge = require('webpack-merge');
 
 const EVENT = process.env.npm_lifecycle_event;
 const ENV = process.env.NODE_ENV || 'development';
@@ -78,10 +81,6 @@ const COPY_FOLDERS = [
 
 if (!isDll && isDev) { // if we not aim for creating dll
   tryDll(['polyfills', 'vendors', 'rxjs']);
-}
-
-if (!isDev && isAot) {
-  tryAot();
 }
 
 const commonConfig = function webpackConfig(): WebpackConfig {
@@ -279,7 +278,7 @@ const prodConfig = function () {
   config.devtool = 'source-map';
 
   config.entry = {
-    main: !isAot ? `./src/main.browser` : `./src/main.browser.aot`,
+    main: `./src/main.browser`,
     polyfills: polyfills(),
     rxjs: rxjs(),
     vendors: vendors(),
@@ -311,6 +310,25 @@ const prodConfig = function () {
     new MinChunkSizePlugin({
       minChunkSize: 10000,
     }),
+    new UglifyJsPlugin({
+      beautify: false,
+      mangle: {
+        screw_ie8: true,
+        keep_fnames: true,
+      },
+      compress: {
+        screw_ie8: true,
+        sequences: true,
+        dead_code: true,
+        conditionals: true,
+        booleans: true,
+        unused: true,
+        if_return: true,
+        join_vars: true,
+        drop_console: true,
+      },
+      comments: false,
+    }),
     new CopyWebpackPlugin(COPY_FOLDERS),
     new HtmlWebpackPlugin({
       template: `src/index.html`,
@@ -321,6 +339,13 @@ const prodConfig = function () {
     ...CUSTOM_PLUGINS_PROD,
 
   ];
+
+  if (isAot) {
+    config.plugins.push(new AotPlugin({
+      tsConfigPath: 'tsconfig.json',
+      mainPath: 'src/main.browser.ts',
+    }));
+  }
 
   return config;
 

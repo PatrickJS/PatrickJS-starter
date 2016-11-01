@@ -22,6 +22,6 @@ export const routes = [
     RouterModule.forChild(routes),
   ],
 })
-export default class DetailModule {
+export class DetailModule {
   public static routes = routes;
 }
