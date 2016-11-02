@@ -102,9 +102,9 @@ const commonConfig = function webpackConfig(): WebpackConfig {
       {
         test: /\.ts$/,
         loaders: [
-          // '@angularclass/hmr-loader',
           'awesome-typescript-loader',
           'angular2-template-loader',
+          'angular2-router-loader'
         ],
         exclude: [/\.(spec|e2e)\.ts$/],
       },

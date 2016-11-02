@@ -9,7 +9,7 @@ const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
 const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 
-const ENV = process.env.NODE_ENV || 'production';
+const ENV = process.env.NODE_ENV || 'testing';
 
 module.exports = config => {
 
@@ -55,12 +55,12 @@ module.exports = config => {
       },
       module: {
         rules: [
-          // {
-          //   enforce: 'pre',
-          //   test: /\.ts$/,
-          //   loader: 'tslint-loader',
-          //   exclude: [helpers.root('node_modules')]
-          // },
+          {
+            enforce: 'pre',
+            test: /\.ts$/,
+            loader: 'tslint-loader',
+            exclude: [helpers.root('node_modules')]
+          },
           {
             enforce: 'pre',
             test: /\.js$/,
