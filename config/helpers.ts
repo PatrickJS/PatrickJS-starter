@@ -2,8 +2,8 @@
 /**
  * @author: @AngularClass
  */
-const path = require('path');
-const fs = require('fs');
+import * as path from 'path';
+import * as fs from 'fs';
 
 const _root = path.resolve(__dirname, '..');
 
@@ -25,13 +25,6 @@ export function tryDll(manifests) {
     .forEach(manifest => {
       fs.accessSync(`dll/${manifest}-manifest.json`);
     }), 'dll');
-}
-
-export function tryAot() {
-  toSpawn(() => ['aot']
-    .forEach(file => {
-      fs.accessSync(file);
-    }), 'aot');
 }
 
 export function toSpawn(cb, task) {

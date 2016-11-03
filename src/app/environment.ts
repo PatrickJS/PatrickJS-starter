@@ -30,5 +30,5 @@ if (ENV === 'production') {
 }
 
 export const ENV_PROVIDERS = [
-  ...PROVIDERS
+  ...PROVIDERS,
 ];

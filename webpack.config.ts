@@ -1,9 +1,34 @@
 /* tslint:disable: variable-name max-line-length no-var-requires no-unused-variable */
+
 /**
  * @author: @AngularClass
  */
 import 'ts-helpers';
+import {
+  ContextReplacementPlugin,
+  DllPlugin,
+  DllReferencePlugin,
+  DefinePlugin,
+  NoErrorsPlugin,
+  ProgressPlugin,
+} from 'webpack';
+import { AotPlugin } from '@ngtools/webpack';
+import { ForkCheckerPlugin } from 'awesome-typescript-loader';
+import * as LoaderOptionsPlugin from 'webpack/lib/LoaderOptionsPlugin';
 
+import * as CommonsChunkPlugin from 'webpack/lib/optimize/CommonsChunkPlugin';
+import * as MinChunkSizePlugin from 'webpack/lib/optimize/MinChunkSizePlugin';
+import * as NamedModulesPlugin from 'webpack/lib/NamedModulesPlugin';
+import * as UglifyJsPlugin from 'webpack/lib/optimize/UglifyJsPlugin';
+
+import * as CompressionPlugin from 'compression-webpack-plugin';
+import * as CopyWebpackPlugin from 'copy-webpack-plugin';
+import * as HtmlElementsPlugin from './config/html-elements-plugin';
+import * as HtmlWebpackPlugin from 'html-webpack-plugin';
+import * as WebpackMd5Hash from 'webpack-md5-hash';
+import * as webpackMerge from 'webpack-merge';
+
+// Configuration
 import {
   CUSTOM_COPY_FOLDERS,
   CUSTOM_DEV_SERVER_OPTIONS,
@@ -22,7 +47,6 @@ import {
   isWebpackDevServer,
   hasProcessFlag,
   tryDll,
-  tryAot,
 } from './config/helpers';
 
 import {
@@ -33,30 +57,6 @@ import {
 
 import head from './config/head';
 import meta from './config/meta';
-
-import { AotPlugin } from '@ngtools/webpack';
-
-const { ContextReplacementPlugin } = require('webpack');
-const { DefinePlugin } = require('webpack');
-const { DllPlugin } = require('webpack');
-const { DllReferencePlugin } = require('webpack');
-const { NoErrorsPlugin } = require('webpack');
-const { ProgressPlugin } = require('webpack');
-
-const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
-const NamedModulesPlugin  = require('webpack/lib/NamedModulesPlugin');
-
-const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
-const MinChunkSizePlugin = require('webpack/lib/optimize/MinChunkSizePlugin');
-const UglifyJsPlugin     = require('webpack/lib/optimize/UglifyJsPlugin');
-
-const { ForkCheckerPlugin } = require('awesome-typescript-loader');
-const CompressionPlugin = require('compression-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlElementsPlugin = require('./config/html-elements-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const WebpackMd5Hash = require('webpack-md5-hash');
-const webpackMerge = require('webpack-merge');
 
 const EVENT = process.env.npm_lifecycle_event;
 const ENV = process.env.NODE_ENV || 'development';
@@ -72,17 +72,19 @@ const HOST = process.env.HOST || 'localhost';
 const COPY_FOLDERS = [
   { from: `src/assets` },
   { from: `src/meta` },
-  // { from: 'node_modules/hammerjs/hammer.min.js' },
-  // { from: 'node_modules/hammerjs/hammer.min.js.map' },
+  { from: 'node_modules/hammerjs/hammer.min.js' },
+  { from: 'node_modules/hammerjs/hammer.min.js.map' },
 
   ...CUSTOM_COPY_FOLDERS,
 
 ];
 
-if (!isDll && isDev) { // if we not aim for creating dll
+// Dll
+if (!isDll && isDev) {
   tryDll(['polyfills', 'vendors', 'rxjs']);
 }
 
+// Common
 const commonConfig = function webpackConfig(): WebpackConfig {
 
   const config: WebpackConfig = {} as WebpackConfig;
@@ -104,7 +106,7 @@ const commonConfig = function webpackConfig(): WebpackConfig {
         loaders: [
           'awesome-typescript-loader',
           'angular2-template-loader',
-          'angular2-router-loader'
+          'angular2-router-loader',
         ],
         exclude: [/\.(spec|e2e)\.ts$/],
       },
@@ -137,16 +139,16 @@ const commonConfig = function webpackConfig(): WebpackConfig {
       /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
       root(`src`),
     ),
-    new ProgressPlugin(),
-    new ForkCheckerPlugin(),
-    new NamedModulesPlugin(),
-    new HtmlElementsPlugin({
-      headTags: head,
-    }),
     new DefinePlugin({
       'ENV': JSON.stringify(ENV),
       'process.env': JSON.stringify(process.env),
     }),
+    new ForkCheckerPlugin(),
+    new HtmlElementsPlugin({
+      headTags: head,
+    }),
+    new NamedModulesPlugin(),
+    new ProgressPlugin(),
 
     ...CUSTOM_PLUGINS_COMMON,
 
@@ -168,6 +170,7 @@ const commonConfig = function webpackConfig(): WebpackConfig {
 
 };
 
+// Development
 const devConfig = function () {
 
   const config: WebpackConfig = {} as WebpackConfig;
@@ -243,7 +246,8 @@ const devConfig = function () {
 
 };
 
-const dllConfig = function () {
+// Dll
+const dllConfig = () => {
 
   const config: WebpackConfig = {} as WebpackConfig;
 
@@ -271,7 +275,8 @@ const dllConfig = function () {
 
 };
 
-const prodConfig = function () {
+// Production
+const prodConfig = () => {
 
   const config: WebpackConfig = {} as WebpackConfig;
 
@@ -293,7 +298,9 @@ const prodConfig = function () {
 
   config.plugins = [
     // new NoErrorsPlugin(),
-    new WebpackMd5Hash(),
+    new CommonsChunkPlugin({
+      name: ['polyfills', 'vendors', 'rxjs'].reverse(),
+    }),
     new CompressionPlugin({
       asset: '[path].gz[query]',
       algorithm: 'gzip',
@@ -301,11 +308,14 @@ const prodConfig = function () {
       threshold: 10240,
       minRatio: 0.8,
     }),
+    new CopyWebpackPlugin(COPY_FOLDERS),
+    new HtmlWebpackPlugin({
+      template: `src/index.html`,
+      meta: meta,
+      inject: true,
+    }),
     new LoaderOptionsPlugin({
       debug: false,
-    }),
-    new CommonsChunkPlugin({
-      name: ['polyfills', 'vendors', 'rxjs'].reverse(),
     }),
     new MinChunkSizePlugin({
       minChunkSize: 10000,
@@ -329,12 +339,7 @@ const prodConfig = function () {
       },
       comments: false,
     }),
-    new CopyWebpackPlugin(COPY_FOLDERS),
-    new HtmlWebpackPlugin({
-      template: `src/index.html`,
-      meta: meta,
-      inject: true,
-    }),
+    new WebpackMd5Hash(),
 
     ...CUSTOM_PLUGINS_PROD,
 
@@ -351,7 +356,8 @@ const prodConfig = function () {
 
 };
 
-const defaultConfig = function () {
+// Default
+const defaultConfig = () => {
 
   const config: WebpackConfig = {} as WebpackConfig;
 
@@ -363,7 +369,8 @@ const defaultConfig = function () {
 
 };
 
-switch (ENV) { // it is the most simple logic
+// Webpack
+switch (ENV) {
   case 'prod':
   case 'production':
     module.exports = webpackMerge({}, defaultConfig(), commonConfig(), prodConfig());

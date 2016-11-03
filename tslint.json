@@ -35,7 +35,6 @@
       "timeEnd",
       "trace"
     ],
-    "label-undefined": true,
     "max-line-length": [
       true,
       100
