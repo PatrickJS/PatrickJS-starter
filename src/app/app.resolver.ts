@@ -9,6 +9,10 @@ import 'rxjs/add/observable/of';
 export class DataResolver implements Resolve<any> {
 
   public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    console.group(`Resolving`);
+    console.info(route, state);
+    console.groupEnd();
+
     return Observable.of({ res: 'I am data'});
   }
 }

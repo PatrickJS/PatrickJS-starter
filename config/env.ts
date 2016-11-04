@@ -61,5 +61,3 @@ export const CUSTOM_DEV_SERVER_OPTIONS = {
 export const CUSTOM_DEV_PLUGINS = [
 
 ];
-
-export const HTML5_BASE_URL = '/';

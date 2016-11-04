@@ -9,6 +9,8 @@
     "strictNullChecks": false,
     "skipDefaultLibCheck": true,
     "pretty": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "baseUrl": "./src",
     "typeRoots": [
       "node_modules/@types"

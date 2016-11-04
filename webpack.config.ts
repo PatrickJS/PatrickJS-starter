@@ -9,7 +9,7 @@ import {
   DllPlugin,
   DllReferencePlugin,
   DefinePlugin,
-  NoErrorsPlugin,
+  // NoErrorsPlugin,
   ProgressPlugin,
 } from 'webpack';
 import { AotPlugin } from '@ngtools/webpack';
@@ -32,10 +32,7 @@ import * as webpackMerge from 'webpack-merge';
 import {
   CUSTOM_COPY_FOLDERS,
   CUSTOM_DEV_SERVER_OPTIONS,
-  HTML5_BASE_URL,
   CUSTOM_RULES_COMMON,
-  CUSTOM_RULES_PROD,
-  CUSTOM_RULES_DEV,
   CUSTOM_PLUGINS_COMMON,
   CUSTOM_PLUGINS_DEV,
   CUSTOM_PLUGINS_PROD,
@@ -45,7 +42,6 @@ import {
 import {
   root,
   isWebpackDevServer,
-  hasProcessFlag,
   tryDll,
 } from './config/helpers';
 

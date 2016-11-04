@@ -3,7 +3,7 @@
  */
 
 // Polyfills
-export function polyfills(env?: any) {
+export function polyfills() {
   return [
     // 'ie-shim',
 
@@ -37,7 +37,7 @@ export function polyfills(env?: any) {
 }
 
 // Angular 2 and other Vendor imports
-export function vendors(env?: any) {
+export function vendors() {
   return [
     '@angular/platform-browser',
     '@angular/platform-browser-dynamic',
@@ -54,7 +54,7 @@ export function vendors(env?: any) {
 }
 
 // RxJS
-export function rxjs(env?: any) {
+export function rxjs() {
   return [
     'rxjs/Observable',
     'rxjs/Subscription',
