@@ -105,7 +105,7 @@ angular2-webpack-starter/
  │   │
  |   ├──polyfills.ts           * our polyfills file
  │   │
- |   ├──vendor.ts              * our vendor file
+ |   ├──vendor.browser.ts      * our vendor file
  │   │
  │   ├──app/                   * WebApp: folder
  │   │   ├──app.spec.ts        * a simple test of components in app.ts
@@ -146,7 +146,7 @@ Once you have those, you should install these globals with `npm install --global
 * `fork` this repo
 * `clone` your fork
 * `npm install webpack-dev-server rimraf webpack -g` to install required global dependencies
-* `npm install` to install all dependencies
+* `npm install` to install all dependencies or `yarn`
 * `npm run server` to start the dev server in another tab
 
 ## Running the app
