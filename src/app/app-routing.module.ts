@@ -5,8 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoggedInGuard } from '../services/logged-in.guard';
 import { UserService } from '../services/user';
 
-import { LoginComponent } from './login/login.component';
-import { AuthorizedComponent } from './authorized/authorized.component';
+import { LoginComponent } from './+login/login.component';
 
 const routes: Routes = [
   {
@@ -20,7 +19,7 @@ const routes: Routes = [
   },
   {
     path: 'authorized',
-    loadChildren: './authorized/authorized.module#AuthorizedModule',
+    loadChildren: './+authorized/authorized.module#AuthorizedModule',
     canActivate: [ LoggedInGuard ],
   },
 ];

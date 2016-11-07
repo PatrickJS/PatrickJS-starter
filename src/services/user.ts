@@ -13,9 +13,10 @@ export class UserService {
 
   login () {
     var self = this;
-    return this.http.get( 'http://google.com' )
-      .map(() => {
-        localStorage.setItem( 'auth_token', '123' );
+    return this.http.get( 'public/login.json' )
+      .map(resp => resp.json())
+      .map((resp) => {
+        localStorage.setItem( 'auth_token', resp.token );
         this.loggedIn = true;
         return true;
       })
