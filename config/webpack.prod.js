@@ -5,6 +5,7 @@
 const helpers = require('./helpers');
 const webpackMerge = require('webpack-merge'); // used to merge webpack configs
 const commonConfig = require('./webpack.common.js'); // the settings that are common to prod and dev
+const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 /**
  * Webpack Plugins
@@ -238,6 +239,14 @@ module.exports = function (env) {
 
         }
       }),
+
+      /**
+       * Plugin: Open Browser Plugin
+       * Description: Opens a new browser tab when Webpack loads.
+       *
+       * See: https://github.com/baldore/open-browser-webpack-plugin
+       */
+      new OpenBrowserPlugin({ url: 'http://localhost:3000' }),
 
     ],
 

@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 
+
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -16,7 +17,7 @@ import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
 import { AboutComponent } from './about';
-import { NoContentComponent } from './no-content';
+import { NoContentComponent } from './components/no-content';
 import { XLarge } from './home/x-large';
 
 // Application wide providers

@@ -1,7 +1,3 @@
-/**
- * @author: @AngularClass
- */
-
 const webpack = require('webpack');
 const helpers = require('./helpers');
 
@@ -24,7 +20,7 @@ const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
  */
 const HMR = helpers.hasProcessFlag('hot');
 const METADATA = {
-  title: 'Angular2 Webpack Starter by @gdi2290 from @AngularClass',
+  title: 'Angular2 Basic',
   baseUrl: '/',
   isDevServer: helpers.isWebpackDevServer()
 };
@@ -55,9 +51,9 @@ module.exports = function (options) {
      */
     entry: {
 
-      'polyfills': './src/polyfills.browser.ts',
-      'vendor': './src/vendor.browser.ts',
-      'main': './src/main.browser.ts'
+      'polyfills': './src/typings/polyfills.browser.ts',
+      'vendor': './src/typings/vendor.browser.ts',
+      'main': './src/typings/main.browser.ts'
 
     },
 

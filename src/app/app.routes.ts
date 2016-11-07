@@ -1,7 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home';
 import { AboutComponent } from './about';
-import { NoContentComponent } from './no-content';
+import { NoContentComponent } from './components/no-content/no-content.component.ts';
 
 import { DataResolver } from './app.resolver';
 
@@ -14,7 +14,6 @@ export const ROUTES: Routes = [
     path: 'detail', loadChildren: () => System.import('./+detail').then((comp: any) => {
       return comp.default;
     })
-    ,
   },
-  { path: '**',    component: NoContentComponent },
+  { path: '**',    component: NoContentComponent }
 ];
