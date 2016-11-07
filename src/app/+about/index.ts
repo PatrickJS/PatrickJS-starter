@@ -3,18 +3,18 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { DetailComponent } from './detail.component';
+import { AboutComponent } from './about.component';
 
-console.log('`Detail` bundle loaded asynchronously');
+console.log('`About` bundle loaded asynchronously');
 // async components must be named routes for WebpackAsyncRoute
 export const routes = [
-  { path: '', component: DetailComponent, pathMatch: 'full' }
+  { path: '', component: AboutComponent, pathMatch: 'full' }
 ];
 
 @NgModule({
   declarations: [
     // Components / Directives/ Pipes
-    DetailComponent
+    AboutComponent
   ],
   imports: [
     CommonModule,

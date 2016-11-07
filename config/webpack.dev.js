@@ -42,7 +42,6 @@ module.exports = function (options) {
      * See: https://github.com/webpack/docs/wiki/build-performance#sourcemaps
      */
     devtool: 'cheap-module-source-map',
-
     /**
      * Options affecting the output of the compilation.
      *
@@ -78,7 +77,7 @@ module.exports = function (options) {
        *
        * See: http://webpack.github.io/docs/configuration.html#output-chunkfilename
        */
-      chunkFilename: '[id].chunk.js',
+      chunkFilename: '[name].chunk.js',
 
       library: 'ac_[name]',
       libraryTarget: 'var',
