@@ -7,7 +7,7 @@ import 'ts-helpers';
 import {
   ContextReplacementPlugin,
   DllPlugin,
-  DllReferencePlugin,
+  // DllReferencePlugin,
   DefinePlugin,
   // NoErrorsPlugin,
   ProgressPlugin,
@@ -42,7 +42,7 @@ import {
 import {
   root,
   isWebpackDevServer,
-  tryDll,
+  // tryDll,
 } from './config/helpers';
 
 import {
@@ -76,9 +76,9 @@ const COPY_FOLDERS = [
 ];
 
 // Dll
-if (!isDll && isDev) {
+/* if (!isDll && isDev) {
   tryDll(['polyfills', 'vendors', 'rxjs']);
-}
+} */
 
 // Common
 const commonConfig = function webpackConfig(): WebpackConfig {
@@ -201,7 +201,7 @@ const devConfig = function () {
         },
       },
     }),
-    new DllReferencePlugin({
+    /*new DllReferencePlugin({
       context: '.',
       manifest: require(`./dll/polyfills-manifest.json`),
     }),
@@ -212,7 +212,7 @@ const devConfig = function () {
     new DllReferencePlugin({
       context: '.',
       manifest: require(`./dll/rxjs-manifest.json`),
-    }),
+    }),*/
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       meta: meta,
