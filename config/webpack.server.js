@@ -47,7 +47,11 @@ module.exports = function (options) {
     Buffer: false
   };
 
-  serverConfig.entry = './src/main.node';
+  serverConfig.entry = [
+    './src/polyfills.node',
+    './src/vendor.node',
+    './src/main.node'
+  ];
 
   serverConfig.output = {
     path: helpers.root('dist/server'),

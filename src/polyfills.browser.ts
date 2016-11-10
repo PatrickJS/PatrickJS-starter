@@ -4,6 +4,7 @@
 
 // import 'ie-shim'; // Internet Explorer 9 support
 
+import 'angular2-universal-polyfills';
 
 // import 'core-js/es6';
 // Added parts of es6 which are necessary for your project or your browser support requirements.

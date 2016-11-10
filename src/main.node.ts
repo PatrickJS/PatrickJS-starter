@@ -1,4 +1,3 @@
-import 'angular2-universal-polyfills';
 
 
 // Fix Universal Style
@@ -18,7 +17,7 @@ import * as cookieParser from 'cookie-parser';
 import { createEngine } from 'angular2-express-engine';
 
 // App
-import { AppModule } from './app/app.universal.module';
+import { AppModule } from './app/app.node.module';
 
 
 console.log('STARTING APP');
@@ -50,7 +49,7 @@ function ngApp(req, res) {
   res.render('index', {
     req,
     res,
-    preboot: false,
+    preboot: true,
     baseUrl: '/',
     requestUrl: req.originalUrl,
     originUrl: 'http://localhost:3000'
@@ -63,7 +62,7 @@ function indexFile(req, res) {
 */
 
 app.use('/assets', express.static(ASSETDIR, {maxAge: 30}));
-app.use(express.static(path.join(ROOT, 'client'), { index: false }));
+app.use(express.static(VIEWDIR, { index: false }));
 
 // Serve static files
 /*app.use(express.static(path.join(ROOT, 'assets'), { index: false }));
