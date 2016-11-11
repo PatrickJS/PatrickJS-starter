@@ -17,7 +17,7 @@ import { AppState } from './app.service';
     '../material2-app-theme.scss'
   ],
   template: `
-  <md-sidenav-layout [class.m2app-dark]="isDarkTheme">
+  <md-sidenav-layout class="webpack-starter" [class.m2app-dark]="isDarkTheme">
     <md-toolbar color="primary">
       <button md-icon-button [md-menu-trigger-for]="menu">
         <md-icon>more_vert</md-icon>

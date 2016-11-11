@@ -6,6 +6,7 @@ html, body{
 span.active {
   background-color: gray;
 }
-md-sidenav-layout.m2app-dark {
-  background: black;
+
+.webpack-starter md-card{
+  width: 300px;
 }

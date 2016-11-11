@@ -1,6 +1,5 @@
 <div class="app-content"s>
   <h1 x-large class="sample-content">Sample header</h1>
-
   <md-card color="primary">
     <md-card-title>Card with title</md-card-title>
     <md-card-content>
@@ -13,7 +12,8 @@
   <div>
     <h4>Local State</h4>
 
-    <form (ngSubmit)="submitState(localState.value)" autocomplete="off">
+    <md-card>
+      <form (ngSubmit)="submitState(localState.value)" autocomplete="off">
 
       <md-input
         [value]="localState.value"
@@ -23,6 +23,7 @@
 
       <button md-raised-button color="accent">Submit Value</button>
     </form>
+    </md-card>
     <!--
         <input type="text" [value]="localState.value" (input)="localState.value = $event.target.value" autofocus>
         Rather than wiring up two-way data-binding ourselves with [value] and (input)

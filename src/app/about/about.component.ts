@@ -14,16 +14,18 @@ console.log('`About` component loaded asynchronously');
   `],
   template: `
     <h1>About</h1>
-    <div>
+    <md-card>
       For hot module reloading run
       <pre>npm run start:hmr</pre>
-    </div>
-    <div>
+    </md-card>
+    <hr>
+    <md-card>
       <h3>
         patrick@AngularClass.com
       </h3>
-    </div>
-    <pre>this.localState = {{ localState | json }}</pre>
+    </md-card>
+    <hr>
+    <md-card><pre>this.localState = {{ localState | json }}</pre></md-card>
   `
 })
 export class AboutComponent {
