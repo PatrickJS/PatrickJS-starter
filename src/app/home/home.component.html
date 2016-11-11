@@ -1,17 +1,13 @@
-<div class="card-container">
-  <h1 x-large class="sample-content">Your Content Here</h1>
+<div class="app-content"s>
+  <h1 x-large class="sample-content">Sample header</h1>
 
-  <div>
-    For material design components use the <a href="https://github.com/AngularClass/angular2-webpack-starter/tree/material2"><b>material2</b></a> branch
-  </div>
-
-  <hr>
-
-  <div>
-    For hot module reloading run
-    <pre>npm run start:hmr</pre>
-  </div>
-
+  <md-card color="primary">
+    <md-card-title>Card with title</md-card-title>
+    <md-card-content>
+      For hot module reloading run
+      <pre>npm run start:hmr</pre>
+    </md-card-content>
+  </md-card>
   <hr>
 
   <div>
@@ -19,13 +15,13 @@
 
     <form (ngSubmit)="submitState(localState.value)" autocomplete="off">
 
-      <input
+      <md-input
         [value]="localState.value"
         (input)="localState.value = $event.target.value"
         placeholder="Submit Local State to App State"
-        autofocus>
+        autofocus></md-input>
 
-      <button md-raised-button color="primary">Submit Value</button>
+      <button md-raised-button color="accent">Submit Value</button>
     </form>
     <!--
         <input type="text" [value]="localState.value" (input)="localState.value = $event.target.value" autofocus>
