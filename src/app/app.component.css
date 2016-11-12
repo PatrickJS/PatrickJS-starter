@@ -10,3 +10,6 @@ span.active {
 .webpack-starter md-card{
   width: 300px;
 }
+.webpack-starter .wide-card{
+  width: 400px;
+}
