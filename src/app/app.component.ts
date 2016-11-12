@@ -14,7 +14,7 @@ import { AppState } from './app.service';
   encapsulation: ViewEncapsulation.None,
   styleUrls: [
     './app.component.css',
-    '../material2-app-theme.scss'
+    './theme.scss'
   ],
   template: `
   <md-sidenav-layout class="webpack-starter" [class.m2app-dark]="isDarkTheme">
@@ -43,7 +43,7 @@ import { AppState } from './app.service';
         <button color="accent" md-raised-button [routerLink]=" ['./about'] ">
           About
         </button>
-        <button md-raised-button color="warn" (click)="isDarkTheme = !isDarkTheme">TOGGLE DARK THEME</button>
+        <button md-raised-button color="warn" (click)="isDarkTheme = !isDarkTheme">TOGGLE THEME</button>
       </span>
     </md-toolbar>
 
