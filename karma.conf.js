@@ -161,18 +161,6 @@ module.exports = config => {
       }
     },
 
-    coverageReporter: {
-      dir: 'coverage',
-      reporters: [
-        // reporters not supporting the `file` property
-        { type: 'html', subdir: 'html' },
-      ]
-    },
-
-    remapCoverageReporter: {
-      html: './coverage/html',
-    },
-
     // Webpack please don't spam the console when running in karma!
     webpackMiddleware: {
       stats: 'errors-only'
@@ -184,7 +172,7 @@ module.exports = config => {
      * possible values: 'dots', 'progress'
      * available reporters: https://npmjs.org/browse/keyword/karma-reporter
      */
-    reporters: ['mocha', 'coverage'],
+    reporters: ['mocha'],
 
     // web server port
     port: 9876,
