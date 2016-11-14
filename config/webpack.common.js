@@ -51,9 +51,9 @@ module.exports = function (options) {
      */
     entry: {
 
-      'polyfills': './src/typings/polyfills.browser.ts',
-      'vendor': './src/typings/vendor.browser.ts',
-      'main': './src/typings/main.browser.ts'
+      'polyfills': './src/polyfills.browser.ts',
+      'vendor': './src/vendor.browser.ts',
+      'main': './src/main.browser.ts'
 
     },
 
@@ -95,7 +95,6 @@ module.exports = function (options) {
         {
           test: /\.ts$/,
           loaders: [
-            '@angularclass/hmr-loader?pretty=' + !isProd + '&prod=' + isProd,
             'awesome-typescript-loader',
             'angular2-template-loader'
           ],
@@ -112,6 +111,11 @@ module.exports = function (options) {
           loader: 'json-loader'
         },
 
+        {
+          test: /\.scss$/,
+          exclude: /node_modules/,
+          loaders: ['raw-loader', 'sass-loader']
+        },
         /*
          * to string and css loader support for *.css files
          * Returns file content as string

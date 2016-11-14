@@ -1,0 +1,31 @@
+$core-primary-color: #fc0d1b;
+$core-text-color: #8c8c8c;
+$core-link-color: $core-primary-color;
+$core-link-color--hover: #af5454;
+$core-nav-background: #eaeaea;
+
+$core-h1-size: 18px;
+$core-standard-padding: 10px;
+
+h1 {
+  font-size:  $core-h1-size;
+}
+
+.core-layout__nav{
+  background: $core-nav-background;
+  padding: $core-standard-padding;
+}
+
+.core-layout__nav__link{
+  color: $core-link-color;
+  padding: 0 $core-standard-padding;
+  text-decoration: none;
+}
+
+.core-layout__nav__link:hover {
+  color: $core-link-color--hover;
+}
+
+.core-layout__main{
+  padding: $core-standard-padding;
+}

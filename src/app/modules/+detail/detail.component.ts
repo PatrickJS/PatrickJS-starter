@@ -3,7 +3,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 @Component({
   selector: 'detail',
   templateUrl: './detail.component.html',
-  styleUrls: ['./detail.component.css'],
+  styleUrls: ['detail.component.scss'],
 })
 
 export class DetailComponent {

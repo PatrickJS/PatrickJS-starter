@@ -3,7 +3,7 @@ import { Component, Input, ViewEncapsulation, ChangeDetectionStrategy} from '@an
 @Component({
   selector: 'home-header',
   providers: [],
-  styleUrls: [ 'home-header.component.css' ],
+  styleUrls: [ 'home-header.component.scss' ],
   templateUrl: 'home-header.component.html',
   encapsulation: ViewEncapsulation.Native,
   changeDetection: ChangeDetectionStrategy.OnPush

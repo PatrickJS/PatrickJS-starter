@@ -15,6 +15,7 @@ const DefinePlugin = require('webpack/lib/DefinePlugin');
 const IgnorePlugin = require('webpack/lib/IgnorePlugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplacementPlugin');
+const OfflinePlugin = require('offline-plugin');
 const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
@@ -247,6 +248,8 @@ module.exports = function (env) {
        * See: https://github.com/baldore/open-browser-webpack-plugin
        */
       new OpenBrowserPlugin({ url: 'http://localhost:3000' }),
+
+      new OfflinePlugin()
 
     ],
 
