@@ -26,6 +26,8 @@ module.exports = {
     { rel: 'apple-touch-icon', sizes: '152x152', href: '/assets/icon/apple-icon-152x152.png' },
     { rel: 'apple-touch-icon', sizes: '180x180', href: '/assets/icon/apple-icon-180x180.png' },
 
+    { rel: 'stylesheet', href: '/assets/css/app.css' },
+
     /** <link> tags for android web app icons **/
     { rel: 'icon', type: 'image/png', sizes: '192x192', href: '/assets/icon/android-icon-192x192.png' },
 

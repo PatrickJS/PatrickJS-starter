@@ -7,7 +7,7 @@ describe('App', () => {
 
   it('should have a title', () => {
     let subject = browser.getTitle();
-    let result  = 'Angular2 Basic';
+    let result  = 'Angular2 Webpack Starter by @gdi2290 from @AngularClass';
     expect(subject).toEqual(result);
   });
 
@@ -18,7 +18,7 @@ describe('App', () => {
   });
 
   it('should have <home>', () => {
-    let subject = element(by.css('app home')).isPresent();
+    let subject = element(by.css('core home')).isPresent();
     let result  = true;
     expect(subject).toEqual(result);
   });
