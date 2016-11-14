@@ -3,9 +3,8 @@
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
-    "build:dev": "webpack --config config/webpack.dev.js --progress --profile",
     "build:pro": "webpack --config config/webpack.prod.js  --progress --profile --bail",
-    "build": "npm run build:dev",
+    "build": "npm run build:pro",
     "ci": "npm run lint && npm test && npm run e2e",
     "lint": "npm run tslint \"src/**/*.ts\"",
     "pree2e": "npm run webdriver:update -- --standalone",
