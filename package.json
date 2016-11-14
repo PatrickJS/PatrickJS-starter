@@ -111,7 +111,7 @@
     "karma-webpack": "1.8.0",
     "node-sass": "^3.11.2",
     "parse5": "^2.2.2",
-    "protractor": "^4.0.9",
+    "protractor": "4.0.9",
     "raw-loader": "^0.5.1",
     "rimraf": "^2.5.2",
     "sass-loader": "^4.0.2",
