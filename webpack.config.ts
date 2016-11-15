@@ -88,11 +88,6 @@ const commonConfig = function webpackConfig(): WebpackConfig {
   config.module = {
     rules: [
       {
-        enforce: 'pre',
-        test: /\.ts$/,
-        loader: 'tslint',
-      },
-      {
         test: /\.js$/,
         loader: 'source-map-loader',
         exclude: [EXCLUDE_SOURCEMAPS],
@@ -193,13 +188,6 @@ const devConfig = function () {
   config.plugins = [
     new LoaderOptionsPlugin({
       debug: true,
-      options: {
-        tslint: {
-          emitErrors: false,
-          failOnHint: false,
-          resourcePath: `src`,
-        },
-      },
     }),
     new DllReferencePlugin({
       context: '.',
