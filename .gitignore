@@ -2,6 +2,14 @@
 logs
 *.log
 
+.vscode/
+
+#aot dirs
+aot/
+dist-aot/
+
+yarn.lock
+
 # Runtime data
 pids
 *.pid

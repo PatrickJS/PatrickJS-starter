@@ -15,6 +15,6 @@ import { routes } from './detail.routes';
   ]
 })
 
-export default class AboutModule {
+export class DetailModule {
   static routes = routes;
 }

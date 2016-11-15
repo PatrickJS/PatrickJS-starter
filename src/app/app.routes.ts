@@ -16,9 +16,7 @@ export const ROUTES: Routes = [
     path: 'detail',
     canActivate: [AuthenticateGuard],
     canLoad: [AuthenticateGuard],
-    loadChildren: () => System.import('./modules/+detail').then((comp: any) => {
-      return comp.default;
-    })
-  },
+    loadChildren: './modules/+detail/detail.module#DetailModule'
+},
   { path: '**',    component: NoContentComponent },
 ];
