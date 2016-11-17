@@ -1,32 +1,40 @@
-<div class="card-container">
-  <h1 x-large class="sample-content">Your Content Here</h1>
-
-  <div>
-    For material design components use the <a href="https://github.com/AngularClass/angular2-webpack-starter/tree/material2"><b>material2</b></a> branch
-  </div>
-
+<div class="app-content"s>
+  <h1 x-large class="sample-content">Sample header</h1>
+  <md-card color="primary">
+    <md-card-title>Card with title</md-card-title>
+    <md-card-content>
+      For hot module reloading run
+      <pre>npm run start:hmr</pre>
+    </md-card-content>
+  </md-card>
   <hr>
-
-  <div>
-    For hot module reloading run
-    <pre>npm run start:hmr</pre>
-  </div>
-
-  <hr>
-
+  <md-card class="wide-card">
+    <md-card-subtitle>More info on Material Design</md-card-subtitle>
+    <md-card-content>
+      <ul>
+        <li><a href="https://github.com/angular/material2">Material2 repo</a></li>
+        <li><a href="https://github.com/angular/material2/blob/master/docs/theming.md">Theming (Note: theming is in beta)</a></li>
+        <li><a href="https://github.com/angular/material2/blob/master/docs/theming-your-components.md">Theming your components</a></li>
+        <li>For docs on specific components look in the folder for the component, eg: <a href="https://github.com/angular/material2/tree/master/src/lib/card">md-card folder</a></li>
+        <li><a href="https://github.com/jelbourn/material2-app">Example app</a></li>
+      </ul>
+    </md-card-content>
+  </md-card>
   <div>
     <h4>Local State</h4>
 
-    <form (ngSubmit)="submitState(localState.value)" autocomplete="off">
+    <md-card>
+      <form (ngSubmit)="submitState(localState.value)" autocomplete="off">
 
-      <input
+      <md-input
         [value]="localState.value"
         (input)="localState.value = $event.target.value"
         placeholder="Submit Local State to App State"
-        autofocus>
+        autofocus></md-input>
 
-      <button md-raised-button color="primary">Submit Value</button>
+      <button id="submit-button" md-raised-button color="accent">Submit Value</button>
     </form>
+    </md-card>
     <!--
         <input type="text" [value]="localState.value" (input)="localState.value = $event.target.value" autofocus>
         Rather than wiring up two-way data-binding ourselves with [value] and (input)

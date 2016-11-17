@@ -13,40 +13,45 @@ import { AppState } from './app.service';
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
   styleUrls: [
-    './app.component.css'
+    './app.component.css',
+    './theme.scss'
   ],
   template: `
-    <nav>
-      <span>
-        <a [routerLink]=" ['./'] ">
+  <md-sidenav-layout class="webpack-starter" [class.m2app-dark]="isDarkTheme">
+    <md-toolbar color="primary">
+      <button md-icon-button [md-menu-trigger-for]="menu">
+        <md-icon>more_vert</md-icon>
+      </button>
+      <md-menu #menu="mdMenu">
+        <button md-menu-item [routerLink]=" ['./'] "> Index </button>
+        <button md-menu-item [routerLink]=" ['./home'] ">
+          <md-icon> home </md-icon>
+          <span> Home </span>
+        </button>
+        <button md-menu-item disabled> Disabled option </button>
+      </md-menu>
+      <span class="right">
+        <button md-button [routerLink]=" ['./'] ">
           Index
-        </a>
-      </span>
-      |
-      <span>
-        <a [routerLink]=" ['./home'] ">
+        </button>
+        <button md-button [routerLink]=" ['./home'] ">
           Home
-        </a>
-      </span>
-      |
-      <span>
-        <a [routerLink]=" ['./detail'] ">
+        </button>
+        <button md-button [routerLink]=" ['./detail'] ">
           Detail
-        </a>
-      </span>
-      |
-      <span>
-        <a [routerLink]=" ['./about'] ">
+        </button>
+        <button color="accent" md-raised-button [routerLink]=" ['./about'] ">
           About
-        </a>
+        </button>
+        <button md-raised-button color="warn" (click)="isDarkTheme = !isDarkTheme">TOGGLE THEME</button>
       </span>
-    </nav>
+    </md-toolbar>
 
     <main>
       <router-outlet></router-outlet>
     </main>
 
-    <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
+    <md-card><pre class="app-state">this.appState.state = {{ appState.state | json }}</pre></md-card>
 
     <footer>
       <span>WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a></span>
@@ -56,12 +61,15 @@ import { AppState } from './app.service';
         </a>
       </div>
     </footer>
+    </md-sidenav-layout>
   `
 })
 export class AppComponent {
   angularclassLogo = 'assets/img/angularclass-avatar.png';
   name = 'Angular 2 Webpack Starter';
   url = 'https://twitter.com/AngularClass';
+
+  isDarkTheme: boolean = false;
 
   constructor(
     public appState: AppState) {

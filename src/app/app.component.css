@@ -6,3 +6,10 @@ html, body{
 span.active {
   background-color: gray;
 }
+
+.webpack-starter md-card{
+  width: 300px;
+}
+.webpack-starter .wide-card{
+  width: 400px;
+}
