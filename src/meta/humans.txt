@@ -1,0 +1,14 @@
+# humanstxt.org/
+
+# TEAM
+
+  <name> -- <role> -- <twitter>
+
+# THANKS
+
+  <name>
+
+# TECHNOLOGY
+
+  HTML5, CSS3
+  Angular2, TypeScript, Webpack

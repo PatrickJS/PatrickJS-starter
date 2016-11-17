@@ -1,0 +1,17 @@
+<section class="core-layout">
+  <nav class="core-layout__nav">
+    <span>
+      <a class="core-layout__nav__link" [routerLink]=" ['./home'] ">
+        Home
+      </a>
+    </span>
+    <span>
+      <a class="core-layout__nav__link" [routerLink]=" ['./detail'] ">
+        Detail
+      </a>
+    </span>
+  </nav>
+  <main class="core-layout__main">
+    <router-outlet></router-outlet>
+  </main>
+</section>
