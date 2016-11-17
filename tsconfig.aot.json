@@ -3,6 +3,7 @@
     "target": "es5",
     "module": "es2015",
     "moduleResolution": "node",
+<<<<<<< HEAD
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
@@ -36,9 +37,44 @@
   "buildOnSave": false,
   "atom": {
     "rewriteTsconfig": false
+=======
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "removeComments": true,
+    "noImplicitAny": false,
+    "suppressImplicitAnyIndexErrors": true,
+    "baseUrl": "./src",
+    "outDir": "dist-aot",
+    "typeRoots": [
+      "node_modules/@types/"
+    ]
+  },
+  "types": [
+    "es6",
+    "node"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "docs",
+    "config",
+    "dist-aot",
+    "src/**/*.e2e.ts",
+    "src/**/*.spec.ts"
+  ],
+  "awesomeTypescriptLoaderOptions": {
+    "useWebpackText": true,
+    "forkChecker": true,
+    "useCache": true
+>>>>>>> origin/develop
   },
   "angularCompilerOptions": {
     "genDir": "aot",
     "skipMetadataEmit": true
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/develop

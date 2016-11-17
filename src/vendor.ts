@@ -14,6 +14,11 @@ import 'rxjs/add/operator/map';
 
 if ('production' === ENV) {
   // Production
+<<<<<<< HEAD:src/vendor.ts
+=======
+  require('offline-plugin/runtime').install();
+
+>>>>>>> origin/develop:src/vendor.browser.ts
 } else {
   // Development
 }
