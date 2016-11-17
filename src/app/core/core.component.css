@@ -1,0 +1,23 @@
+
+h1 {
+  font-size:  18px;
+}
+
+.core-layout__nav{
+  background:  #eaeaea;
+  padding: 10px;
+}
+
+.core-layout__nav__link{
+  color: #FC0D1B;
+  padding: 0 10px;
+  text-decoration: none;
+}
+
+.core-layout__nav__link:hover {
+  color: #af5454;
+}
+
+.core-layout__main{
+  padding: 10px;
+}

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html 🆖>
+<html lang="">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -22,20 +22,10 @@
 
 <body>
 
-  <app>
-    Loading...
-  </app>
-
-  <!-- Google Analytics: change UA-71073175-1 to be your site's ID -->
-  <script>
-    (function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=r;A[l]=A[l]||function(){
-    (A[l].q=A[l].q||[]).push(arguments)},A[l].l=1*new Date();a=n.createElement(g),
-    r=n.getElementsByTagName(g)[0];a.async=1;a.src=u;r.parentNode.insertBefore(a,r)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-71073175-1', 'auto');
-    ga('send', 'pageview');
-  </script>
+  <app-core>
+    <style>.blob,.blobs{position:absolute;top:0;bottom:0;right:0;left:0}body{height:100%;overflow:hidden;}.blobs{-webkit-filter:url(#goo);filter:url(#goo)}.blob{margin:auto;width:50px;height:50px;border-radius:50%;background-color:#9F3B59}.blob:nth-child(1){animation:blob-left-anim cubic-bezier(.77,0,.175,1) 2s infinite}.blob:nth-child(2){animation:blob-right-anim cubic-bezier(.77,0,.175,1) 2s infinite}@keyframes blob-left-anim{0%,100%{transform:scale(1) translate(0,0)}33%{transform:scale(.5) translate(80px,0)}66%{transform:scale(.8) translate(0,0)}}@keyframes blob-right-anim{0%,100%{transform:scale(1) translate(0,0)}33%{transform:scale(.5) translate(-80px,0)}66%{transform:scale(.8) translate(0,0)}}h1{font-size: 18px;}.core-layout__nav{background: #eaeaea; padding: 10px;}.core-layout__nav__link{color: #FC0D1B; padding: 0 10px; text-decoration: none;}.core-layout__nav__link:hover{color: #af5454;}.core-layout__main{padding: 10px;}</style>
+    <section class="core-layout"> <nav class="core-layout__nav"> <span> <a class="core-layout__nav__link" [routerLink]=" ['./home'] "> Home </a> </span> <span> <a class="core-layout__nav__link" [routerLink]=" ['./detail'] "> Detail </a> </span> </nav> </section><div class="blobs"><div class="blob"></div><div class="blob"></div></div><svg version="1.1" xmlns="http://www.w3.org/2000/svg"><defs><filter id="goo"><feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"/><feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 18 -7" result="goo"/><feBlend in2="goo" in="SourceGraphic" result="mix"/></filter></defs></svg>
+  </app-core>
 
   <% if (htmlWebpackPlugin.options.metadata.isDevServer && htmlWebpackPlugin.options.metadata.HMR !== true) { %>
   <!-- Webpack Dev Server reload -->

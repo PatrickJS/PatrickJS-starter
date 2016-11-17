@@ -5,6 +5,7 @@
 const helpers = require('./helpers');
 const webpackMerge = require('webpack-merge'); // used to merge webpack configs
 const commonConfig = require('./webpack.common.js'); // the settings that are common to prod and dev
+const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 /**
  * Webpack Plugins
@@ -16,7 +17,7 @@ const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 /**
  * Webpack Constants
  */
-const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
+const ENV = 'development';
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3000;
 const HMR = helpers.hasProcessFlag('hot');
@@ -113,6 +114,14 @@ module.exports = function (options) {
        * See: https://github.com/webpack/webpack/commit/a04ffb928365b19feb75087c63f13cadfc08e1eb
        */
       new NamedModulesPlugin(),
+
+      /**
+       * Plugin: Open Browser Plugin
+       * Description: Opens a new browser tab when Webpack loads.
+       *
+       * See: https://github.com/baldore/open-browser-webpack-plugin
+       */
+      new OpenBrowserPlugin({ url: 'http://localhost:3000' }),
 
       /**
        * Plugin LoaderOptionsPlugin (experimental)

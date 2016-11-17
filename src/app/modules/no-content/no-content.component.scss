@@ -1,0 +1,15 @@
+.no-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  color: black;
+}
+
+.no-content__message {
+  color: blue;
+}
+
+
