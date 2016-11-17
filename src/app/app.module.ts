@@ -12,7 +12,6 @@ import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 // App is our top level component
 import { AppComponent } from './app.component';
 import { AppState } from './app.service';
-import { ENV_PROVIDERS } from './environment';
 import { HomeComponent } from './home';
 import { NoContentComponent } from './no-content';
 import { ROUTES } from './app.routes';
@@ -44,7 +43,6 @@ const APP_PROVIDERS = [
     RouterModule.forRoot(ROUTES, { useHash: true }),
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
-    ENV_PROVIDERS,
     APP_PROVIDERS,
   ],
   entryComponents: [
