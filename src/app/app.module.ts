@@ -19,8 +19,7 @@ import { ROUTES } from './app.routes';
 /** App is our top level component */
 import { CoreComponent } from './core';
 
-import { HomeComponent } from './modules/home';
-import { HomeHeaderComponent} from './modules/home/home-header'
+import { HomeModule } from './modules/home';
 
 import { NoContentComponent } from './modules/no-content';
 
@@ -29,15 +28,14 @@ import { NoContentComponent } from './modules/no-content';
   bootstrap: [ CoreComponent ],
   declarations: [
     CoreComponent,
-    HomeComponent,
-    NoContentComponent,
-    HomeHeaderComponent
+    NoContentComponent
   ],
   /** import Angular's modules and specify the lazyLoad modules preload strategy */
   imports: [
-      BrowserModule,
-  //  FormsModule,
-  //  HttpModule,
+    BrowserModule,
+    HomeModule,
+//  FormsModule,
+//  HttpModule,
     RouterModule.forRoot(ROUTES, {
       useHash: true
     })
@@ -46,10 +44,10 @@ import { NoContentComponent } from './modules/no-content';
   providers: [
     ENV_PROVIDERS,
     AuthenticateGuard
-  ],
-  entryComponents: [
-    HomeComponent
   ]
+  // entryComponents: [
+  //   HomeComponent
+  // ]
 })
 
 export class AppModule {
@@ -64,4 +62,3 @@ export class AppModule {
     }
   }
 }
-
