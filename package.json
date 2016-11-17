@@ -56,7 +56,6 @@
     "@types/hammerjs": "2.0.33",
     "@types/jasmine": "2.5.38",
     "@types/node": "6.0.48",
-    "@types/protractor": "4.0.0",
     "@types/selenium-webdriver": "2.53.35",
     "@types/source-map": "0.5.0",
     "@types/uglify-js": "2.6.28",
