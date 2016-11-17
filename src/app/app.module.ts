@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
 import { routes } from './app.routes';
 
-
 // Import material design module
 import { MaterialModule } from '@angular/material';
 import { MdSidenavModule } from '@angular/material';
