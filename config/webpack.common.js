@@ -10,6 +10,7 @@ const helpers = require('./helpers');
  */
 // problem with copy-webpack-plugin
 const AssetsPlugin = require('assets-webpack-plugin');
+const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplacementPlugin');
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -271,23 +272,23 @@ module.exports = function (options) {
       new LoaderOptionsPlugin({}),
 
       // Fix Angular 2
-      new webpack.NormalModuleReplacementPlugin(
+      new NormalModuleReplacementPlugin(
         /facade(\\|\/)async/,
         helpers.root('node_modules/@angular/core/src/facade/async.js')
       ),
-      new webpack.NormalModuleReplacementPlugin(
+      new NormalModuleReplacementPlugin(
         /facade(\\|\/)collection/,
         helpers.root('node_modules/@angular/core/src/facade/collection.js')
       ),
-      new webpack.NormalModuleReplacementPlugin(
+      new NormalModuleReplacementPlugin(
         /facade(\\|\/)errors/,
         helpers.root('node_modules/@angular/core/src/facade/errors.js')
       ),
-      new webpack.NormalModuleReplacementPlugin(
+      new NormalModuleReplacementPlugin(
         /facade(\\|\/)lang/,
         helpers.root('node_modules/@angular/core/src/facade/lang.js')
       ),
-      new webpack.NormalModuleReplacementPlugin(
+      new NormalModuleReplacementPlugin(
         /facade(\\|\/)math/,
         helpers.root('node_modules/@angular/core/src/facade/math.js')
       ),
