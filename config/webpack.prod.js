@@ -185,38 +185,38 @@ module.exports = function (env) {
         helpers.root('config/empty.js')
       ),
 
-      new webpack.NormalModuleReplacementPlugin(
+      new NormalModuleReplacementPlugin(
         /zone\.js(\\|\/)dist(\\|\/)long-stack-trace-zone/,
         helpers.root('config/empty.js')
       ),
 
 
       // AoT
-      // new webpack.NormalModuleReplacementPlugin(
+      // new NormalModuleReplacementPlugin(
       //   /@angular(\\|\/)upgrade/,
       //   helpers.root('config/empty.js')
       // ),
-      // new webpack.NormalModuleReplacementPlugin(
+      // new NormalModuleReplacementPlugin(
       //   /@angular(\\|\/)compiler/,
       //   helpers.root('config/empty.js')
       // ),
-      // new webpack.NormalModuleReplacementPlugin(
+      // new NormalModuleReplacementPlugin(
       //   /@angular(\\|\/)platform-browser-dynamic/,
       //   helpers.root('config/empty.js')
       // ),
-      // new webpack.NormalModuleReplacementPlugin(
+      // new NormalModuleReplacementPlugin(
       //   /dom(\\|\/)debug(\\|\/)ng_probe/,
       //   helpers.root('config/empty.js')
       // ),
-      // new webpack.NormalModuleReplacementPlugin(
+      // new NormalModuleReplacementPlugin(
       //   /dom(\\|\/)debug(\\|\/)by/,
       //   helpers.root('config/empty.js')
       // ),
-      // new webpack.NormalModuleReplacementPlugin(
+      // new NormalModuleReplacementPlugin(
       //   /src(\\|\/)debug(\\|\/)debug_node/,
       //   helpers.root('config/empty.js')
       // ),
-      // new webpack.NormalModuleReplacementPlugin(
+      // new NormalModuleReplacementPlugin(
       //   /src(\\|\/)debug(\\|\/)debug_renderer/,
       //   helpers.root('config/empty.js')
       // ),
