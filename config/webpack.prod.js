@@ -154,12 +154,12 @@ module.exports = function (env) {
         beautify: false, //prod
         output: {
           comments: false
-        },
+        }, //prod
         mangle: {
           screw_ie8: true
         }, //prod
         compress: {
-          screw_ie8: true
+          screw_ie8: true,
           warnings: false,
           conditionals: true,
           unused: true,
@@ -170,8 +170,7 @@ module.exports = function (env) {
           if_return: true,
           join_vars: true,
           negate_iife: false // we need this for lazy v8
-        }
-        comments: false //prod
+        },
       }),
 
       /**
