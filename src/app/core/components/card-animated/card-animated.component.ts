@@ -1,12 +1,11 @@
-import { Component, Input, ViewEncapsulation, ChangeDetectionStrategy} from '@angular/core';
+import { Component, Input, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'card-animated',
   providers: [],
   styleUrls: [ 'card-animated.component.scss' ],
   templateUrl: 'card-animated.component.html',
-  encapsulation: ViewEncapsulation.Native,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  encapsulation: ViewEncapsulation.None
 })
 
 export class CardAnimatedComponent {

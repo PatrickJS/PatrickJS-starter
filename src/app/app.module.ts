@@ -20,9 +20,8 @@ import { ENV_PROVIDERS } from './environment';
 import { ROUTES } from './app.routes';
 
 /** App is our top level component */
-
-import { HomeModule } from './modules/home';
-import { CoreComponent } from './core';
+import { CoreComponent, CoreModule } from './core';
+import { CardAnimatedComponent } from './core/components/card-animated';
 
 import { NoContentComponent } from './modules/no-content';
 
@@ -31,16 +30,16 @@ import { NoContentComponent } from './modules/no-content';
   bootstrap: [ CoreComponent ],
   declarations: [
     NoContentComponent,
-    CoreComponent
+    CoreComponent,
+    CardAnimatedComponent
   ],
   /** import Angular's modules and specify the lazyLoad modules preload strategy */
   imports: [
     BrowserModule,
-    HomeModule,
     MaterialModule.forRoot(),
-    // CoreModule,
 //  FormsModule,
 //  HttpModule,
+    CoreModule,
     RouterModule.forRoot(ROUTES, {
       useHash: true
     })
