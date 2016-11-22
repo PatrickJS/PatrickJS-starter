@@ -6,6 +6,9 @@ import { HomeComponent } from './home.component';
 import { HomeHeaderComponent } from './home-header';
 import { routes } from './home.routes';
 
+// Import material design module
+import { MaterialModule } from '@angular/material';
+
 @NgModule({
   declarations: [
     HomeComponent,
@@ -15,6 +18,7 @@ import { routes } from './home.routes';
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+    MaterialModule.forRoot()
   ]
 })
 

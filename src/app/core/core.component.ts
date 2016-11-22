@@ -10,7 +10,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 @Component({
   selector: 'app-core',
   encapsulation: ViewEncapsulation.None,
-  styleUrls: ['core.component.css'],
+  styleUrls: ['core.component.scss', 'core.theme.scss'],
   templateUrl: 'core.component.html'
 })
 

@@ -11,15 +11,18 @@ import { AuthenticateGuard } from './shared/services/auth.service';
 //import { FormsModule } from '@angular/forms';
 //import { HttpModule } from '@angular/http';
 
+// Import material design module
+import { MaterialModule } from '@angular/material';
+
 
 /** Platform and Environment providers/directives/pipes*/
 import { ENV_PROVIDERS } from './environment';
 import { ROUTES } from './app.routes';
 
 /** App is our top level component */
-import { CoreComponent } from './core';
 
 import { HomeModule } from './modules/home';
+import { CoreComponent } from './core';
 
 import { NoContentComponent } from './modules/no-content';
 
@@ -27,13 +30,15 @@ import { NoContentComponent } from './modules/no-content';
 @NgModule({
   bootstrap: [ CoreComponent ],
   declarations: [
-    CoreComponent,
-    NoContentComponent
+    NoContentComponent,
+    CoreComponent
   ],
   /** import Angular's modules and specify the lazyLoad modules preload strategy */
   imports: [
     BrowserModule,
     HomeModule,
+    MaterialModule.forRoot(),
+    // CoreModule,
 //  FormsModule,
 //  HttpModule,
     RouterModule.forRoot(ROUTES, {
