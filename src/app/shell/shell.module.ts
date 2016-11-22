@@ -1,20 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { routes } from './core.routes';
+import { routes } from './shell.routes';
 
 // Import material design module
 import { MaterialModule } from '@angular/material';
 
 import { CardAnimatedComponent } from './components/card-animated';
 import { HomeModule } from '../modules/home';
-import { CoreComponent } from './core.component'
+import { ShellComponent } from './shell.component'
 
 @NgModule({
-  // bootstrap: [ CoreComponent ],
+  // bootstrap: [ ShellComponent ],
   declarations: [
     CardAnimatedComponent,
-    CoreComponent
+    ShellComponent
   ],
   imports: [
     CommonModule,
@@ -24,6 +24,6 @@ import { CoreComponent } from './core.component'
   ]
 })
 
-export class CoreModule {
+export class ShellModule {
   static routes = routes;
 }

@@ -8,13 +8,13 @@ import { Component, ViewEncapsulation } from '@angular/core';
  * Top Level Component
  */
 @Component({
-  selector: 'app-core',
+  selector: 'app-shell',
   encapsulation: ViewEncapsulation.None,
-  styleUrls: ['core.component.scss', 'core.theme.scss'],
-  templateUrl: 'core.component.html',
+  styleUrls: ['shell.component.scss', 'shell.theme.scss'],
+  templateUrl: 'shell.component.html',
 })
 
-export class CoreComponent {
+export class ShellComponent {
   title: 'hello'
 
   constructor() {

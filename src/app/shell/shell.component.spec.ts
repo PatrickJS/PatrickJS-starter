@@ -4,16 +4,16 @@ import {
 } from '@angular/core/testing';
 
 // Load the implementations that should be tested
-import { CoreComponent } from './core.component';
+import { ShellComponent } from './shell.component';
 
 describe('App', () => {
   // provide our implementations or mocks to the dependency injector
   beforeEach(() => TestBed.configureTestingModule({
     providers: [
-      CoreComponent
+      ShellComponent
     ]}));
 
-  it('should have a url', inject([ CoreComponent ], (app: CoreComponent) => {
+  it('should have a url', inject([ ShellComponent ], (app: ShellComponent) => {
     expect(app.url).toEqual('https://twitter.com/AngularClass');
   }));
 

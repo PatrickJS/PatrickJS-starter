@@ -16,18 +16,18 @@ import { MaterialModule } from '@angular/material';
 
 
 /** Platform and Environment providers/directives/pipes*/
-import { ENV_PROVIDERS } from './environment';
+import { ENV_PROVIDERS } from './app.environment';
 import { ROUTES } from './app.routes';
 
 /** App is our top level component */
-import { CoreComponent, CoreModule } from './core';
-import { CardAnimatedComponent } from './core/components/card-animated';
+import { ShellComponent, ShellModule } from './shell';
+import { CardAnimatedComponent } from './shell/components/card-animated';
 
 import { NoContentComponent } from './modules/no-content';
 
 /** `AppModule` is the main entry point into Angular2's bootstraping process */
 @NgModule({
-  bootstrap: [ CoreComponent ],
+  bootstrap: [ ShellComponent ],
   declarations: [
     NoContentComponent,
   ],
@@ -37,7 +37,7 @@ import { NoContentComponent } from './modules/no-content';
     MaterialModule.forRoot(),
 //  FormsModule,
 //  HttpModule,
-    CoreModule,
+    ShellModule,
     RouterModule.forRoot(ROUTES, {
       useHash: true
     })
