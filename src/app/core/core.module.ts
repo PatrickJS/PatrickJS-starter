@@ -1,23 +1,29 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { routes } from './core.routes';
 
 // Import material design module
 import { MaterialModule } from '@angular/material';
 
-import { CardAnimatedModule, CardAnimatedComponent } from './components/card-animated';
+import { CardAnimatedComponent } from './components/card-animated';
 import { HomeModule } from '../modules/home';
+import { CoreComponent } from './core.component'
 
 @NgModule({
+  // bootstrap: [ CoreComponent ],
   declarations: [
-    CardAnimatedComponent
+    CardAnimatedComponent,
+    CoreComponent
   ],
   imports: [
     CommonModule,
     HomeModule,
-    CardAnimatedModule,
-    MaterialModule.forRoot()
+    RouterModule.forChild(routes),
+    MaterialModule.forRoot(),
   ]
 })
 
 export class CoreModule {
+  static routes = routes;
 }

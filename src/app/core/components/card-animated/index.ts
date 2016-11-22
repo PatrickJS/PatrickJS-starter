@@ -1,2 +1,2 @@
 export * from './card-animated.component';
-export * from './card-animated.module';
+// export * from './card-animated.module';
