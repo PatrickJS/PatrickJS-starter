@@ -31,7 +31,7 @@ import { NoContentComponent } from './modules/no-content';
   declarations: [
     NoContentComponent,
     CoreComponent,
-    CardAnimatedComponent
+    // CardAnimatedComponent
   ],
   /** import Angular's modules and specify the lazyLoad modules preload strategy */
   imports: [

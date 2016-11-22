@@ -4,16 +4,18 @@ import { NgModule } from '@angular/core';
 // Import material design module
 import { MaterialModule } from '@angular/material';
 
-// import { CardAnimatedComponent } from './components/card-animated';
+import { CardAnimatedModule, CardAnimatedComponent } from './components/card-animated';
 import { HomeModule } from '../modules/home';
 
 @NgModule({
   declarations: [
-    // CardAnimatedComponent
+    CardAnimatedComponent
   ],
   imports: [
     CommonModule,
-    HomeModule
+    HomeModule,
+    CardAnimatedModule,
+    MaterialModule.forRoot()
   ]
 })
 

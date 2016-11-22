@@ -8,10 +8,10 @@ import { CardAnimatedComponent } from './card-animated.component';
 
 @NgModule({
   declarations: [
-    CardAnimatedComponent,
+    // CardAnimatedComponent,
   ],
   exports: [
-    CardAnimatedComponent
+    // CardAnimatedComponent
   ],
   imports: [
     CommonModule,
@@ -20,5 +20,8 @@ import { CardAnimatedComponent } from './card-animated.component';
 })
 
 export class CardAnimatedModule {
+  
+  constructor() {
 
+  }
 }
