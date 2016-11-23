@@ -11,33 +11,33 @@ import { AuthenticateGuard } from './shared/services/auth.service';
 //import { FormsModule } from '@angular/forms';
 //import { HttpModule } from '@angular/http';
 
+// Import material design module
+import { MaterialModule } from '@angular/material';
+
 
 /** Platform and Environment providers/directives/pipes*/
-import { ENV_PROVIDERS } from './environment';
+import { ENV_PROVIDERS } from './app.environment';
 import { ROUTES } from './app.routes';
 
 /** App is our top level component */
-import { CoreComponent } from './core';
-
-import { HomeComponent } from './modules/home';
-import { HomeHeaderComponent} from './modules/home/home-header'
+import { ShellComponent, ShellModule } from './shell';
+import { CardAnimatedComponent } from './shell/components/card-animated';
 
 import { NoContentComponent } from './modules/no-content';
 
 /** `AppModule` is the main entry point into Angular2's bootstraping process */
 @NgModule({
-  bootstrap: [ CoreComponent ],
+  bootstrap: [ ShellComponent ],
   declarations: [
-    CoreComponent,
-    HomeComponent,
     NoContentComponent,
-    HomeHeaderComponent
   ],
   /** import Angular's modules and specify the lazyLoad modules preload strategy */
   imports: [
-      BrowserModule,
-  //  FormsModule,
-  //  HttpModule,
+    BrowserModule,
+    MaterialModule.forRoot(),
+//  FormsModule,
+//  HttpModule,
+    ShellModule,
     RouterModule.forRoot(ROUTES, {
       useHash: true
     })
@@ -46,10 +46,10 @@ import { NoContentComponent } from './modules/no-content';
   providers: [
     ENV_PROVIDERS,
     AuthenticateGuard
-  ],
-  entryComponents: [
-    HomeComponent
   ]
+  // entryComponents: [
+  //   HomeComponent
+  // ]
 })
 
 export class AppModule {
@@ -64,4 +64,3 @@ export class AppModule {
     }
   }
 }
-

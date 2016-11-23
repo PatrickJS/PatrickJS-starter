@@ -8,14 +8,14 @@ import { Component, ViewEncapsulation } from '@angular/core';
  * Top Level Component
  */
 @Component({
-  selector: 'app-core',
+  selector: 'app-shell',
   encapsulation: ViewEncapsulation.None,
-  styleUrls: ['core.component.css'],
-  templateUrl: 'core.component.html'
+  styleUrls: ['shell.component.scss', 'shell.theme.scss'],
+  templateUrl: 'shell.component.html',
 })
 
-export class CoreComponent {
-  name = 'Angular 2 Basic';
+export class ShellComponent {
+  title: 'hello'
 
   constructor() {
 

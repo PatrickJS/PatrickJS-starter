@@ -3,7 +3,7 @@
  */
 import { ViewEncapsulation } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { decorateModuleRef } from './app/environment';
+import { decorateModuleRef } from './app/app.environment';
 /*
  * App Module
  * our top level module that holds all of our components
