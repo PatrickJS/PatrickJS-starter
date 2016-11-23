@@ -6,7 +6,7 @@ import { RouterModule, PreloadAllModules, Router, NavigationEnd } from '@angular
 /** Angular Guard for module routes */
 import { AuthenticateGuard } from './shared/services/auth.service';
 
-/** Angular Modules commented. Use in case of need */
+/** Angular Modules commented. Use in case you need it */
 
 //import { FormsModule } from '@angular/forms';
 //import { HttpModule } from '@angular/http';
@@ -21,25 +21,18 @@ import { ROUTES } from './app.routes';
 
 /** App is our top level component */
 import { ShellComponent, ShellModule } from './shell';
-import { CardAnimatedComponent } from './shell/components/card-animated';
-
-import { NoContentComponent } from './modules/no-content';
 
 /** `AppModule` is the main entry point into Angular2's bootstraping process */
 @NgModule({
   bootstrap: [ ShellComponent ],
-  declarations: [
-    NoContentComponent,
-  ],
   /** import Angular's modules and specify the lazyLoad modules preload strategy */
   imports: [
     BrowserModule,
     MaterialModule.forRoot(),
-//  FormsModule,
-//  HttpModule,
     ShellModule,
     RouterModule.forRoot(ROUTES, {
-      useHash: true
+      useHash: true,
+      preloadingStrategy: PreloadAllModules
     })
   ],
   /** expose our Services and Providers into Angular's dependency injection*/
@@ -47,9 +40,6 @@ import { NoContentComponent } from './modules/no-content';
     ENV_PROVIDERS,
     AuthenticateGuard
   ]
-  // entryComponents: [
-  //   HomeComponent
-  // ]
 })
 
 export class AppModule {
