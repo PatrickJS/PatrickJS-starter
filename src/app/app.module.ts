@@ -21,18 +21,22 @@ import { ROUTES } from './app.routes';
 
 /** App is our top level component */
 import { ShellComponent, ShellModule } from './shell';
+import { NoContentComponent } from './shared/components/no-content/no-content.component';
 
 /** `AppModule` is the main entry point into Angular2's bootstraping process */
 @NgModule({
   bootstrap: [ ShellComponent ],
+  declarations: [
+    NoContentComponent
+  ],
   /** import Angular's modules and specify the lazyLoad modules preload strategy */
   imports: [
     BrowserModule,
     MaterialModule.forRoot(),
     ShellModule,
     RouterModule.forRoot(ROUTES, {
-      useHash: true,
-      preloadingStrategy: PreloadAllModules
+      useHash: true
+      //,preloadingStrategy: PreloadAllModules
     })
   ],
   /** expose our Services and Providers into Angular's dependency injection*/

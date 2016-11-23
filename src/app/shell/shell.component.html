@@ -4,7 +4,8 @@
     <h1> Side Menu </h1>
     <md-nav-list>
         <a md-list-item [routerLink]=" ['./home'] " >Home</a>
-        <a md-list-item [routerLink]=" ['./detail'] " >Detail</a>
+        <a md-list-item [routerLink]=" ['./about'] " >About</a>
+        <a md-list-item [routerLink]=" ['./nopagefound'] " >No page found</a>
     </md-nav-list>
   </md-sidenav>
 
@@ -20,7 +21,9 @@
     <button md-button (click)="isDarkTheme = !isDarkTheme">TOGGLE DARK THEME</button>
   </md-toolbar>
   <main class="core-layout__main">
+
     <router-outlet></router-outlet>
+  
   </main>
 
 </md-sidenav-layout>

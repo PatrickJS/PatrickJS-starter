@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { AuthenticateGuard } from './shared/services/auth.service';
+import { NoContentComponent } from './shared/components/no-content/no-content.component';
 
 
 export const ROUTES: Routes = [
@@ -23,6 +24,7 @@ export const ROUTES: Routes = [
   },
   { 
     path: '**', 
-    loadChildren: './modules/+no-content/no-content.module#NoContentModule'
+    component: NoContentComponent
   }
+  
 ];
