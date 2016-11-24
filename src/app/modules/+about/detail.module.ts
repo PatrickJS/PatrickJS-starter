@@ -4,10 +4,12 @@ import { RouterModule } from '@angular/router';
 
 import { DetailComponent } from './detail.component';
 import { routes } from './detail.routes';
+import { FsDialogComponent } from '../../shared/components/fs-dialog';
 
 @NgModule({
   declarations: [
-    DetailComponent
+    DetailComponent,
+    FsDialogComponent
   ],
   imports: [
     CommonModule,

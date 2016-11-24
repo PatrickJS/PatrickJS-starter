@@ -1,15 +1,15 @@
 import { Component, Input, ViewEncapsulation, ChangeDetectionStrategy} from '@angular/core';
 
 @Component({
-  selector: 'card-animated',
+  selector: 'fs-dialog',
   providers: [],
-  styleUrls: [ 'card-animated.component.scss' ],
-  templateUrl: 'card-animated.component.html',
-  encapsulation: ViewEncapsulation.Native,
+  styleUrls: [ 'fs-dialog.component.scss' ],
+  templateUrl: 'fs-dialog.component.html',
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class CardAnimatedComponent {
+export class FsDialogComponent {
   @Input() title: string;
   counter: number;
 

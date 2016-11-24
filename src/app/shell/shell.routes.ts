@@ -1,5 +1,7 @@
-import { ShellComponent } from './shell.component';
+import { Routes } from '@angular/router';
+import { NoContentComponent } from './components/no-content';
 
-export const routes = [
-  { path: '', component: ShellComponent}
+export const routes: Routes = [
+    // default Route for our app
+   
 ];
