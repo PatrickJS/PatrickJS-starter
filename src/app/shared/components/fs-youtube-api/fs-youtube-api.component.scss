@@ -1,0 +1,59 @@
+fs-youtube-api {
+  * {
+    box-sizing: border-box;
+  }
+  md-card {
+    margin: 1em;
+    background: 0 0;
+    box-shadow: 0 0 0;
+    >div {
+      margin: 0em 1em;
+      .content {
+        padding: 1em;
+        display: flex;
+        flex-direction: row;
+        position: relative;
+
+        div {
+          flex: 1;
+          display: flex;
+          justify-content: center;
+        }
+        p {
+          flex: 1;
+        }
+        .showMore {
+          position: absolute;
+          bottom: 14px;
+          right: 14px;
+        }
+      }
+    }
+    &:hover {
+      box-shadow: 0 0 0;
+    }
+    .defaultCard {
+      transition: all 0.3s ease;
+      // max-height: 1.5em;
+      padding: 1.5em;
+      background: white;
+      position: relative;
+      box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.3);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      .title {
+        background: white;
+        font-size: 0.9em;
+        font-weight: bold;
+        // position: absolute;
+        // top: 50%;
+        // transform: translate(0%,-50%);
+      }
+    }
+    .showCard {
+      max-height: 2000px;
+      height: auto;
+      margin: 1em -1em 1em;
+      background: white;
+    }
+  }
+}
