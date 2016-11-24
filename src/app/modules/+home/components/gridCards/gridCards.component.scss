@@ -1,0 +1,29 @@
+.flex-container {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+.flex-item {
+  position: absolute;
+  border: 1px solid black;
+  width: 28%;
+  min-width: 200px;
+  height: 100px;
+  margin-top: 10px;
+}
+
+md-card {
+    position: relative;
+    width: 100%;
+}

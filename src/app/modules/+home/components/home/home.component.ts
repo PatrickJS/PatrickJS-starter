@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Feature } from '../../services/features/feature';
+import { FeaturesService } from '../../services/features/features.service.ts';
 
 @Component({
   // The selector is what angular internally uses
@@ -7,6 +9,7 @@ import { Component } from '@angular/core';
   selector: 'home',  // <home></home>
   // We need to tell Angular's Dependency Injection which providers are in our core.
   providers: [
+    FeaturesService
   ],
   // Our list of styles in our component. We may add more to compose many styles together
   styleUrls: [ './home.component.scss' ],
@@ -15,13 +18,17 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
   // Set our default values
-  name: string;
+  features: Feature[];
+  rowHeight: string = '200px';
 
-  // TypeScript public modifiers
-  constructor() {}
+  constructor(private featuresService: FeaturesService) {
+    console.log('out home');
+   }
 
   ngOnInit() {
-    this.name = "World";
+    this.features = this.featuresService.getFeatures();
+    console.log(this.features);
+    console.log('on init home');
   }
 
 }
