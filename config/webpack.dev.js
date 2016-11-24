@@ -163,8 +163,8 @@ module.exports = function (options) {
       historyApiFallback: true,
       watchOptions: {
         aggregateTimeout: 300,
-        poll: true,
-        ignore: /node_modules/
+        poll: 1000,
+        ignored: /node_modules/
       },
       outputPath: helpers.root('dist')
     },

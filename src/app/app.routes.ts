@@ -1,23 +1,30 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './modules/home';
-import { NoContentComponent } from './modules/no-content';
 import { AuthenticateGuard } from './shared/services/auth.service';
-import { CoreComponent } from './core';
+import { NoContentComponent } from './shared/components/no-content/no-content.component';
+
 
 export const ROUTES: Routes = [
   {
     path: '',
-    component: HomeComponent
+    canActivate: [AuthenticateGuard],
+    canLoad: [AuthenticateGuard],
+    loadChildren: './modules/+home/home.module#HomeModule'
   },
   {
     path: 'home',
-    component: HomeComponent
-  },
-  {
-    path: 'detail',
     canActivate: [AuthenticateGuard],
     canLoad: [AuthenticateGuard],
-    loadChildren: './modules/+detail/detail.module#DetailModule'
-},
-  { path: '**',    component: NoContentComponent },
+    loadChildren: './modules/+home/home.module#HomeModule'
+  },
+  {
+    path: 'about',
+    canActivate: [AuthenticateGuard],
+    canLoad: [AuthenticateGuard],
+    loadChildren: './modules/+about/detail.module#DetailModule'
+  },
+  { 
+    path: '**', 
+    component: NoContentComponent
+  }
+  
 ];
