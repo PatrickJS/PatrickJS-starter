@@ -1,6 +1,10 @@
 <md-card>
+
   <h3>Youtube API Example</h3>
-  <div *ngFor="let item of dataYoutube; let i = index;" >
+
+  <input type="text" [value]="searchString" (input)="searchString = $event.target.value" placeholder="Buscar"/>
+
+  <div *ngFor="let item of dataYoutube | fsYoutubeApiPipeFilterSearch:searchString; let i = index" >
     <div  *ngIf="item.id.videoId" class="defaultCard" [class.showCard]="item.show">
       <div class="title" (click)="item.show = !item.show">
 

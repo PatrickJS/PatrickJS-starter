@@ -14,7 +14,8 @@ import { FsYoutubeAPIService } from './fs-youtube-api.service.ts';
 
 export class FsYoutubeAPIComponent implements OnInit {
   @Input() title: string;
-  dataYoutube : Array<any>;
+  dataYoutube: Array<any>;
+  searchString: string = '';
 
   constructor(private fsyoutubeapiservice: FsYoutubeAPIService, private _ngZone: NgZone, private lc: ApplicationRef) {
     // this.name = 'hola';

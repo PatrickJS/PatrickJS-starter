@@ -6,6 +6,9 @@ fs-youtube-api {
     margin: 1em;
     background: 0 0;
     box-shadow: 0 0 0;
+    input {
+      margin: 1em;
+    }
     >div {
       margin: 0em 1em;
       .content {
@@ -44,6 +47,7 @@ fs-youtube-api {
         background: white;
         font-size: 0.9em;
         font-weight: bold;
+        cursor: pointer;
         // position: absolute;
         // top: 50%;
         // transform: translate(0%,-50%);
