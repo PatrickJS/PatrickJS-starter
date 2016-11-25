@@ -14,11 +14,11 @@ let _decorateModuleRef = function identity<T>(value: T): T { return value; };
 
 if ('production' === ENV) {
   enableProdMode();
-  
+
   // Production
   _decorateModuleRef = (modRef: any) => {
     disableDebugTools();
-    
+
     return modRef;
   };
 
@@ -28,7 +28,7 @@ if ('production' === ENV) {
   ];
 
 } else {
-  
+
   _decorateModuleRef = (modRef: any) => {
     const appRef = modRef.injector.get(ApplicationRef);
     const cmpRef = appRef.components[0];
