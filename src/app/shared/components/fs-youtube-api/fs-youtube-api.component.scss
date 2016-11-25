@@ -8,9 +8,15 @@ fs-youtube-api {
     box-shadow: 0 0 0;
     input {
       margin: 1em;
+      padding: 12px;
+      margin: 8px 0;
+     box-sizing: border-box;
+    }
+    input[type="text"]:focus {
+    border: 1px solid #673ab7;
+    outline: none;
     }
     >div {
-      margin: 0em 1em;
       .content {
         padding: 1em;
         display: flex;
