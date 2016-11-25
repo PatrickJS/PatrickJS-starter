@@ -1,4 +1,4 @@
-export class Feature {
+export class Tech {
   title: string;
   description: string;
   image: string;

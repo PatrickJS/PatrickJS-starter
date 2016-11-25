@@ -8,6 +8,7 @@ import { Component, Input } from '@angular/core';
 export class GridCardsComponent {
 
   @Input() elements = [];
+  @Input() title;
   @Input() rowHeight;
   
   constructor() {}

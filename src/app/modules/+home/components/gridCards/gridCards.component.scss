@@ -11,6 +11,11 @@
   flex-direction: row;
 }
 
+.material-icons.md-48 { 
+  font-size: 60px; 
+  color: #c1c1c1;
+}
+
 md-card { 
     flex: 0 0 100%;
     display: flex;
@@ -20,10 +25,14 @@ md-card {
     margin-bottom: 10px;
 
     @media screen and (min-width: 480px) {
-      flex: 0 0 33%!important;
+      flex: 1 0 33%!important;
       min-width: 200px;
       min-height: 150px;
       box-sizing: border-box; 
       margin-bottom: 5px;
     }
+}
+
+.grid-title {
+  text-align: center;
 }

@@ -1,42 +1,42 @@
-import { Feature } from './feature';
+import { Tech } from './tech';
 
-export var FEATURES: Feature[] = [
-  { title: 'Mobile First', 
+export var TECHS: Tech[] = [
+  { title: 'Angular 2', 
     description: 'Quis ut laborum commodo esse dolor non.', 
-    image: '', 
-    icon: 'phone_iphone'
+    image: './assets/img/techs/angular2.png', 
+    icon: ''
   },
-  { title: 'Unit testing', 
+  { title: 'Webpack', 
     description: 'Veniam aliquip ut nostrud dolore id magna.', 
-    image: '', 
-    icon: 'check_box'
+    image: './assets/img/techs/webpack.png', 
+    icon: ''
   },
-  { title: 'Build', 
+  { title: 'SASS', 
     description: 'Nisi Lorem labore ipsum culpa voluptate aute consequat do.', 
-    image: '', 
-    icon: 'directions_bike'
+    image: './assets/img/techs/sass.png', 
+    icon: ''
   },
-  { title: 'Scaffolding', 
+  { title: 'TypeScript', 
     description: 'Anim qui consequat amet adipisicing.', 
-    image: '', 
-    icon: 'widgets'
+    image: './assets/img/techs/ts.png', 
+    icon: ''
   },
-  { title: 'Best practices', 
+  { title: 'Karma', 
     description: 'Elit ullamco aute aute non officia.', 
-    image: '', 
-    icon: 'thumb_up'
+    image: './assets/img/techs/karma.png', 
+    icon: ''
   },
-  { title: 'PRPL', 
+  { title: 'Protractor', 
     description: 'Cillum laborum labore pariatur consequat ipsum ullamco qui sunt ad dolor.', 
     image: '', 
     icon: 'grain'
   },
-  { title: 'E2E', 
+  { title: 'Yarn & npm', 
     description: 'Reprehenderit laboris nisi exercitation eu et eiusmod.', 
     image: '', 
     icon: 'touch_app'
   },
-  { title: 'Api docs', 
+  { title: 'npm', 
     description: 'Proident reprehenderit pariatur nisi quis magna.', 
     image: '', 
     icon: 'description'
