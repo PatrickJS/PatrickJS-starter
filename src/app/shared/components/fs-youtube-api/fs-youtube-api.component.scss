@@ -43,7 +43,6 @@ fs-youtube-api {
     }
     .defaultCard {
       transition: all 0.3s ease;
-      // max-height: 1.5em;
       padding: 1.5em;
       background: white;
       position: relative;
@@ -56,9 +55,6 @@ fs-youtube-api {
         font-size: 0.9em;
         font-weight: bold;
         cursor: pointer;
-        // position: absolute;
-        // top: 50%;
-        // transform: translate(0%,-50%);
       }
     }
     .showCard {

@@ -6,18 +6,20 @@ import { RouterModule } from '@angular/router';
 // import { FormsModule } from '@angular/forms';
 
 import { MaterialModule } from '@angular/material';
-import { DetailComponent } from './detail.component';
-import { routes } from './detail.routes';
+import { AboutComponent } from './components/about/about.component';
+import { FsUsersComponent } from './components/fs-users/fs-users.component';
+import { routes } from './about.routes';
 import { FsDialogComponent } from '../../shared/components/fs-dialog';
 import { FsYoutubeAPIComponent } from '../../shared/components/fs-youtube-api';
 import { fsYoutubeApiPipeFilterSearch } from '../../shared/components/fs-youtube-api'; // import our pipe here
 
 @NgModule({
   declarations: [
-    DetailComponent,
+    AboutComponent,
     FsDialogComponent,
     FsYoutubeAPIComponent,
-    fsYoutubeApiPipeFilterSearch
+    fsYoutubeApiPipeFilterSearch,
+    FsUsersComponent
   ],
   imports: [
     CommonModule,
@@ -30,6 +32,6 @@ import { fsYoutubeApiPipeFilterSearch } from '../../shared/components/fs-youtube
   ]
 })
 
-export class DetailModule {
+export class AboutModule {
   static routes = routes;
 }

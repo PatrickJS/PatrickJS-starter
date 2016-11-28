@@ -12,6 +12,9 @@ app-shell {
   flex: 1;
   display: flex;
   flex-direction: row;
+  md-sidenav {
+    width: 300px;
+  }
   md-sidenav-layout {
     flex:1;
   }
