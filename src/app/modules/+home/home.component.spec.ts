@@ -33,5 +33,4 @@ describe('Home', () => {
     home.ngOnInit();
     expect(console.log).toHaveBeenCalled();
   }));
-
 });

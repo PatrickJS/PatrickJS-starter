@@ -22,9 +22,8 @@ export const ROUTES: Routes = [
     canLoad: [AuthenticateGuard],
     loadChildren: './modules/+about/detail.module#DetailModule'
   },
-  { 
-    path: '**', 
+  {
+    path: '**',
     component: NoContentComponent
   }
-  
 ];

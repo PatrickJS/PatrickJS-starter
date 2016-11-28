@@ -18,6 +18,4 @@ import { routes } from './shell.routes';
   ]
 })
 
-export class ShellModule {
-  
-}
+export class ShellModule { }

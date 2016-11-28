@@ -18,7 +18,7 @@ export class ShellComponent {
   title: string;
 
   constructor() {
-    this.title = "Hello";
+    this.title = 'Hello';
   }
 
   ngOnInit() {
