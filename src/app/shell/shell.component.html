@@ -1,6 +1,6 @@
 <md-sidenav-layout>
 
-  <md-sidenav #sidenav mode="side" class="app-sidenav">
+  <md-sidenav #sidenav mode="over" class="app-sidenav">
     <h1> Menu </h1>
     <md-nav-list>
         <a md-list-item [routerLink]=" ['./home'] " >Home</a>
@@ -24,6 +24,6 @@
 
     <!-- Container of our app, used to load lazy load modules -->
     <router-outlet></router-outlet>
-  
+
   </main>
 </md-sidenav-layout>

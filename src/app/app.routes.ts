@@ -20,11 +20,11 @@ export const ROUTES: Routes = [
     path: 'about',
     canActivate: [AuthenticateGuard],
     canLoad: [AuthenticateGuard],
-    loadChildren: './modules/+about/detail.module#DetailModule'
+    loadChildren: './modules/+about/about.module#AboutModule'
   },
-  { 
-    path: '**', 
+  {
+    path: '**',
     component: NoContentComponent
   }
-  
+
 ];
