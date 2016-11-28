@@ -5,7 +5,7 @@ import { FsYoutubeAPIService } from './fs-youtube-api.service.ts';
 
 @Component({
   selector: 'fs-youtube-api',
-  providers: [FsYoutubeAPIService],
+  providers: [ FsYoutubeAPIService ],
   styleUrls: [ 'fs-youtube-api.component.scss' ],
   templateUrl: 'fs-youtube-api.component.html',
   encapsulation: ViewEncapsulation.None,
