@@ -18,10 +18,13 @@ export class HomeComponent {
   name: string;
 
   // TypeScript public modifiers
-  constructor() {}
+  constructor() {
+    this.name = "World";
+  }
 
   ngOnInit() {
-    this.name = "World";
+    console.log('hello `Home` component');
+    //this.name = "World";
   }
 
 }
