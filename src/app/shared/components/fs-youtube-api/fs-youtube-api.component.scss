@@ -3,18 +3,17 @@ fs-youtube-api {
     box-sizing: border-box;
   }
   md-card {
-    margin: 1em;
     background: 0 0;
     box-shadow: 0 0 0;
     input {
-      margin: 1em;
-      padding: 12px;
-      margin: 8px 0;
+    margin: 1em;
+    padding: 12px;
+    margin: 8px 0;
      box-sizing: border-box;
     }
     input[type="text"]:focus {
-    border: 1px solid #673ab7;
-    outline: none;
+      border: 1px solid #673ab7;
+      outline: none;
     }
     >div {
       .content {

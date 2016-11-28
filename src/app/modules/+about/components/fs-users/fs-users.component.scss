@@ -1,3 +1,22 @@
 fs-users {
-  
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
+  * {
+    box-sizing: border-box;
+  }
+  >article {
+    padding: 1em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex: 1;
+    justify-content: space-between;
+    >div {
+      flex: 0 0 33%;
+      padding: 1em;
+    }
+  }
 }
