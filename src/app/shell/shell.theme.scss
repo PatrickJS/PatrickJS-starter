@@ -25,6 +25,6 @@ $theme: md-light-theme($primary, $accent);
   @include angular-material-theme($dark-theme);
 }
 
-md-sidenav-layout.m2app-dark {
-  background: black;
-}
+// md-sidenav-layout.m2app-dark {
+//   background: black;
+// }

@@ -1,0 +1,16 @@
+<h3>Twitter API Example</h3>
+<!-- {{dataTwitter}} -->
+<div *ngIf="dataTwitter.length">
+  <div *ngFor="let tw of dataTwitter">
+    <md-card>
+      <img src="{{tw.avatar}}" alt="" />
+      <div class="">
+        <span>{{tw.author}}</span>
+        <p>
+          {{tw.tweet}}
+        </p>
+      </div>
+      <span>{{tw.date}}</span>
+    </md-card>
+  </div>
+</div>
