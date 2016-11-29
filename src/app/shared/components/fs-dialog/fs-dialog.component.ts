@@ -1,15 +1,15 @@
 import { Component, Input, ViewEncapsulation, ChangeDetectionStrategy} from '@angular/core';
 
 @Component({
-  selector: 'home-header',
+  selector: 'fs-dialog',
   providers: [],
-  styleUrls: [ 'home-header.component.scss' ],
-  templateUrl: 'home-header.component.html',
-  encapsulation: ViewEncapsulation.Native,
+  styleUrls: [ 'fs-dialog.component.scss' ],
+  templateUrl: 'fs-dialog.component.html',
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class HomeHeaderComponent {
+export class FsDialogComponent {
   @Input() title: string;
   counter: number;
 
