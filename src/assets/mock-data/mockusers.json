@@ -1,11 +1,15 @@
 {
   "users" : [{
       "name": "David Chavarri",
-      "job": "The Boss"
+      "job": "Developer"
     },
     {
       "name": "Arturo Zarzalejo",
-      "job": "Simple humano"
+      "job": "Developer"
+    }
+    {
+      "name": "Jose Manuel Bermudo",
+      "job": "Developer"
     }
   ]
 }
