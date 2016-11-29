@@ -2,48 +2,48 @@ import { Tech } from './tech';
 
 export var TECHS: Tech[] = [
   { title: 'Angular 2', 
-    description: 'Quis ut laborum commodo esse dolor non.', 
+    description: 'Essential in an angular 2 starter kit...', 
     image: './assets/img/techs/angular2.png', 
     icon: ''
   },
   { title: 'Webpack', 
-    description: 'Veniam aliquip ut nostrud dolore id magna.', 
+    description: 'webpack takes modules with dependencies and generates static assets representing those modules.', 
     image: './assets/img/techs/webpack.png', 
     icon: ''
   },
   { title: 'SASS', 
-    description: 'Nisi Lorem labore ipsum culpa voluptate aute consequat do.', 
+    description: 'An extension of CSS that adds power and elegance to the basic language. It allows to use variables, nested rules, mixins, inline imports, and more.', 
     image: './assets/img/techs/sass.png', 
     icon: ''
   },
   { title: 'TypeScript', 
-    description: 'Anim qui consequat amet adipisicing.', 
+    description: 'TypeScript is a typed superset of Javascript that compiles to plain Javascript.', 
     image: './assets/img/techs/ts.png', 
     icon: ''
   },
   { title: 'Karma', 
-    description: 'Elit ullamco aute aute non officia.', 
+    description: 'Test runner for Javascript.', 
     image: './assets/img/techs/karma.png', 
     icon: ''
   },
   { title: 'Protractor', 
-    description: 'Cillum laborum labore pariatur consequat ipsum ullamco qui sunt ad dolor.', 
-    image: '', 
-    icon: 'grain'
+    description: 'Protractor is an end-to-end test framework for AngularJS applications.', 
+    image: './assets/img/techs/protractor.png', 
+    icon: ''
   },
-  { title: 'Yarn & npm', 
-    description: 'Reprehenderit laboris nisi exercitation eu et eiusmod.', 
-    image: '', 
-    icon: 'touch_app'
+  { title: 'Yarn', 
+    description: 'Fast, reliable, and secure dependency management.', 
+    image: './assets/img/techs/yarn.png', 
+    icon: ''
   },
-  { title: 'npm', 
-    description: 'Proident reprehenderit pariatur nisi quis magna.', 
-    image: '', 
-    icon: 'description'
+  { title: 'Typedoc', 
+    description: 'A documentation generator for TypeScript projects.', 
+    image: './assets/img/techs/typedoc.png', 
+    icon: ''
   },
-  { title: 'Linting', 
-    description: 'Veniam aliquip ex pariatur duis nulla velit est cupidatat.', 
-    image: '', 
-    icon: 'highlight'
+  { title: 'Tslint', 
+    description: 'An extensible linter for the TypeScript language.', 
+    image: './assets/img/techs/tslint.png', 
+    icon: ''
   }
 ];

@@ -2,32 +2,32 @@ import { Feature } from './feature';
 
 export var FEATURES: Feature[] = [
   { title: 'Mobile First', 
-    description: 'Quis ut laborum commodo esse dolor non.', 
+    description: 'Designed for mobile phones first.', 
     image: '', 
     icon: 'phone_iphone'
   },
   { title: 'Unit testing', 
-    description: 'Veniam aliquip ut nostrud dolore id magna.', 
+    description: 'Tools stack to unit test your code.', 
     image: '', 
     icon: 'check_box'
   },
   { title: 'Build', 
-    description: 'Nisi Lorem labore ipsum culpa voluptate aute consequat do.', 
+    description: 'Build process ready to go up to production.', 
     image: '', 
     icon: 'directions_bike'
   },
-  { title: 'Scaffolding', 
-    description: 'Anim qui consequat amet adipisicing.', 
+  { title: 'Scalable', 
+    description: 'Solid and scalable scaffolding.', 
     image: '', 
     icon: 'widgets'
   },
   { title: 'Best practices', 
-    description: 'Elit ullamco aute aute non officia.', 
+    description: 'Following the best practices recommended.', 
     image: '', 
     icon: 'thumb_up'
   },
-  { title: 'PRPL', 
-    description: 'Cillum laborum labore pariatur consequat ipsum ullamco qui sunt ad dolor.', 
+  { title: 'PRPL ready', 
+    description: 'PRPL is a pattern for structuring and serving Progressive Web Apps (PWAs), with an emphasis on the performance of app delivery and launch.', 
     image: '', 
     icon: 'grain'
   },
@@ -37,12 +37,12 @@ export var FEATURES: Feature[] = [
     icon: 'touch_app'
   },
   { title: 'Api docs', 
-    description: 'Proident reprehenderit pariatur nisi quis magna.', 
+    description: 'Create your api documentation easily.', 
     image: '', 
     icon: 'description'
   },
   { title: 'Linting', 
-    description: 'Veniam aliquip ex pariatur duis nulla velit est cupidatat.', 
+    description: 'Quality of code.', 
     image: '', 
     icon: 'highlight'
   }

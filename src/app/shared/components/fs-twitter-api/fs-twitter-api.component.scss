@@ -1,0 +1,22 @@
+fs-twitter-api {
+  * {
+    box-sizing: border-box;
+  }
+  md-card {
+    display: flex;
+    div{
+      padding-left: 1em;
+      >span {
+        font-weight: bold;
+      }
+      p {
+      }
+    }
+    >span {
+      position: absolute;
+      right: 1em;
+      bottom: 1em;
+      font-size: 0.8em;
+    }
+  }
+}
