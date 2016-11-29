@@ -1,0 +1,15 @@
+{
+  "users" : [{
+      "name": "David Chavarri",
+      "job": "Developer"
+    },
+    {
+      "name": "Arturo Zarzalejo",
+      "job": "Developer"
+    },
+    {
+      "name": "Jose Manuel Bermudo",
+      "job": "Developer"
+    }
+  ]
+}

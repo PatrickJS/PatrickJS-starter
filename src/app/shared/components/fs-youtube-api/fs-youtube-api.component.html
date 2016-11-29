@@ -1,0 +1,27 @@
+<md-card>
+
+  <h3>Youtube API Example</h3>
+
+  <input type="text" [value]="searchString" (input)="searchString = $event.target.value" placeholder="Buscar"/>
+
+  <div *ngFor="let item of dataYoutube | fsYoutubeApiPipeFilterSearch:searchString; let i = index" >
+    <div  *ngIf="item.id.videoId" class="defaultCard" [class.showCard]="item.show">
+      <div class="title" (click)="item.show = !item.show">
+
+        {{item.snippet.title}}
+      </div>
+      <div class="content" *ngIf="item.show">
+        <div class="">
+          <img src="{{item.snippet.thumbnails.medium.url}}" alt="" />
+        </div>
+        <p>
+          {{item.snippet.description}}
+        </p>
+        <a class="showMore" md-raised-button href="https://www.youtube.com/watch?v={{item.id.videoId}}" target="_blank">
+          Ver más
+        </a>
+      </div>
+
+    </div>
+  </div>
+</md-card>

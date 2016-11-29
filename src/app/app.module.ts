@@ -14,14 +14,15 @@ import { AuthenticateGuard } from './shared/services/auth.service';
 // Import material design module
 import { MaterialModule } from '@angular/material';
 
-
 /** Platform and Environment providers/directives/pipes */
+
 import { ENV_PROVIDERS } from './app.environment';
 import { ROUTES } from './app.routes';
 
 /** App is our top level component */
 import { ShellComponent, ShellModule } from './shell';
 import { NoContentComponent } from './shared/components/no-content/no-content.component';
+
 
 /** `AppModule` is the main entry point into Angular2's bootstraping process */
 @NgModule({
