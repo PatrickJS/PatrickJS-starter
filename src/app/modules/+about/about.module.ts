@@ -11,6 +11,8 @@ import { FsUsersComponent } from './components/fs-users/fs-users.component';
 import { routes } from './about.routes';
 import { FsDialogComponent } from '../../shared/components/fs-dialog';
 import { FsYoutubeAPIComponent } from '../../shared/components/fs-youtube-api';
+
+import { FsTwitterAPIComponent } from '../../shared/components/fs-twitter-api';
 import { fsYoutubeApiPipeFilterSearch } from '../../shared/components/fs-youtube-api'; // import our pipe here
 
 @NgModule({
@@ -18,6 +20,7 @@ import { fsYoutubeApiPipeFilterSearch } from '../../shared/components/fs-youtube
     AboutComponent,
     FsDialogComponent,
     FsYoutubeAPIComponent,
+    FsTwitterAPIComponent,
     fsYoutubeApiPipeFilterSearch,
     FsUsersComponent
   ],
