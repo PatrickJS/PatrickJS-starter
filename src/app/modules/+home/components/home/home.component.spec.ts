@@ -18,16 +18,19 @@ describe('Home', () => {
   beforeEach(() => TestBed.configureTestingModule({
     providers: [
       BaseRequestOptions,
-      MockBackend,
-      {
-        provide: Http,
-        useFactory: function(backend: ConnectionBackend, defaultOptions: BaseRequestOptions) {
-          return new Http(backend, defaultOptions);
-        },
-        deps: [MockBackend, BaseRequestOptions]
-      },
       HomeComponent
     ]
   }));
 
+  it('should have a title', inject([ HomeComponent ], (home: HomeComponent) => {
+    expect(!!home.name).toEqual(true);
+  }));
+
+  it('should log ngOnInit', inject([ HomeComponent ], (home: HomeComponent) => {
+    spyOn(console, 'log');
+    expect(console.log).not.toHaveBeenCalled();
+
+    home.ngOnInit();
+    expect(console.log).toHaveBeenCalled();
+  }));
 });

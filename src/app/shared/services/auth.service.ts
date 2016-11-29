@@ -19,7 +19,7 @@ export class AuthenticateGuard implements CanActivate, CanLoad {
    * @returns {Boolean}
    */
   canLoad() {
-    return new Promise((resolve,reject) => {
+    return new Promise((resolve, reject) => {
       return resolve(true);
     });
   };

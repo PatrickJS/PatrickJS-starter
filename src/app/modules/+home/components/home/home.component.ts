@@ -34,6 +34,7 @@ export class HomeComponent {
     this.techs = this.techsService.getTechs();
     console.log(this.features);
     console.log('on init home');
+
   }
 
 }

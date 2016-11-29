@@ -1,0 +1,62 @@
+<?xml version="1.0" ?>
+<!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
+<coverage lines-valid="15"  lines-covered="15"  line-rate="1"  branches-valid="0"  branches-covered="0"  branch-rate="1"  timestamp="1480367364157" complexity="0" version="0.1">
+<sources>
+	<source>C:\github\angular2-basic</source>
+</sources>
+<packages>
+	<package name="modules.+home"  line-rate="1"  branch-rate="1" >
+	<classes>
+		<class name="home.component.ts"  filename="src\app\modules\+home\home.component.ts"  line-rate="1"  branch-rate="1" >
+		<methods>
+			<method name="(anonymous_1)"  hits="1"  signature="()V" >
+				<lines><line number="16"  hits="1" /></lines>
+			</method>
+			<method name="HomeComponent"  hits="2"  signature="()V" >
+				<lines><line number="21"  hits="2" /></lines>
+			</method>
+			<method name="(anonymous_3)"  hits="1"  signature="()V" >
+				<lines><line number="25"  hits="1" /></lines>
+			</method>
+		</methods>
+		<lines>
+			<line number="1"  hits="1"  branch="false" />
+			<line number="3"  hits="1"  branch="false" />
+			<line number="16"  hits="1"  branch="false" />
+			<line number="21"  hits="1"  branch="false" />
+			<line number="22"  hits="2"  branch="false" />
+			<line number="25"  hits="1"  branch="false" />
+			<line number="26"  hits="1"  branch="false" />
+			<line number="30"  hits="1"  branch="false" />
+		</lines>
+		</class>
+	</classes>
+	</package>
+	<package name="shell"  line-rate="1"  branch-rate="1" >
+	<classes>
+		<class name="shell.component.ts"  filename="src\app\shell\shell.component.ts"  line-rate="1"  branch-rate="1" >
+		<methods>
+			<method name="(anonymous_1)"  hits="1"  signature="()V" >
+				<lines><line number="17"  hits="1" /></lines>
+			</method>
+			<method name="ShellComponent"  hits="1"  signature="()V" >
+				<lines><line number="20"  hits="1" /></lines>
+			</method>
+			<method name="(anonymous_3)"  hits="0"  signature="()V" >
+				<lines><line number="24"  hits="0" /></lines>
+			</method>
+		</methods>
+		<lines>
+			<line number="4"  hits="1"  branch="false" />
+			<line number="10"  hits="1"  branch="false" />
+			<line number="17"  hits="1"  branch="false" />
+			<line number="20"  hits="1"  branch="false" />
+			<line number="21"  hits="1"  branch="false" />
+			<line number="24"  hits="1"  branch="false" />
+			<line number="27"  hits="1"  branch="false" />
+		</lines>
+		</class>
+	</classes>
+	</package>
+</packages>
+</coverage>

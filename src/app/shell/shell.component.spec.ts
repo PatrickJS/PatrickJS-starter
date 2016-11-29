@@ -14,7 +14,7 @@ describe('App', () => {
     ]}));
 
   it('should have a url', inject([ ShellComponent ], (app: ShellComponent) => {
-    expect(app.url).toEqual('https://twitter.com/AngularClass');
+    expect(app.title).toEqual('Hello');
   }));
 
 });

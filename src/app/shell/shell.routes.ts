@@ -3,5 +3,4 @@ import { NoContentComponent } from './components/no-content';
 
 export const routes: Routes = [
     // default Route for our app
-   
 ];

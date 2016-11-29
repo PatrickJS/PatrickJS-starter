@@ -15,10 +15,10 @@ import { Component, ViewEncapsulation } from '@angular/core';
 })
 
 export class ShellComponent {
-  title: 'hello'
+  title: string;
 
   constructor() {
-
+    this.title = 'Hello';
   }
 
   ngOnInit() {

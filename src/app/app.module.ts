@@ -8,13 +8,14 @@ import { AuthenticateGuard } from './shared/services/auth.service';
 
 /** Angular Modules commented. Use in case you need it */
 
-//import { FormsModule } from '@angular/forms';
-//import { HttpModule } from '@angular/http';
+// import { FormsModule } from '@angular/forms';
+// import { HttpModule } from '@angular/http';
 
 // Import material design module
 import { MaterialModule } from '@angular/material';
 
-/** Platform and Environment providers/directives/pipes*/
+/** Platform and Environment providers/directives/pipes */
+
 import { ENV_PROVIDERS } from './app.environment';
 import { ROUTES } from './app.routes';
 
@@ -36,10 +37,10 @@ import { NoContentComponent } from './shared/components/no-content/no-content.co
     ShellModule,
     RouterModule.forRoot(ROUTES, {
       useHash: true
-      //,preloadingStrategy: PreloadAllModules
+      // ,preloadingStrategy: PreloadAllModules
     })
   ],
-  /** expose our Services and Providers into Angular's dependency injection*/
+  /* expose our Services and Providers into Angular's dependency injection */
   providers: [
     ENV_PROVIDERS,
     AuthenticateGuard
@@ -52,9 +53,9 @@ export class AppModule {
     if ('production' !== ENV) {
       router.events.subscribe((navigationEvent) => {
         if (navigationEvent instanceof NavigationEnd) {
-          console.debug('navigation to: ', navigationEvent);
+          // console.debug('navigation to: ', navigationEvent);
         }
-      })
+      });
     }
   }
 }
