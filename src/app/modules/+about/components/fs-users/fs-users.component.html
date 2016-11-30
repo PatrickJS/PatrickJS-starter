@@ -1,9 +1,13 @@
-<h3>{{title}}</h3>
-
-<article class="">
-  <div *ngFor="let user of users.users">
-    <md-card class="">
-      {{user.name}} | {{user.job}}
-    </md-card>
-  </div>
-</article>
+<h3>Team</h3>
+<div class="flex-container">
+  <md-card *ngFor="let user of users.users">
+    <md-card-header>
+        <img md-card-avatar src="{{user.image}}">
+        <md-card-title>{{user.name}}</md-card-title>
+        <md-card-subtitle>{{user.job}}</md-card-subtitle>
+    </md-card-header>
+    <md-card-content>
+        <p>{{user.description}}</p>
+    </md-card-content>
+  </md-card>
+</div>
