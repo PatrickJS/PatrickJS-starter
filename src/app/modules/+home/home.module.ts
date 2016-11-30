@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { ExponentialStrengthPipe } from '../../shared/pipes'; // import our pipe here
 import { HomeComponent } from './components/home/home.component';
 import { GridCardsComponent } from './components/gridCards/gridCards.component';
+import { FsCustomGridCardsComponent, PizzaDialog } from './components/customGridCards/customGridCards.component';
 
 import { routes } from './home.routes';
 
@@ -14,12 +15,17 @@ import { MaterialModule } from '@angular/material';
   declarations: [
     HomeComponent,
     ExponentialStrengthPipe,
-    GridCardsComponent
+    GridCardsComponent,
+    FsCustomGridCardsComponent,
+    PizzaDialog
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     MaterialModule.forRoot()
+  ],
+  entryComponents : [
+    PizzaDialog
   ]
 })
 

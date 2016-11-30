@@ -1,2 +1,18 @@
-<fs-grid-cards [elements]="features" [rowHeight]="rowHeight" [title]="'What we can offer you?'"></fs-grid-cards>
-<fs-grid-cards [elements]="techs" [rowHeight]="rowHeight" [title]="'What technologies are used?'"></fs-grid-cards>
+<h3>Home</h3>
+
+<md-tab-group>
+  <md-tab>
+    <template md-tab-label>
+      <span class="text">Features</span>
+      <span class="icon"><md-icon>fingerprint</md-icon></span>
+    </template>
+    <fs-custom-grid-cards [elements]="features" [rowHeight]="rowHeight"></fs-custom-grid-cards>
+  </md-tab>
+  <md-tab>
+    <template md-tab-label>
+      <span class="text">Technologies</span>
+      <span class="icon"><md-icon>code</md-icon></span>
+    </template>
+    <fs-grid-cards [elements]="techs" [rowHeight]="rowHeight"></fs-grid-cards>
+  </md-tab>
+</md-tab-group>
