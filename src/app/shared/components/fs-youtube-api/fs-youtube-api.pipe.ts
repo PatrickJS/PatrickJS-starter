@@ -7,13 +7,13 @@ import { Pipe, PipeTransform } from '@angular/core';
  * Example:
  *   {{ string |  string}}
 */
-@Pipe({name: 'fsYoutubeApiPipeFilterSearch', pure:true})
+@Pipe({name: 'fsYoutubeApiPipeFilterSearch', pure: true})
 
 export class fsYoutubeApiPipeFilterSearch implements PipeTransform {
   transform(value: string): Array<any> {
-    var array = arguments[0] || null;
-    var valueString = arguments[1] || '';
-    var returnArray = [];
+    let array = arguments[0] || null;
+    let valueString = arguments[1] || '';
+    let returnArray = [];
     array && (function(){
         Array.prototype.forEach.call(array, function(){
         if (('snippet' in arguments[0]) && arguments[0].snippet.title) {

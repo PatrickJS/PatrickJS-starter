@@ -10,11 +10,11 @@ export class GridCardsComponent {
   @Input() elements = [];
   @Input() title;
   @Input() rowHeight;
-  
+
   constructor() {}
 
   ngOnInit() {
-    
+
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { FsUsersService } from '../fs-users/fs-users.service.ts';
+import { FsUsersService } from '../fs-users/fs-users.service';
 
 @Component({
   selector: 'about',
@@ -9,9 +9,10 @@ import { FsUsersService } from '../fs-users/fs-users.service.ts';
 })
 
 export class AboutComponent {
-  dataUsers
+  dataUsers;
+  private usersService: FsUsersService;
 
-  constructor(private usersService: FsUsersService) {
+  constructor() {
     // console.log(usersService);
   }
 
