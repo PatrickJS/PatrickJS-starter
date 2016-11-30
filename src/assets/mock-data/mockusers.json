@@ -1,57 +1,64 @@
 {
   "users" : [{
       "name": "David Chavarri",
-      "job": "Developer",
+      "job": "Front Architect",
       "image": "https://twitter.com/dvdchavarri/profile_image?size=original",
-      "description": "React Ninja"
+      "description": "React Ninja",
+      "github": "https://github.com/DvdChavarri"
     },
     {
       "name": "Arturo Zarzalejo",
-      "job": "Developer",
+      "job": "Fantasy Architect",
       "image": "https://twitter.com/Arturozh/profile_image?size=original",
-      "description": "Code Hunter"
+      "description": "Sexy Fantasy Everywhere",
+      "github": "https://github.com/Arturozh"
     },
     {
-      "name": "Jose Manuel Bermudo",
-      "job": "Developer",
+      "name": "Jose Bermudo",
+      "job": "Front Architect",
       "image": "https://twitter.com/josh2code/profile_image?size=original",
-      "description": ""
+      "description": "Sorcerer code level 20",
+      "github": "https://github.com/josemanuelbd"
     },
     {
       "name": "Jesus Cuesta",
       "job": "Product Owner",
-      "image": "https://twitter.com/josh2code/profile_image?size=original",
-      "description": ""
+      "image": "http://jesuscuesta.net/wp-content/themes/travelify/images/photocontent/jesus-cuesta.jpg",
+      "description": "Dragon killer",
+      "github": "https://github.com/jesuscuesta"
     },
     {
       "name": "Maximo Garcia",
-      "job": "Developer",
-      "image": "https://twitter.com/josh2code/profile_image?size=original",
-      "description": ""
+      "job": "Front Architect",
+      "image": "https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAaZAAAAJDBlYjE0YjUwLTBlNTktNDBkZC05NzNlLWI5ZDhjYWRiYTBkYg.jpg",
+      "description": "Sexy Code Hunter",
+      "github": "https://github.com/maxgarsaiz"
     },
     {
       "name": "Oscar Galea",
-      "job": "Developer",
-      "image": "https://twitter.com/josh2code/profile_image?size=original",
-      "description": ""
+      "job": "Front Architect",
+      "image": "https://avatars3.githubusercontent.com/u/7000768?v=3&s=460",
+      "description": "Runner code",
+      "github": "https://github.com/ogaleac"
     },
     {
       "name": "Juan Carlos Díez",
-      "job": "Developer",
-      "image": "https://twitter.com/josh2code/profile_image?size=original",
-      "description": ""
+      "job": "Front Architect",
+      "image": "https://avatars1.githubusercontent.com/u/20802568?v=3&s=460",
+      "description": "Pixel Hunter",
+      "github": "https://github.com/jcdevelopmentspain"
     },
     {
-      "name": "Luis ",
-      "job": "Developer",
-      "image": "https://twitter.com/josh2code/profile_image?size=original",
-      "description": ""
+      "name": "Luis Martinez",
+      "job": "Front Architect",
+      "image": "http://www.teleadhesivo.com/es/img/asp056-jpg/folder/products-listado-merchanthover/pegatinas-coches-motos-caballo-de-soria.jpg",
+      "description": "React Ninja"
     },
     {
       "name": "Francisco Quintero Japón",
-      "job": "Developer",
-      "image": "https://twitter.com/josh2code/profile_image?size=original",
-      "description": "'El Samurai'"
+      "job": "Front Architect",
+      "image": "http://www.infojobs.net/ficha.foto?quina=a6d148c1-3633-4893-8d18-40f654233635",
+      "description": "Samurai"
     }
   ]
 }
