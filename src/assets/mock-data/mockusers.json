@@ -1,15 +1,57 @@
 {
   "users" : [{
       "name": "David Chavarri",
-      "job": "Developer"
+      "job": "Developer",
+      "image": "https://twitter.com/dvdchavarri/profile_image?size=original",
+      "description": "React Ninja"
     },
     {
       "name": "Arturo Zarzalejo",
-      "job": "Developer"
+      "job": "Developer",
+      "image": "https://twitter.com/Arturozh/profile_image?size=original",
+      "description": "Code Hunter"
     },
     {
       "name": "Jose Manuel Bermudo",
-      "job": "Developer"
+      "job": "Developer",
+      "image": "https://twitter.com/josh2code/profile_image?size=original",
+      "description": ""
+    },
+    {
+      "name": "Jesus Cuesta",
+      "job": "Product Owner",
+      "image": "https://twitter.com/josh2code/profile_image?size=original",
+      "description": ""
+    },
+    {
+      "name": "Maximo Garcia",
+      "job": "Developer",
+      "image": "https://twitter.com/josh2code/profile_image?size=original",
+      "description": ""
+    },
+    {
+      "name": "Oscar Galea",
+      "job": "Developer",
+      "image": "https://twitter.com/josh2code/profile_image?size=original",
+      "description": ""
+    },
+    {
+      "name": "Juan Carlos Díez",
+      "job": "Developer",
+      "image": "https://twitter.com/josh2code/profile_image?size=original",
+      "description": ""
+    },
+    {
+      "name": "Luis ",
+      "job": "Developer",
+      "image": "https://twitter.com/josh2code/profile_image?size=original",
+      "description": ""
+    },
+    {
+      "name": "Francisco Quintero Japón",
+      "job": "Developer",
+      "image": "https://twitter.com/josh2code/profile_image?size=original",
+      "description": "'El Samurai'"
     }
   ]
 }

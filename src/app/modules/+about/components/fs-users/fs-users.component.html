@@ -1,9 +1,21 @@
-<h3>{{title}}</h3>
-
-<article class="">
-  <div *ngFor="let user of users.users">
-    <md-card class="">
-      {{user.name}} | {{user.job}}
-    </md-card>
-  </div>
-</article>
+<div class="flex-container">
+  <md-card *ngFor="let user of users.users">
+    <md-card-header>
+        <div class="user-header">
+          <img md-card-avatar src="{{user.image}}">
+          <div>
+            <md-card-title>{{user.name}}</md-card-title>
+            <md-card-subtitle>{{user.job}}</md-card-subtitle>
+          </div>
+        </div>
+        <span style="flex:1"></span>
+        <a href="{{user.github}}" md-icon-button color="primary">
+          <md-icon svgSrc="/assets/img/github.svg"></md-icon>
+        </a>
+    </md-card-header>
+    <md-card-content>
+        <p>{{user.description}}</p>
+        
+    </md-card-content>
+  </md-card>
+</div>
