@@ -26,6 +26,10 @@ about {
       position: absolute;
       top: 6px;
       right: 10px;
+      display: none;
+      @media screen and (min-width: 480px) {
+        display: block;
+      }
     }
     md-ink-bar {
       height: 4px;
