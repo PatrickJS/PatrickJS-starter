@@ -35,6 +35,10 @@ Thumbs.db
 /bower_components
 npm-debug.log
 
+# Yarn #
+yarn.lock
+yarn-debug.log
+
 # Coverage #
 /coverage/
 
