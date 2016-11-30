@@ -31,7 +31,7 @@ import { AppState } from './app.service';
       |
       <span>
         <a [routerLink]=" ['./detail'] ">
-          Detail
+          Details
         </a>
       </span>
       |

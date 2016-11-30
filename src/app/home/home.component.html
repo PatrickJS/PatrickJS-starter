@@ -1,31 +1,19 @@
 <div class="card-container">
-  <h1 x-large class="sample-content">Your Content Here</h1>
-
-  <div>
-    For material design components use the <a href="https://github.com/AngularClass/angular2-webpack-starter/tree/material2"><b>material2</b></a> branch
-  </div>
-
-  <hr>
-
-  <div>
-    For hot module reloading run
-    <pre>npm run start:hmr</pre>
-  </div>
-
-  <hr>
+  <h1 x-large class="sample-content">Drops Event App</h1>
 
   <div>
     <h4>Local State</h4>
 
     <form (ngSubmit)="submitState(localState.value)" autocomplete="off">
-
       <input
-        [value]="localState.value"
-        (input)="localState.value = $event.target.value"
-        placeholder="Submit Local State to App State"
+        [value]="localState.name"
+        (input)="localState.name = $event.target.value.name"
+        placeholder="Name of the Drop"
         autofocus>
 
-      <button md-raised-button color="primary">Submit Value</button>
+        <input type="text" name="textInput" [(ngModel)]="localState.value" placeholder="Set state" autofocus>
+
+      <button md-raised-button color="primary">Submit Drop</button>
     </form>
     <!--
         <input type="text" [value]="localState.value" (input)="localState.value = $event.target.value" autofocus>
