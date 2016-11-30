@@ -26,7 +26,7 @@ export class FsCustomGridCardsComponent {
     });
     setTimeout( ()=>
       this.dialogRef._overlayRef._pane.querySelector('.md-dialog-container').classList.add('openAnimated')
-    ,200);
+    ,0);
     console.log('console', this);
     // console.log('JASF', this.dialogRef._overlayRef._pane);
     this.dialogRef.afterClosed().subscribe(result => {
