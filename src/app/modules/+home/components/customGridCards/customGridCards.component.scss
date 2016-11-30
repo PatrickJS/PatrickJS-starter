@@ -30,7 +30,7 @@ fs-custom-grid-cards {
       border-top-right-radius: 5px;
       flex-direction: column;
       @media screen and (min-width: 480px) {
-        flex: 1 0 33%!important;
+        // flex: 1 0 33%!important;
         min-width: 200px;
         min-height: 150px;
         box-sizing: border-box;

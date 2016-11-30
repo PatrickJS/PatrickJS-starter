@@ -18,7 +18,7 @@ app-shell {
   md-sidenav {
     width: 300px;
     >span {
-      background: url('http://cdn2.thetechhacker.com/wp-content/uploads/2014/11/6.jpg');
+      background: url('https://www.smashingmagazine.com/wp-content/uploads/2015/07/Ultimate-Material-Lollipop-Collection1.png');
       width: 100%;
       height: 240px;
       background-size: cover;
@@ -106,15 +106,15 @@ span.active {
 .md-overlay-pane {
   .md-dialog-container {
     transition: all 0.4s ease;
-    height: 10vh;
-    width: 20vw;
+    height: 85vh;
+    width: 85vw;
+    transform:scale(0.2);
     padding: 0;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     background: #4DD0E1;
     &.openAnimated {
-      height: 85vh;
-      width: 85vw;
+      transform: scale(1);
     }
     md-toolbar {
       border-top-left-radius: 5px;

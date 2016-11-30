@@ -1,4 +1,4 @@
-<div class="flex-container">
+<!--<div class="flex-container">
   <md-card *ngFor="let element of elements" [class.open]="element.open">
     <span>{{element.title}}</span>
     <span>{{element.description}}</span>
@@ -9,4 +9,18 @@
     </div>
 
   </md-card>
-</div>
+</div>-->
+
+<md-list dense>
+  <md-list-item *ngFor="let element of elements">
+    <md-icon md-list-avatar>{{element.icon}}</md-icon>
+    <h3 md-line> {{element.title}} </h3>
+    <p md-line>
+      <span> {{element.description}} </span>
+      <!--<span class="demo-2">  {{message.message}} </span>-->
+    </p>
+    <button color="accent" md-button (click)="openDialog()">
+        See more
+     </button>
+  </md-list-item>
+</md-list>
