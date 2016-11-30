@@ -1,7 +1,7 @@
-import { Component, Input, ViewEncapsulation, ChangeDetectionStrategy, OnInit, NgZone, ApplicationRef} from '@angular/core';
+import { Component, Input, ViewEncapsulation, ChangeDetectionStrategy, OnInit, NgZone, ApplicationRef } from '@angular/core';
 // import { CORE_DIRECTIVES } from '@angular/common';
 
-import { FsYoutubeAPIService } from './fs-youtube-api.service.ts';
+import { FsYoutubeAPIService } from './fs-youtube-api.service';
 
 @Component({
   selector: 'fs-youtube-api',

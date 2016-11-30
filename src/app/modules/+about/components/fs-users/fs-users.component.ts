@@ -7,13 +7,14 @@ import { Component, Input } from '@angular/core';
 })
 export class FsUsersComponent {
 
-  @Input() elements = [];
+  @Input() users;
   @Input() title;
   @Input() rowHeight;
 
   constructor() {}
 
   ngOnInit() {
+    console.log('asfasf', this.users);
 
   }
 

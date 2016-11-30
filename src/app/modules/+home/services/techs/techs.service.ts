@@ -4,8 +4,8 @@ import { Tech } from './tech';
 
 @Injectable()
 export class TechsService {
-  
-  getTechs(): Tech[] { 
-      return TECHS;  
+
+  getTechs(): Tech[] {
+      return TECHS;
   }
 }

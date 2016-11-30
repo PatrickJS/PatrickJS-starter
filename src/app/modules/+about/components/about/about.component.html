@@ -1,7 +1,29 @@
 <!-- <h1>Lazy loaded module!</h1> -->
 
-<fs-youtube-api>
-</fs-youtube-api>
+<h3>About</h3>
 
-<fs-twitter-api>
-</fs-twitter-api>
+<md-tab-group>
+  <md-tab>
+    <template md-tab-label>
+      <span class="text">Our Team</span>
+      <span class="icon"><md-icon>people</md-icon></span>
+    </template>
+    <fs-users *ngIf="dataUsers" [users]="dataUsers" title="Our Team"></fs-users>
+  </md-tab>
+  <md-tab>
+    <template md-tab-label>
+      <span class="text">Youtube API</span>
+      <span class="icon"><md-icon>video_library</md-icon></span>
+    </template>
+    <fs-youtube-api>
+    </fs-youtube-api>
+  </md-tab>
+  <md-tab>
+    <template md-tab-label>
+      <span class="text">Twitter API</span>
+      <span class="icon"><md-icon>share</md-icon></span>
+    </template>
+    <fs-twitter-api>
+    </fs-twitter-api>
+  </md-tab>
+</md-tab-group>
