@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Feature } from '../../services/features/feature';
-import { FeaturesService } from '../../services/features/features.service.ts';
+import { FeaturesService } from '../../services/features/features.service';
 import { Tech } from '../../services/techs/tech';
-import { TechsService } from '../../services/techs/techs.service.ts';
+import { TechsService } from '../../services/techs/techs.service';
 
 @Component({
   // The selector is what angular internally uses

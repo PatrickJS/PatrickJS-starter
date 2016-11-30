@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { FsUsersService } from '../fs-users/fs-users.service.ts';
+import { FsUsersService } from '../fs-users/fs-users.service';
 
 @Component({
   selector: 'about',
