@@ -8,18 +8,32 @@
         <a md-list-item [routerLink]=" ['./nopagefound'] " >No page found</a>
     </md-nav-list>
   </md-sidenav>
+  <span 
+      style="
+          background: url('http://www.topofandroid.com/wp-content/uploads/2015/05/Android-L-Material-Design-Wallpapers-5.png');
+          width: 100%;
+          height: 320px;
+          background-size: cover;
+          display:block;
+          background-position: top center;
+      ">
+      <md-toolbar style="background: transparent;">
+        <button md-button class="app-icon-button" (click)="sidenav.toggle()">
+          <i class="material-icons app-toolbar-menu">menu</i>
+        </button>
+        Angular 2 Basic
+        <span class="app-toolbar-filler"></span>
 
-  <md-toolbar color="primary">
+      </md-toolbar>
+    </span>
+  <!--<md-toolbar color="primary">
     <button md-button class="app-icon-button" (click)="sidenav.toggle()">
       <i class="material-icons app-toolbar-menu">menu</i>
     </button>
     Angular 2 Basic
-    <!-- <button md-button [routerLink]="['./']" >Index</button>
-    <button md-button [routerLink]="['./home']" >Home</button>
-    <button md-button [routerLink]="['./about']" >About</button> -->
     <span class="app-toolbar-filler"></span>
 
-  </md-toolbar>
+  </md-toolbar>-->
   <main class="core-layout__main">
 
     <!-- Container of our app, used to load lazy load modules -->
