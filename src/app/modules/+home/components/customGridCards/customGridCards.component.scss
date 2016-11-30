@@ -1,0 +1,63 @@
+fs-custom-grid-cards {
+  .flex-container {
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    list-style: none;
+
+    display: flex;
+
+    flex-flow: row wrap;
+    justify-content: space-around;
+    flex-direction: row;
+  }
+
+  .material-icons.md-48 {
+    font-size: 60px;
+    color: #c1c1c1;
+  }
+
+  md-card {
+      flex: 0 0 100%;
+      display: flex;
+      transition: all 0.4s ease;
+      min-width: 200px;
+      min-height: 150px;
+      box-sizing: border-box;
+      margin-bottom: 10px;
+      padding: 0px;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      flex-direction: column;
+      @media screen and (min-width: 480px) {
+        flex: 1 0 33%!important;
+        min-width: 200px;
+        min-height: 150px;
+        box-sizing: border-box;
+        margin-bottom: 5px;
+      }
+      // > md-toolbar {
+      //   border-top-left-radius: 5px;
+      //   border-top-right-radius: 5px;
+      // }
+      &.open {
+        width: 100vw;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        height: 100vh;
+        z-index: 80;
+        transform: translate(-50%, -50%);
+        >div {
+          flex:1;
+        }
+        .closeButton {
+          display: block;
+        }
+      }
+  }
+
+  .grid-title {
+    text-align: center;
+  }
+}

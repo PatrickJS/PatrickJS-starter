@@ -102,3 +102,24 @@ span.active {
 .webpack-starter .wide-card{
   width: 400px;
 }
+
+.md-overlay-pane {
+  .md-dialog-container {
+    transition: all 1s ease;
+    height: 10vh;
+    width: 20vw;
+    padding: 0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background: #4DD0E1;
+    &.openAnimated {
+      height: 85vh;
+      width: 85vw;
+    }
+    md-toolbar {
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      background: #26C6DA;
+    }
+  }
+}
