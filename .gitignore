@@ -67,3 +67,6 @@ npm-debug.log
 # IDE #
 .idea/
 *.swp
+
+# Test Report #
+/test-reports
