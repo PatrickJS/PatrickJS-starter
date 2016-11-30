@@ -21,7 +21,7 @@ export class fsYoutubeApiPipeFilterSearch implements PipeTransform {
             returnArray.push(arguments[0]);
           }
         }
-      })
+      });
     }());
 
     return returnArray || [''];
