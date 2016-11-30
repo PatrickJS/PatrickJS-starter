@@ -5,25 +5,25 @@ import { Observable }     from 'rxjs/Observable';
 @Injectable()
 export class FsTwitterAPIService {
 
-  //URL TO WEB API
-  private TwitterAPIURL = 'https://syndication.twitter.com/timeline/profile?dnt=false&screen_name=serenityFront&suppress_response_codes=true&lang=en&callback=JSONP_CALLBACK';
   public youtubeData;
+  // URL TO WEB API
+  private twitterAPIURL = 'https://syndication.twitter.com/timeline/profile?dnt=false&screen_name=serenityFront&suppress_response_codes=true&lang=en&callback=JSONP_CALLBACK';
   private headers: Headers;
-  private options : RequestOptions;
+  private options: RequestOptions;
 
   constructor (private jsonp: Jsonp, private http: Http) {
 
   }
 
+  search () {
+    // TODO: Add error handling
+    return this.jsonp.get(this.twitterAPIURL, this.options)
+               .map(this.extractData);
+  }
+
   private extractData(res: Response) {
     let body = res.json();
     return body || { };
-  }
-
-  search () {
-    // TODO: Add error handling
-    return this.jsonp.get(this.TwitterAPIURL, this.options)
-               .map(this.extractData);
   }
 
 }

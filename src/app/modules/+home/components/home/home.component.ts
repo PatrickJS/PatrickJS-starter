@@ -30,11 +30,10 @@ export class HomeComponent {
    }
 
   ngOnInit() {
+    console.log('on init home');
+    console.log(this.features);
     this.features = this.featuresService.getFeatures();
     this.techs = this.techsService.getTechs();
-    console.log(this.features);
-    console.log('on init home');
-
   }
 
 }

@@ -27,6 +27,4 @@ export class HomeModule {
 
   static routes = routes;
 
-
-  
 }

@@ -5,17 +5,12 @@ import { Observable }     from 'rxjs/Observable';
 @Injectable()
 export class FsYoutubeAPIService {
 
-  //URL TO WEB API
-  private YoutubeAPIURL = 'https://www.googleapis.com/youtube/v3/search?key=AIzaSyAXrOaIA3FiZ_Qp76WIZmU67zNV4mriEkU&channelId=UCVKdSP47XahRYJpvfA7inmg&part=snippet,id&order=date&maxResults=20';
-  public youtubeData
+  public youtubeData;
+  // URL TO WEB API
+  private youtubeAPIURL = 'https://www.googleapis.com/youtube/v3/search?key=AIzaSyAXrOaIA3FiZ_Qp76WIZmU67zNV4mriEkU&channelId=UCVKdSP47XahRYJpvfA7inmg&part=snippet,id&order=date&maxResults=20';
 
   constructor (private jsonp: Jsonp) {
     console.log(jsonp);
-  }
-
-  private extractData(res: Response) {
-    let body = res.json();
-    return body || { };
   }
 
   search () {
@@ -23,8 +18,13 @@ export class FsYoutubeAPIService {
     params.set('callback', 'JSONP_CALLBACK');
     // TODO: Add error handling
     return this.jsonp
-               .get(this.YoutubeAPIURL, { search: params })
+               .get(this.youtubeAPIURL, { search: params })
                .map(this.extractData);
+  }
+
+  private extractData(res: Response) {
+    let body = res.json();
+    return body || { };
   }
 
 }
