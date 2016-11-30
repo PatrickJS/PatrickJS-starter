@@ -24,6 +24,7 @@ export class FsCustomGridCardsComponent {
     this.dialogRef = this.dialog.open(PizzaDialog, {
       disableClose: false
     });
+    this.dialogRef.obj = arguments[0];
     setTimeout( ()=>
       this.dialogRef._overlayRef._pane.querySelector('.md-dialog-container').classList.add('openAnimated')
     ,0);
@@ -47,5 +48,14 @@ export class FsCustomGridCardsComponent {
   templateUrl: './customDialog.html',
 })
 export class PizzaDialog {
-  constructor(public dialogRef: MdDialogRef<PizzaDialog>) { }
+
+  public dialogData;
+
+  constructor(public dialogRef: MdDialogRef<PizzaDialog>) {
+    console.log('init constructor', arguments);
+    this.dialogData = arguments[0];
+   }
+
+   ngOnInit() {
+  }
 }

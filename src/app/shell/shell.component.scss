@@ -121,5 +121,10 @@ span.active {
       border-top-right-radius: 5px;
       background: #26C6DA;
     }
+    code {
+      span {
+        display: block;
+      }
+    }
   }
 }
