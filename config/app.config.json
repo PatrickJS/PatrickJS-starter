@@ -1,0 +1,30 @@
+{
+  "environment_constants": {
+    "dev": {
+      "EnvironmentConfig": {
+        "api": "http://localhost/"
+      }
+    },
+    "pro": {
+      "EnvironmentConfig": {
+        "api": "https://api.production.com/"
+      }
+    }
+  },
+  "coverage_threshold": {
+    "dev": {
+      "statements": 50,
+      "branches": 50,
+      "functions": 50,
+      "lines": 50,
+      "excludes": []
+  },
+    "pro": {
+      "statements": 80,
+      "branches": 80,
+      "functions": 80,
+      "lines": 80,
+      "excludes": []
+    }
+  }
+}

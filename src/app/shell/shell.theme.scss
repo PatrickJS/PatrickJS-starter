@@ -6,7 +6,7 @@
 
 //Here the existing theme is being redfined
 $primary: md-palette($md-purple);
-$accent:  md-palette($md-amber, A200, A100, A400);
+$accent:  md-palette($md-blue, A200, A100, A400);
 
 $theme: md-light-theme($primary, $accent);
 
