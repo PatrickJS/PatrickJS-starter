@@ -1,66 +1,39 @@
 fs-youtube-api {
-  * {
-    box-sizing: border-box;
+  md-input {
+    flex:1;
   }
-  md-card {
-    background: 0 0;
-    box-shadow: 0 0 0;
-    input {
-    margin: 1em;
-    padding: 12px;
-    margin: 8px 0;
-     box-sizing: border-box;
-    }
-    input[type="text"]:focus {
-      border: 1px solid #673ab7;
-      outline: none;
-    }
-    >div {
-      .content {
-        padding: 1em;
-        display: flex;
-        flex-direction: row;
-        position: relative;
+  .flex-container {
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    list-style: none;
 
-        div {
-          flex: 1;
-          display: flex;
-          justify-content: center;
-        }
-        p {
-          flex: 1;
-        }
-        .showMore {
-          position: absolute;
-          bottom: 14px;
-          right: 14px;
-        }
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    flex-direction: row;
+  }
+
+  .flex-element {
+      flex: 0 0 100%;
+      display: flex;
+      min-width: 200px;
+      min-height: 150px;
+      flex-direction: column;
+      box-sizing: border-box;
+      margin-bottom: 10px;
+      a {
+        text-decoration: none;
       }
-    }
-    &:hover {
-      box-shadow: 0 0 0;
-    }
-    .defaultCard {
-      transition: all 0.3s ease;
-      padding: 1.5em;
-      background: white;
-      position: relative;
-      box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.3);
-      border-bottom: 1px solid rgba(0,0,0,0.05);
-      .title {
-        background: white;
-        color: black;
-        cursor: pointer;
-        font-size: 0.9em;
-        font-weight: bold;
-        cursor: pointer;
+      md-card-header {
+        padding-bottom: 1em;
       }
-    }
-    .showCard {
-      max-height: 2000px;
-      height: auto;
-      margin: 1em -1em 1em;
-      background: white;
-    }
+      @media screen and (min-width: 480px) {
+        flex: 1 0 33%!important;
+        min-width: 200px;
+        min-height: 150px;
+        box-sizing: border-box;
+        margin-bottom: 5px;
+      }
   }
 }

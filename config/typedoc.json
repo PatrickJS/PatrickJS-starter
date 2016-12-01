@@ -1,6 +1,6 @@
 {
   "mode": "modules",
-  "out": "doc",
+  "out": "docs/api",
   "theme": "default",
   "ignoreCompilerErrors": "true",
   "experimentalDecorators": "true",

@@ -1,1 +1,39 @@
 /*styles for home content only*/
+home {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 1em;
+  max-width: 1000px;
+  >h3 {
+    color: #FFF;
+    letter-spacing: -0.04em;
+    font-size: 48px;
+    font-weight: 300;
+    line-height: 56px; 
+    margin: 0.52em 0;
+  }
+  .md-tab-header {
+    border-bottom: 0px;
+    color: #FFF;
+    .md-tab-label {
+      opacity: 1;
+      position: relative;
+    }
+    .text {
+      padding-right: 10px;
+    }
+    .icon {
+      position: absolute;
+      top: 6px;
+      right: 10px;
+      display: none;
+      @media screen and (min-width: 480px) {
+        display: block;
+      }
+    }
+    md-ink-bar {
+      height: 4px;
+    }
+  }
+}
