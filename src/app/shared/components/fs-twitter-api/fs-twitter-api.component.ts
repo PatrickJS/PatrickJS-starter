@@ -28,6 +28,7 @@ export class FsTwitterAPIComponent implements OnInit {
         let div = document.createElement('div');
         div.innerHTML = data.body;
         let that = this;
+
         Array.prototype.forEach.call(div.querySelectorAll('.timeline-TweetList .timeline-Tweet'), function(){
           let text = arguments[0].querySelector('.timeline-Tweet-text').textContent;
           let tweetAuthor = arguments[0].querySelector('.TweetAuthor .TweetAuthor-screenName').textContent;
@@ -44,5 +45,12 @@ export class FsTwitterAPIComponent implements OnInit {
 
   openContent () {
     console.log('click sexy!');
+  }
+
+  urlify(text) {
+    let urlRegex = /(https?:\/\/[^\s]+)/g;
+    return text.replace(urlRegex, function(url) {
+        return '<a href="' + url + '">' + url + '</a>';
+    });
   }
 }

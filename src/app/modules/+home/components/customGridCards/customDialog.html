@@ -1,0 +1,21 @@
+<md-toolbar>
+        <!--<img md-card-sm-image [src]="element.image" *ngIf="element.image !== ''">
+        <i class="material-icons md-48 md-inactive" *ngIf="element.icon !== ''">{{element.icon}}</i>-->
+        <span>Angular 2 Basic Features</span>
+        <!--<span>{{element.title}}</span>
+        <span>{{element.description}}</span>-->
+        <button style="right: 15px; position: absolute;" md-icon-button (click)="dialogRef.close()"><md-icon>close</md-icon></button>
+</md-toolbar>
+<div style="padding:1em;">
+
+    <h2>{{dialogData.obj.title}}</h2>
+    <!--<img src="https://sharepointkunskap.files.wordpress.com/2013/06/mds_002.png" alt="">-->
+    
+    <code [innerHTML]="dialogData.obj.code">
+    </code>
+
+    <p>{{dialogData.obj.description}}</p>
+
+</div>
+<!--<button type="button" (click)="dialogRef.close('yes')">Yes</button>
+<button type="button" (click)="dialogRef.close('no')">No</button>-->

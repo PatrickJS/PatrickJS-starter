@@ -4,6 +4,12 @@ fs-twitter-api {
   }
   md-card {
     display: flex;
+    img{
+      max-width:73px;
+      max-height:73px;
+      width:auto;
+      height:auto;
+    }
     div{
       padding-left: 1em;
       >span {

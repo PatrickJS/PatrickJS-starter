@@ -1,5 +1,4 @@
-<h2 class="grid-title">{{title}}</h2>
-<div class="flex-container">
+<!--<div class="flex-container">
   <md-card *ngFor="let element of elements">
       <md-card-title-group>
           <img md-card-sm-image [src]="element.image" *ngIf="element.image !== ''">
@@ -8,4 +7,15 @@
           <md-card-subtitle>{{element.description}}</md-card-subtitle>
       </md-card-title-group>
   </md-card>
-</div>
+</div>-->
+
+<md-list>
+  <md-list-item *ngFor="let element of elements">
+    <img md-list-avatar [src]="element.image" alt="...">
+    <h3 md-line> {{element.title}} </h3>
+    <p md-line>
+      <span> {{element.description}} </span>
+      <!--<span class="demo-2">  {{message.message}} </span>-->
+    </p>
+  </md-list-item>
+</md-list>

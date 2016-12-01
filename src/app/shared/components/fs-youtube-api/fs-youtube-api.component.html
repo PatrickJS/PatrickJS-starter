@@ -1,27 +1,23 @@
-<md-card>
+<h3>Our latest videos</h3>
+  <md-card>
+    <md-toolbar ><md-input [value]="searchString" (input)="searchString = $event.target.value" placeholder="Filter">
+</md-input></md-toolbar>
+  </md-card>
+<div class="flex-container">
 
-  <h3>Youtube API Example</h3>
-
-  <input type="text" [value]="searchString" (input)="searchString = $event.target.value" placeholder="Buscar"/>
-
-  <div *ngFor="let item of dataYoutube | fsYoutubeApiPipeFilterSearch:searchString; let i = index" >
-    <div  *ngIf="item.id.videoId" class="defaultCard" [class.showCard]="item.show">
-      <div class="title" (click)="item.show = !item.show">
-
-        {{item.snippet.title}}
-      </div>
-      <div class="content" *ngIf="item.show">
-        <div class="">
-          <img src="{{item.snippet.thumbnails.medium.url}}" alt="" />
-        </div>
-        <p>
-          {{item.snippet.description}}
-        </p>
-        <a class="showMore" md-raised-button href="https://www.youtube.com/watch?v={{item.id.videoId}}" target="_blank">
-          Ver más
-        </a>
-      </div>
-
-    </div>
+  <div class="flex-element" *ngFor="let item of dataYoutube | fsYoutubeApiPipeFilterSearch:searchString; let i = index">
+    <a href="https://www.youtube.com/watch?v={{item.id.videoId}}" target="_blank">
+    <md-card *ngIf="item.id.videoId" class="defaultCard" [class.showCard]="item.show">
+          <md-card-header>
+              <img md-card-avatar src="{{item.snippet.thumbnails.medium.url}}">
+              <md-card-title>{{item.snippet.title}}</md-card-title>
+              <md-card-subtitle>Header subtitle</md-card-subtitle>
+          </md-card-header>
+          <img md-card-image src="{{item.snippet.thumbnails.medium.url}}">
+          <md-card-content>
+              <p>{{item.snippet.description}}</p>
+          </md-card-content>
+      </md-card>
+    </a>
   </div>
-</md-card>
+</div>
