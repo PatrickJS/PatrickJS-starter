@@ -1,12 +1,13 @@
-<div class="flex-container">
-  <md-card *ngFor="let element of elements" [class.open]="element.open">
-    <span>{{element.title}}</span>
-    <span>{{element.description}}</span>
-    <div>
-      <button md-fab-button (click)="openDialog()">
-        <md-icon svgSrc="/assets/img/github.svg"></md-icon>
-      </button>
-    </div>
 
-  </md-card>
-</div>
+<md-card *ngFor="let element of elements" [class.open]="element.open">
+  <h3>
+    {{element.title}} | {{element.description}}
+  </h3>
+  <div>
+    <button color="accent" md-button (click)="openDialog(element)">
+      <md-icon>web_asset</md-icon>
+      See more
+    </button>
+  </div>
+
+</md-card>
