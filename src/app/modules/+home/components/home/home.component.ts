@@ -3,6 +3,7 @@ import { Feature } from '../../services/features/feature';
 import { FeaturesService } from '../../services/features/features.service';
 import { Tech } from '../../services/techs/tech';
 import { TechsService } from '../../services/techs/techs.service';
+import { MultiLanguageService } from '../../../../shared/services/multiLanguage.service';
 
 @Component({
   // The selector is what angular internally uses
@@ -12,7 +13,8 @@ import { TechsService } from '../../services/techs/techs.service';
   // We need to tell Angular's Dependency Injection which providers are in our core.
   providers: [
     FeaturesService,
-    TechsService
+    TechsService,
+    MultiLanguageService
   ],
   // Our list of styles in our component. We may add more to compose many styles together
   styleUrls: [ './home.component.scss' ],
@@ -25,7 +27,12 @@ export class HomeComponent {
   techs: Tech[];
   rowHeight: string = '200px';
 
-  constructor(private featuresService: FeaturesService, private techsService: TechsService) {
+  constructor(private featuresService: FeaturesService, private techsService: TechsService, translate: MultiLanguageService) {
+    // initialize translate service
+    translate.initialize();
+    /* if you want change language, you need to call method of translateService 
+      example: translate.setLanguage('es');
+    */
     console.log('out home');
    }
 

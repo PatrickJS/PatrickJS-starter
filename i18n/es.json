@@ -1,0 +1,10 @@
+{
+  "HOME": {
+    "TITLE": "Bienvenido a Angular Basic by FrontStack",
+    "SELECT": "Change language"
+  },
+   "ABOUT": {
+     "TITLE":  "Sobre Nosotros"
+   }
+
+}

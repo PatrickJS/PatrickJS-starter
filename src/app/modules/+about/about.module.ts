@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 // import { FormsModule } from '@angular/forms';
 
 import { MaterialModule } from '@angular/material';
+import { TranslateModule } from 'ng2-translate';
 import { AboutComponent } from './components/about/about.component';
 import { FsUsersComponent } from './components/fs-users/fs-users.component';
 import { routes } from './about.routes';
@@ -30,6 +31,7 @@ import { fsYoutubeApiPipeFilterSearch } from '../../shared/components/fs-youtube
     JsonpModule,
     RouterModule.forChild(routes),
     MaterialModule.forRoot(),
+    TranslateModule.forRoot()
     // BrowserModule,
     // FormsModule
   ]

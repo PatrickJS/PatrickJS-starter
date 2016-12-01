@@ -206,7 +206,11 @@ module.exports = function (options) {
         to: 'assets',
       }, {
         from: 'src/meta',
-      }, ]),
+      },
+      {
+        from: 'i18n',
+        to: 'i18n'
+      } ]),
 
 
       /*

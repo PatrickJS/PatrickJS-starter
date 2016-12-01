@@ -2,6 +2,7 @@ import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { RouterModule, PreloadAllModules, Router, NavigationEnd } from '@angular/router';
+import { HttpModule } from '@angular/http';
 
 /** Angular Guard for module routes */
 import { AuthenticateGuard } from './shared/services/auth.service';
@@ -13,6 +14,9 @@ import { AuthenticateGuard } from './shared/services/auth.service';
 
 // Import material design module
 import { MaterialModule } from '@angular/material';
+
+//import ng2-translate module
+import { TranslateModule } from 'ng2-translate';
 
 /** Platform and Environment providers/directives/pipes */
 
@@ -33,12 +37,15 @@ import { NoContentComponent } from './shared/components/no-content/no-content.co
   /** import Angular's modules and specify the lazyLoad modules preload strategy */
   imports: [
     BrowserModule,
+    HttpModule,
     MaterialModule.forRoot(),
     ShellModule,
     RouterModule.forRoot(ROUTES, {
       useHash: true
       // ,preloadingStrategy: PreloadAllModules
-    })
+    }),
+    TranslateModule.forRoot()
+
   ],
   /* expose our Services and Providers into Angular's dependency injection */
   providers: [

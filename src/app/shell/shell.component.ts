@@ -3,6 +3,8 @@
  */
 import { Component, ViewEncapsulation } from '@angular/core';
 
+import { TranslateService } from 'ng2-translate';
+
 /*
  * App Component
  * Top Level Component
@@ -17,7 +19,8 @@ import { Component, ViewEncapsulation } from '@angular/core';
 export class ShellComponent {
   title: string;
 
-  constructor() {
+  constructor(translate: TranslateService) {
+
     this.title = 'Hello';
   }
 
