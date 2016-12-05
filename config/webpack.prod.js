@@ -150,7 +150,7 @@ module.exports = function (env) {
         // }, // debug
         // comments: true, //debug
 
-
+        sourceMap:true,
         beautify: false, //prod
         output: {
           comments: false
