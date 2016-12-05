@@ -87,7 +87,7 @@
     "@types/source-map": "^0.1.27",
     "@types/uglify-js": "^2.0.27",
     "@types/webpack": "^1.12.34",
-    "angular2-router-loader": "^0.3.4",
+    "angular-router-loader": "^0.4.0",
     "angular2-template-loader": "^0.6.0",
     "awesome-typescript-loader": "^2.2.1",
     "codelyzer": "~1.0.0-beta.4",
