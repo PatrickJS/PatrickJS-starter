@@ -109,7 +109,7 @@
     "karma-remap-coverage": "^0.1.1",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "1.8.0",
-    "parse5": "^2.2.2",
+    "parse5": "^3.0.0",
     "protractor": "^4.0.10",
     "raw-loader": "0.5.1",
     "rimraf": "~2.5.4",
