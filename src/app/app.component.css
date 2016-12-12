@@ -6,3 +6,13 @@ html, body{
 span.active {
   background-color: gray;
 }
+
+span.logo {
+  font-family:Arial, Helvetica, sans-serif;
+  float: left;
+}
+
+nav {
+  font-family:Arial, Helvetica, sans-serif;
+  float: right;
+}
