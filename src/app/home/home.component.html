@@ -1,45 +1,24 @@
+<div class="herobanner">
+  <p>Created by</p>
+  <img src="/assets/img/logotype.png" alt="codequest logo">
+</div>
 
-
-
-<!-- ORIGIN version -->
-<div class="card-container">
-  <h1 class="sample-content">Your Content Here</h1>
-
-  <div>
-    For material design components use the <a href="https://github.com/AngularClass/angular2-webpack-starter/tree/material2"><b>material2</b></a> branch
+<div class="how-it-works">
+  <h1>how it works</h1>
+  <div class="box login">
+    <p>1. Login to our platform using your in-game nickname.<p>
+    <button type="button">login</button>
   </div>
-
-  <hr>
-
-  <div>
-    For hot module reloading run
-    <pre>npm run start:hmr</pre>
+  <div class="box download">
+    <p>2. Download our APP via link provided below<p>
+    <button type="button"><a href="#">download</a></button>
   </div>
-
-  <hr>
-
-  <div>
-    <h4>Local State</h4>
-
-    <form (ngSubmit)="submitState(localState.value)" autocomplete="off">
-
-      <input
-        [value]="localState.value"
-        (input)="localState.value = $event.target.value"
-        placeholder="Submit Local State to App State"
-        autofocus>
-
-      <button md-raised-button color="blue">Submit Value</button>
-    </form>
-    <!--
-        <input type="text" [value]="localState.value" (input)="localState.value = $event.target.value" autofocus>
-        Rather than wiring up two-way data-binding ourselves with [value] and (input)
-        we can use Angular's [(ngModel)] syntax
-        <input type="text" name="textInput" [(ngModel)]="localState.value" autofocus>
-      -->
-
-    <pre>this.localState = {{ localState | json }}</pre>
-
+  <div class="box create">
+    <p>3. Create a game to compete with players from all around the world.<p>
+    <button type="button">create</button>
   </div>
+</div>
 
+<div class="cta">
+  <h2><span>ready</span> for the challenge?</h2>
 </div>

@@ -1,1 +1,24 @@
-/*styles for home content only*/
+/*** HERO BANNER ***/
+
+.herobanner {
+    margin: 0;
+    padding: 0;
+    background: #2865a2 url('/assets/img/hero-banner.png') no-repeat;
+    height: 550px;
+}
+
+
+
+
+/*** HOW IT WORKS ***/
+
+.how-it-works {
+
+}
+
+/*** CALL TO ACTION - BOTTOM ***/
+
+.cta {
+    height: 887px;
+    background: #2865a2 url('/assets/img/cta-image.png') no-repeat;
+}
