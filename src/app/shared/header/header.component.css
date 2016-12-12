@@ -1,0 +1,31 @@
+span.logo {
+    font-family: Arial, Helvetica, sans-serif;
+    float: left;
+    margin-top: 9px;
+    margin-left: 20px;
+    font-size: 34px;
+    color: #ffc600;
+}
+
+nav {
+  font-family:Arial, Helvetica, sans-serif;
+  float: right;
+  color: #fff;
+}
+
+a.header {
+    color: #fff;
+    margin-right: 21px;
+    font-size: 20px;
+}
+
+button {
+    border: 3px solid #ffc600;
+    border-radius: 7px;
+    width: 148px;
+    height: 38px;
+    margin-top: 8px;
+    margin-right: 15px;
+    color: #fff;
+    font-size: 26px;
+}

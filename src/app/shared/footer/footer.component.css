@@ -1,0 +1,24 @@
+div.footer {
+    background-color: #2865a2;
+}
+
+.footer-text {
+    color: #fff;
+    font-size: 23px;
+    text-align: center;
+}
+
+.cq-logo {
+    text-align: center;
+}
+
+img {
+    margin:auto;
+    width: 300px;
+}
+
+.footer-lower-text{
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+}
