@@ -87,7 +87,7 @@
     "@types/source-map": "^0.1.27",
     "@types/uglify-js": "^2.0.27",
     "@types/webpack": "^1.12.34",
-    "angular2-router-loader": "^0.3.4",
+    "angular-router-loader": "^0.4.0",
     "angular2-template-loader": "^0.6.0",
     "awesome-typescript-loader": "^2.2.1",
     "codelyzer": "~1.0.0-beta.4",
@@ -123,14 +123,14 @@
     "tslint": "~3.15.1",
     "tslint-loader": "^2.1.5",
     "typedoc": "^0.5.0",
-    "typescript": "^2.0.6",
+    "typescript": "2.1.1",
     "url-loader": "^0.5.7",
     "v8-lazy-parse-webpack-plugin": "^0.3.0",
     "webpack": "2.1.0-beta.27",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-dev-server": "2.1.0-beta.11",
     "webpack-md5-hash": "^0.0.5",
-    "webpack-merge": "~0.17.0"
+    "webpack-merge": "~1.0.1"
   },
   "repository": {
     "type": "git",
