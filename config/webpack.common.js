@@ -88,6 +88,10 @@ module.exports = function (options) {
      */
     module: {
 
+      loaders: [
+        { test: /\.(woff2?|ttf|eot|svg)$/, loader: 'url?limit=10000' }
+      ],
+
       rules: [
 
         /*
@@ -145,7 +149,6 @@ module.exports = function (options) {
           test: /\.(jpg|png|gif)$/,
           use: 'file-loader'
         },
-
       ],
 
     },
