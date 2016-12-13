@@ -5,14 +5,18 @@
     height: 550px;
 }
 
-.codequest {
-    display: flex;
+.codequest p {
+    display: block;
+    float: left;
+    margin: 400px 20px 0 400px;
 }
+
+
+
 .herobanner p {
     color: #fff;
     font-size: 24px;
     justify-content: center;
-    align-items: flex-end;
 }
 
 .herobanner img {
@@ -20,10 +24,15 @@
     height: 50px;
 }
 
-
-
-
 /*** HOW IT WORKS ***/
+
+.how-it-works h1 {
+    font-size: 72px;
+    color: #fff;
+    font-weight: 700;
+    margin-left: 30px;
+    text-transform: uppercase;
+}
 
 .box-explained {
     display: flex;
@@ -68,6 +77,7 @@
     font-weight: 700;
     color: #ffc600;
     text-transform: uppercase;
+    line-height: 70px;
 }
 
 .hiw a {
