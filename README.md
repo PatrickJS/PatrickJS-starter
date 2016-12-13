@@ -345,7 +345,7 @@ import * as _ from 'lodash';
 * [Twitter: @AngularClass](https://twitter.com/AngularClass)
 * [Gitter: AngularClass/angular2-webpack-starter](https://gitter.im/angularclass/angular2-webpack-starter)
 
-# Quick Start Guides
+# Deployment
 
 ## Netlify
 
