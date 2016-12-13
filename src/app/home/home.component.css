@@ -1,1 +1,108 @@
-/*styles for home content only*/
+/*** HOW IT WORKS ***/
+.box-explained {
+    display: flex;
+    justify-content: space-between;
+}
+
+.how-it-works {
+    width: 1290px;
+    clear: both;
+}
+
+.how-it-works h1 {
+    font-family: Montserrat, sans-serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: -10px;
+    text-transform: uppercase;
+}
+.button-wrapper {
+    text-align: center;
+}
+
+.box {
+    color: #fff;
+    font-family: Montserrat, sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    height: 442px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.box p {
+    margin-left: 20px;
+}
+
+.login {
+   background: #2865a2 url('/assets/img/login-banner.png') no-repeat;
+}
+
+.download {
+   background: #2865a2 url('/assets/img/download-banner.png') no-repeat;
+}
+
+.create {
+   background: #2865a2 url('/assets/img/create-banner.png') no-repeat;
+}
+
+.btn {
+    width: 276px;
+    height: 76px;
+    background: #2865a2;
+    border: 2px solid rgb(255,198,0);
+    font-size: 36px;
+    font-weight: 700;
+    color: #ffc600;
+    text-transform: uppercase;
+    line-height: 70px;
+}
+
+.btn a {
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.btn a:link {
+    color: #ffc600;
+}
+
+.btn a:visited {
+    color: #ffc600;
+}
+
+.btn a:hover {
+    color: #ffc600;
+}
+
+.btn a:active {
+    color: #ffc600;
+}
+/*** CALL TO ACTION - BOTTOM ***/
+
+.cta {
+    margin-top: -100px;
+    height: 887px;
+    background: #2865a2 url('/assets/img/cta-image.png') no-repeat;
+}
+
+.cta h2 {
+    font-family: Montserrat, sans-serif;
+    font-weight: 700;
+    font-size: 72px;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    padding-top: 190px;
+    line-height: 100px;
+}
+
+h2 span {
+    font-size: 120px;
+    display: block;
+}

@@ -1,0 +1,24 @@
+.herobanner {
+    background: #2865a2 url(/assets/img/hero-banner.png) no-repeat;
+    height: 550px;
+    width: 100%;
+    display: table;
+}
+
+.herobanner p {
+    font-family: Montserrat, sans-serif;
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.herobanner img {
+    width: 350px;
+    height: 50px;
+}
+
+.codequest {
+    display: table-cell;
+    vertical-align: bottom;
+    text-align: center;
+}

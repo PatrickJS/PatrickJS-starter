@@ -26,7 +26,7 @@ https://plnkr.co or similar (you can use this template as a starting point: http
 
 
 
-* **Please tell us about your environment:**
+* **Please tell us login your environment:**
 
 - Angular version: 2.0.0-beta.X
 - Browser: [all | Chrome XX | Firefox XX | IE XX | Safari XX | Mobile Chrome XX | Android X.X Web Browser | iOS XX Safari | iOS XX UIWebView | iOS XX WKWebView ]

@@ -36,7 +36,7 @@ module.exports = function (options) {
       *
       * It's important to prefix & suffix the repo name with a slash (/).
       * Prefixing so every resource will be absolute (otherwise it will be url.com/repoName/repoName...
-      * Suffixing since chunks will not do it automatically (testes against about page)
+      * Suffixing since chunks will not do it automatically (testes against login page)
       */
      publicPath: '/' + GH_REPO_NAME + '/' + ghDeploy.safeUrl(webpackConfig.output.publicPath)
    },
