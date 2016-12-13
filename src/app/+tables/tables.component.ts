@@ -5,22 +5,22 @@ import { Component } from '@angular/core';
  * see https://github.com/gdi2290/es6-promise-loader for more info
  */
 
-console.log('`Detail` component loaded asynchronously');
+console.log('`Tables` component loaded asynchronously');
 
 @Component({
-  selector: 'detail',
+  selector: 'tables',
   template: `
-    <h1>Hello from Detail</h1>
+    <h1>Hello from tables</h1>
     <router-outlet></router-outlet>
   `
 })
-export class DetailComponent {
+export class TablesComponent {
   constructor() {
 
   }
 
   ngOnInit() {
-    console.log('hello `Detail` component');
+    console.log('hello `tables` component');
   }
 
 }
