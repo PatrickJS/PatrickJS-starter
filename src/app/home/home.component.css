@@ -72,7 +72,7 @@
    background: #2865a2 url('/assets/img/create-banner.png') no-repeat;
 }
 
-.hiw {
+.btn {
     margin: 210px 0 0 0;
     width: 276px;
     height: 76px;
@@ -85,26 +85,26 @@
     line-height: 70px;
 }
 
-.hiw a {
+.btn a {
     text-decoration: none;
     display: block;
     width: 100%;
     height: 100%;
 }
 
-.hiw a:link {
+.btn a:link {
     color: #ffc600;
 }
 
-.hiw a:visited {
+.btn a:visited {
     color: #ffc600;
 }
 
-.hiw a:hover {
+.btn a:hover {
     color: #ffc600;
 }
 
-.hiw a:active {
+.btn a:active {
     color: #ffc600;
 }
 /*** CALL TO ACTION - BOTTOM ***/
