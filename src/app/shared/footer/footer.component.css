@@ -1,11 +1,17 @@
+p {
+    margin: 0;
+}
+
 div.footer {
     background-color: #2865a2;
 }
 
-.footer-text {
+.footer-text p {
     color: #fff;
-    font-size: 23px;
+    font-size: 24px;
     text-align: center;
+    font-family: Montserrat;
+    margin: 0;
 }
 
 .cq-logo {
@@ -13,12 +19,20 @@ div.footer {
 }
 
 img {
-    margin:auto;
-    width: 300px;
+    margin-top: 10px;
+    width: 471px;
 }
 
 .footer-lower-text{
     color: #fff;
-    font-size: 12px;
+    font-size: 19px;
     text-align: center;
+    font-family: Montserrat;
+}
+
+.footer-lower-text a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 25px;
+
 }

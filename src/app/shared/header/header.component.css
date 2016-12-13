@@ -1,31 +1,40 @@
-span.logo {
-    font-family: Arial, Helvetica, sans-serif;
-    float: left;
+div.header {
+    height: 53px;
+    opacity: 0.5;
+    position: fixed;
+}
+
+.logo {
+    font-family: Alliance;
     margin-top: 9px;
     margin-left: 20px;
     font-size: 34px;
     color: #ffc600;
 }
 
-nav {
-  font-family:Arial, Helvetica, sans-serif;
-  float: right;
+div.menu {
+  font-family: Montserrat;
   color: #fff;
+  float: right;
 }
 
-a.header {
+a {
     color: #fff;
     margin-right: 21px;
     font-size: 20px;
+    text-decoration: none;
 }
 
 button {
-    border: 3px solid #ffc600;
-    border-radius: 7px;
+    border: 2px solid #ffc600;
+    border-radius: 2px;
     width: 148px;
     height: 38px;
     margin-top: 8px;
     margin-right: 15px;
     color: #fff;
     font-size: 26px;
+    background-color: transparent;
+    padding: 0;
 }
+
