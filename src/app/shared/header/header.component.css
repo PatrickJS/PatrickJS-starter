@@ -1,7 +1,8 @@
 div.header {
     height: 53px;
-    opacity: 0.5;
+    background-color: rgba(0, 0, 0, 0.2);
     position: fixed;
+    width: 100%;
 }
 
 .logo {
@@ -10,6 +11,7 @@ div.header {
     margin-left: 20px;
     font-size: 34px;
     color: #ffc600;
+    float: left;
 }
 
 div.menu {
