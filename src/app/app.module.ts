@@ -1,6 +1,6 @@
 import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
@@ -15,10 +15,11 @@ import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
-import { AboutComponent } from './about';
+import { LoginComponent } from './login';
 import { TablesComponent } from './+tables';
 import { NoContentComponent } from './no-content';
-import {SharedModule} from './shared/shared.module'
+import { SharedModule } from './shared/shared.module';
+import { UserFormComponent } from './login/user/user_form.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -39,16 +40,18 @@ type StoreType = {
   bootstrap: [ AppComponent ],
   declarations: [
     AppComponent,
-    AboutComponent,
+    LoginComponent,
     HomeComponent,
     NoContentComponent,
-    TablesComponent
+    TablesComponent,
+    UserFormComponent,
   ],
   imports: [ // import Angular's modules
     BrowserModule,
     FormsModule,
     HttpModule,
     SharedModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
