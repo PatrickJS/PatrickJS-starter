@@ -17,7 +17,6 @@ import { AppState } from './app.service';
   ],
   template: `
     <kot-header></kot-header>
-    <hero-image></hero-image>
     <main>
       <router-outlet></router-outlet>
     </main>

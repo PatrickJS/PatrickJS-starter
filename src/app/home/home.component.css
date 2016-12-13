@@ -1,4 +1,8 @@
 /*** HOW IT WORKS ***/
+.box-explained {
+    display: flex;
+    justify-content: space-between;
+}
 
 .how-it-works {
     width: 1290px;
@@ -13,9 +17,8 @@
     margin-bottom: -10px;
     text-transform: uppercase;
 }
-
-.box-explained .box {
-    display: inline-block;
+.button-wrapper {
+    text-align: center;
 }
 
 .box {
@@ -25,11 +28,13 @@
     font-size: 24px;
     height: 442px;
     width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .box p {
     margin-left: 20px;
-    height: 90px;
 }
 
 .login {
@@ -45,7 +50,6 @@
 }
 
 .hiw {
-    margin: 210px 0 0 0;
     width: 276px;
     height: 76px;
     background: #2865a2;

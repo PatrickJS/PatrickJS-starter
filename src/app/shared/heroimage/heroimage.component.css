@@ -1,25 +1,24 @@
 .herobanner {
-    background: #2865a2 url('/assets/img/hero-banner.png') no-repeat;
+    background: #2865a2 url(/assets/img/hero-banner.png) no-repeat;
     height: 550px;
+    width: 100%;
+    display: table;
 }
 
 .herobanner p {
     font-family: Montserrat, sans-serif;
     font-size: 24px;
     color: #fff;
-    display: block;
-    position: relative;
-    float: left;
-    padding-right: 20px;
-    padding-left: 90px;
-    margin-top: 500px;
+    margin-bottom: 5px;
 }
 
 .herobanner img {
     width: 350px;
     height: 50px;
-    display: block;
-    position: relative;
-    margin: 445px auto 0 auto;
-    float: left;
+}
+
+.codequest {
+    display: table-cell;
+    vertical-align: bottom;
+    text-align: center;
 }
