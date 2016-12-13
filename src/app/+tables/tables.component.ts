@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 /*
  * We're loading this component asynchronously
  * We are using some magic with es6-promise-loader that will wrap the module with a Promise
@@ -8,12 +9,17 @@ import { Component } from '@angular/core';
 console.log('`Tables` component loaded asynchronously');
 
 @Component({
-  selector: 'tables',
-  template: `
-    <h1>Hello from tables</h1>
-    <router-outlet></router-outlet>
-  `
+  // The selector is what angular internally uses
+  // for `document.querySelectorAll(selector)` in our index.html
+  // where, in this case, selector is the string 'home'
+  selector: 'tables',  // <home></home>
+  // We need to tell Angular's Dependency Injection which providers are in our app.
+  // Our list of styles in our component. We may add more to compose many styles together
+  styleUrls: [ './tables.component.css' ],
+  // Every Angular template is first compiled by the browser before Angular runs it's compiler
+  templateUrl: './tables.component.html'
 })
+
 export class TablesComponent {
   constructor() {
 
