@@ -5,50 +5,60 @@
     height: 550px;
 }
 
-.codequest p {
-    display: block;
-    float: left;
-    margin: 400px 20px 0 400px;
-}
-
-
-
 .herobanner p {
-    color: #fff;
+    font-family: Montserrat, sans-serif;
     font-size: 24px;
-    justify-content: center;
+    color: #fff;
+    display: block;
+    position: relative;
+    float: left;
+    padding-right: 20px;
+    padding-left: 90px;
+    margin-top: 500px;
 }
 
 .herobanner img {
     width: 350px;
     height: 50px;
+    display: block;
+    position: relative;
+    margin: 445px auto 0 auto;
+    float: left;
 }
 
 /*** HOW IT WORKS ***/
 
+.how-it-works {
+    width: 1290px;
+    clear: both;
+}
+
 .how-it-works h1 {
+    font-family: Montserrat, sans-serif;
     font-size: 72px;
-    color: #fff;
     font-weight: 700;
+    color: #fff;
     margin-left: 30px;
+    margin-bottom: -10px;
     text-transform: uppercase;
 }
 
-.box-explained {
-    display: flex;
+.box-explained .box {
+    display: inline-block;
 }
 
 .box {
     color: #fff;
+    font-family: Montserrat, sans-serif;
     font-weight: 700;
     font-size: 24px;
     height: 442px;
     width: 400px;
-    flex-direction: row;
 }
 
 .box p {
     margin-left: 20px;
+    height: 90px;
 }
 
 .login {
@@ -67,7 +77,6 @@
 }
 
 .hiw {
-    display: block;
     margin: 210px auto 0 auto;
     width: 276px;
     height: 76px;
@@ -105,6 +114,23 @@
 /*** CALL TO ACTION - BOTTOM ***/
 
 .cta {
+    margin-top: -100px;
     height: 887px;
     background: #2865a2 url('/assets/img/cta-image.png') no-repeat;
+}
+
+.cta h2 {
+    font-family: Montserrat, sans-serif;
+    font-weight: 700;
+    font-size: 72px;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    padding-top: 190px;
+    line-height: 100px;
+}
+
+h2 span {
+    font-size: 120px;
+    display: block;
 }
