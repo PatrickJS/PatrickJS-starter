@@ -1,0 +1,47 @@
+/** KARAZHAN TABLES LIST **/
+
+.container {
+    width: 1290px;
+    height: 388px;
+    background: #2865a2 url(/assets/img/karazhan-tables.png) no-repeat;
+}
+
+
+/** CREATE GAME BUTTON **/
+
+.btn {
+    display: block;
+    margin: 0 auto 0 auto;
+    width: 276px;
+    height: 76px;
+    background: #2865a2;
+    border: 2px solid rgb(255,198,0);
+    font-size: 36px;
+    font-weight: 700;
+    color: #ffc600;
+    text-transform: uppercase;
+    line-height: 70px;
+}
+
+.btn a {
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.btn a:link {
+    color: #ffc600;
+}
+
+.btn a:visited {
+    color: #ffc600;
+}
+
+.btn a:hover {
+    color: #ffc600;
+}
+
+.btn a:active {
+    color: #ffc600;
+}
