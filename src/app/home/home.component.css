@@ -38,7 +38,6 @@
     font-size: 72px;
     font-weight: 700;
     color: #fff;
-    margin-left: 30px;
     margin-bottom: -10px;
     text-transform: uppercase;
 }
@@ -62,22 +61,19 @@
 }
 
 .login {
-   margin-left: 30px;
    background: #2865a2 url('/assets/img/login-banner.png') no-repeat;
 }
 
 .download {
-   margin-left: 15px;
    background: #2865a2 url('/assets/img/download-banner.png') no-repeat;
 }
 
 .create {
-   margin-left: 15px;
    background: #2865a2 url('/assets/img/create-banner.png') no-repeat;
 }
 
 .hiw {
-    margin: 210px 0 0 40px;
+    margin: 210px 0 0 0;
     width: 276px;
     height: 76px;
     background: #2865a2;

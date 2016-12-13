@@ -16,6 +16,7 @@ import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
 import { AboutComponent } from './about';
+import { TablesComponent } from './+tables';
 import { NoContentComponent } from './no-content';
 import {SharedModule} from './shared/shared.module'
 
@@ -41,6 +42,7 @@ type StoreType = {
     AboutComponent,
     HomeComponent,
     NoContentComponent,
+    TablesComponent
   ],
   imports: [ // import Angular's modules
     BrowserModule,

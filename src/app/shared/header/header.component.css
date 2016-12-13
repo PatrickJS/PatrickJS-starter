@@ -1,8 +1,14 @@
+:host {
+    display: block;
+    width: 100%;
+    position: relative;
+}
+
 div.header {
     height: 53px;
     background-color: rgba(0, 0, 0, 0.2);
-    position: fixed;
-    width: 100%;
+    position: absolute;
+    width: 1284px;
 }
 
 .logo {
