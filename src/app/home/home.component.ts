@@ -24,6 +24,8 @@ import { XLarge } from './x-large';
 export class HomeComponent {
   // Set our default values
   localState = { value: '' };
+  date: Date = new Date();
+
   // TypeScript public modifiers
   constructor(public appState: AppState, public title: Title) {
 
@@ -31,6 +33,10 @@ export class HomeComponent {
 
   ngOnInit() {
     console.log('hello `Home` component');
+    let harta = [123]
+    console.log("loadash ", _.concat(harta,[3456]));
+    console.log("jquery ", $);
+
     // this.title.getData().subscribe(data => this.data = data);
   }
 

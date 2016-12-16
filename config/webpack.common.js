@@ -19,6 +19,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 
+
 /*
  * Webpack Constants
  */
@@ -145,10 +146,12 @@ module.exports = function (options) {
           use: 'file-loader'
         },
         // SASS loader
-        { test: /\.scss$/,
-          exclude: /node_modules/,
-          loaders: ['raw-loader', 'sass-loader'] // sass-loader not scss-loader
-        }
+        {
+          test: /\.scss$/,
+          loaders: ['raw-loader', 'sass-loader']
+        },
+        { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
+        { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" }
       ],
 
     },
@@ -209,7 +212,7 @@ module.exports = function (options) {
        * See: https://www.npmjs.com/package/copy-webpack-plugin
        */
       new CopyWebpackPlugin([
-        { from: 'src/assets', to: 'assets' },
+        {from: 'src/assets', to: 'assets'},
       ]),
 
 
@@ -268,6 +271,15 @@ module.exports = function (options) {
         /facade(\\|\/)math/,
         helpers.root('node_modules/@angular/core/src/facade/math.js')
       ),
+      new webpack.ProvidePlugin({
+        jQuery: 'jquery',
+        $: 'jquery',
+        jquery: 'jquery'
+      }),
+      new webpack.ProvidePlugin({
+        lodash: 'lodash',
+        _: 'lodash'
+      })
     ],
 
     /*
