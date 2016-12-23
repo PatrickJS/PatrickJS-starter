@@ -1,12 +1,14 @@
-const helpers = require('../helpers');
 const execSync = require('child_process').execSync;
+const webpackMerge = require('webpack-merge'); // used to merge webpack configs
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const helpers = require('../helpers');
 
 const REPO_NAME_RE = /Push {2}URL: https:\/\/github\.com\/.*\/(.*)\.git/;
 
-function getWebpackConfigModule() {
-  if (helpers.hasProcessFlag('github-dev')) {
+function getWebpackConfigModule(options) {
+  if (options.githubDev) {
     return require('../webpack.dev.js');
-  } else if (helpers.hasProcessFlag('github-prod')) {
+  } else if (options.githubProd) {
     return require('../webpack.prod.js');
   } else {
     throw new Error('Invalid compile option.');
@@ -54,6 +56,33 @@ function safeUrl(url) {
   return stripped ? stripped + '/' : '';
 }
 
+function replaceHtmlWebpackPlugin(plugins, ghRepoName) {
+  for (var i=0; i<plugins.length; i++) {
+    if (plugins[i] instanceof HtmlWebpackPlugin) {
+      // remove the old instance of the html plugin
+      const htmlPlug = plugins.splice(i, 1)[0];
+      const METADATA = webpackMerge(htmlPlug.options.metadata, {
+        /**
+         * Prefixing the REPO name to the baseUrl for router support.
+         * This also means all resource URIs (CSS/Images/JS) will have this prefix added by the browser
+         * unless they are absolute (start with '/'). We will handle it via `output.publicPath`
+         */
+        baseUrl: '/' + ghRepoName + '/' + safeUrl(htmlPlug.options.metadata.baseUrl)
+      });
+
+      // add the new instance of the html plugin.
+      plugins.splice(i, 0, new HtmlWebpackPlugin({
+        template: htmlPlug.options.template,
+        title: htmlPlug.options.title,
+        chunksSortMode: htmlPlug.options.chunksSortMode,
+        metadata: METADATA,
+        inject: htmlPlug.options.inject
+      }));
+      return;
+    }
+  }
+}
 exports.getWebpackConfigModule = getWebpackConfigModule;
 exports.getRepoName = getRepoName;
 exports.safeUrl = safeUrl;
+exports.replaceHtmlWebpackPlugin = replaceHtmlWebpackPlugin;

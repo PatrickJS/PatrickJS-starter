@@ -47,7 +47,7 @@ module.exports = function(config) {
     },
 
     // Webpack please don't spam the console when running in karma!
-    webpackServer: { noInfo: true },
+    webpackMiddleware: { stats: 'errors-only'},
 
     /*
      * test results reporter to use
@@ -95,7 +95,9 @@ module.exports = function(config) {
   };
 
   if (process.env.TRAVIS){
-    configuration.browsers = ['ChromeTravisCi'];
+    configuration.browsers = [
+      'ChromeTravisCi'
+    ];
   }
 
   config.set(configuration);
