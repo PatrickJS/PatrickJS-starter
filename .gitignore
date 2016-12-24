@@ -34,6 +34,7 @@ Thumbs.db
 /node_modules
 /bower_components
 npm-debug.log
+yarn.lock
 
 # Coverage #
 /coverage/
@@ -53,6 +54,7 @@ npm-debug.log
 /dist/**
 /.awcache
 .webpack.json
+compiled/
 
 # Doc #
 /doc/
