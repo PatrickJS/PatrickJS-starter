@@ -1,5 +1,5 @@
 <div class="card-container">
-  <h1 x-large class="sample-content">Your Content Here</h1>
+  <h1 x-large class="sample-content"><div class="asdasd">Your Content Here</div></h1>
 
   <div>
     For material design components use the <a href="https://github.com/AngularClass/angular2-webpack-starter/tree/material2"><b>material2</b></a> branch
@@ -11,6 +11,13 @@
     For hot module reloading run
     <pre>npm run start:hmr</pre>
   </div>
+  <button type="button" class="btn btn-primary">Default</button>
+  <alert type="info">Hello from ng2-bootstrap  {{ date.toDateString() }}</alert>
+  <div style="display:inline-block; min-height:290px;">
+    <datepicker [(ngModel)]="date" showWeeks="true"></datepicker>
+  </div>
+  <p>Volume-down icon: <span class="glyphicon glyphicon-volume-down"></span></p>
+  font awsome example: <i class="fa fa-camera-retro"></i> font awsome example
 
   <hr>
 
