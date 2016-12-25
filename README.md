@@ -37,10 +37,12 @@ This seed repo serves as an Angular 2 starter for anyone looking to get up and r
 * Ready to go build system using Webpack for working with TypeScript.
 * Angular 2 examples that are ready to go when experimenting with Angular 2.
 * A great Angular 2 seed repo for anyone who wants to start their project.
-* Ahead of Time (AoT) compile for rapid page loads of your production builds
+* Ahead of Time (AoT) compile for rapid page loads of your production builds.
+* Tree shaking to automatically remove unused code from your production bundle.
 * Testing Angular 2 code with Jasmine and Karma.
 * Coverage with Istanbul and Karma
 * End-to-end Angular 2 code using Protractor.
+* Interactive visual bundle analysis to help you optimize your output code.
 * Type manager with @types
 * Hot Module Replacement with Webpack and [@angularclass/hmr](https://github.com/angularclass/angular2-hmr) and [@angularclass/hmr-loader](https://github.com/angularclass/angular2-hmr-loader)
 * Material Design with [angular/material2](https://github.com/angular/material2)
@@ -173,6 +175,16 @@ npm run build:dev
 npm run build:prod
 # AoT
 npm run build:aot
+```
+
+### bundle analysis tool
+The `--env.analyze` flag will open up a browser window after your build is complete so you can interactively analyze the contents of your output bundle.
+
+```bash
+# production (jit)
+npm run build:prod -- --env.analyze
+# AoT
+npm run build:aot:prod -- --env.analyze
 ```
 
 ### hot module replacement

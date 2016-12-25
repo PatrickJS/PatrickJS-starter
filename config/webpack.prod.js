@@ -9,6 +9,7 @@ const commonConfig = require('./webpack.common.js'); // the settings that are co
 /**
  * Webpack Plugins
  */
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const DedupePlugin = require('webpack/lib/optimize/DedupePlugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const IgnorePlugin = require('webpack/lib/IgnorePlugin');
@@ -32,6 +33,11 @@ const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
 });
 
 module.exports = function (env) {
+  let conditionalPlugins = [];
+  if(env && env.analyze) {
+    conditionalPlugins.push(new BundleAnalyzerPlugin());
+  }
+
   return webpackMerge(commonConfig({env: ENV}), {
 
     /**
@@ -264,6 +270,7 @@ module.exports = function (env) {
 
         }
       }),
+      ...conditionalPlugins,
 
     ],
 
