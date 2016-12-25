@@ -33,11 +33,6 @@ const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
 });
 
 module.exports = function (env) {
-  let conditionalPlugins = [];
-  if(env && env.analyze) {
-    conditionalPlugins.push(new BundleAnalyzerPlugin());
-  }
-
   return webpackMerge(commonConfig({env: ENV}), {
 
     /**
@@ -270,9 +265,19 @@ module.exports = function (env) {
 
         }
       }),
-      ...conditionalPlugins,
 
-    ],
+      /**
+       * Plugin: BundleAnalyzerPlugin
+       * Description: Webpack plugin and CLI utility that represents 
+       * bundle content as convenient interactive zoomable treemap
+       * 
+       * `npm run build:prod -- --env.analyze` to use
+       *
+       * See: https://github.com/th0r/webpack-bundle-analyzer
+       */
+      env && env.analyze ? new BundleAnalyzerPlugin() : null,
+
+    ].filter(plugin => plugin !== null),
 
     /*
      * Include polyfills or mocks for various node stuff
