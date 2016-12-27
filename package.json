@@ -26,7 +26,7 @@
     "clean:dist": "npm run rimraf -- dist",
     "clean:install": "npm set progress=false && npm install",
     "clean:start": "npm start",
-    "clean": "npm cache clean && npm run rimraf -- node_modules doc coverage dist",
+    "clean": "npm cache clean && npm run rimraf -- node_modules doc coverage dist compiled",
     "docker": "docker",
     "docs": "npm run typedoc -- --options typedoc.json --exclude '**/*.spec.ts' ./src/",
     "e2e:live": "npm run e2e -- --elementExplorer",
@@ -71,7 +71,6 @@
   "dependencies": {
     "@angular/common": "~2.4.1",
     "@angular/compiler": "~2.4.1",
-    "@angular/compiler-cli": "~2.4.1",
     "@angular/core": "~2.4.1",
     "@angular/forms": "~2.4.1",
     "@angular/http": "~2.4.1",
@@ -91,6 +90,7 @@
     "zone.js": "~0.7.4"
   },
   "devDependencies": {
+    "@angular/compiler-cli": "~2.4.1",
     "@types/hammerjs": "^2.0.33",
     "@types/jasmine": "^2.2.34",
     "@types/node": "^6.0.38",
@@ -138,10 +138,9 @@
     "typescript": "2.0.10",
     "url-loader": "^0.5.7",
     "v8-lazy-parse-webpack-plugin": "^0.3.0",
-    "webpack": "2.1.0-beta.28",
-    "webpack-bundle-analyzer": "^2.2.1",
+    "webpack": "2.2.0-rc.2",
     "webpack-dev-middleware": "^1.6.1",
-    "webpack-dev-server": "2.1.0-beta.12",
+    "webpack-dev-server": "2.2.0-rc.0",
     "webpack-md5-hash": "^0.0.5",
     "webpack-merge": "~1.0.1"
   },

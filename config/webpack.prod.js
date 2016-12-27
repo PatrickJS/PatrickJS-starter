@@ -9,7 +9,6 @@ const commonConfig = require('./webpack.common.js'); // the settings that are co
 /**
  * Webpack Plugins
  */
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const DedupePlugin = require('webpack/lib/optimize/DedupePlugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const IgnorePlugin = require('webpack/lib/IgnorePlugin');
@@ -275,9 +274,8 @@ module.exports = function (env) {
        *
        * See: https://github.com/th0r/webpack-bundle-analyzer
        */
-      env && env.analyze ? new BundleAnalyzerPlugin() : null,
 
-    ].filter(plugin => plugin !== null),
+    ],
 
     /*
      * Include polyfills or mocks for various node stuff
