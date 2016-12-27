@@ -24,9 +24,4 @@ before_script:
   - sh -e /etc/init.d/xvfb start
   - sleep 3
 script:
-  - npm run lint
-  - npm test
-  - npm run build:prod
-  - npm run server:prod:ci &
-  - sleep 3
-  - npm run e2e
+  - npm run ci
