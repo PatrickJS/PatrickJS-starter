@@ -93,11 +93,7 @@ module.exports = function (options) {
           test: /\.ts$/,
           loader: 'awesome-typescript-loader',
           query: {
-            // use inline sourcemaps for "karma-remap-coverage" reporter
-            sourceMap: false,
-            inlineSourceMap: true,
             compilerOptions: {
-
               // Remove TypeScript helpers to be injected
               // below by DefinePlugin
               removeComments: true
