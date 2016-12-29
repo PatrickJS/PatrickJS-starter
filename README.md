@@ -366,20 +366,14 @@ import * as _ from 'lodash';
 * [Twitter: @AngularClass](https://twitter.com/AngularClass)
 * [Gitter: AngularClass/angular2-webpack-starter](https://gitter.im/angularclass/angular2-webpack-starter)
 
-# Quick Start Guides
+# Deployment
 
-## Nitrous
+## Netlify
 
-You can quickly create a free development environment to get started using this
-starter kit in the cloud on [Nitrous](https://www.nitrous.io/):
+You can quickly create a free site to get started using this
+starter kit in production on [Netlify](https://www.netlify.com/):
 
-<a href="https://www.nitrous.io/quickstart?repo=https://github.com/nitrous-io/angular2-webpack-starter">
-  <img src="https://nitrous-image-icons.s3.amazonaws.com/quickstart.png" alt="Nitrous Quickstart" width=142 height=34>
-</a>
-
-Simply run `HOST=0.0.0.0 npm start` from the terminal inside of
-`~/code/angular2-webpack-starter` and access your site via the "Preview > 3000"
-link in the IDE.
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/AngularClass/angular2-webpack-starter)
 
 <p align="center">
   <a href="http://courses.angularclass.com/courses/angular-2-fundamentals" target="_blank">
