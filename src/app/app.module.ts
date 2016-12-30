@@ -18,6 +18,8 @@ import { HomeComponent } from './home';
 import { AboutComponent } from './about';
 import { NoContentComponent } from './no-content';
 import { XLarge } from './home/x-large';
+import { Main, DropsContainer } from './containers';
+import { AppBar, Drop } from './ui';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -41,7 +43,11 @@ type StoreType = {
     AboutComponent,
     HomeComponent,
     NoContentComponent,
-    XLarge
+    XLarge,
+    Main,
+    AppBar,
+    Drop,
+    DropsContainer
   ],
   imports: [ // import Angular's modules
     BrowserModule,
