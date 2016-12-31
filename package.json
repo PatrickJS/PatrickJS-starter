@@ -121,7 +121,7 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "1.8.0",
     "ngc-webpack": "^1.0.2",
-    "npm-run-all": "^3.1.2",
+    "npm-run-all": "^4.0.0",
     "parse5": "^2.2.2",
     "protractor": "^4.0.10",
     "raw-loader": "0.5.1",
