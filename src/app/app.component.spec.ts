@@ -28,7 +28,7 @@ describe(`App`, () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AppComponent);
     comp    = fixture.componentInstance;
-  
+
     fixture.detectChanges(); // trigger initial data binding
   });
 
