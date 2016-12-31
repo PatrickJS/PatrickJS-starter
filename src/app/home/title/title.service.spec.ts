@@ -9,7 +9,6 @@ import {
   Http
 } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
-
 import { Title } from './title.service';
 
 describe('Title', () => {
@@ -19,7 +18,7 @@ describe('Title', () => {
       MockBackend,
       {
         provide: Http,
-        useFactory: function(backend: ConnectionBackend, defaultOptions: BaseRequestOptions) {
+        useFactory: (backend: ConnectionBackend, defaultOptions: BaseRequestOptions) => {
           return new Http(backend, defaultOptions);
         },
         deps: [MockBackend, BaseRequestOptions]
