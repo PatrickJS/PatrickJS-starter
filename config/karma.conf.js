@@ -29,7 +29,17 @@ module.exports = function (config) {
      *
      * we are building the test environment in ./spec-bundle.js
      */
-    files: [{ pattern: './config/spec-bundle.js', watched: false }],
+    files: [
+      { pattern: './config/spec-bundle.js', watched: false },
+      { pattern: './src/assets/**/*', watched: false, included: false, served: true, nocache: false }
+    ],
+
+    /*
+     * By default all assets are served at http://localhost:[PORT]/base/
+     */
+    proxies: {
+      "/assets/": "/base/src/assets/"
+    },
 
     /*
      * preprocess matching files before serving them to the browser
