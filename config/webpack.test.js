@@ -210,11 +210,11 @@ module.exports = function (options) {
         }
       ),
 
-    /**
-      * Plugin LoaderOptionsPlugin (experimental)
-      *
-      * See: https://gist.github.com/sokra/27b24881210b56bbaff7
-      */
+      /**
+       * Plugin LoaderOptionsPlugin (experimental)
+       *
+       * See: https://gist.github.com/sokra/27b24881210b56bbaff7
+       */
       new LoaderOptionsPlugin({
         debug: false,
         options: {

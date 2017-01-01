@@ -10,7 +10,7 @@ import { By } from '@angular/platform-browser/src/dom/debug/by';
 import { MockBackend } from '@angular/http/testing';
 
 // Load the implementations that should be tested
-import { XLarge } from './x-large.directive';
+import { XLargeDirective } from './x-large.directive';
 
 describe('x-large directive', () => {
   // Create a test component to test directives
@@ -22,7 +22,7 @@ describe('x-large directive', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
-        XLarge,
+        XLargeDirective,
         TestComponent
       ]
     });
