@@ -134,7 +134,7 @@
     "ts-helpers": "1.1.2",
     "ts-node": "^2.0.0",
     "tslint": "~4.2.0",
-    "typedoc": "^0.5.0",
+    "typedoc": "^0.5.3",
     "typescript": "2.0.10",
     "url-loader": "^0.5.7",
     "v8-lazy-parse-webpack-plugin": "^0.3.0",
