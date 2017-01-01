@@ -117,7 +117,7 @@
     "karma-coverage": "^1.1.1",
     "karma-jasmine": "^1.0.2",
     "karma-mocha-reporter": "^2.0.0",
-    "karma-remap-coverage": "^0.1.1",
+    "karma-remap-coverage": "0.1.1",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "1.8.1",
     "ngc-webpack": "^1.0.2",
