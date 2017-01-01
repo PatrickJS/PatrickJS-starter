@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  OnInit,
+} from '@angular/core';
 /*
  * We're loading this component asynchronously
  * We are using some magic with es6-promise-loader that will wrap the module with a Promise
@@ -12,14 +15,11 @@ console.log('`Detail` component loaded asynchronously');
   template: `
     <h1>Hello from Detail</h1>
     <router-outlet></router-outlet>
-  `
+  `,
 })
-export class DetailComponent {
-  constructor() {
+export class DetailComponent implements OnInit {
 
-  }
-
-  ngOnInit() {
+  public ngOnInit() {
     console.log('hello `Detail` component');
   }
 
