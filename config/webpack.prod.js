@@ -9,7 +9,6 @@ const commonConfig = require('./webpack.common.js'); // the settings that are co
 /**
  * Webpack Plugins
  */
-const DedupePlugin = require('webpack/lib/optimize/DedupePlugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const IgnorePlugin = require('webpack/lib/IgnorePlugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
@@ -96,16 +95,6 @@ module.exports = function (env) {
        * See: https://www.npmjs.com/package/webpack-md5-hash
        */
       new WebpackMd5Hash(),
-
-      /**
-       * Plugin: DedupePlugin
-       * Description: Prevents the inclusion of duplicate code into your bundle
-       * and instead applies a copy of the function at runtime.
-       *
-       * See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
-       * See: https://github.com/webpack/docs/wiki/optimization#deduplication
-       */
-      // new DedupePlugin(), // see: https://github.com/angular/angular-cli/issues/1587
 
       /**
        * Plugin: DefinePlugin
@@ -267,9 +256,9 @@ module.exports = function (env) {
 
       /**
        * Plugin: BundleAnalyzerPlugin
-       * Description: Webpack plugin and CLI utility that represents 
+       * Description: Webpack plugin and CLI utility that represents
        * bundle content as convenient interactive zoomable treemap
-       * 
+       *
        * `npm run build:prod -- --env.analyze` to use
        *
        * See: https://github.com/th0r/webpack-bundle-analyzer
