@@ -12,12 +12,7 @@ const commonConfig = require('./webpack.common.js'); // the settings that are co
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
-const DllReferencePlugin = require('webpack/lib/DllReferencePlugin');
-
-/**
- * DLL Manifest
- */
-const vendorManifest = require('../dll/vendor-manifest.json');
+const DllPlugin = require('webpack/lib/DllPlugin');
 
 /**
  * Webpack Constants
@@ -39,7 +34,21 @@ const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
 module.exports = function (options) {
-  return webpackMerge(commonConfig({env: ENV}), {
+  return webpackMerge.strategy({entry: 'replace', plugins: 'replace'})(commonConfig({env: ENV}), {
+
+    entry: {
+      'vendor': [
+        './src/polyfills.browser.ts',
+        '@angular/common',
+        '@angular/compiler',
+        '@angular/core',
+        '@angular/forms',
+        '@angular/http',
+        '@angular/platform-browser',
+        '@angular/platform-browser-dynamic',
+        '@angular/router'
+      ]
+    },
 
     /**
      * Developer tool to enhance debugging
@@ -61,7 +70,7 @@ module.exports = function (options) {
        *
        * See: http://webpack.github.io/docs/configuration.html#output-path
        */
-      path: helpers.root('dist'),
+      path: helpers.root('dll'),
 
       /**
        * Specifies the name of each output file on disk.
@@ -69,7 +78,7 @@ module.exports = function (options) {
        *
        * See: http://webpack.github.io/docs/configuration.html#output-filename
        */
-      filename: '[name].bundle.js',
+      filename: 'dll.[name].js',
 
       /**
        * The filename of the SourceMaps for the JavaScript files.
@@ -77,7 +86,7 @@ module.exports = function (options) {
        *
        * See: http://webpack.github.io/docs/configuration.html#output-sourcemapfilename
        */
-      sourceMapFilename: '[file].map',
+      sourceMapFilename: 'dll.[name].map',
 
       /** The filename of non-entry chunks as relative path
        * inside the output.path directory.
@@ -86,38 +95,7 @@ module.exports = function (options) {
        */
       chunkFilename: '[id].chunk.js',
 
-      library: 'ac_[name]',
-      libraryTarget: 'var'
-    },
-
-    module: {
-
-      rules: [
-
-        /*
-         * css loader support for *.css files (styles directory only)
-         * Loads external css styles into the DOM, supports HMR
-         *
-         */
-        {
-          test: /\.css$/,
-          use: ['style-loader', 'css-loader'],
-          include: [helpers.root('src', 'styles')]
-        },
-
-        /*
-         * sass loader support for *.scss files (styles directory only)
-         * Loads external sass styles into the DOM, supports HMR
-         *
-         */
-        {
-          test: /\.scss$/,
-          use: ['style-loader', 'css-loader', 'sass-loader'],
-          include: [helpers.root('src', 'styles')]
-        },
-
-      ]
-
+      library: 'vendor'
     },
 
     plugins: [
@@ -159,12 +137,16 @@ module.exports = function (options) {
       new LoaderOptionsPlugin({debug: true, options: {}}),
 
       /**
-       * Plugin: DllReferencePlugin (experimental)
-       * Descriotion: Uses DLL that way created before..
+       * Plugin: DllPlugin (experimental)
        *
-       * See: https://github.com/webpack/docs/wiki/list-of-plugins#dllreferenceplugin
+       * See: https://github.com/webpack/docs/wiki/list-of-plugins#dllplugin
        */
-      new DllReferencePlugin({context: '.', manifest: vendorManifest})
+      new DllPlugin({
+        path: helpers.root('dll/vendor-manifest.json'),
+        name: 'vendor'
+      })
+
+      // todo: we probably also need NormalModuleReplacementPlugin stuff
     ],
 
     /**
