@@ -147,7 +147,7 @@
     "webpack-dev-middleware": "^1.6.1",
     "webpack-dev-server": "2.2.0-rc.0",
     "webpack-md5-hash": "^0.0.5",
-    "webpack-merge": "~2.0.0"
+    "webpack-merge": "~2.2.0"
   },
   "repository": {
     "type": "git",
