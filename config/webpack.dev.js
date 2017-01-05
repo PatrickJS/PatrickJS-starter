@@ -84,6 +84,36 @@ module.exports = function (options) {
       libraryTarget: 'var',
     },
 
+    module: {
+
+      rules: [
+
+        /*
+         * css loader support for *.css files (styles directory only)
+         * Loads external css styles into the DOM, supports HMR
+         *
+         */
+        {
+          test: /\.css$/,
+          use: ['style-loader', 'css-loader'],
+          include: [helpers.root('src', 'styles')]
+        },
+
+        /*
+         * sass loader support for *.scss files (styles directory only)
+         * Loads external sass styles into the DOM, supports HMR
+         *
+         */
+        {
+          test: /\.scss$/,
+          use: ['style-loader', 'css-loader', 'sass-loader'],
+          include: [helpers.root('src', 'styles')]
+        },
+
+      ]
+
+    },
+
     plugins: [
 
       /**
