@@ -29,6 +29,9 @@ import { AppState } from './app.service';
       <a [routerLink]=" ['./detail'] " routerLinkActive="active">
         Detail
       </a>
+      <a [routerLink]=" ['./barrel'] " routerLinkActive="active">
+        Barrel
+      </a>
       <a [routerLink]=" ['./about'] " routerLinkActive="active">
         About
       </a>

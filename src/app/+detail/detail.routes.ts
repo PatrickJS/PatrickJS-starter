@@ -1,5 +1,8 @@
 import { DetailComponent } from './detail.component';
 
 export const routes = [
-  { path: '', component: DetailComponent, pathMatch: 'full' },
+  { path: '', children: [
+    { path: '', component: DetailComponent },
+    { path: 'child-detail', loadChildren: './+child-detail#ChildDetailModule' }
+  ]},
 ];
