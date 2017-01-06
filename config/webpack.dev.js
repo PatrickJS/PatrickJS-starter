@@ -9,6 +9,8 @@ const commonConfig = require('./webpack.common.js'); // the settings that are co
 /**
  * Webpack Plugins
  */
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
+const DllReferencePlugin = require('webpack/lib/DllReferencePlugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
@@ -135,6 +137,35 @@ module.exports = function (options) {
           'HMR': METADATA.HMR,
         }
       }),
+
+      /**
+       * Plugin: DllReferencePlugin
+       * Description: References a dll function which is expected 
+       * to be available.
+       *
+       * See: https://github.com/webpack/docs/wiki/list-of-plugins#dllreferenceplugin
+       */
+      new DllReferencePlugin({
+        context: '.',
+        manifest: require(`../dll/polyfills-manifest.json`)
+      }),
+      new DllReferencePlugin({
+        context: '.',
+        manifest: require(`../dll/vendor-manifest.json`)
+      }),
+
+      /**
+       * Plugin: AddAssetHtmlPlugin
+       * Description: Adds the given JS or CSS file to the files 
+       * Webpack knows about, and put it into the list of assets 
+       * html-webpack-plugin injects into the generated html.
+       *
+       * See: https://github.com/SimenB/add-asset-html-webpack-plugin
+       */
+      new AddAssetHtmlPlugin([
+        { filepath: require.resolve('../dll/polyfills.dll.js') },
+        { filepath: require.resolve('../dll/vendor.dll.js') }
+      ]),
 
       /**
        * Plugin: NamedModulesPlugin (experimental)
