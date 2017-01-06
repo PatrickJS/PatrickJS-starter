@@ -10,7 +10,7 @@
     "noEmit": true,
     "noEmitHelpers": true,
     "strictNullChecks": false,
-    "baseUrl": "./src",
+    "baseUrl": "./node_modules",
     "paths": {
     },
     "lib": [
