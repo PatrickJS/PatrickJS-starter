@@ -10,9 +10,6 @@
     "noEmit": true,
     "noEmitHelpers": true,
     "strictNullChecks": false,
-    "baseUrl": "./src",
-    "paths": {
-    },
     "lib": [
       "dom",
       "es6"
@@ -37,5 +34,7 @@
   },
   "compileOnSave": false,
   "buildOnSave": false,
-  "atom": { "rewriteTsconfig": false }
+  "atom": {
+    "rewriteTsconfig": false
+  }
 }
