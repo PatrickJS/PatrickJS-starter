@@ -80,14 +80,12 @@
     "@angularclass/conventions-loader": "^1.0.2",
     "@angularclass/hmr": "~1.2.2",
     "@angularclass/hmr-loader": "~3.0.2",
-    "add-asset-html-webpack-plugin": "^1.0.2",
     "core-js": "^2.4.1",
     "http-server": "^0.9.0",
     "ie-shim": "^0.1.0",
     "jasmine-core": "^2.5.2",
     "reflect-metadata": "^0.1.9",
     "rxjs": "~5.0.2",
-    "webpack-dll-bundles-plugin": "^1.0.0-beta.0",
     "zone.js": "~0.7.4"
   },
   "devDependencies": {
@@ -99,6 +97,7 @@
     "@types/source-map": "^0.5.0",
     "@types/uglify-js": "^2.0.27",
     "@types/webpack": "^2.0.0",
+    "add-asset-html-webpack-plugin": "^1.0.2",
     "angular2-template-loader": "^0.6.0",
     "assets-webpack-plugin": "^3.4.0",
     "awesome-typescript-loader": "~3.0.0-beta.17",
@@ -148,6 +147,7 @@
     "webpack": "2.2.0-rc.3",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-dev-server": "2.2.0-rc.0",
+    "webpack-dll-bundles-plugin": "^1.0.0-beta.1",
     "webpack-md5-hash": "^0.0.5",
     "webpack-merge": "~2.3.1"
   },

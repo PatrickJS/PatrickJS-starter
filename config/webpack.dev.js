@@ -145,7 +145,15 @@ module.exports = function (options) {
         bundles: {
           polyfills: [
             'core-js',
-            'zone.js',
+            {
+              name: 'zone.js',
+              path: 'zone.js/dist/zone.js'
+            },
+            {
+              name: 'zone.js',
+              path: 'zone.js/dist/long-stack-trace-zone.js'
+            },
+            'ts-helpers',
           ],
           vendor: [
             '@angular/platform-browser',
