@@ -9,14 +9,15 @@ const commonConfig = require('./webpack.common.js'); // the settings that are co
 /**
  * Webpack Plugins
  */
-const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
-const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplacementPlugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const IgnorePlugin = require('webpack/lib/IgnorePlugin');
-const DedupePlugin = require('webpack/lib/optimize/DedupePlugin');
+const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
+const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplacementPlugin');
+const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
-
+const V8LazyParseWebpackPlugin = require('v8-lazy-parse-webpack-plugin');
 /**
  * Webpack Constants
  */
@@ -30,15 +31,8 @@ const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
   HMR: false
 });
 
-module.exports = function(env) {
+module.exports = function (env) {
   return webpackMerge(commonConfig({env: ENV}), {
-
-    /**
-     * Switch loaders to debug mode.
-     *
-     * See: http://webpack.github.io/docs/configuration.html#debug
-     */
-    debug: false,
 
     /**
      * Developer tool to enhance debugging
@@ -88,6 +82,38 @@ module.exports = function(env) {
 
     },
 
+    module: {
+
+      rules: [
+
+        /*
+         * Extract CSS files from .src/styles directory to external CSS file
+         */
+        {
+          test: /\.css$/,
+          loader: ExtractTextPlugin.extract({
+              fallbackLoader: 'style-loader',
+              loader: 'css-loader'
+            }),
+          include: [helpers.root('src', 'styles')]
+        },
+
+        /*
+         * Extract and compile SCSS files from .src/styles directory to external CSS file
+         */
+        {
+          test: /\.scss$/,
+          loader: ExtractTextPlugin.extract({
+              fallbackLoader: 'style-loader',
+              loader: 'css-loader!sass-loader'
+            }),
+          include: [helpers.root('src', 'styles')]
+        },
+
+      ]
+
+    },
+
     /**
      * Add additional plugins to the compiler.
      *
@@ -96,22 +122,20 @@ module.exports = function(env) {
     plugins: [
 
       /**
+       * Plugin: ExtractTextPlugin
+       * Description: Extracts imported CSS files into external stylesheet 
+       *
+       * See: https://github.com/webpack/extract-text-webpack-plugin
+       */
+      new ExtractTextPlugin('[name].[contenthash].css'),
+
+      /**
        * Plugin: WebpackMd5Hash
        * Description: Plugin to replace a standard webpack chunkhash with md5.
        *
        * See: https://www.npmjs.com/package/webpack-md5-hash
        */
       new WebpackMd5Hash(),
-
-      /**
-       * Plugin: DedupePlugin
-       * Description: Prevents the inclusion of duplicate code into your bundle
-       * and instead applies a copy of the function at runtime.
-       *
-       * See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
-       * See: https://github.com/webpack/docs/wiki/optimization#deduplication
-       */
-      // new DedupePlugin(), // see: https://github.com/angular/angular-cli/issues/1587
 
       /**
        * Plugin: DefinePlugin
@@ -158,9 +182,25 @@ module.exports = function(env) {
 
 
         beautify: false, //prod
-        mangle: { screw_ie8 : true, keep_fnames: true }, //prod
-        compress: { screw_ie8: true }, //prod
-        comments: false //prod
+        output: {
+          comments: false
+        }, //prod
+        mangle: {
+          screw_ie8: true
+        }, //prod
+        compress: {
+          screw_ie8: true,
+          warnings: false,
+          conditionals: true,
+          unused: true,
+          comparisons: true,
+          sequences: true,
+          dead_code: true,
+          evaluate: true,
+          if_return: true,
+          join_vars: true,
+          negate_iife: false // we need this for lazy v8
+        },
       }),
 
       /**
@@ -172,17 +212,44 @@ module.exports = function(env) {
 
       new NormalModuleReplacementPlugin(
         /angular2-hmr/,
-        helpers.root('config/modules/angular2-hmr-prod.js')
+        helpers.root('config/empty.js')
       ),
 
-      /**
-       * Plugin: IgnorePlugin
-       * Description: Don’t generate modules for requests matching the provided RegExp.
-       *
-       * See: http://webpack.github.io/docs/list-of-plugins.html#ignoreplugin
-       */
+      new NormalModuleReplacementPlugin(
+        /zone\.js(\\|\/)dist(\\|\/)long-stack-trace-zone/,
+        helpers.root('config/empty.js')
+      ),
 
-      // new IgnorePlugin(/angular2-hmr/),
+
+      // AoT
+      // new NormalModuleReplacementPlugin(
+      //   /@angular(\\|\/)upgrade/,
+      //   helpers.root('config/empty.js')
+      // ),
+      // new NormalModuleReplacementPlugin(
+      //   /@angular(\\|\/)compiler/,
+      //   helpers.root('config/empty.js')
+      // ),
+      // new NormalModuleReplacementPlugin(
+      //   /@angular(\\|\/)platform-browser-dynamic/,
+      //   helpers.root('config/empty.js')
+      // ),
+      // new NormalModuleReplacementPlugin(
+      //   /dom(\\|\/)debug(\\|\/)ng_probe/,
+      //   helpers.root('config/empty.js')
+      // ),
+      // new NormalModuleReplacementPlugin(
+      //   /dom(\\|\/)debug(\\|\/)by/,
+      //   helpers.root('config/empty.js')
+      // ),
+      // new NormalModuleReplacementPlugin(
+      //   /src(\\|\/)debug(\\|\/)debug_node/,
+      //   helpers.root('config/empty.js')
+      // ),
+      // new NormalModuleReplacementPlugin(
+      //   /src(\\|\/)debug(\\|\/)debug_renderer/,
+      //   helpers.root('config/empty.js')
+      // ),
 
       /**
        * Plugin: CompressionPlugin
@@ -197,37 +264,48 @@ module.exports = function(env) {
       //   threshold: 2 * 1024
       // })
 
+      /**
+       * Plugin LoaderOptionsPlugin (experimental)
+       *
+       * See: https://gist.github.com/sokra/27b24881210b56bbaff7
+       */
+      new LoaderOptionsPlugin({
+        minimize: true,
+        debug: false,
+        options: {
+
+          /**
+           * Html loader advanced options
+           *
+           * See: https://github.com/webpack/html-loader#advanced-options
+           */
+          // TODO: Need to workaround Angular 2's html syntax => #id [bind] (event) *ngFor
+          htmlLoader: {
+            minimize: true,
+            removeAttributeQuotes: false,
+            caseSensitive: true,
+            customAttrSurround: [
+              [/#/, /(?:)/],
+              [/\*/, /(?:)/],
+              [/\[?\(?/, /(?:)/]
+            ],
+            customAttrAssign: [/\)?\]?=/]
+          },
+
+        }
+      }),
+
+      /**
+       * Plugin: BundleAnalyzerPlugin
+       * Description: Webpack plugin and CLI utility that represents
+       * bundle content as convenient interactive zoomable treemap
+       *
+       * `npm run build:prod -- --env.analyze` to use
+       *
+       * See: https://github.com/th0r/webpack-bundle-analyzer
+       */
+
     ],
-
-    /**
-     * Static analysis linter for TypeScript advanced options configuration
-     * Description: An extensible linter for the TypeScript language.
-     *
-     * See: https://github.com/wbuchwalter/tslint-loader
-     */
-    tslint: {
-      emitErrors: true,
-      failOnHint: true,
-      resourcePath: 'src'
-    },
-
-    /**
-     * Html loader advanced options
-     *
-     * See: https://github.com/webpack/html-loader#advanced-options
-     */
-    // TODO: Need to workaround Angular 2's html syntax => #id [bind] (event) *ngFor
-    htmlLoader: {
-      minimize: true,
-      removeAttributeQuotes: false,
-      caseSensitive: true,
-      customAttrSurround: [
-        [/#/, /(?:)/],
-        [/\*/, /(?:)/],
-        [/\[?\(?/, /(?:)/]
-      ],
-      customAttrAssign: [/\)?\]?=/]
-    },
 
     /*
      * Include polyfills or mocks for various node stuff
@@ -236,7 +314,7 @@ module.exports = function(env) {
      * See: https://webpack.github.io/docs/configuration.html#node
      */
     node: {
-      global: 'window',
+      global: true,
       crypto: 'empty',
       process: false,
       module: false,
