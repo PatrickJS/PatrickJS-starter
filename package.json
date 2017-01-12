@@ -142,7 +142,7 @@
     "ts-node": "^2.0.0",
     "tslint": "~4.3.1",
     "typedoc": "^0.5.3",
-    "typescript": "2.0.10",
+    "typescript": "2.1.5",
     "url-loader": "^0.5.7",
     "v8-lazy-parse-webpack-plugin": "^0.3.0",
     "webpack": "2.2.0-rc.3",
