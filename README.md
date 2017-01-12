@@ -41,6 +41,7 @@ This seed repo serves as an Angular 2 starter for anyone looking to get up and r
 * A great Angular 2 seed repo for anyone who wants to start their project.
 * Ahead of Time (AoT) compile for rapid page loads of your production builds.
 * Tree shaking to automatically remove unused code from your production bundle.
+* [Webpack DLLs](https://robertknight.github.io/posts/webpack-dll-plugins/) dramatically speed your development builds.
 * Testing Angular 2 code with Jasmine and Karma.
 * Coverage with Istanbul and Karma
 * End-to-end Angular 2 code using Protractor.
@@ -82,6 +83,8 @@ go to [http://0.0.0.0:3000](http://0.0.0.0:3000) or [http://localhost:3000](http
     * [Installing](#installing)
     * [Running the app](#running-the-app)
 * [Configuration](#configuration)
+* [AoT Don'ts](#aot-donts)
+* [External Stylesheets](#external-stylesheets)
 * [Contributing](#contributing)
 * [TypeScript](#typescript)
 * [@Types](#types)
@@ -110,8 +113,6 @@ angular2-webpack-starter/
  │   │
  |   ├──polyfills.ts               * our polyfills file
  │   │
- |   ├──vendor.browser.ts          * our vendor file
- │   │
  │   ├──app/                       * WebApp: folder
  │   │   ├──app.component.spec.ts  * a simple test of components in app.component.ts
  │   │   ├──app.e2e.ts             * a simple end-to-end test for /
@@ -126,7 +127,8 @@ angular2-webpack-starter/
  │
  ├──tslint.json                    * typescript lint config
  ├──typedoc.json                   * typescript documentation generator
- ├──tsconfig.json                  * config that webpack uses for typescript
+ ├──tsconfig.json                  * typescript config used outside webpack
+ ├──tsconfig.webpack.json          * config that webpack uses for typescript
  ├──package.json                   * what npm uses to manage it's dependencies
  └──webpack.config.js              * webpack main configuration file
 
@@ -200,6 +202,8 @@ npm run watch:test
 
 ### run end-to-end tests
 ```bash
+# update Webdriver (optional, done automatically by postinstall script)
+npm run webdriver:update
 # this will start a test server and launch Protractor
 npm run e2e
 ```
@@ -210,16 +214,8 @@ npm run e2e
 npm run ci
 ```
 
-### run webdriver (for end-to-end)
-```bash
-npm run webdriver:update
-npm run webdriver:start
-```
-
 ### run Protractor's elementExplorer (for end-to-end)
 ```bash
-npm run webdriver:start
-# in another terminal
 npm run e2e:live
 ```
 
@@ -231,15 +227,24 @@ npm run build:docker
 # Configuration
 Configuration files live in `config/` we are currently using webpack, karma, and protractor for different stages of your application
 
-# AoT  Don'ts
+# AoT Don'ts
 The following are some things that will make AoT compile fail.
 
 - Don’t use require statements for your templates or styles, use styleUrls and templateUrls, the angular2-template-loader plugin will change it to require at build time.
 - Don’t use default exports.
-- Don’t use form.controls.controlName, use form.get(‘controlName’)
-- Don’t use control.errors?.someError, use control.hasError(‘someError’)
+- Don’t use `form.controls.controlName`, use `form.get(‘controlName’)`
+- Don’t use `control.errors?.someError`, use `control.hasError(‘someError’)`
 - Don’t use functions in your providers, routes or declarations, export a function and then reference that function name
-- Inputs, Outputs, View or Content Child(ren), Hostbindings, and any field you use from the template or annotate for Angular should be public
+- @Inputs, @Outputs, View or Content Child(ren), Hostbindings, and any field you use from the template or annotate for Angular should be public
+
+# External Stylesheets
+Any stylesheets (Sass or CSS) placed in the `src/styles` directory and imported into your project will automatically be compiled into an external `.css` and embedded in your production builds.
+
+For example to use Bootstrap as an external stylesheet:
+1) Create a `styles.scss` file (name doesn't matter) in the `src/styles` directory.
+2) `npm install` the version of Boostrap you want.
+3) In `styles.scss` add `@import 'bootstrap/scss/bootstrap.scss';`
+4) In `src/app/app.module.ts` add underneath the other import statements: `import '../styles/styles.scss';`
 
 # Contributing
 You can include more examples as components but they must introduce a new concept such as `Home` component (separate folders), and Todo (services). I'll accept pretty much everything so feel free to open a Pull-Request
@@ -248,7 +253,7 @@ You can include more examples as components but they must introduce a new concep
 > To take full advantage of TypeScript with autocomplete you would have to install it globally and use an editor with the correct TypeScript plugins.
 
 ## Use latest TypeScript compiler
-TypeScript 1.7.x includes everything you need. Make sure to upgrade, even if you installed TypeScript previously.
+TypeScript 2.1.x includes everything you need. Make sure to upgrade, even if you installed TypeScript previously.
 
 ```
 npm install --global typescript
