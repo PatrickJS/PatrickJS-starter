@@ -8,7 +8,6 @@ const helpers = require('./helpers');
 /*
  * Webpack Plugins
  */
-// problem with copy-webpack-plugin
 const AssetsPlugin = require('assets-webpack-plugin');
 const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplacementPlugin');
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
@@ -20,6 +19,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const ngcWebpack = require('ngc-webpack');
+const SpecifyTsFilesPlugin = require('./specify-ts-files-plugin');
 
 /*
  * Webpack Constants
@@ -39,6 +39,25 @@ const METADATA = {
  */
 module.exports = function (options) {
   isProd = options.env === 'production';
+
+  const entry =  {
+    'polyfills': './src/polyfills.browser.ts',
+    'main':      AOT ? './src/main.browser.aot.ts' :
+                './src/main.browser.ts'
+  };
+
+  const otherFilesToCompile = [
+    './src/app/app.module.ts',
+    './src/app/lazy-loaded.ts'
+  ];
+
+  const tsConfigBase = 'tsconfig.webpack.json';
+  const customTsConfigFileName = 'tsconfig.build.temp.json';
+
+  const atlConfig = {
+    configFileName: customTsConfigFileName
+  };
+
   return {
 
     /*
@@ -56,13 +75,7 @@ module.exports = function (options) {
      *
      * See: http://webpack.github.io/docs/configuration.html#entry
      */
-    entry: {
-
-      'polyfills': './src/polyfills.browser.ts',
-      'main':      AOT ? './src/main.browser.aot.ts' :
-                  './src/main.browser.ts'
-
-    },
+    entry: entry,
 
     /*
      * Options affecting the resolving of modules.
@@ -103,7 +116,7 @@ module.exports = function (options) {
           test: /\.ts$/,
           use: [
             '@angularclass/hmr-loader?pretty=' + !isProd + '&prod=' + isProd,
-            'awesome-typescript-loader?{configFileName: "tsconfig.webpack.json"}',
+            'awesome-typescript-loader?' + JSON.stringify(atlConfig),
             'angular2-template-loader',
             {
               loader: 'ng-router-loader',
@@ -327,8 +340,21 @@ module.exports = function (options) {
 
       new ngcWebpack.NgcWebpackPlugin({
         disabled: !AOT,
-        tsConfig: helpers.root('tsconfig.webpack.json'),
+        tsConfig: helpers.root(customTsConfigFileName),
         resourceOverride: helpers.root('config/resource-override.js')
+      }),
+
+      /*
+       * Plugin: SpecifyTsFilesPlugin
+       * Description: Generates a temporary tsconfig.json which specifies all the entry files to compile.
+       * This prevents TypeScript from having to compile every single .ts file in the project tree.
+       */
+      new SpecifyTsFilesPlugin({
+        root: helpers.root('.'),
+        entry: entry,
+        otherFilesToCompile: otherFilesToCompile,
+        tsConfigBase: tsConfigBase,
+        customTsConfigFileName: customTsConfigFileName
       })
 
     ],

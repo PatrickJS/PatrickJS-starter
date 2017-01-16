@@ -85,6 +85,7 @@ go to [http://0.0.0.0:3000](http://0.0.0.0:3000) or [http://localhost:3000](http
 * [Configuration](#configuration)
 * [AoT Don'ts](#aot-donts)
 * [External Stylesheets](#external-stylesheets)
+* [Lazy Loading](#lazy-loading)
 * [Contributing](#contributing)
 * [TypeScript](#typescript)
 * [@Types](#types)
@@ -241,10 +242,22 @@ The following are some things that will make AoT compile fail.
 Any stylesheets (Sass or CSS) placed in the `src/styles` directory and imported into your project will automatically be compiled into an external `.css` and embedded in your production builds.
 
 For example to use Bootstrap as an external stylesheet:
+
 1) Create a `styles.scss` file (name doesn't matter) in the `src/styles` directory.
 2) `npm install` the version of Boostrap you want.
 3) In `styles.scss` add `@import 'bootstrap/scss/bootstrap.scss';`
 4) In `src/app/app.module.ts` add underneath the other import statements: `import '../styles/styles.scss';`
+
+# Lazy Loading
+When you lazy load a module in your router config, it will go into a separate chunk and the browser won't download the code until the user attempts to navigate to the route.
+
+You can make a module lazy load by using the `loadChildren` syntax in your route definitions:
+
+```js
+{ path: 'detail', loadChildren: './+detail#DetailModule'}
+```
+
+To make sure TypeScript compiles your lazy-loaded modules, declare them in `./src/app/lazy-loaded.ts` with an import statement. Declaring the modules allows TypeScript to only compile the necessary files. Previously TS would compile every single `.ts` file in your project tree on every single build which was inefficient and lead to issues.
 
 # Contributing
 You can include more examples as components but they must introduce a new concept such as `Home` component (separate folders), and Todo (services). I'll accept pretty much everything so feel free to open a Pull-Request
