@@ -126,7 +126,7 @@
     "ng-router-loader": "^1.0.2",
     "ngc-webpack": "1.1.0",
     "node-sass": "^4.2.0",
-    "npm-run-all": "^4.0.0",
+    "npm-run-all": "^4.0.1",
     "parse5": "^3.0.1",
     "protractor": "^4.0.14",
     "raw-loader": "0.5.1",
