@@ -109,7 +109,7 @@ module.exports = function (env) {
           test: /\.scss$/,
           loader: ExtractTextPlugin.extract({
             fallbackLoader: 'style-loader',
-            loader: 'css-loader!sass-loader'
+            loader: `css-loader!sass-loader!sass-resources-loader?resources=${helpers.root('src/styles/_variables.scss')}`
           }),
           include: [helpers.root('src', 'styles')]
         },
