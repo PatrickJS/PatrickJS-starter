@@ -92,7 +92,7 @@ module.exports = function (env) {
           test: /\.css$/,
           loader: ExtractTextPlugin.extract({
               fallbackLoader: 'style-loader',
-              loader: 'css-loader'
+              loader: 'css-loader!postcss-loader'
             }),
           include: [helpers.root('src', 'styles')]
         },
@@ -104,7 +104,7 @@ module.exports = function (env) {
           test: /\.scss$/,
           loader: ExtractTextPlugin.extract({
               fallbackLoader: 'style-loader',
-              loader: 'css-loader!sass-loader'
+              loader: 'css-loader!postcss-loader!sass-loader'
             }),
           include: [helpers.root('src', 'styles')]
         },

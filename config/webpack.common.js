@@ -4,6 +4,7 @@
 
 const webpack = require('webpack');
 const helpers = require('./helpers');
+const autoprefixer = require('autoprefixer');
 
 /*
  * Webpack Plugins
@@ -153,7 +154,7 @@ module.exports = function (options) {
          */
         {
           test: /\.css$/,
-          use: ['to-string-loader', 'css-loader'],
+          use: ['to-string-loader', 'css-loader', 'postcss-loader'],
           exclude: [helpers.root('src', 'styles')]
         },
 
@@ -164,7 +165,7 @@ module.exports = function (options) {
          */
         {
           test: /\.scss$/,
-          use: ['to-string-loader', 'css-loader', 'sass-loader'],
+          use: ['to-string-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
           exclude: [helpers.root('src', 'styles')]
         },
 
@@ -320,7 +321,15 @@ module.exports = function (options) {
        *
        * See: https://gist.github.com/sokra/27b24881210b56bbaff7
        */
-      new LoaderOptionsPlugin({}),
+      new LoaderOptionsPlugin({
+        options: {
+          postcss: [
+            autoprefixer({
+              browsers: ['last 2 version']
+            })
+          ]
+        }
+      }),
 
       // Fix Angular 2
       new NormalModuleReplacementPlugin(

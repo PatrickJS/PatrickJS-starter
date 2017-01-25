@@ -131,7 +131,19 @@ module.exports = function (options) {
          */
         {
           test: /\.css$/,
-          loader: ['to-string-loader', 'css-loader'],
+          loader: ['to-string-loader', 'css-loader', 'postcss-loader'],
+          exclude: [helpers.root('src/index.html')]
+        },
+
+        /**
+         * Raw loader support for *.scss files
+         * Returns file content as string
+         *
+         * See: https://github.com/webpack/raw-loader
+         */
+        {
+          test: /\.scss$/,
+          loader: ['to-string-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
           exclude: [helpers.root('src/index.html')]
         },
 
