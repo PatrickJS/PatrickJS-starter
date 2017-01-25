@@ -140,7 +140,7 @@
     "to-string-loader": "^1.1.4",
     "ts-helpers": "1.1.2",
     "ts-node": "^2.0.0",
-    "tslint": "~4.3.1",
+    "tslint": "~4.4.0",
     "typedoc": "^0.5.3",
     "typescript": "~2.1.5",
     "url-loader": "^0.5.7",
