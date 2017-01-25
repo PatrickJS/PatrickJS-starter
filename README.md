@@ -347,8 +347,6 @@ import * as _ from 'lodash';
  * see wiki [How-do-I-async-load-a-component-with-AsyncRoute](https://github.com/AngularClass/angular2-webpack-starter/wiki/How-do-I-async-load-a-component-with-AsyncRoute)
 * Error: Cannot find module 'tapable'
  * Remove `node_modules/` and run `npm cache clean` then `npm install`
-* What about Webpack 2?
- * If you're looking for Webpack 2 version then see the [experimental version](https://github.com/gdi2290/angular2-webpack2-starter) that will be merged soon.
 * How do I turn on Hot Module Replacement
  * Run `npm run server:dev:hmr`
 * `RangeError: Maximum call stack size exceeded`
