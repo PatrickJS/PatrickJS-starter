@@ -58,9 +58,9 @@ module.exports = function (options) {
      */
     entry: {
 
-      'polyfills': './src/polyfills.browser.ts',
-      'main':      AOT ? './src/main.browser.aot.ts' :
-                  './src/main.browser.ts'
+      'polyfills': helpers.root('src/polyfills.browser.ts'),
+      'main':      AOT ? helpers.root('src/main.browser.aot.ts') :
+                   helpers.root('src/main.browser.ts')
 
     },
 
@@ -126,7 +126,7 @@ module.exports = function (options) {
             {
               loader: 'awesome-typescript-loader',
               options: {
-                configFileName: 'tsconfig.webpack.json'
+                configFileName: helpers.root('tsconfig.webpack.json')
               }
             },
             {
