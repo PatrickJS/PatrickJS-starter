@@ -1,3 +1,3 @@
-# Builds a Docker to deliver dist/
+# Builds a Docker to deliver build/prod/
 FROM nginx:latest
-COPY dist/ /usr/share/nginx/html
+COPY build/prod/ /usr/share/nginx/html

@@ -24,7 +24,7 @@
   },
   "exclude": [
     "node_modules",
-    "dist",
+    "build",
     "src/**/*.spec.ts",
     "src/**/*.e2e.ts"
   ],
@@ -33,7 +33,7 @@
     "useWebpackText": true
   },
   "angularCompilerOptions": {
-    "genDir": "./compiled",
+    "genDir": "./build/compiled",
     "skipMetadataEmit": true
   },
   "compileOnSave": false,
