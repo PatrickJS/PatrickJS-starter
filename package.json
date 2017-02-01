@@ -21,7 +21,7 @@
     "ci:jit": "npm run lint && npm run test && npm run build:prod && npm run e2e",
     "ci:nobuild": "npm run lint && npm test && npm run e2e",
     "ci:testall": "npm run lint && npm run test && npm run build:prod && npm run e2e && npm run build:aot && npm run e2e",
-    "ci:travis": "npm run lint && npm run test && npm run build:dev && npm run e2e:travis && npm run build:prod && npm run e2e:travis && npm run build:aot && npm run e2e:travis",
+    "ci:travis": "npm run lint && npm run test && npm run build:aot && npm run e2e:travis",
     "ci": "npm run ci:testall",
     "clean:dll": "npm run rimraf -- dll",
     "clean:aot": "npm run rimraf -- compiled",
