@@ -131,12 +131,6 @@ module.exports = function (options) {
             },
             {
               loader: 'angular2-template-loader'
-            },
-            {
-              loader: 'tslint-loader',
-              options: {
-                configFile: 'tslint.json'
-              }
             }
           ],
           exclude: [/\.(spec|e2e)\.ts$/]
