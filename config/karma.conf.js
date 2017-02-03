@@ -33,7 +33,7 @@ module.exports = function (config) {
      */
     files: [
       { pattern: './config/spec-bundle.js', watched: false },
-      { pattern: helpers.root('src/assets') + '/**/*', watched: false, included: false, served: true, nocache: false }
+      { pattern: helpers.root('src/assets/**/*'), watched: false, included: false, served: true, nocache: false }
     ],
 
     /*
