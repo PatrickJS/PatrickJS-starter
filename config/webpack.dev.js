@@ -92,6 +92,18 @@ module.exports = function (options) {
     module: {
 
       rules: [
+       {
+         test: /\.ts$/,
+         use: [
+           {
+             loader: 'tslint-loader',
+             options: {
+               configFile: 'tslint.json'
+             }
+           }
+         ]
+         exclude: [/\.(spec|e2e)\.ts$/]
+       }
 
         /*
          * css loader support for *.css files (styles directory only)
