@@ -14,6 +14,9 @@ import {
   RouterModule,
   PreloadAllModules
 } from '@angular/router';
+import { CommonModule } from './common/common.module';
+
+import { DropdownModule } from 'ng2-bootstrap/dropdown';
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -28,6 +31,9 @@ import { HomeComponent } from './home';
 import { AboutComponent } from './about';
 import { NoContentComponent } from './no-content';
 import { XLargeDirective } from './home/x-large';
+import { NavbarComponent } from './common/navbar/navbar.component';
+import { SidebarComponent } from './common/sidebar/sidebar.component';
+import { PlanningComponent } from './planning/planning.component';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
@@ -48,18 +54,22 @@ type StoreType = {
  * `AppModule` is the main entry point into Angular2's bootstraping process
  */
 @NgModule({
-  bootstrap: [ AppComponent ],
+  bootstrap: [AppComponent],
   declarations: [
     AppComponent,
     AboutComponent,
     HomeComponent,
     NoContentComponent,
-    XLargeDirective
+    XLargeDirective,
+    NavbarComponent,
+    SidebarComponent,
+    PlanningComponent
   ],
   imports: [ // import Angular's modules
     BrowserModule,
     FormsModule,
     HttpModule,
+    DropdownModule.forRoot(),
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
@@ -72,7 +82,7 @@ export class AppModule {
   constructor(
     public appRef: ApplicationRef,
     public appState: AppState
-  ) {}
+  ) { }
 
   public hmrOnInit(store: StoreType) {
     if (!store || !store.state) {
@@ -100,7 +110,7 @@ export class AppModule {
     // recreate root elements
     store.disposeOldHosts = createNewHosts(cmpLocation);
     // save input values
-    store.restoreInputValues  = createInputTransfer();
+    store.restoreInputValues = createInputTransfer();
     // remove styles
     removeNgStyles();
   }
