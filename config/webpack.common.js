@@ -59,8 +59,8 @@ module.exports = function (options) {
     entry: {
 
       'polyfills': './src/polyfills.browser.ts',
-      'main':      AOT ? './src/main.browser.aot.ts' :
-                  './src/main.browser.ts'
+      'main': AOT ? './src/main.browser.aot.ts' :
+        './src/main.browser.ts'
 
     },
 
@@ -258,7 +258,15 @@ module.exports = function (options) {
        */
       new CopyWebpackPlugin([
         { from: 'src/assets', to: 'assets' },
-        { from: 'src/meta'}
+        { from: 'src/meta' },
+        {
+          from: 'node_modules/font-awesome/css/font-awesome.min.css',
+          to: 'assets/font-awesome/css/font-awesome.min.css',
+        },
+         {
+          from: 'node_modules/font-awesome/fonts',
+          to: 'assets/font-awesome/fonts'
+        }
       ]),
 
 

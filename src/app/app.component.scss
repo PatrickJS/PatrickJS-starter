@@ -1,0 +1,31 @@
+.content {
+  height:100%;
+
+  #sidebar {
+    width: inherit;
+    min-width: 200px;
+    max-width: 200px;
+    float: left;
+    height:100%;
+    position:relative;
+    overflow-y:auto;
+    overflow-x:hidden;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  }
+  #main {
+    position:absolute;
+    top:0;
+    left:200px;
+    right:0;
+    bottom:0;
+    height:100%;
+    overflow:hidden;
+    .container-fluid {
+      position: absolute;
+      overflow: auto;
+      top:40px;
+      width:100%;
+      height:100%;    
+    }
+  }
+}
