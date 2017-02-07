@@ -3,42 +3,46 @@
  */
 
 const webpack = require('webpack');
-const helpers = require('./helpers');
+const webpackMerge = require('webpack-merge'); // used to merge webpack configs
+const { resolve } = require('app-root-path');
 
 /*
  * Webpack Plugins
  */
 // problem with copy-webpack-plugin
 const AssetsPlugin = require('assets-webpack-plugin');
-const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplacementPlugin');
-const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
-const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
+const {
+  NormalModuleReplacementPlugin,
+  ContextReplacementPlugin,
+  LoaderOptionsPlugin,
+} = require('webpack');
+
+const { CommonsChunkPlugin } = require('webpack').optimize;
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
-const HtmlElementsPlugin = require('./html-elements-plugin');
+const { CheckerPlugin } = require('awesome-typescript-loader');
+const HtmlElementsPlugin = require('./../../html-elements-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const ngcWebpack = require('ngc-webpack');
 
+
+const { HTML_OPTIONS } = require('./../options');
 /*
  * Webpack Constants
  */
-const HMR = helpers.hasProcessFlag('hot');
-const AOT = helpers.hasNpmFlag('aot');
-const METADATA = {
-  title: 'Angular2 Webpack Starter by @gdi2290 from @AngularClass',
-  baseUrl: '/',
-  isDevServer: helpers.isWebpackDevServer()
-};
+
 
 /*
  * Webpack configuration
  *
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
-module.exports = function (options) {
-  isProd = options.env === 'production';
+module.exports = (options) => {
+  /**
+   * Webpack options
+   */
+  const _options = webpackMerge(HTML_OPTIONS, options)
+  const isProd = options.env === 'production';
   return {
 
     /*
@@ -59,8 +63,8 @@ module.exports = function (options) {
     entry: {
 
       'polyfills': './src/polyfills.browser.ts',
-      'main':      AOT ? './src/main.browser.aot.ts' :
-                  './src/main.browser.ts'
+      'main': _options.aot ? './src/main.browser.aot.ts' :
+        './src/main.browser.ts'
 
     },
 
@@ -79,7 +83,7 @@ module.exports = function (options) {
       extensions: ['.ts', '.js', '.json'],
 
       // An array of directory names to be resolved to the current directory
-      modules: [helpers.root('src'), helpers.root('node_modules')],
+      modules: [resolve('src'), resolve('node_modules')],
 
     },
 
@@ -120,7 +124,7 @@ module.exports = function (options) {
               options: {
                 loader: 'async-import',
                 genDir: 'compiled',
-                aot: AOT
+                aot: _options.aot
               }
             },
             {
@@ -154,7 +158,7 @@ module.exports = function (options) {
         {
           test: /\.css$/,
           use: ['to-string-loader', 'css-loader'],
-          exclude: [helpers.root('src', 'styles')]
+          exclude: [resolve('src', 'styles')]
         },
 
         /*
@@ -165,7 +169,7 @@ module.exports = function (options) {
         {
           test: /\.scss$/,
           use: ['to-string-loader', 'css-loader', 'sass-loader'],
-          exclude: [helpers.root('src', 'styles')]
+          exclude: [resolve('src', 'styles')]
         },
 
         /* Raw loader support for *.html
@@ -176,7 +180,7 @@ module.exports = function (options) {
         {
           test: /\.html$/,
           use: 'raw-loader',
-          exclude: [helpers.root('src/index.html')]
+          exclude: [resolve('src/index.html')]
         },
 
         /* File loader for supporting images, for example, in CSS files.
@@ -197,7 +201,7 @@ module.exports = function (options) {
      */
     plugins: [
       new AssetsPlugin({
-        path: helpers.root('dist'),
+        path: resolve('dist'),
         filename: 'webpack-assets.json',
         prettyPrint: true
       }),
@@ -242,7 +246,7 @@ module.exports = function (options) {
       new ContextReplacementPlugin(
         // The (\\|\/) piece accounts for path separators in *nix and Windows
         /angular(\\|\/)core(\\|\/)src(\\|\/)linker/,
-        helpers.root('src'), // location of your src
+        resolve('src'), // location of your src
         {
           // your Angular Async Route paths relative to this root directory
         }
@@ -258,7 +262,7 @@ module.exports = function (options) {
        */
       new CopyWebpackPlugin([
         { from: 'src/assets', to: 'assets' },
-        { from: 'src/meta'}
+        { from: 'src/meta' }
       ]),
 
 
@@ -272,9 +276,9 @@ module.exports = function (options) {
        */
       new HtmlWebpackPlugin({
         template: 'src/index.html',
-        title: METADATA.title,
+        title: _options.title,
         chunksSortMode: 'dependency',
-        metadata: METADATA,
+        metadata: _options,
         inject: 'head'
       }),
 
@@ -312,7 +316,7 @@ module.exports = function (options) {
        * Dependencies: HtmlWebpackPlugin
        */
       new HtmlElementsPlugin({
-        headTags: require('./head-config.common')
+        headTags: require('./../../head-config.common')
       }),
 
       /**
@@ -325,29 +329,29 @@ module.exports = function (options) {
       // Fix Angular 2
       new NormalModuleReplacementPlugin(
         /facade(\\|\/)async/,
-        helpers.root('node_modules/@angular/core/src/facade/async.js')
+        resolve('node_modules/@angular/core/src/facade/async.js')
       ),
       new NormalModuleReplacementPlugin(
         /facade(\\|\/)collection/,
-        helpers.root('node_modules/@angular/core/src/facade/collection.js')
+        resolve('node_modules/@angular/core/src/facade/collection.js')
       ),
       new NormalModuleReplacementPlugin(
         /facade(\\|\/)errors/,
-        helpers.root('node_modules/@angular/core/src/facade/errors.js')
+        resolve('node_modules/@angular/core/src/facade/errors.js')
       ),
       new NormalModuleReplacementPlugin(
         /facade(\\|\/)lang/,
-        helpers.root('node_modules/@angular/core/src/facade/lang.js')
+        resolve('node_modules/@angular/core/src/facade/lang.js')
       ),
       new NormalModuleReplacementPlugin(
         /facade(\\|\/)math/,
-        helpers.root('node_modules/@angular/core/src/facade/math.js')
+        resolve('node_modules/@angular/core/src/facade/math.js')
       ),
 
       new ngcWebpack.NgcWebpackPlugin({
-        disabled: !AOT,
-        tsConfig: helpers.root('tsconfig.webpack.json'),
-        resourceOverride: helpers.root('config/resource-override.js')
+        disabled: !_options.aot,
+        tsConfig: resolve('tsconfig.webpack.json'),
+        resourceOverride: resolve('config/resource-override.js')
       })
 
     ],

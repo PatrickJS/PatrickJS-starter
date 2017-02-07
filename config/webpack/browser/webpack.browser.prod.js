@@ -2,41 +2,34 @@
  * @author: @AngularClass
  */
 
-const helpers = require('./helpers');
+const { resolve } = require('app-root-path');
 const webpackMerge = require('webpack-merge'); // used to merge webpack configs
-const commonConfig = require('./webpack.common.js'); // the settings that are common to prod and dev
+const commonConfig = require('./webpack.browser.common'); // the settings that are common to prod and dev
 
 /**
  * Webpack Plugins
  */
-const DefinePlugin = require('webpack/lib/DefinePlugin');
+const {
+  DefinePlugin,
+  IgnorePlugin,
+  LoaderOptionsPlugin,
+  NormalModuleReplacementPlugin,
+  ProvidePlugin,
+} = require('webpack');
+const { UglifyJsPlugin } = require('webpack').optimize;
+
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const IgnorePlugin = require('webpack/lib/IgnorePlugin');
-const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
-const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplacementPlugin');
-const ProvidePlugin = require('webpack/lib/ProvidePlugin');
-const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 const OptimizeJsPlugin = require('optimize-js-plugin');
 
-/**
- * Webpack Constants
- */
-const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
-const HOST = process.env.HOST || 'localhost';
-const PORT = process.env.PORT || 8080;
-const METADATA = webpackMerge(commonConfig({
-  env: ENV
-}).metadata, {
-  host: HOST,
-  port: PORT,
-  ENV: ENV,
-  HMR: false
-});
+const { PROD_OPTIONS } = require('./../options');
 
-module.exports = function (env) {
-  return webpackMerge(commonConfig({
-    env: ENV
-  }), {
+module.exports = (options) => {
+  /**
+   * Webpack options
+   */
+  const _options = webpackMerge(PROD_OPTIONS, options);
+
+  return webpackMerge(commonConfig(_options), {
 
     /**
      * Developer tool to enhance debugging
@@ -58,7 +51,7 @@ module.exports = function (env) {
        *
        * See: http://webpack.github.io/docs/configuration.html#output-path
        */
-      path: helpers.root('dist'),
+      path: resolve('dist'),
 
       /**
        * Specifies the name of each output file on disk.
@@ -99,7 +92,7 @@ module.exports = function (env) {
             fallbackLoader: 'style-loader',
             loader: 'css-loader'
           }),
-          include: [helpers.root('src', 'styles')]
+          include: [resolve('src', 'styles')]
         },
 
         /*
@@ -111,7 +104,7 @@ module.exports = function (env) {
             fallbackLoader: 'style-loader',
             loader: 'css-loader!sass-loader'
           }),
-          include: [helpers.root('src', 'styles')]
+          include: [resolve('src', 'styles')]
         },
 
       ]
@@ -155,12 +148,12 @@ module.exports = function (env) {
        */
       // NOTE: when adding more properties make sure you include them in custom-typings.d.ts
       new DefinePlugin({
-        'ENV': JSON.stringify(METADATA.ENV),
-        'HMR': METADATA.HMR,
+        'ENV': JSON.stringify(_options.ENV),
+        'HMR': _options.HMR,
         'process.env': {
-          'ENV': JSON.stringify(METADATA.ENV),
-          'NODE_ENV': JSON.stringify(METADATA.ENV),
-          'HMR': METADATA.HMR,
+          'ENV': JSON.stringify(_options.ENV),
+          'NODE_ENV': JSON.stringify(_options.ENV),
+          'HMR': _options.HMR,
         }
       }),
 
@@ -219,43 +212,43 @@ module.exports = function (env) {
 
       new NormalModuleReplacementPlugin(
         /angular2-hmr/,
-        helpers.root('config/empty.js')
+        resolve('config/empty.js')
       ),
 
       new NormalModuleReplacementPlugin(
         /zone\.js(\\|\/)dist(\\|\/)long-stack-trace-zone/,
-        helpers.root('config/empty.js')
+        resolve('config/empty.js')
       ),
 
 
       // AoT
       // new NormalModuleReplacementPlugin(
       //   /@angular(\\|\/)upgrade/,
-      //   helpers.root('config/empty.js')
+      //   resolve('config/empty.js')
       // ),
       // new NormalModuleReplacementPlugin(
       //   /@angular(\\|\/)compiler/,
-      //   helpers.root('config/empty.js')
+      //   resolve('config/empty.js')
       // ),
       // new NormalModuleReplacementPlugin(
       //   /@angular(\\|\/)platform-browser-dynamic/,
-      //   helpers.root('config/empty.js')
+      //   resolve('config/empty.js')
       // ),
       // new NormalModuleReplacementPlugin(
       //   /dom(\\|\/)debug(\\|\/)ng_probe/,
-      //   helpers.root('config/empty.js')
+      //   resolve('config/empty.js')
       // ),
       // new NormalModuleReplacementPlugin(
       //   /dom(\\|\/)debug(\\|\/)by/,
-      //   helpers.root('config/empty.js')
+      //   resolve('config/empty.js')
       // ),
       // new NormalModuleReplacementPlugin(
       //   /src(\\|\/)debug(\\|\/)debug_node/,
-      //   helpers.root('config/empty.js')
+      //   resolve('config/empty.js')
       // ),
       // new NormalModuleReplacementPlugin(
       //   /src(\\|\/)debug(\\|\/)debug_renderer/,
-      //   helpers.root('config/empty.js')
+      //   resolve('config/empty.js')
       // ),
 
       /**
