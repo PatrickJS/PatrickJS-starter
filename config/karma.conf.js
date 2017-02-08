@@ -2,6 +2,25 @@
  * @author: @AngularClass
  */
 
+const helpers = require('./helpers');
+
+/**
+ * This object is the diff required to add coverage support to karma.
+ * Every property set here will OVERWRITE the property in the original config, no merges.
+ */
+const COVERAGE_CONFIG_DIFF = {
+  preprocessors: { './config/spec-bundle.js': ['coverage', 'webpack', 'sourcemap'] },
+  reporters: ['mocha', 'coverage', 'remap-coverage'],
+  coverageReporter: {
+    type: 'in-memory'
+  },
+  remapCoverageReporter: {
+    'text-summary': null,
+    json: './coverage/coverage.json',
+    html: './coverage/html'
+  }
+};
+
 module.exports = function (config) {
   var testWebpackConfig = require('./webpack.test.js')({ env: 'test' });
 
@@ -45,20 +64,10 @@ module.exports = function (config) {
      * preprocess matching files before serving them to the browser
      * available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
      */
-    preprocessors: { './config/spec-bundle.js': ['coverage', 'webpack', 'sourcemap'] },
+    preprocessors: { './config/spec-bundle.js': ['webpack', 'sourcemap'] },
 
     // Webpack Config at ./webpack.test.js
     webpack: testWebpackConfig,
-
-    coverageReporter: {
-      type: 'in-memory'
-    },
-
-    remapCoverageReporter: {
-      'text-summary': null,
-      json: './coverage/coverage.json',
-      html: './coverage/html'
-    },
 
     // Webpack please don't spam the console when running in karma!
     webpackMiddleware: {
@@ -67,7 +76,7 @@ module.exports = function (config) {
       noInfo: true,
       // and use stats to turn off verbose output
       stats: {
-        // options i.e. 
+        // options i.e.
         chunks: false
       }
     },
@@ -78,7 +87,7 @@ module.exports = function (config) {
      * possible values: 'dots', 'progress'
      * available reporters: https://npmjs.org/browse/keyword/karma-reporter
      */
-    reporters: ['mocha', 'coverage', 'remap-coverage'],
+    reporters: ['mocha'],
 
     // web server port
     port: 9876,
@@ -121,6 +130,11 @@ module.exports = function (config) {
     configuration.browsers = [
       'ChromeTravisCi'
     ];
+  }
+
+  // add coverage
+  if (helpers.useCoverage()) {
+    Object.assign(configuration, COVERAGE_CONFIG_DIFF);
   }
 
   config.set(configuration);
