@@ -106,7 +106,7 @@
     "css-loader": "^0.26.0",
     "exports-loader": "^0.6.3",
     "expose-loader": "^0.7.1",
-    "extract-text-webpack-plugin": "~2.0.0-rc.2",
+    "extract-text-webpack-plugin": "~2.0.0-rc.3",
     "file-loader": "^0.10.0",
     "find-root": "^1.0.0",
     "gh-pages": "^0.12.0",
