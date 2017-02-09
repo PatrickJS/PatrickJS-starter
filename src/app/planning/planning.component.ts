@@ -3,7 +3,8 @@ import {
   OnInit
 } from '@angular/core';
 
-import { AppState } from '../app.service';
+import { GlobalState } from '../global-state.service';
+import { DropdownDirective } from 'ng2-bootstrap/dropdown';
 
 @Component({
   selector: 'planning',
@@ -11,9 +12,12 @@ import { AppState } from '../app.service';
   templateUrl: './planning.component.html'
 })
 export class PlanningComponent implements OnInit {
-  constructor(
-  ) {
-    console.log('Planning ctor');
+
+  constructor(public _state: GlobalState) {
+    this._state.notifyDataChanged('navbar.title',
+      'Planning du jour'
+    );
+
   }
 
   public ngOnInit() {

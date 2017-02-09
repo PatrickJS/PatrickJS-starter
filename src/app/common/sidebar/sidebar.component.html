@@ -1,45 +1,53 @@
-<div>
+<div fxLayout="column">
 
-    <div class="row">
-        <div class="col-sm-12">
-            <a [href]="url">
-                <img [src]="logoUrl" width="120" class="mx-auto d-block">
-            </a>
-            <h3 class="text-center">La Cabane des Landes</h3>
-        </div>
+    <div fxLayout="column" fxLayoutAlign="space-around center">
+
+        <div>&nbsp;</div>
+        <a [href]="url">
+            <img [src]="logoUrl" width="120" class="mx-auto d-block">
+        </a>
+        <h3 class="text-center">La Cabane des Landes</h3>
 
     </div>
 
-    <nav>
-        <ul class="nav nav-pills flex-column">
-            <li class="nav-item">
-                <a class="nav-link active" href="#">
-                    <i class="fa fa-calendar fa-2x"></i> Planning
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fa fa-child fa-2x"></i> Les familles
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fa fa-tachometer fa-2x"></i> Tableau de bord
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fa fa-user-circle-o fa-2x"></i> Le personnel
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fa fa-cogs fa-2x"></i> Configuration
-                </a>
-            </li>
+    <md-list>
+        <md-list-item>
+            <a routerLink="/planning" fxLayout="row" fxLayoutAlign="start center">
+                <md-icon>view_agenda</md-icon>
+                <h4>Planning</h4>
+            </a>
+        </md-list-item>
+        <md-divider></md-divider>
+        <md-list-item>
+            <a routerLink="/families" fxLayout="row" fxLayoutAlign="start center">
+                <md-icon>child_care</md-icon>
+                <h4>Les familles</h4>
+            </a>
+        </md-list-item>
+        <md-divider></md-divider>
+        <md-list-item>
+            <a routerLink="/planning" fxLayout="row" fxLayoutAlign="start center">
+                <md-icon>dashboard</md-icon>
+                <h4>Tableau de bord</h4>
+            </a>
+        </md-list-item>
+        <md-divider></md-divider>
+        <md-list-item>
+            <a routerLink="/planning" fxLayout="row" fxLayoutAlign="start center">
 
-        </ul>
-    </nav>
+                <md-icon>person</md-icon>
+                <h4>Le personnel</h4>
+            </a>
+        </md-list-item>
+        <md-divider></md-divider>
+        <md-list-item>
+            <a routerLink="/planning" fxLayout="row" fxLayoutAlign="start center">
 
+                <md-icon>settings</md-icon>
+                <h4>Configuration</h4>
+            </a>
+        </md-list-item>
 
-</div>
+    </md-list>
+
+    

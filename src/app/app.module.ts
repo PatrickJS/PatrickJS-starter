@@ -15,8 +15,11 @@ import {
   PreloadAllModules
 } from '@angular/router';
 import { CommonModule } from './common/common.module';
+import { MaterialModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { DropdownModule } from 'ng2-bootstrap/dropdown';
+import { FamiliesModule } from './families';
+import { PlanningModule } from './planning';
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -35,8 +38,14 @@ import { NavbarComponent } from './common/navbar/navbar.component';
 import { SidebarComponent } from './common/sidebar/sidebar.component';
 import { PlanningComponent } from './planning/planning.component';
 
+import { FamilyService } from './model/family.service';
+import { ChildService } from './model/child.service';
+import { ContractService } from './model/contract.service';
+import { GlobalState } from './global-state.service';
+
 import '../styles/styles.scss';
 import '../styles/headings.css';
+import 'hammerjs';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -62,19 +71,25 @@ type StoreType = {
     NoContentComponent,
     XLargeDirective,
     NavbarComponent,
-    SidebarComponent,
-    PlanningComponent
+    SidebarComponent
   ],
   imports: [ // import Angular's modules
     BrowserModule,
     FormsModule,
     HttpModule,
-    DropdownModule.forRoot(),
+    FamiliesModule,
+    PlanningModule,
+    FlexLayoutModule.forRoot(),
+    MaterialModule.forRoot(),
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
-    APP_PROVIDERS
+    APP_PROVIDERS,
+    FamilyService,
+    ChildService,
+    ContractService,
+    GlobalState
   ]
 })
 export class AppModule {

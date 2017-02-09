@@ -1,1 +1,1 @@
-export * from './planning.component';
+export * from './planning.module';

@@ -1,30 +1,4 @@
 <!--
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-2" style="background-color:red">
-      <nav class="nav flex-column">
-        <a class="nav-link active" href="#">Active</a>
-        <a class="nav-link" href="#">Link</a>
-        <a class="nav-link" href="#">Link</a>
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </nav>
-    </div>
-
-    <div class="col left-col" style="background-color:green">
-
-      <navbar></navbar>
-
-      <div class="container-fluid">
-          <router-outlet></router-outlet>
-
-      </div>
-    </div>
-  </div>
-
-</div>
-
--->
 <div class="content">
   <div id="sidebar">
 
@@ -41,4 +15,16 @@
 
   </div>
 </div>
-<!--/row-offcanvas -->
+-->
+
+<md-sidenav-container>
+  <md-sidenav #leftNav mode="side" opened="true" class="md-sidenav-left md-whiteframe-z2" md-is-locked-open="$mdMedia('gt-sm')">
+    <sidebar></sidebar>
+  </md-sidenav>
+  <div class="my-content" layout="column">
+    <navbar></navbar>
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</md-sidenav-container>

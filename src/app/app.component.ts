@@ -4,9 +4,12 @@
 import {
   Component,
   OnInit,
-  ViewEncapsulation
+  AfterViewInit,
+  ViewEncapsulation,
+  ViewChild
 } from '@angular/core';
-import { AppState } from './app.service';
+import { GlobalState } from './global-state.service';
+import { MdSidenav } from '@angular/material';
 
 /*
  * App Component
@@ -21,16 +24,23 @@ import { AppState } from './app.service';
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
+  @ViewChild('leftNav')
+  public leftNav: MdSidenav;
+
   public angularclassLogo = 'assets/img/angularclass-avatar.png';
   public name = 'Angular 2 Webpack Starter';
   public url = 'https://twitter.com/AngularClass';
 
-  constructor(
-    public appState: AppState
-  ) {}
+  constructor(public _state: GlobalState) {
+
+    this._state.subscribe('sidebar.toggle', () => {
+      this.leftNav.toggle();
+    });
+
+  }
 
   public ngOnInit() {
-    console.log('Initial App State', this.appState.state);
+    console.log('Initial App State');
   }
 
 }

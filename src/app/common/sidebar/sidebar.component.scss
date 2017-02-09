@@ -7,4 +7,19 @@ nav  {
 
         }
     }
+
+    a.nav-link {
+        cursor: pointer;
+    }
+}
+
+md-list-item {
+    a {
+        cursor: pointer;
+        text-decoration: none;
+    }
+    h4 {
+        font-weight: normal;
+        margin-left: 10px;
+    }
 }
