@@ -2,7 +2,7 @@
 /* This file is for setting global styles  */
 @import 'variables';
 
-@import '~bootstrap/scss/bootstrap';
+@import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';
 
 body,html {
   height:100%;

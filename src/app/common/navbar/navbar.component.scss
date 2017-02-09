@@ -18,3 +18,13 @@ nav.navbar {
     }
 
 }
+
+md-toolbar {
+    md-icon {
+        margin-left: -10px;
+        font-size: 35px;
+    }
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
+}

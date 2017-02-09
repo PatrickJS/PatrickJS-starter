@@ -1,0 +1,69 @@
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th class="text-sm-left">Nom de famille</th>
+            <th>Enfants</th>
+            <th class="text-sm-right">
+                <button class="btn btn-outline-primary" type="button" title="Ajouter une famille" (click)="addFamilyModal.show()">
+                    <i class="fa fa-2x fa-plus-circle"></i>
+                </button>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let family of families" >
+            <!--
+            <td class="nowrap text-sm-left" >
+                <a routerLink="/pages/families/{{family.id}}">{{ family.name }}</a></td>
+            <td class="nowrap">
+                <span *ngFor="let child of family.children; let last = last" (click)="goToChild(child)">
+                    <a routerLink="/children/{{child.id}}">
+                    {{ child.firstName }}<span *ngIf="!last">, </span>
+                    </a>
+                </span>
+            </td>
+            <td class="align-right">
+                <i class="text-success fa fa-2x fa-plus-circle" title="Ajouter un enfant"></i>
+                <i class="text-danger fa fa-2x fa-trash" title="Supprimer la famille"></i>
+            </td>
+            -->
+        </tr>
+
+    </tbody>
+</table>
+
+<!-- Add family modal -->
+<!--
+<div bsModal #addFamilyModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <form novalidate #f="ngForm" (ngSubmit)="onSubmit(f)">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" (click)="lgModal.hide()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Ajouter une famille</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group" [ngClass]="{'has-danger': familyName.errors?.required && familyName.dirty}">
+                        <label for="familyName" class="form-control-label">Nom de famille <sup class="text-danger">*</sup></label>
+                        <input class="form-control" id="familyName" type=”text” name="familyName" ngModel required #familyName="ngModel" />
+                    </div>
+                    <div class="form-group" [ngClass]="{'has-danger': childFirstname.errors?.required && childFirstname.dirty}">
+                        <label for="childFirstname" class="form-control-label">Prénom de l'enfant <sup class="text-danger">*</sup></label>
+                        <input class="form-control" id="childFirstname" type=”text” name="childFirstname" ngModel required #childFirstname="ngModel" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" (click)="lgModal.hide()">Annuler</button>
+                    <button type="submit" [disabled]="f.invalid" class="btn btn-primary confirm-btn">Enregistrer</button>
+                </div>
+
+            </div>
+        </form>
+
+    </div>
+</div>
+-->
