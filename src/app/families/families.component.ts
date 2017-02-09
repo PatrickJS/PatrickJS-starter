@@ -5,8 +5,8 @@ import { Family } from '../model/family.model';
 
 @Component({
     selector: 'families',
-    template: require('./families.html'),
-    styles: [require('./families.scss')]
+    template: require('./families.html')
+    // styles: [require('./families.scss')]
 })
 export class FamiliesComponent implements OnInit {
     // @ViewChild('addFamilyModal')

@@ -8,7 +8,7 @@ import { DropdownDirective } from 'ng2-bootstrap/dropdown';
 
 @Component({
   selector: 'planning',
-  styleUrls: [ './planning.component.scss' ],
+  // styleUrls: [ './planning.component.scss' ],
   templateUrl: './planning.component.html'
 })
 export class PlanningComponent implements OnInit {
