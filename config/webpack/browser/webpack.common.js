@@ -3,42 +3,41 @@
  */
 
 const webpack = require('webpack');
-const helpers = require('./helpers');
+const webpackMerge = require('webpack-merge'); // used to merge webpack options
+const helpers = require('./../../helpers');
 
 /*
  * Webpack Plugins
  */
 // problem with copy-webpack-plugin
 const AssetsPlugin = require('assets-webpack-plugin');
-const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplacementPlugin');
-const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
+const {
+  NormalModuleReplacementPlugin,
+  ContextReplacementPlugin,
+  LoaderOptionsPlugin,
+} = require('webpack');
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
-const HtmlElementsPlugin = require('./html-elements-plugin');
+const HtmlElementsPlugin = require('./../../html-elements-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const ngcWebpack = require('ngc-webpack');
 
 /*
- * Webpack Constants
+ * Webpack Options
  */
-const HMR = helpers.hasProcessFlag('hot');
-const AOT = helpers.hasNpmFlag('aot');
-const METADATA = {
-  title: 'Angular2 Webpack Starter by @gdi2290 from @AngularClass',
-  baseUrl: '/',
-  isDevServer: helpers.isWebpackDevServer()
-};
+const { COMMON_OPTIONS } = require('./../options');
 
 /*
  * Webpack configuration
  *
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
-module.exports = function (options) {
-  isProd = options.env === 'production';
+module.exports = (options) => {
+  options = webpackMerge(COMMON_OPTIONS, options);
+  const { isProd, AOT, METADATA } = options;
+
   return {
 
     /*
@@ -312,7 +311,7 @@ module.exports = function (options) {
        * Dependencies: HtmlWebpackPlugin
        */
       new HtmlElementsPlugin({
-        headTags: require('./head-config.common')
+        headTags: require('./../../head-config.common')
       }),
 
       /**

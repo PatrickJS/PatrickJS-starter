@@ -2,42 +2,37 @@
  * @author: @AngularClass
  */
 
-const helpers = require('./helpers');
-const webpackMerge = require('webpack-merge'); // used to merge webpack configs
-const commonConfig = require('./webpack.common.js'); // the settings that are common to prod and dev
+const helpers = require('./../../helpers');
+const webpackMerge = require('webpack-merge'); // used to merge webpack options
 
 /**
  * Webpack Plugins
  */
-const DefinePlugin = require('webpack/lib/DefinePlugin');
+const {
+  DefinePlugin,
+  IgnorePlugin,
+  LoaderOptionsPlugin,
+  NormalModuleReplacementPlugin,
+  ProvidePlugin,
+} = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const IgnorePlugin = require('webpack/lib/IgnorePlugin');
-const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
-const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplacementPlugin');
-const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 const OptimizeJsPlugin = require('optimize-js-plugin');
 
 /**
- * Webpack Constants
+ * Webpack Options
  */
-const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
-const HOST = process.env.HOST || 'localhost';
-const PORT = process.env.PORT || 8080;
-const METADATA = webpackMerge(commonConfig({
-  env: ENV
-}).metadata, {
-  host: HOST,
-  port: PORT,
-  ENV: ENV,
-  HMR: false
-});
+const { PROD_OPTIONS } = require('./../options');
 
-module.exports = function (env) {
-  return webpackMerge(commonConfig({
-    env: ENV
-  }), {
+/**
+ * Webpack configuration
+ *
+ * See: http://webpack.github.io/docs/configuration.html#cli
+ */
+module.exports = (options) => {
+  options = webpackMerge(PROD_OPTIONS, options);
 
+  return {
     /**
      * Developer tool to enhance debugging
      *
@@ -155,12 +150,12 @@ module.exports = function (env) {
        */
       // NOTE: when adding more properties make sure you include them in custom-typings.d.ts
       new DefinePlugin({
-        'ENV': JSON.stringify(METADATA.ENV),
-        'HMR': METADATA.HMR,
+        'ENV': JSON.stringify(options.ENV),
+        'HMR': options.HMR,
         'process.env': {
-          'ENV': JSON.stringify(METADATA.ENV),
-          'NODE_ENV': JSON.stringify(METADATA.ENV),
-          'HMR': METADATA.HMR,
+          'ENV': JSON.stringify(options.ENV),
+          'NODE_ENV': JSON.stringify(options.ENV),
+          'HMR': options.HMR,
         }
       }),
 
@@ -329,5 +324,5 @@ module.exports = function (env) {
       setImmediate: false
     }
 
-  });
+  };
 }
