@@ -38,6 +38,7 @@
     "github-deploy:prod": "npm run webpack -- --config config/webpack.github-deploy.js --progress --profile --env.githubProd",
     "github-deploy": "npm run github-deploy:dev",
     "lint": "npm run tslint \"src/**/*.ts\"",
+    "node": "\"$npm_node_execpath\""
     "postinstall": "npm run webdriver:update",
     "postversion": "git push && git push --tags",
     "preclean:install": "npm run clean",
@@ -65,8 +66,8 @@
     "webdriver-manager": "webdriver-manager",
     "webdriver:start": "npm run webdriver-manager start",
     "webdriver:update": "webdriver-manager update",
-    "webpack-dev-server": "node --max_old_space_size=4096 node_modules/.bin/webpack-dev-server",
-    "webpack": "node --max_old_space_size=4096 node_modules/.bin/webpack"
+    "webpack-dev-server": "npm run node -- --max_old_space_size=4096 node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "webpack": "npm run node -- --max_old_space_size=4096 node_modules/webpack/bin/webpack.js"
   },
   "dependencies": {
     "@angular/animations": "~4.0.3",
