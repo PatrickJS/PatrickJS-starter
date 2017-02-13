@@ -12,11 +12,12 @@ node_js:
   - "5"
   - "6"
   - "node"
-# Matrix failure enabled for https://github.com/TheLarkInn/LazyParseWebpackPlugin/issues/6
 matrix:
   fast_finish: true
   allow_failures:
   - node_js: "4"
+before_install:
+  - npm i npm@^4 -g
 install:
   - npm install
 before_script:
@@ -25,3 +26,6 @@ before_script:
   - sleep 3
 script:
   - npm run ci:travis
+cache:
+  directories:
+    - node_modules
