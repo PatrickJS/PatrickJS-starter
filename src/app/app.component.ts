@@ -13,7 +13,7 @@ import { AppState } from './app.service';
  * Top Level Component
  */
 @Component({
-  selector: 'app',
+  selector: 'my-app',
   encapsulation: ViewEncapsulation.None,
   styleUrls: [
     './app.component.css'
