@@ -321,7 +321,7 @@ import * as _ from 'lodash';
 
 
 # Frequently asked questions
-* What's the current browser support for Angular 2 Beta?
+* What's the current browser support for Angular 2?
   * Please view the updated list of [browser support for Angular 2](https://github.com/angularclass/awesome-angular2#current-browser-support-for-angular-2)
 * Why is my service, aka provider, is not injecting parameter correctly?
   * Please use `@Injectable()` for your service for typescript to correctly attach the metadata (this is a TypeScript problem)
