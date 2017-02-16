@@ -96,8 +96,8 @@ module.exports = function (env) {
         {
           test: /\.css$/,
           loader: ExtractTextPlugin.extract({
-            fallbackLoader: 'style-loader',
-            loader: 'css-loader'
+            fallback: 'style-loader',
+            use: 'css-loader'
           }),
           include: [helpers.root('src', 'styles')]
         },
