@@ -123,7 +123,17 @@ module.exports = function (options) {
          */
         {
           test: /\.scss$/,
-          use: ['style-loader', 'css-loader', 'sass-loader'],
+          use: [
+            'style-loader',
+            'css-loader',
+            'sass-loader',
+            {
+              loader: 'sass-resources-loader',
+              options: {
+                resources: helpers.root('src/styles/_variables.scss')
+              }
+            }
+          ],
           include: [helpers.root('src', 'styles')]
         },
 
