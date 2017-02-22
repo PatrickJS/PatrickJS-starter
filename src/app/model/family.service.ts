@@ -8,7 +8,7 @@ import { FAMILIES } from './mock/data.mock';
 
 @Injectable()
 export class FamilyService {
-    private familiesUrl = 'app/families';  // URL to web api
+    private familiesUrl = '/mv3/families';  // URL to web api
     private headers = new Headers({ 'Content-Type': 'application/json' });
 
     constructor(private http: Http) { }
@@ -16,13 +16,12 @@ export class FamilyService {
     public getFamilies(): Promise<Family[]> {
         console.log('getFamilies : ', FAMILIES);
 
-        /*
         return this.http.get(this.familiesUrl)
             .toPromise()
-            .then(response => response.json().data as Hero[])
+            .then((response) => response.json().data as Family[])
             .catch(this.handleError);
-            */
-        return Promise.resolve(FAMILIES);
+
+        // return Promise.resolve(FAMILIES);
 
     }
 

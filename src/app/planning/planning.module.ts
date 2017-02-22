@@ -1,15 +1,14 @@
 import { NgModule } from '@angular/core';
+import { MaterialModule } from '@angular/material';
 
 import { PlanningComponent } from './planning.component';
 
 @NgModule({
-  imports: [
-  ],
   declarations: [
     PlanningComponent
   ],
-  exports: [
-      PlanningComponent
+  imports: [
+    MaterialModule
   ]
 })
 export class PlanningModule { }

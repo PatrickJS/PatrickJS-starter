@@ -1,3 +1,21 @@
+
+
+<md-list>
+    <md-list-item *ngFor="let family of families">
+        <md-icon md-list-avatar>folder</md-icon>
+        <h4 md-line>{{family}}</h4>
+        <p md-line>
+            {{family | json}}
+        </p>
+    </md-list-item>
+</md-list>
+
+
+<button md-fab class="fab-add" (click)="openDialog()" color="accent">
+   <md-icon class="md-24">add</md-icon>
+    </button>
+
+
 <table class="table table-hover">
     <thead>
         <tr>
@@ -11,7 +29,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let family of families" >
+        <tr *ngFor="let family of families">
             <!--
             <td class="nowrap text-sm-left" >
                 <a routerLink="/pages/families/{{family.id}}">{{ family.name }}</a></td>

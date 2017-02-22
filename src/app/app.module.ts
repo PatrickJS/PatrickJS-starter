@@ -36,7 +36,6 @@ import { NoContentComponent } from './no-content';
 import { XLargeDirective } from './home/x-large';
 import { NavbarComponent } from './common/navbar/navbar.component';
 import { SidebarComponent } from './common/sidebar/sidebar.component';
-import { PlanningComponent } from './planning/planning.component';
 
 import { FamilyService } from './model/family.service';
 import { ChildService } from './model/child.service';
@@ -79,8 +78,8 @@ type StoreType = {
     HttpModule,
     FamiliesModule,
     PlanningModule,
-    FlexLayoutModule.forRoot(),
-    MaterialModule.forRoot(),
+    MaterialModule,
+    FlexLayoutModule,
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection

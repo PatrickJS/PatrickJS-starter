@@ -14,15 +14,12 @@ import { DropdownDirective } from 'ng2-bootstrap/dropdown';
 export class PlanningComponent implements OnInit {
 
   constructor(public _state: GlobalState) {
-    this._state.notifyDataChanged('navbar.title',
-      'Planning du jour'
-    );
-
   }
 
   public ngOnInit() {
-    console.log('hello `Home` component');
-    // this.title.getData().subscribe(data => this.data = data);
+    this._state.notifyDataChanged('navbar.title',
+      'Planning du jour'
+    );
   }
 
 }
