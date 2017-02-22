@@ -2,21 +2,21 @@
  * @author: @AngularClass
  */
 
-const helpers = require('./helpers');
+const helpers      = require('./helpers');
 const webpackMerge = require('webpack-merge'); // used to merge webpack configs
 const commonConfig = require('./webpack.common.js'); // the settings that are common to prod and dev
 
 /**
  * Webpack Plugins
  */
-const DefinePlugin = require('webpack/lib/DefinePlugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const IgnorePlugin = require('webpack/lib/IgnorePlugin');
-const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
+const DefinePlugin                  = require('webpack/lib/DefinePlugin');
+const ExtractTextPlugin             = require('extract-text-webpack-plugin');
+const IgnorePlugin                  = require('webpack/lib/IgnorePlugin');
+const LoaderOptionsPlugin           = require('webpack/lib/LoaderOptionsPlugin');
 const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplacementPlugin');
-const ProvidePlugin = require('webpack/lib/ProvidePlugin');
-const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
-const OptimizeJsPlugin = require('optimize-js-plugin');
+const ProvidePlugin                 = require('webpack/lib/ProvidePlugin');
+const UglifyJsPlugin                = require('webpack/lib/optimize/UglifyJsPlugin');
+const OptimizeJsPlugin              = require('optimize-js-plugin');
 
 /**
  * Webpack Constants
@@ -330,4 +330,4 @@ module.exports = function (env) {
     }
 
   });
-}
+};

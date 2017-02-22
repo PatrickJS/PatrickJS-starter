@@ -1,18 +1,18 @@
 /**
  * @author: @AngularClass
  */
-const fs = require('fs');
-const path = require('path');
-const helpers = require('./helpers');
-const ghDeploy = require('./github-deploy');
+const fs           = require('fs');
+const path         = require('path');
+const helpers      = require('./helpers');
+const ghDeploy     = require('./github-deploy');
 const webpackMerge = require('webpack-merge'); // used to merge webpack configs
 
 /**
  * Webpack Constants
  */
 const GIT_REMOTE_NAME = 'origin';
-const COMMIT_MESSAGE = 'Updates';
-const GH_REPO_NAME = ghDeploy.getRepoName(GIT_REMOTE_NAME);
+const COMMIT_MESSAGE  = 'Updates';
+const GH_REPO_NAME    = ghDeploy.getRepoName(GIT_REMOTE_NAME);
 
 module.exports = function (options) {
   const webpackConfigFactory = ghDeploy.getWebpackConfigModule(options); // the settings that are common to prod and dev
