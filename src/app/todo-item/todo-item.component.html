@@ -1,0 +1,11 @@
+<li class="list-group-item inline">
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" class="checkbox" [(ngModel)]="todo.completed">{{todo.title}}
+        </label>
+        <button class="pull-right" (click)="onDelete($event)" >
+            <span class="glyphicon glyphicon-trash"></span>
+        </button>
+    </div>
+
+</li>

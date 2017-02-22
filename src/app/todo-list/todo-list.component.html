@@ -1,0 +1,14 @@
+<div class="btn-group">
+              <button class="btn btn-warning" (click)="deleteSelected()">Удалить выбранные</button>
+              <button class="btn btn-danger"  (click)="deleteAll()">Удалить все</button>
+</div>
+
+<div class="checkbox custom-checkbox">
+       <label>
+              <input type="checkbox" [(ngModel)]="isCheckedAll" (change)="toggleAll()">Выбрать все
+       </label>
+</div>
+
+<ul class="list-group">
+       <todo-item *ngFor="let todo of todos" [todo]="todo" (remove)="remove(todo)" (change)="checkTodo()"></todo-item>
+</ul>
