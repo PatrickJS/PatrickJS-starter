@@ -2,12 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Todo } from '../shared/todo';
 import { TodoService } from "../shared/todo.service";
 
- 
+
 @Component({
-    moduleId: module.id,
     selector: 'todo-list',
-    templateUrl: 'todo-list.component.html',
-    styleUrls: ['todo-list.component.css']
+    templateUrl: '/todo-list.component.html',
+    styleUrls: ['/todo-list.component.css']
 })
 
 export class TodoList implements OnInit {
@@ -15,7 +14,7 @@ export class TodoList implements OnInit {
     errorMessage: boolean = false;
 
     constructor(private todoService: TodoService) {}
-    
+
     ngOnInit () {this.getTodos();}
 
     getTodos(){
@@ -31,12 +30,12 @@ export class TodoList implements OnInit {
     deleteAll(){
         this.todos = this.todoService.deleteAllTodo();
     }
-    
+
     remove(todo: Todo){
         this.todoService.removeTodo(todo);
         this.todoService.check();
     }
-    
+
     deleteSelected(){
         this.todos = this.todoService.deleteSelectedTodo();
     }
