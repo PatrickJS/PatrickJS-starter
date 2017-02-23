@@ -12,6 +12,7 @@ export class ContainerComponent implements OnInit {
   }
   
   triigerLoadUI() {
-    OneUI.init();
+    if (typeof OneUI != "undefined")
+      OneUI.init();
   }
 }

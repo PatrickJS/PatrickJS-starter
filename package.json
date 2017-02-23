@@ -88,6 +88,8 @@
     "bcrypt": "^1.0.2",
     "chart.js": "^2.5.0",
     "core-js": "^2.4.1",
+    "datatables.net": "^1.10.13",
+    "datatables.net-bs": "^1.10.13",
     "http-server": "^0.9.0",
     "ie-shim": "^0.1.0",
     "jasmine-core": "^2.5.2",

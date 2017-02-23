@@ -14,7 +14,8 @@ export class DashboardComponent implements OnInit {
   initPageJs() {
     jQuery(() => {
       // Init page helpers (Slick Slider plugin)
-      OneUI.initHelpers('slick');
+      if (typeof OneUI != "undefined")
+        OneUI.initHelpers('slick');
     });
   }
 }
