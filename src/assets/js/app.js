@@ -5,7 +5,7 @@
  *
  */
 
-var AppTheme = function () {
+window.AppTheme = function () {
   // Helper variables - set in uiInit()
   var $lHtml, $lBody, $lPage, $lSidebar, $lSidebarScroll, $lSideOverlay, $lSideOverlayScroll, $lHeader, $lMain, $lFooter;
   
@@ -1518,4 +1518,4 @@ var AppTheme = function () {
 }();
 
 // Create an alias for App (you can use OneUI in your pages instead of App if you like)
-var OneUI = AppTheme;
+window.OneUI = window.AppTheme;

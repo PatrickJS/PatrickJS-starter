@@ -211,6 +211,16 @@ module.exports = function (options) {
      * See: http://webpack.github.io/docs/configuration.html#plugins
      */
     plugins: [
+      new webpack.ProvidePlugin({
+        jQuery: 'jquery',
+        $: 'jquery',
+        jquery: 'jquery',
+        "window.jquery": "jquery",
+        "window.jQuery": "jquery",
+        "Tether": 'tether',
+        "window.Tether": "tether"
+      }),
+      
       new AssetsPlugin({
         path: helpers.root('dist'),
         filename: 'webpack-assets.json',

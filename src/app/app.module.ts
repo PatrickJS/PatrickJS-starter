@@ -28,6 +28,9 @@ import {HeaderComponent} from "./cloud/pages/cloud-container/container/header";
 import {FooterComponent} from "./cloud/pages/cloud-container/container/footer";
 import {DashboardComponent} from "./cloud/pages/dashboard/dashboard";
 import {ProductsComponent} from "./cloud/pages/products/products";
+import {AdminAreaComponent} from "./cloud/pages/admin-area/admin-area";
+import {ManageLicensesComponent} from "./cloud/pages/admin-area/manage-licenses";
+import {ManageLicensesGridComponent} from "./cloud/pages/admin-area/manage-licenses/grid";
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -53,7 +56,10 @@ type StoreType = {
               HeaderComponent,
               FooterComponent,
               ProductsComponent,
-              DashboardComponent
+              DashboardComponent,
+              AdminAreaComponent,
+              ManageLicensesComponent,
+              ManageLicensesGridComponent,
             ],
             imports: [ // import Angular's modules
               BrowserModule,
