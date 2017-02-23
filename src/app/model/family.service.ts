@@ -43,15 +43,18 @@ export class FamilyService {
     }
 
     public create(family: Family): Promise<Family> {
-        /*
+
         return this.http
-            .post(this.familiesUrl, JSON.stringify({ name: name }), { headers: this.headers })
+            .post(this.familiesUrl, JSON.stringify(family), { headers: this.headers })
             .toPromise()
-            .then(res => res.json().data)
+            .then((res) => {
+                console.log('Family creation : ', res.json());
+                return res.json() as Family
+            })
             .catch(this.handleError);
-            */
-        FAMILIES.push(family);
-        return Promise.resolve(family);
+
+//        FAMILIES.push(family);
+//        return Promise.resolve(family);
     }
 
     public delete(id: number): Promise<void> {

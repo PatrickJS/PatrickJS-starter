@@ -1,6 +1,14 @@
-<h1 md-dialog-title>Dialog</h1>
-<div md-dialog-content>What would you like to do?</div>
-<div md-dialog-actions>
-  <button md-button (click)="dialogRef.close('Option 1')">Option 1</button>
-  <button md-button (click)="dialogRef.close('Option 2')">Option 2</button>
+<h1 md-dialog-title>Nouvelle famille</h1>
+<div md-dialog-content>
+  <md-input-container>
+    <input mdInput name="name" placeholder="Nom de famille" #name>
+  </md-input-container>
+  <md-input-container>
+    <input mdInput name="firstName" placeholder="Prénom de l'enfant" #firstName>
+  </md-input-container>
+</div>
+<div md-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+  <button md-button (click)="dialogRef.close()">Annuler</button>
+  &nbsp;&nbsp;
+  <button md-raised-button (click)="saveNewFamily(name.value, firstName.value)" color="accent">Enregistrer</button>
 </div>

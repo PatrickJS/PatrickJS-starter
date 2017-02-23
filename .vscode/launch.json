@@ -7,12 +7,15 @@
             "request": "launch",
             "url": "http://localhost:3000/*",
             "runtimeArgs": [
-              "--disable-web-security",
-              "--user-data-dir",
-              "--remote-debugging-port=9222"
+                "--disable-web-security",
+                "--user-data-dir",
+                "--remote-debugging-port=9222"
             ],
             "sourceMaps": true,
-            "webRoot": "${workspaceRoot}"
+            "webRoot": "${workspaceRoot}",
+            "userDataDir": "${workspaceRoot}/out/chrome",
+            "diagnosticLogging": true,
+            "port": 9223
         },
         {
             "name": "Attach to Chrome, with sourcemaps",

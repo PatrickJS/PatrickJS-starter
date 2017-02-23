@@ -8,7 +8,7 @@ import { CHILDREN } from './mock/data.mock';
 
 @Injectable()
 export class ChildService {
-    private childrenUrl = 'app/children';  // URL to web api
+    private childrenUrl = '/mv3/children';  // URL to web api
     private headers = new Headers({ 'Content-Type': 'application/json' });
 
     constructor(private http: Http) { }
@@ -32,6 +32,16 @@ export class ChildService {
         }
         return this.getChildren()
             .then((children) => children.find((child) => child.id === id));
+    }
+
+    public create(child: Child): Promise<Child> {
+
+        return this.http
+            .post(this.childrenUrl, JSON.stringify(child), { headers: this.headers })
+            .toPromise()
+            .then((res) => res.json().data)
+            .catch(this.handleError);
+
     }
 
     public update(child: Child): Promise<Child> {
