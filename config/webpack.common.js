@@ -82,7 +82,14 @@ module.exports = function (options) {
       modules: [helpers.root('src'), helpers.root('node_modules')],
 
     },
-
+  
+    /*
+     * For loading meteor module
+     */
+    externals: [
+      resolveExternals
+    ],
+    
     /*
      * Options affecting the normal modules.
      *
@@ -189,7 +196,7 @@ module.exports = function (options) {
 
         /* File loader for supporting fonts, for example, in CSS files.
         */
-        { 
+        {
           test: /\.(eot|woff2?|svg|ttf)([\?]?.*)$/,
           use: 'file-loader'
         }
@@ -376,4 +383,18 @@ module.exports = function (options) {
     }
 
   };
+};
+function resolveExternals(context, request, callback) {
+  return resolveMeteor(request, callback) ||
+         callback();
+}
+
+function resolveMeteor(request, callback) {
+  var match = request.match(/^meteor\/(.+)$/);
+  var pack = match && match[1];
+  
+  if (pack) {
+    callback(null, 'Package["' + pack + '"]');
+    return true;
+  }
 }
