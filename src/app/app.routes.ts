@@ -1,7 +1,9 @@
 import {AppComponent} from "./app.component";
-import {CloudContainerComponent} from "./cloud/pages/cloud-container";
+import {ContainerComponent} from "./cloud/pages/cloud-container/container";
+import {DashboardComponent} from "./cloud/pages/dashboard/dashboard";
 
 export const ROUTES: any = [
   {name: 'app', url: '/app', component: AppComponent},
-  {name: 'app.cloud', url: '/cloud', component: CloudContainerComponent},
+  {name: 'app.cloud', url: '/cloud', component: ContainerComponent, abstract: true},
+  {name: 'app.cloud.dashboard', url: '/dashboard', component: DashboardComponent},
 ];

@@ -21,7 +21,13 @@ import {AppState, InternalStateType} from './app.service';
 
 import {UIRouterModule} from 'ui-router-ng2';
 import {ROUTES} from "./app.routes";
-import {CloudContainerComponent} from "./cloud/pages/cloud-container";
+import {ContainerComponent} from "./cloud/pages/cloud-container/container";
+import {SideOverlayComponent} from "./cloud/pages/cloud-container/container/side-overlay";
+import {SideBarComponent} from "./cloud/pages/cloud-container/container/sidebar";
+import {HeaderComponent} from "./cloud/pages/cloud-container/container/header";
+import {FooterComponent} from "./cloud/pages/cloud-container/container/footer";
+import {DashboardComponent} from "./cloud/pages/dashboard/dashboard";
+import {ProductsComponent} from "./cloud/pages/products/products";
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -41,7 +47,13 @@ type StoreType = {
             bootstrap: [AppComponent],
             declarations: [
               AppComponent,
-              CloudContainerComponent
+              ContainerComponent,
+              SideOverlayComponent,
+              SideBarComponent,
+              HeaderComponent,
+              FooterComponent,
+              ProductsComponent,
+              DashboardComponent
             ],
             imports: [ // import Angular's modules
               BrowserModule,
@@ -55,10 +67,10 @@ type StoreType = {
             ]
           })
 export class AppModule {
-
+  
   constructor(public appRef: ApplicationRef,
               public appState: AppState) {}
-
+  
   public hmrOnInit(store: StoreType) {
     if (!store || !store.state) {
       return;
@@ -71,12 +83,12 @@ export class AppModule {
       let restoreInputValues = store.restoreInputValues;
       setTimeout(restoreInputValues);
     }
-
+    
     this.appRef.tick();
     delete store.state;
     delete store.restoreInputValues;
   }
-
+  
   public hmrOnDestroy(store: StoreType) {
     const cmpLocation        = this.appRef.components.map((cmp) => cmp.location.nativeElement);
     // save state
@@ -89,11 +101,11 @@ export class AppModule {
     // remove styles
     removeNgStyles();
   }
-
+  
   public hmrAfterDestroy(store: StoreType) {
     // display new elements
     store.disposeOldHosts();
     delete store.disposeOldHosts;
   }
-
+  
 }
