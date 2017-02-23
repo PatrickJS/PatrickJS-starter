@@ -86,6 +86,7 @@
     "@types/meteor-publish-composite": "0.0.32",
     "babel-runtime": "^6.23.0",
     "bcrypt": "^1.0.2",
+    "chart.js": "^2.5.0",
     "core-js": "^2.4.1",
     "http-server": "^0.9.0",
     "ie-shim": "^0.1.0",
@@ -96,6 +97,7 @@
     "reflect-metadata": "^0.1.9",
     "rxjs": "^5.0.2",
     "simpl-schema": "^0.2.2",
+    "ui-router-ng2": "^1.0.0-beta.4",
     "zone.js": "0.7.6"
   },
   "devDependencies": {

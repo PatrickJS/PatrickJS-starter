@@ -6,37 +6,28 @@ import {
   OnInit,
   ViewEncapsulation
 } from '@angular/core';
-import { AppState } from './app.service';
-import {MeteorObservable} from "meteor-rxjs";
+import {AppState} from './app.service';
 
 /*
  * App Component
  * Top Level Component
  */
 @Component({
-  selector: 'app',
-  encapsulation: ViewEncapsulation.None,
-  styleUrls: [
-    './app.component.css'
-  ],
-  template: `
-    SmartOSC Cloud
+             selector: 'app',
+             encapsulation: ViewEncapsulation.None,
+             styleUrls: [
+               './app.component.css'
+             ],
+             template: `
+  <ui-view></ui-view>
   `
-})
+           })
 export class AppComponent implements OnInit {
-  public angularclassLogo = 'assets/img/angularclass-avatar.png';
-  public name = 'Angular 2 Webpack Starter';
-  public url = 'https://twitter.com/AngularClass';
 
-  constructor(
-    public appState: AppState
-  ) {}
+  constructor(public appState: AppState) {}
 
   public ngOnInit() {
     console.log('Initial App State', this.appState.state);
-    MeteorObservable.call("test").subscribe((data) => {
-      console.log(data);
-    });
   }
 
 }

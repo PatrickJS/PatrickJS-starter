@@ -1,6 +1,6 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import {BrowserModule} from '@angular/platform-browser';
+import {FormsModule} from '@angular/forms';
+import {HttpModule} from '@angular/http';
 import {
   NgModule,
   ApplicationRef
@@ -10,31 +10,23 @@ import {
   createNewHosts,
   createInputTransfer
 } from '@angularclass/hmr';
-import {
-  RouterModule,
-  PreloadAllModules
-} from '@angular/router';
 
 /*
  * Platform and Environment providers/directives/pipes
  */
-import { ENV_PROVIDERS } from './environment';
-import { ROUTES } from './app.routes';
+import {ENV_PROVIDERS} from './environment';
 // App is our top level component
-import { AppComponent } from './app.component';
-import { APP_RESOLVER_PROVIDERS } from './app.resolver';
-import { AppState, InternalStateType } from './app.service';
-import { HomeComponent } from './home';
-import { AboutComponent } from './about';
-import { NoContentComponent } from './no-content';
-import { XLargeDirective } from './home/x-large';
+import {AppComponent} from './app.component';
+import {AppState, InternalStateType} from './app.service';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
+import {UIRouterModule} from 'ui-router-ng2';
+import {ROUTES} from "./app.routes";
+import {CloudContainerComponent} from "./cloud/pages/cloud-container";
 
 // Application wide providers
 const APP_PROVIDERS = [
-  ...APP_RESOLVER_PROVIDERS,
   AppState
 ];
 
@@ -48,27 +40,26 @@ type StoreType = {
  * `AppModule` is the main entry point into Angular2's bootstraping process
  */
 @NgModule({
-  bootstrap: [ AppComponent ],
-  declarations: [
-    AppComponent,
-  ],
-  imports: [ // import Angular's modules
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-    RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
-  ],
-  providers: [ // expose our Services and Providers into Angular's dependency injection
-    ENV_PROVIDERS,
-    APP_PROVIDERS
-  ]
-})
+            bootstrap: [AppComponent],
+            declarations: [
+              AppComponent,
+              CloudContainerComponent
+            ],
+            imports: [ // import Angular's modules
+              BrowserModule,
+              FormsModule,
+              HttpModule,
+              UIRouterModule.forRoot({states: ROUTES, useHash: true})
+            ],
+            providers: [ // expose our Services and Providers into Angular's dependency injection
+              ENV_PROVIDERS,
+              APP_PROVIDERS
+            ]
+          })
 export class AppModule {
 
-  constructor(
-    public appRef: ApplicationRef,
-    public appState: AppState
-  ) {}
+  constructor(public appRef: ApplicationRef,
+              public appState: AppState) {}
 
   public hmrOnInit(store: StoreType) {
     if (!store || !store.state) {
@@ -89,14 +80,14 @@ export class AppModule {
   }
 
   public hmrOnDestroy(store: StoreType) {
-    const cmpLocation = this.appRef.components.map((cmp) => cmp.location.nativeElement);
+    const cmpLocation        = this.appRef.components.map((cmp) => cmp.location.nativeElement);
     // save state
-    const state = this.appState._state;
-    store.state = state;
+    const state              = this.appState._state;
+    store.state              = state;
     // recreate root elements
-    store.disposeOldHosts = createNewHosts(cmpLocation);
+    store.disposeOldHosts    = createNewHosts(cmpLocation);
     // save input values
-    store.restoreInputValues  = createInputTransfer();
+    store.restoreInputValues = createInputTransfer();
     // remove styles
     removeNgStyles();
   }
