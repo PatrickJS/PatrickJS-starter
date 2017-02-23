@@ -19,8 +19,6 @@ import {ENV_PROVIDERS} from './environment';
 import {AppComponent} from './app.component';
 import {AppState, InternalStateType} from './app.service';
 
-import '../styles/styles.scss';
-import '../styles/headings.css';
 import {UIRouterModule} from 'ui-router-ng2';
 import {ROUTES} from "./app.routes";
 import {CloudContainerComponent} from "./cloud/pages/cloud-container";

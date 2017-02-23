@@ -24,10 +24,10 @@ import {AppState} from './app.service';
            })
 export class AppComponent implements OnInit {
 
-  constructor(public appState: AppState) {}
+  constructor() {}
 
   public ngOnInit() {
-    console.log('Initial App State', this.appState.state);
+    console.log('Initial App');
   }
 
 }
