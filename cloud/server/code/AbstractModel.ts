@@ -2,7 +2,6 @@ import {DataObject} from "./DataObject"
 
 export abstract class AbstractModel extends DataObject {
   $collection: string;
-  $schema: any;
   
   /*
    * Get Object
@@ -28,9 +27,9 @@ export abstract class AbstractModel extends DataObject {
         });
       } else {
         // insert
-        Mongo.Collection['get'](this.$collection).update({_id: this.getData('_id')}, this.$schema.clean(), [], (err) => {
-          return err ? err.reject(err) : resolve();
-        })
+        // Mongo.Collection['get'](this.$collection).update({_id: this.getData('_id')}, this.$schema.clean(), [], (err) => {
+        //   return err ? err.reject(err) : resolve();
+        // })
       }
     });
   }

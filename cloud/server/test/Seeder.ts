@@ -30,5 +30,4 @@ export class Seeder {
       Products.insert(_product());
     }
   }
-  
 }

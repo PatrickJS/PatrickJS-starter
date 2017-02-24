@@ -4,7 +4,6 @@ import {LicenseHasProductInterface, LicenseInterface} from "./LicenseInterface";
 
 export class License extends AbstractModel implements LicenseInterface {
   $collection = "licenses";
-  $schema     = new SimpleSchema();
   
   static STATUS_ENABLED  = 'enabled';
   static STATUS_DISABLED = 'disabled';

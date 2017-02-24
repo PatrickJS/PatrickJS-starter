@@ -1,11 +1,10 @@
-import {User} from "../models/User";
 import {Users} from "../collections/Users";
 
 new ValidatedMethod({
   name: 'user.create_user_by_license',
   validate: function (user) {
     try {
-      return new User().$schema.validate(user);
+      return new Users['$schema'].validate(user);
     } catch (e) {
       throw new Meteor.Error("Error", e.message);
     }

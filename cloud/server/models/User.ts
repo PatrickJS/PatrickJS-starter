@@ -5,50 +5,6 @@ import {Role} from "./Role";
 
 export class User extends AbstractModel implements UserInterface {
   $collection = "users";
-  $schema     = new SimpleSchema(
-    {
-      username: {
-        type: String,
-        min: 6,
-        max: 40
-      },
-      email: {
-        type: String,
-        regEx: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      },
-      password: {
-        type: String,
-        min: 6,
-        max: 50
-      },
-      license: {
-        type: String
-      },
-      profile: {
-        type: Object,
-        optional: true
-      },
-      'profile.first_name': {
-        type: String,
-        optional: true
-      },
-      'profile.last_name': {
-        type: String,
-        optional: true
-      },
-    },
-    {
-      clean: {
-        filter: true,
-        autoConvert: true,
-        removeEmptyStrings: true,
-        trimStrings: true,
-        getAutoValues: true,
-        removeNullsFromArrays: true,
-      }
-    }
-  );
-  
   static LICENSE_PERMISSION_SALES   = 'sales';
   static LICENSE_PERMISSION_AGENCY  = 'agency';
   static LICENSE_PERMISSION_USER    = 'user';

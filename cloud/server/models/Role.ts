@@ -1,4 +1,5 @@
 import {AbstractModel} from "../code/AbstractModel";
+
 export class Role extends AbstractModel {
   static SUPERADMIN = "super_admin";
   static ADMIN      = "admin";
