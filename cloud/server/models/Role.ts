@@ -1,5 +1,5 @@
-import {DataObject} from "../core/DataObject";
-export class Role extends DataObject {
+import {AbstractModel} from "../code/AbstractModel";
+export class Role extends AbstractModel {
   static SUPERADMIN = "super_admin";
   static ADMIN      = "admin";
   static SALES      = "sales";

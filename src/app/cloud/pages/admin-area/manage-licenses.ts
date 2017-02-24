@@ -9,7 +9,7 @@ import {ManageLicensesService} from "./manage-licenses/manage-licenses.service";
                     <div class="row items-push">
                         <div class="col-sm-7">
                             <h1 class="page-heading">
-                                Manage License <small>Create Update Revemo License</small>
+                                Manage License <small>Create, update or remove Licenses</small>
                             </h1>
                         </div>
                         <div class="col-sm-5 text-right hidden-xs">

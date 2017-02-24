@@ -9,10 +9,10 @@ Meteor.startup(() => {
 });
 
 let initSupperAdminAccount = () => {
-  let _superUser = () => {
+  let su = () => {
     return Users.findOne({"username": "superadmin"})
   };
-  if (!_superUser()) {
+  if (!su()) {
     Accounts.createUser(
       {
         username: "superadmin",
@@ -20,7 +20,7 @@ let initSupperAdminAccount = () => {
         password: "admin123"
       });
   }
-  User.create<User>(_superUser()).addToRoles(Role.SUPERADMIN, Role.GROUP_CLOUD);
+  User.create<User>(su()).addToRoles(Role.SUPERADMIN, Role.GROUP_CLOUD);
 };
 
 let createIndexCollection = () => {

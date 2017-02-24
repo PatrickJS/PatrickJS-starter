@@ -101,6 +101,7 @@
     "rxjs": "^5.0.2",
     "simpl-schema": "^0.2.2",
     "ui-router-ng2": "^1.0.0-beta.4",
+    "unique-string": "^1.0.0",
     "zone.js": "0.7.6"
   },
   "devDependencies": {
