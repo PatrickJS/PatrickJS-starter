@@ -1,15 +1,19 @@
 import * as moment from 'moment';
-import {Products} from "../collections/products";
+import {Products} from "../collections/Products";
 
 export class Seeder {
   run() {
+    this.dummyProduct();
     
   }
   
-  private dummyProduct() {
+  private dummyProduct(): void {
+    if (Products.collection.find().count() > 0)
+      return;
+    
     let _product = () => {
       return {
-        name: "POS",
+        name: Math.random().toString(36).substring(7),
         versions: [
           {
             name: Math.random().toString(36).substring(7),
@@ -21,7 +25,7 @@ export class Seeder {
         created_at: moment().toDate(),
         updated_at: moment().toDate(),
       }
-    }
+    };
     for (let i = 0; i < 20; i++) {
       Products.insert(_product());
     }

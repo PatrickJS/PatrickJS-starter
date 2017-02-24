@@ -1,7 +1,7 @@
-import {Role} from "./role";
 import {AbstractModel} from "../code/AbstractModel";
 import SimpleSchema from 'simpl-schema';
 import {UserInterface} from "./UserInterface";
+import {Role} from "./Role";
 
 export class User extends AbstractModel implements UserInterface {
   $collection = "users";
