@@ -1,6 +1,6 @@
-import {AbstractModel} from "../code/AbstractModel";
 import SimpleSchema from 'simpl-schema';
 import {LicenseHasProductInterface, LicenseInterface} from "./LicenseInterface";
+import {AbstractModel} from "./Contract/AbstractModel";
 
 export class License extends AbstractModel implements LicenseInterface {
   $collection = "licenses";

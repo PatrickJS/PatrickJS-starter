@@ -1,4 +1,4 @@
-import {AbstractModel} from "../code/AbstractModel";
+import {AbstractModel} from "./Contract/AbstractModel";
 
 export class Role extends AbstractModel {
   static SUPERADMIN = "super_admin";

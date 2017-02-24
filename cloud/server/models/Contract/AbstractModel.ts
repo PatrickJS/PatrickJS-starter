@@ -1,4 +1,4 @@
-import {DataObject} from "./DataObject"
+import {DataObject} from "../../code/DataObject";
 
 export abstract class AbstractModel extends DataObject {
   $collection: string;
