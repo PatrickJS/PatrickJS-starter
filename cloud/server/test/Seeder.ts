@@ -1,5 +1,6 @@
 import * as moment from 'moment';
 import {Products} from "../collections/Products";
+import {Product} from "../models/Product";
 
 export class Seeder {
   run() {
@@ -13,7 +14,7 @@ export class Seeder {
     
     let _product = () => {
       return {
-        name: Math.random().toString(36).substring(7),
+        // name: Math.random().toString(36).substring(7),
         versions: [
           {
             name: Math.random().toString(36).substring(7),
@@ -26,8 +27,11 @@ export class Seeder {
         updated_at: moment().toDate(),
       }
     };
-    for (let i = 0; i < 20; i++) {
-      Products.insert(_product());
-    }
+    // for (let i = 0; i < 1; i++) {
+      let _p = new Product();
+      _p.addData(_product())
+        .save()
+        .then(res => console.log(res), rej => console.log(rej));
+    // }
   }
 }
