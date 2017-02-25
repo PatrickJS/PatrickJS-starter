@@ -17,7 +17,10 @@ import {
 import {ENV_PROVIDERS} from './environment';
 // App is our top level component
 import {AppComponent} from './app.component';
-import {AppState, InternalStateType} from './app.service';
+import {
+  AppState,
+  InternalStateType
+} from './app.service';
 
 import {UIRouterModule} from 'ui-router-ng2';
 import {ROUTES} from "./app.routes";
@@ -33,6 +36,7 @@ import {ManageLicensesComponent} from "./cloud/pages/admin-area/manage-licenses"
 import {ManageLicensesGridComponent} from "./cloud/pages/admin-area/manage-licenses/grid";
 import {ManageProductsComponent} from "./cloud/pages/admin-area/manage-products";
 import {ManageProductsGridComponent} from "./cloud/pages/admin-area/manage-products/grid";
+import {ProductCollection} from "./cloud/services/ddp/collections/products";
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -49,7 +53,7 @@ type StoreType = {
  * `AppModule` is the main entry point into Angular2's bootstraping process
  */
 @NgModule({
-            bootstrap: [AppComponent],
+            bootstrap   : [AppComponent],
             declarations: [
               AppComponent,
               ContainerComponent,
@@ -65,15 +69,16 @@ type StoreType = {
               ManageProductsComponent,
               ManageProductsGridComponent
             ],
-            imports: [ // import Angular's modules
+            imports     : [ // import Angular's modules
               BrowserModule,
               FormsModule,
               HttpModule,
               UIRouterModule.forRoot({states: ROUTES, useHash: true})
             ],
-            providers: [ // expose our Services and Providers into Angular's dependency injection
+            providers   : [ // expose our Services and Providers into Angular's dependency injection
               ENV_PROVIDERS,
-              APP_PROVIDERS
+              APP_PROVIDERS,
+              ProductCollection
             ]
           })
 export class AppModule {

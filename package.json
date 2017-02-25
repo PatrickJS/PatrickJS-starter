@@ -66,7 +66,7 @@
     "webdriver:update": "webdriver-manager update",
     "webpack-dev-server": "webpack-dev-server",
     "webpack": "webpack",
-    "meteor-client:bundle": "meteor-client bundle -s cloud",
+    "meteor-client:bundle": "meteor-client bundle -s cloud -c bundler.config.json",
     "meteor-start": "cd cloud && export MONGO_URL=mongodb://localhost:27017/cloud && meteor run",
     "meteor-debug": "cd cloud && export MONGO_URL=mongodb://localhost:27017/cloud && meteor debug"
   },

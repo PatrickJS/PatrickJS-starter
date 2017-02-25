@@ -1,4 +1,3 @@
-import * as moment from 'moment';
 import {Products} from "../collections/Products";
 import {Product} from "../models/Product";
 import {Prices} from "../collections/Prices";
@@ -25,7 +24,7 @@ export class Seeder {
         ],
       }
     };
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 20; i++) {
       let _p = OM.create<Product>(Product, false, _product());
       _p.save();
     }
