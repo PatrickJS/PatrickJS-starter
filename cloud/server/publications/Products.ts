@@ -1,3 +1,10 @@
-/**
- * Created by vjcspy on 2/25/17.
- */
+import {ProductInterface} from "../models/ProductInterface";
+import {Products} from "../collections/Products";
+
+Meteor.publishComposite("products", function (): PublishCompositeConfig<ProductInterface> {
+  return {
+    find: function () {
+      return Products.collection.find();
+    }
+  };
+});

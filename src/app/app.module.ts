@@ -31,6 +31,8 @@ import {ProductsComponent} from "./cloud/pages/products/products";
 import {AdminAreaComponent} from "./cloud/pages/admin-area/admin-area";
 import {ManageLicensesComponent} from "./cloud/pages/admin-area/manage-licenses";
 import {ManageLicensesGridComponent} from "./cloud/pages/admin-area/manage-licenses/grid";
+import {ManageProductsComponent} from "./cloud/pages/admin-area/manage-products";
+import {ManageProductsGridComponent} from "./cloud/pages/admin-area/manage-products/grid";
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -60,6 +62,8 @@ type StoreType = {
               AdminAreaComponent,
               ManageLicensesComponent,
               ManageLicensesGridComponent,
+              ManageProductsComponent,
+              ManageProductsGridComponent
             ],
             imports: [ // import Angular's modules
               BrowserModule,

@@ -1,21 +1,24 @@
-import {Component, OnInit} from '@angular/core';
-import {ManageLicensesService} from "./manage-licenses/manage-licenses.service";
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import {ManageProductsService} from "./manage-products/manage-products.service";
 
 @Component({
-             selector: 'z-manage-licenses',
-             template: `
+             selector : 'z-manage-products',
+             template : `
  <!-- Page Header -->
                 <div class="content bg-gray-lighter">
                     <div class="row items-push">
                         <div class="col-sm-7">
                             <h1 class="page-heading">
-                                Manage License <small>Create, update or remove licenses...</small>
+                                Manage Products <small>Create, update or remove products...</small>
                             </h1>
                         </div>
                         <div class="col-sm-5 text-right hidden-xs">
                             <ol class="breadcrumb push-10-t">
-                                <li>Licenses</li>
-                                <li><a class="link-effect">{{manageLicensesService.viewState.headerText}}</a></li>
+                                <li>Products</li>
+                                <li><a class="link-effect">{{manageProductService.viewState.headerText}}</a></li>
                             </ol>
                         </div>
                     </div>
@@ -23,11 +26,11 @@ import {ManageLicensesService} from "./manage-licenses/manage-licenses.service";
 <!-- END Page Header -->
 <ui-view></ui-view>`,
              providers: [
-               ManageLicensesService
+               ManageProductsService
              ]
            })
-export class ManageLicensesComponent implements OnInit {
-  constructor(protected manageLicensesService: ManageLicensesService) { }
+export class ManageProductsComponent implements OnInit {
+  constructor(protected manageProductService: ManageProductsService) { }
   
   ngOnInit() { }
   
