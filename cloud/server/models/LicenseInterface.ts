@@ -1,7 +1,7 @@
 export interface LicenseInterface {
   _id?: string;
   key?: string;
-  status?: string;
+  status?: number;
   shop_owner_id?: string;
   has_product?: LicenseHasProductInterface[];
   is_auto_generate?: boolean;

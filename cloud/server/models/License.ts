@@ -5,8 +5,8 @@ import {AbstractModel} from "./Contract/AbstractModel";
 export class License extends AbstractModel {
   protected $collection = "licenses";
   
-  static STATUS_ENABLED  = 'enabled';
-  static STATUS_DISABLED = 'disabled';
+  static STATUS_ENABLED  = 1;
+  static STATUS_DISABLED = 0;
 }
 
 export class LicenseHasProduct {
