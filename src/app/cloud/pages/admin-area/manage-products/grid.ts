@@ -26,16 +26,10 @@ export class ManageProductsGridComponent implements OnInit {
   initDataTable() {
     let table = jQuery('.js-dataTable-simple');
     if (table) {
-      this._dtTable = table.DataTable({
+      this._dtTable = table.dataTable({
                                         columnDefs: [{orderable: false, targets: [4]}],
                                         pageLength: 10,
-                                        lengthMenu: [[5, 10, 15, 20], [5, 10, 15, 20]],
-                                        searching : false,
-                                        oLanguage : {
-                                          sLengthMenu: ""
-                                        },
-                                        dom       : "<'row'<'col-sm-12'tr>>" +
-                                                    "<'row'<'col-sm-6'i><'col-sm-6'p>>"
+                                        lengthMenu: [[5, 10, 15, 20], [5, 10, 15, 20]]
                                       });
     }
   }
