@@ -21,7 +21,6 @@ let initSupperAdminAccount = () => {
         email: "khoild@smartosc.com",
         password: "admin123"
       });
+    OM.create<User>(User).load("superadmin", "username").addToRoles([Role.SUPERADMIN], Role.GROUP_CLOUD);
   }
-  
-  OM.create<User>(User).load("superadmin", "username").addToRoles([Role.SUPERADMIN], Role.GROUP_CLOUD);
 };

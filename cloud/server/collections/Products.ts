@@ -3,6 +3,7 @@ import SimpleSchema from 'simpl-schema';
 import {DateTimeHelper} from "../code/DateTimeHelper";
 import {CollectionMaker} from "./Contract/CollectionMaker";
 
+
 export const Products = CollectionMaker.make<ProductInterface>("products",
                                                                new SimpleSchema({
                                                                  _id: {
@@ -10,7 +11,7 @@ export const Products = CollectionMaker.make<ProductInterface>("products",
                                                                    optional: true
                                                                  },
                                                                  name: String,
-                                                                 versions: new SimpleSchema({
+                                                                 versions: [new SimpleSchema({
                                                                    name: String,
                                                                    version: String,
                                                                    created_at: {
@@ -21,7 +22,7 @@ export const Products = CollectionMaker.make<ProductInterface>("products",
                                                                      type: Date,
                                                                      defaultValue: DateTimeHelper.getCurrentDate()
                                                                    },
-                                                                 }),
+                                                                 })],
                                                                  created_at: {
                                                                    type: Date,
                                                                    defaultValue: DateTimeHelper.getCurrentDate()

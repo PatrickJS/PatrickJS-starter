@@ -1,5 +1,6 @@
 import {DataObject} from "../../code/DataObject";
 import {CollectionMaker} from "../../collections/Contract/CollectionMaker";
+import {DateTimeHelper} from "../../code/DateTimeHelper";
 
 export abstract class AbstractModel extends DataObject {
   protected abstract $collection: string;
@@ -16,9 +17,9 @@ export abstract class AbstractModel extends DataObject {
     if (field == "_id")
       return this.loadById(value);
     else {
-      let _selector = {};
+      let _selector    = {};
       _selector[field] = value;
-      let _data = this.getMongoCollection().findOne(_selector);
+      let _data        = this.getMongoCollection().findOne(_selector);
       return !!_data ? this.addData(_data) : null;
     }
   }
@@ -29,11 +30,13 @@ export abstract class AbstractModel extends DataObject {
     
     return new Promise((resolve, reject) => {
       if (!this.getData('_id')) {
+        this.setData('created_at', DateTimeHelper.getCurrentDate());
         this.getMongoCollection()
             .insert(this.getData(), (err) => {
               return err ? reject(err) : resolve();
             });
       } else {
+        this.setData('updated_at', DateTimeHelper.getCurrentDate());
         this.getMongoCollection()
             .update({_id: this.getData('_id')}, this.getData(), [], (err) => {
               return err ? reject(err) : resolve();
@@ -43,6 +46,9 @@ export abstract class AbstractModel extends DataObject {
   }
   
   getMongoCollection<T>(): Mongo.Collection<T> {
+    if (!this.$collection) {
+      throw new Error("Collection name must be string");
+    }
     return CollectionMaker.getCollection<T>(this.$collection).collection;
   }
 }

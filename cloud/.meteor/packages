@@ -27,6 +27,6 @@ ddp-rate-limiter@1.0.6
 reywood:publish-composite
 alanning:roles
 mdg:validated-method
-matb33:collection-hooks
 dburles:mongo-collection-instances
 aldeed:collection2-core
+matb33:collection-hooks

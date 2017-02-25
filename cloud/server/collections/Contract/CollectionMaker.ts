@@ -3,19 +3,21 @@ import {MongoObservable} from "meteor-rxjs";
 export class CollectionMaker {
   protected static $collections = {};
   
-  static make<T>(collectionName: string, schema: any): MongoObservable.Collection<T> {
+  static make<T>(collectionName: string, schema?: any): MongoObservable.Collection<T> {
     if (!collectionName)
       throw new Error("Collection name can't empty");
     
-    CollectionMaker.$collections[collectionName]                 = new MongoObservable.Collection<T>(collectionName);
-    CollectionMaker.$collections[collectionName]['attachSchema'] = schema;
+    CollectionMaker.$collections[collectionName] = new MongoObservable.Collection<T>(collectionName);
+    if (!!schema)
+      CollectionMaker.$collections[collectionName].collection['attachSchema'](schema);
     
     return CollectionMaker.$collections[collectionName];
   }
   
-  static makeFromExisting<T>(collection: Mongo.Collection<any>, schema: any): MongoObservable.Collection<T> {
-    CollectionMaker.$collections[collection['_name']]                 = MongoObservable.fromExisting<T>(collection);
-    CollectionMaker.$collections[collection['_name']]['attachSchema'] = schema;
+  static makeFromExisting<T>(collection: Mongo.Collection<any>, schema?: any): MongoObservable.Collection<T> {
+    CollectionMaker.$collections[collection['_name']] = MongoObservable.fromExisting<T>(collection);
+    if (!!schema)
+      CollectionMaker.$collections[collection['_name']].collection['attachSchema'](schema);
     
     return CollectionMaker.$collections[collection['_name']];
   }

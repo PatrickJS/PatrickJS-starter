@@ -37,8 +37,7 @@ export class DataObject {
   addData(data: Object): any {
     _.forEach(
       data, (v, k) => {
-        let strKey         = k + '';
-        this._data[strKey] = v;
+        this._data[k] = v;
       });
     return this;
   }

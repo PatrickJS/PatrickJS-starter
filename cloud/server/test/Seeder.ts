@@ -14,26 +14,20 @@ export class Seeder {
   private dummyProduct(): void {
     if (Products.collection.find().count() > 0)
       return;
-    
     let _product = () => {
       return {
-        // name: Math.random().toString(36).substring(7),
+        name: Math.random().toString(36).substring(7),
         versions: [
           {
             name: Math.random().toString(36).substring(7),
             version: "0.0." + Math.round(Math.random() * 10),
-            created_at: moment().toDate(),
-            updated_at: moment().toDate(),
           }
         ],
-        created_at: moment().toDate(),
-        updated_at: moment().toDate(),
       }
     };
     for (let i = 0; i < 10; i++) {
       let _p = OM.create<Product>(Product, false, _product());
       _p.save();
-      
     }
   }
   
@@ -46,7 +40,6 @@ export class Seeder {
     for (let i = 0; i < 10; i++) {
       let _price = OM.create<Price>(Price, false, _p());
       _price.save();
-      
     }
   }
 }
