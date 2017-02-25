@@ -2,11 +2,12 @@ import SimpleSchema from 'simpl-schema';
 import {User} from "../models/User";
 import {Role} from "../models/Role";
 import {LicenseHasProduct} from "../models/License";
+import {OM} from "../code/General/ObjectManager";
 
 new ValidatedMethod({
   name: "license.create_license",
   validate: function (data) {
-    const user = new User().loadById(this.userId());
+    const user = OM.create<User>(User).loadById(this.userId());
     if (user.isInRoles([Role.SUPERADMIN, Role.ADMIN, Role.SALES], Role.GROUP_CLOUD)) {
       try {
         return new SimpleSchema({

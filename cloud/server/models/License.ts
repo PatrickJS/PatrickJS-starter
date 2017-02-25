@@ -2,14 +2,14 @@ import SimpleSchema from 'simpl-schema';
 import {LicenseHasProductInterface, LicenseInterface} from "./LicenseInterface";
 import {AbstractModel} from "./Contract/AbstractModel";
 
-export class License extends AbstractModel implements LicenseInterface {
+export class License extends AbstractModel {
   protected $collection = "licenses";
   
   static STATUS_ENABLED  = 'enabled';
   static STATUS_DISABLED = 'disabled';
 }
 
-export class LicenseHasProduct implements LicenseHasProductInterface {
+export class LicenseHasProduct {
   $schema = new SimpleSchema({
     product_id: String,
     base_url: [String],

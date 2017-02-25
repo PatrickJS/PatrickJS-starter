@@ -8,7 +8,7 @@ import {Price} from "../models/Price";
 export class Seeder {
   run() {
     this.dummyProduct();
-    this.dummyPricies();
+    this.dummyPrices();
   }
   
   private dummyProduct(): void {
@@ -30,24 +30,23 @@ export class Seeder {
         updated_at: moment().toDate(),
       }
     };
-    for (let i = 0; i < 1; i++) {
-      let _p = OM.getInstance().create<Product>(Product, false, _product());
-      _p.save()
-        .then(res => console.log(res), rej => console.log(rej));
+    for (let i = 0; i < 10; i++) {
+      let _p = OM.create<Product>(Product, false, _product());
+      _p.save();
+      
     }
   }
   
-  private dummyPricies() {
+  private dummyPrices() {
     if (Prices.collection.find().count() > 0)
       return;
     let _p = () => {
       return {name: Math.random().toString(36).substring(7)};
     };
-    for (let i = 0; i < 1; i++) {
-      let _price = OM.getInstance().create<Price>(Price, false, _p());
-      _price.addData(_p())
-            .save()
-            .then(res => console.log(res), rej => console.log(rej));
+    for (let i = 0; i < 10; i++) {
+      let _price = OM.create<Price>(Price, false, _p());
+      _price.save();
+      
     }
   }
 }

@@ -2,7 +2,7 @@ import {AbstractModel} from "./Contract/AbstractModel";
 import {UserInterface} from "./UserInterface";
 import {Role} from "./Role";
 
-export class User extends AbstractModel implements UserInterface {
+export class User extends AbstractModel {
   protected $collection             = "users";
   static LICENSE_PERMISSION_SALES   = 'sales';
   static LICENSE_PERMISSION_AGENCY  = 'agency';

@@ -4,6 +4,9 @@ export class CollectionMaker {
   protected static $collections = {};
   
   static make<T>(collectionName: string, schema: any): MongoObservable.Collection<T> {
+    if (!collectionName)
+      throw new Error("Collection name can't empty");
+    
     CollectionMaker.$collections[collectionName]                 = new MongoObservable.Collection<T>(collectionName);
     CollectionMaker.$collections[collectionName]['attachSchema'] = schema;
     
@@ -18,8 +21,12 @@ export class CollectionMaker {
   }
   
   static getCollection<T>(collectionName: string): MongoObservable.Collection<T> {
-    if (CollectionMaker.$collections.hasOwnProperty(collectionName))
-      return CollectionMaker[collectionName];
+    if (!collectionName)
+      throw new Error("Collection name can't empty");
+    
+    if (CollectionMaker.$collections.hasOwnProperty(collectionName) && !!CollectionMaker.$collections[collectionName]) {
+      return CollectionMaker.$collections[collectionName];
+    }
     
     throw new Error("Collection not yet defined");
   }

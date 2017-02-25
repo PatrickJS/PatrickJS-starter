@@ -1,52 +1,44 @@
 import * as _ from "lodash";
 
-export class DataObject extends Object {
+export class DataObject {
   // abstract identify: string;
   
-  constructor(data?: Object) {
-    super();
-    if (data) {
-      _.forEach(data, (v, k) => this[k] = v);
-    }
-  }
+  protected _data: any = {};
   
-  getFirst(): any {
-    return this[0];
+  constructor(_data = {}) {
+    this.addData(_data);
   }
   
   getData(key?: string): any {
     if (typeof key == "undefined")
-      return this;
+      return this._data;
     
-    let strKey = key + '';
-    if (this.hasOwnProperty(strKey))
-      return this[strKey];
+    if (this.hasOwnProperty(key))
+      return this._data[key];
     else
       return null;
   }
   
-  setData(key, value): any {
-    let strKey   = key + '';
-    this[strKey] = value;
+  setData(key: string, value: any): any {
+    this._data[key] = value;
     return this;
   }
   
-  hasData(key): boolean {
-    let strKey = key + '';
-    return this.hasOwnProperty(strKey) && this[strKey] != null;
+  hasData(key: string): boolean {
+    return this.hasOwnProperty(key) && this._data[key] != null;
   }
   
-  unsetData(key): any {
+  unsetData(key: string): any {
     if (this.hasData(key))
-      delete this[key];
+      delete this._data[key];
     return this;
   }
   
   addData(data: Object): any {
     _.forEach(
       data, (v, k) => {
-        let strKey   = k + '';
-        this[strKey] = v;
+        let strKey         = k + '';
+        this._data[strKey] = v;
       });
     return this;
   }

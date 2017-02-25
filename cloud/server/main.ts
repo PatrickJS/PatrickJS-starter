@@ -1,19 +1,20 @@
 import {Meteor} from 'meteor/meteor';
-import {Users} from "./collections/Users";
+import {User} from "./models/User";
+import {OM} from "./code/General/ObjectManager";
 import {Seeder} from "./test/Seeder";
+import {Role} from "./models/Role";
 
 Meteor.startup(() => {
   initSupperAdminAccount();
+  
   // seeder for testing
-  // const seeder = new Seeder();
-  // seeder.run();
+  const seeder = new Seeder();
+  seeder.run();
 });
 
 let initSupperAdminAccount = () => {
-  let su = () => {
-    return Users.findOne({"username": "superadmin"})
-  };
-  if (!su()) {
+  let su = OM.create<User>(User).load("superadmin", "username");
+  if (!su) {
     Accounts.createUser(
       {
         username: "superadmin",
@@ -21,5 +22,6 @@ let initSupperAdminAccount = () => {
         password: "admin123"
       });
   }
-  // User.create<User>(su()).addToRoles(Role.SUPERADMIN, Role.GROUP_CLOUD);
+  
+  OM.create<User>(User).load("superadmin", "username").addToRoles([Role.SUPERADMIN], Role.GROUP_CLOUD);
 };
