@@ -3,7 +3,7 @@ import {UserInterface} from "./UserInterface";
 import {Role} from "./Role";
 
 export class User extends AbstractModel implements UserInterface {
-  $collection                       = "users";
+  protected $collection             = "users";
   static LICENSE_PERMISSION_SALES   = 'sales';
   static LICENSE_PERMISSION_AGENCY  = 'agency';
   static LICENSE_PERMISSION_USER    = 'user';

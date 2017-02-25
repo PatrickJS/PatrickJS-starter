@@ -1,6 +1,8 @@
 export interface UserInterface extends Meteor.User {
   profile?: Profile;
   has_license?: UserHasLicense[];
+  created_at?: Date;
+  updated_at?: Date;
 }
 export interface Profile {
   first_name?: String;

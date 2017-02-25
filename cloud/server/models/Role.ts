@@ -1,6 +1,8 @@
 import {AbstractModel} from "./Contract/AbstractModel";
 
 export class Role extends AbstractModel {
+  protected $collection = "roles";
+  
   static SUPERADMIN = "super_admin";
   static ADMIN      = "admin";
   static SALES      = "sales";

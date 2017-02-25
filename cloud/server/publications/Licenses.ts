@@ -7,7 +7,7 @@ Meteor.publishComposite("licenses", function (): PublishCompositeConfig<LicenseI
   if (!this.userId) {
     return;
   }
-  const user = new User().loadById<User>(this.userId);
+  const user = new User().loadById(this.userId);
   if (user.isInRoles([Role.SUPERADMIN, Role.ADMIN], Role.GROUP_CLOUD)) {
     return {
       find: () => {

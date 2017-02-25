@@ -1,36 +1,37 @@
 import {DataObject} from "../../code/DataObject";
+import {CollectionMaker} from "../../collections/Contract/CollectionMaker";
 
-export class AbstractModel extends DataObject {
-  $collection: string;
+export abstract class AbstractModel extends DataObject {
+  protected abstract $collection: string;
   
   /*
    * Get Object
    */
-  loadById<T>(id: string): T {
-    let data = Mongo.Collection['get'](this.$collection).find({_id: id});
-    return data ? AbstractModel.create<T>(data) : null;
-  }
-  
-  /*
-   * Get JSON
-   */
-  retrieveById<T>(id: string): T {
-    return Mongo.Collection['get'](this.$collection).find({_id: id});
+  loadById(id: string): this {
+    let data = this.getMongoCollection().find({_id: id});
+    return this.addData(data);
   }
   
   save(): Promise<any> {
+    if (!this.getMongoCollection())
+      throw new Error("Can't get collection name from model");
+    
     return new Promise((resolve, reject) => {
       if (!this.getData('_id')) {
-        // update
-        Mongo.Collection['get'](this.$collection).insert(this, (err) => {
-          return err ? err.reject(err) : resolve();
-        });
+        this.getMongoCollection()
+            .insert(this, (err) => {
+              return err ? reject(err) : resolve();
+            });
       } else {
-        // insert
-        Mongo.Collection['get'](this.$collection).update({_id: this.getData('_id')}, this, [], (err) => {
-          return err ? err.reject(err) : resolve();
-        })
+        this.getMongoCollection()
+            .update({_id: this.getData('_id')}, this, [], (err) => {
+              return err ? reject(err) : resolve();
+            })
       }
     });
+  }
+  
+  getMongoCollection<T>(): Mongo.Collection<T> {
+    return CollectionMaker.getCollection<T>(this.$collection).collection;
   }
 }

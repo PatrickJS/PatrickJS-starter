@@ -3,7 +3,7 @@ import {LicenseHasProductInterface, LicenseInterface} from "./LicenseInterface";
 import {AbstractModel} from "./Contract/AbstractModel";
 
 export class License extends AbstractModel implements LicenseInterface {
-  $collection = "licenses";
+  protected $collection = "licenses";
   
   static STATUS_ENABLED  = 'enabled';
   static STATUS_DISABLED = 'disabled';

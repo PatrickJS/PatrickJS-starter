@@ -3,11 +3,11 @@ import * as _ from "lodash";
 export class DataObject extends Object {
   // abstract identify: string;
   
-  /*
-   * Create an instance of T and add data
-   */
-  static create<T>(data: Object): T {
-    return Object.create(this.prototype).addData(data);
+  constructor(data?: Object) {
+    super();
+    if (data) {
+      _.forEach(data, (v, k) => this[k] = v);
+    }
   }
   
   getFirst(): any {
