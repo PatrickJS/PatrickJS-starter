@@ -1,16 +1,16 @@
 <div class="block">
   <div class="block-content">
     <table class="table table-bordered table-striped js-dataTable-simple">
-      <thead>
+     <!-- <thead>
       <tr>
         <th>Name</th>
         <th class="hidden-xs" style="width: 70%;">Version</th>
-        <th class="text-center" style="width: 10%;">Actions</th>
+        &lt;!&ndash;<th class="text-center" style="width: 10%;">Actions</th>&ndash;&gt;
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let product of products | async">
-        <td class="font-w600">{{product['name']}}</td>
+      <tr *ngFor="let product of products |async ;trackBy:product?._id">
+        <td class="font-w600">{{product['name'] + log()}}</td>
         <td class="hidden-xs">
           <span class="label label-primary" style="margin-right: 5px" *ngFor="let version of product['versions']">
             {{version['name'] + "-" + version['version']}}
@@ -25,7 +25,7 @@
           </div>
         </td>
       </tr>
-      </tbody>
+      </tbody>-->
     </table>
   </div>
 </div>

@@ -4,42 +4,37 @@ import {
 } from '@angular/core';
 import {ManageProductsService} from "./manage-products.service";
 import {ProductCollection} from "../../../services/ddp/collections/products";
+import {AbstractRxComponent} from "../../../../code/angular/AbstractRxComponent";
+import {MeteorDataTable} from '../../../../code/meteor-datatable/MeteorDataTable';
 
 @Component({
              selector   : 'manage-products-grid',
              templateUrl: 'grid.html'
            })
-export class ManageProductsGridComponent implements OnInit {
-  protected _dtTable;
-  protected products: any;
+export class ManageProductsGridComponent extends AbstractRxComponent implements OnInit {
+  protected _time = 0;
   
   constructor(protected manageProductService: ManageProductsService,
               protected productsCollection: ProductCollection) {
+    super();
     this.manageProductService.viewState.headerText = "Grid";
   }
   
-  ngOnInit() {
-    this.subscribeProducts();
-    setTimeout(() => {
-      this.initDataTable();
-    }, 1000);
-  }
-  
-  subscribeProducts() {
-    this.productsCollection
-        .getCollectionObservable()
-        .subscribe(collection => {
-          this.products = collection.find().share();
-        });
+  ngOnInit(): void {
+    this.initDataTable();
   }
   
   initDataTable() {
-    let table = jQuery('.js-dataTable-simple');
-    if (table) {
-      this._dtTable = table.dataTable({
-                                        pageLength: 10,
-                                        lengthMenu: [[5, 10, 15, 20], [5, 10, 15, 20]]
-                                      });
-    }
+    this._subscription['dataTable'] = new MeteorDataTable(".js-dataTable-simple", {
+      columns   : [
+        {data: "name", title: "Name"},
+        {data: "versions", title: "Versions"},
+      ],
+      columnDefs: [
+        {className: "hidden-xs", "targets": [0]},
+        {className: "text-center", "targets": [1]},
+      ],
+      bFilter   : false
+    }, this.productsCollection.getCollectionObservable()).meteorDataTableSubscription;
   }
 }

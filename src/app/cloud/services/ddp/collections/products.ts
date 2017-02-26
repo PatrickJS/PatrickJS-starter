@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {AbstractCollection} from "../abstract-collection";
+import {AbstractCollection} from "../../../../code/meteor/AbstractCollection";
 
 @Injectable()
 export class ProductCollection extends AbstractCollection {

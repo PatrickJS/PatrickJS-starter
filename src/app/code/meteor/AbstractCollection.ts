@@ -28,7 +28,7 @@ export abstract class AbstractCollection {
             ob.next(this.getCollection());
           });
         });
-      });
+      }).share();
     }
   }
   
