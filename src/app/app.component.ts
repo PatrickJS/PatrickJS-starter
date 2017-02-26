@@ -24,9 +24,6 @@ import {ToastsManager} from "ng2-toastr";
                '../assets/css/custom.css',
              ],
              template     : `
-<span class="ztest">asdf</span>
-<span class="ztest1">asdf</span>
-<button (click)="toastr.success('You are awesome!', 'Success!')">aa</button>
     <router-outlet></router-outlet>
   `
            })
@@ -39,7 +36,6 @@ export class AppComponent implements OnInit {
   
   public ngOnInit() {
     console.log('Initial App');
-    this.toastr.success("Welcome", "");
   }
   
 }

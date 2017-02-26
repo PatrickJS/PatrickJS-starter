@@ -49,7 +49,7 @@
             </li>
           </ul>
         </div>
-        <a class="h5 text-white" href="index.html">
+        <a class="h5 text-white" routerLink="/cloud">
           <i class="fa fa-scribd text-primary"></i> <span class="h4 font-w600 sidebar-mini-hide">mart-osc</span>
         </a>
       </div>
@@ -59,7 +59,7 @@
       <div class="side-content">
         <ul class="nav-main">
           <li>
-            <a uiSrefActive="active" uiSref="app.cloud.dashboard">
+            <a routerLink="/cloud" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
               <i class="si si-speedometer"></i>
               <span class="sidebar-mini-hide">Dashboard</span>
             </a>
@@ -72,7 +72,7 @@
             </a>
             <ul>
               <li>
-                <a uiSref="app.cloud.admin-area.manage-licenses.grid" uiSrefActive="active">License</a>
+                <a routerLink="/cloud/licenses" routerLinkActive="active">License</a>
               </li>
               <li>
                 <a class="nav-submenu" data-toggle="nav-submenu" href="#">Blocks</a>
@@ -99,7 +99,7 @@
             </a>
             <ul>
               <li>
-                <a uiSref="app.cloud.admin-area.manage-products.grid" uiSrefActive="active">Products</a>
+                <a routerLink="/cloud/products" routerLinkActive="active">Products</a>
               </li>
               <li>
                 <a class="nav-submenu" data-toggle="nav-submenu" href="#">Blocks</a>

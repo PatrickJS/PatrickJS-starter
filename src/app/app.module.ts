@@ -23,11 +23,6 @@ import {
 } from './app.service';
 
 import {ROUTES} from "./app.routes";
-import {ContainerComponent} from "./cloud/pages/cloud-container/container";
-import {SideOverlayComponent} from "./cloud/pages/cloud-container/container/side-overlay";
-import {SideBarComponent} from "./cloud/pages/cloud-container/container/sidebar";
-import {HeaderComponent} from "./cloud/pages/cloud-container/container/header";
-import {FooterComponent} from "./cloud/pages/cloud-container/container/footer";
 import {DashboardComponent} from "./cloud/pages/dashboard/dashboard";
 import {ProductsComponent} from "./cloud/pages/products/products";
 import {AdminAreaComponent} from "./cloud/pages/admin-area/admin-area";
@@ -38,6 +33,12 @@ import {ManageProductsGridComponent} from "./cloud/pages/admin-area/manage-produ
 import {ProductCollection} from "./cloud/services/ddp/collections/products";
 import {RouterModule} from "@angular/router";
 import {ToastModule} from "ng2-toastr";
+import {ContainerComponent} from "./cloud/cloud-container/container";
+import {HeaderComponent} from "./cloud/cloud-container/container/header";
+import {FooterComponent} from "./cloud/cloud-container/container/footer";
+import {SideBarComponent} from "./cloud/cloud-container/container/sidebar";
+import {SideOverlayComponent} from "./cloud/cloud-container/container/side-overlay";
+import {PageNotFoundComponent} from "./cloud/pages/404/not-found";
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -57,6 +58,7 @@ type StoreType = {
             bootstrap   : [AppComponent],
             declarations: [
               AppComponent,
+              PageNotFoundComponent,
               ContainerComponent,
               SideOverlayComponent,
               SideBarComponent,
