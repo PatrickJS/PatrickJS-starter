@@ -25,7 +25,6 @@ import {
 import {ROUTES} from "./app.routes";
 import {DashboardComponent} from "./cloud/pages/dashboard/dashboard";
 import {ProductsComponent} from "./cloud/pages/products/products";
-import {AdminAreaComponent} from "./cloud/pages/admin-area/admin-area";
 import {ManageLicensesComponent} from "./cloud/pages/admin-area/manage-licenses";
 import {ManageLicensesGridComponent} from "./cloud/pages/admin-area/manage-licenses/grid";
 import {ManageProductsComponent} from "./cloud/pages/admin-area/manage-products";
@@ -66,7 +65,6 @@ type StoreType = {
               FooterComponent,
               ProductsComponent,
               DashboardComponent,
-              AdminAreaComponent,
               ManageLicensesComponent,
               ManageLicensesGridComponent,
               ManageProductsComponent,

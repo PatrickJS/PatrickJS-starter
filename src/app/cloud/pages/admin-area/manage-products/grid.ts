@@ -31,10 +31,14 @@ export class ManageProductsGridComponent extends AbstractRxComponent implements 
         {data: "versions", title: "Versions"},
       ],
       columnDefs: [
-        {className: "hidden-xs", "targets": [0]},
-        {className: "text-center", "targets": [1]},
+        // {className: "hidden-xs", "targets": [0]},
+        // {className: "text-center", "targets": [1]},
       ],
-      bFilter   : false
+      bFilter   : false,
+      // "scrollX": true,
+      "paging": true,
+      scrollCollapse: true,
+      responsive: true,
     }, this.productsCollection.getCollectionObservable()).meteorDataTableSubscription;
   }
 }
