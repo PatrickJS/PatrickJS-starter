@@ -152,7 +152,10 @@ module.exports = function (options) {
           test: /\.json$/,
           use: 'json-loader'
         },
-
+        /*Nếu muốn load css từ node_modules thì thêm 'style-loader':
+        *  use: ['to-string-loader','style-loader','css-loader'],
+        * Ở đây không thêm là vì sẽ load hết trong AppComponent
+        */
         /*
          * to string and css loader support for *.css files (from Angular components)
          * Returns file content as string
@@ -186,7 +189,7 @@ module.exports = function (options) {
           exclude: [helpers.root('src/index.html')]
         },
 
-        /* 
+        /*
          * File loader for supporting images, for example, in CSS files.
          */
         {
