@@ -24,8 +24,8 @@ export class FamiliesComponent implements OnInit {
 
     public openDialog() {
         let dialogRef = this.dialog.open(AddFamilyDialogComponent);
-        dialogRef.afterClosed().subscribe((result) => {
-            this.selectedOption = result;
+        dialogRef.afterClosed().subscribe(() => {
+            this.getFamilies();
         });
     }
 
@@ -52,7 +52,10 @@ export class FamiliesComponent implements OnInit {
         this.getFamilies();
     }
     private getFamilies(): void {
-        this.familyService.getFamilies().then((families) => this.families = families);
+        this.familyService.getFamilies().then((families) => {
+            console.log('getFamilies : ', families);
+            this.families = families
+        });
     }
 
 }

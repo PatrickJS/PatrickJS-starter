@@ -24,7 +24,7 @@ export class AddFamilyDialogComponent {
         console.log('firstName : ', newFirstName);
 
         let family: Family = new Family();
-        family.name= newName;
+        family.name = newName;
 
         console.log('family : ', family);
 
@@ -39,5 +39,9 @@ export class AddFamilyDialogComponent {
 
         });
 
+    }
+
+    public onSubmit(form: any): void {
+        console.log('onSubmit : ', form);
     }
 }

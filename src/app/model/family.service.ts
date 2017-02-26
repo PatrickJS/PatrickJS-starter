@@ -18,7 +18,10 @@ export class FamilyService {
 
         return this.http.get(this.familiesUrl)
             .toPromise()
-            .then((response) => response.json().data as Family[])
+            .then((response) => {
+                console.log('FamilyService.getFamilies : ', response.json());
+                return response.json() as Family[]
+            })
             .catch(this.handleError);
 
         // return Promise.resolve(FAMILIES);
@@ -49,7 +52,7 @@ export class FamilyService {
             .toPromise()
             .then((res) => {
                 console.log('Family creation : ', res.json());
-                return res.json() as Family
+                return res.json() as Family;
             })
             .catch(this.handleError);
 
