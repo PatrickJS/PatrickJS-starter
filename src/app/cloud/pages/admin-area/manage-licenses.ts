@@ -1,4 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
 import {ManageLicensesService} from "./manage-licenses/manage-licenses.service";
 
 @Component({
@@ -21,7 +24,7 @@ import {ManageLicensesService} from "./manage-licenses/manage-licenses.service";
                     </div>
                 </div>
 <!-- END Page Header -->
-<ui-view></ui-view>`,
+<router-outlet></router-outlet>`,
              providers: [
                ManageLicensesService
              ]

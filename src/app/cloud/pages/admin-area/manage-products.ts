@@ -24,7 +24,7 @@ import {ManageProductsService} from "./manage-products/manage-products.service";
                     </div>
                 </div>
 <!-- END Page Header -->
-<ui-view></ui-view>`,
+<router-outlet></router-outlet>`,
              providers: [
                ManageProductsService
              ]

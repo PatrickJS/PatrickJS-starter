@@ -22,7 +22,6 @@ import {
   InternalStateType
 } from './app.service';
 
-import {UIRouterModule} from 'ui-router-ng2';
 import {ROUTES} from "./app.routes";
 import {ContainerComponent} from "./cloud/pages/cloud-container/container";
 import {SideOverlayComponent} from "./cloud/pages/cloud-container/container/side-overlay";
@@ -37,6 +36,8 @@ import {ManageLicensesGridComponent} from "./cloud/pages/admin-area/manage-licen
 import {ManageProductsComponent} from "./cloud/pages/admin-area/manage-products";
 import {ManageProductsGridComponent} from "./cloud/pages/admin-area/manage-products/grid";
 import {ProductCollection} from "./cloud/services/ddp/collections/products";
+import {RouterModule} from "@angular/router";
+import {ToastModule} from "ng2-toastr";
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -73,7 +74,8 @@ type StoreType = {
               BrowserModule,
               FormsModule,
               HttpModule,
-              UIRouterModule.forRoot({states: ROUTES, useHash: true})
+              ToastModule.forRoot(),
+              RouterModule.forRoot(ROUTES)
             ],
             providers   : [ // expose our Services and Providers into Angular's dependency injection
               ENV_PROVIDERS,

@@ -1,8 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
 
 @Component({
              selector: 'z-admin-area',
-             template: `<ui-view></ui-view>`
+             template: `<router-outlet></router-outlet>`
            })
 export class AdminAreaComponent implements OnInit {
   constructor() { }

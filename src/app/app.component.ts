@@ -4,32 +4,44 @@
 import {
   Component,
   OnInit,
-  ViewEncapsulation
+  ViewEncapsulation,
+  ViewContainerRef
 } from '@angular/core';
 import {AppState} from './app.service';
+import {ToastsManager} from "ng2-toastr";
 
 /*
  * App Component
  * Top Level Component
  */
 @Component({
-             selector: 'app',
+             selector     : 'app',
              encapsulation: ViewEncapsulation.None,
-             styleUrls: [
-               './app.component.css'
+             styleUrls    : [
+               './app.component.css',
+               '../../node_modules/ng2-toastr/ng2-toastr.css',
+               '../../node_modules/datatables.net-bs/css/dataTables.bootstrap.css',
+               '../assets/css/custom.css',
              ],
-             template: `
-  <ui-view></ui-view>
+             template     : `
+<span class="ztest">asdf</span>
+<span class="ztest1">asdf</span>
+<button (click)="toastr.success('You are awesome!', 'Success!')">aa</button>
+    <router-outlet></router-outlet>
   `
            })
 export class AppComponent implements OnInit {
-
-  constructor() {}
-
+  
+  constructor(public toastr: ToastsManager, vcr: ViewContainerRef) {
+    // Use with angular v2.2 or above
+    this.toastr.setRootViewContainerRef(vcr);
+  }
+  
   public ngOnInit() {
     console.log('Initial App');
+    this.toastr.success("Welcome", "");
   }
-
+  
 }
 
 /*

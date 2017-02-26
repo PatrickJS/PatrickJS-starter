@@ -18,27 +18,27 @@
     'header-navbar-fixed'        Enables fixed header
 -->
 <div id="page-container" class="sidebar-l sidebar-mini sidebar-o side-scroll header-navbar-fixed">
-    <!-- Side Overlay-->
-    <z-side-overlay></z-side-overlay>
-    <!-- END Side Overlay -->
+  <!-- Side Overlay-->
+  <z-side-overlay></z-side-overlay>
+  <!-- END Side Overlay -->
 
-    <!-- Sidebar -->
-    <z-sidebar></z-sidebar>
-    <!-- END Sidebar -->
+  <!-- Sidebar -->
+  <z-sidebar></z-sidebar>
+  <!-- END Sidebar -->
 
-    <!-- Header -->
-    <z-header></z-header>
-    <!-- END Header -->
+  <!-- Header -->
+  <z-header></z-header>
+  <!-- END Header -->
 
-    <!-- Main Container -->
-    <main id="main-container">
-        <ui-view></ui-view>
-    </main>
-    <!-- END Main Container -->
+  <!-- Main Container -->
+  <main id="main-container">
+    <router-outlet></router-outlet>
+  </main>
+  <!-- END Main Container -->
 
-    <!-- Footer -->
-    <z-footer></z-footer>
-    <!-- END Footer -->
+  <!-- Footer -->
+  <z-footer></z-footer>
+  <!-- END Footer -->
 </div>
 <!-- END Page Container -->
 
