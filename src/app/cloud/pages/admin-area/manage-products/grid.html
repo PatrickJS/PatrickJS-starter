@@ -3,20 +3,18 @@
     <table class="table table-bordered table-striped js-dataTable-simple">
       <thead>
       <tr>
-        <th class="text-center"></th>
         <th>Name</th>
-        <th class="hidden-xs">Email</th>
-        <th class="hidden-xs" style="width: 15%;">Versions</th>
+        <th class="hidden-xs" style="width: 70%;">Version</th>
         <th class="text-center" style="width: 10%;">Actions</th>
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let product of productsCollection.getCollectionObservable() | async">
-        <td class="text-center">1</td>
-        <td class="font-w600">Ashley Welch</td>
-        <td class="hidden-xs">client1@example.com</td>
+      <tr *ngFor="let product of products | async">
+        <td class="font-w600">{{product['name']}}</td>
         <td class="hidden-xs">
-          <span class="label label-primary">Personal</span>
+          <span class="label label-primary" style="margin-right: 5px" *ngFor="let version of product['versions']">
+            {{version['name'] + "-" + version['version']}}
+          </span>
         </td>
         <td class="text-center">
           <div class="btn-group">

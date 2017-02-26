@@ -11,7 +11,7 @@ export abstract class AbstractCollection {
   protected abstract $collection: string;
   protected _collection: MongoObservable.Collection<any>;
   protected _collectionSubscription: Subscription;
-  protected _collectionObservable: Observable<any>;
+  protected _collectionObservable: Observable<MongoObservable.Collection<any>>;
   
   getCollection(): MongoObservable.Collection<any> {
     if (typeof this._collection == "undefined") {
@@ -25,14 +25,14 @@ export abstract class AbstractCollection {
       this._collectionObservable = new Observable(ob => {
         MeteorObservable.subscribe(this.$collection).subscribe(() => {
           this._collectionSubscription = MeteorObservable.autorun().subscribe(() => {
-            ob.next(this.getCollection().collection.find().fetch());
+            ob.next(this.getCollection());
           });
         });
       });
     }
   }
   
-  getCollectionObservable(): Observable<any> {
+  getCollectionObservable(): Observable<MongoObservable.Collection<any>> {
     this.subscribeCollection();
     return this._collectionObservable;
   }

@@ -14,17 +14,19 @@ export class Seeder {
     if (Products.collection.find().count() > 0)
       return;
     let _product = () => {
+      let versions = [];
+      for (let i = 0; i < (Math.round(Math.random() * 10)); i++) {
+        versions.push({
+                        name   : Math.random().toString(36).substring(7),
+                        version: "0.0." + Math.round(Math.random() * 10),
+                      });
+      }
       return {
-        name: Math.random().toString(36).substring(7),
-        versions: [
-          {
-            name: Math.random().toString(36).substring(7),
-            version: "0.0." + Math.round(Math.random() * 10),
-          }
-        ],
+        name    : Math.random().toString(36).substring(7),
+        versions: versions,
       }
     };
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 30; i++) {
       let _p = OM.create<Product>(Product, false, _product());
       _p.save();
     }
