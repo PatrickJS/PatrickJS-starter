@@ -14,7 +14,7 @@ export class AuthService {
               protected router: Router) { }
   
   getCurrentUser(forceUpdate: boolean = false) {
-    if (typeof this.user == "undefined" || forceUpdate) {
+    if (!this.user || forceUpdate) {
       this.user = Meteor.user();
     }
     return this.user;
