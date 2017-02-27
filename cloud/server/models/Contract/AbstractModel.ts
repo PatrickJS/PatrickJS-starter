@@ -5,6 +5,10 @@ import {DateTimeHelper} from "../../code/DateTimeHelper";
 export abstract class AbstractModel extends DataObject {
   protected abstract $collection: string;
   
+  getId() {
+    return this.getData('_id');
+  }
+  
   /*
    * Get Object
    */

@@ -7,7 +7,7 @@ import * as $q from "q";
 new ValidatedMethod({
   name: "license.admin_create_license",
   validate: function () {
-    const user = OM.create<User>(User).loadById(this.userId());
+    const user = OM.create<User>(User).loadById(this.userId);
     if (user.isInRoles([Role.SUPERADMIN, Role.ADMIN, Role.SALES], Role.GROUP_CLOUD)) {
     } else {
       throw new Meteor.Error("license.create_license", "Access denied");

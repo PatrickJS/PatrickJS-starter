@@ -45,6 +45,7 @@ import {AuthenticateGuard} from "./cloud/services/router-guard/authenticate";
 import {SignUpComponent} from "./cloud/pages/auth/signup";
 import {ResetPasswordComponent} from "./cloud/pages/auth/reset";
 import {LockAccountComponent} from "./cloud/pages/auth/lock";
+import {UserProfileComponent} from "./cloud/pages/profile/profile";
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -79,7 +80,8 @@ type StoreType = {
               SignInComponent,
               SignUpComponent,
               ResetPasswordComponent,
-              LockAccountComponent
+              LockAccountComponent,
+              UserProfileComponent
             ],
             imports     : [ // import Angular's modules
               BrowserModule,

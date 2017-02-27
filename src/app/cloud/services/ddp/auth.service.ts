@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core';
 import {ToastsManager} from "ng2-toastr";
 import {Router} from "@angular/router";
+import {MeteorObservable} from "meteor-rxjs";
+import {Observable} from "rxjs";
 
 @Injectable()
 export class AuthService {
@@ -10,6 +12,8 @@ export class AuthService {
   // store the URL so we can redirect after logging in
   public redirectUrl: string;
   
+  protected _userRoles: Observable<string[]>;
+  
   constructor(protected toast: ToastsManager,
               protected router: Router) { }
   
@@ -18,6 +22,17 @@ export class AuthService {
       this.user = Meteor.user();
     }
     return this.user;
+  }
+  
+  getUserRole(): Observable<string[]> {
+    if (typeof this._userRoles == "undefined") {
+      this._userRoles = new Observable(ob => {
+        MeteorObservable.call("user.get_roles").subscribe(data => {
+          ob.next(data);
+        });
+      }).startWith([]);
+    }
+    return this._userRoles;
   }
   
   signUp(user: any) {

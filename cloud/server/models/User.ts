@@ -10,17 +10,20 @@ export class User extends AbstractModel {
   static LICENSE_PERMISSION_OWNER   = 'owner';
   static LICENSE_PERMISSION_CASHIER = 'cashier';
   
-  
   addToRoles(roles: string|string[], group = Role.GROUP_CLOUD): void {
-    Roles.addUsersToRoles(this, roles, group);
+    Roles.addUsersToRoles(this.getData(), roles, group);
   }
   
   isInRoles(roles: string|string[], group = Role.GROUP_CLOUD): boolean {
-    return Roles.userIsInRole(this, roles, group);
+    return Roles.userIsInRole(this.getData(), roles, group);
   }
   
   getLicenses() {
     return this.getData('has_license');
+  }
+  
+  getRoles(group = Role.GROUP_CLOUD) {
+    return Roles.getRolesForUser(this.getData(), group);
   }
 }
 
