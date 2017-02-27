@@ -1,5 +1,8 @@
 import {AbstractModel} from "./Contract/AbstractModel";
-import {UserInterface} from "./UserInterface";
+import {
+  UserInterface,
+  UserHasLicense
+} from "./UserInterface";
 import {Role} from "./Role";
 
 export class User extends AbstractModel {
@@ -14,15 +17,19 @@ export class User extends AbstractModel {
     Roles.addUsersToRoles(this.getData(), roles, group);
   }
   
+  setRoles(roles, group = Role.GROUP_CLOUD): void {
+    Roles.setUserRoles(this.getData(), roles, group);
+  }
+  
   isInRoles(roles: string|string[], group = Role.GROUP_CLOUD): boolean {
     return Roles.userIsInRole(this.getData(), roles, group);
   }
   
-  getLicenses() {
+  getLicenses(): UserHasLicense[] {
     return this.getData('has_license');
   }
   
-  getRoles(group = Role.GROUP_CLOUD) {
+  getRoles(group = Role.GROUP_CLOUD): string[] {
     return Roles.getRolesForUser(this.getData(), group);
   }
 }
