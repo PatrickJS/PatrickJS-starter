@@ -19,6 +19,13 @@ new ValidatedMethod({
     return Users.insert(user);
   }
 });
+DDPRateLimiter.addRule({
+                         userId: function (userId) {
+                           return true;
+                         },
+                         type  : "method",
+                         name  : "user.create_user_by_license",
+                       }, 1, 1000);
 
 new ValidatedMethod({
   name    : 'user.get_roles',
@@ -33,3 +40,10 @@ new ValidatedMethod({
     return userModel.getRoles();
   }
 });
+DDPRateLimiter.addRule({
+                         userId: function (userId) {
+                           return true;
+                         },
+                         type  : "method",
+                         name  : "user.get_roles",
+                       }, 1, 1000);
