@@ -16,6 +16,7 @@ const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin')
  * Webpack Constants
  */
 const ENV = process.env.ENV = process.env.NODE_ENV = 'test';
+const VARS = require('./vars')(ENV); // the project VARS
 
 /**
  * Webpack configuration
@@ -194,7 +195,7 @@ module.exports = function (options) {
        * See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
        */
       // NOTE: when adding more properties make sure you include them in custom-typings.d.ts
-      new DefinePlugin({
+      new DefinePlugin(Object.assign({
         'ENV': JSON.stringify(ENV),
         'HMR': false,
         'process.env': {
@@ -202,7 +203,7 @@ module.exports = function (options) {
           'NODE_ENV': JSON.stringify(ENV),
           'HMR': false,
         }
-      }),
+      }, VARS)),
 
       /**
        * Plugin: ContextReplacementPlugin

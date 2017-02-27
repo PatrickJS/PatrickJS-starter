@@ -22,6 +22,7 @@ const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3000;
 const HMR = helpers.hasProcessFlag('hot');
+const VARS = require('./vars')(ENV); // the project VARS
 const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
   host: HOST,
   port: PORT,
@@ -143,7 +144,7 @@ module.exports = function (options) {
        * See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
        */
       // NOTE: when adding more properties, make sure you include them in custom-typings.d.ts
-      new DefinePlugin({
+      new DefinePlugin(Object.assign({
         'ENV': JSON.stringify(METADATA.ENV),
         'HMR': METADATA.HMR,
         'process.env': {
@@ -151,7 +152,7 @@ module.exports = function (options) {
           'NODE_ENV': JSON.stringify(METADATA.ENV),
           'HMR': METADATA.HMR,
         }
-      }),
+      }, VARS)),
 
       new DllBundlesPlugin({
         bundles: {

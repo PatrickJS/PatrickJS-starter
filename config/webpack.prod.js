@@ -24,6 +24,7 @@ const OptimizeJsPlugin = require('optimize-js-plugin');
 const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 8080;
+const VARS = require('./vars')(ENV); // the project VARS
 const METADATA = webpackMerge(commonConfig({
   env: ENV
 }).metadata, {
@@ -154,7 +155,7 @@ module.exports = function (env) {
        * See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
        */
       // NOTE: when adding more properties make sure you include them in custom-typings.d.ts
-      new DefinePlugin({
+      new DefinePlugin(Object.assign({
         'ENV': JSON.stringify(METADATA.ENV),
         'HMR': METADATA.HMR,
         'process.env': {
@@ -162,7 +163,7 @@ module.exports = function (env) {
           'NODE_ENV': JSON.stringify(METADATA.ENV),
           'HMR': METADATA.HMR,
         }
-      }),
+      }, VARS)),
 
       /**
        * Plugin: UglifyJsPlugin

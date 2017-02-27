@@ -31,6 +31,7 @@ export class HomeComponent implements OnInit {
   ) {}
 
   public ngOnInit() {
+    console.log('HOME_TOKEN in env vars: ' + VARS.HOME_TOKEN);
     console.log('hello `Home` component');
     // this.title.getData().subscribe(data => this.data = data);
   }
