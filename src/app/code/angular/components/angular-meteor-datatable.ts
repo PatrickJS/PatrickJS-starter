@@ -9,6 +9,7 @@ import {AbstractRxComponent} from "../AbstractRxComponent";
 import {MeteorDataTable} from "../../meteor-datatable/MeteorDataTable";
 import {Observable} from "rxjs";
 import {MongoObservable} from "meteor-rxjs";
+import {ToastsManager} from "ng2-toastr";
 
 @Component({
              selector   : 'angular-meteor-datatable',
@@ -21,6 +22,10 @@ export class AngularMeteorDataTableComponent extends AbstractRxComponent impleme
   @ViewChild('dataTable') dataTable: ElementRef;
   
   meteorDataTable: MeteorDataTable;
+  
+  constructor(protected toast: ToastsManager) {
+    super();
+  }
   
   ngOnInit() {
     this._initTable()

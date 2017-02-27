@@ -11,15 +11,16 @@ import {ProductCollection} from "../../../services/ddp/collections/products";
            })
 export class ManageProductsGridComponent implements OnInit {
   protected tableConfig = {
-    columns   : [
+    actionsColumn: {edit: true, remove: true},
+    columns      : [
       {data: "name", title: "Name"},
       {data: "versions", title: "Versions"},
     ],
-    columnDefs: [
+    columnDefs   : [
       {className: "hidden-xs", "targets": [0]},
       {className: "text-center", "targets": [1]},
     ],
-    bFilter   : false,
+    bFilter      : false,
   };
   
   constructor(protected manageProductService: ManageProductsService,

@@ -12,6 +12,9 @@ export class MeteorDataTable {
   protected collection: MongoObservable.Collection<any>;
   protected _dtTable: any;
   public meteorDataTableSubscription: Subscription;
+  public reDrawCallBack: () => void;
+  public removeCallBack: (id: string) => void;
+  public editCallBack: (id: string) => void;
   
   constructor(protected elementSelector: any,
               protected dataTableOptions: Object,
@@ -29,6 +32,38 @@ export class MeteorDataTable {
     }
     else
       options = this.getDefaultOption();
+    
+    // add Column action
+    if (options.hasOwnProperty('actionsColumn')) {
+      let _numOfColumn = _.size(options.columns);
+      options.columns.push({data: "_id", title: "Action"},);
+      
+      if (!options.hasOwnProperty('columnDefs')) {
+        options['columnDefs'] = [];
+      }
+      options['columnDefs'].push({
+                                   className: "text-center",
+                                   // The `data` parameter refers to the data for the cell (defined by the
+                                   // `data` option, which defaults to the column being worked with, in
+                                   // this case `data: 0`.
+                                   "render" : function (data, type, row) {
+                                     let _html = `<div class="btn-group">`;
+                                     if (options['actionsColumn']['edit'] == true)
+                                       _html += `<button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client">
+                                                  <i class="fa fa-pencil"></i>
+                                                </button>`;
+                                     if (options['actionsColumn']['remove'] == true)
+                                       _html += ` <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client">
+                                                  <i class="fa fa-times"></i>
+                                                </button>`;
+                                     _html += `</div>`;
+          
+                                     return _html;
+          
+                                   },
+                                   "targets": _numOfColumn
+                                 });
+    }
     
     this._dtTable = this.elementSelector.DataTable(options);
   }
@@ -69,9 +104,13 @@ export class MeteorDataTable {
   }
   
   resolve() {
-    if (this._dtTable)
+    if (typeof this._dtTable != "undefined") {
       this._dtTable.draw();
-    else
+      if (this.reDrawCallBack) {
+        this.reDrawCallBack();
+      }
+    } else {
       this.initDataTable();
+    }
   }
 }
