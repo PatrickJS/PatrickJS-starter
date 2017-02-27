@@ -1,4 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
 import {ManageLicensesService} from "./manage-licenses/manage-licenses.service";
 
 @Component({
@@ -9,7 +12,7 @@ import {ManageLicensesService} from "./manage-licenses/manage-licenses.service";
                     <div class="row items-push">
                         <div class="col-sm-7">
                             <h1 class="page-heading">
-                                Manage License <small>Create Update Revemo License</small>
+                                Manage License <small>Create, update or remove licenses...</small>
                             </h1>
                         </div>
                         <div class="col-sm-5 text-right hidden-xs">
@@ -21,7 +24,7 @@ import {ManageLicensesService} from "./manage-licenses/manage-licenses.service";
                     </div>
                 </div>
 <!-- END Page Header -->
-<ui-view></ui-view>`,
+<router-outlet></router-outlet>`,
              providers: [
                ManageLicensesService
              ]

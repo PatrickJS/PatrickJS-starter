@@ -17,20 +17,27 @@ import {
 import {ENV_PROVIDERS} from './environment';
 // App is our top level component
 import {AppComponent} from './app.component';
-import {AppState, InternalStateType} from './app.service';
+import {
+  AppState,
+  InternalStateType
+} from './app.service';
 
-import {UIRouterModule} from 'ui-router-ng2';
 import {ROUTES} from "./app.routes";
-import {ContainerComponent} from "./cloud/pages/cloud-container/container";
-import {SideOverlayComponent} from "./cloud/pages/cloud-container/container/side-overlay";
-import {SideBarComponent} from "./cloud/pages/cloud-container/container/sidebar";
-import {HeaderComponent} from "./cloud/pages/cloud-container/container/header";
-import {FooterComponent} from "./cloud/pages/cloud-container/container/footer";
 import {DashboardComponent} from "./cloud/pages/dashboard/dashboard";
 import {ProductsComponent} from "./cloud/pages/products/products";
-import {AdminAreaComponent} from "./cloud/pages/admin-area/admin-area";
 import {ManageLicensesComponent} from "./cloud/pages/admin-area/manage-licenses";
 import {ManageLicensesGridComponent} from "./cloud/pages/admin-area/manage-licenses/grid";
+import {ManageProductsComponent} from "./cloud/pages/admin-area/manage-products";
+import {ManageProductsGridComponent} from "./cloud/pages/admin-area/manage-products/grid";
+import {ProductCollection} from "./cloud/services/ddp/collections/products";
+import {RouterModule} from "@angular/router";
+import {ToastModule} from "ng2-toastr";
+import {ContainerComponent} from "./cloud/cloud-container/container";
+import {HeaderComponent} from "./cloud/cloud-container/container/header";
+import {FooterComponent} from "./cloud/cloud-container/container/footer";
+import {SideBarComponent} from "./cloud/cloud-container/container/sidebar";
+import {SideOverlayComponent} from "./cloud/cloud-container/container/side-overlay";
+import {PageNotFoundComponent} from "./cloud/pages/404/not-found";
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -47,9 +54,10 @@ type StoreType = {
  * `AppModule` is the main entry point into Angular2's bootstraping process
  */
 @NgModule({
-            bootstrap: [AppComponent],
+            bootstrap   : [AppComponent],
             declarations: [
               AppComponent,
+              PageNotFoundComponent,
               ContainerComponent,
               SideOverlayComponent,
               SideBarComponent,
@@ -57,19 +65,22 @@ type StoreType = {
               FooterComponent,
               ProductsComponent,
               DashboardComponent,
-              AdminAreaComponent,
               ManageLicensesComponent,
               ManageLicensesGridComponent,
+              ManageProductsComponent,
+              ManageProductsGridComponent
             ],
-            imports: [ // import Angular's modules
+            imports     : [ // import Angular's modules
               BrowserModule,
               FormsModule,
               HttpModule,
-              UIRouterModule.forRoot({states: ROUTES, useHash: true})
+              ToastModule.forRoot(),
+              RouterModule.forRoot(ROUTES, {useHash: true})
             ],
-            providers: [ // expose our Services and Providers into Angular's dependency injection
+            providers   : [ // expose our Services and Providers into Angular's dependency injection
               ENV_PROVIDERS,
-              APP_PROVIDERS
+              APP_PROVIDERS,
+              ProductCollection
             ]
           })
 export class AppModule {

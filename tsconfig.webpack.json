@@ -20,7 +20,8 @@
     ],
     "types": [
       "hammerjs",
-      "node"
+      "node",
+      "@types/lodash"
     ]
   },
   "exclude": [

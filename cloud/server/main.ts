@@ -1,27 +1,26 @@
 import {Meteor} from 'meteor/meteor';
-import {Users} from "./collections/users";
-import {User} from "./models/user";
-import {Role} from "./models/role";
+import {User} from "./models/User";
+import {OM} from "./code/General/ObjectManager";
+import {Seeder} from "./test/Seeder";
+import {Role} from "./models/Role";
 
 Meteor.startup(() => {
   initSupperAdminAccount();
-  createIndexCollection();
+  
+  // seeder for testing
+  const seeder = new Seeder();
+  seeder.run();
 });
 
 let initSupperAdminAccount = () => {
-  let _superUser = () => {
-    return Users.findOne({"username": "superadmin"})
-  };
-  if (!_superUser()) {
+  let su = OM.create<User>(User).load("superadmin", "username");
+  if (!su) {
     Accounts.createUser(
       {
         username: "superadmin",
         email: "khoild@smartosc.com",
         password: "admin123"
       });
+    OM.create<User>(User).load("superadmin", "username").addToRoles([Role.SUPERADMIN], Role.GROUP_CLOUD);
   }
-  User.create<User>(_superUser()).addToRoles(Role.SUPERADMIN, Role.GROUP_CLOUD);
-};
-
-let createIndexCollection = () => {
 };
