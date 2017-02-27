@@ -42,6 +42,7 @@ import {AngularHelperModule} from "./code/angular/index";
 import {SignInComponent} from "./cloud/pages/auth/signin";
 import {AuthService} from "./cloud/services/ddp/auth.service";
 import {AuthenticateGuard} from "./cloud/services/router-guard/authenticate";
+import {SignUpComponent} from "./cloud/pages/auth/signup";
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -73,7 +74,8 @@ type StoreType = {
               ManageLicensesGridComponent,
               ManageProductsComponent,
               ManageProductsGridComponent,
-              SignInComponent
+              SignInComponent,
+              SignUpComponent
             ],
             imports     : [ // import Angular's modules
               BrowserModule,

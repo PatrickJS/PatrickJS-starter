@@ -9,6 +9,7 @@ import {ContainerComponent} from "./cloud/cloud-container/container";
 import {PageNotFoundComponent} from "./cloud/pages/404/not-found";
 import {AuthenticateGuard} from "./cloud/services/router-guard/authenticate";
 import {SignInComponent} from "./cloud/pages/auth/signin";
+import {SignUpComponent} from "./cloud/pages/auth/signup";
 
 export const ROUTES: Routes = [
   {
@@ -43,5 +44,6 @@ export const ROUTES: Routes = [
     ]
   },
   {path: 'signin', component: SignInComponent},
+  {path: 'signup', component: SignUpComponent},
   {path: '**', component: PageNotFoundComponent}
 ];

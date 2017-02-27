@@ -2,19 +2,20 @@ import {
   Component,
   OnInit
 } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
              selector   : 'sign-in',
              templateUrl: 'signin.html'
            })
 export class SignInComponent implements OnInit {
-  constructor() { }
+  constructor(protected router: Router) { }
   
   ngOnInit() {
     this.initPageJs();
   }
   
-  initPageJs() {
+  private initPageJs() {
     // Init Login Form Validation, for more examples you can check out https://github.com/jzaefferer/jquery-validation
     let initValidationLogin = function () {
       jQuery('.js-validation-login').validate({
@@ -34,21 +35,21 @@ export class SignInComponent implements OnInit {
                                                 rules         : {
                                                   'login-username': {
                                                     required : true,
-                                                    minlength: 3
+                                                    minlength: 6
                                                   },
                                                   'login-password': {
                                                     required : true,
-                                                    minlength: 5
+                                                    minlength: 8
                                                   }
                                                 },
                                                 messages      : {
                                                   'login-username': {
                                                     required : 'Please enter a username',
-                                                    minlength: 'Your username must consist of at least 3 characters'
+                                                    minlength: 'Your username must consist of at least 6 characters'
                                                   },
                                                   'login-password': {
                                                     required : 'Please provide a password',
-                                                    minlength: 'Your password must be at least 5 characters long'
+                                                    minlength: 'Your password must be at least 8 characters long'
                                                   }
                                                 }
                                               });
