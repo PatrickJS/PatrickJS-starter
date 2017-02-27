@@ -51,6 +51,7 @@ export class ResetPasswordComponent implements OnInit {
                                                    }
                                                  });
     };
+    initValidationReminder();
   }
   
 }
