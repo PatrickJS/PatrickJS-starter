@@ -1,15 +1,19 @@
 import {
   Component,
-  OnInit
+  OnInit,
+  ViewChild
 } from '@angular/core';
 import {ManageProductsService} from "./manage-products.service";
 import {ProductCollection} from "../../../services/ddp/collections/products";
+import {AngularMeteorDataTableComponent} from "../../../../code/angular/components/angular-meteor-datatable";
 
 @Component({
              selector   : 'manage-products-grid',
              templateUrl: 'grid.html'
            })
 export class ManageProductsGridComponent implements OnInit {
+  @ViewChild(AngularMeteorDataTableComponent) protected angularMeteorDtTable: AngularMeteorDataTableComponent;
+  
   protected tableConfig = {
     actionsColumn: {edit: true, remove: true},
     columns      : [
@@ -29,6 +33,6 @@ export class ManageProductsGridComponent implements OnInit {
   }
   
   ngOnInit(): void {
+    this.angularMeteorDtTable.getCallBackObservable().subscribe((data) => {console.log(data);});
   }
-  
 }

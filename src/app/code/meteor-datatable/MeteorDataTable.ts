@@ -3,7 +3,8 @@ import {
 } from "meteor-rxjs";
 import {
   Observable,
-  Subscription
+  Subscription,
+  Subject
 } from "rxjs";
 import * as _ from "lodash";
 import {CloudException} from "../CloudException";
@@ -11,15 +12,13 @@ import {CloudException} from "../CloudException";
 export class MeteorDataTable {
   protected collection: MongoObservable.Collection<any>;
   protected _dtTable: any;
-  public meteorDataTableSubscription: Subscription;
-  public reDrawCallBack: () => void;
-  public removeCallBack: (id: string) => void;
-  public editCallBack: (id: string) => void;
+  protected _meteorDataTableSubscription: Subscription;
   
   constructor(protected elementSelector: any,
               protected dataTableOptions: Object,
-              protected collectionObservable: Observable<MongoObservable.Collection<any>>) {
-    this.meteorDataTableSubscription = this.collectionObservable.subscribe((collection) => {
+              protected collectionObservable: Observable<MongoObservable.Collection<any>>,
+              protected callBackSubject: Subject<any>) {
+    this._meteorDataTableSubscription = this.collectionObservable.subscribe((collection) => {
       this.collection = collection;
       this.resolve()
     });
@@ -49,11 +48,11 @@ export class MeteorDataTable {
                                    "render" : function (data, type, row) {
                                      let _html = `<div class="btn-group">`;
                                      if (options['actionsColumn']['edit'] == true)
-                                       _html += `<button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client">
+                                       _html += `<button class="btn btn-xs btn-default meteor-table-bt-edit" data-id="${data}" type="button" title="Edit Client">
                                                   <i class="fa fa-pencil"></i>
                                                 </button>`;
                                      if (options['actionsColumn']['remove'] == true)
-                                       _html += ` <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client">
+                                       _html += ` <button class="btn btn-xs btn-default meteor-table-bt-remove" data-id="${data}" type="button" title="Remove Client">
                                                   <i class="fa fa-times"></i>
                                                 </button>`;
                                      _html += `</div>`;
@@ -103,14 +102,27 @@ export class MeteorDataTable {
     throw new CloudException('DtTable not yet created');
   }
   
+  getMeteorDtTableSubscription(): Subscription {
+    return this._meteorDataTableSubscription;
+  }
+  
   resolve() {
     if (typeof this._dtTable != "undefined") {
       this._dtTable.draw();
-      if (this.reDrawCallBack) {
-        this.reDrawCallBack();
-      }
+      this.callBackSubject.next({event: "reDraw"});
     } else {
       this.initDataTable();
+      let vm = this;
+      setTimeout(() => {
+        this.elementSelector.on('click', '.meteor-table-bt-edit', function () {
+          vm.callBackSubject.next({event: 'clickEdit', data: jQuery(this).attr('data-id')})
+        });
+      }, 1500);
+      setTimeout(() => {
+        this.elementSelector.on('click', '.meteor-table-bt-remove', function () {
+          vm.callBackSubject.next({event: 'clicRemove', data: jQuery(this).attr('data-id')})
+        });
+      }, 1500);
     }
   }
 }
