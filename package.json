@@ -94,6 +94,7 @@
     "ie-shim": "^0.1.0",
     "jasmine-core": "^2.5.2",
     "jquery": "^2.2.4",
+    "jquery-validation": "^1.16.0",
     "meteor-node-stubs": "^0.2.5",
     "meteor-rxjs": "^0.4.7",
     "moment": "^2.17.1",

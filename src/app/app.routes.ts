@@ -7,6 +7,8 @@ import {ManageProductsGridComponent} from "./cloud/pages/admin-area/manage-produ
 import {Routes} from "@angular/router";
 import {ContainerComponent} from "./cloud/cloud-container/container";
 import {PageNotFoundComponent} from "./cloud/pages/404/not-found";
+import {AuthenticateGuard} from "./cloud/services/router-guard/authenticate";
+import {SignInComponent} from "./cloud/pages/auth/signin";
 
 export const ROUTES: Routes = [
   {
@@ -16,9 +18,10 @@ export const ROUTES: Routes = [
   },
   
   {
-    path     : 'cloud',
-    component: ContainerComponent,
-    children : [
+    path       : 'cloud',
+    component  : ContainerComponent,
+    canActivate: [AuthenticateGuard],
+    children   : [
       {
         path     : '',
         component: DashboardComponent
@@ -39,5 +42,6 @@ export const ROUTES: Routes = [
       }
     ]
   },
+  {path: 'signin', component: SignInComponent},
   {path: '**', component: PageNotFoundComponent}
 ];

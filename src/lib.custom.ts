@@ -9,7 +9,6 @@ import "assets/js/core/js.cookie.min";
 import "assets/js/app";
 import "assets/js/plugins/slick/slick.min";
 
-
 // ChartJS
 import "chart.js/dist/Chart";
 
@@ -19,6 +18,9 @@ import "datatables.net-bs/js/dataTables.bootstrap";
 
 // toastr
 import "ng2-toastr/ng2-toastr.js";
+
+// jQuery validation
+import "jquery-validation/dist/jquery.validate.js";
 
 /*
  Lưu ý không thể load file css ở đây. Lý do là trong config của webpack sẽ chỉ có:

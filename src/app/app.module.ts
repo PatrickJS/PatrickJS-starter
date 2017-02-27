@@ -39,6 +39,9 @@ import {SideBarComponent} from "./cloud/cloud-container/container/sidebar";
 import {SideOverlayComponent} from "./cloud/cloud-container/container/side-overlay";
 import {PageNotFoundComponent} from "./cloud/pages/404/not-found";
 import {AngularHelperModule} from "./code/angular/index";
+import {SignInComponent} from "./cloud/pages/auth/signin";
+import {AuthService} from "./cloud/services/ddp/auth.service";
+import {AuthenticateGuard} from "./cloud/services/router-guard/authenticate";
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -69,7 +72,8 @@ type StoreType = {
               ManageLicensesComponent,
               ManageLicensesGridComponent,
               ManageProductsComponent,
-              ManageProductsGridComponent
+              ManageProductsGridComponent,
+              SignInComponent
             ],
             imports     : [ // import Angular's modules
               BrowserModule,
@@ -82,7 +86,9 @@ type StoreType = {
             providers   : [ // expose our Services and Providers into Angular's dependency injection
               ENV_PROVIDERS,
               APP_PROVIDERS,
-              ProductCollection
+              ProductCollection,
+              AuthService,
+              AuthenticateGuard
             ]
           })
 export class AppModule {
