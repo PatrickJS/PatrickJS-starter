@@ -30,6 +30,7 @@ import {ManageLicensesGridComponent} from "./cloud/pages/admin-area/manage-licen
 import {ManageProductsComponent} from "./cloud/pages/admin-area/manage-products";
 import {ManageProductsGridComponent} from "./cloud/pages/admin-area/manage-products/grid";
 import {ProductCollection} from "./cloud/services/ddp/collections/products";
+import {LicenseCollection} from "./cloud/services/ddp/collections/licenses";
 import {RouterModule} from "@angular/router";
 import {ToastModule} from "ng2-toastr";
 import {ContainerComponent} from "./cloud/cloud-container/container";
@@ -82,6 +83,7 @@ type StoreType = {
             providers   : [ // expose our Services and Providers into Angular's dependency injection
               ENV_PROVIDERS,
               APP_PROVIDERS,
+              LicenseCollection,
               ProductCollection
             ]
           })

@@ -82,8 +82,6 @@ export class Seeder {
         });
       }
 
-      
-
       return {
         key: Math.random().toString(36).substring(7),
         status: Math.floor(Math.random() * 9) % 2,
