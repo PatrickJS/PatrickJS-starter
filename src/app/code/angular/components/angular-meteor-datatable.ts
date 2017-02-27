@@ -7,7 +7,10 @@ import {
 } from '@angular/core';
 import {AbstractRxComponent} from "../AbstractRxComponent";
 import {MeteorDataTable} from "../../meteor-datatable/MeteorDataTable";
-import {Observable} from "rxjs";
+import {
+  Observable,
+  Subject
+} from "rxjs";
 import {MongoObservable} from "meteor-rxjs";
 import {ToastsManager} from "ng2-toastr";
 
@@ -22,6 +25,7 @@ export class AngularMeteorDataTableComponent extends AbstractRxComponent impleme
   @ViewChild('dataTable') dataTable: ElementRef;
   
   meteorDataTable: MeteorDataTable;
+  protected callBackSubject: Subject<any> = new Subject();
   
   constructor(protected toast: ToastsManager) {
     super();
@@ -32,8 +36,12 @@ export class AngularMeteorDataTableComponent extends AbstractRxComponent impleme
   }
   
   private _initTable() {
-    this.meteorDataTable            = new MeteorDataTable(jQuery(this.dataTable.nativeElement), this.tableConfig, this.collectionObservable);
-    this._subscription['dataTable'] = this.meteorDataTable.meteorDataTableSubscription;
+    this.meteorDataTable            =
+      new MeteorDataTable(jQuery(this.dataTable.nativeElement), this.tableConfig, this.collectionObservable, this.callBackSubject);
+    this._subscription['dataTable'] = this.meteorDataTable.getMeteorDtTableSubscription();
   }
   
+  getCallBackObservable(): Observable<any> {
+    return this.callBackSubject.asObservable();
+  }
 }
