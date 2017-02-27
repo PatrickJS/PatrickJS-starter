@@ -77,7 +77,7 @@ export class SignUpComponent implements OnInit {
                                                      'register-terms'    : 'You must agree to the service terms!'
                                                    },
                                                    submitHandler : function (form) {
-                                                     vm.authService.signUp(vm.user);
+                                                     vm.authService.signUp(vm.user).then(() => {}, err => {});
                                                    }
                                                  });
     };
