@@ -29,7 +29,10 @@ import {ManageLicensesComponent} from "./cloud/pages/admin-area/manage-licenses"
 import {ManageLicensesGridComponent} from "./cloud/pages/admin-area/manage-licenses/grid";
 import {ManageProductsComponent} from "./cloud/pages/admin-area/manage-products";
 import {ManageProductsGridComponent} from "./cloud/pages/admin-area/manage-products/grid";
+import {ManagePricingComponent} from "./cloud/pages/admin-area/manage-pricing";
+import {ManagePricingGridComponent} from "./cloud/pages/admin-area/manage-pricing/grid";
 import {ProductCollection} from "./cloud/services/ddp/collections/products";
+import {PricingCollection} from "./cloud/services/ddp/collections/pricing";
 import {LicenseCollection} from "./cloud/services/ddp/collections/licenses";
 import {RouterModule} from "@angular/router";
 import {ToastModule} from "ng2-toastr";
@@ -70,7 +73,9 @@ type StoreType = {
               ManageLicensesComponent,
               ManageLicensesGridComponent,
               ManageProductsComponent,
-              ManageProductsGridComponent
+              ManageProductsGridComponent,
+              ManagePricingComponent,
+              ManagePricingGridComponent,
             ],
             imports     : [ // import Angular's modules
               BrowserModule,
@@ -84,7 +89,8 @@ type StoreType = {
               ENV_PROVIDERS,
               APP_PROVIDERS,
               LicenseCollection,
-              ProductCollection
+              ProductCollection,
+              PricingCollection
             ]
           })
 export class AppModule {
