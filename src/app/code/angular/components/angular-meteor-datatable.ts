@@ -1,16 +1,34 @@
 import {
   Component,
-  OnInit
+  OnInit,
+  Input,
+  ViewChild,
+  ElementRef
 } from '@angular/core';
+import {AbstractRxComponent} from "../AbstractRxComponent";
+import {MeteorDataTable} from "../../meteor-datatable/MeteorDataTable";
+import {Observable} from "rxjs";
+import {MongoObservable} from "meteor-rxjs";
 
 @Component({
-             moduleId   : module.id,
              selector   : 'angular-meteor-datatable',
              templateUrl: 'angular-meteor-datatable.html'
            })
-export class AngularMeteorDataTableComponent implements OnInit {
-  constructor() { }
+export class AngularMeteorDataTableComponent extends AbstractRxComponent implements OnInit {
+  @Input('collectionObservable') private collectionObservable: Observable<MongoObservable.Collection<any>>;
+  @Input('tableConfig') private tableConfig: any;
   
-  ngOnInit() { }
+  @ViewChild('dataTable') dataTable: ElementRef;
+  
+  meteorDataTable: MeteorDataTable;
+  
+  ngOnInit() {
+    this._initTable()
+  }
+  
+  private _initTable() {
+    this.meteorDataTable            = new MeteorDataTable(jQuery(this.dataTable.nativeElement), this.tableConfig, this.collectionObservable);
+    this._subscription['dataTable'] = this.meteorDataTable.meteorDataTableSubscription;
+  }
   
 }

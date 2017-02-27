@@ -38,6 +38,7 @@ import {FooterComponent} from "./cloud/cloud-container/container/footer";
 import {SideBarComponent} from "./cloud/cloud-container/container/sidebar";
 import {SideOverlayComponent} from "./cloud/cloud-container/container/side-overlay";
 import {PageNotFoundComponent} from "./cloud/pages/404/not-found";
+import {AngularHelperModule} from "./code/angular/index";
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -74,6 +75,7 @@ type StoreType = {
               BrowserModule,
               FormsModule,
               HttpModule,
+              AngularHelperModule,
               ToastModule.forRoot(),
               RouterModule.forRoot(ROUTES, {useHash: true})
             ],

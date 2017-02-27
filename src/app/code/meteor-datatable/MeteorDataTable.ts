@@ -6,13 +6,14 @@ import {
   Subscription
 } from "rxjs";
 import * as _ from "lodash";
+import {CloudException} from "../CloudException";
 
 export class MeteorDataTable {
   protected collection: MongoObservable.Collection<any>;
   protected _dtTable: any;
   public meteorDataTableSubscription: Subscription;
   
-  constructor(protected elementSelector: string,
+  constructor(protected elementSelector: any,
               protected dataTableOptions: Object,
               protected collectionObservable: Observable<MongoObservable.Collection<any>>) {
     this.meteorDataTableSubscription = this.collectionObservable.subscribe((collection) => {
@@ -29,13 +30,7 @@ export class MeteorDataTable {
     else
       options = this.getDefaultOption();
     
-    let _elem = jQuery(this.elementSelector)
-    if (_elem) {
-      this._dtTable = _elem.DataTable(options);
-    }
-    else {
-      
-    }
+    this._dtTable = this.elementSelector.DataTable(options);
   }
   
   private getDefaultOption() {
@@ -66,7 +61,14 @@ export class MeteorDataTable {
     };
   }
   
-  protected resolve() {
+  getDtTableInstance(): any {
+    if (this._dtTable) {
+      return this._dtTable;
+    }
+    throw new CloudException('DtTable not yet created');
+  }
+  
+  resolve() {
     if (this._dtTable)
       this._dtTable.draw();
     else
