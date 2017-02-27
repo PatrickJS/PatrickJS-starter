@@ -12,7 +12,8 @@ export class License extends AbstractModel {
 export class LicenseHasProduct {
   $schema = new SimpleSchema({
     product_id: String,
-    base_url: [String],
+    base_url: Array,
+    'base_url.$': String,
     pricing_id: String,
     start_version: String,
     purchase_date: Date,

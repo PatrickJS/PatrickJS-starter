@@ -10,6 +10,7 @@ export class User extends AbstractModel {
   static LICENSE_PERMISSION_OWNER   = 'owner';
   static LICENSE_PERMISSION_CASHIER = 'cashier';
   
+
   
   addToRoles(roles: string|string[], group = Role.GROUP_CLOUD): void {
     Roles.addUsersToRoles(this, roles, group);

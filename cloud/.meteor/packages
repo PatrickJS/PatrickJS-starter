@@ -27,3 +27,5 @@ mdg:validated-method
 dburles:mongo-collection-instances
 aldeed:collection2-core
 matb33:collection-hooks
+service-configuration
+accounts-ui

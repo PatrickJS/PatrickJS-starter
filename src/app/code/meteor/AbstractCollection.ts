@@ -23,6 +23,7 @@ export abstract class AbstractCollection {
   protected subscribeCollection(): void {
     if (typeof this._collectionSubscription == "undefined") {
       this._collectionObservable = new Observable(ob => {
+        //console.log(ob);
         MeteorObservable.subscribe(this.$collection).subscribe(() => {
           this._collectionSubscription = MeteorObservable.autorun().subscribe(() => {
             ob.next(this.getCollection());

@@ -3,6 +3,8 @@ import {User} from "./models/User";
 import {OM} from "./code/General/ObjectManager";
 import {Seeder} from "./test/Seeder";
 import {Role} from "./models/Role";
+import { Mongo } from 'meteor/mongo';
+
 
 Meteor.startup(() => {
   initSupperAdminAccount();
