@@ -42,6 +42,7 @@ export class MeteorDataTable {
       }
       options['columnDefs'].push({
                                    className: "text-center",
+                                   orderable: false,
                                    // The `data` parameter refers to the data for the cell (defined by the
                                    // `data` option, which defaults to the column being worked with, in
                                    // this case `data: 0`.
@@ -82,8 +83,17 @@ export class MeteorDataTable {
             _selector[v['data']] = new RegExp(v['search']['value']);
           }
         });
+        // sort
+        let sort = {};
+        if (_.size(request['order']) == 1) {
+          let _columnName = request['columns'][request['order'][0]['column']]['data'];
+          if (_columnName) {
+            sort['sort']              = {};
+            sort['sort'][_columnName] = request['order'][0]['dir'] == 'asc' ? 1 : -1;
+          }
+        }
         
-        json['data'] = _.slice(this.collection.collection.find(_selector).fetch(), request['start'], request['length'] + request['start']);
+        json['data'] = _.slice(this.collection.collection.find(_selector, sort).fetch(), request['start'], request['length'] + request['start']);
         drawCallback(json);
       },
       processing    : true,

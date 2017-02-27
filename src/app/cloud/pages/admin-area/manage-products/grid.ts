@@ -22,7 +22,7 @@ export class ManageProductsGridComponent implements OnInit {
     ],
     columnDefs   : [
       {className: "hidden-xs", "targets": [0]},
-      {className: "text-center", "targets": [1]},
+      {className: "text-center", orderable: false, "targets": [1]},
     ],
     bFilter      : false,
   };
