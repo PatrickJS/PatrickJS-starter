@@ -3,19 +3,29 @@ import {
   OnInit
 } from '@angular/core';
 import {Router} from "@angular/router";
+import {AuthService} from "../../services/ddp/auth.service";
 
 @Component({
              selector   : 'sign-in',
              templateUrl: 'signin.html'
            })
 export class SignInComponent implements OnInit {
-  constructor(protected router: Router) { }
+  protected user = {
+    username: "",
+    password: ""
+  };
+  
+  constructor(protected router: Router, protected authService: AuthService) { }
   
   ngOnInit() {
-    this.initPageJs();
+    if (this.authService.getCurrentUser())
+      this.router.navigate(['']);
+    else
+      this.initPageJs();
   }
   
   private initPageJs() {
+    let vm                  = this;
     // Init Login Form Validation, for more examples you can check out https://github.com/jzaefferer/jquery-validation
     let initValidationLogin = function () {
       jQuery('.js-validation-login').validate({
@@ -51,6 +61,9 @@ export class SignInComponent implements OnInit {
                                                     required : 'Please provide a password',
                                                     minlength: 'Your password must be at least 8 characters long'
                                                   }
+                                                },
+                                                submitHandler : function (form) {
+                                                  vm.authService.signIn(vm.user);
                                                 }
                                               });
     };

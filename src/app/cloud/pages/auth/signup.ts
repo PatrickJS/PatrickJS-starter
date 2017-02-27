@@ -3,6 +3,7 @@ import {
   OnInit
 } from '@angular/core';
 import {AuthService} from "../../services/ddp/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
              selector   : 'sign-up',
@@ -11,10 +12,13 @@ import {AuthService} from "../../services/ddp/auth.service";
 export class SignUpComponent implements OnInit {
   protected user = {username: "", email: "", password: "", acceptTerm: false};
   
-  constructor(protected authService: AuthService) { }
+  constructor(protected router: Router, protected authService: AuthService) { }
   
   ngOnInit() {
-    this.initPageJs();
+    if (this.authService.getCurrentUser())
+      this.router.navigate(['']);
+    else
+      this.initPageJs();
   }
   
   private initPageJs() {

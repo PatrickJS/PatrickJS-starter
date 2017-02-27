@@ -18,7 +18,7 @@
             <div class="form-group">
               <div class="col-xs-12">
                 <div class="form-material form-material-primary">
-                  <input class="form-control" type="text" id="login-username" name="login-username">
+                  <input class="form-control" type="text" id="login-username" name="login-username" [(ngModel)]="user.username">
                   <label for="login-username">Username</label>
                 </div>
               </div>
@@ -26,7 +26,7 @@
             <div class="form-group">
               <div class="col-xs-12">
                 <div class="form-material form-material-primary">
-                  <input class="form-control" type="password" id="login-password" name="login-password">
+                  <input class="form-control" type="password" id="login-password" name="login-password" [(ngModel)]="user.password">
                   <label for="login-password">Password</label>
                 </div>
               </div>
@@ -39,7 +39,7 @@
               </div>
               <div class="col-xs-6">
                 <div class="font-s13 text-right push-5-t">
-                  <a>Forgot Password?</a>
+                  <a (click)="router.navigate(['reset-password'])">Forgot Password?</a>
                 </div>
               </div>
             </div>

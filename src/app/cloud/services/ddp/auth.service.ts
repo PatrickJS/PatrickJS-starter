@@ -10,7 +10,8 @@ export class AuthService {
   // store the URL so we can redirect after logging in
   public redirectUrl: string;
   
-  constructor(protected toast: ToastsManager, protected router: Router) { }
+  constructor(protected toast: ToastsManager,
+              protected router: Router) { }
   
   getCurrentUser(forceUpdate: boolean = false) {
     if (typeof this.user == "undefined" || forceUpdate) {
@@ -55,9 +56,24 @@ export class AuthService {
           return reject(e);
         }
         this.getCurrentUser(true);
+        this.router.navigate(['']);
         resolve();
       });
     });
   }
   
+  signOut() {
+    return new Promise<void>((resolve, reject) => {
+      Meteor.logout((e: Error) => {
+        this.isLoading = false;
+        if (e && e['reason']) {
+          this.toast.error(e['reason'], e['error']);
+          return reject(e);
+        }
+        this.getCurrentUser(true);
+        this.router.navigate(['/signin']);
+        resolve();
+      });
+    });
+  }
 }
