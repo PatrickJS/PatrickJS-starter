@@ -50,6 +50,9 @@ import {CashierGridComponent} from "./cloud/pages/manage-shop/children/cashier-g
 import {ManageShopComponent} from "./cloud/pages/manage-shop/manage-shop";
 import {ShopRolesComponent} from "./cloud/pages/manage-shop/children/shop-roles";
 import {LicenseCollection} from "./cloud/services/ddp/collections/licenses";
+import {BillingPricingComponent} from "./cloud/pages/billing-pricing/billing-pricing";
+import {CloudBillingComponent} from "./cloud/pages/billing-pricing/children/billing";
+import {CloudPricingComponent} from "./cloud/pages/billing-pricing/children/pricing";
 
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
@@ -77,7 +80,10 @@ import {LicenseCollection} from "./cloud/services/ddp/collections/licenses";
               UserProfileComponent,
               ManageShopComponent,
               CashierGridComponent,
-              ShopRolesComponent
+              ShopRolesComponent,
+              BillingPricingComponent,
+              CloudBillingComponent,
+              CloudPricingComponent
             ],
             imports     : [ // import Angular's modules
               BrowserModule,

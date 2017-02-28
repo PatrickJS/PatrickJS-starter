@@ -16,6 +16,9 @@ import {UserProfileComponent} from "./cloud/pages/profile/profile";
 import {ManageShopComponent} from "./cloud/pages/manage-shop/manage-shop";
 import {CashierGridComponent} from "./cloud/pages/manage-shop/children/cashier-grid";
 import {ShopRolesComponent} from "./cloud/pages/manage-shop/children/shop-roles";
+import {BillingPricingComponent} from "./cloud/pages/billing-pricing/billing-pricing";
+import {CloudPricingComponent} from "./cloud/pages/billing-pricing/children/pricing";
+import {CloudBillingComponent} from "./cloud/pages/billing-pricing/children/billing";
 
 export const ROUTES: Routes = [
   {
@@ -64,6 +67,15 @@ export const ROUTES: Routes = [
           {path: '', component: CashierGridComponent},
           {path: 'grid', component: CashierGridComponent},
           {path: 'roles', component: ShopRolesComponent}
+        ]
+      },
+      {
+        path     : 'billing-pricing',
+        component: BillingPricingComponent,
+        children : [
+          {path: '', component: CloudPricingComponent},
+          {path: 'pricing', component: CloudPricingComponent},
+          {path: 'billing', component: CloudBillingComponent}
         ]
       }
     ]

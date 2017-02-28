@@ -87,9 +87,22 @@
             </ul>
           </li>
 
-          <li class="nav-main-heading"><span class="sidebar-mini-hide">Configurations</span></li>
+          <li class="nav-main-heading"><span class="sidebar-mini-hide">Manage Shop</span></li>
+          <li [ngClass]="{open: router.isActive('cloud/billing-pricing',false)}">
+            <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-drawer"></i>
+              <span class="sidebar-mini-hide">Billing & Pricing</span>
+            </a>
+            <ul>
+              <li>
+                <a routerLink="/cloud/billing-pricing/pricing" routerLinkActive="active">Pricing</a>
+              </li>
+              <li>
+                <a routerLink="/cloud/billing-pricing/billing" routerLinkActive="active">Billing</a>
+              </li>
+            </ul>
+          </li>
           <li [ngClass]="{open: router.isActive('cloud/manage-shop',false)}">
-            <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-wallet"></i>
+            <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-user"></i>
               <span class="sidebar-mini-hide">User Management</span>
             </a>
             <ul>
@@ -101,6 +114,7 @@
               </li>
             </ul>
           </li>
+
         </ul>
       </div>
       <!-- END Side Content -->
