@@ -20,7 +20,7 @@ export class FamilyService {
             .toPromise()
             .then((response) => {
                 console.log('FamilyService.getFamilies : ', response.json());
-                return response.json() as Family[]
+                return response.json() as Family[];
             })
             .catch(this.handleError);
 

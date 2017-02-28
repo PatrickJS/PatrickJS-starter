@@ -8,8 +8,8 @@ import { AddFamilyDialogComponent } from './add-family.component';
 
 @Component({
     selector: 'families',
-    template: require('./families.html')
-    // styles: [require('./families.scss')]
+    template: require('./families.html'),
+    styles: [require('./families.scss')]
 })
 export class FamiliesComponent implements OnInit {
 
@@ -54,7 +54,7 @@ export class FamiliesComponent implements OnInit {
     private getFamilies(): void {
         this.familyService.getFamilies().then((families) => {
             console.log('getFamilies : ', families);
-            this.families = families
+            this.families = families;
         });
     }
 
