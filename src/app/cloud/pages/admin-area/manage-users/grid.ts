@@ -17,8 +17,8 @@ export class ManageUsersGridComponent implements OnInit {
   protected tableConfig = {
     actionsColumn: {edit: true, remove: true},
     columns      : [
-      {data: "name", title: "Name"},
-      {data: "versions", title: "Versions"},
+      {data: "_id", title: "Name"},
+      {data: "emails", title: "Emails"},
     ],
     columnDefs   : [
       {className: "hidden-xs", "targets": [0]},

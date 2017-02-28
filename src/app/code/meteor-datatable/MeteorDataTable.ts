@@ -47,6 +47,7 @@ export class MeteorDataTable {
                                    // `data` option, which defaults to the column being worked with, in
                                    // this case `data: 0`.
                                    "render" : function (data, type, row) {
+                                     console.log(row);
                                      let _html = `<div class="btn-group">`;
                                      if (options['actionsColumn']['edit'] == true)
                                        _html += `<button class="btn btn-xs btn-default meteor-table-bt-edit" data-id="${data}" type="button" title="Edit Client">
