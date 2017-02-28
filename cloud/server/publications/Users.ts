@@ -17,8 +17,8 @@ Meteor.publishComposite('users', function (pattern: string): PublishCompositeCon
   return {
     find: () => {
       return Users.collection.find(selector, {
-        fields: {profile: 1},
-        limit: 15
+        fields: {profile: 1, username: 1, emails: 1, roles: 1},
+        limit : 15
       });
     }
   };

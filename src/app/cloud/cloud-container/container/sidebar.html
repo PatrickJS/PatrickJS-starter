@@ -65,8 +65,8 @@
             </a>
           </li>
 
-          <li class="nav-main-heading"><span class="sidebar-mini-hide">Admin Area</span></li>
-          <li [ngClass]="{open: router.isActive('cloud/licenses',false)}">
+          <li *ngIf="authService.canAccessAdmin()" class="nav-main-heading"><span class="sidebar-mini-hide">Admin Area</span></li>
+          <li *ngIf="authService.canAccessAdmin()" [ngClass]="{open: router.isActive('cloud/licenses',false)}">
             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-wallet"></i>
               <span class="sidebar-mini-hide">Manage License</span>
             </a>
@@ -93,7 +93,7 @@
               </li>
             </ul>
           </li>
-          <li [ngClass]="{open: router.isActive('cloud/products',false)}">
+          <li *ngIf="authService.canAccessAdmin()" [ngClass]="{open: router.isActive('cloud/products',false)}">
             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-rocket"></i>
               <span class="sidebar-mini-hide">Manage Products</span>
             </a>

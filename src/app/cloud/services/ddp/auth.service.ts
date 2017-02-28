@@ -3,11 +3,13 @@ import {ToastsManager} from "ng2-toastr";
 import {Router} from "@angular/router";
 import {MeteorObservable} from "meteor-rxjs";
 import {Observable} from "rxjs";
+import * as _ from "lodash";
 
 @Injectable()
 export class AuthService {
   protected user: any;
   protected isLoading: boolean = false;
+  protected _data              = {};
   
   // store the URL so we can redirect after logging in
   public redirectUrl: string;
@@ -92,8 +94,12 @@ export class AuthService {
     });
   }
   
-  isAdmin() {
-    // check admin
-    
+  canAccessAdmin() {
+    if (!this._data.hasOwnProperty('canAccessAdmin')) {
+      this.getUserRole().subscribe(roles => {
+        this._data['canAccessAdmin'] = _.size(_.intersection(roles, ['admin', 'sales', "super_admin"])) > 0;
+      });
+    }
+    return this._data['canAccessAdmin'];
   }
 }

@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import {AppState} from './app.service';
 import {ToastsManager} from "ng2-toastr";
+import {UserCollection} from "./cloud/services/ddp/collections/users";
 
 /*
  * App Component
@@ -29,7 +30,7 @@ import {ToastsManager} from "ng2-toastr";
            })
 export class AppComponent implements OnInit {
   
-  constructor(public toastr: ToastsManager, vcr: ViewContainerRef) {
+  constructor(public toastr: ToastsManager, vcr: ViewContainerRef,protected userCollection:UserCollection) {
     // Use with angular v2.2 or above
     this.toastr.setRootViewContainerRef(vcr);
   }

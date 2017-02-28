@@ -46,6 +46,7 @@ import {SignUpComponent} from "./cloud/pages/auth/signup";
 import {ResetPasswordComponent} from "./cloud/pages/auth/reset";
 import {LockAccountComponent} from "./cloud/pages/auth/lock";
 import {UserProfileComponent} from "./cloud/pages/profile/profile";
+import {UserCollection} from "./cloud/services/ddp/collections/users";
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -95,6 +96,7 @@ type StoreType = {
               ENV_PROVIDERS,
               APP_PROVIDERS,
               ProductCollection,
+              UserCollection,
               AuthService,
               AuthenticateGuard
             ]
