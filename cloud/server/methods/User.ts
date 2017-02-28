@@ -36,7 +36,6 @@ new ValidatedMethod({
   },
   run     : function () {
     let userModel: User = OM.create<User>(User).loadById(this.userId);
-    console.log(userModel.getData());
     return userModel.getRoles();
   }
 });

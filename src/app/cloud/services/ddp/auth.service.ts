@@ -94,12 +94,17 @@ export class AuthService {
     });
   }
   
-  canAccessAdmin() {
-    if (!this._data.hasOwnProperty('canAccessAdmin')) {
-      this.getUserRole().subscribe(roles => {
-        this._data['canAccessAdmin'] = _.size(_.intersection(roles, ['admin', 'sales', "super_admin"])) > 0;
-      });
-    }
-    return this._data['canAccessAdmin'];
+  canAccessAdmin(): Promise<boolean> {
+    return new Promise((resolve) => {
+      if (!this._data.hasOwnProperty('canAccessAdmin')) {
+        Meteor.call("user.get_roles", (err, roles) => {
+          this._data['canAccessAdmin'] = _.size(_.intersection(roles, ['admin', 'sales', "super_admin"])) > 0;
+          resolve(this._data['canAccessAdmin'])
+        });
+      }
+      else
+        resolve(this._data['canAccessAdmin']);
+    });
+    
   }
 }
