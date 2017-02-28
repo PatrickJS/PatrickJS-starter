@@ -87,8 +87,7 @@ export class Seeder {
       
       return {
         key          : Math.random().toString(36).substring(7),
-        status       : Math.floor(Math.random() * 9) % 2,
-        shop_owner_id: user_id,
+        status       : Math.floor(Math.random() * 9) % 3,
         has_product  : licensehasproduct,
         created_by   : Users.collection.findOne({"username": "superadmin"})._id
       };

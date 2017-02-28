@@ -4,14 +4,15 @@ import {
 } from "meteor-rxjs";
 import {
   Subscription,
-  Observable
+  Observable,
+  ReplaySubject
 } from "rxjs";
 
 export abstract class AbstractCollection {
   protected abstract $collection: string;
   protected _collection: MongoObservable.Collection<any>;
   protected _collectionSubscription: Subscription;
-  protected _collectionObservable: Observable<MongoObservable.Collection<any>>;
+  protected _collectionObservable: ReplaySubject<MongoObservable.Collection<any>>;
   
   getCollection(): MongoObservable.Collection<any> {
     if (typeof this._collection == "undefined") {
@@ -21,19 +22,18 @@ export abstract class AbstractCollection {
   }
   
   protected subscribeCollection(): void {
-    if (typeof this._collectionSubscription == "undefined") {
-      this._collectionObservable = new Observable(ob => {
-        MeteorObservable.subscribe(this.$collection).subscribe(() => {
-          this._collectionSubscription = MeteorObservable.autorun().subscribe(() => {
-            ob.next(this.getCollection());
-          });
+    if (typeof this._collectionObservable == "undefined") {
+      this._collectionObservable = new ReplaySubject(1);
+      MeteorObservable.subscribe(this.$collection).subscribe(() => {
+        this._collectionSubscription = MeteorObservable.autorun().subscribe(() => {
+          this._collectionObservable.next(this.getCollection());
         });
-      }).share();
+      });
     }
   }
   
   getCollectionObservable(): Observable<MongoObservable.Collection<any>> {
     this.subscribeCollection();
-    return this._collectionObservable;
+    return this._collectionObservable.asObservable().share();
   }
 }
