@@ -54,6 +54,7 @@ import {CloudBillingComponent} from "./cloud/pages/billing-pricing/children/bill
 import {CloudPricingComponent} from "./cloud/pages/billing-pricing/children/pricing";
 import {ManageUsersComponent} from "./cloud/pages/admin-area/manage-users";
 import {ManageUsersGridComponent} from "./cloud/pages/admin-area/manage-users/grid";
+import {LicenseCollection} from "./cloud/services/ddp/collections/licenses";
 
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
@@ -100,6 +101,7 @@ import {ManageUsersGridComponent} from "./cloud/pages/admin-area/manage-users/gr
               ENV_PROVIDERS,
               AppService,
               ProductCollection,
+              LicenseCollection,
               UserCollection,
               AuthService,
               AuthenticateGuard
