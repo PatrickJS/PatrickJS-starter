@@ -1,5 +1,3 @@
-
-
 <md-list>
     <md-list-item *ngFor="let family of families">
         <md-icon md-list-avatar>folder</md-icon>
@@ -18,3 +16,8 @@
 <pre>
 {{ families | json}}
 </pre>
+
+<div style="z-index:400; position: absolute; bottom: 0;">
+    <ng2-float-btn [mainButton]="mainButton" [buttons]="buttons" [direction]="'up'">
+    </ng2-float-btn>
+</div>

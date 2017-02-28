@@ -1,9 +1,11 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { GlobalState } from '../global-state.service';
 
+import { MdDialog, MdDialogRef } from '@angular/material';
+import { Ng2FloatBtnComponent, Ng2FloatBtn } from 'ng2-float-btn';
+
 import { FamilyService } from '../model/family.service';
 import { Family } from '../model/family.model';
-import { MdDialog, MdDialogRef } from '@angular/material';
 import { AddFamilyDialogComponent } from './add-family.component';
 
 @Component({
@@ -15,11 +17,33 @@ export class FamiliesComponent implements OnInit {
 
     public families: Family[];
     public selectedOption: string;
+    public mainButton: Ng2FloatBtn;
+    public buttons: Ng2FloatBtn[];
 
     constructor(
         private familyService: FamilyService,
         private _state: GlobalState,
         private dialog: MdDialog) {
+        this.mainButton = {
+            color: 'primary',
+            iconName: 'check'
+        };
+
+        this.buttons = [
+            {
+                color: 'warning',
+                iconName: 'add',
+                onClick: () => {
+                    alert('buton 1 clicked');
+                },
+            },
+            {
+                color: 'accent',
+                iconName: 'remove',
+                onClick: () => {
+                    alert('buton 2 clicked');
+                },
+        ];
     }
 
     public openDialog() {
