@@ -91,4 +91,8 @@ export class AuthService {
       });
     });
   }
+  
+  isAdmin() {
+    
+  }
 }
