@@ -2,14 +2,17 @@ import {
   Component,
   OnInit
 } from '@angular/core';
+import {BillingPricingService} from "../billing-pricing.service";
 
 @Component({
-             selector: 'cloud-billing',
+             selector   : 'cloud-billing',
              templateUrl: 'billing.html'
            })
 export class CloudBillingComponent implements OnInit {
-  constructor() { }
+  constructor(protected billingPricingService: BillingPricingService) { }
   
-  ngOnInit() { }
+  ngOnInit() {
+    this.billingPricingService.viewState.headerText = "Billing";
+  }
   
 }
