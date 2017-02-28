@@ -65,58 +65,39 @@
             </a>
           </li>
 
-          <li *ngIf="authService.canAccessAdmin()" class="nav-main-heading"><span class="sidebar-mini-hide">Admin Area</span></li>
-          <li *ngIf="authService.canAccessAdmin()" [ngClass]="{open: router.isActive('cloud/licenses',false)}">
+          <li *ngIf="_canAccessAdmin" class="nav-main-heading"><span class="sidebar-mini-hide">Admin Area</span></li>
+          <li *ngIf="_canAccessAdmin" [ngClass]="{open: router.isActive('cloud/licenses',false)}">
             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-wallet"></i>
               <span class="sidebar-mini-hide">Manage License</span>
             </a>
             <ul>
               <li>
-                <a routerLink="/cloud/licenses" routerLinkActive="active">License</a>
-              </li>
-              <li>
-                <a class="nav-submenu" data-toggle="nav-submenu" href="#">Blocks</a>
-                <ul>
-                  <li>
-                    <a href="base_ui_blocks.html">Styles</a>
-                  </li>
-                  <li>
-                    <a href="base_ui_blocks_api.html">Blocks API</a>
-                  </li>
-                  <li>
-                    <a href="base_ui_blocks_draggable.html">Draggable</a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a href="base_ui_grid.html">Grid</a>
+                <a routerLink="/cloud/licenses/grid" routerLinkActive="active">License</a>
               </li>
             </ul>
           </li>
-          <li *ngIf="authService.canAccessAdmin()" [ngClass]="{open: router.isActive('cloud/products',false)}">
+          <li *ngIf="_canAccessAdmin" [ngClass]="{open: router.isActive('cloud/products',false)}">
             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-rocket"></i>
               <span class="sidebar-mini-hide">Manage Products</span>
             </a>
             <ul>
               <li>
-                <a routerLink="/cloud/products" routerLinkActive="active">Products</a>
+                <a routerLink="/cloud/products/grid" routerLinkActive="active">Products</a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-main-heading"><span class="sidebar-mini-hide">Configurations</span></li>
+          <li [ngClass]="{open: router.isActive('cloud/manage-shop',false)}">
+            <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-wallet"></i>
+              <span class="sidebar-mini-hide">User Management</span>
+            </a>
+            <ul>
+              <li>
+                <a routerLink="/cloud/manage-shop/grid" routerLinkActive="active">Cashiers</a>
               </li>
               <li>
-                <a class="nav-submenu" data-toggle="nav-submenu" href="#">Blocks</a>
-                <ul>
-                  <li>
-                    <a href="base_ui_blocks.html">Styles</a>
-                  </li>
-                  <li>
-                    <a href="base_ui_blocks_api.html">Blocks API</a>
-                  </li>
-                  <li>
-                    <a href="base_ui_blocks_draggable.html">Draggable</a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a href="base_ui_grid.html">Grid</a>
+                <a routerLink="/cloud/manage-shop/roles" routerLinkActive="active">Roles</a>
               </li>
             </ul>
           </li>

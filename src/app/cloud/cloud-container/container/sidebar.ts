@@ -10,10 +10,16 @@ import {AuthService} from "../../services/ddp/auth.service";
              templateUrl: 'sidebar.html'
            })
 export class SideBarComponent implements OnInit {
+  protected _canAccessAdmin: boolean;
+  
   constructor(protected authService: AuthService,
               protected router: Router) { }
   
   ngOnInit() {
+    this.authService.canAccessAdmin().then((d) => {
+      this._canAccessAdmin = d;
+      setTimeout(() => { OneUI['init']('uiNav');}, 500);
+    });
   }
   
 }

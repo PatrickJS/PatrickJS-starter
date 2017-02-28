@@ -331,7 +331,7 @@ window.AppTheme = function () {
   // Main navigation functionality
   var uiNav = function () {
     // When a submenu link is clicked
-    jQuery('[data-toggle="nav-submenu"]').on(
+    jQuery('[data-toggle="nav-submenu"]').unbind("click").on(
       'click', function (e) {
         // Get link
         var $link = jQuery(this);
