@@ -1,36 +1,24 @@
-import { Injectable } from '@angular/core';
-
-export type InternalStateType = {
-  [key: string]: any
-};
+import {Injectable} from '@angular/core';
+import {Subject} from "rxjs";
+import * as _ from "lodash";
 
 @Injectable()
-export class AppState {
-
-  public _state: InternalStateType = { };
-
-  // already return a clone of the current state
-  public get state() {
-    return this._state = this._clone(this._state);
+export class AppService {
+  viewState = {isOverLoad: false};
+  _stream   = {};
+  modules   = {};
+  data      = {
+    isInstalledModule: {}
+  };
+  
+  overload(isOverLoad: boolean = true): void {
+    this.viewState['isOverLoad'] = isOverLoad;
   }
-  // never allow mutation
-  public set state(value) {
-    throw new Error('do not mutate the `.state` directly');
-  }
-
-  public get(prop?: any) {
-    // use our state getter for the clone
-    const state = this.state;
-    return state.hasOwnProperty(prop) ? state[prop] : state;
-  }
-
-  public set(prop: string, value: any) {
-    // internally mutate our state
-    return this._state[prop] = value;
-  }
-
-  private _clone(object: InternalStateType) {
-    // simple object clone
-    return JSON.parse(JSON.stringify( object ));
+  
+  getChangeDetectorStream() {
+    if (!this._stream.hasOwnProperty('changeDetect')) {
+      this._stream['changeDetect'] = new Subject();
+    }
+    return this._stream['changeDetect'];
   }
 }

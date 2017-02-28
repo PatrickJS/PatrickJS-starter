@@ -5,11 +5,12 @@ import {
   Component,
   OnInit,
   ViewEncapsulation,
-  ViewContainerRef
+  ViewContainerRef,
+  ChangeDetectorRef
 } from '@angular/core';
-import {AppState} from './app.service';
 import {ToastsManager} from "ng2-toastr";
-import {UserCollection} from "./cloud/services/ddp/collections/users";
+import {AppService} from "./app.service";
+import {AbstractRxComponent} from "./code/angular/AbstractRxComponent";
 
 /*
  * App Component
@@ -28,15 +29,21 @@ import {UserCollection} from "./cloud/services/ddp/collections/users";
     <router-outlet></router-outlet>
   `
            })
-export class AppComponent implements OnInit {
+export class AppComponent extends AbstractRxComponent implements OnInit {
   
-  constructor(public toastr: ToastsManager, vcr: ViewContainerRef,protected userCollection:UserCollection) {
+  constructor(public toastr: ToastsManager,
+              vcr: ViewContainerRef,
+              protected appService: AppService,
+              protected changeDetector: ChangeDetectorRef) {
+    super();
     // Use with angular v2.2 or above
     this.toastr.setRootViewContainerRef(vcr);
   }
   
-  public ngOnInit() {
-    console.log('Initial App');
+  ngOnInit(): void {
+    this._subscription['changeDetect'] = this.appService.getChangeDetectorStream().subscribe(() => {
+      this.changeDetector.detectChanges();
+    });
   }
   
 }
