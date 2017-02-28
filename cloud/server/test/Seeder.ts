@@ -27,8 +27,8 @@ export class Seeder {
                         version: "0.0." + Math.round(Math.random() * 10),
                       });
       }
-      
       return {
+        _id     : _first ? "xpos_xreport" : null,
         name    : _first ? "X-POS & X-Report" : Math.random().toString(36).substring(7),
         versions: versions,
       }

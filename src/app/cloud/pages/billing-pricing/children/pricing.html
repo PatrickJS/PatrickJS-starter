@@ -141,146 +141,147 @@
     </div>
   </div>
 
-  <h2 class="content-heading">X-POS & X-Report</h2>
-  <div class="row">
-    <div class="col-sm-6 col-lg-3">
-      <!-- Developer Plan -->
-      <a class="block block-link-hover2 text-center" href="javascript:void(0)">
-        <div class="block-header">
-          <h3 class="block-title">Developer</h3>
-        </div>
-        <div class="block-content block-content-full bg-warning">
-          <div class="h1 font-w700 text-white push-10">$9</div>
-          <div class="h5 font-w300 text-white-op">per month</div>
-        </div>
-        <div class="block-content">
-          <table class="table table-borderless table-condensed">
-            <tbody>
-            <tr>
-              <td><strong>2</strong> Projects</td>
-            </tr>
-            <tr>
-              <td><strong>10GB</strong> Storage</td>
-            </tr>
-            <tr>
-              <td><strong>15</strong> Clients</td>
-            </tr>
-            <tr>
-              <td><strong>Email</strong> Support</td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="block-content block-content-mini block-content-full bg-gray-lighter">
-          <span class="btn btn-warning">Sign Up</span>
-        </div>
-      </a>
-      <!-- END Developer Plan -->
-    </div>
-    <div class="col-sm-6 col-lg-3">
-      <!-- Startup Plan -->
-      <a class="block block-link-hover2 text-center" href="javascript:void(0)">
-        <div class="block-header">
-          <h3 class="block-title">Startup</h3>
-        </div>
-        <div class="block-content block-content-full bg-primary">
-          <div class="h1 font-w700 push-10">$29</div>
-          <div class="h5 font-w300 text-white-op">per month</div>
-        </div>
-        <div class="block-content">
-          <table class="table table-borderless table-condensed">
-            <tbody>
-            <tr>
-              <td><strong>10</strong> Projects</td>
-            </tr>
-            <tr>
-              <td><strong>30GB</strong> Storage</td>
-            </tr>
-            <tr>
-              <td><strong>100</strong> Clients</td>
-            </tr>
-            <tr>
-              <td><strong>FULL</strong> Support</td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="block-content block-content-mini block-content-full bg-gray-lighter">
-          <span class="btn btn-primary">Sign Up</span>
-        </div>
-      </a>
-      <!-- END Startup Plan -->
-    </div>
-    <div class="col-sm-6 col-lg-3">
-      <!-- Business Plan -->
-      <a class="block block-link-hover2 text-center" href="javascript:void(0)">
-        <div class="block-header">
-          <h3 class="block-title">Business</h3>
-        </div>
-        <div class="block-content block-content-full bg-danger">
-          <div class="h1 font-w700 text-white push-10">$49</div>
-          <div class="h5 font-w300 text-white-op">per month</div>
-        </div>
-        <div class="block-content">
-          <table class="table table-borderless table-condensed">
-            <tbody>
-            <tr>
-              <td><strong>50</strong> Projects</td>
-            </tr>
-            <tr>
-              <td><strong>100GB</strong> Storage</td>
-            </tr>
-            <tr>
-              <td><strong>1000</strong> Clients</td>
-            </tr>
-            <tr>
-              <td><strong>FULL</strong> Support</td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="block-content block-content-mini block-content-full bg-gray-lighter">
-          <span class="btn btn-danger">Sign Up</span>
-        </div>
-      </a>
-      <!-- END Business Plan -->
-    </div>
-    <div class="col-sm-6 col-lg-3">
-      <!-- VIP Plan -->
-      <a class="block block-link-hover2 text-center" href="javascript:void(0)">
-        <div class="block-header">
-          <h3 class="block-title">VIP</h3>
-        </div>
-        <div class="block-content block-content-full bg-success">
-          <div class="h1 font-w700 text-white push-10">$99</div>
-          <div class="h5 font-w300 text-white-op">per month</div>
-        </div>
-        <div class="block-content">
-          <table class="table table-borderless table-condensed">
-            <tbody>
-            <tr>
-              <td><strong>Unlimited</strong> Projects</td>
-            </tr>
-            <tr>
-              <td><strong>Unlimited</strong> Storage</td>
-            </tr>
-            <tr>
-              <td><strong>Unlimited</strong> Clients</td>
-            </tr>
-            <tr>
-              <td><strong>FULL</strong> Support</td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="block-content block-content-mini block-content-full bg-gray-lighter">
-          <span class="btn btn-success">Sign Up</span>
-        </div>
-      </a>
-      <!-- END VIP Plan -->
+  <div *ngFor="let product of products |async;trackBy:product?._id">
+    <h2 class="content-heading">{{product['name']}}</h2>
+    <div class="row">
+      <div class="col-sm-6 col-lg-3">
+        <!-- Developer Plan -->
+        <a class="block block-link-hover2 text-center" href="javascript:void(0)">
+          <div class="block-header">
+            <h3 class="block-title">Developer</h3>
+          </div>
+          <div class="block-content block-content-full bg-warning">
+            <div class="h1 font-w700 text-white push-10">$9</div>
+            <div class="h5 font-w300 text-white-op">per month</div>
+          </div>
+          <div class="block-content">
+            <table class="table table-borderless table-condensed">
+              <tbody>
+              <tr>
+                <td><strong>2</strong> Projects</td>
+              </tr>
+              <tr>
+                <td><strong>10GB</strong> Storage</td>
+              </tr>
+              <tr>
+                <td><strong>15</strong> Clients</td>
+              </tr>
+              <tr>
+                <td><strong>Email</strong> Support</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="block-content block-content-mini block-content-full bg-gray-lighter">
+            <span class="btn btn-warning">Sign Up</span>
+          </div>
+        </a>
+        <!-- END Developer Plan -->
+      </div>
+      <div class="col-sm-6 col-lg-3">
+        <!-- Startup Plan -->
+        <a class="block block-link-hover2 text-center" href="javascript:void(0)">
+          <div class="block-header">
+            <h3 class="block-title">Startup</h3>
+          </div>
+          <div class="block-content block-content-full bg-primary">
+            <div class="h1 font-w700 push-10">$29</div>
+            <div class="h5 font-w300 text-white-op">per month</div>
+          </div>
+          <div class="block-content">
+            <table class="table table-borderless table-condensed">
+              <tbody>
+              <tr>
+                <td><strong>10</strong> Projects</td>
+              </tr>
+              <tr>
+                <td><strong>30GB</strong> Storage</td>
+              </tr>
+              <tr>
+                <td><strong>100</strong> Clients</td>
+              </tr>
+              <tr>
+                <td><strong>FULL</strong> Support</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="block-content block-content-mini block-content-full bg-gray-lighter">
+            <span class="btn btn-primary">Sign Up</span>
+          </div>
+        </a>
+        <!-- END Startup Plan -->
+      </div>
+      <div class="col-sm-6 col-lg-3">
+        <!-- Business Plan -->
+        <a class="block block-link-hover2 text-center" href="javascript:void(0)">
+          <div class="block-header">
+            <h3 class="block-title">Business</h3>
+          </div>
+          <div class="block-content block-content-full bg-danger">
+            <div class="h1 font-w700 text-white push-10">$49</div>
+            <div class="h5 font-w300 text-white-op">per month</div>
+          </div>
+          <div class="block-content">
+            <table class="table table-borderless table-condensed">
+              <tbody>
+              <tr>
+                <td><strong>50</strong> Projects</td>
+              </tr>
+              <tr>
+                <td><strong>100GB</strong> Storage</td>
+              </tr>
+              <tr>
+                <td><strong>1000</strong> Clients</td>
+              </tr>
+              <tr>
+                <td><strong>FULL</strong> Support</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="block-content block-content-mini block-content-full bg-gray-lighter">
+            <span class="btn btn-danger">Sign Up</span>
+          </div>
+        </a>
+        <!-- END Business Plan -->
+      </div>
+      <div class="col-sm-6 col-lg-3">
+        <!-- VIP Plan -->
+        <a class="block block-link-hover2 text-center" href="javascript:void(0)">
+          <div class="block-header">
+            <h3 class="block-title">VIP</h3>
+          </div>
+          <div class="block-content block-content-full bg-success">
+            <div class="h1 font-w700 text-white push-10">$99</div>
+            <div class="h5 font-w300 text-white-op">per month</div>
+          </div>
+          <div class="block-content">
+            <table class="table table-borderless table-condensed">
+              <tbody>
+              <tr>
+                <td><strong>Unlimited</strong> Projects</td>
+              </tr>
+              <tr>
+                <td><strong>Unlimited</strong> Storage</td>
+              </tr>
+              <tr>
+                <td><strong>Unlimited</strong> Clients</td>
+              </tr>
+              <tr>
+                <td><strong>FULL</strong> Support</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="block-content block-content-mini block-content-full bg-gray-lighter">
+            <span class="btn btn-success">Sign Up</span>
+          </div>
+        </a>
+        <!-- END VIP Plan -->
+      </div>
     </div>
   </div>
-  <!-- END Modern Design -->
 
   <!-- Classic Design -->
   <h2 class="content-heading" *ngIf="false">Classic Design</h2>
