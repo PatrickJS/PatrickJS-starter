@@ -4,6 +4,8 @@ import {ManageLicensesComponent} from "./cloud/pages/admin-area/manage-licenses"
 import {ManageLicensesGridComponent} from "./cloud/pages/admin-area/manage-licenses/grid";
 import {ManageProductsComponent} from "./cloud/pages/admin-area/manage-products";
 import {ManageProductsGridComponent} from "./cloud/pages/admin-area/manage-products/grid";
+import {ManageUsersComponent} from "./cloud/pages/admin-area/manage-users";
+import {ManageUsersGridComponent} from "./cloud/pages/admin-area/manage-users/grid";
 import {Routes} from "@angular/router";
 import {ContainerComponent} from "./cloud/cloud-container/container";
 import {PageNotFoundComponent} from "./cloud/pages/404/not-found";
@@ -46,6 +48,13 @@ export const ROUTES: Routes = [
         component: ManageProductsComponent,
         children : [
           {path: '', component: ManageProductsGridComponent}
+        ]
+      },
+      {
+        path     : 'users',
+        component: ManageUsersComponent,
+        children : [
+          {path: '', component: ManageUsersGridComponent}
         ]
       }
     ]

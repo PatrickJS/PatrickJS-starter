@@ -48,6 +48,8 @@ import {LockAccountComponent} from "./cloud/pages/auth/lock";
 import {UserProfileComponent} from "./cloud/pages/profile/profile";
 import {UserCollection} from "./cloud/services/ddp/collections/users";
 import {LicenseCollection} from "./cloud/services/ddp/collections/licenses";
+import {ManageUsersComponent} from "./cloud/pages/admin-area/manage-users";
+import {ManageUsersGridComponent} from "./cloud/pages/admin-area/manage-users/grid";
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -79,6 +81,8 @@ type StoreType = {
               ManageLicensesGridComponent,
               ManageProductsComponent,
               ManageProductsGridComponent,
+              ManageUsersComponent,
+              ManageUsersGridComponent,
               SignInComponent,
               SignUpComponent,
               ResetPasswordComponent,

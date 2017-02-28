@@ -1,7 +1,7 @@
 import {Users} from "../collections/Users";
 import {UserInterface} from "../models/UserInterface";
 
-Meteor.publishComposite('users', function (pattern: string): PublishCompositeConfig<UserInterface> {
+Meteor.publishComposite('usersQuery', function (pattern: string): PublishCompositeConfig<UserInterface> {
   if (!this.userId) {
     return;
   }
