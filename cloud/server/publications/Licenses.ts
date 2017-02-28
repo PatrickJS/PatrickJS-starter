@@ -12,7 +12,7 @@ Meteor.publishComposite("licenses", function (): PublishCompositeConfig<LicenseI
   if (user.isInRoles([Role.SUPERADMIN, Role.ADMIN], Role.GROUP_CLOUD)) {
     return {
       find: () => {
-        return Licenses.collection.find({memberIds: this.userId});
+        return Licenses.collection.find({});
       },
     };
   } else if (user.isInRoles([Role.AGENCY, Role.SALES, Role.USER], Role.GROUP_CLOUD)) {
