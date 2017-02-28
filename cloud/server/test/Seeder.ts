@@ -99,9 +99,6 @@ export class Seeder {
 
   randomCheckIdObject(array: any[]){
     let id = this.randomIdObject(array);
-    while(array.indexOf(id)!=-1){
-      id = this.randomIdObject(array);
-    }
     return id;
   }
 
