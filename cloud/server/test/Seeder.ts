@@ -93,7 +93,7 @@ export class Seeder {
     
     for (let i = 0; i < 10; i++) {
       let _l = OM.create<License>(License, false, _license());
-      _l.save();//dsa
+      _l.save();
     }
   }
 
