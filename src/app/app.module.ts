@@ -49,6 +49,7 @@ import {UserCollection} from "./cloud/services/ddp/collections/users";
 import {CashierGridComponent} from "./cloud/pages/manage-shop/children/cashier-grid";
 import {ManageShopComponent} from "./cloud/pages/manage-shop/manage-shop";
 import {ShopRolesComponent} from "./cloud/pages/manage-shop/children/shop-roles";
+import {LicenseCollection} from "./cloud/services/ddp/collections/licenses";
 
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
@@ -90,6 +91,7 @@ import {ShopRolesComponent} from "./cloud/pages/manage-shop/children/shop-roles"
               ENV_PROVIDERS,
               AppService,
               ProductCollection,
+              LicenseCollection,
               UserCollection,
               AuthService,
               AuthenticateGuard
