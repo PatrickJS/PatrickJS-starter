@@ -43,6 +43,13 @@ import {SideBarComponent} from "./cloud/cloud-container/container/sidebar";
 import {SideOverlayComponent} from "./cloud/cloud-container/container/side-overlay";
 import {PageNotFoundComponent} from "./cloud/pages/404/not-found";
 import {AngularHelperModule} from "./code/angular/index";
+import {SignInComponent} from "./cloud/pages/auth/signin";
+import {AuthService} from "./cloud/services/ddp/auth.service";
+import {AuthenticateGuard} from "./cloud/services/router-guard/authenticate";
+import {SignUpComponent} from "./cloud/pages/auth/signup";
+import {ResetPasswordComponent} from "./cloud/pages/auth/reset";
+import {LockAccountComponent} from "./cloud/pages/auth/lock";
+import {UserProfileComponent} from "./cloud/pages/profile/profile";
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -76,6 +83,11 @@ type StoreType = {
               ManageProductsGridComponent,
               ManagePricingComponent,
               ManagePricingGridComponent,
+              SignInComponent,
+              SignUpComponent,
+              ResetPasswordComponent,
+              LockAccountComponent,
+              UserProfileComponent
             ],
             imports     : [ // import Angular's modules
               BrowserModule,
@@ -90,7 +102,9 @@ type StoreType = {
               APP_PROVIDERS,
               LicenseCollection,
               ProductCollection,
-              PricingCollection
+              PricingCollection,
+              AuthService,
+              AuthenticateGuard
             ]
           })
 export class AppModule {
