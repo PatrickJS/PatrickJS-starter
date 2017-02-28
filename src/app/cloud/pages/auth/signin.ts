@@ -63,7 +63,8 @@ export class SignInComponent implements OnInit {
                                                   }
                                                 },
                                                 submitHandler : function (form) {
-                                                  vm.authService.signIn(vm.user).then(() => {}, err => {});
+                                                  vm.authService.signIn(vm.user).then(() => {}, err => {
+                                                  });
                                                 }
                                               });
     };
