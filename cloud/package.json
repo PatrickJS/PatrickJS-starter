@@ -1,0 +1,26 @@
+{
+  "name": "api",
+  "private": true,
+  "scripts": {
+    "meteor-client": "meteor-client bundle",
+    "start": "export MONGO_URL=mongodb://localhost:27017/cloud && meteor run",
+    "debug": "export MONGO_URL=mongodb://localhost:27017/cloud && meteor debug"
+  },
+  "dependencies": {
+    "@types/lodash": "^4.14.52",
+    "@types/meteor-publish-composite": "0.0.32",
+    "babel-runtime": "6.18.0",
+    "lodash": "^4.17.4",
+    "meteor-node-stubs": "~0.2.0",
+    "meteor-rxjs": "^0.4.7",
+    "moment": "^2.17.1",
+    "q": "^1.4.1",
+    "rxjs": "^5.1.1",
+    "simpl-schema": "^0.2.2",
+    "unique-string": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/meteor": "^1.3.31",
+    "meteor-typings": "^1.3.1"
+  }
+}

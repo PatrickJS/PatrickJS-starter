@@ -4,6 +4,7 @@ import {AuthComponent} from "./cloud/pages/auth/auth.component";
 import {ManageLicensesComponent} from "./cloud/pages/admin-area/manage-licenses";
 import {ManageLicensesGridComponent} from "./cloud/pages/admin-area/manage-licenses/grid";
 import {ManageProductsComponent} from "./cloud/pages/admin-area/manage-products";
+import {ProductComponent} from "./cloud/pages/admin-area/manage-products/product";
 import {ManageProductsGridComponent} from "./cloud/pages/admin-area/manage-products/grid";
 import {ManagePricingComponent} from "./cloud/pages/admin-area/manage-pricing";
 import {ManagePricingGridComponent} from "./cloud/pages/admin-area/manage-pricing/grid";
@@ -50,6 +51,10 @@ export const ROUTES: Routes = [
         children : [
           {path: '', component: ManageProductsGridComponent}
         ]
+      },
+      {
+        path     : 'products/:id',
+        component: ProductComponent,
       },
       {
         path     : 'pricing',

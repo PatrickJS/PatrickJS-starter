@@ -6,6 +6,7 @@ import {
 import {ManageProductsService} from "./manage-products.service";
 import {ProductCollection} from "../../../services/ddp/collections/products";
 import {AngularMeteorDataTableComponent} from "../../../../code/angular/components/angular-meteor-datatable";
+import * as _ from "lodash";
 
 @Component({
              selector   : 'manage-products-grid',
@@ -21,8 +22,25 @@ export class ManageProductsGridComponent implements OnInit {
       {data: "versions", title: "Versions"},
     ],
     columnDefs   : [
-      {className: "hidden-xs", "targets": [0]},
-      {className: "text-center", orderable: false, "targets": [1]},
+      {
+        className: "hidden-xs", 
+        "render": function(data, type, row){
+          let _html = '<a (click)="detailProduct();">' + data +"</a>";
+          return _html;
+        },
+        "targets": [0]},
+      {
+        className: "text-center",
+        "render": function(data, type, row){
+          let _html = "";
+          _.forEach(data, (item) => {
+            _html += "<div>" + item.version + "</div>";
+          });
+          return _html;
+        }, 
+        orderable: false, 
+        "targets": [1]
+      },
     ],
     bFilter      : false,
   };
@@ -34,5 +52,9 @@ export class ManageProductsGridComponent implements OnInit {
   
   ngOnInit(): void {
     this.angularMeteorDtTable.getCallBackObservable().subscribe((data) => {console.log(data);});
+  }
+
+  detailProduct(){
+    console.log('abc');
   }
 }
