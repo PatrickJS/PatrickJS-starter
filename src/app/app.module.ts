@@ -46,6 +46,9 @@ import {ResetPasswordComponent} from "./cloud/pages/auth/reset";
 import {LockAccountComponent} from "./cloud/pages/auth/lock";
 import {UserProfileComponent} from "./cloud/pages/profile/profile";
 import {UserCollection} from "./cloud/services/ddp/collections/users";
+import {CashierGridComponent} from "./cloud/pages/manage-shop/children/cashier-grid";
+import {ManageShopComponent} from "./cloud/pages/manage-shop/manage-shop";
+import {ShopRolesComponent} from "./cloud/pages/manage-shop/children/shop-roles";
 
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
@@ -70,7 +73,10 @@ import {UserCollection} from "./cloud/services/ddp/collections/users";
               SignUpComponent,
               ResetPasswordComponent,
               LockAccountComponent,
-              UserProfileComponent
+              UserProfileComponent,
+              ManageShopComponent,
+              CashierGridComponent,
+              ShopRolesComponent
             ],
             imports     : [ // import Angular's modules
               BrowserModule,

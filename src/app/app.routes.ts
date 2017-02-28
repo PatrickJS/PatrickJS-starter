@@ -13,6 +13,9 @@ import {SignUpComponent} from "./cloud/pages/auth/signup";
 import {ResetPasswordComponent} from "./cloud/pages/auth/reset";
 import {LockAccountComponent} from "./cloud/pages/auth/lock";
 import {UserProfileComponent} from "./cloud/pages/profile/profile";
+import {ManageShopComponent} from "./cloud/pages/manage-shop/manage-shop";
+import {CashierGridComponent} from "./cloud/pages/manage-shop/children/cashier-grid";
+import {ShopRolesComponent} from "./cloud/pages/manage-shop/children/shop-roles";
 
 export const ROUTES: Routes = [
   {
@@ -34,18 +37,33 @@ export const ROUTES: Routes = [
         path     : 'profile',
         component: UserProfileComponent
       },
+      
+      /* ------------------------ Admin Area ------------------------ */
       {
         path     : 'licenses',
         component: ManageLicensesComponent,
         children : [
-          {path: '', component: ManageLicensesGridComponent}
+          {path: '', component: ManageLicensesGridComponent},
+          {path: 'grid', component: ManageLicensesGridComponent}
         ]
       },
       {
         path     : 'products',
         component: ManageProductsComponent,
         children : [
-          {path: '', component: ManageProductsGridComponent}
+          {path: '', component: ManageProductsGridComponent},
+          {path: 'grid', component: ManageProductsGridComponent}
+        ]
+      },
+      
+      /* ------------------------ User Area ------------------------ */
+      {
+        path     : 'manage-shop',
+        component: ManageShopComponent,
+        children : [
+          {path: '', component: CashierGridComponent},
+          {path: 'grid', component: CashierGridComponent},
+          {path: 'roles', component: ShopRolesComponent}
         ]
       }
     ]
