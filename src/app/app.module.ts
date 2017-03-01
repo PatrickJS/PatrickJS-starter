@@ -49,12 +49,15 @@ import {UserCollection} from "./cloud/services/ddp/collections/users";
 import {CashierGridComponent} from "./cloud/pages/manage-shop/children/cashier-grid";
 import {ManageShopComponent} from "./cloud/pages/manage-shop/manage-shop";
 import {ShopRolesComponent} from "./cloud/pages/manage-shop/children/shop-roles";
+import {LicenseCollection} from "./cloud/services/ddp/collections/licenses";
 import {BillingPricingComponent} from "./cloud/pages/billing-pricing/billing-pricing";
 import {CloudBillingComponent} from "./cloud/pages/billing-pricing/children/billing";
 import {CloudPricingComponent} from "./cloud/pages/billing-pricing/children/pricing";
 import {ManageUsersComponent} from "./cloud/pages/admin-area/manage-users";
 import {ManageUsersGridComponent} from "./cloud/pages/admin-area/manage-users/grid";
 import {LicenseCollection} from "./cloud/services/ddp/collections/licenses";
+import {CreateProductComponent} from "./cloud/pages/admin-area/manage-products/create";
+import {CreateLicenseComponent} from "./cloud/pages/admin-area/manage-licenses/create";
 
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
@@ -87,7 +90,9 @@ import {LicenseCollection} from "./cloud/services/ddp/collections/licenses";
               ShopRolesComponent,
               BillingPricingComponent,
               CloudBillingComponent,
-              CloudPricingComponent
+              CloudPricingComponent,
+              CreateProductComponent,
+              CreateLicenseComponent
             ],
             imports     : [ // import Angular's modules
               BrowserModule,
@@ -101,6 +106,7 @@ import {LicenseCollection} from "./cloud/services/ddp/collections/licenses";
               ENV_PROVIDERS,
               AppService,
               ProductCollection,
+              LicenseCollection,
               UserCollection,
               LicenseCollection,
               AuthService,
