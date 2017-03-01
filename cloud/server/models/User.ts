@@ -9,7 +9,6 @@ export class User extends AbstractModel {
   protected $collection             = "users";
   static LICENSE_PERMISSION_SALES   = 'sales';
   static LICENSE_PERMISSION_AGENCY  = 'agency';
-  static LICENSE_PERMISSION_USER    = 'user';
   static LICENSE_PERMISSION_OWNER   = 'owner';
   static LICENSE_PERMISSION_CASHIER = 'cashier';
   
