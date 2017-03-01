@@ -15,6 +15,7 @@ export class ManageLicensesGridComponent implements OnInit {
     columns: [
       {data: "_id", title: "License ID"},
       {data: "key", title: "License Key"},
+      {data: "products", title: "Products"},
       {data: "has_product", title: "Products"},
       {data: "status", title: "Status"}
     ],
