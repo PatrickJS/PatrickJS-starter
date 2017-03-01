@@ -42,7 +42,8 @@ export class FamiliesComponent implements OnInit {
                 iconName: 'remove',
                 onClick: () => {
                     alert('buton 2 clicked');
-                },
+                }
+            }
         ];
     }
 

@@ -1,17 +1,22 @@
-<md-list>
-    <md-list-item *ngFor="let family of families">
-        <md-icon md-list-avatar>folder</md-icon>
-        <h4 md-line>{{family}}</h4>
-        <p md-line>
-            {{family | json}}
-        </p>
-    </md-list-item>
-</md-list>
+<div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="10px" fxLayoutWrap="wrap">
+    <div *ngFor="let family of families" fxFlex="30" >
+        <md-card style="margin-bottom:20px;">
+            <md-card-title fxLayoutAlign="center">
+            <a routerLink="/families/{{ family.name }}/{{ family.id}}" >
+                {{ family.name }}
+            </a>
+            </md-card-title>
+            <md-card-content>
+                Liste des enfants
+            </md-card-content>
+        </md-card>
+    </div>
+</div>
+
 
 <button md-fab class="fab-add" (click)="openDialog()" color="accent">
-   <md-icon >add</md-icon>
-    </button>
-
+   <md-icon>add</md-icon>
+</button>
 
 <pre>
 {{ families | json}}
