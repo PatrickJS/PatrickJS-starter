@@ -31,11 +31,10 @@ export class MeteorDataTable {
     }
     else
       options = this.getDefaultOption();
-    
     // add Column action
     if (options.hasOwnProperty('actionsColumn')) {
       let _numOfColumn = _.size(options.columns);
-      options.columns.push({data: "_id", title: "Action"},);
+      options.columns.push({data: "_id", title: "Actions"});
       
       if (!options.hasOwnProperty('columnDefs')) {
         options['columnDefs'] = [];
@@ -61,7 +60,7 @@ export class MeteorDataTable {
                                      return _html;
           
                                    },
-                                   "targets": _numOfColumn
+                                   "targets": [_numOfColumn]
                                  });
     }
     

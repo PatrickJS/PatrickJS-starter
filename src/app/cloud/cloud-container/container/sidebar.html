@@ -77,6 +77,9 @@
               <li>
                 <a routerLink="/cloud/licenses/create" routerLinkActive="active">Create</a>
               </li>
+              <li>
+                <a routerLink="/cloud/licenses/assign" routerLinkActive="active">Assign</a>
+              </li>
             </ul>
           </li>
           <li *ngIf="_canAccessAdmin" [ngClass]="{open: router.isActive('cloud/products',false)}">
@@ -92,17 +95,17 @@
               </li>
             </ul>
           </li>
-            <li *ngIf="_canAccessAdmin" [ngClass]="{open: router.isActive('cloud/users',false)}">
-                <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-wallet"></i>
-                    <span class="sidebar-mini-hide">Manage Users</span>
-                </a>
-                <ul>
-                    <li>
-                        <a routerLink="/cloud/users/grid" routerLinkActive="active">User</a>
-                    </li>
-                </ul>
-            </li>
-          <li class="nav-main-heading"><span class="sidebar-mini-hide">Manage Shop</span></li>
+          <li *ngIf="_canAccessAdmin" [ngClass]="{open: router.isActive('cloud/users',false)}">
+            <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-wallet"></i>
+              <span class="sidebar-mini-hide">Manage Users</span>
+            </a>
+            <ul>
+              <li>
+                <a routerLink="/cloud/users/grid" routerLinkActive="active">User</a>
+              </li>
+            </ul>
+          </li>
+
           <li [ngClass]="{open: router.isActive('cloud/billing-pricing',false)}">
             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-drawer"></i>
               <span class="sidebar-mini-hide">Billing & Pricing</span>
@@ -116,13 +119,15 @@
               </li>
             </ul>
           </li>
+
+          <li class="nav-main-heading"><span class="sidebar-mini-hide">Manage Shop</span></li>
           <li [ngClass]="{open: router.isActive('cloud/manage-shop',false)}">
             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-user"></i>
               <span class="sidebar-mini-hide">User Management</span>
             </a>
             <ul>
               <li>
-                <a routerLink="/cloud/manage-shop/grid" routerLinkActive="active">Cashiers</a>
+                <a routerLink="/cloud/manage-shop/cashiers" routerLinkActive="active">Cashiers</a>
               </li>
               <li>
                 <a routerLink="/cloud/manage-shop/roles" routerLinkActive="active">Roles</a>

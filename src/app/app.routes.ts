@@ -23,6 +23,7 @@ import {CloudPricingComponent} from "./cloud/pages/billing-pricing/children/pric
 import {CloudBillingComponent} from "./cloud/pages/billing-pricing/children/billing";
 import {CreateLicenseComponent} from "./cloud/pages/admin-area/manage-licenses/create";
 import {CreateProductComponent} from "./cloud/pages/admin-area/manage-products/create";
+import {AssignLicenseComponent} from "./cloud/pages/admin-area/manage-licenses/assign";
 
 export const ROUTES: Routes = [
   {
@@ -30,7 +31,7 @@ export const ROUTES: Routes = [
     redirectTo: '/cloud',
     pathMatch : 'full'
   },
-
+  
   {
     path       : 'cloud',
     component  : ContainerComponent,
@@ -44,7 +45,7 @@ export const ROUTES: Routes = [
         path     : 'profile',
         component: UserProfileComponent
       },
-
+      
       /* ------------------------ Admin Area ------------------------ */
       {
         path     : 'licenses',
@@ -52,7 +53,8 @@ export const ROUTES: Routes = [
         children : [
           {path: '', component: ManageLicensesGridComponent},
           {path: 'grid', component: ManageLicensesGridComponent},
-          {path: 'create', component: CreateLicenseComponent}
+          {path: 'create', component: CreateLicenseComponent},
+          {path: 'assign', component: AssignLicenseComponent}
         ]
       },
       {
@@ -64,14 +66,14 @@ export const ROUTES: Routes = [
           {path: 'create', component: CreateProductComponent}
         ]
       },
-
+      
       /* ------------------------ User Area ------------------------ */
       {
         path     : 'manage-shop',
         component: ManageShopComponent,
         children : [
           {path: '', component: CashierGridComponent},
-          {path: 'grid', component: CashierGridComponent},
+          {path: 'cashiers', component: CashierGridComponent},
           {path: 'roles', component: ShopRolesComponent}
         ]
       },

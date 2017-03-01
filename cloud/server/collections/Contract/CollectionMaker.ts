@@ -34,35 +34,47 @@ export class CollectionMaker {
   }
   
   static hookBeforeInsert(collectionName: string, callBackFuc: (userId: string, doc: any) => void): void {
-    (CollectionMaker.getCollection(collectionName) as any).before.insert(callBackFuc);
+    (CollectionMaker.getCollection(collectionName) as any).collection.before.insert(callBackFuc);
   }
   
   static hookBeforeUpdate(collectionName: string, callBackFuc: (userId: string, doc: any, modifier: any, options: any) => void): void {
-    (CollectionMaker.getCollection(collectionName) as any).before.update(callBackFuc);
+    (CollectionMaker.getCollection(collectionName) as any).collection.before.update(callBackFuc);
   }
   
   static hookBeforeRemove(collectionName: string, callBackFuc: (userId: string, doc: any) => void): void {
-    (CollectionMaker.getCollection(collectionName) as any).before.remove(callBackFuc);
+    (CollectionMaker.getCollection(collectionName) as any).collection.before.remove(callBackFuc);
   }
   
   static hookBeforeUpsert(collectionName: string, callBackFuc: (userId: string, selector: any, modifer: any, options: any) => void): void {
-    (CollectionMaker.getCollection(collectionName) as any).before.upsert(callBackFuc);
+    (CollectionMaker.getCollection(collectionName) as any).collection.before.upsert(callBackFuc);
   }
   
   static hookBeforeFind(collectionName: string, callBackFuc: (userId: string, selector: any, options: any) => void): void {
-    (CollectionMaker.getCollection(collectionName) as any).before.find(callBackFuc);
+    (CollectionMaker.getCollection(collectionName) as any).collection.before.find(callBackFuc);
   }
   
   static hookBeforeFindOne(collectionName: string, callBackFuc: (userId: string, selector: any, options: any) => void): void {
-    (CollectionMaker.getCollection(collectionName) as any).before.findOne(callBackFuc);
+    (CollectionMaker.getCollection(collectionName) as any).collection.before.findOne(callBackFuc);
   }
   
   static hookAfterFind(collectionName: string, callBackFuc: (userId: string, selector: any, options: any, cursor: Mongo.Cursor<any>) => void): void {
-    (CollectionMaker.getCollection(collectionName) as any).after.find(callBackFuc);
+    (CollectionMaker.getCollection(collectionName) as any).collection.after.find(callBackFuc);
   }
   
   static hookAfterFindOne(collectionName: string,
                           callBackFuc: (userId: string, selector: any, options: any, cursor: Mongo.Cursor<any>) => void): void {
-    (CollectionMaker.getCollection(collectionName) as any).after.findOne(callBackFuc);
+    (CollectionMaker.getCollection(collectionName) as any).collection.after.findOne(callBackFuc);
   }
+  
+  static hookAfterInsert(collectionName: string, callBackFuc: (userId: string, doc: any) => void) {
+    (CollectionMaker.getCollection(collectionName) as any).collection.after.insert(callBackFuc);
+  };
+  
+  static hookAfterUpdate(collectionName: string, callBackFuc: (userId: string, doc: any, fieldNames: any, modifier: any, options: any) => void) {
+    (CollectionMaker.getCollection(collectionName) as any).collection.after.update(callBackFuc);
+  };
+  
+  static hookAfterRemove(collectionName: string, callBackFuc: (userId: string, doc: any) => void) {
+    (CollectionMaker.getCollection(collectionName) as any).collection.after.remove(callBackFuc);
+  };
 }

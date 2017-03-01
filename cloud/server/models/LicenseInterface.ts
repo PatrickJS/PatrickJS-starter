@@ -14,8 +14,13 @@ export interface LicenseHasProductInterface {
   product_id?: string;
   base_url?: string[];
   pricing_id?: string;
-  has_cashier: string[]; // array _id of cashier
+  has_user: LicenseHasProductHasUser[];
   start_version?: string;
   purchase_date?: Date;
   expired_date?: Date;
+}
+
+export interface LicenseHasProductHasUser {
+  user_id: string;
+  status: number;
 }

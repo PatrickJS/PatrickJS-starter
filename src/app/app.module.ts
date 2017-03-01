@@ -58,6 +58,7 @@ import {ManageUsersComponent} from "./cloud/pages/admin-area/manage-users";
 import {ManageUsersGridComponent} from "./cloud/pages/admin-area/manage-users/grid";
 import {CreateLicenseComponent} from "./cloud/pages/admin-area/manage-licenses/create";
 import {CreateProductComponent} from "./cloud/pages/admin-area/manage-products/create";
+import {AssignLicenseComponent} from "./cloud/pages/admin-area/manage-licenses/assign";
 
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
@@ -76,6 +77,7 @@ import {CreateProductComponent} from "./cloud/pages/admin-area/manage-products/c
               DashboardComponent,
               ManageLicensesComponent,
               ManageLicensesGridComponent,
+              AssignLicenseComponent,
               ManageProductsComponent,
               ManageProductsGridComponent,
               ManageUsersComponent,
