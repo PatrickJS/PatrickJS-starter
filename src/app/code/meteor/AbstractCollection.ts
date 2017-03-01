@@ -10,13 +10,19 @@ import {
 
 export abstract class AbstractCollection {
   protected abstract $collection: string;
+  protected $collectionExisted: boolean = false;
   protected _collection: MongoObservable.Collection<any>;
   protected _collectionSubscription: Subscription;
   protected _collectionObservable: ReplaySubject<MongoObservable.Collection<any>>;
   
   getCollection(): MongoObservable.Collection<any> {
     if (typeof this._collection == "undefined") {
-      this._collection = new MongoObservable.Collection(this.$collection);
+      if (this.$collectionExisted) {
+        this._collection = MongoObservable.fromExisting(Meteor.users);
+      }
+      else {
+        this._collection = new MongoObservable.Collection(this.$collection);
+      }
     }
     return this._collection;
   }
