@@ -142,7 +142,7 @@
     "tslib": "^1.5.0",
     "tslint": "~4.5.1",
     "tslint-loader": "^3.3.0",
-    "typedoc": "^0.5.3",
+    "typedoc": "^0.5.7",
     "typescript": "~2.1.6",
     "url-loader": "^0.5.7",
     "webpack": "2.2.0",
