@@ -26,7 +26,7 @@ Meteor.publishComposite('users', function (): PublishCompositeConfig<UserInterfa
       const licenseModel: License = OM.create<License>(License).loadById(license[0].license_id);
       return {
         find: () => {
-          return Users.collection.find({_id: {$in: licenseModel.getCashiers()}});
+          return Users.collection.find({_id: {$in: licenseModel.getUserIds()}});
         }
       }
     } else {
