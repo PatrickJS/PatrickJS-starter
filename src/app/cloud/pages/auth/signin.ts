@@ -14,16 +14,16 @@ export class SignInComponent implements OnInit {
     username: "",
     password: ""
   };
-  
+
   constructor(protected router: Router, protected authService: AuthService) { }
-  
+
   ngOnInit() {
     if (this.authService.getCurrentUser())
       this.router.navigate(['']);
     else
       this.initPageJs();
   }
-  
+
   private initPageJs() {
     let vm                  = this;
     // Init Login Form Validation, for more examples you can check out https://github.com/jzaefferer/jquery-validation
@@ -63,12 +63,12 @@ export class SignInComponent implements OnInit {
                                                   }
                                                 },
                                                 submitHandler : function (form) {
-                                                  vm.authService.signIn(vm.user).then(() => {}, err => 
+                                                  vm.authService.signIn(vm.user).then(() => {}, err => {
                                                   });
                                                 }
                                               });
     };
     initValidationLogin();
   }
-  
+
 }
