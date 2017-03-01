@@ -4,6 +4,8 @@ import {ManageLicensesComponent} from "./cloud/pages/admin-area/manage-licenses"
 import {ManageLicensesGridComponent} from "./cloud/pages/admin-area/manage-licenses/grid";
 import {ManageProductsComponent} from "./cloud/pages/admin-area/manage-products";
 import {ManageProductsGridComponent} from "./cloud/pages/admin-area/manage-products/grid";
+import {ManageUsersComponent} from "./cloud/pages/admin-area/manage-users";
+import {ManageUsersGridComponent} from "./cloud/pages/admin-area/manage-users/grid";
 import {Routes} from "@angular/router";
 import {ContainerComponent} from "./cloud/cloud-container/container";
 import {PageNotFoundComponent} from "./cloud/pages/404/not-found";
@@ -28,7 +30,7 @@ export const ROUTES: Routes = [
     redirectTo: '/cloud',
     pathMatch : 'full'
   },
-  
+
   {
     path       : 'cloud',
     component  : ContainerComponent,
@@ -42,7 +44,7 @@ export const ROUTES: Routes = [
         path     : 'profile',
         component: UserProfileComponent
       },
-      
+
       /* ------------------------ Admin Area ------------------------ */
       {
         path     : 'licenses',
@@ -62,7 +64,7 @@ export const ROUTES: Routes = [
           {path: 'create', component: CreateProductComponent}
         ]
       },
-      
+
       /* ------------------------ User Area ------------------------ */
       {
         path     : 'manage-shop',
@@ -80,6 +82,14 @@ export const ROUTES: Routes = [
           {path: '', component: CloudPricingComponent},
           {path: 'pricing', component: CloudPricingComponent},
           {path: 'billing', component: CloudBillingComponent}
+        ]
+      },
+      {
+        path     : 'users',
+        component: ManageUsersComponent,
+        children : [
+          {path: '', component: ManageUsersGridComponent},
+          {path: 'grid', component: ManageUsersGridComponent}
         ]
       }
     ]

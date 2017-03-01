@@ -92,7 +92,16 @@
               </li>
             </ul>
           </li>
-
+            <li *ngIf="_canAccessAdmin" [ngClass]="{open: router.isActive('cloud/users',false)}">
+                <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-wallet"></i>
+                    <span class="sidebar-mini-hide">Manage Users</span>
+                </a>
+                <ul>
+                    <li>
+                        <a routerLink="/cloud/users/grid" routerLinkActive="active">User</a>
+                    </li>
+                </ul>
+            </li>
           <li class="nav-main-heading"><span class="sidebar-mini-hide">Manage Shop</span></li>
           <li [ngClass]="{open: router.isActive('cloud/billing-pricing',false)}">
             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-drawer"></i>
