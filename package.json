@@ -12,7 +12,7 @@
   "homepage": "https://github.com/angularclass/angular2-webpack-starter",
   "license": "MIT",
   "scripts": {
-    "build:aot:prod": "npm run clean:dist && npm run clean:aot && npm run webpack -- --config config/webpack.prod.js  --progress --profile --bail",
+    "build:aot:prod": "npm run clean:dist && npm run clean:aot && BUILD_AOT=1 npm run webpack -- --config config/webpack.prod.js  --progress --profile --bail",
     "build:aot": "npm run build:aot:prod",
     "build:dev": "npm run clean:dist && npm run webpack -- --config config/webpack.dev.js --progress --profile",
     "build:docker": "npm run build:prod && docker build -t angular2-webpack-start:latest .",
@@ -66,8 +66,8 @@
     "webdriver-manager": "webdriver-manager",
     "webdriver:start": "npm run webdriver-manager start",
     "webdriver:update": "webdriver-manager update",
-    "webpack-dev-server": "npm run node -- --max_old_space_size=4096 node_modules/webpack-dev-server/bin/webpack-dev-server.js",
-    "webpack": "npm run node -- --max_old_space_size=4096 node_modules/webpack/bin/webpack.js"
+    "webpack-dev-server": "node --max_old_space_size=4096 node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "webpack": "node --max_old_space_size=4096 node_modules/webpack/bin/webpack.js"
   },
   "dependencies": {
     "@angular/animations": "~4.0.3",
