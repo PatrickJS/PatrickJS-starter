@@ -1,8 +1,8 @@
-import {User} from "../models/User";
-import {Role} from "../models/Role";
-import {License} from "../models/License";
-import {OM} from "../code/General/ObjectManager";
-import * as $q from "q";
+import {OM} from "../../code/General/ObjectManager";
+import {User} from "../../models/User";
+import {Role} from "../../models/Role";
+import {License} from "../../models/License";
+import * as $q from 'q';
 
 new ValidatedMethod({
   name    : "license.admin_create_license",
