@@ -12,5 +12,4 @@ export class Role extends AbstractModel {
   static GROUP_CLOUD = "cloud_group";
   static GROUP_SHOP  = "shop_group";
   
-  
 }

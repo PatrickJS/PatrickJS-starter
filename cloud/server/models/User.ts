@@ -1,6 +1,5 @@
 import {AbstractModel} from "./Contract/AbstractModel";
 import {
-  UserInterface,
   UserHasLicense
 } from "./UserInterface";
 import {Role} from "./Role";
@@ -25,7 +24,7 @@ export class User extends AbstractModel {
   }
   
   getLicenses(): UserHasLicense[] {
-    return this.getData('has_license');
+    return this.getData('has_license') ? this.getData('has_license') : [];
   }
   
   getRoles(group = Role.GROUP_CLOUD): string[] {

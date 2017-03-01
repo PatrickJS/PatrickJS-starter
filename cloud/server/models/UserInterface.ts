@@ -10,6 +10,11 @@ export interface Profile {
   country?: String,
   phone?: String
 }
+
+/*
+ * Nếu là tài khoản user thì mỗi user chỉ có tối đa 1 license.
+ * Tài khoản sales và agency thì có nhiều license
+ */
 export interface UserHasLicense {
   license_id?: string,
   license_permission?: string;
