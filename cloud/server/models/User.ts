@@ -15,7 +15,7 @@ export class User extends AbstractModel {
     Roles.addUsersToRoles(this.getData(), roles, group);
   }
   
-  setRoles(roles, group = Role.GROUP_CLOUD): void {
+  setRoles(roles: string|string[], group = Role.GROUP_CLOUD): void {
     Roles.setUserRoles(this.getData(), roles, group);
   }
   

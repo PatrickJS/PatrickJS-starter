@@ -18,18 +18,16 @@ export class License extends AbstractModel {
     return this.getData("has_product") ? this.getData("has_product") : [];
   }
   
-  getCashierInProduct(productId: string): string[] {
-    const _product: LicenseHasProductInterface = _.find(this.getProducts(), p => p['product_id'] == productId);
-    return _product ? _product.has_cashier : [];
-  }
-  
-  getCashiers(): string[] {
-    let _cashiers = [];
+  /*
+   * Retrieve all user id belong to license
+   */
+  getUserIds(): string[] {
+    let _users = [];
     _.forEach(this.getProducts(), p => {
-      if (!p.has_cashier || !_.isArray(p.has_cashier))
-        p.has_cashier = [];
-      _cashiers = _.concat(_cashiers, p.has_cashier);
+      if (!p.has_user || !_.isArray(p.has_user))
+        p.has_user = [];
+      _users = _.concat(_users, _.map(p.has_user, 'user_id'));
     });
-    return _cashiers;
+    return _users;
   }
 }
