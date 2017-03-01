@@ -2,15 +2,6 @@ import {
   Component,
   OnInit
 } from '@angular/core';
-<<<<<<< HEAD
-
-@Component({
-             selector: 'billing-pricing',
-             template: `<router-outlet></router-outlet>`
-           })
-export class BillingPricingComponent implements OnInit {
-  constructor() { }
-=======
 import {BillingPricingService} from "./billing-pricing.service";
 
 @Component({
@@ -38,7 +29,6 @@ import {BillingPricingService} from "./billing-pricing.service";
            })
 export class BillingPricingComponent implements OnInit {
   constructor(protected billingPricingService: BillingPricingService) { }
->>>>>>> 36bae05e9706c2b4ecaa338119d4adb51e5d7218
   
   ngOnInit() { }
   
