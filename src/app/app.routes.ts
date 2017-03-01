@@ -71,7 +71,7 @@ export const ROUTES: Routes = [
         component: ManageShopComponent,
         children : [
           {path: '', component: CashierGridComponent},
-          {path: 'grid', component: CashierGridComponent},
+          {path: 'cashiers', component: CashierGridComponent},
           {path: 'roles', component: ShopRolesComponent}
         ]
       },
