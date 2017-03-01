@@ -49,6 +49,7 @@ import {UserCollection} from "./cloud/services/ddp/collections/users";
 import {CashierGridComponent} from "./cloud/pages/manage-shop/children/cashier-grid";
 import {ManageShopComponent} from "./cloud/pages/manage-shop/manage-shop";
 import {ShopRolesComponent} from "./cloud/pages/manage-shop/children/shop-roles";
+import {LicenseCollection} from "./cloud/services/ddp/collections/licenses";
 import {BillingPricingComponent} from "./cloud/pages/billing-pricing/billing-pricing";
 import {CloudBillingComponent} from "./cloud/pages/billing-pricing/children/billing";
 import {CloudPricingComponent} from "./cloud/pages/billing-pricing/children/pricing";
@@ -75,8 +76,6 @@ import {LicenseCollection} from "./cloud/services/ddp/collections/licenses";
               ManageLicensesGridComponent,
               ManageProductsComponent,
               ManageProductsGridComponent,
-              ManageUsersComponent,
-              ManageUsersGridComponent,
               SignInComponent,
               SignUpComponent,
               ResetPasswordComponent,
