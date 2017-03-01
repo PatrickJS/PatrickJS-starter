@@ -55,6 +55,8 @@ import {CloudBillingComponent} from "./cloud/pages/billing-pricing/children/bill
 import {CloudPricingComponent} from "./cloud/pages/billing-pricing/children/pricing";
 import {ManageUsersComponent} from "./cloud/pages/admin-area/manage-users";
 import {ManageUsersGridComponent} from "./cloud/pages/admin-area/manage-users/grid";
+import {CreateLicenseComponent} from "./cloud/pages/admin-area/manage-licenses/create";
+import {CreateProductComponent} from "./cloud/pages/admin-area/manage-products/create";
 
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
@@ -75,6 +77,8 @@ import {ManageUsersGridComponent} from "./cloud/pages/admin-area/manage-users/gr
               ManageLicensesGridComponent,
               ManageProductsComponent,
               ManageProductsGridComponent,
+              ManageUsersComponent,
+              ManageUsersGridComponent,
               SignInComponent,
               SignUpComponent,
               ResetPasswordComponent,
@@ -85,7 +89,9 @@ import {ManageUsersGridComponent} from "./cloud/pages/admin-area/manage-users/gr
               ShopRolesComponent,
               BillingPricingComponent,
               CloudBillingComponent,
-              CloudPricingComponent
+              CloudPricingComponent,
+              CreateLicenseComponent,
+              CreateProductComponent
             ],
             imports     : [ // import Angular's modules
               BrowserModule,

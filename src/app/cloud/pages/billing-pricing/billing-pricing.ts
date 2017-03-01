@@ -29,7 +29,7 @@ import {BillingPricingService} from "./billing-pricing.service";
            })
 export class BillingPricingComponent implements OnInit {
   constructor(protected billingPricingService: BillingPricingService) { }
-  
+
   ngOnInit() { }
-  
+
 }

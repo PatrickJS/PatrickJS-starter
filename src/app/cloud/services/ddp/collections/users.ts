@@ -3,5 +3,5 @@ import {AbstractCollection} from "../../../../code/meteor/AbstractCollection";
 
 @Injectable()
 export class UserCollection extends AbstractCollection {
-  protected $collection: string = "usersQuery";
+  protected $collection: string = "users";
 }
