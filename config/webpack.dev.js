@@ -98,7 +98,7 @@ module.exports = function (options) {
            {
              loader: 'tslint-loader',
              options: {
-               configFile: 'tslint.json'
+               configFile: helpers.root('tslint.json')
              }
            }
          ],
