@@ -25,6 +25,7 @@ import {CreateLicenseComponent} from "./cloud/pages/admin-area/manage-licenses/c
 import {CreateProductComponent} from "./cloud/pages/admin-area/manage-products/create";
 import {AssignLicenseComponent} from "./cloud/pages/admin-area/manage-licenses/assign";
 import {EditProductComponent} from "./cloud/pages/admin-area/manage-products/edit";
+import {CreateVersionComponent} from "./cloud/pages/admin-area/manage-products/create-version";
 
 export const ROUTES: Routes = [
   {
@@ -65,7 +66,8 @@ export const ROUTES: Routes = [
           {path: '', component: ManageProductsGridComponent},
           {path: 'grid', component: ManageProductsGridComponent},
           {path: 'create', component: CreateProductComponent},
-          {path: ':id', component: EditProductComponent}
+          {path: ':id', component: EditProductComponent},
+          {path: 'createVersion/:product_id', component: CreateVersionComponent}
         ]
       },
       

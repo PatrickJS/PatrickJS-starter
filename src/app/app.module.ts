@@ -60,6 +60,7 @@ import {CreateLicenseComponent} from "./cloud/pages/admin-area/manage-licenses/c
 import {CreateProductComponent} from "./cloud/pages/admin-area/manage-products/create";
 import {AssignLicenseComponent} from "./cloud/pages/admin-area/manage-licenses/assign";
 import {EditProductComponent} from "./cloud/pages/admin-area/manage-products/edit";
+import {CreateVersionComponent} from "./cloud/pages/admin-area/manage-products/create-version";
 
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
@@ -96,7 +97,8 @@ import {EditProductComponent} from "./cloud/pages/admin-area/manage-products/edi
               CloudPricingComponent,
               CreateLicenseComponent,
               CreateProductComponent,
-              EditProductComponent
+              EditProductComponent,
+              CreateVersionComponent,
             ],
             imports     : [ // import Angular's modules
               BrowserModule,

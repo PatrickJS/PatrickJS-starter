@@ -3,39 +3,33 @@ import {
   OnInit
 } from '@angular/core';
 import {ManageProductsService} from "./manage-products.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {ProductCollection} from "../../../services/ddp/collections/products";
-import {MongoObservable} from "meteor-rxjs";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
-             selector: 'edit-product',
-             templateUrl: 'edit.html'
+             selector: 'create-version',
+             templateUrl: 'create-version.html'
            })
-export class EditProductComponent implements OnInit {
+export class CreateVersionComponent implements OnInit {
   id: string = "";
-  protected product: any;
+  protected version = {
+    name: "",
+    version: ""
+  };
   constructor(
     protected productService: ManageProductsService,
     private route: ActivatedRoute,
-    protected productCollection: ProductCollection,
-    protected router: Router
   ) {
-    route.params.subscribe((p) => this.id = p['id']);
+    route.params.subscribe((p) => this.id = p['product_id']);
   }
 
   ngOnInit() {
-    this.productCollection.getCollectionObservable().subscribe(
-      (collection: MongoObservable.Collection<any>) => {
-        this.product = collection.findOne({_id: this.id});
-      }
-    );
     this.initPageJs();
   }
 
   private initPageJs() {
     let vm = this;
     let initValidationMaterial = function () {
-      jQuery('.js-validation-product-form').validate({
+      jQuery('.js-validation-version-form').validate({
                                                        errorClass    : 'help-block text-right animated fadeInDown',
                                                        errorElement  : 'div',
                                                        errorPlacement: function (error, e) {
@@ -54,29 +48,31 @@ export class EditProductComponent implements OnInit {
                                                          elem.closest('.help-block').remove();
                                                        },
                                                        rules         : {
-                                                         'val-product_name'        : {
+                                                         'val-version_name'        : {
+                                                           required : true
+                                                         },
+                                                         'val-version'        : {
                                                            required : true
                                                          }
                                                        },
                                                        messages      : {
-                                                         'val-product_name'        : {
-                                                           required : 'Please enter product name',
+                                                         'val-version_name'        : {
+                                                           required : 'Please enter version name',
+                                                         },
+                                                         'val-version'        : {
+                                                           required : 'Please enter version number',
                                                          }
                                                        },
                                                        submitHandler: function (form) {
-                                                         let product_change = {
-                                                           _id: vm.id,
-                                                           name: vm.product.name
-                                                         };
-                                                         vm.productService.editProduct(product_change);
+                                                          let data = {
+                                                            _id: vm.id,
+                                                            versions: vm.version
+                                                          };
+                                                          vm.productService.createVersion(data);
                                                        }
                                                      });
     };
     initValidationMaterial();
-  }
-
-  private addVersion(){
-    this.router.navigateByUrl('cloud/products/createVersion/' + this.id);
   }
 
 }

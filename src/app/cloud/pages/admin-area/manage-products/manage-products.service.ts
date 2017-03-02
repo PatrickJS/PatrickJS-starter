@@ -25,9 +25,22 @@ export class ManageProductsService {
     });
   }
 
-  editProduct(id: string, product: any){
+  editProduct(product: any){
     return new Promise<void>((resolve, reject) => {
-      MeteorObservable.call("product.edit_product", id, product).subscribe((res) => {
+      MeteorObservable.call("product.edit_product", product).subscribe((res) => {
+        this.router.navigate(['cloud/products']);
+        resolve();
+      }, (err) => {
+        this.toast.error(err.reason, err.error);
+        return reject(err);
+      });
+    });
+  }
+
+  createVersion(data: any){
+    console.log(data);
+    return new Promise<void>((resolve, reject) => {
+      MeteorObservable.call("version.create_product_version", data).subscribe((res) => {
         this.router.navigate(['cloud/products']);
         resolve();
       }, (err) => {
