@@ -24,8 +24,8 @@ export class UserLicense {
                    ]);
       
       if (permission == User.LICENSE_PERMISSION_OWNER) {
-        license.setData("show_owner_id", user.getId())
-               .setData("show_owner_username", user.getUsername())
+        license.setData("shop_owner_id", user.getId())
+               .setData("shop_owner_username", user.getUsername())
       }
       
       return Promise.all([user.save(), license.save()]);

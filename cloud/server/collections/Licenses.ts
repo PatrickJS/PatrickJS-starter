@@ -5,14 +5,18 @@ import {DateTimeHelper} from "../code/DateTimeHelper";
 
 export const Licenses = CollectionMaker.make<LicenseInterface>("licenses",
                                                                new SimpleSchema({
-                                                                 key             : String,
-                                                                 status          : SimpleSchema.Integer,
-                                                                 shop_owner_id   : {
+                                                                 key                : String,
+                                                                 status             : SimpleSchema.Integer,
+                                                                 shop_owner_id      : {
                                                                    type    : String,
                                                                    optional: true
                                                                  },
-                                                                 has_product     : Array,
-                                                                 "has_product.$" : new SimpleSchema({
+                                                                 shop_owner_username: {
+                                                                   type    : String,
+                                                                   optional: true
+                                                                 },
+                                                                 has_product        : Array,
+                                                                 "has_product.$"    : new SimpleSchema({
                                                                    product_id   : String,
                                                                    base_url     : {
                                                                      type    : Array,
@@ -24,16 +28,16 @@ export const Licenses = CollectionMaker.make<LicenseInterface>("licenses",
                                                                    purchase_date: Date,
                                                                    expired_date : Date
                                                                  }),
-                                                                 is_auto_generate: {
+                                                                 is_auto_generate   : {
                                                                    type        : Boolean,
                                                                    defaultValue: true
                                                                  },
-                                                                 created_by      : String,
-                                                                 created_at      : {
+                                                                 created_by         : String,
+                                                                 created_at         : {
                                                                    type        : Date,
                                                                    defaultValue: DateTimeHelper.getCurrentDate()
                                                                  },
-                                                                 updated_at      : {
+                                                                 updated_at         : {
                                                                    type        : Date,
                                                                    defaultValue: DateTimeHelper.getCurrentDate()
                                                                  }
