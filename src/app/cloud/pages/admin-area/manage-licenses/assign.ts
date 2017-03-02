@@ -53,7 +53,7 @@ export class AssignLicenseComponent extends AbstractRxComponent implements OnIni
                                            this.users =
                                              collection.find({
                                                                "roles.cloud_group": {$elemMatch: {$eq: "user"}},
-                                                               has_license        : {$exists: false}
+                                                               $or                : [{has_license: {$exists: false}}, {has_license: {$size: 0}}]
                                                              })
                                                        .fetch();
                                          });
