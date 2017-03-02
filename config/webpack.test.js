@@ -3,7 +3,6 @@
  */
 
 const helpers = require('./helpers');
-const path = require('path');
 
 /**
  * Webpack Plugins
@@ -51,7 +50,7 @@ module.exports = function (options) {
       /**
        * Make sure root is src
        */
-      modules: [path.resolve(__dirname, 'src'), 'node_modules']
+      modules: [helpers.root('src'), 'node_modules']
 
     },
 
@@ -133,6 +132,17 @@ module.exports = function (options) {
           test: /\.css$/,
           loader: ['to-string-loader', 'css-loader'],
           exclude: [helpers.root('src/index.html')]
+        },
+
+        /**
+         * Raw loader support for *.scss files
+         *
+         * See: https://github.com/webpack/raw-loader
+         */
+        {
+            test: /\.scss$/,
+            loader: ['raw-loader', 'sass-loader'],
+            exclude: [helpers.root('src/index.html')]
         },
 
         /**
