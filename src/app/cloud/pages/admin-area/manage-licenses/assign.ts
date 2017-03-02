@@ -8,18 +8,23 @@ import {UserCollection} from "../../../services/ddp/collections/users";
 import {AbstractRxComponent} from "../../../../code/angular/AbstractRxComponent";
 import {MongoObservable} from "../../../../../../node_modules/meteor-rxjs/dist/ObservableCollection";
 import {MeteorObservable} from "../../../../../../node_modules/meteor-rxjs/dist/MeteorObservable";
+import {Subject} from "../../../../../../node_modules/rxjs/Subject";
 
 @Component({
              selector   : 'assign-license',
              templateUrl: 'assign.html'
            })
 export class AssignLicenseComponent extends AbstractRxComponent implements OnInit {
-  protected data = {
+  protected data                                  = {
     user   : "",
     license: ""
   };
   protected licenses: any;
   protected users: any;
+  protected license: any;
+  protected user: any;
+  protected changeLicenseObservable: Subject<any> = new Subject();
+  protected changeUserObservable: Subject<any>    = new Subject();
   
   constructor(protected manageLicense: ManageLicensesService,
               protected licenseCollection: LicenseCollection,
@@ -44,7 +49,31 @@ export class AssignLicenseComponent extends AbstractRxComponent implements OnIni
                                          .subscribe((collection: MongoObservable.Collection<any>) => {
                                            this.users = collection.find({"roles.cloud_group": {$elemMatch: {$eq: "user"}}}).fetch();
                                          });
+    this._subscription['license']  = this.licenseCollection
+                                         .getCollectionObservable()
+                                         .combineLatest(this.changeLicenseObservable, (collection) => {
+                                           return collection;
+                                         })
+                                         .subscribe((collection) => {
+                                           this.license = collection.findOne({_id: this.data.license});
+                                         });
+    this._subscription['user']     = this.userCollection
+                                         .getCollectionObservable()
+                                         .combineLatest(this.changeUserObservable, (collection) => {
+                                           return collection;
+                                         })
+                                         .subscribe((collection) => {
+                                           this.user = collection.findOne({_id: this.data.user});
+                                         });
     
+  }
+  
+  protected changeLicense() {
+    this.changeLicenseObservable.next();
+  }
+  
+  protected changeUser() {
+    this.changeUserObservable.next();
   }
   
   private initPageJs() {
@@ -80,7 +109,8 @@ export class AssignLicenseComponent extends AbstractRxComponent implements OnIni
                                                          'user'   : 'Please select a user!',
                                                        },
                                                        submitHandler : function (form) {
-                                                         vm.assignLicense();
+                                                         console.log(vm.data.license);
+                                                         // vm.assignLicense();
                                                        }
                                                      });
   }

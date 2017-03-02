@@ -89,7 +89,7 @@ export class Seeder {
         key          : Math.random().toString(36).substring(7),
         status       : Math.floor(Math.random() * 9) % 3,
         has_product  : licensehasproduct,
-        created_by   : Users.collection.findOne({"username": "superadmin"})._id
+        created_by   : Users.collection.findOne({"username": "superadmin"})['username']
       };
     };
     
