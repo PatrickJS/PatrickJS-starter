@@ -3,6 +3,7 @@ import {
   UserHasLicense
 } from "./UserInterface";
 import {Role} from "./Role";
+import * as _ from "lodash";
 
 export class User extends AbstractModel {
   protected $collection             = "users";
@@ -10,6 +11,10 @@ export class User extends AbstractModel {
   static LICENSE_PERMISSION_AGENCY  = 'agency';
   static LICENSE_PERMISSION_OWNER   = 'owner';
   static LICENSE_PERMISSION_CASHIER = 'cashier';
+  
+  getUsername(): string {
+    return this.getData('username');
+  }
   
   addToRoles(roles: string|string[], group = Role.GROUP_CLOUD): void {
     Roles.addUsersToRoles(this.getData(), roles, group);

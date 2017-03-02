@@ -10,15 +10,29 @@ import {DateTimeHelper} from "../code/DateTimeHelper";
 
 export class Seeder {
   run() {
+    this.dummyUser();
     this.dummyProduct();
     this.dummyPrices();
     this.dummyLicenses();
   }
   
+  private dummyUser() {
+    if (Users.collection.find().count() > 1)
+      return;
+    
+    for (let i = 0; i < 100; i++) {
+      Accounts.createUser(
+        {
+          username: "vjcspy" + i,
+          email   : "mr.vjcspy" + i + "@gmail.com",
+          password: "admin123"
+        });
+    }
+  }
+  
   private dummyProduct(): void {
     if (Products.collection.find().count() > 0)
       return;
-    let _first   = true;
     let _product = () => {
       let versions = [];
       for (let i = 0; i < (Math.round(Math.random() * 10)); i++) {
@@ -28,14 +42,12 @@ export class Seeder {
                       });
       }
       return {
-        _id     : _first ? "xpos_xreport" : null,
-        name    : _first ? "X-POS & X-Report" : Math.random().toString(36).substring(7),
+        name    : Math.random().toString(36).substring(7),
         versions: versions,
       }
     };
     for (let i = 0; i < 5; i++) {
       let _p = OM.create<Product>(Product, false, _product());
-      _first = false;
       _p.save();
     }
   }
@@ -86,10 +98,10 @@ export class Seeder {
       }
       
       return {
-        key          : Math.random().toString(36).substring(7),
-        status       : Math.floor(Math.random() * 9) % 3,
-        has_product  : licensehasproduct,
-        created_by   : Users.collection.findOne({"username": "superadmin"})['username']
+        key        : Math.random().toString(36).substring(7),
+        status     : Math.floor(Math.random() * 9) % 3,
+        has_product: licensehasproduct,
+        created_by : Users.collection.findOne({"username": "superadmin"})['username']
       };
     };
     

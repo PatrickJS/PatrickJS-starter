@@ -17,8 +17,9 @@ import {ToastsManager} from "../../../../../../node_modules/ng2-toastr/src/toast
            })
 export class AssignLicenseComponent extends AbstractRxComponent implements OnInit {
   protected data                                  = {
-    user   : "",
-    license: ""
+    user      : "",
+    license   : "",
+    permission: "owner"
   };
   protected licenses: any;
   protected users: any;

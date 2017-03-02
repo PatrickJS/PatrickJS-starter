@@ -2,11 +2,9 @@ import {OM} from "../../code/General/ObjectManager";
 import {User} from "../../models/User";
 import {Role} from "../../models/Role";
 import {License} from "../../models/License";
-import * as $q from 'q';
 import SimpleSchema from 'simpl-schema';
 import {ZValidator} from "../../code/ZValidator";
-import {UserHasLicense} from "../../models/UserInterface";
-import * as _ from 'lodash';
+import {UserLicense} from "../../models/ManyToMany/UserLicense";
 
 new ValidatedMethod({
   name    : "license.assign_to_user",
@@ -18,43 +16,19 @@ new ValidatedMethod({
     }
     
     ZValidator.validate(new SimpleSchema({
-      license: String,
-      user   : String
+      license   : String,
+      user      : String,
+      permission: String
     }), data);
     
-    const userAssign: User = OM.create<User>(User).loadById(data.user);
-    if (!userAssign.isInRoles(Role.USER))
-      throw new Meteor.Error("license.assign_to_user", "Can't assign to this user");
-    else if (_.isArray(userAssign.getLicenses()) && _.size(userAssign.getLicenses()) > 0) {
-      throw new Meteor.Error("license.assign_to_user", "User already has license");
-    }
   },
   run     : function (data: Object) {
-    const licenseId = data['license'];
-    const userId    = data['user'];
+    const licenseId           = data['license'];
+    const userId              = data['user'];
+    let licenseModel: License = OM.create<License>(License).loadById(licenseId);
+    let userModel: User       = OM.create<User>(User).loadById(userId);
     
-    let assignLicenseToUser = () => {
-      let licenseModel: License = OM.create<License>(License).loadById(licenseId);
-      if (!licenseModel)
-        throw new Meteor.Error("license.assign_to_user", "Can't find license");
-      
-      return licenseModel.setData('shop_owner_id', userId)
-                         .save();
-    };
-    let assignUserToLicense = () => {
-      let userHasLicense: UserHasLicense = {
-        license_id        : licenseId,
-        license_permission: User.LICENSE_PERMISSION_OWNER
-      };
-      let userModel: User                = OM.create<User>(User).loadById(userId);
-      if (!userModel)
-        throw new Meteor.Error("license.assign_to_user", "Can't find license");
-      
-      return userModel.setData('has_license', [userHasLicense])
-                      .save();
-    };
-    
-    return $q.all([assignLicenseToUser(), assignUserToLicense()]);
+    return UserLicense.attach(userModel, licenseModel, data['permission']);
   }
 });
 DDPRateLimiter.addRule({
