@@ -13,7 +13,7 @@ export class DataObject {
     if (typeof key == "undefined")
       return this._data;
     
-    if (this.hasOwnProperty(key))
+    if (this._data.hasOwnProperty(key))
       return this._data[key];
     else
       return null;
@@ -25,7 +25,7 @@ export class DataObject {
   }
   
   hasData(key: string): boolean {
-    return this.hasOwnProperty(key) && this._data[key] != null;
+    return this._data.hasOwnProperty(key) && this._data[key] != null;
   }
   
   unsetData(key: string): any {
