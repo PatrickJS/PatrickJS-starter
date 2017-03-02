@@ -52,9 +52,9 @@ export class ManageLicensesGridComponent implements OnInit {
           if (data == 1)
             return `<span class="label label-success">Activated</span>`;
           else if (data == 0)
-            return `<span class="label label-success">Deactivated</span>`;
+            return `<span class="label label-danger">Deactivated</span>`;
           else if (data == 2) {
-            return `<span class="label label-info">Fresh</span>`;
+            return `<span class="label label-default">Fresh</span>`;
           }
         }
       }

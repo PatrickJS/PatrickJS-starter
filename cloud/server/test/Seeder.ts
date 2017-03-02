@@ -67,6 +67,7 @@ export class Seeder {
   private dummyLicenses() {
     if (Licenses.collection.find().count() > 0)
       return;
+    
     let products = Products.find().fetch();
     let prices   = Prices.find().fetch();
     let users    = Users.find().fetch();
@@ -105,7 +106,7 @@ export class Seeder {
       };
     };
     
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 50; i++) {
       let _l = OM.create<License>(License, false, _license());
       _l.save();
     }
