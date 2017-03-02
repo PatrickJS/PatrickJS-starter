@@ -28,6 +28,7 @@ import {ManageLicensesComponent} from "./cloud/pages/admin-area/manage-licenses"
 import {ManageLicensesGridComponent} from "./cloud/pages/admin-area/manage-licenses/grid";
 import {ManageProductsComponent} from "./cloud/pages/admin-area/manage-products";
 import {ManageProductsGridComponent} from "./cloud/pages/admin-area/manage-products/grid";
+import {ManageProductsService} from "./cloud/pages/admin-area/manage-products/manage-products.service";
 import {ProductCollection} from "./cloud/services/ddp/collections/products";
 import {RouterModule} from "@angular/router";
 import {ToastModule} from "ng2-toastr";
@@ -110,7 +111,8 @@ import {AssignLicenseComponent} from "./cloud/pages/admin-area/manage-licenses/a
               UserCollection,
               LicenseCollection,
               AuthService,
-              AuthenticateGuard
+              AuthenticateGuard,
+              ManageProductsService
             ]
           })
 export class AppModule {
