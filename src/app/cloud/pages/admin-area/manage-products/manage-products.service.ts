@@ -23,6 +23,17 @@ export class ManageProductsService {
         return reject(err);
       });
     });
+  }
 
+  editProduct(id: string, product: any){
+    return new Promise<void>((resolve, reject) => {
+      MeteorObservable.call("product.edit_product", id, product).subscribe((res) => {
+        this.router.navigate(['cloud/products']);
+        resolve();
+      }, (err) => {
+        this.toast.error(err.reason, err.error);
+        return reject(err);
+      });
+    });
   }
 }

@@ -5,22 +5,21 @@ import {User} from "../../models/User";
 import {Role} from "../../models/Role";
 
 new ValidatedMethod({
-  name: "product.create_product",
+  name: "product.edit_product",
   validate: function () {
     const user = OM.create<User>(User).loadById(this.userId);
     if (user.isInRoles([Role.SUPERADMIN, Role.ADMIN, Role.SALES], Role.GROUP_CLOUD)) {
     } else {
-      throw new Meteor.Error("product.create_product_error", "Access denied");
+      throw new Meteor.Error("product.edit_product_error", "Access denied");
     }
   },
-  run: function (data: Object) {
+  run: function (product_id, data: Object) {
     let defer = $q.defer();
-
-    let productModel = OM.create<Product>(Product);
-
-    productModel.addData(data)
-                .save()
-                .then(() => defer.resolve(), (err) => defer.reject(err));
+    const product = OM.create<Product>(Product).loadById(product_id);
+    if(!product){
+      throw new Meteor.Error("product.error_edit", "Product Not Found");
+    }
+    product.getData().save().then(() => defer.resolve(), (err) => defer.reject(err));
     return defer.promise;
 
   }
