@@ -33,5 +33,13 @@ export class FamilyDetailComponent implements OnInit {
         this._state.notifyDataChanged('navbar.title',
             'Famille "' + this.familyName + '"'
         );
+        this._state.notifyDataChanged('breadcrumb',
+            [
+                {
+                    label: 'Les familles',
+                    link: '/families'
+                }
+            ]
+        );
     }
 }

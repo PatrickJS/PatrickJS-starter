@@ -14,7 +14,7 @@ import {
   RouterModule,
   PreloadAllModules
 } from '@angular/router';
-import { CommonModule } from './common/common.module';
+import { Mv3CommonModule } from './common/common.module';
 import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -34,8 +34,6 @@ import { HomeComponent } from './home';
 import { AboutComponent } from './about';
 import { NoContentComponent } from './no-content';
 import { XLargeDirective } from './home/x-large';
-import { NavbarComponent } from './common/navbar/navbar.component';
-import { SidebarComponent } from './common/sidebar/sidebar.component';
 
 import { FamilyService } from './model/family.service';
 import { ChildService } from './model/child.service';
@@ -68,18 +66,17 @@ type StoreType = {
     AboutComponent,
     HomeComponent,
     NoContentComponent,
-    XLargeDirective,
-    NavbarComponent,
-    SidebarComponent
+    XLargeDirective
   ],
   imports: [ // import Angular's modules
     BrowserModule,
     FormsModule,
     HttpModule,
+    Mv3CommonModule,
     FamiliesModule,
     PlanningModule,
     MaterialModule,
-    FlexLayoutModule.forRoot(),
+    FlexLayoutModule,
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection

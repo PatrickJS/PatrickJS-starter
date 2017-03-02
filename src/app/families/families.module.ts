@@ -9,6 +9,7 @@ import {
   PreloadAllModules,
   Routes
 } from '@angular/router';
+import { Mv3CommonModule } from '../common/common.module';
 
 import { FamiliesComponent } from './families.component';
 import { FamilyDetailComponent } from './detail/family-detail.component';
@@ -23,8 +24,9 @@ export const ROUTES: Routes = [
     CommonModule,
     FormsModule,
     MaterialModule,
-    FlexLayoutModule.forRoot(),
+    FlexLayoutModule,
     Ng2FloatBtnModule,
+    Mv3CommonModule,
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
   ],
   declarations: [
@@ -32,6 +34,8 @@ export const ROUTES: Routes = [
     AddFamilyDialogComponent,
     FamilyDetailComponent
   ],
-  entryComponents: [AddFamilyDialogComponent]
+  entryComponents: [
+    AddFamilyDialogComponent
+  ]
 })
 export class FamiliesModule { }
