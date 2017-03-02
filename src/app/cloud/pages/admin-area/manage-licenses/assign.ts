@@ -9,6 +9,7 @@ import {AbstractRxComponent} from "../../../../code/angular/AbstractRxComponent"
 import {MongoObservable} from "../../../../../../node_modules/meteor-rxjs/dist/ObservableCollection";
 import {MeteorObservable} from "../../../../../../node_modules/meteor-rxjs/dist/MeteorObservable";
 import {Subject} from "../../../../../../node_modules/rxjs/Subject";
+import {ToastsManager} from "../../../../../../node_modules/ng2-toastr/src/toast-manager";
 
 @Component({
              selector   : 'assign-license',
@@ -28,7 +29,8 @@ export class AssignLicenseComponent extends AbstractRxComponent implements OnIni
   
   constructor(protected manageLicense: ManageLicensesService,
               protected licenseCollection: LicenseCollection,
-              protected userCollection: UserCollection) {
+              protected userCollection: UserCollection,
+              protected toast: ToastsManager) {
     super();
   }
   
@@ -109,13 +111,16 @@ export class AssignLicenseComponent extends AbstractRxComponent implements OnIni
                                                          'user'   : 'Please select a user!',
                                                        },
                                                        submitHandler : function (form) {
-                                                         console.log(vm.data.license);
-                                                         // vm.assignLicense();
+                                                         vm.assignLicense();
                                                        }
                                                      });
   }
   
   private assignLicense() {
-    MeteorObservable.call("license.assign_to_user", this.data).subscribe();
+    MeteorObservable.call("license.assign_to_user", this.data).subscribe(() => {
+      this.toast.success("Done");
+    }, err => {
+      this.toast.error(err['reason']);
+    });
   }
 }
