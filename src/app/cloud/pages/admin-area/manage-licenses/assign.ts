@@ -44,12 +44,18 @@ export class AssignLicenseComponent extends AbstractRxComponent implements OnIni
     this._subscription['licenses'] = this.licenseCollection
                                          .getCollectionObservable()
                                          .subscribe((collection: MongoObservable.Collection<any>) => {
+                                           console.log('license update');
                                            this.licenses = collection.find({shop_owner_id: {$exists: false}}).fetch();
                                          });
     this._subscription['users']    = this.userCollection
                                          .getCollectionObservable()
                                          .subscribe((collection: MongoObservable.Collection<any>) => {
-                                           this.users = collection.find({"roles.cloud_group": {$elemMatch: {$eq: "user"}}}).fetch();
+                                           this.users =
+                                             collection.find({
+                                                               "roles.cloud_group": {$elemMatch: {$eq: "user"}},
+                                                               has_license        : {$exists: false}
+                                                             })
+                                                       .fetch();
                                          });
     this._subscription['license']  = this.licenseCollection
                                          .getCollectionObservable()
