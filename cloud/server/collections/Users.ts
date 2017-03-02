@@ -9,6 +9,6 @@ export const Users = CollectionMaker.makeFromExisting<UserInterface>(Meteor.user
 // hook to add default role and send verify email
 CollectionMaker.hookAfterInsert('users', (userId, user) => {
   let userModel = OM.create<User>(User, false, user);
-  userModel.setRoles([Role.USER], Role.GROUP_CLOUD);
+  userModel.addToRoles([Role.USER], Role.GROUP_CLOUD);
   Accounts.sendVerificationEmail(user['_id'])
 });

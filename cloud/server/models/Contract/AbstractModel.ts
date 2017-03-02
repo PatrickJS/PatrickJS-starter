@@ -32,8 +32,9 @@ export abstract class AbstractModel extends DataObject {
     if (!this.getMongoCollection())
       throw new Error("Can't get collection name from model");
     
+    let _id = this.getData('_id');
     return new Promise((resolve, reject) => {
-      if (!this.getData('_id')) {
+      if (!_id) {
         this.setData('created_at', DateTimeHelper.getCurrentDate());
         this.getMongoCollection()
             .insert(this.getData(), (err) => {
@@ -42,7 +43,7 @@ export abstract class AbstractModel extends DataObject {
       } else {
         this.setData('updated_at', DateTimeHelper.getCurrentDate());
         this.getMongoCollection()
-            .update({_id: this.getData('_id')}, this.getData(), [], (err) => {
+            .update({_id: _id}, {$set: this.getData()}, {}, (err) => {
               return err ? reject(err) : resolve();
             })
       }

@@ -8,22 +8,29 @@ import {UserCollection} from "../../../services/ddp/collections/users";
 import {AbstractRxComponent} from "../../../../code/angular/AbstractRxComponent";
 import {MongoObservable} from "../../../../../../node_modules/meteor-rxjs/dist/ObservableCollection";
 import {MeteorObservable} from "../../../../../../node_modules/meteor-rxjs/dist/MeteorObservable";
+import {Subject} from "../../../../../../node_modules/rxjs/Subject";
+import {ToastsManager} from "../../../../../../node_modules/ng2-toastr/src/toast-manager";
 
 @Component({
              selector   : 'assign-license',
              templateUrl: 'assign.html'
            })
 export class AssignLicenseComponent extends AbstractRxComponent implements OnInit {
-  protected data = {
+  protected data                                  = {
     user   : "",
     license: ""
   };
   protected licenses: any;
   protected users: any;
+  protected license: any;
+  protected user: any;
+  protected changeLicenseObservable: Subject<any> = new Subject();
+  protected changeUserObservable: Subject<any>    = new Subject();
   
   constructor(protected manageLicense: ManageLicensesService,
               protected licenseCollection: LicenseCollection,
-              protected userCollection: UserCollection) {
+              protected userCollection: UserCollection,
+              protected toast: ToastsManager) {
     super();
   }
   
@@ -37,14 +44,44 @@ export class AssignLicenseComponent extends AbstractRxComponent implements OnIni
     this._subscription['licenses'] = this.licenseCollection
                                          .getCollectionObservable()
                                          .subscribe((collection: MongoObservable.Collection<any>) => {
+                                           console.log('license update');
                                            this.licenses = collection.find({shop_owner_id: {$exists: false}}).fetch();
                                          });
     this._subscription['users']    = this.userCollection
                                          .getCollectionObservable()
                                          .subscribe((collection: MongoObservable.Collection<any>) => {
-                                           this.users = collection.find({"roles.cloud_group": {$elemMatch: {$eq: "user"}}}).fetch();
+                                           this.users =
+                                             collection.find({
+                                                               "roles.cloud_group": {$elemMatch: {$eq: "user"}},
+                                                               $or                : [{has_license: {$exists: false}}, {has_license: {$size: 0}}]
+                                                             })
+                                                       .fetch();
+                                         });
+    this._subscription['license']  = this.licenseCollection
+                                         .getCollectionObservable()
+                                         .combineLatest(this.changeLicenseObservable, (collection) => {
+                                           return collection;
+                                         })
+                                         .subscribe((collection) => {
+                                           this.license = collection.findOne({_id: this.data.license});
+                                         });
+    this._subscription['user']     = this.userCollection
+                                         .getCollectionObservable()
+                                         .combineLatest(this.changeUserObservable, (collection) => {
+                                           return collection;
+                                         })
+                                         .subscribe((collection) => {
+                                           this.user = collection.findOne({_id: this.data.user});
                                          });
     
+  }
+  
+  protected changeLicense() {
+    this.changeLicenseObservable.next();
+  }
+  
+  protected changeUser() {
+    this.changeUserObservable.next();
   }
   
   private initPageJs() {
@@ -86,6 +123,10 @@ export class AssignLicenseComponent extends AbstractRxComponent implements OnIni
   }
   
   private assignLicense() {
-    MeteorObservable.call("license.assign_to_user", this.data).subscribe();
+    MeteorObservable.call("license.assign_to_user", this.data).subscribe(() => {
+      this.toast.success("Done");
+    }, err => {
+      this.toast.error(err['reason']);
+    });
   }
 }
