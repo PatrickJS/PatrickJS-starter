@@ -38,7 +38,6 @@ export class ManageProductsService {
   }
 
   createVersion(data: any){
-    console.log(data);
     return new Promise<void>((resolve, reject) => {
       MeteorObservable.call("version.create_product_version", data).subscribe((res) => {
         this.router.navigate(['cloud/products']);

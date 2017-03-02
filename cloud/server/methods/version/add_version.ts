@@ -3,6 +3,7 @@ import * as $q from "q";
 import {OM} from "../../code/General/ObjectManager";
 import {User} from "../../models/User";
 import {Role} from "../../models/Role";
+import * as _ from "lodash";
 
 new ValidatedMethod({
   name: "version.create_product_version",
@@ -20,7 +21,7 @@ new ValidatedMethod({
       throw new Meteor.Error("version.create.error", "Product Not Found");
     }
     _.forEach(product._data, function(value, key){
-      if(key != "versions"){
+      if(key != "_id" && key != "versions"){
         product.unsetData(key);
       }
     });
