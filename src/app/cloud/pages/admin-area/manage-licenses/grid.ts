@@ -21,6 +21,7 @@ export class ManageLicensesGridComponent implements OnInit {
       {data: "_id", title: "License ID"},
       {data: "key", title: "License Key"},
       {data: "has_product", title: "Products"},
+      {data: "shop_owner_username", title: "Shop owner"},
       {data: "status", title: "Status"}
     ],
     columnDefs   : [
@@ -39,7 +40,24 @@ export class ManageLicensesGridComponent implements OnInit {
           return _html;
         }
       },
-      {className: "text-center", orderable: false, "targets": [3]}
+      {
+        targets: [3], render: function (data) {
+        return data ? data : "";
+      },
+      },
+      {
+        className: "text-center",
+        orderable: false, targets: [4],
+        render   : function (data) {
+          if (data == 1)
+            return `<span class="label label-success">Activated</span>`;
+          else if (data == 0)
+            return `<span class="label label-danger">Deactivated</span>`;
+          else if (data == 2) {
+            return `<span class="label label-default">Fresh</span>`;
+          }
+        }
+      }
     ],
     bFilter      : false,
   };

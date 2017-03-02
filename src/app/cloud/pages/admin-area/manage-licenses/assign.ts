@@ -17,8 +17,9 @@ import {ToastsManager} from "../../../../../../node_modules/ng2-toastr/src/toast
            })
 export class AssignLicenseComponent extends AbstractRxComponent implements OnInit {
   protected data                                  = {
-    user   : "",
-    license: ""
+    user      : "",
+    license   : "",
+    permission: "owner"
   };
   protected licenses: any;
   protected users: any;
@@ -44,7 +45,6 @@ export class AssignLicenseComponent extends AbstractRxComponent implements OnIni
     this._subscription['licenses'] = this.licenseCollection
                                          .getCollectionObservable()
                                          .subscribe((collection: MongoObservable.Collection<any>) => {
-                                           console.log('license update');
                                            this.licenses = collection.find({shop_owner_id: {$exists: false}}).fetch();
                                          });
     this._subscription['users']    = this.userCollection
