@@ -26,11 +26,16 @@ Meteor.publishComposite('users', function (): PublishCompositeConfig<UserInterfa
       const licenseModel: License = OM.create<License>(License).loadById(license[0].license_id);
       return {
         find: () => {
-          return Users.collection.find({_id: {$in: licenseModel.getUserIds()}});
+          return Users.collection.find({_id: {$in: _.concat(licenseModel.getUserIds(), [this.userId])}},
+                                       {fields: {_id: 1, emails: 1, has_license: 1, roles: 1, username: 1}});
         }
       }
     } else {
-      return;
+      return {
+        find: () => {
+          return Users.collection.find({_id: this.userId}, {fields: {_id: 1, emails: 1, has_license: 1, roles: 1, username: 1}});
+        }
+      };
     }
   }
 });

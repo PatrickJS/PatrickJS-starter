@@ -65,8 +65,8 @@
             </a>
           </li>
 
-          <li *ngIf="_canAccessAdmin" class="nav-main-heading"><span class="sidebar-mini-hide">Admin Area</span></li>
-          <li *ngIf="_canAccessAdmin" [ngClass]="{open: router.isActive('cloud/licenses',false)}">
+          <li *ngIf="data.canAccessAdmin" class="nav-main-heading"><span class="sidebar-mini-hide">Admin Area</span></li>
+          <li *ngIf="data.canAccessAdmin" [ngClass]="{open: router.isActive('cloud/licenses',false)}">
             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-wallet"></i>
               <span class="sidebar-mini-hide">Manage License</span>
             </a>
@@ -82,7 +82,7 @@
               </li>
             </ul>
           </li>
-          <li *ngIf="_canAccessAdmin" [ngClass]="{open: router.isActive('cloud/products',false)}">
+          <li *ngIf="data.canAccessAdmin" [ngClass]="{open: router.isActive('cloud/products',false)}">
             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-rocket"></i>
               <span class="sidebar-mini-hide">Manage Products</span>
             </a>
@@ -95,7 +95,7 @@
               </li>
             </ul>
           </li>
-          <li *ngIf="_canAccessAdmin" [ngClass]="{open: router.isActive('cloud/users',false)}">
+          <li *ngIf="data.canAccessAdmin" [ngClass]="{open: router.isActive('cloud/users',false)}">
             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-wallet"></i>
               <span class="sidebar-mini-hide">Manage Users</span>
             </a>
@@ -106,7 +106,7 @@
             </ul>
           </li>
 
-          <li [ngClass]="{open: router.isActive('cloud/billing-pricing',false)}">
+          <li *ngIf="data.isUser" [ngClass]="{open: router.isActive('cloud/billing-pricing',false)}">
             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-drawer"></i>
               <span class="sidebar-mini-hide">Billing & Pricing</span>
             </a>
@@ -120,8 +120,8 @@
             </ul>
           </li>
 
-          <li class="nav-main-heading"><span class="sidebar-mini-hide">Manage Shop</span></li>
-          <li [ngClass]="{open: router.isActive('cloud/manage-shop',false)}">
+          <li *ngIf="data.isUser" class="nav-main-heading"><span class="sidebar-mini-hide">Manage Shop</span></li>
+          <li *ngIf="data.isUser" [ngClass]="{open: router.isActive('cloud/manage-shop',false)}">
             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-user"></i>
               <span class="sidebar-mini-hide">User Management</span>
             </a>

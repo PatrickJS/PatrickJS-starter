@@ -11,18 +11,25 @@ import {AppService} from "../../../app.service";
              templateUrl: 'sidebar.html'
            })
 export class SideBarComponent implements OnInit {
-  protected _canAccessAdmin: boolean;
+  protected data = {
+    canAccessAdmin: false,
+    isUser        : false
+  };
   
   constructor(protected authService: AuthService,
               protected appService: AppService,
               protected router: Router) { }
   
   ngOnInit() {
-    this.authService.canAccessAdmin().then((d) => {
-      this._canAccessAdmin = d;
-      this.appService.getChangeDetectorStream().next();
-      setTimeout(() => { OneUI['init']('uiNav');}, 1000);
-    });
+    this.authService
+        .getUserStateObservable()
+        .subscribe((data: any) => {
+          if (data) {
+            this.data.canAccessAdmin = data['canAccessAdmin'];
+            this.data.isUser         = data['isUser'];
+            setTimeout(() => { OneUI['init']('uiNav');}, 1000);
+          }
+        });
   }
   
 }
