@@ -17,6 +17,7 @@ export class ManageProductsService {
     return new Promise<void>((resolve, reject) => {
       MeteorObservable.call("product.create_product", product).subscribe((res) => {
           this.router.navigate(['cloud/products']);
+          this.toast.success("Create Product Successful");
           resolve();
       }, (err) => {
         this.toast.error(err.reason, err.error);
@@ -29,6 +30,7 @@ export class ManageProductsService {
     return new Promise<void>((resolve, reject) => {
       MeteorObservable.call("product.edit_product", product).subscribe((res) => {
         this.router.navigate(['cloud/products']);
+        this.toast.success("Edit Product Successful");
         resolve();
       }, (err) => {
         this.toast.error(err.reason, err.error);
@@ -41,6 +43,7 @@ export class ManageProductsService {
     return new Promise<void>((resolve, reject) => {
       MeteorObservable.call("version.create_product_version", data).subscribe((res) => {
         this.router.navigate(['cloud/products']);
+        this.toast.success("Create Version Successful");
         resolve();
       }, (err) => {
         this.toast.error(err.reason, err.error);
