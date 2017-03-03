@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
 import {ToastsManager} from "ng2-toastr";
 import {Router} from "@angular/router";
-import {MeteorObservable} from "meteor-rxjs";
-import {Observable} from "rxjs";
 import * as _ from "lodash";
+import {ReplaySubject} from "../../../../../node_modules/rxjs/ReplaySubject";
+import {Observable} from "../../../../../node_modules/rxjs/Observable";
+import {UserCollection} from "./collections/users";
 
 @Injectable()
 export class AuthService {
@@ -14,27 +15,32 @@ export class AuthService {
   // store the URL so we can redirect after logging in
   public redirectUrl: string;
   
-  protected _userRoles: Observable<string[]>;
+  protected userStateObservable = new ReplaySubject(1);
   
   constructor(protected toast: ToastsManager,
-              protected router: Router) { }
+              protected router: Router,
+              protected userCollection: UserCollection) {
+    this.initUserSateObservable();
+  }
+  
+  private initUserSateObservable() {
+    this.userCollection.getCollectionObservable()
+        .filter(() => this.getCurrentUser())
+        .subscribe((collection) => {
+          let user = collection.findOne({_id: this.getCurrentUser()['_id']});
+          this.userStateObservable
+              .next({
+                      canAccessAdmin: _.size(_.intersection(user['roles']['cloud_group'], ['admin', 'sales', "super_admin"])) > 0,
+                      isUser        : _.size(_.intersection(user['roles']['cloud_group'], ['user'])) > 0
+                    });
+        });
+  }
   
   getCurrentUser(forceUpdate: boolean = false) {
     if (!this.user || forceUpdate) {
       this.user = Meteor.user();
     }
     return this.user;
-  }
-  
-  getUserRole(): Observable<string[]> {
-    if (typeof this._userRoles == "undefined") {
-      this._userRoles = new Observable(ob => {
-        MeteorObservable.call("user.get_roles").subscribe(data => {
-          ob.next(data);
-        });
-      }).startWith([]);
-    }
-    return this._userRoles;
   }
   
   signUp(user: any) {
@@ -94,17 +100,7 @@ export class AuthService {
     });
   }
   
-  canAccessAdmin(): Promise<boolean> {
-    return new Promise((resolve) => {
-      if (!this._data.hasOwnProperty('canAccessAdmin')) {
-        Meteor.call("user.get_roles", (err, roles) => {
-          this._data['canAccessAdmin'] = _.size(_.intersection(roles, ['admin', 'sales', "super_admin"])) > 0;
-          resolve(this._data['canAccessAdmin'])
-        });
-      }
-      else
-        resolve(this._data['canAccessAdmin']);
-    });
-    
+  getUserStateObservable(): Observable<any> {
+    return this.userStateObservable.asObservable().share();
   }
 }
