@@ -126,12 +126,12 @@ export class MeteorDataTable {
         this.elementSelector.on('click', '.meteor-table-bt-edit', function () {
           vm.callBackSubject.next({event: 'clickEdit', data: jQuery(this).attr('data-id')})
         });
-      }, 1500);
+      }, 100);
       setTimeout(() => {
         this.elementSelector.on('click', '.meteor-table-bt-remove', function () {
-          vm.callBackSubject.next({event: 'clicRemove', data: jQuery(this).attr('data-id')})
+          vm.callBackSubject.next({event: 'clickRemove', data: jQuery(this).attr('data-id')})
         });
-      }, 1500);
+      }, 100);
     }
   }
 }
