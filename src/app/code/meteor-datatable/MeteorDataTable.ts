@@ -12,12 +12,13 @@ import {CloudException} from "../CloudException";
 export class MeteorDataTable {
   protected collection: MongoObservable.Collection<any>;
   protected _dtTable: any;
-  protected _meteorDataTableSubscription: Subscription;
+  protected _meteorDataTableSubscription: Subscription; // subscription automaticlly change data from server
   
   constructor(protected elementSelector: any,
               protected dataTableOptions: Object,
               protected collectionObservable: Observable<MongoObservable.Collection<any>>,
-              protected callBackSubject: Subject<any>) {
+              protected callBackSubject: Subject<any>,
+              protected collectionSelector = {}) {
     this._meteorDataTableSubscription = this.collectionObservable.subscribe((collection) => {
       this.collection = collection;
       this.resolve()
@@ -71,15 +72,15 @@ export class MeteorDataTable {
     return {
       ajax          : (request, drawCallback, settings) => {
         let json                = {};
-        json['recordsTotal']    = this.collection.collection.find().count();
-        json['recordsFiltered'] = this.collection.collection.find().count();
+        json['recordsTotal']    = this.collection.collection.find(this.collectionSelector).count();
+        json['recordsFiltered'] = this.collection.collection.find(this.collectionSelector).count();
         json['draw']            = request.draw; // Update the echo for each response
         
         // searching
         let _selector = {};
         _.forEach(request['columns'], (v, index) => {
           if (v['searchable'] == true && !!v['search']['value']) {
-            _selector[v['data']] = new RegExp(v['search']['value']);
+            this.collectionSelector[v['data']] = new RegExp(v['search']['value']);
           }
         });
         // sort
@@ -91,7 +92,7 @@ export class MeteorDataTable {
             sort['sort'][_columnName] = request['order'][0]['dir'] == 'asc' ? 1 : -1;
           }
         }
-        
+        _selector    = _.merge(_selector, this.collectionSelector);
         json['data'] = _.slice(this.collection.collection.find(_selector, sort).fetch(), request['start'], request['length'] + request['start']);
         drawCallback(json);
       },
@@ -126,12 +127,12 @@ export class MeteorDataTable {
         this.elementSelector.on('click', '.meteor-table-bt-edit', function () {
           vm.callBackSubject.next({event: 'clickEdit', data: jQuery(this).attr('data-id')})
         });
-      }, 1500);
+      }, 100);
       setTimeout(() => {
         this.elementSelector.on('click', '.meteor-table-bt-remove', function () {
-          vm.callBackSubject.next({event: 'clicRemove', data: jQuery(this).attr('data-id')})
+          vm.callBackSubject.next({event: 'clickRemove', data: jQuery(this).attr('data-id')})
         });
-      }, 1500);
+      }, 100);
     }
   }
 }

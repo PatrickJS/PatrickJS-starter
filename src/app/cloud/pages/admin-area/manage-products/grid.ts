@@ -50,8 +50,12 @@ export class ManageProductsGridComponent implements OnInit {
   
   ngOnInit(): void {
     this.angularMeteorDtTable.getCallBackObservable().subscribe((data) => {
-      if(data.event == "clickEdit"){
+      if (data.event == "clickEdit") {
         this.router.navigateByUrl('cloud/products/' + data.data);
+      }
+      ;
+      if (data.event == 'removeRecord') {
+        console.log('remove:' + data.data);
       }
     });
   }

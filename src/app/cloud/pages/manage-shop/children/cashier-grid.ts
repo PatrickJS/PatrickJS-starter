@@ -5,13 +5,15 @@ import {
 import {UserCollection} from "../../../services/ddp/collections/users";
 import {ManageShopService} from "../manage-shop.service";
 import * as _ from "lodash";
+import {AuthService} from "../../../services/ddp/auth.service";
 
 @Component({
              selector   : 'cashier-grid',
              templateUrl: 'cashier-grid.html'
            })
 export class CashierGridComponent implements OnInit {
-  protected tableConfig = {
+  protected collectionSelector = {};
+  protected tableConfig        = {
     actionsColumn: {edit: true, remove: true},
     columns      : [
       {data: "username", title: "Name"},
@@ -52,11 +54,13 @@ export class CashierGridComponent implements OnInit {
     bFilter      : false,
   };
   
-  constructor(protected usersCollection: UserCollection,
-              protected manageShop: ManageShopService) { }
+  constructor(protected userCollection: UserCollection,
+              protected manageShop: ManageShopService,
+              protected authService: AuthService) { }
   
   ngOnInit() {
     this.manageShop.viewState.headerText = "Cashiers";
+    this.collectionSelector              = {_id: {$ne: this.authService.getCurrentUser()['_id']}};
   }
   
 }
