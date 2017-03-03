@@ -54,7 +54,7 @@ export class ManageProductsGridComponent implements OnInit {
         this.router.navigateByUrl('cloud/products/' + data.data);
       }
       if (data.event == 'removeRecord') {
-        console.log('remove:' + data.data);
+        this.manageProductService.removeProduct(data.data);
       }
       if (data.event == 'newRecord') {
         this.router.navigate(['/cloud/products/create']);
