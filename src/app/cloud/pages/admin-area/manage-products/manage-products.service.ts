@@ -29,7 +29,7 @@ export class ManageProductsService {
   editProduct(product: any){
     return new Promise<void>((resolve, reject) => {
       MeteorObservable.call("product.edit_product", product).subscribe((res) => {
-        this.router.navigate(['cloud/products']);
+        this.router.navigate(['cloud/products/' + product._id]);
         this.toast.success("Edit Product Successful");
         resolve();
       }, (err) => {
@@ -42,7 +42,7 @@ export class ManageProductsService {
   createVersion(data: any){
     return new Promise<void>((resolve, reject) => {
       MeteorObservable.call("version.create_product_version", data).subscribe((res) => {
-        this.router.navigate(['cloud/products']);
+        this.router.navigate(['cloud/products/' + data._id]);
         this.toast.success("Create Version Successful");
         resolve();
       }, (err) => {
