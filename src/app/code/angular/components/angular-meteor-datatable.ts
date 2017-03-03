@@ -19,7 +19,10 @@ import {ToastsManager} from "ng2-toastr";
              templateUrl: 'angular-meteor-datatable.html'
            })
 export class AngularMeteorDataTableComponent extends AbstractRxComponent implements OnInit {
-  protected data                                                 = {};
+  protected data = {
+    openFilter: false
+  };
+  
   @Input('collectionObservable') private collectionObservable: Observable<MongoObservable.Collection<any>>;
   @Input('tableConfig') private tableConfig: any;
   @Input('defaultCollectionSelector') private defaultCollectionSelector = {}; // Default selector for collection
@@ -51,6 +54,10 @@ export class AngularMeteorDataTableComponent extends AbstractRxComponent impleme
           jQuery('#meteor-dt-remove-modal').modal('show');
         }
       });
+  }
+  
+  newRecord() {
+    this.callBackSubject.next({event: "newRecord"});
   }
   
   removeRecord() {
