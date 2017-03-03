@@ -55,11 +55,14 @@ export class ManageProductsService {
   }
 
   removeProduct(data: any){
-    this.productCollection.getCollectionObservable().subscribe(
-      (collection: MongoObservable.Collection<any>) => {
-        collection.remove({_id: data});
-      }
-    );
-    this.toast.success("Remove Product Successfully");
+    return new Promise<void>((resolve, reject) => {
+      MeteorObservable.call("product.remove_product", data).subscribe((res) => {
+        this.toast.success("Remove Product Successfully");
+        resolve();
+      }, (err) => {
+        this.toast.error(err.reason, err.error);
+        return reject(err);
+      });
+    });
   }
 }

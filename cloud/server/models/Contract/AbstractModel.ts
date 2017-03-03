@@ -49,6 +49,23 @@ export abstract class AbstractModel extends DataObject {
       }
     });
   }
+
+  remove(): Promise<any>{
+    if (!this.getMongoCollection())
+      throw new Error("Can't get collection name from model");
+
+    let _id = this.getData('_id');
+    return new Promise((resolve, reject) => {
+      if (!_id) {
+        throw new Error("Can't find item");
+      } else {
+        this.getMongoCollection()
+            .remove({_id: _id}, (err) => {
+              return err ? reject(err) : resolve();
+            })
+      }
+    });
+  }
   
   getMongoCollection<T>(): Mongo.Collection<T> {
     if (!this.$collection) {
