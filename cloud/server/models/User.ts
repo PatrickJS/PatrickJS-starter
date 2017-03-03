@@ -36,5 +36,9 @@ export class User extends AbstractModel {
   getRoles(group = Role.GROUP_CLOUD): string[] {
     return Roles.getRolesForUser(this.getData(), group);
   }
+  
+  isShopOwner(): boolean {
+    return this.isInRoles(Role.USER) && _.size(this.getLicenses()) == 1 && this.getLicenses()[0].license_permission == User.LICENSE_PERMISSION_OWNER;
+  }
 }
 

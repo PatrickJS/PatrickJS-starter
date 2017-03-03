@@ -5,9 +5,9 @@ import * as _ from "lodash";
 
 export class UserLicense {
   /*
-   * Khi assign license cho show_owner, cho cashier, hoặc khi assign cho sales
+   * Nếu attach license + cashier cần define products được assign
    */
-  static attach(user: User, license: License, permission: string): Promise<any> {
+  static attach(user: User, license: License, permission: string, products: string[] = []): Promise<any> {
     if (user.isInRoles(Role.USER)) {
       if (_.size(user.getLicenses()) > 0)
         throw new Meteor.Error("Can't attack license to this user");
@@ -26,6 +26,8 @@ export class UserLicense {
       if (permission == User.LICENSE_PERMISSION_OWNER) {
         license.setData("shop_owner_id", user.getId())
                .setData("shop_owner_username", user.getUsername())
+      } else if (permission == User.LICENSE_PERMISSION_CASHIER) {
+        // TODO: need implement
       }
       
       return Promise.all([user.save(), license.save()]);
