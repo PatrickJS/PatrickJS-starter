@@ -90,9 +90,6 @@
               <li>
                 <a routerLink="/cloud/products/grid" routerLinkActive="active">List</a>
               </li>
-              <li>
-                <a routerLink="/cloud/products/create" routerLinkActive="active">Create</a>
-              </li>
             </ul>
           </li>
           <li *ngIf="data.canAccessAdmin" [ngClass]="{open: router.isActive('cloud/users',false)}">
