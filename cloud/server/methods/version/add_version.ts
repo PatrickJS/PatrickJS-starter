@@ -4,6 +4,7 @@ import {OM} from "../../code/General/ObjectManager";
 import {User} from "../../models/User";
 import {Role} from "../../models/Role";
 import * as _ from "lodash";
+import {ProductVersion} from "../../models/ProductInterface";
 
 new ValidatedMethod({
   name: "version.create_product_version",
@@ -25,8 +26,8 @@ new ValidatedMethod({
         product.unsetData(key);
       }
     });
-    product.versions.push(data['versions']);
-    product.setData("versions", product.versions);
+    product._data.versions.push(data['versions']);
+    product.setData("versions", product._data.versions);
     product.save().then(() => defer.resolve(), (err) => defer.reject(err));
     return defer.promise;
   }

@@ -4,6 +4,7 @@ import {
 } from '@angular/core';
 import {ManageProductsService} from "./manage-products.service";
 import {ActivatedRoute} from "@angular/router";
+import * as moment from 'moment';
 
 @Component({
              selector: 'create-version',
@@ -68,6 +69,7 @@ export class CreateVersionComponent implements OnInit {
                                                             _id: vm.id,
                                                             versions: vm.version
                                                           };
+                                                          data.versions["created_at"] = data.versions["updated_at"] = moment().toDate();
                                                           vm.productService.createVersion(data);
                                                        }
                                                      });
