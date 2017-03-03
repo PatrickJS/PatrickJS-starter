@@ -66,8 +66,7 @@ export const ROUTES: Routes = [
           {path: '', component: ManageProductsGridComponent},
           {path: 'grid', component: ManageProductsGridComponent},
           {path: 'create', component: CreateProductComponent},
-          {path: ':id', component: EditProductComponent},
-          {path: 'createVersion/:product_id', component: CreateVersionComponent}
+          {path: ':id', component: EditProductComponent}
         ]
       },
       
