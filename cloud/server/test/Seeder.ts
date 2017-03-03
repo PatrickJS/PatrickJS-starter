@@ -122,7 +122,7 @@ export class Seeder {
     array.push(id);
     return id;
   }
-
+//ádas
   randomIdObject(arr: any[]) {
     let item = arr[Math.floor(Math.random() * arr.length)];
     return item._id;
