@@ -20,10 +20,12 @@ export const Products = CollectionMaker.make<ProductInterface>("products",
                                                                    name: String,
                                                                    version: String,
                                                                    created_at: {
-                                                                     type: Date
+                                                                     type: Date,
+                                                                     defaultValue: DateTimeHelper.getCurrentDate()
                                                                    },
                                                                    updated_at: {
-                                                                     type: Date
+                                                                     type: Date,
+                                                                     defaultValue: DateTimeHelper.getCurrentDate()
                                                                    },
                                                                  })],
                                                                  created_at: {
