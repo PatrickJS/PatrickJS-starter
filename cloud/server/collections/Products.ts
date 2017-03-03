@@ -15,16 +15,15 @@ export const Products = CollectionMaker.make<ProductInterface>("products",
                                                                    type: Object,
                                                                    optional: true
                                                                  },
+                                                                 'additional_data.description': String,
                                                                  versions: [new SimpleSchema({
                                                                    name: String,
                                                                    version: String,
                                                                    created_at: {
-                                                                     type: Date,
-                                                                     defaultValue: DateTimeHelper.getCurrentDate()
+                                                                     type: Date
                                                                    },
                                                                    updated_at: {
-                                                                     type: Date,
-                                                                     defaultValue: DateTimeHelper.getCurrentDate()
+                                                                     type: Date
                                                                    },
                                                                  })],
                                                                  created_at: {

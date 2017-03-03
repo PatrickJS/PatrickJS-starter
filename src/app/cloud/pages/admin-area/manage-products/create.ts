@@ -63,6 +63,12 @@ export class CreateProductComponent implements OnInit {
                                                    messages      : {
                                                      'val-product_name'        : {
                                                        required : 'Please enter product name',
+                                                     },
+                                                     'val-version_name'         : {
+                                                       required : 'Please enter version name',
+                                                     },
+                                                     'val-version'         : {
+                                                       required : 'Please enter version number',
                                                      }
                                                    },
                                                     submitHandler: function (form) {

@@ -7,6 +7,7 @@ import {ManageProductsService} from "./manage-products.service";
 import {ProductCollection} from "../../../services/ddp/collections/products";
 import {AngularMeteorDataTableComponent} from "../../../../code/angular/components/angular-meteor-datatable";
 import * as _ from "lodash";
+import {Router} from "@angular/router";
 
 @Component({
              selector   : 'manage-products-grid',
@@ -42,11 +43,16 @@ export class ManageProductsGridComponent implements OnInit {
   };
   
   constructor(protected manageProductService: ManageProductsService,
-              protected productsCollection: ProductCollection) {
+              protected productsCollection: ProductCollection,
+              protected router: Router) {
     this.manageProductService.viewState.headerText = "Grid";
   }
   
   ngOnInit(): void {
-    this.angularMeteorDtTable.getCallBackObservable().subscribe((data) => {console.log(data);});
+    this.angularMeteorDtTable.getCallBackObservable().subscribe((data) => {
+      if(data.event == "clickEdit"){
+        this.router.navigateByUrl('cloud/products/' + data.data);
+      }
+    });
   }
 }
