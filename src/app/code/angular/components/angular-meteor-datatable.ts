@@ -3,7 +3,8 @@ import {
   OnInit,
   Input,
   ViewChild,
-  ElementRef
+  ElementRef,
+  ViewEncapsulation
 } from '@angular/core';
 import {AbstractRxComponent} from "../AbstractRxComponent";
 import {MeteorDataTable} from "../../meteor-datatable/MeteorDataTable";
@@ -15,8 +16,10 @@ import {MongoObservable} from "meteor-rxjs";
 import {ToastsManager} from "ng2-toastr";
 
 @Component({
+             encapsulation: ViewEncapsulation.None,
              selector   : 'angular-meteor-datatable',
-             templateUrl: 'angular-meteor-datatable.html'
+             templateUrl: 'angular-meteor-datatable.html',
+             styleUrls  : ['angular-meteor-datatable.scss']
            })
 export class AngularMeteorDataTableComponent extends AbstractRxComponent implements OnInit {
   protected data = {
