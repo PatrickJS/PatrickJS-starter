@@ -6,7 +6,8 @@ import {Role} from "./Role";
 import * as _ from "lodash";
 
 export class User extends AbstractModel {
-  protected $collection             = "users";
+  protected $collection = "users";
+  
   static LICENSE_PERMISSION_SALES   = 'sales';
   static LICENSE_PERMISSION_AGENCY  = 'agency';
   static LICENSE_PERMISSION_OWNER   = 'owner';
