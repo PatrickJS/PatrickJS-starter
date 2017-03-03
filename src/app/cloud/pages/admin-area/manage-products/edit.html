@@ -33,8 +33,15 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <label for="val-versions">Versions of Product</label>
-                            <span class="label label-info" *ngFor="let version of product.versions">{{ version.version }}</span>
+                            <div class="form-material">
+                                <ul class="list-group" id="products">
+                                    <li class="list-group-item" *ngFor="let version of product.versions">
+                                        <span class="badge">{{version.version}}</span>
+                                        version name: {{version.name}}
+                                    </li>
+                                </ul>
+                                <label for="val-versions">Versions of Product</label>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
