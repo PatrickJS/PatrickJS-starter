@@ -19,10 +19,11 @@ export class MeteorDataTable {
               protected collectionObservable: Observable<MongoObservable.Collection<any>>,
               protected callBackSubject: Subject<any>,
               protected collectionSelector = {}) {
-    this._meteorDataTableSubscription = this.collectionObservable.subscribe((collection) => {
-      this.collection = collection;
-      this.resolve()
-    });
+    if (this.collectionObservable)
+      this._meteorDataTableSubscription = this.collectionObservable.subscribe((collection) => {
+        this.collection = collection;
+        this.resolve()
+      });
   }
   
   private initDataTable() {
