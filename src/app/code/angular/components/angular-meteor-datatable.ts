@@ -19,14 +19,15 @@ import {ToastsManager} from "ng2-toastr";
              templateUrl: 'angular-meteor-datatable.html'
            })
 export class AngularMeteorDataTableComponent extends AbstractRxComponent implements OnInit {
-  protected data = {};
+  protected data                                                 = {};
   @Input('collectionObservable') private collectionObservable: Observable<MongoObservable.Collection<any>>;
   @Input('tableConfig') private tableConfig: any;
+  @Input('defaultCollectionSelector') private defaultCollectionSelector = {}; // Default selector for collection
   
   @ViewChild('dataTable') dataTable: ElementRef;
   
   meteorDataTable: MeteorDataTable;
-  protected callBackSubject: Subject<any> = new Subject();
+  protected callBackSubject: Subject<any> = new Subject(); // call back from data table
   
   constructor(protected toast: ToastsManager) {
     super();
@@ -37,10 +38,10 @@ export class AngularMeteorDataTableComponent extends AbstractRxComponent impleme
   }
   
   private _initTable() {
-    this.meteorDataTable            =
-      new MeteorDataTable(jQuery(this.dataTable.nativeElement), this.tableConfig, this.collectionObservable, this.callBackSubject);
-    this._subscription['dataTable'] = this.meteorDataTable.getMeteorDtTableSubscription();
+    this.meteorDataTable =
+      new MeteorDataTable(jQuery(this.dataTable.nativeElement), this.tableConfig, this.collectionObservable, this.callBackSubject, this.defaultCollectionSelector);
     
+    this._subscription['dataTable']       = this.meteorDataTable.getMeteorDtTableSubscription();
     this._subscription['click_remove_dt'] =
       this.callBackSubject.filter(x => {
         return x['event'] == "clickRemove";
