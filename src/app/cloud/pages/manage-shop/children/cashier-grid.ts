@@ -1,17 +1,21 @@
 import {
   Component,
-  OnInit
+  OnInit,
+  ViewChild
 } from '@angular/core';
 import {UserCollection} from "../../../services/ddp/collections/users";
 import {ManageShopService} from "../manage-shop.service";
 import * as _ from "lodash";
 import {AuthService} from "../../../services/ddp/auth.service";
+import {AngularMeteorDataTableComponent} from "../../../../code/angular/components/angular-meteor-datatable";
+import {Router} from "../../../../../../node_modules/@angular/router/src/router";
 
 @Component({
              selector   : 'cashier-grid',
              templateUrl: 'cashier-grid.html'
            })
 export class CashierGridComponent implements OnInit {
+  @ViewChild(AngularMeteorDataTableComponent) protected angularMeteorDtTable: AngularMeteorDataTableComponent;
   protected collectionSelector = {};
   protected tableConfig        = {
     actionsColumn: {edit: true, remove: true},
@@ -56,11 +60,18 @@ export class CashierGridComponent implements OnInit {
   
   constructor(protected userCollection: UserCollection,
               protected manageShop: ManageShopService,
-              protected authService: AuthService) { }
+              protected authService: AuthService,
+              protected router: Router) { }
   
   ngOnInit() {
     this.manageShop.viewState.headerText = "Cashiers";
     this.collectionSelector              = {_id: {$ne: this.authService.getCurrentUser()['_id']}};
+    
+    this.angularMeteorDtTable.getCallBackObservable().subscribe((data: any) => {
+      if (data.event == 'newRecord') {
+        this.router.navigate(['/cloud/manage-shop/create-cashier']);
+      }
+    });
   }
   
 }

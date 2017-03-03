@@ -26,6 +26,7 @@ import {CreateProductComponent} from "./cloud/pages/admin-area/manage-products/c
 import {AssignLicenseComponent} from "./cloud/pages/admin-area/manage-licenses/assign";
 import {EditProductComponent} from "./cloud/pages/admin-area/manage-products/edit";
 import {CreateVersionComponent} from "./cloud/pages/admin-area/manage-products/create-version";
+import {CreateCashierComponent} from "./cloud/pages/manage-shop/children/create-cashier";
 
 export const ROUTES: Routes = [
   {
@@ -69,6 +70,14 @@ export const ROUTES: Routes = [
           {path: ':id', component: EditProductComponent}
         ]
       },
+      {
+        path     : 'users',
+        component: ManageUsersComponent,
+        children : [
+          {path: '', component: ManageUsersGridComponent},
+          {path: 'grid', component: ManageUsersGridComponent},
+        ]
+      },
       
       /* ------------------------ User Area ------------------------ */
       {
@@ -77,7 +86,8 @@ export const ROUTES: Routes = [
         children : [
           {path: '', component: CashierGridComponent},
           {path: 'cashiers', component: CashierGridComponent},
-          {path: 'roles', component: ShopRolesComponent}
+          {path: 'roles', component: ShopRolesComponent},
+          {path: 'create-cashier', component: CreateCashierComponent}
         ]
       },
       {
@@ -87,14 +97,6 @@ export const ROUTES: Routes = [
           {path: '', component: CloudPricingComponent},
           {path: 'pricing', component: CloudPricingComponent},
           {path: 'billing', component: CloudBillingComponent}
-        ]
-      },
-      {
-        path     : 'users',
-        component: ManageUsersComponent,
-        children : [
-          {path: '', component: ManageUsersGridComponent},
-          {path: 'grid', component: ManageUsersGridComponent}
         ]
       }
     ]
