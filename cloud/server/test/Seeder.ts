@@ -43,6 +43,9 @@ export class Seeder {
       }
       return {
         name    : Math.random().toString(36).substring(7),
+        additional_data: {
+          description: "des"
+        },
         versions: versions,
       }
     };

@@ -20,7 +20,7 @@ export class CreateVersionComponent implements OnInit {
     protected productService: ManageProductsService,
     private route: ActivatedRoute,
   ) {
-    route.params.subscribe((p) => this.id = p['product_id']);
+    route.params.subscribe((p) => this.id = p['_id']);
   }
 
   ngOnInit() {
