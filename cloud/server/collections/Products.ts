@@ -15,6 +15,7 @@ export const Products = CollectionMaker.make<ProductInterface>("products",
                                                                    type: Object,
                                                                    optional: true
                                                                  },
+                                                                 'additional_data.description': String,
                                                                  versions: [new SimpleSchema({
                                                                    name: String,
                                                                    version: String,

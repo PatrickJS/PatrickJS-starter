@@ -66,13 +66,18 @@ export class EditProductComponent implements OnInit {
                                                        submitHandler: function (form) {
                                                          let product_change = {
                                                            _id: vm.id,
-                                                           name: vm.product.name
+                                                           name: vm.product.name,
+                                                           additional_data: vm.product.additional_data
                                                          };
                                                          vm.productService.editProduct(product_change);
                                                        }
                                                      });
     };
     initValidationMaterial();
+  }
+
+  private changeDescription(event){
+    this.product.additional_data['description'] = event.target.value;
   }
 
   private addVersion(){

@@ -17,7 +17,9 @@
                         <div class="col-sm-12">
                             <div class="form-material">
                                 <textarea class="form-control" id="val-product_des" name="val-product_des" rows="6"
-                                          placeholder="Products's Description Here.."></textarea>
+                                          placeholder="Products's Description Here.." (change)="changeDescription($event)">{{ product.additional_data
+                                .description
+                                }}</textarea>
                                 <label for="val-product_des">Descriptions</label>
                             </div>
                         </div>
