@@ -106,7 +106,7 @@
             </ul>
           </li>
 
-          <li [ngClass]="{open: router.isActive('cloud/billing-pricing',false)}">
+          <li *ngIf="data.isUser" [ngClass]="{open: router.isActive('cloud/billing-pricing',false)}">
             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-drawer"></i>
               <span class="sidebar-mini-hide">Billing & Pricing</span>
             </a>
