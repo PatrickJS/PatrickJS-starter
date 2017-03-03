@@ -12,6 +12,9 @@ import "assets/js/plugins/slick/slick.min";
 // ChartJS
 import "chart.js/dist/Chart";
 
+// Select2
+import "assets/js/plugins/select2/select2.full.min.js";
+
 // Datatable
 import "datatables.net/js/jquery.dataTables";
 import "datatables.net-bs/js/dataTables.bootstrap";
@@ -21,6 +24,7 @@ import "ng2-toastr/ng2-toastr.js";
 
 // jQuery validation
 import "jquery-validation/dist/jquery.validate.js";
+import "jquery-validation/dist/additional-methods.js";
 
 /*
  Lưu ý không thể load file css ở đây. Lý do là trong config của webpack sẽ chỉ có:
