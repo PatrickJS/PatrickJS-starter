@@ -1,20 +1,27 @@
+<h1>TITRE</h1>
+
 <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="10px" fxLayoutWrap="wrap">
-    <div *ngFor="let family of families" fxFlex="30" >
+    <div *ngFor="let family of families" fxFlex="30">
         <md-card style="margin-bottom:20px;">
             <md-card-title fxLayoutAlign="center">
-            <a routerLink="/families/{{ family.name }}/{{ family.id}}" >
+                <a routerLink="/families/{{ family.name }}/{{ family.id}}">
                 {{ family.name }}
             </a>
             </md-card-title>
-            <md-card-content>
-                Liste des enfants
+            <md-card-content fxLayout="row" fxLayoutAlign="center" fxLayoutGap="10px" fxLayoutWrap="wrap">
+                <div *ngFor="let child of family.children" fxFlex="30" fxLayout="column" fxLayoutAlign="center">
+                    <button md-fab disabled="true">
+                        <md-icon>child_care</md-icon>
+                    </button>
+                    <div>{{ child.firstName }}</div>
+                </div>
             </md-card-content>
         </md-card>
     </div>
 </div>
 
 
-<button md-fab class="fab-add" (click)="openDialog()" color="accent">
+<button md-fab class="floating-fab" (click)="openDialog()" color="accent">
    <md-icon>add</md-icon>
 </button>
 
@@ -22,7 +29,9 @@
 {{ families | json}}
 </pre>
 
+<!--
 <div style="z-index:400; position: absolute; bottom: 0;">
     <ng2-float-btn [mainButton]="mainButton" [buttons]="buttons" [direction]="'up'">
     </ng2-float-btn>
 </div>
+-->

@@ -1,2 +1,19 @@
 
-<h1>TRACE</h1>
+<md-tab-group   (selectChange)="tabChanged($event)">
+  <md-tab label="Les enfants" >
+      <family-detail-children [family]="family"></family-detail-children>
+  </md-tab>
+  <md-tab label="Les parents">
+      Content 2
+  </md-tab>
+  <md-tab label="Les contatcs">
+      Content 2
+  </md-tab>
+  <md-tab label="Facturation / réglements">
+      Content 2
+  </md-tab>
+</md-tab-group>
+
+<button md-fab class="floating-fab" (click)="openDialog()" color="accent" *ngIf="showAddButton">
+   <md-icon>add</md-icon>
+</button>

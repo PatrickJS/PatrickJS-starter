@@ -13,7 +13,9 @@ import { Mv3CommonModule } from '../common/common.module';
 
 import { FamiliesComponent } from './families.component';
 import { FamilyDetailComponent } from './detail/family-detail.component';
+import { FamilyDetailChildrenComponent } from './detail/family-detail-children.component';
 import { AddFamilyDialogComponent } from './add-family.component';
+import { AddChildDialogComponent } from './detail/add-child.component';
 
 export const ROUTES: Routes = [
   { path: 'families/:familyName/:familyId', component: FamilyDetailComponent }
@@ -32,10 +34,13 @@ export const ROUTES: Routes = [
   declarations: [
     FamiliesComponent,
     AddFamilyDialogComponent,
-    FamilyDetailComponent
+    FamilyDetailComponent,
+    FamilyDetailChildrenComponent,
+    AddChildDialogComponent
   ],
   entryComponents: [
-    AddFamilyDialogComponent
+    AddFamilyDialogComponent,
+    AddChildDialogComponent
   ]
 })
 export class FamiliesModule { }

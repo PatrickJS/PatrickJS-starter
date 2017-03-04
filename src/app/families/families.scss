@@ -1,7 +1,7 @@
-.fab-add {
-    position: absolute;
-    bottom: 50px;
-    right:50px;
+.floating-fab {
+    position: fixed;
+    bottom: 30px;
+    right:30px;
     md-icon {
         font-size: 18px;
     }

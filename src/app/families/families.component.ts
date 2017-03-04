@@ -8,6 +8,8 @@ import { FamilyService } from '../model/family.service';
 import { Family } from '../model/family.model';
 import { AddFamilyDialogComponent } from './add-family.component';
 
+import _ from 'lodash';
+
 @Component({
     selector: 'families',
     template: require('./families.html'),

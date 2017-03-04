@@ -4,6 +4,7 @@ import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import { Family } from './family.model';
+import { Child } from './child.model';
 import { FAMILIES } from './mock/data.mock';
 
 @Injectable()
@@ -13,27 +14,62 @@ export class FamilyService {
 
     constructor(private http: Http) { }
 
+    /**
+     * Get all families
+     */
     public getFamilies(): Promise<Family[]> {
         console.log('getFamilies : ', FAMILIES);
 
         return this.http.get(this.familiesUrl)
             .toPromise()
             .then((response) => {
-                console.log('FamilyService.getFamilies : ', response.json());
                 return response.json() as Family[];
             })
             .catch(this.handleError);
+    }
 
-        // return Promise.resolve(FAMILIES);
+    /**
+     * Get children of given familyId
+     */
+    public getChildren(familyId: number): Promise<Child[]> {
 
+        const url = `${this.familiesUrl}/${familyId}/children`;
+
+        return this.http.get(url)
+            .toPromise()
+            .then((response) => {
+                return response.json() as Child[];
+            })
+            .catch(this.handleError);
+    }
+
+    /**
+     * Add child to given familyId
+     */
+    public addChild(familyId: number, child: Child): Promise<Child> {
+
+        const url = `${this.familiesUrl}/${familyId}/children`;
+
+        return this.http.post(url, JSON.stringify(child), { headers: this.headers })
+            .toPromise()
+            .then((response) => {
+                return response.json() as Child;
+            })
+            .catch(this.handleError);
     }
 
     public getFamily(id: Number): Promise<Family> {
         if (!(id instanceof Number)) {
             id = Number(id);
         }
-        return this.getFamilies()
-            .then((families) => families.find((family) => family.id === id));
+        const url = `${this.familiesUrl}/${id}`;
+
+        return this.http.get(url)
+            .toPromise()
+            .then((response) => {
+                return response.json() as Family;
+            })
+            .catch(this.handleError);
     }
 
     public update(family: Family): Promise<Family> {
@@ -51,7 +87,6 @@ export class FamilyService {
             .post(this.familiesUrl, JSON.stringify(family), { headers: this.headers })
             .toPromise()
             .then((res) => {
-                console.log('Family creation : ', res.json());
                 return res.json() as Family;
             })
             .catch(this.handleError);

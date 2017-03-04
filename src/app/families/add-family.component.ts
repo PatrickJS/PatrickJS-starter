@@ -23,20 +23,18 @@ export class AddFamilyDialogComponent {
         console.log('name : ', newName);
         console.log('firstName : ', newFirstName);
 
+        let child: Child = {
+            firstName: newFirstName
+        };
         let family: Family = new Family();
         family.name = newName;
+        family.children = [];
+        family.children.push(child);
 
         console.log('family : ', family);
 
-        this.familyService.create(family).then((newFamily) => {
-            let child: Child = {
-                firstName: newFirstName,
-                familyId: newFamily.id
-            };
-            this.childService.create(child).then((newChild) => {
-                this.dialogRef.close();
-            });
-
+        this.familyService.create(family).then(() => {
+            this.dialogRef.close();
         });
 
     }

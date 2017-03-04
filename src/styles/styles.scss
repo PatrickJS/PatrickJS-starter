@@ -28,7 +28,19 @@ $accent-color: mat-color($app-accent);
 $accent-color-darker: mat-color($app-accent, A700);
 $accent-color-lighter: mat-color($app-accent, A100);
 
+$text-color: rgba(black, 0.87);
+
 body,html {
   height:100%;
   font-family: Roboto,"Helvetica Neue",sans-serif;
+}
+
+.floating-fab {
+  z-index:100;
+    position: fixed;
+    bottom: 20px;
+    right:20px;
+    md-icon {
+        font-size: 18px;
+    }
 }

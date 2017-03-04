@@ -39,7 +39,9 @@ export class ChildService {
         return this.http
             .post(this.childrenUrl, JSON.stringify(child), { headers: this.headers })
             .toPromise()
-            .then((res) => res.json().data)
+            .then((res) => {
+                return res.json() as Child;
+            })
             .catch(this.handleError);
 
     }
