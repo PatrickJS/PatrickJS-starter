@@ -1,6 +1,6 @@
 <div class="family-detail-children" *ngIf="family" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="20px" fxLayoutWrap="wrap">
 
-    <div class="item" *ngFor="let child of family.children" fxFlex="calc(33% - 20px)">
+    <div class="family-detail-child" *ngFor="let child of family.children" fxFlex="calc(33% - 20px)">
         <md-card >
             <md-card-title fxLayout="row">
                 <div fxFlex="none" >

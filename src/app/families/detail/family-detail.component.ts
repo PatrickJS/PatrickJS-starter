@@ -7,7 +7,9 @@ import { Ng2FloatBtnComponent, Ng2FloatBtn } from 'ng2-float-btn';
 
 import { FamilyService } from '../../model/family.service';
 import { Family } from '../../model/family.model';
-import { AddChildDialogComponent } from './add-child.component';
+import { AddChildDialogComponent } from './children/add-child.component';
+import { AddParentDialogComponent } from './parents/add-parent.component';
+import { AddContactDialogComponent } from './contacts/add-contact.component';
 
 @Component({
     selector: 'family-detail',
@@ -51,6 +53,10 @@ export class FamilyDetailComponent implements OnInit {
         this.getFamily();
     }
 
+    /**
+     * Handle tab change to display or not add button
+     * @param event
+     */
     public tabChanged($event: MdTabChangeEvent) {
 
         this.currentTabIndex = $event.index;
@@ -64,6 +70,9 @@ export class FamilyDetailComponent implements OnInit {
 
     }
 
+    /**
+     * Handle click on add button to open add modal
+     */
     public openDialog() {
         let dialogRef;
         let config: MdDialogConfig = {
@@ -73,6 +82,12 @@ export class FamilyDetailComponent implements OnInit {
         };
         if (this.currentTabIndex === 0) {
             dialogRef = this.dialog.open(AddChildDialogComponent, config);
+        }
+        if (this.currentTabIndex === 1) {
+            dialogRef = this.dialog.open(AddParentDialogComponent, config);
+        }
+        if (this.currentTabIndex === 2) {
+            dialogRef = this.dialog.open(AddContactDialogComponent, config);
         }
         dialogRef.afterClosed().subscribe(() => {
             this.getFamily();

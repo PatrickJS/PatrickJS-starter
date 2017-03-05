@@ -5,6 +5,8 @@ import 'rxjs/add/operator/toPromise';
 
 import { Family } from './family.model';
 import { Child } from './child.model';
+import { Parent } from './parent.model';
+import { Contact } from './contact.model';
 import { FAMILIES } from './mock/data.mock';
 
 @Injectable()
@@ -54,6 +56,36 @@ export class FamilyService {
             .toPromise()
             .then((response) => {
                 return response.json() as Child;
+            })
+            .catch(this.handleError);
+    }
+
+    /**
+     * Add parent to given familyId
+     */
+    public addParent(familyId: number, parent: Parent): Promise<Parent> {
+
+        const url = `${this.familiesUrl}/${familyId}/parents`;
+
+        return this.http.post(url, JSON.stringify(parent), { headers: this.headers })
+            .toPromise()
+            .then((response) => {
+                return response.json() as Parent;
+            })
+            .catch(this.handleError);
+    }
+
+    /**
+     * Add contact to given familyId
+     */
+    public addContact(familyId: number, contact: Contact): Promise<Contact> {
+
+        const url = `${this.familiesUrl}/${familyId}/contacts`;
+
+        return this.http.post(url, JSON.stringify(contact), { headers: this.headers })
+            .toPromise()
+            .then((response) => {
+                return response.json() as Contact;
             })
             .catch(this.handleError);
     }

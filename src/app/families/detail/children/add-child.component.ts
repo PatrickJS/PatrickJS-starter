@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { MdDialogRef } from '@angular/material';
 
-import { FamilyService } from '../../model/family.service';
-import { Family } from '../../model/family.model';
-import { Child } from '../../model/child.model';
+import { FamilyService } from '../../../model/family.service';
+import { Family } from '../../../model/family.model';
+import { Child } from '../../../model/child.model';
 
 @Component({
     selector: 'add-child',

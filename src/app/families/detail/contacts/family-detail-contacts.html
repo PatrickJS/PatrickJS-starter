@@ -1,0 +1,17 @@
+<div class="family-detail-contacts" *ngIf="family" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="20px" fxLayoutWrap="wrap">
+
+    <div class="family-detail-contact" *ngFor="let contact of family.contacts" fxFlex="calc(33% - 20px)">
+        <md-card>
+            <md-card-title fxLayout="row" fxLayoutAlign="center center">
+                {{ contact.name + ' ' + contact.firstName }}
+            </md-card-title>
+            <md-card-content>
+                A voir ...
+                <div class="more">
+                    <md-icon>search</md-icon>
+                </div>
+            </md-card-content>
+        </md-card>
+    </div>
+
+</div>

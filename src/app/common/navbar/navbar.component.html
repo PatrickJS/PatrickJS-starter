@@ -1,6 +1,6 @@
 <md-toolbar layout="row" color="primary" class="top-toolbar">
     <button md-icon-button (click)="toggleSidenav('leftNav')">
-        <md-icon>menu</md-icon>
+        <md-icon class="toggle">menu</md-icon>
       </button> &nbsp;
     <h2>{{ navbarTitle }}</h2>
 
@@ -8,7 +8,7 @@
     <span class="fill-remaining-space"></span>
 
     <button md-icon-button [mdMenuTriggerFor]="menu">
-        <md-icon>person_pin</md-icon>
+        <md-icon class="user">person_pin</md-icon>
     </button>
     <md-menu #menu="mdMenu">
         <button md-menu-item>

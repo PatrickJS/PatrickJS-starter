@@ -1,0 +1,15 @@
+<h1 md-dialog-title>Nouveau parent</h1>
+<form novalidate>
+  <div md-dialog-content>
+    <md-input-container>
+      <input mdInput name="name" placeholder="Nom" #name value="{{ family.name }}">
+    </md-input-container>
+    <md-input-container>
+      <input mdInput name="firstName" placeholder="Prénom" #firstName>
+    </md-input-container>
+  </div>
+  <div md-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button type="button" md-button (click)="dialogRef.close()">Annuler</button> &nbsp;&nbsp;
+    <button type="submit" md-raised-button (click)="saveNewParent(name.value, firstName.value)" color="accent">Enregistrer</button>
+  </div>
+</form>

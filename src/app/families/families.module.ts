@@ -12,10 +12,18 @@ import {
 import { Mv3CommonModule } from '../common/common.module';
 
 import { FamiliesComponent } from './families.component';
-import { FamilyDetailComponent } from './detail/family-detail.component';
-import { FamilyDetailChildrenComponent } from './detail/family-detail-children.component';
 import { AddFamilyDialogComponent } from './add-family.component';
-import { AddChildDialogComponent } from './detail/add-child.component';
+
+import { FamilyDetailComponent } from './detail/family-detail.component';
+
+import { FamilyDetailChildrenComponent } from './detail/children/family-detail-children.component';
+import { AddChildDialogComponent } from './detail/children/add-child.component';
+
+import { FamilyDetailParentsComponent } from './detail/parents/family-detail-parents.component';
+import { AddParentDialogComponent } from './detail/parents/add-parent.component';
+
+import { FamilyDetailContactsComponent } from './detail/contacts/family-detail-contacts.component';
+import { AddContactDialogComponent } from './detail/contacts/add-contact.component';
 
 export const ROUTES: Routes = [
   { path: 'families/:familyName/:familyId', component: FamilyDetailComponent }
@@ -36,11 +44,17 @@ export const ROUTES: Routes = [
     AddFamilyDialogComponent,
     FamilyDetailComponent,
     FamilyDetailChildrenComponent,
-    AddChildDialogComponent
+    AddChildDialogComponent,
+    FamilyDetailParentsComponent,
+    AddParentDialogComponent,
+    FamilyDetailContactsComponent,
+    AddContactDialogComponent
   ],
   entryComponents: [
     AddFamilyDialogComponent,
-    AddChildDialogComponent
+    AddChildDialogComponent,
+    AddParentDialogComponent,
+    AddContactDialogComponent
   ]
 })
 export class FamiliesModule { }

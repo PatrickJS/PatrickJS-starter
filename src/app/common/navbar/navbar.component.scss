@@ -1,20 +1,22 @@
 @import '../../../styles/styles';
-
 md-toolbar.top-toolbar {
     md-icon {
-        margin-left: -10px;
-        font-size: 35px;
+        &.user {
+            margin-left: -10px;
+            font-size: 35px;
+        }
     }
     .fill-remaining-space {
         flex: 1 1 auto;
     }
 }
+
 .breadcrumb-toolbar {
     background-color: $primary-color-darker;
-    height:20px;
+    height: 20px;
     min-height: 20px;
     .mat-toolbar-row {
-        height:20px;
+        height: 20px;
     }
     .breadcrumb {
         color: white;
@@ -22,7 +24,6 @@ md-toolbar.top-toolbar {
         font-size: 14px;
         cursor: pointer;
         text-decoration: none;
-
         &:not(:first-child) {
             &:before {
                 content: '\E5CB';
