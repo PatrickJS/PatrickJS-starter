@@ -9,7 +9,8 @@
         </div>
         <div fxFlex="30" fxFlexOffset="10" fxLayout>
             <md-input-container fxFlex>
-                <input mdInput placeholder="Date de naissance" #birthDate>
+                <input mdInput type="date" (blur)="saveBirthDate(birthDate.value)" 
+                placeholder="Date de naissance" #birthDate>
             </md-input-container>
         </div>
 
@@ -28,5 +29,10 @@
             </md-input-container>
         </div>
     </div>
+
+    <md2-datepicker placeholder="Date de naissance" [(ngModel)]="date" [openOnFocus]="isOpenOnFocus" [format]="'dd/MM/yyyy'"
+        #dateControl="ngModel">
+    </md2-datepicker>
+
 
 </div>

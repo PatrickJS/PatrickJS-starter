@@ -75,15 +75,6 @@ export class ChildDetailComponent implements OnInit {
         this.getFamily();
     }
 
-    public handleChildUpdate(newChild: Child) {
-        this.child = newChild;
-        this.childName = newChild.firstName;
-        this._state.notifyDataChanged(
-            'navbar.title',
-            this.childName + ' ' + this.familyName
-        );
-    }
-
     /**
      * Handle tab change to display or not add button
      * @param event

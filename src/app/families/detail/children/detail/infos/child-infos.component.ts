@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { GlobalState } from '../../../../../global-state.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
@@ -25,8 +25,6 @@ export class ChildInfosComponent {
 
     @Input()
     public child: Child;
-    @Output()
-    public childChange = new EventEmitter<Child>();
 
     constructor(private childService: ChildService,
         private snackBar: MdSnackBar,
@@ -42,6 +40,17 @@ export class ChildInfosComponent {
         });
     }
 
+    public saveBirthDate(newBirthDate) {
+        console.log('handleBlurBirthDate : ', newBirthDate);
+        
+        if (_.isUndefined(newBirthDate)) {
+            delete this.child.birthDate;
+        } else {
+            this.child.birthDate = new Date(newBirthDate);
+        }
+        this.updateChild();
+    }
+
     /**
      * Send firstName to backend
      * @param newFirstName Send update to backend
@@ -51,6 +60,10 @@ export class ChildInfosComponent {
             return;
         }
         this.child.firstName = newFirstName;
+        this.updateChild();
+    }
+
+    private updateChild() {
         this.childService.update(this.child).then((updatedChild) => {
             this.child = updatedChild;
             this._state.notifyDataChanged(

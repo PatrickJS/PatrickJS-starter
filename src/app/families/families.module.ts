@@ -9,6 +9,8 @@ import {
   PreloadAllModules,
   Routes
 } from '@angular/router';
+import { Md2Module }  from 'md2';
+
 import { Mv3CommonModule } from '../common/common.module';
 
 import { FamiliesComponent } from './families.component';
@@ -44,6 +46,7 @@ export const ROUTES: Routes = [
     FlexLayoutModule,
     Ng2FloatBtnModule,
     Mv3CommonModule,
+    Md2Module,
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
   ],
   declarations: [
