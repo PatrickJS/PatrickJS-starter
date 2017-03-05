@@ -36,6 +36,7 @@ import { NoContentComponent } from './no-content';
 import { XLargeDirective } from './home/x-large';
 
 import { FamilyService } from './model/family.service';
+import { ContactService } from './model/contact.service';
 import { ChildService } from './model/child.service';
 import { ContractService } from './model/contract.service';
 import { GlobalState } from './global-state.service';
@@ -85,6 +86,7 @@ type StoreType = {
     FamilyService,
     ChildService,
     ContractService,
+    ContactService,
     GlobalState
   ]
 })

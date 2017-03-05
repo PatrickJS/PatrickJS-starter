@@ -17,7 +17,8 @@ export class PlanningComponent implements OnInit {
   }
 
   public ngOnInit() {
-    this._state.notifyDataChanged('navbar.title',
+    this._state.notifyDataChanged(
+      'navbar.title',
       'Planning du jour'
     );
   }

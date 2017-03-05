@@ -1,17 +1,29 @@
-<div class="family-detail-contacts" *ngIf="family" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="20px" fxLayoutWrap="wrap">
+<div class="family-detail-contacts" *ngIf="family" fxLayout="row" fxLayoutAlign="center" fxLayoutWrap="wrap">
 
-    <div class="family-detail-contact" *ngFor="let contact of family.contacts" fxFlex="calc(33% - 20px)">
+    <div class="family-detail-contact" fxFlex="33%" *ngFor="let contact of family.contacts; let idx = index;">
         <md-card>
-            <md-card-title fxLayout="row" fxLayoutAlign="center center">
+            <md-card-title>
                 {{ contact.name + ' ' + contact.firstName }}
+                <button mb-button class="more" (click)="editContact(idx, contact)">
+                    <md-icon>edit</md-icon>
+                </button>
             </md-card-title>
             <md-card-content>
-                A voir ...
-                <div class="more">
-                    <md-icon>search</md-icon>
+                <div *ngIf="contact.link" class="contact-link">
+                    <div>{{ contact.link }}</div>
                 </div>
+                <div fxLayout="row">
+                    <div *ngIf="contact.phoneNumber" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                        <md-icon>contact_phone</md-icon>
+                        <div nowrap>{{ contact.phoneNumber }}</div>
+                    </div>
+                    <div *ngIf="contact.email" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                        <md-icon>contact_mail</md-icon>
+                        <div>{{ contact.email }}</div>
+                    </div>
+                </div>
+
             </md-card-content>
         </md-card>
     </div>
-
 </div>

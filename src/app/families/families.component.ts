@@ -73,7 +73,8 @@ export class FamiliesComponent implements OnInit {
     }
 
     public ngOnInit(): void {
-        this._state.notifyDataChanged('navbar.title',
+        this._state.notifyDataChanged(
+            'navbar.title',
             'Les familles'
         );
         this.getFamilies();

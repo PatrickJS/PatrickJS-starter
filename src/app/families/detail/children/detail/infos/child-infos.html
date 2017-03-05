@@ -1,0 +1,32 @@
+<div class="child-infos" fxLayout="column" fxLayoutAlign="start center" *ngIf="child">
+
+    <div fxLayout="row" fxLayoutAlign="center">
+
+        <div fxFlex="30" fxLayout>
+            <md-input-container fxFlex>
+                <input mdInput placeholder="Prénom" #firstName value="{{ child.firstName }}" (blur)="saveFirstName(firstName.value)">
+            </md-input-container>
+        </div>
+        <div fxFlex="30" fxFlexOffset="10" fxLayout>
+            <md-input-container fxFlex>
+                <input mdInput placeholder="Date de naissance" #birthDate>
+            </md-input-container>
+        </div>
+
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="center">
+
+        <div fxFlex="30" fxLayout>
+            <md-input-container fxFlex>
+                <textarea mdInput rows="4" placeholder="Allergies" #allergy></textarea>
+            </md-input-container>
+        </div>
+        <div fxFlex="30" fxFlexOffset="10" fxLayout>
+            <md-input-container fxFlex>
+                <textarea mdInput rows="4" placeholder="Commentaires" #comment></textarea>
+            </md-input-container>
+        </div>
+    </div>
+
+</div>

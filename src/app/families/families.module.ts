@@ -15,6 +15,7 @@ import { FamiliesComponent } from './families.component';
 import { AddFamilyDialogComponent } from './add-family.component';
 
 import { FamilyDetailComponent } from './detail/family-detail.component';
+import { ChildDetailComponent } from './detail/children/detail/child-detail.component';
 
 import { FamilyDetailChildrenComponent } from './detail/children/family-detail-children.component';
 import { AddChildDialogComponent } from './detail/children/add-child.component';
@@ -25,8 +26,14 @@ import { AddParentDialogComponent } from './detail/parents/add-parent.component'
 import { FamilyDetailContactsComponent } from './detail/contacts/family-detail-contacts.component';
 import { AddContactDialogComponent } from './detail/contacts/add-contact.component';
 
+import { DeleteChildDialogComponent } from './detail/children/detail/delete-child.component';
+import { InlineEditComponent } from './detail/children/detail/inline-edit.component';
+
+import { ChildInfosComponent } from './detail/children/detail/infos';
+
 export const ROUTES: Routes = [
-  { path: 'families/:familyName/:familyId', component: FamilyDetailComponent }
+  { path: 'families/:familyName/:familyId', component: FamilyDetailComponent },
+    { path: 'families/:familyName/:familyId/:childName/:childId', component: ChildDetailComponent }
 ];
 
 @NgModule({
@@ -48,13 +55,18 @@ export const ROUTES: Routes = [
     FamilyDetailParentsComponent,
     AddParentDialogComponent,
     FamilyDetailContactsComponent,
-    AddContactDialogComponent
+    AddContactDialogComponent,
+    ChildDetailComponent,
+    DeleteChildDialogComponent,
+    InlineEditComponent,
+    ChildInfosComponent
   ],
   entryComponents: [
     AddFamilyDialogComponent,
     AddChildDialogComponent,
     AddParentDialogComponent,
-    AddContactDialogComponent
+    AddContactDialogComponent,
+    DeleteChildDialogComponent
   ]
 })
 export class FamiliesModule { }

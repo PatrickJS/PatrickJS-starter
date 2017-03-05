@@ -42,7 +42,8 @@ export class NavbarComponent {
 
   public toggleSidenav(sidenavId) {
     this.sidenavOpen = !this.sidenavOpen;
-    this._state.notifyDataChanged('sidebar.toggle',
+    this._state.notifyDataChanged(
+      'sidebar.toggle',
       {}
     );
 

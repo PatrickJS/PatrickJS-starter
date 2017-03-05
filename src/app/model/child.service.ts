@@ -13,50 +13,31 @@ export class ChildService {
 
     constructor(private http: Http) { }
 
-    public getChildren(): Promise<Child[]> {
-        console.log('getChildren');
-
-        /*
-        return this.http.get(this.familiesUrl)
+    /**
+     * Delete one child
+     * @param id
+     */
+    public delete(id: number): Promise<void> {
+        const url = `${this.childrenUrl}/${id}`;
+        return this.http.delete(url, { headers: this.headers })
             .toPromise()
-            .then(response => response.json().data as Hero[])
+            .then(() => null)
             .catch(this.handleError);
-            */
-        return Promise.resolve(CHILDREN);
-
     }
 
-    public getChild(id: Number): Promise<Child> {
-        if (!(id instanceof Number)) {
-            id = Number(id);
-        }
-        return this.getChildren()
-            .then((children) => children.find((child) => child.id === id));
-    }
-
-    public create(child: Child): Promise<Child> {
-
-        return this.http
-            .post(this.childrenUrl, JSON.stringify(child), { headers: this.headers })
-            .toPromise()
-            .then((res) => {
-                return res.json() as Child;
-            })
-            .catch(this.handleError);
-
-    }
-
+    /**
+     * Update supplied child
+     * @param child
+     */
     public update(child: Child): Promise<Child> {
         const url = `${this.childrenUrl}/${child.id}`;
-        console.log('Updating child : ', child);
-        /*
         return this.http
             .put(url, JSON.stringify(child), { headers: this.headers })
             .toPromise()
-            .then(() => child)
+            .then((response) => {
+                return response.json() as Child;
+            })
             .catch(this.handleError);
-            */
-        return Promise.resolve(child);
     }
 
     private handleError(error: any): Promise<any> {

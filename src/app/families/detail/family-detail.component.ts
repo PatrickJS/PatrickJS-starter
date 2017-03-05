@@ -2,7 +2,7 @@ import { Component, ViewChild, OnInit } from '@angular/core';
 import { GlobalState } from '../../global-state.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
-import { MdDialog, MdDialogRef, MdDialogConfig, MdTabChangeEvent } from '@angular/material';
+import { MdDialog,  MdDialogConfig, MdTabChangeEvent } from '@angular/material';
 import { Ng2FloatBtnComponent, Ng2FloatBtn } from 'ng2-float-btn';
 
 import { FamilyService } from '../../model/family.service';
@@ -39,10 +39,12 @@ export class FamilyDetailComponent implements OnInit {
     }
 
     public ngOnInit(): void {
-        this._state.notifyDataChanged('navbar.title',
+        this._state.notifyDataChanged(
+            'navbar.title',
             'Famille "' + this.familyName + '"'
         );
-        this._state.notifyDataChanged('breadcrumb',
+        this._state.notifyDataChanged(
+            'breadcrumb',
             [
                 {
                     label: 'Les familles',

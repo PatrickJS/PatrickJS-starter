@@ -1,15 +1,41 @@
-<h1 md-dialog-title>Nouveau contact</h1>
+<h1 md-dialog-title *ngIf="contact && contact.id">
+  Contact</h1>
+<h1 md-dialog-title *ngIf="!contact || !contact.id">Nouveau contact</h1>
+
 <form novalidate>
   <div md-dialog-content>
-    <md-input-container>
-      <input mdInput name="name" placeholder="Nom" #name>
-    </md-input-container>
-    <md-input-container>
-      <input mdInput name="firstName" placeholder="Prénom" #firstName>
-    </md-input-container>
+    <div fxLayout="row">
+      <md-input-container>
+        <input mdInput name="name" placeholder="Nom" #name value="{{ contact.name }}">
+      </md-input-container>
+      <md-input-container>
+        <input mdInput name="firstName" placeholder="Prénom" #firstName value="{{ contact.firstName }}">
+      </md-input-container>
+    </div>
+    <div fxLayout="row">
+      <md-input-container>
+        <input mdInput placeholder="Téléphone" #phone value="{{ contact.phoneNumber }}">
+      </md-input-container>
+      <md-input-container>
+        <input mdInput placeholder="Email" #email value="{{ contact.email }}">
+      </md-input-container>
+    </div>
+    <div fxLayout="row">
+      <md-input-container fxFlex>
+        <input mdInput placeholder="Lien avec l'enfant'" #link value="{{ contact.link }}">
+      </md-input-container>
+    </div>
   </div>
-  <div md-dialog-actions fxLayout="row" fxLayoutAlign="end center">
-    <button type="button" md-button (click)="dialogRef.close()">Annuler</button> &nbsp;&nbsp;
-    <button type="submit" md-raised-button (click)="saveNewContact(name.value, firstName.value)" color="accent">Enregistrer</button>
+  <div md-dialog-actions fxLayout="row" fxLayoutAlign="start center">
+    <div fxFlex fxLayout="start">
+      <button type="button" md-raised-button (click)="deleteContact(contact)" color="warn" *ngIf="contact && contact.id">
+        <md-icon>delete</md-icon>
+      </button>
+    </div>
+    <div  fxLayout="row" fxLayoutAlign="space-around center">
+      <button type="button" md-button (click)="dialogRef.close()">Annuler</button> &nbsp;&nbsp;
+      <button type="submit" md-raised-button (click)="saveContact(name.value, firstName.value, phone.value, email.value, link.value)"
+        color="accent">Enregistrer</button>
+    </div>
   </div>
 </form>

@@ -1,30 +1,36 @@
 @import '../../../../styles/styles';
 .family-detail-contacts {
-    margin-left: -20px !important;
-    max-width: calc(100% + 20px) !important;
-    padding-right: 10px;
-    padding-left: 10px;
-    padding-top: 10px;
+    padding: 10px;
     .family-detail-contact {
-        margin-bottom: 20px;
-        margin-left: 20px !important;
-        margin-right: 0px !important;
-        max-width: calc(33%-20px);
+        padding-right: 10px;
+        padding-left: 10px;
+        padding-bottom: 20px;
         md-card {
             background-color: $primary-color-lighter;
             padding-top: 10px;
+                        padding-bottom: 10px;
             md-card-title {
-                margin-bottom: 10px;
+                margin-bottom: 0;
+                text-align: center;
+                .more {
+                    background-color: $primary-color-darker;
+                    float: right;
+                    position: relative;
+                    right: -30px;
+                    bottom: 16px;
+                    padding: 10px;
+                    padding-bottom: 8px;
+                    color: white;
+                }
             }
-            .more {
-                background-color: $primary-color-darker;
-                float: right;
-                position: relative;
-                top: 5px;
-                right: -33px;
-                padding: 10px;
-                box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
-                color: white;
+            md-card-content {
+                .contact-link {
+                    text-align: center;
+                    margin-bottom: 20px;
+                }
+                md-icon {
+                    margin-right: 10px;
+                }
             }
         }
     }
