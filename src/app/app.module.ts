@@ -61,6 +61,9 @@ import {CreateProductComponent} from "./cloud/pages/admin-area/manage-products/c
 import {AssignLicenseComponent} from "./cloud/pages/admin-area/manage-licenses/assign";
 import {EditProductComponent} from "./cloud/pages/admin-area/manage-products/edit";
 import {CreateCashierComponent} from "./cloud/pages/manage-shop/children/create-cashier";
+import {AddLicenseComponent} from "./cloud/pages/admin-area/manage-licenses/add";
+import {PriceCollection} from "./cloud/services/ddp/collections/prices";
+import { Daterangepicker } from 'ng2-daterangepicker';
 
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
@@ -96,6 +99,7 @@ import {CreateCashierComponent} from "./cloud/pages/manage-shop/children/create-
               CloudBillingComponent,
               CloudPricingComponent,
               CreateLicenseComponent,
+              AddLicenseComponent,
               CreateProductComponent,
               EditProductComponent,
               CreateCashierComponent
@@ -105,12 +109,14 @@ import {CreateCashierComponent} from "./cloud/pages/manage-shop/children/create-
               FormsModule,
               HttpModule,
               AngularHelperModule,
+              Daterangepicker,
               ToastModule.forRoot(),
               RouterModule.forRoot(ROUTES, {useHash: true})
             ],
             providers   : [ // expose our Services and Providers into Angular's dependency injection
               ENV_PROVIDERS,
               AppService,
+              PriceCollection,
               ProductCollection,
               UserCollection,
               LicenseCollection,

@@ -7,6 +7,7 @@ import {ManageLicensesService} from "./manage-licenses.service";
 import {LicenseCollection} from '../../../services/ddp/collections/licenses';
 import {AngularMeteorDataTableComponent} from "../../../../code/angular/components/angular-meteor-datatable";
 import * as _ from "lodash";
+import {Router} from "@angular/router";
 
 @Component({
              selector   : 'manage-licenses-grid',
@@ -63,12 +64,17 @@ export class ManageLicensesGridComponent implements OnInit {
   };
   
   constructor(protected manageLicensesService: ManageLicensesService,
-              protected licensesCollection: LicenseCollection) {
+              protected licensesCollection: LicenseCollection,
+              protected router: Router) {
     this.manageLicensesService.viewState.headerText = "Grid";
   }
   
   ngOnInit(): void {
-    this.angularMeteorDtTable.getCallBackObservable().subscribe((data) => (console.log(data)));
+    this.angularMeteorDtTable.getCallBackObservable().subscribe((data) => {
+        if(data.event == "newRecord"){
+          this.router.navigate(['/cloud/licenses/add']);
+        }
+    });
   }
   
 }
