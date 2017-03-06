@@ -9,7 +9,7 @@ export class UserLicense {
    */
   static attach(user: User, license: License, permission: string, products: string[] = []): Promise<any> {
     if (user.isInRoles(Role.USER)) {
-      if (_.size(user.getLicenses()) > 0)
+      if (_.size(user.getLicenses()) > 0 && user.getLicenses()[0].license_id != license.getId())
         throw new Meteor.Error("Can't attack license to this user");
       
       if (_.indexOf([User.LICENSE_PERMISSION_OWNER, User.LICENSE_PERMISSION_CASHIER], permission) < 0)
@@ -18,7 +18,7 @@ export class UserLicense {
       user.setData('has_license',
                    [
                      {
-                       license_id        : license.getId(),
+                       license_id: license.getId(),
                        license_permission: permission
                      }
                    ]);
@@ -27,7 +27,23 @@ export class UserLicense {
         license.setData("shop_owner_id", user.getId())
                .setData("shop_owner_username", user.getUsername())
       } else if (permission == User.LICENSE_PERMISSION_CASHIER) {
-        // TODO: need implement
+        if (_.size(products) == 0) {
+          throw new Meteor.Error("Please define products");
+        }
+        _.forEach(products, productId => {
+          let _pInLicense = _.find(license.getProducts(), pInLicense => pInLicense.product_id == productId);
+          if (!_pInLicense)
+            throw new Meteor.Error("License has not purchased product");
+          if (_.isArray(_pInLicense.has_user)) {
+            let _isExistedInProduct = _.find(_pInLicense.has_user, _u => _u.user_id == user.getId());
+            if (!_isExistedInProduct) {
+              _pInLicense.has_user.push({user_id: user.getId()});
+            }
+          } else {
+            _pInLicense.has_user = [];
+            _pInLicense.has_user.push({user_id: user.getId()});
+          }
+        });
       }
       
       return Promise.all([user.save(), license.save()]);
@@ -40,7 +56,7 @@ export class UserLicense {
         user.setData('has_license',
                      [
                        {
-                         license_id        : license.getId(),
+                         license_id: license.getId(),
                          license_permission: permission
                        }
                      ]);

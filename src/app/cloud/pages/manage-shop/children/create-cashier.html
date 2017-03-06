@@ -1,90 +1,88 @@
 <div class="content content-narrow">
-  <!-- Material Design -->
-  <div class="row">
-    <div class="col-lg-6 col-lg-offset-3">
-      <!-- Material Forms Validation -->
-      <div class="block">
-        <div class="block-header">
-          <ul class="block-options">
-            <li>
-              <button type="button"><i class="si si-settings"></i></button>
-            </li>
-          </ul>
-          <h3 class="block-title">Create new cashier</h3>
+    <!-- Material Design -->
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3">
+            <!-- Material Forms Validation -->
+            <div class="block">
+                <div class="block-header">
+                    <ul class="block-options">
+                        <li>
+                            <button type="button"><i class="si si-settings"></i></button>
+                        </li>
+                    </ul>
+                    <h3 class="block-title">Create new cashier</h3>
+                </div>
+                <div class="block-content block-content-narrow">
+                    <!-- jQuery Validation (.js-validation-material class is initialized in js/pages/base_forms_validation.js) -->
+                    <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
+                    <form class="js-validation-material form-horizontal">
+                        <div class="form-group">
+                            <div class="col-sm-9">
+                                <div class="form-material">
+                                    <input class="form-control" type="text" id="cashier_firstname" name="cashier_firstname"
+                                           placeholder="Cashier first name">
+                                    <label for="cashier_firstname">First name</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-9">
+                                <div class="form-material">
+                                    <input class="form-control" type="text" id="cashier_lastname" name="cashier_lastname"
+                                           placeholder="Cashier last name">
+                                    <label for="cashier_lastname">Last name</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-9">
+                                <div class="form-material">
+                                    <input class="form-control" type="text" id="cashier_username" name="cashier_username"
+                                           placeholder="Choose a cashier username..">
+                                    <label for="cashier_username">Username</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-9">
+                                <div class="form-material">
+                                    <input class="form-control" type="text" id="cashier_email" name="cashier_email"
+                                           placeholder="Enter cashier's valid email..">
+                                    <label for="cashier_email">Email</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-9">
+                                <div class="form-material">
+                                    <select class="js-select2 form-control" id="cashier_products" name="cashier_products" style="width: 100%;"
+                                            data-placeholder="Choose at least one.." multiple>
+                                        <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                        <option *ngFor="let product of license.has_product">{{product['name']}}</option>
+                                    </select>
+                                    <label for="cashier_products">Assign to products</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-9">
+                                <div>
+                                    <label><span>Disabled</span></label>
+                                </div>
+                                <label class="css-input switch switch-danger">
+                                    <input type="checkbox" checked><span></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <button class="btn btn-sm btn-primary" type="submit">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- END Material Forms Validation -->
         </div>
-        <div class="block-content block-content-narrow">
-          <!-- jQuery Validation (.js-validation-material class is initialized in js/pages/base_forms_validation.js) -->
-          <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
-          <form class="js-validation-material form-horizontal">
-            <div class="form-group">
-              <div class="col-sm-9">
-                <div class="form-material">
-                  <input class="form-control" type="text" id="cashier_firstname" name="cashier_firstname" placeholder="Cashier first name">
-                  <label for="cashier_firstname">First name</label>
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-sm-9">
-                <div class="form-material">
-                  <input class="form-control" type="text" id="cashier_lastname" name="cashier_lastname" placeholder="Cashier last name">
-                  <label for="cashier_lastname">Last name</label>
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-sm-9">
-                <div class="form-material">
-                  <input class="form-control" type="text" id="cashier_username" name="cashier_username" placeholder="Choose a cashier username..">
-                  <label for="cashier_username">Username</label>
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-sm-9">
-                <div class="form-material">
-                  <input class="form-control" type="text" id="cashier_email" name="cashier_email" placeholder="Enter cashier's valid email..">
-                  <label for="cashier_email">Email</label>
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-sm-9">
-                <div class="form-material">
-                  <select class="js-select2 form-control" id="cashier_products" name="cashier_products" style="width: 100%;"
-                          data-placeholder="Choose at least one.." multiple>
-                    <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
-                    <option value="1">HTML</option>
-                    <option value="2">CSS</option>
-                    <option value="3">JavaScript</option>
-                    <option value="4">PHP</option>
-                    <option value="5">MySQL</option>
-                    <option value="6">Ruby</option>
-                    <option value="7">AngularJS</option>
-                  </select>
-                  <label for="cashier_products">Assign to products</label>
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-sm-9">
-                <div>
-                  <label><span>Disabled</span></label>
-                </div>
-                <label class="css-input switch switch-danger">
-                  <input type="checkbox" checked><span></span>
-                </label>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-xs-12">
-                <button class="btn btn-sm btn-primary" type="submit">Submit</button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-      <!-- END Material Forms Validation -->
     </div>
-  </div>
 </div>

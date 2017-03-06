@@ -30,7 +30,9 @@
   },
   "exclude": [
     "node_modules",
-    "dist"
+    "dist",
+    "cloud",
+    "cloud/node_modules"
   ],
   "awesomeTypescriptLoaderOptions": {
     "forkChecker": true,
