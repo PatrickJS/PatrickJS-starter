@@ -40,15 +40,27 @@ export class ChildInfosComponent {
         });
     }
 
+    /**
+     * Send birthDate to backend
+     * @param newBirthDate Send update to backend
+     */
     public saveBirthDate(newBirthDate) {
-        console.log('handleBlurBirthDate : ', newBirthDate);
-        
         if (_.isUndefined(newBirthDate)) {
             delete this.child.birthDate;
         } else {
             this.child.birthDate = new Date(newBirthDate);
         }
         this.updateChild();
+    }
+
+    /**
+     * Send sex to backend
+     * @param newSex Send update to backend
+     */
+    public saveSex(val) {
+        setTimeout(() => {
+            this.updateChild();
+        });
     }
 
     /**
@@ -60,6 +72,30 @@ export class ChildInfosComponent {
             return;
         }
         this.child.firstName = newFirstName;
+        this.updateChild();
+    }
+
+    /**
+     * Send comment to backend
+     * @param newComment Send update to backend
+     */
+    public saveComment(newComment: string) {
+        if (this.child.comment === newComment) {
+            return;
+        }
+        this.child.comment = newComment;
+        this.updateChild();
+    }
+
+    /**
+     * Send allergy to backend
+     * @param newComment Send update to backend
+     */
+    public saveAllergy(newAllergy: string) {
+        if (this.child.allergy === newAllergy) {
+            return;
+        }
+        this.child.allergy = newAllergy;
         this.updateChild();
     }
 

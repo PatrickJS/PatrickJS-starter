@@ -31,9 +31,8 @@ export class ChildService {
      */
     public update(child: Child): Promise<Child> {
         const url = `${this.childrenUrl}/${child.id}`;
-        let objToSend = Object.assign({}, child, {birthDate: child.birthDate.getFullYear()+'-'+(child.birthDate.getMonth()+1)+'-'+child.birthDate.getDate()})
         return this.http
-            .put(url, JSON.stringify(objToSend), { headers: this.headers })
+            .put(url, JSON.stringify(child), { headers: this.headers })
             .toPromise()
             .then((response) => {
                 return response.json() as Child;

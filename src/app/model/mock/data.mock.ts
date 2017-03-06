@@ -35,7 +35,7 @@ export const CHILDREN: Child[] = [
     {
         id: 12,
         firstName: 'Paul',
-        sex: 'female',
+        sex: 'FEMALE',
         birthDate: new Date('2013-09-12')
     }
 ];
