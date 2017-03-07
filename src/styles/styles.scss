@@ -17,3 +17,14 @@ nav a {
   text-decoration: none;
   border-radius: 4px;
 }
+
+.container {
+  @media (min-width: 678px) {
+    padding: 0 30px
+  }
+
+  @media (min-width: 1024px) {
+    margin: auto;
+    max-width: 1024px;
+  }
+}
