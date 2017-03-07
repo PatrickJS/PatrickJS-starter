@@ -58,7 +58,7 @@
                                     <select class="js-select2 form-control" id="cashier_products" name="cashier_products" style="width: 100%;"
                                             data-placeholder="Choose at least one.." multiple>
                                         <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
-                                        <option *ngFor="let product of license.has_product">{{product['name']}}</option>
+                                        <option *ngFor="let product of license.has_product">{{product['product_id']}}</option>
                                     </select>
                                     <label for="cashier_products">Assign to products</label>
                                 </div>
