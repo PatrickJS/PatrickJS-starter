@@ -2,16 +2,9 @@
 <md-tab-group (selectChange)="tabChanged($event)">
   <md-tab label="Infos" >
       <child-infos [child]="child"></child-infos>
-
-<!--
-      <inline-edit [(ngModel)]="childName" label="Name" [required]="true" type="text">
-         
-
-  </inline-edit>
- -->
   </md-tab>
   <md-tab label="Contrats">
-TODO
+      <child-contracts [child]="child"></child-contracts>
   </md-tab>
   <md-tab label="Congés">
 TODO
