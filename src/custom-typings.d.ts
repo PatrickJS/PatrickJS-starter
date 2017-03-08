@@ -48,6 +48,7 @@ declare module '*';
 declare var jQuery: any;
 declare var Chart: any;
 declare var OneUI: any;
+declare var _: any;
 
 /*
  // for legacy tslint etc to understand rename 'modern-lru' with your package

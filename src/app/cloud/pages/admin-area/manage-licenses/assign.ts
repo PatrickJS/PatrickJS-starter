@@ -10,15 +10,17 @@ import {MongoObservable} from "../../../../../../node_modules/meteor-rxjs/dist/O
 import {MeteorObservable} from "../../../../../../node_modules/meteor-rxjs/dist/MeteorObservable";
 import {Subject} from "../../../../../../node_modules/rxjs/Subject";
 import {ToastsManager} from "../../../../../../node_modules/ng2-toastr/src/toast-manager";
+import {Observable} from "../../../../../../node_modules/rxjs/Observable";
+import {ProductCollection} from "../../../services/ddp/collections/products";
 
 @Component({
-             selector   : 'assign-license',
+             selector: 'assign-license',
              templateUrl: 'assign.html'
            })
 export class AssignLicenseComponent extends AbstractRxComponent implements OnInit {
   protected data                                  = {
-    user      : "",
-    license   : "",
+    user: "",
+    license: "",
     permission: "owner"
   };
   protected licenses: any;
@@ -31,6 +33,7 @@ export class AssignLicenseComponent extends AbstractRxComponent implements OnIni
   constructor(protected manageLicense: ManageLicensesService,
               protected licenseCollection: LicenseCollection,
               protected userCollection: UserCollection,
+              protected productCollection: ProductCollection,
               protected toast: ToastsManager) {
     super();
   }
@@ -53,18 +56,24 @@ export class AssignLicenseComponent extends AbstractRxComponent implements OnIni
                                            this.users =
                                              collection.find({
                                                                "roles.cloud_group": {$elemMatch: {$eq: "user"}},
-                                                               $or                : [{has_license: {$exists: false}}, {has_license: {$size: 0}}]
+                                                               $or: [{has_license: {$exists: false}}, {has_license: {$size: 0}}]
                                                              })
                                                        .fetch();
                                          });
-    this._subscription['license']  = this.licenseCollection
-                                         .getCollectionObservable()
-                                         .combineLatest(this.changeLicenseObservable, (collection) => {
-                                           return collection;
-                                         })
-                                         .subscribe((collection) => {
-                                           this.license = collection.findOne({_id: this.data.license});
-                                         });
+    this._subscription['license']  =
+      Observable.combineLatest(this.licenseCollection.getCollectionObservable(),
+                               this.productCollection.getCollectionObservable(),
+                               this.changeLicenseObservable)
+                .subscribe(([licenseCollection, productCollection, change]) => {
+                  let license = licenseCollection.findOne({_id: this.data.license});
+                  license.has_product.map(pro => {
+                    const product = productCollection.collection.findOne({_id: pro['product_id']});
+                    if (product)
+                      pro['product_name'] = product['name'];
+                    return pro;
+                  });
+                  this.license = license;
+                });
     this._subscription['user']     = this.userCollection
                                          .getCollectionObservable()
                                          .combineLatest(this.changeUserObservable, (collection) => {
@@ -87,36 +96,36 @@ export class AssignLicenseComponent extends AbstractRxComponent implements OnIni
   private initPageJs() {
     let vm = this;
     jQuery('.js-validation-assign-license').validate({
-                                                       ignore        : [],
-                                                       errorClass    : 'help-block text-right animated fadeInDown',
-                                                       errorElement  : 'div',
+                                                       ignore: [],
+                                                       errorClass: 'help-block text-right animated fadeInDown',
+                                                       errorElement: 'div',
                                                        errorPlacement: function (error, e) {
                                                          jQuery(e).parents('.form-group > div').append(error);
                                                        },
-                                                       highlight     : function (e) {
+                                                       highlight: function (e) {
                                                          var elem = jQuery(e);
         
                                                          elem.closest('.form-group').removeClass('has-error').addClass('has-error');
                                                          elem.closest('.help-block').remove();
                                                        },
-                                                       success       : function (e) {
+                                                       success: function (e) {
                                                          var elem = jQuery(e);
         
                                                          elem.closest('.form-group').removeClass('has-error');
                                                          elem.closest('.help-block').remove();
                                                        },
-                                                       rules         : {
+                                                       rules: {
                                                          'license': {
                                                            required: true
                                                          }, 'user': {
                                                            required: true
                                                          },
                                                        },
-                                                       messages      : {
+                                                       messages: {
                                                          'license': 'Please select a license!',
-                                                         'user'   : 'Please select a user!',
+                                                         'user': 'Please select a user!',
                                                        },
-                                                       submitHandler : function (form) {
+                                                       submitHandler: function (form) {
                                                          vm.assignLicense();
                                                        }
                                                      });

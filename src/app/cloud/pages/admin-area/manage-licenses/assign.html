@@ -77,7 +77,7 @@
                     <ul class="list-group" id="products">
                       <li class="list-group-item" *ngFor="let product of license['has_product']">
                         <span class="badge">pricing: {{product['pricing_id']}}</span>
-                        {{product['product_id']}}
+                        {{product['product_name']}}
                       </li>
                     </ul>
                     <label for="products">License has Product</label>
