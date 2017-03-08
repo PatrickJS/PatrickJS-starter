@@ -4,6 +4,14 @@ import {OM} from "./code/General/ObjectManager";
 import {Seeder} from "./test/Seeder";
 import {Role} from "./models/Role";
 
+JsonRoutes.setResponseHeaders({
+  "Cache-Control": "no-store",
+  "Pragma": "no-cache",
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Requested-With"
+});
+
 Meteor.startup(() => {
   initSupperAdminAccount();
   // seeder for testing
