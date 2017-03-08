@@ -6,7 +6,6 @@ import {Role} from "./models/Role";
 
 Meteor.startup(() => {
   initSupperAdminAccount();
-  
   // seeder for testing
   const seeder = new Seeder();
   seeder.run();

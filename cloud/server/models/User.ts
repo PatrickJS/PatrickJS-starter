@@ -40,5 +40,9 @@ export class User extends AbstractModel {
   isShopOwner(): boolean {
     return this.isInRoles(Role.USER) && _.size(this.getLicenses()) == 1 && this.getLicenses()[0].license_permission == User.LICENSE_PERMISSION_OWNER;
   }
+  
+  isDisabled(): boolean {
+    return this.getData("is_disabled") === true;
+  }
 }
 

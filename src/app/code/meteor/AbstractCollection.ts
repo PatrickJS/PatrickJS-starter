@@ -15,7 +15,7 @@ export abstract class AbstractCollection {
   protected _collectionSubscription: Subscription;
   protected _collectionObservable: ReplaySubject<MongoObservable.Collection<any>>;
   
-  protected getCollection(): MongoObservable.Collection<any> {
+  public getCollection(): MongoObservable.Collection<any> {
     if (typeof this._collection == "undefined") {
       if (this.$collectionExisted) {
         this._collection = MongoObservable.fromExisting(Meteor.users);

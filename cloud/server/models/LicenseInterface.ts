@@ -23,4 +23,5 @@ export interface LicenseHasProductInterface {
 
 export interface LicenseHasProductHasUser {
   user_id: string;
+  username: string;
 }
