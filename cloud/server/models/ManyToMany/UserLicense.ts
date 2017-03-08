@@ -51,7 +51,6 @@ export class UserLicense {
         
         license.setData('has_product', licenseHasProduct);
       }
-      console.log(license.getData());
       return Promise.all([user.save(), license.save()]);
     } else if (user.isInRoles([Role.SALES, Role.AGENCY])) {
       if (_.indexOf([User.LICENSE_PERMISSION_AGENCY, User.LICENSE_PERMISSION_SALES], userHasLicensePermission) < 0)
