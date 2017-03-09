@@ -28,3 +28,4 @@ dburles:mongo-collection-instances
 aldeed:collection2-core
 matb33:collection-hooks
 simple:rest
+simple:json-routes

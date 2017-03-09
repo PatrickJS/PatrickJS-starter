@@ -36,6 +36,7 @@ export abstract class AbstractModel extends DataObject {
     return new Promise((resolve, reject) => {
       if (!_id) {
         this.setData('created_at', DateTimeHelper.getCurrentDate());
+        console.log(this.getData());
         this.getMongoCollection()
             .insert(this.getData(), (err) => {
               return err ? reject(err) : resolve();
