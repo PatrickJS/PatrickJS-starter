@@ -14,7 +14,8 @@
           <div class="form-group">
             <div class="col-sm-9">
               <div class="form-material">
-                <select class="js-select2 form-control" id="val-owner" name="val-owner" style="width: 100%;" data-placeholder="Choose one
+                <select [disabled]="!!id" class="js-select2 form-control" id="val-owner" name="val-owner" style="width: 100%;"
+                        data-placeholder="Choose one
                                 .." [value]="license.shop_owner_id">
                   <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
                   <option *ngFor="let user of users" [value]="user._id">{{ user.username }}</option>
