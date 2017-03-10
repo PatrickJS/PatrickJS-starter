@@ -3,11 +3,11 @@ import {
   OnInit,
   ViewChild
 } from '@angular/core';
-import {ManageLicensesService} from "./manage-licenses.service";
 import {LicenseCollection} from '../../../services/ddp/collections/licenses';
 import {AngularMeteorDataTableComponent} from "../../../../code/angular/components/angular-meteor-datatable";
 import * as _ from "lodash";
 import {Router} from "@angular/router";
+import {ManageLicensesService} from "./manage-licenses.service";
 
 @Component({
              selector   : 'manage-licenses-grid',
@@ -15,7 +15,7 @@ import {Router} from "@angular/router";
            })
 export class ManageLicensesGridComponent implements OnInit {
   @ViewChild(AngularMeteorDataTableComponent) protected angularMeteorDtTable: AngularMeteorDataTableComponent;
-  
+
   protected tableConfig = {
     actionsColumn: {edit: true, remove: true},
     columns      : [
@@ -62,19 +62,22 @@ export class ManageLicensesGridComponent implements OnInit {
     ],
     bFilter      : false,
   };
-  
+
   constructor(protected manageLicensesService: ManageLicensesService,
               protected licensesCollection: LicenseCollection,
               protected router: Router) {
     this.manageLicensesService.viewState.headerText = "Grid";
   }
-  
+
   ngOnInit(): void {
     this.angularMeteorDtTable.getCallBackObservable().subscribe((data) => {
-        if(data.event == "newRecord"){
-          this.router.navigate(['/cloud/licenses/add']);
-        }
+      if (data.event == "clickEdit") {
+        this.router.navigateByUrl('cloud/licenses/' + data.data);
+      }
+      if (data.event == 'newRecord') {
+        this.router.navigate(['/cloud/licenses/add']);
+      }
     });
   }
-  
+
 }

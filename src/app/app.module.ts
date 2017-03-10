@@ -61,9 +61,9 @@ import {CreateProductComponent} from "./cloud/pages/admin-area/manage-products/c
 import {AssignLicenseComponent} from "./cloud/pages/admin-area/manage-licenses/assign";
 import {EditProductComponent} from "./cloud/pages/admin-area/manage-products/edit";
 import {CreateCashierComponent} from "./cloud/pages/manage-shop/children/create-cashier";
-import {AddLicenseComponent} from "./cloud/pages/admin-area/manage-licenses/add";
 import {PriceCollection} from "./cloud/services/ddp/collections/prices";
-import { Daterangepicker } from 'ng2-daterangepicker';
+import {LicenseFormComponent} from "./cloud/pages/admin-area/manage-licenses/form";
+import {ManageLicensesService} from "./cloud/pages/admin-area/manage-licenses/manage-licenses.service";
 
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
@@ -99,7 +99,7 @@ import { Daterangepicker } from 'ng2-daterangepicker';
               CloudBillingComponent,
               CloudPricingComponent,
               CreateLicenseComponent,
-              AddLicenseComponent,
+              LicenseFormComponent,
               CreateProductComponent,
               EditProductComponent,
               CreateCashierComponent
@@ -109,7 +109,6 @@ import { Daterangepicker } from 'ng2-daterangepicker';
               FormsModule,
               HttpModule,
               AngularHelperModule,
-              Daterangepicker,
               ToastModule.forRoot(),
               RouterModule.forRoot(ROUTES, {useHash: true})
             ],
@@ -122,7 +121,8 @@ import { Daterangepicker } from 'ng2-daterangepicker';
               LicenseCollection,
               AuthService,
               AuthenticateGuard,
-              ManageProductsService
+              ManageProductsService,
+              ManageLicensesService
             ]
           })
 export class AppModule {

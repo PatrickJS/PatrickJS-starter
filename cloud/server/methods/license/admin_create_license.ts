@@ -16,16 +16,16 @@ new ValidatedMethod({
   },
   run     : function (data: Object) {
     let defer = $q.defer();
-    
+
     data['created_by']       = this.userId;
     data['is_auto_generate'] = false;
     data['key'] = StringHelper.getUnique();
-    
+
     let licenseModel = OM.create<License>(License);
     licenseModel.addData(data)
                 .save()
                 .then(() => defer.resolve(), err => defer.reject(err));
-    
+
     return defer.promise;
   }
 });

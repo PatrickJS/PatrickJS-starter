@@ -22,6 +22,7 @@ export const Licenses = CollectionMaker.make<LicenseInterface>("licenses",
                                                                      type: Array,
                                                                      optional: true
                                                                    },
+                                                                   'base_url.$': String,
                                                                    has_user: {
                                                                      type: Array,
                                                                      optional: true
@@ -30,9 +31,9 @@ export const Licenses = CollectionMaker.make<LicenseInterface>("licenses",
                                                                      user_id: String,
                                                                      username: String
                                                                    }),
-                                                                   'base_url.$': String,
                                                                    pricing_id: String,
                                                                    start_version: String,
+                                                                   status: SimpleSchema.Integer,
                                                                    purchase_date: Date,
                                                                    expired_date: Date
                                                                  }),

@@ -10,7 +10,7 @@ export class ManageLicensesService {
     headerText: ""
   };
   viewData: any  = {};
-  
+
   constructor(protected toast: ToastsManager,
               protected router: Router,
               protected licenseCollection: LicenseCollection) { }
@@ -27,5 +27,18 @@ export class ManageLicensesService {
       });
     });
   }
-  
+
+  editLicense(license: any){
+    return new Promise<void>((resolve, reject) => {
+      MeteorObservable.call("license.edit_license", license).subscribe((res) => {
+        this.router.navigate(['cloud/licenses/' + license.id]);
+        this.toast.success("Edit License Successfully");
+        resolve();
+      }, (err) => {
+        this.toast.error(err.reason, err.error);
+        return reject(err);
+      });
+    });
+  }
+
 }

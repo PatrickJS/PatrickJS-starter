@@ -2,6 +2,7 @@ import {DashboardComponent} from "./cloud/pages/dashboard/dashboard";
 import {AdminAreaComponent} from "./cloud/pages/admin-area/admin-area";
 import {ManageLicensesComponent} from "./cloud/pages/admin-area/manage-licenses";
 import {ManageLicensesGridComponent} from "./cloud/pages/admin-area/manage-licenses/grid";
+import {LicenseFormComponent} from "./cloud/pages/admin-area/manage-licenses/form";
 import {ManageProductsComponent} from "./cloud/pages/admin-area/manage-products";
 import {ManageProductsGridComponent} from "./cloud/pages/admin-area/manage-products/grid";
 import {ManageUsersComponent} from "./cloud/pages/admin-area/manage-users";
@@ -25,9 +26,7 @@ import {CreateLicenseComponent} from "./cloud/pages/admin-area/manage-licenses/c
 import {CreateProductComponent} from "./cloud/pages/admin-area/manage-products/create";
 import {AssignLicenseComponent} from "./cloud/pages/admin-area/manage-licenses/assign";
 import {EditProductComponent} from "./cloud/pages/admin-area/manage-products/edit";
-import {CreateVersionComponent} from "./cloud/pages/admin-area/manage-products/create-version";
 import {CreateCashierComponent} from "./cloud/pages/manage-shop/children/create-cashier";
-import {AddLicenseComponent} from "./cloud/pages/admin-area/manage-licenses/add";
 
 export const ROUTES: Routes = [
   {
@@ -35,7 +34,7 @@ export const ROUTES: Routes = [
     redirectTo: '/cloud',
     pathMatch : 'full'
   },
-  
+
   {
     path       : 'cloud',
     component  : ContainerComponent,
@@ -49,7 +48,7 @@ export const ROUTES: Routes = [
         path     : 'profile',
         component: UserProfileComponent
       },
-      
+
       /* ------------------------ Admin Area ------------------------ */
       {
         path     : 'licenses',
@@ -58,7 +57,8 @@ export const ROUTES: Routes = [
           {path: '', component: ManageLicensesGridComponent},
           {path: 'grid', component: ManageLicensesGridComponent},
           {path: 'create', component: CreateLicenseComponent},
-          {path: 'add', component: AddLicenseComponent},
+          {path: 'add', component: LicenseFormComponent},
+          {path: ':id', component: LicenseFormComponent},
           {path: 'assign', component: AssignLicenseComponent}
         ]
       },
@@ -80,7 +80,7 @@ export const ROUTES: Routes = [
           {path: 'grid', component: ManageUsersGridComponent},
         ]
       },
-      
+
       /* ------------------------ User Area ------------------------ */
       {
         path     : 'manage-shop',
