@@ -45,46 +45,36 @@
                         </div>
                     </div>
 
-                    <div *ngIf="!id">
-                        <div class="form-group">
-                            <div class="col-sm-3">
-                                <h3 class="block-title">First Version</h3>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-sm-9">
-                                <div class="form-material">
-                                    <input class="form-control" type="text" id="val-version" name="val-version" placeholder="Enter First Version.."
-                                           [(ngModel)]="first_version.version">
-                                    <label for="val-version">Version</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-9">
-                                <div class="form-material">
-                                    <input class="form-control" type="text" id="val-version_name" name="val-version_name" placeholder="Enter First
- Version Name.." [(ngModel)]="first_version.name">
-                                    <label for="val-version_name">Version Name</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="form-group">
                         <div class="col-sm-12">
                             <div class="form-material">
-                                <ul class="list-group" id="products">
-                                    <li class="list-group-item" *ngFor="let version of product.versions">
-                                        <span class="badge">{{version.version}}</span>
-                                        version name: {{version.name}}
-                                    </li>
-                                </ul>
                                 <label for="val-versions">Versions of Product</label>
                             </div>
                         </div>
                     </div>
+
+                    <button class="btn btn-sm" (click)="addVersion()">Add Version</button>
+
+                    <table class="table table-bordered" *ngIf="product.versions.length > 0">
+                        <tr>
+                            <td>Version</td>
+                            <td>Version Name</td>
+                            <td>Action</td>
+                        </tr>
+                        <tr *ngFor="let version of product.versions">
+                            <td><input type="text" [value]="version.version" name="{{ 'version' + version.version }}" [(ngModel)]="version
+                            .version"></td>
+                            <td><input type="text" [value]="version.name" name="{{ 'version-name' + version.name }}" [(ngModel)]="version
+                            .name"></td>
+                            <td>
+                                <button class="btn btn-default" type="button" title="Remove Version" (click)
+                                        ="removeVersion(version)">
+                                    <i class="fa fa-times"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+
                     <div class="form-group">
                         <div class="col-xs-12">
                             <button class="btn btn-sm btn-primary" type="submit">Save</button>
@@ -96,46 +86,4 @@
     </div>
 </div>
 
-<div class="content content-narrow">
-    <div class="row">
-        <div class="block">
-            <div class="block-header">
-                <ul class="block-options">
-                    <li>
-                        <button type="button"><i class="si si-settings"></i></button>
-                    </li>
-                </ul>
-                <h3 class="block-title">Create Version</h3>
-            </div>
-            <div class="block-content block-content-narrow">
-                <form class="js-validation-version-form form-horizontal push-10-t">
-                    <div class="form-group">
-                        <div class="col-sm-9">
-                            <div class="form-material">
-                                <input class="form-control" type="text" id="val-version" name="val-version" placeholder="Enter
- First Version.." [(ngModel)]="version.version">
-                                <label for="val-version">Version</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-9">
-                            <div class="form-material">
-                                <input class="form-control" type="text" id="val-version_name" name="val-version_name" placeholder="Enter
- First Version Name.." [(ngModel)]="version.name">
-                                <label for="val-version_name">Version Name</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-xs-12">
-                            <button class="btn btn-sm btn-primary" type="submit" [disabled]="!id">Submit</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 

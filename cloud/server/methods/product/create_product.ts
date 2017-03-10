@@ -17,11 +17,13 @@ new ValidatedMethod({
     let defer = $q.defer();
 
     let productModel = OM.create<Product>(Product);
+    if (data['versions'].length == 0){
+      throw new Meteor.Error("Create Error", "Product need at least one version");
+    }
 
     productModel.addData(data)
                 .save()
                 .then(() => defer.resolve(), (err) => defer.reject(err));
     return defer.promise;
-
   }
 });
