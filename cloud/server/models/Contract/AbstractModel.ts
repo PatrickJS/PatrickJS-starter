@@ -37,23 +37,23 @@ export abstract class AbstractModel extends DataObject {
       if (!_id) {
         this.setData('created_at', DateTimeHelper.getCurrentDate());
         this.getMongoCollection()
-            .insert(this.getData(), (err) => {
-              return err ? reject(err) : resolve();
+            .insert(this.getData(), (err, id) => {
+              return err ? reject(err) : resolve(id);
             });
       } else {
         this.setData('updated_at', DateTimeHelper.getCurrentDate());
         this.getMongoCollection()
             .update({_id: _id}, {$set: this.getData()}, {}, (err) => {
-              return err ? reject(err) : resolve();
+              return err ? reject(err) : resolve(_id);
             })
       }
     });
   }
-
-  remove(): Promise<any>{
+  
+  remove(): Promise<any> {
     if (!this.getMongoCollection())
       throw new Error("Can't get collection name from model");
-
+    
     let _id = this.getData('_id');
     return new Promise((resolve, reject) => {
       if (!_id) {
