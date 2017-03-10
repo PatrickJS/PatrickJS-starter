@@ -1,180 +1,182 @@
 <div class="content content-narrow">
-    <div class="row">
-        <div class="block">
-            <div class="block-header">
-                <ul class="block-options">
-                    <li>
-                        <button type="button"><i class="si si-settings"></i></button>
-                    </li>
-                </ul>
-                <h3 class="block-title">{{ form_title }}</h3>
-            </div>
-            <div class="block-content block-content-narrow">
-                <form class="js-validation-license-form form-horizontal push-10-t">
-                    <div class="form-group">
-                        <div class="col-sm-9">
-                            <div class="form-material">
-                                <select class="js-select2 form-control" id="val-owner" name="val-owner" style="width: 100%;" data-placeholder="Choose one
+  <div class="row">
+    <div class="block">
+      <div class="block-header">
+        <ul class="block-options">
+          <li>
+            <button type="button"><i class="si si-settings"></i></button>
+          </li>
+        </ul>
+        <h3 class="block-title">{{ form_title }}</h3>
+      </div>
+      <div class="block-content block-content-narrow">
+        <form class="js-validation-license-form form-horizontal push-10-t">
+          <div class="form-group">
+            <div class="col-sm-9">
+              <div class="form-material">
+                <select class="js-select2 form-control" id="val-owner" name="val-owner" style="width: 100%;" data-placeholder="Choose one
                                 .." [(ngModel)]="license.shop_owner_id" (change)="getOwnerName($event)">
-                                    <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
-                                    <option *ngFor="let user of users" [value]="user._id">{{ user.username }}</option>
-                                </select>
-                                <label for="val-owner">Shop Owner</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-sm-9">
-                            <div class="form-material">
-                                <select class="js-select2 form-control" id="val-status" name="val-status" style="width: 100%;" data-placeholder="Choose one
-                                .." [(ngModel)]="license.status">
-                                    <option value="1">Activated</option>
-                                    <option value="0">Deactivated</option>
-                                    <option value="2">Fresh</option>
-                                </select>
-                                <label for="val-status">Status</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-sm-9">
-                            <div class="form-material">
-                                <label>Choose Product</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="table">
-                        <table class="table table-responsive">
-                            <thead>
-                            <tr>
-                                <td></td>
-                                <td>Product Name</td>
-                                <td>Status</td>
-                                <td>Start Version</td>
-                                <td>Pricing Plan</td>
-                                <td>Based URLs</td>
-                                <td>Purchased Date</td>
-                                <td>Expire Date</td>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr *ngFor="let product of products;trackBy:trackById">
-                                <td>
-                                    <div class="col-xs-6">
-                                        <label class="">
-                                            <input type="checkbox" name="{{'product_id' + product['product_id']}}"
-                                            [checked]="product['checked']==true"
-                                                   [(ngModel)]="product['checked']"><span></span>
-                                        </label>
-                                    </div>
-                                </td>
-                                <td>{{ product.name }}</td>
-                                <td>
-                                    <div class="form-group">
-                                        <div class="col-sm-9">
-                                            <div class="form-material">
-                                                <select class="form-control" [(ngModel)]="product['status']" id="val-status_product"
-                                                        name="{{'status_product' + product['product_id']}}"
-                                                        style="width: 100%;"
-                                                        data-placeholder="Choose one..">
-                                                    <option value=""></option>
-                                                    <option value="1">Activated</option>
-                                                    <option value="0">Deactivated</option>
-                                                    <option value="2">Fresh</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-
-                                <td>
-                                    <div class="form-group">
-                                        <div class="col-sm-9">
-                                            <div class="form-material">
-                                                <select class="form-control" id="val-version"
-                                                        name="{{'val-version'+product['product_id']}}"
-                                                        style="width: 100%;"
-                                                        data-placeholder="Choose one.." [(ngModel)]="product['start_version']">
-                                                    <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
-                                                    <option *ngFor="let version of product.versions" [value]="version.version">{{ version
-                                                    .version }}</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-
-                                <td>
-                                    <div class="form-group">
-                                        <div class="col-sm-9">
-                                            <div class="form-material">
-                                                <select class="form-control" id="val-price" name="{{'val-price'+product['product_id']}}" style="width: 100%;"
-                                                        data-placeholder="Choose one.." [(ngModel)]="product['pricing_id']">
-                                                    <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
-                                                    <template ngFor let-price [ngForOf]="prices">
-                                                        <option *ngIf="product.pricings && product.pricings.indexOf(price._id)>-1"
-                                                                [value]="price._id">{{ price.name }}</option>
-                                                    </template>
-
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-
-                                <td>
-                                    <div class="form-group">
-                                        <div class="col-sm-9">
-                                            <div class="form-material">
-                                                <input type="hidden" #url>
-                                                <div class="badge" *ngFor="let url of product.base_url">
-                                                    {{ url }}
-                                                    <button (click)="removeUrl(product, url.value)">x</button>
-                                                </div>
-                                                <input class="form-control" (focusout)="addBasedUrl(product, $event)" type="text" id="val-base_url"
-                                                       name="{{'val-base_url'+product['product_id']}}"
-                                                       placeholder="Add Based URLs">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="form-group">
-                                        <div class="col-sm-9">
-                                            <div class="form-material">
-                                                <input class="form-control" type="text" name="{{ 'val-purchased_date' + product['product_id'] }}"
-                                                       id="{{ 'val-purchased_date' + product['product_id'] }}"
-                                                       placeholder="Enter Purchased Date.." [(ngModel)]="product['purchase_date']">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="form-group">
-                                        <div class="col-sm-9">
-                                            <div class="form-material">
-                                                <input class="form-control" type="text" name="{{'val-expire_date'+product['product_id']}}" id="{{ 'val-expire_date' + product['product_id'] }}"
-                                                       placeholder="Enter Expire Date.." [(ngModel)]="product['expired_date']">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-xs-12">
-                            <button class="btn btn-sm btn-primary" type="submit">Save</button>
-                        </div>
-                    </div>
-                </form>
+                  <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                  <option *ngFor="let user of users" [value]="user._id">{{ user.username }}</option>
+                </select>
+                <label for="val-owner">Shop Owner</label>
+              </div>
             </div>
-        </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-9">
+              <div class="form-material">
+                <select class="js-select2 form-control" id="val-status" name="val-status" style="width: 100%;" data-placeholder="Choose one
+                                .." [(ngModel)]="license.status">
+                  <option value="1">Activated</option>
+                  <option value="0">Deactivated</option>
+                  <option value="2">Fresh</option>
+                </select>
+                <label for="val-status">Status</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-9">
+              <div class="form-material">
+                <label>Choose Product</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="table">
+            <table class="table table-responsive">
+              <thead>
+              <tr>
+                <td></td>
+                <td>Product Name</td>
+                <td>Status</td>
+                <td>Start Version</td>
+                <td>Pricing Plan</td>
+                <td>Based URLs</td>
+                <td>Purchased Date</td>
+                <td>Expire Date</td>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let product of products;trackBy:product?.product_id">
+                <td>
+                  <div class="col-xs-6">
+                    <label class="">
+                      <input type="checkbox" name="{{'product_id' + product['product_id']}}"
+                             [checked]="product['checked']==true"
+                             [(ngModel)]="product['checked']"><span></span>
+                    </label>
+                  </div>
+                </td>
+                <td>{{ product.name }}</td>
+                <td>
+                  <div class="form-group">
+                    <div class="col-sm-9">
+                      <div class="form-material">
+                        <select class="form-control" [(ngModel)]="product['status']" id="val-status_product"
+                                name="{{'status_product' + product['product_id']}}"
+                                style="width: 100%;"
+                                data-placeholder="Choose one..">
+                          <option value=""></option>
+                          <option value="1">Activated</option>
+                          <option value="0">Deactivated</option>
+                          <option value="2">Fresh</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <div class="col-sm-9">
+                      <div class="form-material">
+                        <select class="form-control" id="val-version"
+                                name="{{'val-version'+product['product_id']}}"
+                                style="width: 100%;"
+                                data-placeholder="Choose one.." [(ngModel)]="product['start_version']">
+                          <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                          <option *ngFor="let version of product.versions" [value]="version.version">{{ version
+                            .version }}
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <div class="col-sm-9">
+                      <div class="form-material">
+                        <select class="form-control" id="val-price" name="{{'val-price'+product['product_id']}}" style="width: 100%;"
+                                data-placeholder="Choose one.." [(ngModel)]="product['pricing_id']">
+                          <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                          <template ngFor let-price [ngForOf]="prices">
+                            <option *ngIf="product.pricings && product.pricings.indexOf(price._id)>-1"
+                                    [value]="price._id">{{ price.name }}
+                            </option>
+                          </template>
+
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <div class="col-sm-9">
+                      <input class="form-control" (focusout)="addBasedUrl(product, $event)" type="text"
+                             id="val-base_url"
+                             name="{{'val-base_url'+product['product_id']}}"
+                             placeholder="Add Based URLs">
+                      <div class="form-material">
+                        <div class="input-group" *ngFor="let baseUrl of product['base_url']">
+                          <input class="form-control" type="text" disabled [value]="baseUrl">
+                          <span class="input-group-btn">
+                            <button class="btn btn-default" (click)="removeBaseUrl(product,baseUrl)" type="button">Remove</button>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <div class="col-sm-9">
+                      <div class="form-material">
+                        <input class="form-control" type="text" name="{{ 'val-purchased_date' + product['product_id'] }}"
+                               id="{{ 'val-purchased_date' + product['product_id'] }}"
+                               placeholder="Enter Purchased Date..">
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <div class="col-sm-9">
+                      <div class="form-material">
+                        <input class="form-control" type="text" name="{{'val-expire_date'+product['product_id']}}"
+                               id="{{ 'val-expire_date' + product['product_id'] }}"
+                               placeholder="Enter Expire Date..">
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="form-group">
+            <div class="col-xs-12">
+              <button class="btn btn-sm btn-primary" type="submit">Save</button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
+  </div>
 </div>
 

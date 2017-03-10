@@ -13,7 +13,7 @@ export class Seeder {
     this.dummyUser();
     this.dummyPrices();
     this.dummyProduct();
-    this.dummyLicenses();
+    // this.dummyLicenses();
   }
   
   private dummyUser() {
@@ -31,13 +31,13 @@ export class Seeder {
   }
 
   private dummyProduct(): void {
-    if (Products.collection.find().count() > 1)
+    if (Products.collection.find().count() > 0)
       return;
     const productName = ["X-POS", "X-REPORT", "X-WAREHOUSE", "X-REWARD"];
     let _product      = (ii) => {
       let versions = [];
       let price_ids = [];
-      for (let i = 0; i < (Math.round(Math.random() * 10)); i++) {
+      for (let i = 1; i < (Math.round(Math.random() * 10)); i++) {
         this.randomCheckIdObject(Prices.find().fetch(), price_ids);
         versions.push({
                         name: Math.random().toString(36).substring(7),
