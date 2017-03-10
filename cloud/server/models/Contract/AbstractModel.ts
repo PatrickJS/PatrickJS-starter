@@ -67,6 +67,10 @@ export abstract class AbstractModel extends DataObject {
     });
   }
   
+  delete(): Promise<any> {
+    return this.remove();
+  }
+  
   getMongoCollection<T>(): Mongo.Collection<T> {
     if (!this.$collection) {
       throw new Error("Collection name must be string");

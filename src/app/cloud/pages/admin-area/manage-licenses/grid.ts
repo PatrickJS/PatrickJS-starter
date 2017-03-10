@@ -10,28 +10,28 @@ import {Router} from "@angular/router";
 import {ManageLicensesService} from "./manage-licenses.service";
 
 @Component({
-             selector   : 'manage-licenses-grid',
+             selector: 'manage-licenses-grid',
              templateUrl: 'grid.html'
            })
 export class ManageLicensesGridComponent implements OnInit {
   @ViewChild(AngularMeteorDataTableComponent) protected angularMeteorDtTable: AngularMeteorDataTableComponent;
-
+  
   protected tableConfig = {
     actionsColumn: {edit: true, remove: true},
-    columns      : [
+    columns: [
       {data: "_id", title: "License ID"},
       {data: "key", title: "License Key"},
       {data: "has_product", title: "Products"},
       {data: "shop_owner_username", title: "Shop owner"},
       {data: "status", title: "Status"}
     ],
-    columnDefs   : [
+    columnDefs: [
       {className: "", "targets": [0]},
       {className: "", orderable: false, "targets": [1]},
       {
         className: "", orderable: false,
         "targets": [2],
-        render   : function (data, type, row) {
+        render: function (data, type, row) {
           let _html = "";
           if (_.isArray(data)) {
             _.forEach(data, product => {
@@ -49,7 +49,7 @@ export class ManageLicensesGridComponent implements OnInit {
       {
         className: "text-center",
         orderable: false, targets: [4],
-        render   : function (data) {
+        render: function (data) {
           if (data == 1)
             return `<span class="label label-success">Activated</span>`;
           else if (data == 0)
@@ -60,15 +60,15 @@ export class ManageLicensesGridComponent implements OnInit {
         }
       }
     ],
-    bFilter      : false,
+    bFilter: false,
   };
-
+  
   constructor(protected manageLicensesService: ManageLicensesService,
               protected licensesCollection: LicenseCollection,
               protected router: Router) {
     this.manageLicensesService.viewState.headerText = "Grid";
   }
-
+  
   ngOnInit(): void {
     this.angularMeteorDtTable.getCallBackObservable().subscribe((data) => {
       if (data.event == "clickEdit") {
@@ -77,7 +77,10 @@ export class ManageLicensesGridComponent implements OnInit {
       if (data.event == 'newRecord') {
         this.router.navigate(['/cloud/licenses/add']);
       }
+      if (data.event == "removeRecord") {
+        this.manageLicensesService.delete(data.data);
+      }
     });
   }
-
+  
 }
