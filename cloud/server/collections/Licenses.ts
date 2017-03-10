@@ -15,7 +15,9 @@ export const Licenses = CollectionMaker.make<LicenseInterface>("licenses",
                                                                    type: String,
                                                                    optional: true
                                                                  },
-                                                                 has_product: Array,
+                                                                 has_product: {
+                                                                   type: Array
+                                                                 },
                                                                  "has_product.$": new SimpleSchema({
                                                                    product_id: String,
                                                                    base_url: {
