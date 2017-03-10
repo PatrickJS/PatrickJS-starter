@@ -28,7 +28,7 @@ export class ManageLicensesService {
     });
   }
 
-  editLicense(license: any){
+  editLicense(license: any):Promise<any>{
     return new Promise<void>((resolve, reject) => {
       MeteorObservable.call("license.edit_license", license).subscribe((res) => {
         this.router.navigate(['cloud/licenses/' + license.id]);

@@ -115,7 +115,7 @@
                                                         data-placeholder="Choose one.." [(ngModel)]="product['pricing_id']">
                                                     <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
                                                     <template ngFor let-price [ngForOf]="prices">
-                                                        <option *ngIf="product.pricings.indexOf(price._id)>-1"
+                                                        <option *ngIf="product.pricings && product.pricings.indexOf(price._id)>-1"
                                                                 [value]="price._id">{{ price.name }}</option>
                                                     </template>
 

@@ -190,7 +190,7 @@ export class LicenseFormComponent implements OnInit {
                                                               status: vm.license.status,
                                                               has_product: result
                                                             };
-                                                            vm.licenseService.editLicense(vm.license);
+                                                            vm.licenseService.editLicense(vm.license).then(()=>{},e=>{});
                                                           }else{
                                                             vm.license = {
                                                               id: "",
