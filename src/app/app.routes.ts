@@ -55,7 +55,6 @@ export const ROUTES: Routes = [
         children : [
           {path: '', component: ManageLicensesGridComponent},
           {path: 'grid', component: ManageLicensesGridComponent},
-          {path: 'create', component: CreateLicenseComponent},
           {path: 'add', component: LicenseFormComponent},
           {path: ':id', component: LicenseFormComponent},
           {path: 'assign', component: AssignLicenseComponent}
