@@ -21,9 +21,7 @@ new ValidatedMethod({
       throw new Meteor.Error("product.error_edit", "Product Not Found");
     }
     _.forEach(product._data, function(value, key){
-        if(key != "_id"){
-          product.unsetData(key);
-        }
+      product.unsetData(key);
     });
     product.addData(data);
     product.save().then(() => defer.resolve(), (err) => defer.reject(err));

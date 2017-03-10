@@ -57,13 +57,14 @@ import {CloudPricingComponent} from "./cloud/pages/billing-pricing/children/pric
 import {ManageUsersComponent} from "./cloud/pages/admin-area/manage-users";
 import {ManageUsersGridComponent} from "./cloud/pages/admin-area/manage-users/grid";
 import {CreateLicenseComponent} from "./cloud/pages/admin-area/manage-licenses/create";
-import {CreateProductComponent} from "./cloud/pages/admin-area/manage-products/create";
 import {AssignLicenseComponent} from "./cloud/pages/admin-area/manage-licenses/assign";
-import {EditProductComponent} from "./cloud/pages/admin-area/manage-products/edit";
 import {CreateCashierComponent} from "./cloud/pages/manage-shop/children/create-cashier";
+
+import {ProductFormComponent} from "./cloud/pages/admin-area/manage-products/form";
 import {PriceCollection} from "./cloud/services/ddp/collections/prices";
 import {LicenseFormComponent} from "./cloud/pages/admin-area/manage-licenses/form";
 import {ManageLicensesService} from "./cloud/pages/admin-area/manage-licenses/manage-licenses.service";
+
 
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
@@ -85,6 +86,7 @@ import {ManageLicensesService} from "./cloud/pages/admin-area/manage-licenses/ma
               AssignLicenseComponent,
               ManageProductsComponent,
               ManageProductsGridComponent,
+              ProductFormComponent,
               ManageUsersComponent,
               ManageUsersGridComponent,
               SignInComponent,
@@ -100,8 +102,6 @@ import {ManageLicensesService} from "./cloud/pages/admin-area/manage-licenses/ma
               CloudPricingComponent,
               CreateLicenseComponent,
               LicenseFormComponent,
-              CreateProductComponent,
-              EditProductComponent,
               CreateCashierComponent
             ],
             imports     : [ // import Angular's modules
@@ -119,6 +119,7 @@ import {ManageLicensesService} from "./cloud/pages/admin-area/manage-licenses/ma
               ProductCollection,
               UserCollection,
               LicenseCollection,
+              PriceCollection,
               AuthService,
               AuthenticateGuard,
               ManageProductsService,

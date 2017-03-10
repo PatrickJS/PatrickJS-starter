@@ -2,6 +2,7 @@ import {ProductInterface} from "../models/ProductInterface";
 import SimpleSchema from 'simpl-schema';
 import {DateTimeHelper} from "../code/DateTimeHelper";
 import {CollectionMaker} from "./Contract/CollectionMaker";
+import {Price} from "../models/Price";
 
 
 export const Products = CollectionMaker.make<ProductInterface>("products",
@@ -16,6 +17,10 @@ export const Products = CollectionMaker.make<ProductInterface>("products",
                                                                    optional: true
                                                                  },
                                                                  'additional_data.description': String,
+                                                                 pricings: {
+                                                                   type: Array
+                                                                 },
+                                                                 'pricings.$': String,
                                                                  versions: [new SimpleSchema({
                                                                    name: String,
                                                                    version: String,

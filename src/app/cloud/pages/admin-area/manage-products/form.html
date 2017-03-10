@@ -7,7 +7,7 @@
                         <button type="button"><i class="si si-settings"></i></button>
                     </li>
                 </ul>
-                <h3 class="block-title">Edit Products</h3>
+                <h3 class="block-title">{{ form_title }}</h3>
             </div>
             <div class="block-content block-content-narrow">
                 <form class="js-validation-product-form form-horizontal push-10-t">
@@ -21,7 +21,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-sm-12">
+                        <div class="col-sm-9">
                             <div class="form-material">
                                 <textarea class="form-control" id="val-product_des" name="val-product_des" rows="6"
                                           placeholder="Products's Description Here.." (change)="changeDescription($event)">{{ product.additional_data
@@ -31,6 +31,47 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-9">
+                            <div class="form-material">
+                                <select class="js-select2 form-control" id="val-pricings" name="val-pricings" style="width: 100%;"
+                                        data-placeholder="Choose at least two.." multiple [(ngModel)]="product.pricings">
+                                    <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                    <option *ngFor="let price of prices" [value]="price._id">{{ price.name }}</option>
+                                </select>
+                                <label for="val-pricings">Pricings</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngIf="!id">
+                        <div class="form-group">
+                            <div class="col-sm-3">
+                                <h3 class="block-title">First Version</h3>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-9">
+                                <div class="form-material">
+                                    <input class="form-control" type="text" id="val-version" name="val-version" placeholder="Enter First Version.."
+                                           [(ngModel)]="first_version.version">
+                                    <label for="val-version">Version</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-9">
+                                <div class="form-material">
+                                    <input class="form-control" type="text" id="val-version_name" name="val-version_name" placeholder="Enter First
+ Version Name.." [(ngModel)]="first_version.name">
+                                    <label for="val-version_name">Version Name</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <div class="col-sm-12">
                             <div class="form-material">
@@ -89,7 +130,7 @@
 
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <button class="btn btn-sm btn-primary" type="submit">Submit</button>
+                            <button class="btn btn-sm btn-primary" type="submit" [disabled]="!id">Submit</button>
                         </div>
                     </div>
                 </form>

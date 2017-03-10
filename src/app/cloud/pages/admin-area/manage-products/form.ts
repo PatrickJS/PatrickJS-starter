@@ -7,31 +7,66 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {ProductCollection} from "../../../services/ddp/collections/products";
 import {MongoObservable} from "meteor-rxjs";
 import * as moment from 'moment';
+import {PriceCollection} from "../../../services/ddp/collections/prices";
 
 @Component({
-             selector: 'edit-product',
-             templateUrl: 'edit.html'
+             selector: 'product-form',
+             templateUrl: 'form.html'
            })
-export class EditProductComponent implements OnInit {
+export class ProductFormComponent implements OnInit {
   id: string = "";
-  protected product: any;
+  protected prices: any;
+  protected first_version = {
+    name: "",
+    version: "",
+    created_at: "",
+    updated_at: "",
+  };
+  protected product = {
+    _id: "",
+    name: "",
+    additional_data: {
+      description: ""
+    },
+    pricings: [],
+    versions: []
+  };
+  protected form_title: string;
   protected version = {
     name: "",
-    version: ""
+    version: "",
+    created_at: "",
+    updated_at: "",
   };
   constructor(
     protected productService: ManageProductsService,
     private route: ActivatedRoute,
+    protected priceCollection: PriceCollection,
     protected productCollection: ProductCollection,
     protected router: Router
   ) {
-    route.params.subscribe((p) => this.id = p['id']);
+    route.params.subscribe((p) => {
+      this.id = p['id'];
+      if(this.id){
+        this.form_title = 'Edit Product';
+      }else{
+        this.form_title = 'Add Product';
+      }
+    });
   }
 
   ngOnInit() {
     this.productCollection.getCollectionObservable().subscribe(
       (collection: MongoObservable.Collection<any>) => {
-        this.product = collection.findOne({_id: this.id});
+        if (this.id){
+          this.product = collection.findOne({_id: this.id});
+        }
+      }
+    );
+
+    this.priceCollection.getCollectionObservable().subscribe(
+      (collection: MongoObservable.Collection<any>) => {
+        this.prices = collection.find({}).fetch();
       }
     );
     this.initPageJs();
@@ -61,21 +96,40 @@ export class EditProductComponent implements OnInit {
                                                        rules         : {
                                                          'val-product_name'        : {
                                                            required : true
-                                                         }
+                                                         },
+                                                         'val-version_name'        : {
+                                                           required: true
+                                                         },
+                                                         'val-version'        : {
+                                                           required: true
+                                                         },
+                                                         'val-pricings': {
+                                                           required : true
+                                                         },
                                                        },
                                                        messages      : {
                                                          'val-product_name'        : {
                                                            required : 'Please enter product name',
-                                                         }
+                                                         },
+                                                         'val-version_name'        : {
+                                                           required : 'Please enter first version name',
+                                                         },
+                                                         'val-version'        : {
+                                                           required : 'Please enter first version'
+                                                         },
+                                                         'val-pricings': {
+                                                           required : 'Please select at least choose one pricing',
+                                                         },
                                                        },
                                                        submitHandler: function (form) {
-                                                         let product_change = {
-                                                           _id: vm.id,
-                                                           name: vm.product.name,
-                                                           additional_data: vm.product.additional_data
-                                                         };
-                                                         vm.productService.editProduct(product_change);
-                                                       }
+                                                         if(vm.id){
+                                                           vm.productService.editProduct(vm.product);
+                                                         }else{
+                                                            vm.first_version['created_at'] = vm.first_version['updated_at'] = moment().format('YYYY-MM-DD');
+                                                            vm.product.versions.push(vm.first_version);
+                                                            vm.productService.createProduct(vm.product);
+                                                         }
+                                                        }
                                                      });
     };
     let initVersionValidationMaterial = function () {
@@ -114,12 +168,9 @@ export class EditProductComponent implements OnInit {
                                                          }
                                                        },
                                                        submitHandler: function (form) {
-                                                         let data = {
-                                                           _id: vm.id,
-                                                           versions: vm.version
-                                                         };
-                                                         data.versions["created_at"] = data.versions["updated_at"] = moment().toDate();
-                                                         vm.productService.createVersion(data);
+                                                         vm.version['created_at'] = vm.version['updated_at'] = moment().format('YYYY-MM-DD');
+                                                         vm.product.versions.push(vm.version);
+                                                         vm.productService.editProduct(vm.product);
                                                        }
                                                      });
     };

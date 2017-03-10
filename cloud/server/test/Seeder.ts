@@ -11,8 +11,8 @@ import {DateTimeHelper} from "../code/DateTimeHelper";
 export class Seeder {
   run() {
     this.dummyUser();
-    this.dummyProduct();
     this.dummyPrices();
+    this.dummyProduct();
     this.dummyLicenses();
   }
   
@@ -36,7 +36,9 @@ export class Seeder {
     const productName = ["X-POS", "X-REPORT", "X-WAREHOUSE", "X-REWARD"];
     let _product      = (ii) => {
       let versions = [];
+      let price_ids = [];
       for (let i = 0; i < (Math.round(Math.random() * 10)); i++) {
+        this.randomCheckIdObject(Prices.find().fetch(), price_ids);
         versions.push({
                         name: Math.random().toString(36).substring(7),
                         version: "0.0." + i,
@@ -49,10 +51,11 @@ export class Seeder {
         additional_data: {
           description: "des"
         },
+        pricings: price_ids,
         versions: versions,
       }
     };
-    
+
     for (let i = 0; i < 4; i++) {
       let _p = OM.create<Product>(Product, false);
       _p.addData(_product(i))
@@ -75,7 +78,7 @@ export class Seeder {
   private dummyLicenses() {
     if (Licenses.collection.find().count() > 0)
       return;
-    
+
     let _license = () => {
       let user_ids          = [];
       let user_id           = this.randomCheckIdObject(Users.find().fetch(), user_ids);
