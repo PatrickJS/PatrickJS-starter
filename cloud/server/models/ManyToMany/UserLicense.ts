@@ -8,8 +8,10 @@ export class UserLicense {
    * Nếu attach license + cashier cần define products được assign
    */
   static attach(user: User, license: License, userHasLicensePermission: string, products: string[] = []): Promise<any> {
+    if (!user.getId() || !license.getId()) {
+      throw new Meteor.Error("required data missing");
+    }
     if (user.isInRoles(Role.USER)) {
-      
       // Nếu user đã tồn tại license và license đó không phải là cái hiện tại thì báo lỗi
       if (_.size(user.getLicenses()) > 0 && user.getLicenses()[0].license_id != license.getId())
         throw new Meteor.Error("User already has license");
@@ -26,6 +28,10 @@ export class UserLicense {
                    ]);
       
       if (userHasLicensePermission == User.LICENSE_PERMISSION_OWNER) {
+        if (license.getData('shop_owner_id') && license.getData('shop_owner_id') != user.getId()) {
+          throw new Meteor.Error("This license already has shop owner");
+        }
+        
         license.setData("shop_owner_id", user.getId())
                .setData("shop_owner_username", user.getUsername())
       } else if (userHasLicensePermission == User.LICENSE_PERMISSION_CASHIER) {

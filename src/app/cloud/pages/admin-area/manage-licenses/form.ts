@@ -20,8 +20,9 @@ import {Observable} from "../../../../../../node_modules/rxjs/Observable";
              templateUrl: 'form.html'
            })
 export class LicenseFormComponent extends AbstractRxComponent implements OnInit {
-  id: string                   = "";
+  id: string = "";
   protected form_title: string;
+  
   protected license: any       = {};
   protected products: Object[] = [];
   protected users: any;
@@ -52,7 +53,7 @@ export class LicenseFormComponent extends AbstractRxComponent implements OnInit 
                                this.productCollection.getCollectionObservable())
                 .subscribe(([licenseCollection, productCollection]) => {
                              let licenseHasProductIds = [];
-                             if (this.id) {
+                             if (!!this.id) {
                                this.license = licenseCollection.findOne({_id: this.id});
           
                                if (this.license) {
@@ -109,6 +110,11 @@ export class LicenseFormComponent extends AbstractRxComponent implements OnInit 
         .getCollectionObservable()
         .subscribe((collection: MongoObservable.Collection<any>) => {
                      this.users = collection.find({}).fetch();
+                     setTimeout(() => {
+                       jQuery('#val-owner').select2().on('change', function () {
+                         jQuery(this).valid();
+                       });
+                     })
                    }
         );
     
@@ -184,10 +190,17 @@ export class LicenseFormComponent extends AbstractRxComponent implements OnInit 
                                                        rules: {
                                                          'val-status': {
                                                            required: true
-                                                         }
+                                                         },
+                                                         'val-owner': {
+                                                           required: true,
+                                                           minlength: 1
+                                                         },
                                                        },
                                                        messages: {
                                                          'val-status': {
+                                                           required: 'Please select status',
+                                                         },
+                                                         'val-owner': {
                                                            required: 'Please select status',
                                                          }
                                                        },
@@ -197,11 +210,11 @@ export class LicenseFormComponent extends AbstractRxComponent implements OnInit 
                                                              return product;
                                                            }
                                                          });
+                                                         console.log(jQuery("#val-owner").val());
                                                          if (vm.id) {
                                                            vm.license = {
                                                              id: vm.id,
-                                                             shop_owner_id: vm.license.shop_owner_id,
-                                                             shop_owner_username: vm.license.shop_owner_username,
+                                                             shop_owner_id: jQuery("#val-owner").val(),
                                                              status: vm.license.status,
                                                              has_product: result
                                                            };
@@ -209,12 +222,11 @@ export class LicenseFormComponent extends AbstractRxComponent implements OnInit 
                                                          } else {
                                                            vm.license = {
                                                              id: "",
-                                                             shop_owner_id: vm.license.shop_owner_id,
-                                                             shop_owner_username: vm.license.shop_owner_username,
+                                                             shop_owner_id: jQuery("#val-owner").val(),
                                                              status: vm.license.status,
                                                              has_product: result
                                                            };
-                                                           vm.licenseService.createLicense(vm.license);
+                                                           vm.licenseService.createLicense(vm.license).then(() => { }, e => { });
                                                          }
                                                        }
                                                      });
@@ -222,15 +234,8 @@ export class LicenseFormComponent extends AbstractRxComponent implements OnInit 
     initLicenseValidationMaterial();
   }
   
-  protected getOwnerName(event) {
-    let user = _.find(this.users, u => u['_id'] = event);
-    if (user)
-      return user['username'];
-  }
-  
   protected addBasedUrl(product, event) {
     if (!!event.target.value) {
-      console.log(product);
       if (!_.isArray(product['base_url'])) {
         product['base_url'] = [];
       }
