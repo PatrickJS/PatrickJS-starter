@@ -9,7 +9,6 @@ import {UserLicense} from "../../models/ManyToMany/UserLicense";
 new ValidatedMethod({
   name: "license.admin_create_license",
   validate: function () {
-    console.log('run admin create');
     const user = OM.create<User>(User).loadById(this.userId);
     if (user.isInRoles([Role.SUPERADMIN, Role.ADMIN, Role.SALES], Role.GROUP_CLOUD)) {
     } else {
@@ -28,10 +27,13 @@ new ValidatedMethod({
     license.addData(data)
            .save()
            .then((_id) => {
-             console.log(shopOwnerId);
-             license  = OM.create<License>(License).load(_id);
-             let user = OM.create<User>(User).load(shopOwnerId);
-             return UserLicense.attach(user, license, User.LICENSE_PERMISSION_OWNER);
+             license = OM.create<License>(License).load(_id);
+             if (shopOwnerId) {
+               let user = OM.create<User>(User).load(shopOwnerId);
+               return UserLicense.attach(user, license, User.LICENSE_PERMISSION_OWNER);
+             } else {
+               return defer.resolve();
+             }
            }, err => defer.reject(err))
            .then(() => defer.resolve(), e => defer.reject(e));
     

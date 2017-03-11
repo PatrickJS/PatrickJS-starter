@@ -72,7 +72,7 @@ export class ManageLicensesGridComponent implements OnInit {
   ngOnInit(): void {
     this.angularMeteorDtTable.getCallBackObservable().subscribe((data) => {
       if (data.event == "clickEdit") {
-        this.router.navigateByUrl('cloud/licenses/' + data.data);
+        this.router.navigate(['cloud/licenses/edit', data.data]);
       }
       if (data.event == 'newRecord') {
         this.router.navigate(['/cloud/licenses/add']);

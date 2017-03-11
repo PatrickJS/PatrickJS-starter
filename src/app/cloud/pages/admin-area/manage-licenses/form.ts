@@ -191,18 +191,11 @@ export class LicenseFormComponent extends AbstractRxComponent implements OnInit 
                                                          'val-status': {
                                                            required: true
                                                          },
-                                                         'val-owner': {
-                                                           required: true,
-                                                           minlength: 1
-                                                         },
                                                        },
                                                        messages: {
                                                          'val-status': {
                                                            required: 'Please select status',
                                                          },
-                                                         'val-owner': {
-                                                           required: 'Please select status',
-                                                         }
                                                        },
                                                        submitHandler: function (form) {
                                                          let result = _.filter(vm.products, (product) => {

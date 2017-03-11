@@ -1,5 +1,4 @@
 import {DashboardComponent} from "./cloud/pages/dashboard/dashboard";
-import {AdminAreaComponent} from "./cloud/pages/admin-area/admin-area";
 import {ManageLicensesComponent} from "./cloud/pages/admin-area/manage-licenses";
 import {ManageLicensesGridComponent} from "./cloud/pages/admin-area/manage-licenses/grid";
 import {LicenseFormComponent} from "./cloud/pages/admin-area/manage-licenses/form";
@@ -22,7 +21,6 @@ import {ShopRolesComponent} from "./cloud/pages/manage-shop/children/shop-roles"
 import {BillingPricingComponent} from "./cloud/pages/billing-pricing/billing-pricing";
 import {CloudPricingComponent} from "./cloud/pages/billing-pricing/children/pricing";
 import {CloudBillingComponent} from "./cloud/pages/billing-pricing/children/billing";
-import {CreateLicenseComponent} from "./cloud/pages/admin-area/manage-licenses/create";
 import {AssignLicenseComponent} from "./cloud/pages/admin-area/manage-licenses/assign";
 import {ProductFormComponent} from "./cloud/pages/admin-area/manage-products/form";
 import {CreateCashierComponent} from "./cloud/pages/manage-shop/children/create-cashier";
@@ -56,7 +54,7 @@ export const ROUTES: Routes = [
           {path: '', component: ManageLicensesGridComponent},
           {path: 'grid', component: ManageLicensesGridComponent},
           {path: 'add', component: LicenseFormComponent},
-          {path: ':id', component: LicenseFormComponent},
+          {path: 'edit/:id', component: LicenseFormComponent},
           {path: 'assign', component: AssignLicenseComponent}
         ]
       },
