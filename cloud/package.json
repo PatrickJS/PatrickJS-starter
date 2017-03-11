@@ -7,7 +7,6 @@
     "debug": "export MONGO_URL=mongodb://localhost:27017/cloud && meteor debug"
   },
   "dependencies": {
-    "@types/lodash": "^4.14.54",
     "@types/meteor-publish-composite": "0.0.32",
     "babel-runtime": "6.18.0",
     "lodash": "^4.17.4",

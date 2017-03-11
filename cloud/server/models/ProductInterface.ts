@@ -4,6 +4,7 @@ export interface ProductInterface {
   additional_data?: {
     description?: string;
   };
+  pricings: string[],
   versions?: ProductVersion[];
   created_at?: Date;
   updated_at?: Date;
