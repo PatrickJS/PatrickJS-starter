@@ -20,6 +20,7 @@ export class ProductFormComponent extends AbstractRxComponent implements OnInit 
   protected prices: any;
   protected product               = {
     _id: "",
+    code: "",
     name: "",
     additional_data: {
       description: ""
@@ -104,6 +105,9 @@ export class ProductFormComponent extends AbstractRxComponent implements OnInit 
                                                          'val-product_name': {
                                                            required: true
                                                          },
+                                                         'val-product_code': {
+                                                           required: true
+                                                         },
                                                          'val-version_name': {
                                                            required: true
                                                          },
@@ -119,6 +123,9 @@ export class ProductFormComponent extends AbstractRxComponent implements OnInit 
                                                          'val-product_name': {
                                                            required: 'Please enter product name',
                                                          },
+                                                         'val-product_code': {
+                                                           required: 'Please enter product name',
+                                                         },
                                                          'val-pricings': {
                                                            required: 'Please select at least choose one pricing',
                                                          },
@@ -129,7 +136,6 @@ export class ProductFormComponent extends AbstractRxComponent implements OnInit 
                                                            return;
                                                          }
                                                          vm.product['pricings'] = jQuery("#val-pricings").val();
-                                                         console.log(vm.product);
                                                          if (vm.id) {
                                                            vm.productService.editProduct(vm.product);
                                                          } else {

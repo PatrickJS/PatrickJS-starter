@@ -19,11 +19,12 @@ export class ManageProductsGridComponent implements OnInit {
   protected tableConfig = {
     actionsColumn: {edit: true, remove: true},
     columns      : [
+      {data: "code", title: "Code"},
       {data: "name", title: "Name"},
       {data: "versions", title: "Versions"},
     ],
     columnDefs   : [
-      {className: "hidden-xs", targets: [0]},
+      {className: "hidden-xs", targets: [1]},
       {
         className: "text-center",
         orderable: false,
@@ -36,7 +37,7 @@ export class ManageProductsGridComponent implements OnInit {
           }
           return _html;
         },
-        targets  : [1],
+        targets  : [2],
       },
     ],
     bFilter      : false,

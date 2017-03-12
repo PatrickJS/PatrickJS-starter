@@ -1,5 +1,6 @@
 export interface ProductInterface {
   _id?: string;
+  code: string;
   name?: string;
   additional_data?: {
     description?: string;
@@ -12,6 +13,7 @@ export interface ProductInterface {
 export interface ProductVersion {
   name?: string;
   version?: string;
+  changelog: string;
   created_at?: Date;
   updated_at?: Date;
 }
