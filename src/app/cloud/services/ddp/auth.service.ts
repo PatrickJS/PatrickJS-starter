@@ -2,8 +2,7 @@ import {Injectable} from '@angular/core';
 import {ToastsManager} from "ng2-toastr";
 import {Router} from "@angular/router";
 import * as _ from "lodash";
-import {ReplaySubject} from "../../../../../node_modules/rxjs/ReplaySubject";
-import {Observable} from "../../../../../node_modules/rxjs/Observable";
+import {ReplaySubject, Observable} from "rxjs";
 import {UserCollection} from "./collections/users";
 
 @Injectable()
