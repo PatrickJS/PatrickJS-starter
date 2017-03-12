@@ -32,6 +32,7 @@ export abstract class AbstractCollection {
       this._collectionObservable = new ReplaySubject(1);
       MeteorObservable.subscribe(this.$collection).subscribe(() => {
         this._collectionSubscription = MeteorObservable.autorun().subscribe(() => {
+          console.log("new data: " + this.$collection);
           this._collectionObservable.next(this.getCollection());
         });
       });
