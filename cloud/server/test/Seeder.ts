@@ -11,8 +11,8 @@ import {DateTimeHelper} from "../code/DateTimeHelper";
 export class Seeder {
   run() {
     this.dummyUser();
-    this.dummyPrices();
-    this.dummyProduct();
+    // this.dummyPrices();
+    // this.dummyProduct();
     // this.dummyLicenses();
   }
   
