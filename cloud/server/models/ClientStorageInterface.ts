@@ -6,5 +6,6 @@ export interface ClientStorageInterface {
     entity_id: number,
     type_change: string
   },
-  cache_time: String,
+  cache_time: Number,
+  created_at: String
 }

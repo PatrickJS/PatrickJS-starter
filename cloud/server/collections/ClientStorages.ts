@@ -10,5 +10,6 @@ export const ClientStorages = CollectionMaker.make<ClientStorageInterface>("clie
     entity_id: Number,
     type_change: String
   }),
-  cache_time: Number
+  cache_time: Number,
+  created_at: String
 }));
