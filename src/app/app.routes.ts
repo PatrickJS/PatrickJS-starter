@@ -78,7 +78,7 @@ export const ROUTES: Routes = [
           {path: '', component: ManagePricingsGridComponent},
           {path: 'grid', component: ManagePricingsGridComponent},
           {path: 'create', component: PricingFormComponent},
-          {path: ':id', component: PricingFormComponent}
+          {path: 'edit/:id', component: PricingFormComponent}
         ]
       },
       {

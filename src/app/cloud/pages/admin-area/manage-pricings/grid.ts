@@ -65,7 +65,7 @@ export class ManagePricingsGridComponent implements OnInit {
   ngOnInit(): void {
     this.angularMeteorDtTable.getCallBackObservable().subscribe((data) => {
       if (data.event == "clickEdit") {
-        this.router.navigateByUrl('cloud/pricings/' + data.data);
+        this.router.navigateByUrl('cloud/pricings/edit/' + data.data);
       }
       if (data.event == 'removeRecord') {
         this.managePricingService.removePricing(data.data);
