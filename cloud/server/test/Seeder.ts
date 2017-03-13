@@ -11,9 +11,9 @@ import {DateTimeHelper} from "../code/DateTimeHelper";
 export class Seeder {
   run() {
     this.dummyUser();
-    // this.dummyPrices();
-    // this.dummyProduct();
-    // this.dummyLicenses();
+    this.dummyPrices();
+    this.dummyProduct();
+    this.dummyLicenses();
   }
   
   private dummyUser() {
@@ -48,6 +48,7 @@ export class Seeder {
       }
       return {
         name: productName[ii],
+        code: Math.random().toString(36).substring(7),
         additional_data: {
           description: "des"
         },
@@ -67,9 +68,17 @@ export class Seeder {
     if (Prices.collection.find().count() > 0)
       return;
     let _p = () => {
-      return {name: Math.random().toString(36).substring(7)};
+      return {
+        code: Math.random().toString(36).substring(7),
+        name: Math.random().toString(36).substring(7),
+        display_name: Math.random().toString(36).substring(7),
+        type: Math.floor(Math.random() * 9) % 3 + 1,
+        cost: Math.random()*1000,
+        visibility: Math.floor(Math.random() * 9) % 2,
+        description: "pricing description"
+      };
     };
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 100; i++) {
       let _price = OM.create<Price>(Price, false, _p());
       _price.save();
     }
@@ -88,7 +97,7 @@ export class Seeder {
 
       for (let i = 1; i < Math.round(Math.random() * 10); ++i) {
         let product_id = this.randomCheckIdObject(Products.find().fetch(), product_ids);
-        let product = Products.findOne({_id: product_id});//
+        let product = Products.findOne({_id: product_id});
         let price_id   = this.randomCheckIdObject(Prices.find({_id:{$in: product['pricings']}}).fetch(), price_ids);
         let base_url   = [];
         for (let j = 0; j < Math.round(Math.random() * 5); ++j) {

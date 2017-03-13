@@ -8,5 +8,14 @@ export const Prices = CollectionMaker.make<PriceInterface>("prices",
                                                                type: String,
                                                                optional: true
                                                              },
-                                                             name: String
+                                                             code: String,
+                                                             name: String,
+                                                             display_name: String,
+                                                             type: SimpleSchema.Integer,
+                                                             cost: String,
+                                                             visibility: SimpleSchema.Integer,
+                                                             description: {
+                                                               type: String,
+                                                               optional: true
+                                                             }
                                                            }));

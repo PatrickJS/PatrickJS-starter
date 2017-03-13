@@ -7,6 +7,7 @@ import {ManageUsersService} from "./manage-users.service";
 import {UserCollection} from "../../../services/ddp/collections/users";
 import {AngularMeteorDataTableComponent} from "../../../../code/angular/components/angular-meteor-datatable";
 import * as _ from "lodash";
+import {Router} from "@angular/router";
 
 @Component({
              selector   : 'manage-users-grid',
@@ -71,11 +72,19 @@ export class ManageUsersGridComponent implements OnInit {
   };
   
   constructor(protected manageUserService: ManageUsersService,
-              protected usersCollection: UserCollection) {
+              protected usersCollection: UserCollection,
+              protected router: Router) {
     this.manageUserService.viewState.headerText = "Grid";
   }
   
   ngOnInit(): void {
-    this.angularMeteorDtTable.getCallBackObservable().subscribe((data) => {console.log(data);});
+    this.angularMeteorDtTable.getCallBackObservable().subscribe((data) => {
+      if (data.event == 'newRecord') {
+        this.router.navigate(['/cloud/users/create']);
+      }
+      if (data.event == "clickEdit") {
+        this.router.navigate(['/cloud/users/edit/' + data.data]);
+      }
+    });
   }
 }

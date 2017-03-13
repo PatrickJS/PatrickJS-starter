@@ -1,0 +1,76 @@
+<div class="content content-narrow">
+    <!-- Material Design -->
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3">
+            <!-- Material Forms Validation -->
+            <div class="block">
+                <div class="block-header">
+                    <ul class="block-options">
+                        <li>
+                            <button type="button"><i class="si si-settings"></i></button>
+                        </li>
+                    </ul>
+                    <h3 class="block-title">Create new user</h3>
+                </div>
+                <div class="block-content block-content-narrow">
+                    <!-- jQuery Validation (.js-validation-material class is initialized in js/pages/base_forms_validation.js) -->
+                    <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
+                    <form class="js-validation-material form-horizontal">
+                        <div class="form-group">
+                            <div class="col-sm-9">
+                                <div class="form-material">
+                                    <input class="form-control" type="text" id="firstname" name="firstname" [(ngModel)]="_data.first_name"
+                                           placeholder="User first name">
+                                    <label for="firstname">First name</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-9">
+                                <div class="form-material">
+                                    <input class="form-control" type="text" id="lastname" name="lastname" [(ngModel)]="_data.last_name"
+                                           placeholder="User last name">
+                                    <label for="lastname">Last name</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-9">
+                                <div class="form-material">
+                                    <input class="form-control" type="text" id="username" name="username" [(ngModel)]="_data.username"
+                                           placeholder="Choose a username..">
+                                    <label for="username">Username</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-9">
+                                <div class="form-material">
+                                    <input class="form-control" type="text" id="email" name="email" [(ngModel)]="_data.email"
+                                           placeholder="Enter user's valid email..">
+                                    <label for="email">Email</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-9">
+                                <div>
+                                    <label><span>Disabled</span></label>
+                                </div>
+                                <label class="css-input switch switch-danger">
+                                    <input type="checkbox" name="user_disabled" checked [(ngModel)]="_data.disabled"><span></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <button class="btn btn-sm btn-primary" type="submit">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- END Material Forms Validation -->
+        </div>
+    </div>
+</div>
