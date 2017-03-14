@@ -13,12 +13,17 @@ export interface LicenseInterface {
 
 export interface LicenseHasProductInterface {
   product_id?: string;
-  base_url?: string[];
+  base_url?: BaseUrl[];
   pricing_id?: string;
   has_user: LicenseHasProductHasUser[];
   start_version?: string;
   purchase_date?: Date;
   expired_date?: Date;
+}
+
+export interface BaseUrl{
+  status?: number;
+  url: string;
 }
 
 export interface LicenseHasProductHasUser {

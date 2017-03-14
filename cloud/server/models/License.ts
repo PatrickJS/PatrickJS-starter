@@ -4,7 +4,10 @@ import * as _ from "lodash";
 
 export class License extends AbstractModel {
   protected $collection = "licenses";
-  
+
+  static STATUS_BASE_URL_ACTIVE = 1;
+  static STATUS_BASE_URL_INACTIVE = 0;
+
   /*
    * License nếu được tự động generate hoặc do admin thì sẽ ở trạng thái STATUS_FRESH.
    * Khi user tự subscribe thì sẽ ở trạng thái STATUS_ACTIVATED

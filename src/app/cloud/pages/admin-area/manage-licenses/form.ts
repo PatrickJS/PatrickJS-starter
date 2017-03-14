@@ -22,12 +22,12 @@ import {Observable} from "../../../../../../node_modules/rxjs/Observable";
 export class LicenseFormComponent extends AbstractRxComponent implements OnInit {
   id: string = "";
   protected form_title: string;
-  
+
   protected license: any       = {};
   protected products: Object[] = [];
   protected users: any;
   protected prices: any;
-  
+
   constructor(protected licenseService: ManageLicensesService,
               protected productCollection: ProductCollection,
               protected userCollection: UserCollection,
@@ -46,7 +46,7 @@ export class LicenseFormComponent extends AbstractRxComponent implements OnInit 
       }
     });
   }
-  
+
   ngOnInit() {
     this._subscription['license'] =
       Observable.combineLatest(this.licenseCollection.getCollectionObservable(),
@@ -55,14 +55,14 @@ export class LicenseFormComponent extends AbstractRxComponent implements OnInit 
                              let licenseHasProductIds = [];
                              if (!!this.id) {
                                this.license = licenseCollection.findOne({_id: this.id});
-          
+
                                if (this.license) {
                                  licenseHasProductIds = _.map(this.license.has_product, (product: any) => {
                                    return product.product_id;
                                  });
                                }
                              }
-        
+
                              const products = productCollection.collection.find({}).fetch();
                              this.products  = _.map(products, (product) => {
                                let object: any;
@@ -98,14 +98,14 @@ export class LicenseFormComponent extends AbstractRxComponent implements OnInit 
                                }
                                return object;
                              });
-        
+
                              setTimeout(() => {
                                this.initPurchaseDatetimePicker();
                              }, 300);
                            }
                 );
-    
-    
+
+
     this.userCollection
         .getCollectionObservable()
         .subscribe((collection: MongoObservable.Collection<any>) => {
@@ -117,28 +117,28 @@ export class LicenseFormComponent extends AbstractRxComponent implements OnInit 
                      })
                    }
         );
-    
+
     this.priceCollection
         .getCollectionObservable()
         .subscribe((collection: MongoObservable.Collection<any>) => {
                      this.prices = collection.find({}).fetch();
                    }
         );
-    
+
     this.initPageJs();
   }
-  
+
   private initPurchaseDatetimePicker() {
     if (this.products && _.isArray(this.products))
       _.forEach(this.products, (p: Object) => {
         let purchase_date = "val-purchased_date" + p['product_id'];
         let expired_date  = "val-expire_date" + p['product_id'];
-        
+
         if (!p.hasOwnProperty('purchase_date') || !p['purchase_date'])
           p['purchase_date'] = moment().toDate();
         if (!p.hasOwnProperty('expired_date') || !p['expired_date'])
           p['expired_date'] = moment().toDate();
-        
+
         jQuery(this.el.nativeElement).find('#' + purchase_date)
                                      .daterangepicker({
                                                         startDate: moment(p['purchase_date']),
@@ -165,7 +165,7 @@ export class LicenseFormComponent extends AbstractRxComponent implements OnInit 
                                                       });
       });
   }
-  
+
   private initPageJs() {
     let vm                            = this;
     let initLicenseValidationMaterial = function () {
@@ -177,13 +177,13 @@ export class LicenseFormComponent extends AbstractRxComponent implements OnInit 
                                                        },
                                                        highlight: function (e) {
                                                          var elem = jQuery(e);
-          
+
                                                          elem.closest('.form-group').removeClass('has-error').addClass('has-error');
                                                          elem.closest('.help-block').remove();
                                                        },
                                                        success: function (e) {
                                                          var elem = jQuery(e);
-          
+
                                                          elem.closest('.form-group').removeClass('has-error');
                                                          elem.closest('.help-block').remove();
                                                        },
@@ -206,7 +206,7 @@ export class LicenseFormComponent extends AbstractRxComponent implements OnInit 
                                                          console.log(jQuery("#val-owner").val());
                                                          if (vm.id) {
                                                            vm.license = {
-                                                             id: vm.id,
+                                                             _id: vm.id,
                                                              shop_owner_id: jQuery("#val-owner").val(),
                                                              status: vm.license.status,
                                                              has_product: result
@@ -214,7 +214,7 @@ export class LicenseFormComponent extends AbstractRxComponent implements OnInit 
                                                            vm.licenseService.editLicense(vm.license).then(() => { }, e => { });
                                                          } else {
                                                            vm.license = {
-                                                             id: "",
+                                                             _id: "",
                                                              shop_owner_id: jQuery("#val-owner").val(),
                                                              status: vm.license.status,
                                                              has_product: result
@@ -226,20 +226,32 @@ export class LicenseFormComponent extends AbstractRxComponent implements OnInit 
     };
     initLicenseValidationMaterial();
   }
-  
+
   protected addBasedUrl(product, event) {
     if (!!event.target.value) {
       if (!_.isArray(product['base_url'])) {
         product['base_url'] = [];
       }
-      product['base_url'].push(event.target.value);
+      product['base_url'].push(
+        {
+          status: 1,
+          url: event.target.value
+        });
       event.target.value = "";
     }
     return false;
   }
-  
+
   protected removeBaseUrl(product, url) {
     let index = product.base_url.indexOf(url);
     product.base_url.splice(index, 1);
+  }
+
+  protected toggleStatus(product, base_url) {
+    if (base_url['status'] == 1){
+      base_url['status'] = 0;
+    }else{
+      base_url['status'] = 1;
+    }
   }
 }

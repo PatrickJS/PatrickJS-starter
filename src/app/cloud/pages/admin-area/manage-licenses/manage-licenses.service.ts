@@ -11,11 +11,11 @@ export class ManageLicensesService {
     headerText: ""
   };
   viewData: any  = {};
-  
+
   constructor(protected toast: ToastsManager,
               protected router: Router,
               protected licenseCollection: LicenseCollection) { }
-  
+
   createLicense(license: any): Promise<any> {
     console.log(license);
     return new Promise<void>((resolve, reject) => {
@@ -29,7 +29,7 @@ export class ManageLicensesService {
       });
     });
   }
-  
+
   editLicense(license: any): Promise<any> {
     return new Promise<void>((resolve, reject) => {
       MeteorObservable.call("license.edit_license", license).subscribe((res) => {
@@ -42,7 +42,7 @@ export class ManageLicensesService {
       });
     });
   }
-  
+
   delete(licenseId: string): Promise<any> {
     let defer = $q.defer();
     MeteorObservable.call("license.delete", {id: licenseId}).subscribe(res => {

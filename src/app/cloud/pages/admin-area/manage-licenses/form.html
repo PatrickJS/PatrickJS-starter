@@ -134,9 +134,21 @@
                              placeholder="Add Based URLs">
                       <div class="form-material">
                         <div class="input-group" *ngFor="let baseUrl of product['base_url']">
-                          <input class="form-control" type="text" disabled [value]="baseUrl">
+                          <input class="form-control" type="text" disabled [value]="baseUrl.url">
                           <span class="input-group-btn">
-                            <button class="btn btn-default" (click)="removeBaseUrl(product,baseUrl)" type="button">Remove</button>
+                              <div class="btn-group">
+                                  <button *ngIf="baseUrl['status']" class="btn btn-success" title="Deactive" type="button" (click)="toggleStatus
+                                  (product, baseUrl)">
+                                    <i class="fa fa-check"></i>
+                                </button>
+                                <button *ngIf="!baseUrl['status']" class="btn btn-default" title="Active" type="button" (click)="toggleStatus(product,
+                                baseUrl)">
+                                    <i class="fa fa-check"></i>
+                                </button>
+                                <button class="btn btn-default" title="Remove" type="button" (click)="removeBaseUrl(product,baseUrl)">
+                                    <i class="fa fa-times"></i>
+                                </button>
+                              </div>
                           </span>
                         </div>
                       </div>

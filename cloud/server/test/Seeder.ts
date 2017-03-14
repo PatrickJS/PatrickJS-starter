@@ -11,9 +11,9 @@ import {DateTimeHelper} from "../code/DateTimeHelper";
 export class Seeder {
   run() {
     this.dummyUser();
-    this.dummyPrices();
-    this.dummyProduct();
-    this.dummyLicenses();
+    //this.dummyPrices();
+    //this.dummyProduct();
+    //this.dummyLicenses();
   }
   
   private dummyUser() {
@@ -101,7 +101,10 @@ export class Seeder {
         let price_id   = this.randomCheckIdObject(Prices.find({_id:{$in: product['pricings']}}).fetch(), price_ids);
         let base_url   = [];
         for (let j = 0; j < Math.round(Math.random() * 5); ++j) {
-          base_url.push(Math.random().toString(36).substring(7));
+          base_url.push({
+            status: Math.floor(Math.random() * 9) % 2,
+            url: Math.random().toString(36).substring(7)
+          });
         }
         let start_version = "0.0." + Math.round(Math.random() * 10);
         let purchase_date = DateTimeHelper.getCurrentDate();
