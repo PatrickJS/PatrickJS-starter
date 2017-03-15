@@ -9,8 +9,8 @@
           <img class="img-avatar img-avatar96 img-avatar-thumb" src="assets/img/avatars/avatar10.jpg" alt="">
         </div>
         <div class="push-30 animated fadeInUp">
-          <h2 class="h4 font-w600 text-white push-5">{{authService.getCurrentUser()['username']}}</h2>
-          <h3 class="h5 text-white-op">{{authService.getUserRole() | async}}</h3>
+          <h2 class="h4 font-w600 text-white push-5">{{_data['username']}}</h2>
+          <h3 class="h5 text-white-op"><!--{{_data.getUserRole() | async}}--></h3>
         </div>
       </div>
     </div>
@@ -48,7 +48,7 @@
   <!-- END User Header -->
 
   <!-- Main Content -->
-  <form>
+  <form class="js-validation-profile-form form-horizontal push-10-t">
     <div class="block">
       <ul class="nav nav-tabs nav-justified push-20" data-toggle="tabs">
         <li class="active">
@@ -69,33 +69,33 @@
               <div class="form-group">
                 <div class="col-xs-6">
                   <label>Username</label>
-                  <div class="form-control-static font-w700">{{authService.getCurrentUser()['username']}}</div>
+                  <div class="form-control-static font-w700">{{_data['username']}}</div>
                 </div>
               </div>
               <div class="form-group">
                 <div class="col-xs-12">
                   <label for="profile-email">Email Address</label>
                   <input class="form-control input-lg" disabled type="email" id="profile-email" name="profile-email" placeholder="Enter your email.."
-                         value="admin@example.com" [value]="authService.getCurrentUser()['emails'][0]['address']">
+                         value="admin@example.com" [value]="_data['emails'][0]['address']">
                 </div>
               </div>
               <div class="form-group">
                 <div class="col-xs-6">
                   <label for="profile-firstname">Firstname</label>
                   <input class="form-control input-lg" type="text" id="profile-firstname" name="profile-firstname"
-                         placeholder="Enter your firstname.." value="John">
+                         placeholder="Enter your firstname.." [(ngModel)]="_data['profile']['first_name']">
                 </div>
                 <div class="col-xs-6">
                   <label for="profile-lastname">Lastname</label>
                   <input class="form-control input-lg" type="text" id="profile-lastname" name="profile-lastname" placeholder="Enter your lastname.."
-                         value="Doe">
+                         [(ngModel)]="_data['profile']['last_name']">
                 </div>
               </div>
               <div class="form-group">
                 <div class="col-xs-12">
                   <label for="profile-bio">Bio</label>
                   <textarea class="form-control input-lg" id="profile-bio" name="profile-bio" rows="15"
-                            placeholder="Enter a few details about yourself..">Hi there, welcome to my profile! I'm a web designer and I love creating stuff that solve problems and make your life easier. Feel free to follow me to know more about me and my projects. Thanks for stopping by, wish you a great day!</textarea>
+                            placeholder="Enter a few details about yourself.." [(ngModel)]="_data['profile']['biography']"></textarea>
                 </div>
               </div>
               <!--<div class="form-group">-->
@@ -116,21 +116,21 @@
               <div class="form-group">
                 <div class="col-sm-6">
                   <label for="profile-city">Where do you live?</label>
-                  <input class="form-control input-lg" type="text" id="profile-city" name="profile-city" placeholder="Enter your location..">
+                  <input class="form-control input-lg" type="text" id="profile-city" name="profile-city" placeholder="Enter your location.." [(ngModel)]="_data['profile']['city']">
                 </div>
                 <div class="col-sm-6">
                   <label for="profile-age">Age</label>
-                  <input class="form-control input-lg" type="text" id="profile-age" name="profile-age" placeholder="Enter your age..">
+                  <input class="form-control input-lg" type="number" id="profile-age" name="profile-age" placeholder="Enter your age.." [(ngModel)]="_data['profile']['age']">
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-xs-12">Gender</label>
                 <div class="col-xs-12">
                   <label class="css-input css-radio css-radio-primary push-10-r">
-                    <input type="radio" name="profile-gender-group"><span></span> Female
+                    <input type="radio" name="profile-gender-group" value="female" [(ngModel)]="_data['profile']['gender']"><span></span> Female
                   </label>
                   <label class="css-input css-radio css-radio-primary">
-                    <input type="radio" name="profile-gender-group" checked><span></span> Male
+                    <input type="radio" name="profile-gender-group" value="male" [(ngModel)]="_data['profile']['gender']"><span></span> Male
                   </label>
                 </div>
               </div>

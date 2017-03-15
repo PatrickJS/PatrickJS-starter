@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import * as _ from "lodash";
 import {ReplaySubject, Observable} from "rxjs";
 import {UserCollection} from "./collections/users";
+import {MeteorObservable} from "meteor-rxjs";
 
 @Injectable()
 export class AuthService {
@@ -101,5 +102,17 @@ export class AuthService {
   
   getUserStateObservable(): Observable<any> {
     return this.userStateObservable.asObservable().share();
+  }
+
+  updateProfile(data) {
+    return new Promise((resolve, reject) => {
+      MeteorObservable.call("user.edit_user", data).subscribe(res => {
+        this.toast.success("Profile Updated");
+        resolve();
+      }, (err) => {
+        console.log(err);
+        this.toast.error(err.reason, err.error);
+      });
+    });
   }
 }
