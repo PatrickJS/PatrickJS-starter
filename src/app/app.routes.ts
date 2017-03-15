@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home';
+import { HomeComponent } from './pages/home';
 import { NoContentComponent } from './no-content';
 
 import { DataResolver } from './app.resolver';
