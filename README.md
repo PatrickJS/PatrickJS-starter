@@ -363,6 +363,8 @@ import * as _ from 'lodash';
  * remove `node_modules/typescript` and run `npm install typescript@beta`. This repo now uses ts 2.0 
 * "There are multiple modules with names that only differ in casing"
  * change `c:\[path to angular2-webpack-starter]` to `C:\[path to angular2-webpack-starter]` see [926#issuecomment-245223547](https://github.com/AngularClass/angular2-webpack-starter/issues/926#issuecomment-245223547)
+* I see a lot of excessive messages in the console on every save/compilation, all those `delegated` messages and files I even not changed. Can I make webpack less verbose?
+  * open config/webpack.dev.js, find `devServer` object and add `stats: 'minimal'` to it. Other options can be found [here](https://webpack.js.org/configuration/stats/).
 
 # Support, Questions, or Feedback
 > Contact us anytime for anything about this repo or Angular 2
