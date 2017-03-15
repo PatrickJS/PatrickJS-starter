@@ -28,7 +28,7 @@ export class AuthService {
         .getCollectionObservable()
         .filter(() => this.getCurrentUser(true))
         .subscribe((collection) => {
-          // MeteorObservable.autorun().subscribe(() => {
+          MeteorObservable.autorun().subscribe(() => {
             let user = collection.findOne({_id: this.getCurrentUser()['_id']});
             if (user) {
               this.userStateObservable
@@ -43,7 +43,7 @@ export class AuthService {
                           isUser: false
                         });
             }
-          // });
+          });
         });
   }
   

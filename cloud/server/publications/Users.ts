@@ -21,7 +21,6 @@ Meteor.publishComposite('users', function (): PublishCompositeConfig<UserInterfa
       }
     };
   } else if (userModel.isInRoles(Role.USER)) {
-    console.log('1');
     let license: UserHasLicense[] = userModel.getLicenses();
     if (_.isArray(license)
         && _.size(license) == 1
@@ -31,11 +30,16 @@ Meteor.publishComposite('users', function (): PublishCompositeConfig<UserInterfa
         // Wtf error?
         return;
       }
-      console.log('ok');
       return {
         find: () => {
           return Users.collection.find({_id: {$in: _.concat(licenseModel.getUserIds(), [this.userId])}},
                                        {fields: {_id: 1, emails: 1, has_license: 1, roles: 1, username: 1}});
+        }
+      }
+    } else {
+      return {
+        find: () => {
+          return Users.collection.find({_id: this.userId}, {fields: {_id: 1, emails: 1, has_license: 1, roles: 1, username: 1}});
         }
       }
     }
