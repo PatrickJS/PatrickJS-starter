@@ -27,6 +27,7 @@ import {CreateCashierComponent} from "./cloud/pages/manage-shop/children/create-
 import {ManagePricingsComponent} from "./cloud/pages/admin-area/manage-pricings";
 import {ManagePricingsGridComponent} from "./cloud/pages/admin-area/manage-pricings/grid";
 import {PricingFormComponent} from "./cloud/pages/admin-area/manage-pricings/form";
+import {UserFormComponent} from "./cloud/pages/admin-area/manage-users/form";
 
 export const ROUTES: Routes = [
   {
@@ -87,6 +88,8 @@ export const ROUTES: Routes = [
         children : [
           {path: '', component: ManageUsersGridComponent},
           {path: 'grid', component: ManageUsersGridComponent},
+          {path: 'create', component: UserFormComponent},
+          {path: 'edit/:id', component: UserFormComponent},
         ]
       },
 

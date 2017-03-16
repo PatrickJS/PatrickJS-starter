@@ -23,7 +23,7 @@ export class ManageUsersGridComponent implements OnInit {
       {data: "emails", title: "Emails"},
       {data: "emails", title: "Verified"},
       {data: "roles", title: "Roles"},
-      {data: "is_disabled", title: "Disabled"},
+      {data: "profile", title: "Disabled"},
     ],
     columnDefs   : [
       {className: "hidden-xs", "targets": [0]},
@@ -61,7 +61,7 @@ export class ManageUsersGridComponent implements OnInit {
         className: "col-status",
         targets  : [4],
         render   : function (data) {
-          if (data && data == 1) {
+          if (data && data.is_disabled && data.is_disabled == 1) {
             return `<span class="label label-danger">Yes</span>&nbsp;`;
           } else
             return `<span class="label label-info">No</span>&nbsp;`;

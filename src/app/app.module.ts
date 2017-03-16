@@ -67,6 +67,7 @@ import {ManageLicensesService} from "./cloud/pages/admin-area/manage-licenses/ma
 import {ManagePricingsComponent} from "./cloud/pages/admin-area/manage-pricings";
 import {ManagePricingsGridComponent} from "./cloud/pages/admin-area/manage-pricings/grid";
 import {PricingFormComponent} from "./cloud/pages/admin-area/manage-pricings/form";
+import {UserFormComponent} from "./cloud/pages/admin-area/manage-users/form";
 
 
 /**
@@ -95,6 +96,7 @@ import {PricingFormComponent} from "./cloud/pages/admin-area/manage-pricings/for
               PricingFormComponent,
               ManageUsersComponent,
               ManageUsersGridComponent,
+              UserFormComponent,
               SignInComponent,
               SignUpComponent,
               ResetPasswordComponent,
