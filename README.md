@@ -49,6 +49,9 @@ This seed repo serves as an Angular 2 starter for anyone looking to get up and r
 * Hot Module Replacement with Webpack and [@angularclass/hmr](https://github.com/angularclass/angular2-hmr) and [@angularclass/hmr-loader](https://github.com/angularclass/angular2-hmr-loader)
 * Material Design with [angular/material2](https://github.com/angular/material2)
 * Angular 4 support via changing package.json and any future Angular versions
+### Editions
+* Bootstrap 3 support added in branch dev-bootstrap
+* Angular Material support added in branch dev-material
 
 ### Quick start
 **Make sure you have Node version >= 5.0 and NPM >= 3**
