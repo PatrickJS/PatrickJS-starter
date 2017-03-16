@@ -47,6 +47,9 @@ This seed repo serves as an Angular starter for anyone looking to get up and run
 * Type manager with @types
 * Hot Module Replacement with Webpack and [@angularclass/hmr](https://github.com/angularclass/angular2-hmr) and [@angularclass/hmr-loader](https://github.com/angularclass/angular2-hmr-loader)
 * Angular 4 support via changing package.json and any future Angular versions
+### Editions
+* Bootstrap 3 support added in branch dev-bootstrap
+* Angular Material support added in branch dev-material
 
 ### Quick start
 **Make sure you have Node version >= 6.0 and NPM >= 3**
