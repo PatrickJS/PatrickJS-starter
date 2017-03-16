@@ -10,5 +10,5 @@ export const Users = CollectionMaker.makeFromExisting<UserInterface>(Meteor.user
 CollectionMaker.hookAfterInsert('users', (userId, user) => {
   let userModel = OM.create<User>(User, false, user);
   userModel.addToRoles([Role.USER], Role.GROUP_CLOUD);
-  // Accounts.sendVerificationEmail(user['_id'])
+  Accounts.sendVerificationEmail(user['_id'])
 });
