@@ -14,6 +14,7 @@ import {
   RouterModule,
   PreloadAllModules
 } from '@angular/router';
+import '../styles/styles.scss';
 
 /*
  * Platform and Environment providers/directives/pipes

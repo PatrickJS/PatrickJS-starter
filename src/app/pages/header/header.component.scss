@@ -1,0 +1,34 @@
+/*styles for home content only*/
+@import "../../../styles/variables";
+
+.head {
+  display: flex;
+  justify-content: space-between;
+
+  &__logo__image {
+    width: 150px;
+
+    @media (min-width: $minTabletWidth) {
+      width: 250px;
+    }
+  }
+
+  &__label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__navigation {
+    display: none;
+
+    @media (min-width: $minTabletWidth) {
+      display: flex;
+    }
+  }
+}
+.user {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

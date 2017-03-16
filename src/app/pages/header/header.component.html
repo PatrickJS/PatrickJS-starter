@@ -1,10 +1,16 @@
-<nav>
-  <a [routerLink]=" ['./'] "
-    routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-    Index
-  </a>
-  <a [routerLink]=" ['./home'] "
-    routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-    Home
-  </a>
-</nav>
+<div class="head">
+  <div class="head__logo">
+    <a [href]="url" class="head__logo__link">
+      <img [src]="iLikeTrainsLogo" class="head__logo__image" width="25%">
+    </a>
+  </div>
+  <div class="head__label">
+    <h1>train courses</h1>
+  </div>
+  <div class="head__navigation">
+    <div class="user">
+      <a href="#" class="user__register btn">Register</a>
+      <a href="#" class="user__Login btn">Log in</a>
+    </div>
+  </div>
+</div>

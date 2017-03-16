@@ -1,0 +1,112 @@
+/*styles for home content only*/
+@import "../../../styles/variables";
+@import '../../../styles/fonts';
+
+.courses__top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.courses-navigation {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @media (min-width: $minTabletWidth) {
+    flex-direction: row;
+  }
+
+  &__new-course,
+  &__find {
+    margin-bottom: 5px;
+  }
+
+  &__find {
+    display: flex;
+    justify-content: space-between;
+
+    &__input {
+      border-radius: $globalBorderRadius;
+      border: 1px solid $borderColor;
+      flex-grow: 1;
+      padding: 10px 15px;
+      margin-right: 5px;
+    }
+
+    &__btn {
+      padding: 10px 15px;
+    }
+  }
+
+  &__new-course {
+    background-color: $primaryColor;
+    border-radius: $globalBorderRadius;
+    border: 1px solid $borderColor;
+    padding: 10px 15px;
+
+    @media (min-width: $minTabletWidth) {
+      padding: 15px 20px;
+    }
+  }
+}
+
+.courses {
+  &__list {
+    border-radius: $globalBorderRadius;
+    border: 1px solid $borderColor;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: $globalMarginDistance;
+    padding: $globalPadding;
+    flex-direction: column;
+
+    @media (min-width: $minTabletWidth) {
+      flex-direction: row;
+    }
+  }
+
+  &__edition {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    flex-direction: column;
+
+    @media (min-width: $minTabletWidth) {
+      flex-direction: row;
+    }
+
+    &__name,
+    &__time,
+    &__date {
+      margin-bottom: 5px;
+
+      @media (min-width: $minTabletWidth) {
+        margin-bottom: 0;
+      }
+    }
+
+    &__name {
+      &--id {
+        font-family: $baloo;
+        font-size: 20px;
+        line-height: 20px;
+      }
+    }
+  }
+
+  &__description {
+    flex-grow: 1;
+    margin-bottom: 15px;
+    text-align: justify;
+
+    @media (min-width: $minTabletWidth) {
+      margin-bottom: 0;
+      margin-right: 15px;
+    }
+  }
+}
