@@ -3,6 +3,7 @@ import {
   OnInit
 } from '@angular/core';
 import {AuthService} from "../../services/ddp/auth.service";
+import {ToastsManager} from "ng2-toastr";
 
 @Component({
              selector: 'user-profile',
@@ -14,9 +15,15 @@ export class UserProfileComponent implements OnInit {
     first_name: "",
     last_name: ""
   };
+  private resetPassword = {
+    old_password: "",
+    new_password: "",
+    confirm_new_password: ""
+  };
   private _data = {};
 
-  constructor(protected authService:AuthService) { }
+  constructor(protected authService:AuthService,
+              protected toast: ToastsManager) { }
   
   ngOnInit() {
 
@@ -51,12 +58,43 @@ export class UserProfileComponent implements OnInit {
                                                          elem.closest('.help-block').remove();
                                                        },
                                                        rules: {
+                                                         'profile-password': {
+                                                           required: true
+                                                         },
+                                                         'profile-password-new': {
+                                                           required: true
+                                                         },
+                                                         'profile-password-new-confirm': {
+                                                           required: true
+                                                         }
                                                        },
                                                        messages: {
+                                                         'profile-password': {
+                                                           required: 'Please enter current password'
+                                                         },
+                                                         'profile-password-new': {
+                                                           required: 'Please enter new password'
+                                                         },
+                                                         'profile-password-new-confirm': {
+                                                           required: 'Please confirm new password'
+                                                         }
                                                        },
                                                        submitHandler: function (form) {
-                                                         vm.authService.updateProfile(vm._data);
-                                                       }
+                                                         if (vm.resetPassword){
+                                                           vm.authService.changePassword(vm.resetPassword)
+                                                             .then(() => {
+                                                                vm.resetPassword = {
+                                                                  old_password: "",
+                                                                  new_password: "",
+                                                                  confirm_new_password: ""
+                                                                };
+                                                             }).catch((err) => {
+                                                               this.toast.error(err);
+                                                             });
+                                                         }else{
+                                                           vm.authService.updateProfile(vm._data);
+                                                         }
+                                                        }
                                                      });
     };
     initProfileValidationMaterial();

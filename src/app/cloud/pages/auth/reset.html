@@ -15,14 +15,33 @@
           <!-- jQuery Validation (.js-validation-reminder class is initialized in js/pages/base_pages_reminder.js) -->
           <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
           <form class="js-validation-reminder form-horizontal push-30-t">
-            <div class="form-group">
-              <div class="col-xs-12">
-                <div class="form-material form-material-primary floating">
-                  <input class="form-control" type="email" id="reminder-email" name="reminder-email">
-                  <label for="reminder-email">Enter Your Email</label>
-                </div>
+              <div class="form-group" *ngIf="!token">
+                  <div class="col-xs-12">
+                      <div class="form-material form-material-primary floating">
+                          <input class="form-control" type="email" id="reminder-email" name="reminder-email" [(ngModel)]="_data['email']">
+                          <label for="reminder-email">Enter Your Email</label>
+                      </div>
+                  </div>
               </div>
-            </div>
+              <div *ngIf="!!token">
+                  <div class="form-group">
+                      <div class="col-xs-12">
+                          <div class="form-material form-material-primary floating">
+                              <input class="form-control" type="password" id="new_password" name="new_password" [(ngModel)]="_data['new_password']">
+                              <label for="new_password">Password</label>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <div class="col-xs-12">
+                          <div class="form-material form-material-primary floating">
+                              <input class="form-control" type="password" id="confirm_new_password" name="confirm_new_password" [(ngModel)]="_data['confirm_new_password']">
+                              <label for="confirm_new_password">Confirm Password</label>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
             <div class="form-group">
               <div class="col-xs-12 col-sm-6 col-sm-offset-3">
                 <button class="btn btn-sm btn-block btn-primary" type="submit">Reset Password</button>

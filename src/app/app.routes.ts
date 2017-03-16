@@ -118,6 +118,7 @@ export const ROUTES: Routes = [
   {path: 'signin', component: SignInComponent},
   {path: 'signup', component: SignUpComponent},
   {path: 'reset-password', component: ResetPasswordComponent},
+  {path: 'reset-password/:token', component: ResetPasswordComponent},
   {path: 'lock-account', component: LockAccountComponent},
   {path: '**', component: PageNotFoundComponent}
 ];

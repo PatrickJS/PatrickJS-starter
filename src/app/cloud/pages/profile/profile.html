@@ -52,18 +52,19 @@
     <div class="block">
       <ul class="nav nav-tabs nav-justified push-20" data-toggle="tabs">
         <li class="active">
-          <a href="#tab-profile-personal"><i class="fa fa-fw fa-pencil"></i> Personal</a>
+          <a href="#tab-profile-personal" aria-controls="tab-profile-personal" role="tab" data-toggle="tab"><i class="fa fa-fw fa-pencil"></i>
+              Personal</a>
         </li>
         <li>
-          <a href="#tab-profile-password"><i class="fa fa-fw fa-asterisk"></i> Password</a>
+          <a href="#tab-profile-password" aria-controls="tab-profile-password" role="tab" data-toggle="tab"><i class="fa fa-fw fa-asterisk"></i> Password</a>
         </li>
         <li>
-          <a href="#tab-profile-privacy"><i class="fa fa-fw fa-lock"></i> Privacy</a>
+          <a href="#tab-profile-privacy" aria-controls="tab-profile-privacy" role="tab" data-toggle="tab"><i class="fa fa-fw fa-lock"></i> Privacy</a>
         </li>
       </ul>
       <div class="block-content tab-content">
         <!-- Personal Tab -->
-        <div class="tab-pane fade in active" id="tab-profile-personal">
+        <div class="tab-pane fade in active" role="tabpanel" id="tab-profile-personal">
           <div class="row items-push">
             <div class="col-sm-6 col-sm-offset-3 form-horizontal">
               <div class="form-group">
@@ -146,20 +147,20 @@
               <div class="form-group">
                 <div class="col-xs-12">
                   <label for="profile-password">Current Password</label>
-                  <input class="form-control input-lg" type="password" id="profile-password" name="profile-password">
+                  <input class="form-control input-lg" type="password" id="profile-password" name="profile-password" [(ngModel)]="resetPassword['old_password']">
                 </div>
               </div>
               <hr>
               <div class="form-group">
                 <div class="col-xs-12">
                   <label for="profile-password-new">New Password</label>
-                  <input class="form-control input-lg" type="password" id="profile-password-new" name="profile-password-new">
+                  <input class="form-control input-lg" type="password" id="profile-password-new" name="profile-password-new" [(ngModel)]="resetPassword['new_password']">
                 </div>
               </div>
               <div class="form-group">
                 <div class="col-xs-12">
                   <label for="profile-password-new-confirm">Confirm New Password</label>
-                  <input class="form-control input-lg" type="password" id="profile-password-new-confirm" name="profile-password-new-confirm">
+                  <input class="form-control input-lg" type="password" id="profile-password-new-confirm" name="profile-password-new-confirm" [(ngModel)]="resetPassword['confirm_new_password']">
                 </div>
               </div>
             </div>

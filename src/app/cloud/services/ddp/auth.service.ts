@@ -5,6 +5,7 @@ import * as _ from "lodash";
 import {ReplaySubject, Observable} from "rxjs";
 import {UserCollection} from "./collections/users";
 import {MeteorObservable} from "meteor-rxjs";
+import {Accounts} from "meteor/accounts-base"
 
 @Injectable()
 export class AuthService {
@@ -114,7 +115,7 @@ export class AuthService {
   getUserStateObservable(): Observable<any> {
     return this.userStateObservable.asObservable().share();
   }
-  
+
   updateProfile(data) {
     return new Promise((resolve, reject) => {
       MeteorObservable.call("user.edit_user", data).subscribe(res => {
@@ -126,4 +127,52 @@ export class AuthService {
       });
     });
   }
+
+  changePassword(data){
+    return new Promise<void>((resolve, reject) => {
+      if (data['confirm_new_password'].localeCompare(data['new_password'])){
+        this.toast.error('Confirm new password must equal new password');
+        return;
+      }
+      Accounts.changePassword(data['old_password'], data['new_password'], (err) => {
+        if (err) {
+          this.toast.error(err);
+        }else{
+          this.toast.success('Password changed');
+          resolve();
+        }
+      });
+    });
+  }
+
+  forgotPassword(data){
+    return new Promise<void>((resolve, reject) => {
+      Accounts.forgotPassword(data, (err) => {
+        if (!err) {
+          this.toast.info("A message was sent to your email");
+          resolve();
+        }else {
+          this.toast.error(err);
+        }
+      });
+    });
+  }
+
+  resetPassword(token, data){
+    return new Promise<void>((resolve, reject) => {
+      if (data['confirm_new_password'].localeCompare(data['new_password'])){
+        this.toast.error('Confirm new password must equal new password');
+        return;
+      }
+      Accounts.resetPassword(token, data['new_password'], (err) => {
+        if (!err) {
+          this.toast.success('Password reset successfully');
+          resolve();
+        } else {
+          this.toast.error(err);
+        }
+      });
+    });
+  }
+
 }
