@@ -38,18 +38,18 @@ export class UserFormComponent extends AbstractRxComponent implements OnInit {
       this.userService.viewState.headerText = 'Add User';
     }
     
-    this.userCollection
-        .getCollectionObservable()
-        .subscribe((collection: MongoObservable.Collection<any>) => {
-          if (!!params['id']) {
-            this._data = collection.findOne({_id: this.id});
-            if (this._data) {
-              this._data['email'] = this._data['emails'][0]['address'];
-            }else{
-              throw new Error("Can't find user");
-            }
-          }
-        });
+    this._subscription['user'] = this.userCollection
+                                     .getCollectionObservable()
+                                     .subscribe((collection: MongoObservable.Collection<any>) => {
+                                       if (!!params['id']) {
+                                         this._data = collection.findOne({_id: this.id});
+                                         if (this._data) {
+                                           this._data['email'] = this._data['emails'][0]['address'];
+                                         } else {
+                                           throw new Error("Can't find user");
+                                         }
+                                       }
+                                     });
     this.initPageJs();
   }
   
