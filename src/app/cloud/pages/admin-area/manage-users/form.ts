@@ -3,10 +3,8 @@ import {
   OnInit
 } from '@angular/core';
 import {ManageShopService} from "../manage-shop.service";
-import {LicenseCollection} from "../../../services/ddp/collections/licenses";
 import {AuthService} from "../../../services/ddp/auth.service";
 import {AbstractRxComponent} from "../../../../code/angular/AbstractRxComponent";
-import {ProductCollection} from "../../../services/ddp/collections/products";
 import {ManageUsersService} from "./manage-users.service";
 import {ActivatedRoute} from "@angular/router";
 import {MongoObservable} from "meteor-rxjs";
@@ -22,10 +20,8 @@ export class UserFormComponent extends AbstractRxComponent implements OnInit {
   
   constructor(protected userService: ManageUsersService,
               protected userCollection: UserCollection,
-              protected licenseCollection: LicenseCollection,
               private route: ActivatedRoute,
-              protected authService: AuthService,
-              protected productCollection: ProductCollection) {
+              protected authService: AuthService) {
     super();
   }
   
