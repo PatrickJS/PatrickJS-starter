@@ -23,7 +23,7 @@ export class ManageUsersGridComponent implements OnInit {
       {data: "emails", title: "Emails"},
       {data: "emails", title: "Verified"},
       {data: "roles", title: "Roles"},
-      {data: "profile", title: "Disabled"},
+      {data: "is_disabled", title: "Disabled"},
     ],
     columnDefs   : [
       {className: "hidden-xs", "targets": [0]},
