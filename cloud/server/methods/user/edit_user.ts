@@ -1,9 +1,6 @@
 import {User} from "../../models/User";
 import {OM} from "../../code/General/ObjectManager";
 import {Role} from "../../models/Role";
-import {UserLicense} from "../../models/ManyToMany/UserLicense";
-import {License} from "../../models/License";
-import * as _ from "lodash";
 import * as $q from "q";
 
 new ValidatedMethod({

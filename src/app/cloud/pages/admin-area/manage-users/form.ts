@@ -4,11 +4,9 @@ import {
 } from '@angular/core';
 import {ManageShopService} from "../manage-shop.service";
 import {LicenseCollection} from "../../../services/ddp/collections/licenses";
-import * as _ from "lodash";
 import {AuthService} from "../../../services/ddp/auth.service";
 import {AbstractRxComponent} from "../../../../code/angular/AbstractRxComponent";
 import {ProductCollection} from "../../../services/ddp/collections/products";
-import {Observable} from "../../../../../../node_modules/rxjs/Observable";
 import {ManageUsersService} from "./manage-users.service";
 import {ActivatedRoute} from "@angular/router";
 import {MongoObservable} from "meteor-rxjs";
@@ -19,9 +17,9 @@ import {UserCollection} from "../../../services/ddp/collections/users";
              templateUrl: 'form.html'
            })
 export class UserFormComponent extends AbstractRxComponent implements OnInit {
-  id: string = "";
-  protected form_title: string;
-
+  id: string      = "";
+  protected _data = {};
+  
   constructor(protected userService: ManageUsersService,
               protected userCollection: UserCollection,
               protected licenseCollection: LicenseCollection,
@@ -29,33 +27,35 @@ export class UserFormComponent extends AbstractRxComponent implements OnInit {
               protected authService: AuthService,
               protected productCollection: ProductCollection) {
     super();
-    route.params.subscribe((p) => {
-      this.id = p['id'];
-      if (this.id) {
-        this.userService.viewState.headerText = this.form_title = 'Edit User';
-      } else {
-        this.userService.viewState.headerText = this.form_title = 'Add User';
-      }
-    });
   }
-
-  protected _data        = {};
-
+  
   ngOnInit() {
-
+    const params: Object = this.route.snapshot.params;
+    if (params.hasOwnProperty('id') && !!params['id']) {
+      this.userService.viewState.headerText = 'Edit User';
+      this.id                               = params['id'];
+    } else {
+      this.userService.viewState.headerText = 'Add User';
+    }
+    
     this.userCollection
         .getCollectionObservable()
         .subscribe((collection: MongoObservable.Collection<any>) => {
-          if (!!this.id) {
+          if (!!params['id']) {
             this._data = collection.findOne({_id: this.id});
+            if (this._data) {
+              this._data['email'] = this._data['emails'][0]['address'];
+            }else{
+              throw new Error("Can't find user");
+            }
           }
         });
     this.initPageJs();
   }
-
+  
   private initPageJs() {
     let vm = this;
-
+    
     let initValidationMaterial = function () {
       jQuery('.js-validation-material').validate({
                                                    ignore: [],
@@ -66,13 +66,13 @@ export class UserFormComponent extends AbstractRxComponent implements OnInit {
                                                    },
                                                    highlight: function (e) {
                                                      var elem = jQuery(e);
-
+          
                                                      elem.closest('.form-group').removeClass('has-error').addClass('has-error');
                                                      elem.closest('.help-block').remove();
                                                    },
                                                    success: function (e) {
                                                      var elem = jQuery(e);
-
+          
                                                      elem.closest('.form-group').removeClass('has-error');
                                                      elem.closest('.help-block').remove();
                                                    },
@@ -114,12 +114,12 @@ export class UserFormComponent extends AbstractRxComponent implements OnInit {
                                                        //products: jQuery("#cashier_products").val(),
                                                        //license_id: vm.license['_id']
                                                      };
-                                                     if (vm.id){
+                                                     if (vm.id) {
                                                        vm.userService.editUser(data);
-                                                     }else{
+                                                     } else {
                                                        vm.userService.createUser(data);
                                                      }
-                                                    }
+                                                   }
                                                  });
     };
     initValidationMaterial();
