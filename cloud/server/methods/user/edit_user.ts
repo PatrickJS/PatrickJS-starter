@@ -1,7 +1,6 @@
 import {User} from "../../models/User";
 import {OM} from "../../code/General/ObjectManager";
 import {Role} from "../../models/Role";
-import * as $q from "q";
 
 new ValidatedMethod({
   name: 'user.edit_user',
@@ -15,14 +14,12 @@ new ValidatedMethod({
     }
   },
   run: function (data) {
-    let defer = $q.defer();
     const user = Meteor.users.findOne({_id: data['_id']});
     if (user)
       Meteor.users.update({_id: user._id}, {$set:data});
     else {
       throw new Meteor.Error("user.edit_user", "Can't find user");
     }
-    return defer.promise;
   }
 });
 

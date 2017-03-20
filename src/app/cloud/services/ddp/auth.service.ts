@@ -133,7 +133,6 @@ export class AuthService {
   updateProfile(data) {
     return new Promise((resolve, reject) => {
       MeteorObservable.call("user.update_profile", data).subscribe(res => {
-        this.toast.success("Profile Updated");
         resolve();
       }, (err) => {
         if (!err){
@@ -156,7 +155,6 @@ export class AuthService {
         if (err) {
           this.toast.error(err);
         }else{
-
           resolve();
         }
       });
