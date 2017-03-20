@@ -4,6 +4,7 @@ import {
 } from '@angular/core';
 import {AuthService} from "../../services/ddp/auth.service";
 import {Router} from "@angular/router";
+import {ToastsManager} from "ng2-toastr";
 
 @Component({
              selector   : 'sign-up',
@@ -12,7 +13,7 @@ import {Router} from "@angular/router";
 export class SignUpComponent implements OnInit {
   protected user = {username: "", email: "", password: "", acceptTerm: false};
   
-  constructor(protected router: Router, protected authService: AuthService) { }
+  constructor(protected router: Router, protected authService: AuthService, protected toast: ToastsManager) { }
   
   ngOnInit() {
     if (this.authService.getCurrentUser())
@@ -77,7 +78,9 @@ export class SignUpComponent implements OnInit {
                                                      'register-terms'    : 'You must agree to the service terms!'
                                                    },
                                                    submitHandler : function (form) {
-                                                     vm.authService.signUp(vm.user).then(() => {}, err => {});
+                                                     vm.authService.signUp(vm.user).then(() => {
+                                                       alert('An verification is sent to your email, please verify it before signing in');
+                                                     }, err => {});
                                                    }
                                                  });
     };

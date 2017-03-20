@@ -80,7 +80,7 @@ export class UserProfileComponent implements OnInit {
                                                          }
                                                        },
                                                        submitHandler: function (form) {
-                                                         if (vm.resetPassword){
+                                                         if (vm.resetPassword['old_password'] && vm.resetPassword['new_password'] && vm.resetPassword['confirm_new_password']){
                                                            vm.authService.changePassword(vm.resetPassword)
                                                              .then(() => {
                                                                 vm.resetPassword = {
@@ -88,16 +88,18 @@ export class UserProfileComponent implements OnInit {
                                                                   new_password: "",
                                                                   confirm_new_password: ""
                                                                 };
+                                                               vm.toast.success('Password changed');
                                                              }).catch((err) => {
-                                                               this.toast.error(err);
+                                                               vm.toast.error(err);
+                                                               return;
                                                              });
                                                          }else{
                                                            vm.authService.updateProfile(vm._data);
+                                                           vm.toast.success("Profile Updated");
                                                          }
                                                         }
                                                      });
     };
     initProfileValidationMaterial();
   }
-  
 }

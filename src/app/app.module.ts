@@ -68,6 +68,7 @@ import {ManagePricingsComponent} from "./cloud/pages/admin-area/manage-pricings"
 import {ManagePricingsGridComponent} from "./cloud/pages/admin-area/manage-pricings/grid";
 import {PricingFormComponent} from "./cloud/pages/admin-area/manage-pricings/form";
 import {UserFormComponent} from "./cloud/pages/admin-area/manage-users/form";
+import {VerifyEmailComponent} from "./cloud/pages/auth/verify";
 
 
 /**
@@ -100,6 +101,7 @@ import {UserFormComponent} from "./cloud/pages/admin-area/manage-users/form";
               SignInComponent,
               SignUpComponent,
               ResetPasswordComponent,
+              VerifyEmailComponent,
               LockAccountComponent,
               UserProfileComponent,
               ManageShopComponent,

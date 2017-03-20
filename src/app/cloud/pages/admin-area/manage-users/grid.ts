@@ -23,7 +23,7 @@ export class ManageUsersGridComponent implements OnInit {
       {data: "emails", title: "Emails"},
       {data: "emails", title: "Verified"},
       {data: "roles", title: "Roles"},
-      {data: "is_disabled", title: "Disabled"},
+      {data: "profile", title: "Disabled"},
     ],
     columnDefs   : [
       {className: "hidden-xs", "targets": [0]},
@@ -81,6 +81,9 @@ export class ManageUsersGridComponent implements OnInit {
     this.angularMeteorDtTable.getCallBackObservable().subscribe((data) => {
       if (data.event == 'newRecord') {
         this.router.navigate(['/cloud/users/create']);
+      }
+      if (data.event == 'removeRecord') {
+        this.manageUserService.removeUser(data.data);
       }
       if (data.event == "clickEdit") {
         this.router.navigate(['/cloud/users/edit/' + data.data]);

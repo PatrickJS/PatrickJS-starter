@@ -9,22 +9,26 @@ import {ManageUsersService} from "./manage-users.service";
 import {ActivatedRoute} from "@angular/router";
 import {MongoObservable} from "meteor-rxjs";
 import {UserCollection} from "../../../services/ddp/collections/users";
+import {ToastsManager} from "ng2-toastr";
 
 @Component({
              selector: 'user-form',
              templateUrl: 'form.html'
            })
 export class UserFormComponent extends AbstractRxComponent implements OnInit {
-  id: string      = "";
-  protected _data = {};
-  
+  id: string = "";
+  protected form_title: string;
+
   constructor(protected userService: ManageUsersService,
               protected userCollection: UserCollection,
               private route: ActivatedRoute,
-              protected authService: AuthService) {
+              protected authService: AuthService,
+              protected toast: ToastsManager) {
     super();
   }
-  
+
+  protected _data        = {};
+
   ngOnInit() {
     const params: Object = this.route.snapshot.params;
     if (params.hasOwnProperty('id') && !!params['id']) {
@@ -33,25 +37,53 @@ export class UserFormComponent extends AbstractRxComponent implements OnInit {
     } else {
       this.userService.viewState.headerText = 'Add User';
     }
-    
+
     this._subscription['user'] = this.userCollection
                                      .getCollectionObservable()
                                      .subscribe((collection: MongoObservable.Collection<any>) => {
                                        if (!!params['id']) {
-                                         this._data = collection.findOne({_id: this.id});
-                                         if (this._data) {
-                                           this._data['email'] = this._data['emails'][0]['address'];
+                                         const user = collection.findOne({_id: this.id});
+                                         if (user) {
+                                           let first_name, last_name, is_disabled;
+                                           if (this.checkHasOwnProperty(user, 'profile')){
+                                             first_name = this.checkHasOwnProperty(user['profile'], 'first_name');
+                                             last_name = this.checkHasOwnProperty(user['profile'], 'last_name');
+                                             is_disabled = this.checkHasOwnProperty(user['profile'], 'is_disabled');
+                                           }else{
+                                             first_name = last_name = is_disabled = '';
+                                           }
+
+                                           this._data = {
+                                             _id: user['_id'],
+                                             username: user['username'],
+                                             email: user['emails'][0]['address'],
+                                             profile: {
+                                               first_name: first_name,
+                                               last_name: last_name,
+                                               is_disabled: is_disabled
+                                             }
+                                           }
                                          } else {
                                            throw new Error("Can't find user");
+                                         }
+                                       }else{
+                                         this._data = {
+                                           username: '',
+                                           email: '',
+                                           profile: {
+                                             first_name: '',
+                                             last_name: '',
+                                             is_disabled: ''
+                                           }
                                          }
                                        }
                                      });
     this.initPageJs();
   }
-  
+
   private initPageJs() {
     let vm = this;
-    
+
     let initValidationMaterial = function () {
       jQuery('.js-validation-material').validate({
                                                    ignore: [],
@@ -62,13 +94,13 @@ export class UserFormComponent extends AbstractRxComponent implements OnInit {
                                                    },
                                                    highlight: function (e) {
                                                      var elem = jQuery(e);
-          
+
                                                      elem.closest('.form-group').removeClass('has-error').addClass('has-error');
                                                      elem.closest('.help-block').remove();
                                                    },
                                                    success: function (e) {
                                                      var elem = jQuery(e);
-          
+
                                                      elem.closest('.form-group').removeClass('has-error');
                                                      elem.closest('.help-block').remove();
                                                    },
@@ -100,24 +132,35 @@ export class UserFormComponent extends AbstractRxComponent implements OnInit {
                                                      'firstname': 'Please select a value!',
                                                    },
                                                    submitHandler: () => {
-                                                     let data = {
-                                                       _id: vm.id ? vm.id : "",
-                                                       first_name: vm._data['first_name'],
-                                                       last_name: vm._data['last_name'],
-                                                       email: vm._data['email'],
-                                                       username: vm._data['username'],
-                                                       isDisabled: vm._data['disabled'] == true,
-                                                       //products: jQuery("#cashier_products").val(),
-                                                       //license_id: vm.license['_id']
-                                                     };
-                                                     if (vm.id) {
-                                                       vm.userService.editUser(data);
-                                                     } else {
-                                                       vm.userService.createUser(data);
+                                                     const data = vm._data;
+                                                     if (vm.id){
+                                                       vm.userService.editUser(data)
+                                                         .then(() => {
+                                                           vm.toast.success("Edit User Successful");
+                                                           this.router.navigate(['cloud/users']);
+                                                          }).catch((err) => {
+                                                            vm.toast.error(err);
+                                                          });
+                                                     }else{
+                                                       vm.userService.createUser(data)
+                                                         .then(() => {
+                                                           vm.toast.success("Create User Successful");
+                                                           this.router.navigate(['cloud/users']);
+                                                          }).catch((err) => {
+                                                           vm.toast.error(err);
+                                                         });
                                                      }
                                                    }
                                                  });
     };
     initValidationMaterial();
+  }
+
+  checkHasOwnProperty(data: any, property: string){
+    if (data.hasOwnProperty(property)){
+      return data[property];
+    }else{
+      return '';
+    }
   }
 }

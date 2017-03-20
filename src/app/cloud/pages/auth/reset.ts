@@ -4,6 +4,7 @@ import {
 } from '@angular/core';
 import {Router, ActivatedRoute} from "@angular/router";
 import {AuthService} from "../../services/ddp/auth.service";
+import {ToastsManager} from "ng2-toastr";
 
 @Component({
              selector   : 'reset-password',
@@ -12,7 +13,10 @@ import {AuthService} from "../../services/ddp/auth.service";
 export class ResetPasswordComponent implements OnInit {
   token: string = "";
   private _data = {};
-  constructor(protected router: Router, protected authService: AuthService, private activeRoute: ActivatedRoute) { }
+  constructor(protected router: Router,
+              protected authService: AuthService,
+              private activeRoute: ActivatedRoute,
+              protected toast: ToastsManager) { }
   
   ngOnInit() {
     this.activeRoute.params.subscribe((p) => {
@@ -87,7 +91,7 @@ export class ResetPasswordComponent implements OnInit {
                                                          .then(() => {
                                                            vm.router.navigate(['signin']);
                                                          }).catch((err) => {
-                                                           this.toast.error(err);
+                                                           vm.toast.error(err);
                                                          });
                                                      }
                                                     }

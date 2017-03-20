@@ -7,7 +7,7 @@ import * as _ from "lodash";
 import * as $q from "q";
 
 new ValidatedMethod({
-  name: 'user.create_new_user',
+  name: 'user.create_user',
   validate: function () {
     if (!this.userId) {
       throw new Meteor.Error("user.get_roles", "Access denied");
@@ -22,10 +22,6 @@ new ValidatedMethod({
     let user = OM.create<User>(User).load(data['username'], "username");
     if (!user)
       Accounts.createUser(data);
-    user       = OM.create<User>(User).load(data['username'], "username");
-    if (!user) {
-      throw new Meteor.Error("user.create_user", "Can't create user account");
-    }
     return defer.promise;
   }
 });

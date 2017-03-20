@@ -16,8 +16,6 @@ export class ManageUsersService {
   createUser(data): Promise<any> {
     return new Promise((resolve, reject) => {
       MeteorObservable.call("user.create_user", data).subscribe(res => {
-        this.router.navigate(['cloud/licenses']);
-        this.toast.success("Create License Successful");
         resolve();
       }, (err) => {
         console.log(err);
@@ -29,10 +27,20 @@ export class ManageUsersService {
   editUser(data): Promise<any> {
     return new Promise((resolve, reject) => {
       MeteorObservable.call("user.edit_user", data).subscribe(res => {
-        this.toast.success("Create License Successful");
         resolve();
       }, (err) => {
         this.toast.error(err.reason, err.error);
+      });
+    });
+  }
+  removeUser(data: any){
+    return new Promise<void>((resolve, reject) => {
+      MeteorObservable.call("user.remove_user", data).subscribe((res) => {
+        this.toast.success("Remove User Successfully");
+        resolve();
+      }, (err) => {
+        this.toast.error(err.reason, err.error);
+        return reject(err);
       });
     });
   }

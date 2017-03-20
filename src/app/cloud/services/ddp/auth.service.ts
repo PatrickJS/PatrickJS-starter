@@ -72,11 +72,20 @@ export class AuthService {
           this.toast.error(err.reason, err.error);
           return reject(err);
         } else {
-          if (this.redirectUrl)
-            this.router.navigate([this.redirectUrl]);
-          else
-            this.router.navigate(['']);
-          resolve();
+          Meteor.call('send_verification', (error, response) => {
+            if (err && err.error) {
+              this.toast.error(err.reason, err.error);
+              return reject(err);
+            }else{
+              //Meteor.logout();
+              if (this.redirectUrl)
+                this.router.navigate([this.redirectUrl]);
+              else
+                this.router.navigate(['']);
+              resolve();
+            }
+          });
+
         }
       });
     });
@@ -90,6 +99,11 @@ export class AuthService {
           this.toast.error(e['reason'], e['error']);
           return reject(e);
         }
+        /*if(!this.getCurrentUser().emails[0].verified){
+          alert('Please verified email before sign in');
+          Meteor.logout();
+          return;
+        }*/
         this.getCurrentUser(true);
         this.router.navigate(['']);
         resolve();
@@ -118,12 +132,16 @@ export class AuthService {
 
   updateProfile(data) {
     return new Promise((resolve, reject) => {
-      MeteorObservable.call("user.edit_user", data).subscribe(res => {
+      MeteorObservable.call("user.update_profile", data).subscribe(res => {
         this.toast.success("Profile Updated");
         resolve();
       }, (err) => {
-        console.log(err);
-        this.toast.error(err.reason, err.error);
+        if (!err){
+          resolve();
+        }else{
+          console.log(err);
+          this.toast.error(err.reason, err.error);
+        }
       });
     });
   }
@@ -138,7 +156,7 @@ export class AuthService {
         if (err) {
           this.toast.error(err);
         }else{
-          this.toast.success('Password changed');
+
           resolve();
         }
       });
@@ -167,6 +185,19 @@ export class AuthService {
       Accounts.resetPassword(token, data['new_password'], (err) => {
         if (!err) {
           this.toast.success('Password reset successfully');
+          resolve();
+        } else {
+          this.toast.error(err);
+        }
+      });
+    });
+  }
+
+  verifyEmail(token){
+    return new Promise<void>((resolve, reject) => {
+
+      Accounts.verifyEmail(token, (err) => {
+        if (!err) {
           resolve();
         } else {
           this.toast.error(err);

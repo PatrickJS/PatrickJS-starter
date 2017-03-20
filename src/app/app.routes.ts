@@ -28,6 +28,7 @@ import {ManagePricingsComponent} from "./cloud/pages/admin-area/manage-pricings"
 import {ManagePricingsGridComponent} from "./cloud/pages/admin-area/manage-pricings/grid";
 import {PricingFormComponent} from "./cloud/pages/admin-area/manage-pricings/form";
 import {UserFormComponent} from "./cloud/pages/admin-area/manage-users/form";
+import {VerifyEmailComponent} from "./cloud/pages/auth/verify";
 
 export const ROUTES: Routes = [
   {
@@ -119,6 +120,7 @@ export const ROUTES: Routes = [
   {path: 'signup', component: SignUpComponent},
   {path: 'reset-password', component: ResetPasswordComponent},
   {path: 'reset-password/:token', component: ResetPasswordComponent},
+  {path: 'verify-email/:token', component: VerifyEmailComponent},
   {path: 'lock-account', component: LockAccountComponent},
   {path: '**', component: PageNotFoundComponent}
 ];

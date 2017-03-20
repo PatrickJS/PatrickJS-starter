@@ -19,7 +19,7 @@
                         <div class="form-group">
                             <div class="col-sm-9">
                                 <div class="form-material">
-                                    <input class="form-control" type="text" id="firstname" name="firstname" [(ngModel)]="_data.first_name"
+                                    <input class="form-control" type="text" id="firstname" name="firstname" [(ngModel)]="_data.profile.first_name"
                                            placeholder="User first name">
                                     <label for="firstname">First name</label>
                                 </div>
@@ -28,7 +28,7 @@
                         <div class="form-group">
                             <div class="col-sm-9">
                                 <div class="form-material">
-                                    <input class="form-control" type="text" id="lastname" name="lastname" [(ngModel)]="_data.last_name"
+                                    <input class="form-control" type="text" id="lastname" name="lastname" [(ngModel)]="_data.profile.last_name"
                                            placeholder="User last name">
                                     <label for="lastname">Last name</label>
                                 </div>
@@ -58,7 +58,7 @@
                                     <label><span>Disabled</span></label>
                                 </div>
                                 <label class="css-input switch switch-danger">
-                                    <input type="checkbox" name="user_disabled" checked [(ngModel)]="_data.disabled"><span></span>
+                                    <input type="checkbox" name="user_disabled" checked [(ngModel)]="_data.profile.is_disabled"><span></span>
                                 </label>
                             </div>
                         </div>

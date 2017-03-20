@@ -70,8 +70,12 @@ routepolicy@1.0.12
 service-configuration@1.0.11
 sha@1.0.9
 shell-server@0.2.3
+simple:authenticate-user-by-token@1.0.1
 simple:json-routes@2.1.0
 simple:rest@1.1.1
+simple:rest-accounts-password@1.1.2
+simple:rest-bearer-token-parser@1.0.1
+simple:rest-json-error-handler@1.0.1
 spacebars@1.0.14
 spacebars-compiler@1.1.1
 srp@1.0.10
