@@ -1,9 +1,6 @@
-import {Product} from "../../models/Product";
-import * as $q from "q";
 import {OM} from "../../code/General/ObjectManager";
 import {User} from "../../models/User";
 import {Role} from "../../models/Role";
-import * as _ from "lodash";
 
 new ValidatedMethod({
   name: "user.remove_user",
@@ -15,7 +12,6 @@ new ValidatedMethod({
     }
   },
   run: function (data: string) {
-    let defer = $q.defer();
     const user = Meteor.users.findOne({_id: data});
     if(!user){
       throw new Meteor.Error("user.error_remove", "User Not Found");
@@ -25,6 +21,5 @@ new ValidatedMethod({
         throw new Meteor.Error('user.remove_user_error', 'Remove Error');
       }
     });
-    return defer.promise;
   }
 });
