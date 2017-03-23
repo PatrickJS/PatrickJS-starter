@@ -15,8 +15,10 @@ new ValidatedMethod({
   },
   run: function (data) {
     let user = OM.create<User>(User).load(data['username'], "username");
-    if (!user)
-      Accounts.createUser(data);
+    if (!user){
+      let user_id = Accounts.createUser(data);
+      Accounts.sendEnrollmentEmail(user_id);
+    }
   }
 });
 

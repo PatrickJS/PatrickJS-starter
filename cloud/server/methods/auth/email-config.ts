@@ -9,15 +9,15 @@ var regardVar;
 var followMsgVar;
 
 Accounts.urls.resetPassword = function (token) {
-  return Meteor.absoluteUrl('#/reset-password/' + token);
+  return Meteor.absoluteUrl('#/reset_password/' + token);
 };
 
 Accounts.urls.verifyEmail = function (token) {
-  return Meteor.absoluteUrl('#/verify-email/' + token);
+  return Meteor.absoluteUrl('#/verify_email/' + token);
 };
 
 Accounts.urls.enrollAccount = function (token) {
-  return Meteor.absoluteUrl('#/enroll-account/' + token);
+  return Meteor.absoluteUrl('#/reset_password/' + token);
 };
 
 

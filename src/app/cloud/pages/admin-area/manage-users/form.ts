@@ -29,7 +29,11 @@ export class UserFormComponent extends AbstractRxComponent implements OnInit {
     super();
   }
 
-  protected _data        = {};
+  protected _data        = {
+    profile: {
+
+    }
+  };
 
   ngOnInit() {
     const params: Object = this.route.snapshot.params;

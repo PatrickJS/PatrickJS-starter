@@ -118,9 +118,9 @@ export const ROUTES: Routes = [
   },
   {path: 'signin', component: SignInComponent},
   {path: 'signup', component: SignUpComponent},
-  {path: 'reset-password', component: ResetPasswordComponent},
-  {path: 'reset-password/:token', component: ResetPasswordComponent},
-  {path: 'verify-email/:token', component: VerifyEmailComponent},
+  {path: 'reset_password', component: ResetPasswordComponent},
+  {path: 'reset_password/:token', component: ResetPasswordComponent},
+  {path: 'verify_email/:token', component: VerifyEmailComponent},
   {path: 'lock-account', component: LockAccountComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
