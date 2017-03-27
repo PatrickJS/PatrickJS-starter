@@ -16,6 +16,45 @@ const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin')
  * Webpack Constants
  */
 const ENV = process.env.ENV = process.env.NODE_ENV = 'test';
+const NO_COVERAGE = process.env.NO_COVERAGE;
+
+var coverageLoaders = [];
+
+/**
+ * Instruments JS files with Istanbul for subsequent code coverage reporting.
+ * Instrument only testing sources.
+ *
+ * See: https://github.com/deepsweet/istanbul-instrumenter-loader
+ *
+ * @hack: Disabling coverage if NO_COVERAGE env var is set to 'true'.
+ * This is useful for karma debug.
+ *
+ * See: https://github.com/AngularClass/angular2-webpack-starter/issues/361?_pjax=%23js-repo-pjax-container
+ * See: https://github.com/gotwarlost/istanbul/issues/212
+ *
+ */
+const coverageEnabled = NO_COVERAGE !== 'true';
+
+if (coverageEnabled) {
+
+  /**
+   * Instruments JS files with Istanbul for subsequent code coverage reporting.
+   * Instrument only testing sources.
+   *
+   * See: https://github.com/deepsweet/istanbul-instrumenter-loader
+   */
+  coverageLoaders = [{
+    enforce: 'post',
+    test: /\.(js|ts)$/,
+    loader: 'istanbul-instrumenter-loader',
+    include: helpers.root('src'),
+    exclude: [
+        /\.(e2e|spec)\.ts$/,
+        /node_modules/
+    ]
+  }];
+
+}
 
 /**
  * Webpack configuration
@@ -95,14 +134,12 @@ module.exports = function (options) {
               loader: 'awesome-typescript-loader',
               query: {
                 // use inline sourcemaps for "karma-remap-coverage" reporter
-                sourceMap: false,
-                inlineSourceMap: true,
+                sourceMap: !coverageEnabled,
+                inlineSourceMap: coverageEnabled,
                 compilerOptions: {
-
                   // Remove TypeScript helpers to be injected
                   // below by DefinePlugin
                   removeComments: true
-
                 }
               },
             },
@@ -155,26 +192,10 @@ module.exports = function (options) {
           test: /\.html$/,
           loader: 'raw-loader',
           exclude: [helpers.root('src/index.html')]
-        },
-
-        /**
-         * Instruments JS files with Istanbul for subsequent code coverage reporting.
-         * Instrument only testing sources.
-         *
-         * See: https://github.com/deepsweet/istanbul-instrumenter-loader
-         */
-        {
-          enforce: 'post',
-          test: /\.(js|ts)$/,
-          loader: 'istanbul-instrumenter-loader',
-          include: helpers.root('src'),
-          exclude: [
-            /\.(e2e|spec)\.ts$/,
-            /node_modules/
-          ]
         }
 
-      ]
+      ].concat(coverageLoaders)
+
     },
 
     /**
@@ -259,4 +280,4 @@ module.exports = function (options) {
     }
 
   };
-}
+};
