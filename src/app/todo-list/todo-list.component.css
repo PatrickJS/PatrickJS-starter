@@ -1,0 +1,11 @@
+button {
+    border-radius: 3px !important;
+}
+
+button.btn-danger {
+    margin-left: 4px !important;
+}
+
+.custom-checkbox {
+    margin-left: 16px;
+}

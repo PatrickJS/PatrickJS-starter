@@ -231,11 +231,16 @@ module.exports = function (options) {
     devServer: {
       port: METADATA.port,
       host: METADATA.host,
-      historyApiFallback: true,
       watchOptions: {
         aggregateTimeout: 300,
         poll: 1000
-      }
+      },
+      proxy: {
+        '/api': {
+          target: 'http://localhost:3001',
+          secure: false }
+      },
+      historyApiFallback: true
     },
 
     /*

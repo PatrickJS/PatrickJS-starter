@@ -1,0 +1,95 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    height: 100vh;
+    color: #757575;
+    background-color: #fafafa;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+button {
+    background: 0 0;
+    border: none;
+    border-radius: 2px;
+    color: #757575;
+    position: relative;
+    height: 36px;
+    margin: 0;
+    min-width: 64px;
+    padding: 0 16px;
+    display: inline-block;
+    font-family: 'Roboto', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    overflow: hidden;
+    will-change: box-shadow;
+    transition: box-shadow .2s cubic-bezier(.4,0,1,1),background-color .2s cubic-bezier(.4,0,.2,1),color .2s cubic-bezier(.4,0,.2,1);
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    line-height: 36px;
+    vertical-align: middle;
+}
+
+button:hover {
+    background-color: rgba(158,158,158,.2);
+}
+
+button:active {
+    background-color: rgba(158,158,158,.4);
+}
+
+button.icon {
+    border-radius: 50%;
+    font-size: 24px;
+    height: 32px;
+    margin-left: 0;
+    margin-right: 0;
+    min-width: 32px;
+    width: 32px;
+    padding: 0;
+    overflow: hidden;
+    line-height: normal;
+}
+
+button.icon .material-icons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-12px,-12px);
+    transform: translate(-12px,-12px);
+    line-height: 24px;
+    width: 24px;
+    vertical-align: middle;
+}
+
+button[disabled] {
+    color: rgba(0,0,0,.26);
+    cursor: default;
+    background-color: transparent;
+}
+
+input {
+    font-size: 16px;
+    color: #757575;
+    background-color: #fafafa;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    padding: .25em;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    outline: none;
+}
+

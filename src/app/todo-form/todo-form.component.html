@@ -1,0 +1,28 @@
+<form class="form-vertical" novalidate (ngSubmit)="createItem(title); todoForm.reset()" #todoForm="ngForm">
+    <div class="form-group  col-sm-10">
+       <input type="text" class="form-control" name="title"
+               [(ngModel)]="title" maxlength="50" minlength="5"
+               placeholder="Ты уверен что хочешь здесь что-нибудь написать!?!?!?" required
+               #name="ngModel">
+        <div *ngIf="name.errors && (name.dirty || name.touched)"
+             class="alert alert-danger">
+            <div [hidden]="!name.errors.required">
+                Вы не заполнили поле.
+            </div>
+            <div [hidden]="!name.errors.minlength">
+                Задача должна быть не менее 4-х символов.
+            </div>
+            <div [hidden]="!name.errors.maxlength">
+                Задача должна быть не более 30 символов.
+            </div>
+        </div>
+        <div *ngIf="duplicate" class="alert alert-danger">
+            Вы уже добавляли такое задание.
+        </div>
+
+    </div>
+    <div class="col-sm-2">
+        <button class="btn btn-primary custom-btn" type="submit" [disabled]="todoForm.form.invalid">Добавить</button>
+    </div>
+
+</form>
