@@ -4,6 +4,7 @@
 
 const webpack = require('webpack');
 const helpers = require('./helpers');
+const package = require('../package.json');
 
 /*
  * Webpack Plugins
@@ -27,7 +28,7 @@ const ngcWebpack = require('ngc-webpack');
 const HMR = helpers.hasProcessFlag('hot');
 const AOT = helpers.hasNpmFlag('aot');
 const METADATA = {
-  title: 'Angular2 Webpack Starter by @gdi2290 from @AngularClass',
+  title: package.applicationName,
   baseUrl: '/',
   isDevServer: helpers.isWebpackDevServer()
 };
