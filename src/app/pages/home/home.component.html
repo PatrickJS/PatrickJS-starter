@@ -1,0 +1,39 @@
+<div class="home">
+
+  <div class="courses-navigation">
+    <form class="courses-navigation__find" action="index.html" method="post">
+      <input type="text" name="" class="courses-navigation__find__input" value="Course name">
+      <button type="button" class="courses-navigation__find__btn" name="find">Find</button>
+    </form>
+    <button type="button" class="courses-navigation__new-course" name="AddCurse">Add Course</button>
+  </div>
+
+  <hr>
+
+  <div class="courses" >
+    <div class="courses__list" *ngFor="let courses of coursesList">
+      <div class="courses__description">
+        <div class="courses__label">
+          <div class="courses__label__name">
+          Video curse  <span class="courses__label__name--id">{{courses.id}}</span>
+          </div>
+          <div class="courses__label__time">
+            {{courses.time}} hour
+          </div>
+          <div class="courses__label__date">
+            date {{courses.date}}
+          </div>
+        </div>
+        <div class="courses__text">
+          {{courses.description}}
+        </div>
+      </div>
+      <div class="courses__edition">
+        <a href="#" class="btn" (click)="editCurse(courses.id)">Edit courses</a>
+        <a href="#" class="btn" (click)="deleteCurse(courses.id)">Delete</a>
+      </div>
+    </div>
+  </div>
+
+
+</div>
