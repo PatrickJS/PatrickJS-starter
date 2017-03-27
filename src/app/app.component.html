@@ -1,0 +1,12 @@
+
+<md-sidenav-container>
+  <md-sidenav #leftNav mode="side" opened="true" class="md-sidenav-left md-whiteframe-z2" md-is-locked-open="$mdMedia('gt-sm')">
+    <sidebar></sidebar>
+  </md-sidenav>
+  <div class="my-content" layout="column">
+    <navbar></navbar>
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</md-sidenav-container>

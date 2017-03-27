@@ -1,0 +1,37 @@
+@import '../../../../styles/styles';
+.family-detail-contacts {
+    padding: 10px;
+    .family-detail-contact {
+        padding-right: 10px;
+        padding-left: 10px;
+        padding-bottom: 20px;
+        md-card {
+            background-color: $primary-color-lighter;
+            padding-top: 10px;
+                        padding-bottom: 10px;
+            md-card-title {
+                margin-bottom: 0;
+                text-align: center;
+                .more {
+                    background-color: $primary-color-darker;
+                    float: right;
+                    position: relative;
+                    right: -30px;
+                    bottom: 16px;
+                    padding: 10px;
+                    padding-bottom: 8px;
+                    color: white;
+                }
+            }
+            md-card-content {
+                .contact-link {
+                    text-align: center;
+                    margin-bottom: 20px;
+                }
+                md-icon {
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}

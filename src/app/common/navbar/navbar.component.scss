@@ -1,0 +1,39 @@
+@import '../../../styles/styles';
+md-toolbar.top-toolbar {
+    md-icon {
+        &.user {
+            margin-left: -10px;
+            font-size: 35px;
+        }
+    }
+    .fill-remaining-space {
+        flex: 1 1 auto;
+    }
+}
+
+.breadcrumb-toolbar {
+    background-color: $primary-color-darker;
+    height: 20px;
+    min-height: 20px;
+    .mat-toolbar-row {
+        height: 20px;
+    }
+    .breadcrumb {
+        color: white;
+        line-height: 20px;
+        font-size: 14px;
+        cursor: pointer;
+        text-decoration: none;
+        &:not(:first-child) {
+            &:before {
+                content: '\E5CB';
+                font-family: 'Material Icons';
+                -webkit-font-smoothing: antialiased;
+                font-size: 16px;
+                margin-left: 8px;
+                margin-right: 10px;
+                vertical-align: middle;
+            }
+        }
+    }
+}

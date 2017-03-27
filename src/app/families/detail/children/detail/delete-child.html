@@ -1,0 +1,8 @@
+<h1 md-dialog-title>Suppression</h1>
+<div md-dialog-content class="are-u-sure">
+  Etes-vous sûr de vouloir supprimer toutes les données associées à cet enfant ?
+</div>
+<div md-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+  <button md-button (click)="dialogRef.close()">Annuler</button> &nbsp;&nbsp;
+  <button md-raised-button (click)="deleteChild()" color="warn">Supprimer</button>
+</div>

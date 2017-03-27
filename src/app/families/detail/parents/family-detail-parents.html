@@ -1,0 +1,17 @@
+<div class="family-detail-parents" *ngIf="family" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="20px">
+
+    <div class="family-detail-parent" *ngFor="let parent of family.parents" fxFlex="33">
+        <md-card>
+            <md-card-title fxLayout="row"  fxLayoutAlign="center center">
+                    {{ parent.name + ' ' + parent.firstName }}
+            </md-card-title>
+            <md-card-content>
+                A voir ...
+                <div class="more">
+                        <md-icon>search</md-icon>
+                </div>
+            </md-card-content>
+        </md-card>
+    </div>
+
+</div>

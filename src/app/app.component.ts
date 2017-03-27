@@ -4,9 +4,12 @@
 import {
   Component,
   OnInit,
-  ViewEncapsulation
+  AfterViewInit,
+  ViewEncapsulation,
+  ViewChild
 } from '@angular/core';
-import { AppState } from './app.service';
+import { GlobalState } from './global-state.service';
+import { MdSidenav } from '@angular/material';
 
 /*
  * App Component
@@ -16,59 +19,28 @@ import { AppState } from './app.service';
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
   styleUrls: [
-    './app.component.css'
+    './app.component.scss'
   ],
-  template: `
-    <nav>
-      <a [routerLink]=" ['./'] "
-        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        Index
-      </a>
-      <a [routerLink]=" ['./home'] "
-        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        Home
-      </a>
-      <a [routerLink]=" ['./detail'] "
-        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        Detail
-      </a>
-      <a [routerLink]=" ['./barrel'] "
-        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        Barrel
-      </a>
-      <a [routerLink]=" ['./about'] "
-        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        About
-      </a>
-    </nav>
-
-    <main>
-      <router-outlet></router-outlet>
-    </main>
-
-    <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
-
-    <footer>
-      <span>WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a></span>
-      <div>
-        <a [href]="url">
-          <img [src]="angularclassLogo" width="25%">
-        </a>
-      </div>
-    </footer>
-  `
+  templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
+  @ViewChild('leftNav')
+  public leftNav: MdSidenav;
+
   public angularclassLogo = 'assets/img/angularclass-avatar.png';
   public name = 'Angular 2 Webpack Starter';
   public url = 'https://twitter.com/AngularClass';
 
-  constructor(
-    public appState: AppState
-  ) {}
+  constructor(public _state: GlobalState) {
+
+    this._state.subscribe('sidebar.toggle', () => {
+      this.leftNav.toggle();
+    });
+
+  }
 
   public ngOnInit() {
-    console.log('Initial App State', this.appState.state);
+    console.log('Initial App State');
   }
 
 }

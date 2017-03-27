@@ -14,6 +14,12 @@ import {
   RouterModule,
   PreloadAllModules
 } from '@angular/router';
+import { Mv3CommonModule } from './common/common.module';
+import { MaterialModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
+import { FamiliesModule } from './families';
+import { PlanningModule } from './planning';
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -29,8 +35,15 @@ import { AboutComponent } from './about';
 import { NoContentComponent } from './no-content';
 import { XLargeDirective } from './home/x-large';
 
+import { FamilyService } from './model/family.service';
+import { ContactService } from './model/contact.service';
+import { ChildService } from './model/child.service';
+import { ContractService } from './model/contract.service';
+import { GlobalState } from './global-state.service';
+
 import '../styles/styles.scss';
 import '../styles/headings.css';
+import 'hammerjs';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -48,7 +61,7 @@ type StoreType = {
  * `AppModule` is the main entry point into Angular2's bootstraping process
  */
 @NgModule({
-  bootstrap: [ AppComponent ],
+  bootstrap: [AppComponent],
   declarations: [
     AppComponent,
     AboutComponent,
@@ -60,11 +73,21 @@ type StoreType = {
     BrowserModule,
     FormsModule,
     HttpModule,
+    Mv3CommonModule,
+    FamiliesModule,
+    PlanningModule,
+    MaterialModule,
+    FlexLayoutModule,
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
-    APP_PROVIDERS
+    APP_PROVIDERS,
+    FamilyService,
+    ChildService,
+    ContractService,
+    ContactService,
+    GlobalState
   ]
 })
 export class AppModule {
@@ -72,7 +95,7 @@ export class AppModule {
   constructor(
     public appRef: ApplicationRef,
     public appState: AppState
-  ) {}
+  ) { }
 
   public hmrOnInit(store: StoreType) {
     if (!store || !store.state) {
@@ -100,7 +123,7 @@ export class AppModule {
     // recreate root elements
     store.disposeOldHosts = createNewHosts(cmpLocation);
     // save input values
-    store.restoreInputValues  = createInputTransfer();
+    store.restoreInputValues = createInputTransfer();
     // remove styles
     removeNgStyles();
   }

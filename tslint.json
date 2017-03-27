@@ -9,6 +9,7 @@
     // Custom
     "trailing-comma": [false, {"multiline": "always", "singleline": "never"}],
     "interface-name": [false, "always-prefix"],
+    "align": [true, "arguments", "statements"],
     // Angular 2
     "component-class-suffix": true,
     // "component-selector": [true, "element", "my", "kebab-case"],
@@ -18,7 +19,7 @@
     "invoke-injectable": true,
     "no-access-missing-member": true,
     "no-attribute-parameter-decorator": true,
-    "no-forward-ref": true,
+    "no-forward-ref": false,
     "no-input-rename": true,
     "no-output-rename": true,
     "pipe-naming": [true, "camelCase", "my"],

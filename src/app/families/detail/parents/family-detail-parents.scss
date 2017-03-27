@@ -1,0 +1,26 @@
+@import '../../../../styles/styles';
+.family-detail-parents {
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 10px;
+    .family-detail-parent {
+        margin-bottom: 20px;
+        md-card {
+            background-color: $primary-color-lighter;
+            padding-top: 10px;
+            md-card-title {
+                margin-bottom: 10px;
+            }
+            .more {
+                background-color: $primary-color-darker;
+                float: right;
+                position: relative;
+                top: 5px;
+                right: -33px;
+                padding: 10px;
+                box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+                color: white;
+            }
+        }
+    }
+}

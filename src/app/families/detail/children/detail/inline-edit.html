@@ -1,0 +1,14 @@
+<div>
+  <div *ngIf="editing">
+      <md-input-container>
+      <input mdInput name="firstName" placeholder="Prénom de l'enfant" #inlineEditControl (blur)="onBlur($event)" [(ngModel)]="value">
+    </md-input-container>
+<!--
+    <input #inlineEditControl [required]="required" (blur)="onBlur($event)" [name]="value" [(ngModel)]="value" [type]="type" [placeholder]="label" />
+    -->
+  </div>
+  <div *ngIf="!editing">
+    <label class="block bold">{{label}}</label>
+    <div title="Click to edit" (click)="edit(value)" (focus)="edit(value);" tabindex="0" class="inline-edit">{{value}}&nbsp;</div>
+  </div>
+</div>

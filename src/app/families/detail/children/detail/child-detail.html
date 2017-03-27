@@ -1,0 +1,23 @@
+
+<md-tab-group (selectChange)="tabChanged($event)">
+  <md-tab label="Infos" >
+      <child-infos [child]="child"></child-infos>
+  </md-tab>
+  <md-tab label="Contrats">
+      <child-contracts [child]="child"></child-contracts>
+  </md-tab>
+  <md-tab label="Congés">
+TODO
+  </md-tab>
+  <md-tab label="Historique des présences">
+      TODO
+  </md-tab>
+</md-tab-group>
+
+<button md-fab class="floating-fab" (click)="openDialog()" color="accent" *ngIf="showAddButton">
+   <md-icon>add</md-icon>
+</button>
+
+<button md-fab class="floating-fab" (click)="openDialog()" color="warn" *ngIf="currentTabIndex === TABS.INFOS">
+   <md-icon>delete</md-icon>
+</button>

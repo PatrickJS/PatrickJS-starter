@@ -1,0 +1,12 @@
+<h1 md-dialog-title>Nouvel enfant</h1>
+<form novalidate>
+  <div md-dialog-content>
+    <md-input-container>
+      <input mdInput name="firstName" placeholder="Prénom de l'enfant" #firstName>
+    </md-input-container>
+  </div>
+  <div md-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button type="button" md-button (click)="dialogRef.close()">Annuler</button> &nbsp;&nbsp;
+    <button type="submit" md-raised-button (click)="saveNewChild(firstName.value)" color="accent">Enregistrer</button>
+  </div>
+</form>

@@ -1,0 +1,38 @@
+<div class="child-infos" fxLayout="column" fxLayoutAlign="start center" *ngIf="child">
+
+    <div fxLayout="row" fxLayoutAlign="center">
+
+        <div fxFlex="20" fxLayout>
+            <md-input-container fxFlex>
+                <input mdInput placeholder="Prénom" #firstName value="{{ child.firstName }}" (blur)="saveFirstName(firstName.value)">
+            </md-input-container>
+        </div>
+        <div fxFlex="20" fxFlexOffset="5" fxLayout>
+            <md-input-container fxFlex>
+                <input mdInput type="date" (blur)="saveBirthDate(birthDate.value)" placeholder="Date de naissance" #birthDate value="{{ child.birthDate }}">
+            </md-input-container>
+        </div>
+        <div fxFlex="20" fxFlexOffset="5" fxLayout>
+            <md-radio-group fxLayout="column" #sex (click)="saveSex(sex.value)" name="sex" [(ngModel)]="child.sex">
+                <md-radio-button value="MALE" >Garçon</md-radio-button>
+                <md-radio-button value="FEMALE" >Fille</md-radio-button>
+            </md-radio-group>
+        </div>
+
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="center">
+
+        <div fxFlex="30" fxLayout>
+            <md-input-container fxFlex>
+                <textarea mdInput rows="4" placeholder="Allergies" #allergy (blur)="saveAllergy(allergy.value)">{{ child.allergy }}</textarea>
+            </md-input-container>
+        </div>
+        <div fxFlex="30" fxFlexOffset="10" fxLayout>
+            <md-input-container fxFlex>
+                <textarea mdInput rows="4" placeholder="Commentaires" #comment (blur)="saveComment(comment.value)">{{ child.comment }}</textarea>
+            </md-input-container>
+        </div>
+    </div>
+
+</div>
