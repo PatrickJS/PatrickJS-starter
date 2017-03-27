@@ -1,0 +1,17 @@
+{
+  "accounts-phone": {
+    "verificationWaitTime": 0,
+    "verificationRetriesWaitTime": 0,
+    "adminPhoneNumbers": [
+      "+9721234567",
+      "+97212345678",
+      "+97212345679"
+    ],
+    "phoneVerificationMasterCode": "1234"
+  },
+  "twilio": {
+    "FROM": "+16467834618",
+    "ACCOUNT_SID": "ACe076c57c60864ead05929b2144d879c2",
+    "AUTH_TOKEN": "48f2f677b8c24a6b693cd626551bd35d"
+  }
+}

@@ -20,14 +20,17 @@
     ],
     "types": [
       "hammerjs",
-      "node"
+      "node",
+      "@types/lodash"
     ]
   },
   "exclude": [
     "node_modules",
     "dist",
     "src/**/*.spec.ts",
-    "src/**/*.e2e.ts"
+    "src/**/*.e2e.ts",
+    "cloud",
+    "cloud/node_modules"
   ],
   "awesomeTypescriptLoaderOptions": {
     "forkChecker": true,

@@ -27,7 +27,7 @@ const ngcWebpack = require('ngc-webpack');
 const HMR = helpers.hasProcessFlag('hot');
 const AOT = helpers.hasNpmFlag('aot');
 const METADATA = {
-  title: 'Angular2 Webpack Starter by @gdi2290 from @AngularClass',
+  title: 'SMART OSC - CLOUD',
   baseUrl: '/',
   isDevServer: helpers.isWebpackDevServer()
 };
@@ -82,7 +82,14 @@ module.exports = function (options) {
       modules: [helpers.root('src'), helpers.root('node_modules')],
 
     },
-
+  
+    /*
+     * For loading meteor module
+     */
+    externals: [
+      resolveExternals
+    ],
+    
     /*
      * Options affecting the normal modules.
      *
@@ -145,7 +152,10 @@ module.exports = function (options) {
           test: /\.json$/,
           use: 'json-loader'
         },
-
+        /*Nếu muốn load css từ node_modules thì thêm 'style-loader':
+        *  use: ['to-string-loader','style-loader','css-loader'],
+        * Ở đây không thêm là vì sẽ load hết trong AppComponent
+        */
         /*
          * to string and css loader support for *.css files (from Angular components)
          * Returns file content as string
@@ -179,7 +189,7 @@ module.exports = function (options) {
           exclude: [helpers.root('src/index.html')]
         },
 
-        /* 
+        /*
          * File loader for supporting images, for example, in CSS files.
          */
         {
@@ -189,7 +199,7 @@ module.exports = function (options) {
 
         /* File loader for supporting fonts, for example, in CSS files.
         */
-        { 
+        {
           test: /\.(eot|woff2?|svg|ttf)([\?]?.*)$/,
           use: 'file-loader'
         }
@@ -204,6 +214,16 @@ module.exports = function (options) {
      * See: http://webpack.github.io/docs/configuration.html#plugins
      */
     plugins: [
+      new webpack.ProvidePlugin({
+        jQuery: 'jquery',
+        $: 'jquery',
+        jquery: 'jquery',
+        "window.jquery": "jquery",
+        "window.jQuery": "jquery",
+        "Tether": 'tether',
+        "window.Tether": "tether"
+      }),
+      
       new AssetsPlugin({
         path: helpers.root('dist'),
         filename: 'webpack-assets.json',
@@ -376,4 +396,18 @@ module.exports = function (options) {
     }
 
   };
+};
+function resolveExternals(context, request, callback) {
+  return resolveMeteor(request, callback) ||
+         callback();
+}
+
+function resolveMeteor(request, callback) {
+  var match = request.match(/^meteor\/(.+)$/);
+  var pack = match && match[1];
+  
+  if (pack) {
+    callback(null, 'Package["' + pack + '"]');
+    return true;
+  }
 }

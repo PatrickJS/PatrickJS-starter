@@ -1,0 +1,48 @@
+<!-- Page Container -->
+<!--
+    Available Classes:
+
+    'enable-cookies'             Remembers active color theme between pages (when set through color theme list)
+
+    'sidebar-l'                  Left Sidebar and right Side Overlay
+    'sidebar-r'                  Right Sidebar and left Side Overlay
+    'sidebar-mini'               Mini hoverable Sidebar (> 991px)
+    'sidebar-o'                  Visible Sidebar by default (> 991px)
+    'sidebar-o-xs'               Visible Sidebar by default (< 992px)
+
+    'side-overlay-hover'         Hoverable Side Overlay (> 991px)
+    'side-overlay-o'             Visible Side Overlay by default (> 991px)
+
+    'side-scroll'                Enables custom scrolling on Sidebar and Side Overlay instead of native scrolling (> 991px)
+
+    'header-navbar-fixed'        Enables fixed header
+-->
+<div id="page-container" class="sidebar-l sidebar-mini sidebar-o side-scroll header-navbar-fixed">
+  <!-- Side Overlay-->
+  <z-side-overlay></z-side-overlay>
+  <!-- END Side Overlay -->
+
+  <!-- Sidebar -->
+  <z-sidebar></z-sidebar>
+  <!-- END Sidebar -->
+
+  <!-- Header -->
+  <z-header></z-header>
+  <!-- END Header -->
+
+  <!-- Main Container -->
+  <main id="main-container">
+    <router-outlet></router-outlet>
+  </main>
+  <!-- END Main Container -->
+
+  <!-- Footer -->
+  <z-footer></z-footer>
+  <!-- END Footer -->
+</div>
+<!-- END Page Container -->
+
+<!-- Apps Modal -->
+<!-- Opens from the button in the header -->
+<z-products></z-products>
+<!-- END Apps Modal -->

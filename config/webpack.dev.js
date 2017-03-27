@@ -20,7 +20,7 @@ const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
  */
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 const HOST = process.env.HOST || 'localhost';
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 1234;
 const HMR = helpers.hasProcessFlag('hot');
 const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
   host: HOST,
@@ -92,18 +92,18 @@ module.exports = function (options) {
     module: {
 
       rules: [
-       {
-         test: /\.ts$/,
-         use: [
-           {
-             loader: 'tslint-loader',
-             options: {
-               configFile: 'tslint.json'
-             }
-           }
-         ],
-         exclude: [/\.(spec|e2e)\.ts$/]
-       },
+       //{
+       //  test: /\.ts$/,
+       //  use: [
+       //    {
+       //      loader: 'tslint-loader',
+       //      options: {
+       //        configFile: 'tslint.json'
+       //      }
+       //    }
+       //  ],
+       //  exclude: [/\.(spec|e2e)\.ts$/]
+       //},
 
         /*
          * css loader support for *.css files (styles directory only)
