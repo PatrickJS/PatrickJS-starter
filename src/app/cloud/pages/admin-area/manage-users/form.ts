@@ -29,7 +29,7 @@ export class UserFormComponent extends AbstractRxComponent implements OnInit {
     super();
   }
 
-  protected _data        = {
+  protected _data :any       = {
     profile: {
 
     }
