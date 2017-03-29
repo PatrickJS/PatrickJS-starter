@@ -120,6 +120,7 @@ export const ROUTES: Routes = [
   {path: 'signup', component: SignUpComponent},
   {path: 'reset_password', component: ResetPasswordComponent},
   {path: 'reset_password/:token', component: ResetPasswordComponent},
+  {path: 'verify_email', component: VerifyEmailComponent},
   {path: 'verify_email/:token', component: VerifyEmailComponent},
   {path: 'lock-account', component: LockAccountComponent},
   {path: '**', component: PageNotFoundComponent}

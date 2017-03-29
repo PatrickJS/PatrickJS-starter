@@ -99,11 +99,6 @@ export class AuthService {
           this.toast.error(e['reason'], e['error']);
           return reject(e);
         }
-        /*if(!this.getCurrentUser().emails[0].verified){
-          alert('Please verified email before sign in');
-          Meteor.logout();
-          return;
-        }*/
         this.getCurrentUser(true);
         this.router.navigate(['']);
         resolve();
@@ -200,6 +195,16 @@ export class AuthService {
         } else {
           this.toast.error(err);
         }
+      });
+    });
+  }
+
+  sendVerifyEmailLink(){
+    return new Promise<void>((resolve, reject) => {
+      MeteorObservable.call('user.send_verification').subscribe((res) => {
+        this.toast.info('An email verify is sent to your email');
+      }, (err) => {
+        this.toast.error(err);
       });
     });
   }

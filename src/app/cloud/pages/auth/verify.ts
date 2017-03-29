@@ -12,6 +12,7 @@ import {ToastsManager} from "ng2-toastr";
            })
 export class VerifyEmailComponent implements OnInit {
   token: string = "";
+  email: string = "";
 
   constructor(protected router: Router,
               protected authService: AuthService,
@@ -19,6 +20,9 @@ export class VerifyEmailComponent implements OnInit {
               protected toast: ToastsManager) {}
 
   ngOnInit() {
+    if (Meteor.user().emails[0].verified){
+      this.router.navigate(['']);
+    }
     this.activeRoute.params.subscribe((p) => {
       this.token = p['token'];
       if (!!this.token){
@@ -32,6 +36,45 @@ export class VerifyEmailComponent implements OnInit {
       }
     });
 
+    if(!this.token){
+      this.email = this.authService.getCurrentUser().emails[0].address;
+      this.initPageJs();
+    }
+  }
+
+  private initPageJs() {
+    let vm                  = this;
+    // Init Login Form Validation, for more examples you can check out https://github.com/jzaefferer/jquery-validation
+    let initValidationLogin = function () {
+      jQuery('.js-validation-verify').validate({
+                                                errorClass    : 'help-block text-right animated fadeInDown',
+                                                errorElement  : 'div',
+                                                errorPlacement: function (error, e) {
+                                                  jQuery(e).parents('.form-group > div').append(error);
+                                                },
+                                                highlight     : function (e) {
+                                                  jQuery(e).closest('.form-group').removeClass('has-error').addClass('has-error');
+                                                  jQuery(e).closest('.help-block').remove();
+                                                },
+                                                success       : function (e) {
+                                                  jQuery(e).closest('.form-group').removeClass('has-error');
+                                                  jQuery(e).closest('.help-block').remove();
+                                                },
+                                                rules         : {
+                                                },
+                                                messages      : {
+                                                },
+                                                submitHandler : function (form) {
+                                                  vm.authService.sendVerifyEmailLink()
+                                                    .then(() => {
+                                                      vm.router.navigate(['']);
+                                                    }).catch((err) => {
+                                                      vm.toast.error(err);
+                                                    });
+                                                }
+                                              });
+    };
+    initValidationLogin();
   }
 
 
