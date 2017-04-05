@@ -1,21 +1,32 @@
-import { ClientStorage } from "../../models/ClientStorage";
-import { OM } from "../../code/General/ObjectManager";
+import {ClientStorage} from "../../models/ClientStorage";
+import {OM} from "../../code/General/ObjectManager";
+import * as _ from "lodash";
 
 new ValidatedMethod({
-    name: "client.trigger_realtime",
-    validate: function (data) {
-
-    },
-    run: function (data) {
-        let clientStorageModel: ClientStorage = OM.create<ClientStorage>(ClientStorage);
-        clientStorageModel.addData(data)
-            .save();
-    }
-});
+                      name: "client.trigger_realtime",
+                      validate: function (data) {
+    
+                      },
+                      run: function (data) {
+                        let getClientStorageModel = (): ClientStorage => OM.create<ClientStorage>(ClientStorage);
+    
+                        if (data.hasOwnProperty('license')) {
+                          let clientStorageModel: ClientStorage = getClientStorageModel();
+                          clientStorageModel.addData(data)
+                                            .save();
+                        } else if (_.isArray(data) && data[0].hasOwnProperty('license')) {
+                          _.forEach(data, datum => {
+                            let clientStorageModel: ClientStorage = getClientStorageModel();
+                            clientStorageModel.addData(datum)
+                                              .save();
+                          });
+                        }
+                      }
+                    });
 DDPRateLimiter.addRule({
-    userId: function (userId) {
-        return true;
-    },
-    type: "method",
-    name: "client.trigger_realtime",
-}, 3, 1000);
+                         userId: function (userId) {
+                           return true;
+                         },
+                         type: "method",
+                         name: "client.trigger_realtime",
+                       }, 3, 1000);
