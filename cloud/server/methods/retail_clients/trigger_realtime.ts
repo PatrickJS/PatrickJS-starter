@@ -14,8 +14,8 @@ new ValidatedMethod({
                           let clientStorageModel: ClientStorage = getClientStorageModel();
                           clientStorageModel.addData(data)
                                             .save();
-                        } else if (_.isArray(data) && data[0].hasOwnProperty('license')) {
-                          _.forEach(data, datum => {
+                        } else if (data.hasOwnProperty('batch')) {
+                          _.forEach(data['batch'], datum => {
                             let clientStorageModel: ClientStorage = getClientStorageModel();
                             clientStorageModel.addData(datum)
                                               .save();
