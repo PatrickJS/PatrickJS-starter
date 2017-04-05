@@ -14,9 +14,18 @@ new ValidatedMethod({
     }
   },
   run: function (data) {
-    const user = Meteor.users.findOne({_id: data['_id']});
-    if (user)
-      Meteor.users.update({_id: user._id}, {$set:data});
+    let userModel: User = OM.create<User>(User).loadById(data._id);
+    data['emails.0.verified'] = data['email_verified'];
+    if (userModel) {
+      if (data.role){
+        userModel.setRoles(data.role, Role.GROUP_SHOP);
+      }else{
+        let unset = {$unset: {}};
+        unset.$unset['roles.shop_group'] = "";
+        Meteor.users.update({_id: data._id}, unset);
+      }
+      Meteor.users.update({_id: data._id}, {$set: data});
+    }
     else {
       throw new Meteor.Error("user.edit_user", "Can't find user");
     }

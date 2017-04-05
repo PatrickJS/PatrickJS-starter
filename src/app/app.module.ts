@@ -69,6 +69,8 @@ import {ManagePricingsGridComponent} from "./cloud/pages/admin-area/manage-prici
 import {PricingFormComponent} from "./cloud/pages/admin-area/manage-pricings/form";
 import {UserFormComponent} from "./cloud/pages/admin-area/manage-users/form";
 import {VerifyEmailComponent} from "./cloud/pages/auth/verify";
+import {RolesComponent} from "./cloud/pages/admin-area/manage-users/role";
+import {LoopGetKeyPipe} from "./cloud/pipes/LoopGetKeyPipe";
 
 
 /**
@@ -98,6 +100,7 @@ import {VerifyEmailComponent} from "./cloud/pages/auth/verify";
               ManageUsersComponent,
               ManageUsersGridComponent,
               UserFormComponent,
+              RolesComponent,
               SignInComponent,
               SignUpComponent,
               ResetPasswordComponent,
@@ -112,7 +115,9 @@ import {VerifyEmailComponent} from "./cloud/pages/auth/verify";
               CloudPricingComponent,
               CreateLicenseComponent,
               LicenseFormComponent,
-              CreateCashierComponent
+              CreateCashierComponent,
+
+              LoopGetKeyPipe,
             ],
             imports     : [ // import Angular's modules
               BrowserModule,

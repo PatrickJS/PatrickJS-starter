@@ -54,6 +54,26 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-9">
+                                <div class="form-material">
+                                    <select class="form-control" id="role" name="role" [(ngModel)]="_data.role">
+                                        <option value=""></option>
+                                        <option *ngFor="let role of roles" value="{{ role.name }}">{{ role.name }}</option>
+                                    </select>
+                                    <label for="role">Select shop role</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-9">
+                                <label class="css-input css-checkbox css-checkbox-primary">
+                                    <input type="checkbox" name="verify-email"
+                                           [checked]="_data.email_verified"
+                                           [(ngModel)]="_data.email_verified"><span></span>
+                                </label>Verify Email
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-9">
                                 <div>
                                     <label><span>Disabled</span></label>
                                 </div>

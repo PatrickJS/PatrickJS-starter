@@ -7,7 +7,8 @@
           <!-- Reminder Title -->
           <div class="text-center">
             <i class="fa fa-2x fa-scribd text-primary">mart-osc</i>
-            <p class="text-muted push-15-t">Don’t worry, we’ll send a reset link to you.</p>
+            <p *ngIf="!token" class="text-muted push-15-t">Don’t worry, we’ll send a reset link to you.</p>
+            <p *ngIf="!!token" class="text-muted push-15-t">Please input your new password</p>
           </div>
           <!-- END Reminder Title -->
 

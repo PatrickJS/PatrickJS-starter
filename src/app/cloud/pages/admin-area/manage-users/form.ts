@@ -17,7 +17,9 @@ import {ToastsManager} from "ng2-toastr";
            })
 export class UserFormComponent extends AbstractRxComponent implements OnInit {
   id: string = "";
+  roles: any;
   protected form_title: string;
+  private user_edit = { emails: [{verified: 0}] };
 
   constructor(protected userService: ManageUsersService,
               protected userCollection: UserCollection,
@@ -36,6 +38,10 @@ export class UserFormComponent extends AbstractRxComponent implements OnInit {
   };
 
   ngOnInit() {
+    this.userService.getAllRoles()
+        .subscribe((data) => {
+          this.roles = data;
+        });
     const params: Object = this.route.snapshot.params;
     if (params.hasOwnProperty('id') && !!params['id']) {
       this.userService.viewState.headerText = 'Edit User';
@@ -48,7 +54,7 @@ export class UserFormComponent extends AbstractRxComponent implements OnInit {
                                      .getCollectionObservable()
                                      .subscribe((collection: MongoObservable.Collection<any>) => {
                                        if (!!params['id']) {
-                                         const user = collection.findOne({_id: this.id});
+                                         let user = collection.findOne({_id: this.id});
                                          if (user) {
                                            let first_name, last_name, is_disabled;
                                            if (this.checkHasOwnProperty(user, 'profile')){
@@ -63,12 +69,14 @@ export class UserFormComponent extends AbstractRxComponent implements OnInit {
                                              _id: user['_id'],
                                              username: user['username'],
                                              email: user['emails'][0]['address'],
+                                             email_verified: user['emails'][0]['verified'],
                                              profile: {
                                                first_name: first_name,
                                                last_name: last_name,
                                                is_disabled: is_disabled
-                                             }
-                                           }
+                                             },
+                                             role: user['roles']['shop_group']
+                                           };
                                          } else {
                                            throw new Error("Can't find user");
                                          }
@@ -80,7 +88,8 @@ export class UserFormComponent extends AbstractRxComponent implements OnInit {
                                              first_name: '',
                                              last_name: '',
                                              is_disabled: ''
-                                           }
+                                           },
+                                            role: ""
                                          }
                                        }
                                      });

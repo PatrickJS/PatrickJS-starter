@@ -9,7 +9,7 @@
         </ul>
         <h3 class="block-title">{{ form_title }}</h3>
       </div>
-      <div class="block-content block-content-narrow">
+      <div class="block-content">
         <form class="js-validation-license-form form-horizontal push-10-t">
           <div class="form-group">
             <div class="col-sm-9">
@@ -64,18 +64,24 @@
               <tbody>
               <tr *ngFor="let product of products;trackBy:product?.product_id">
                 <td>
-                  <div class="col-xs-6">
-                    <label class="">
-                      <input type="checkbox" name="{{'product_id' + product['product_id']}}"
-                             [checked]="product['checked']==true"
-                             [(ngModel)]="product['checked']"><span></span>
-                    </label>
-                  </div>
+                    <div class="form-material">
+                      <div class="col-xs-6">
+                        <label class="css-input css-checkbox css-checkbox-primary">
+                            <input type="checkbox" name="{{'product_id' + product['product_id']}}"
+                                 [checked]="product['checked']==true"
+                                 [(ngModel)]="product['checked']"><span></span>
+                        </label>
+                      </div>
+                    </div>
                 </td>
-                <td>{{ product.name }}</td>
+                <td>
+                    <div class="form-material">
+                        {{ product.name }}
+                    </div>
+                </td>
                 <td>
                   <div class="form-group">
-                    <div class="col-sm-9">
+                    <div class="col-sm-12">
                       <div class="form-material">
                         <select class="form-control" [(ngModel)]="product['status']" id="val-status_product"
                                 name="{{'status_product' + product['product_id']}}"
@@ -92,7 +98,7 @@
                 </td>
                 <td>
                   <div class="form-group">
-                    <div class="col-sm-9">
+                    <div class="col-sm-12">
                       <div class="form-material">
                         <select class="form-control" id="val-version"
                                 name="{{'val-version'+product['product_id']}}"
@@ -109,7 +115,7 @@
                 </td>
                 <td>
                   <div class="form-group">
-                    <div class="col-sm-9">
+                    <div class="col-sm-12">
                       <div class="form-material">
                         <select class="form-control" id="val-price" name="{{'val-price'+product['product_id']}}" style="width: 100%;"
                                 data-placeholder="Choose one.." [(ngModel)]="product['pricing_id']">
@@ -127,29 +133,35 @@
                 </td>
                 <td>
                   <div class="form-group">
-                    <div class="col-sm-9">
-                      <input class="form-control" (focusout)="addBasedUrl(product, $event)" type="text"
+                    <div class="col-sm-12">
+                        <div class="form-material">
+                            <input class="form-control" (focusout)="addBasedUrl(product, $event)" type="text"
                              id="val-base_url"
                              name="{{'val-base_url'+product['product_id']}}"
                              placeholder="Add Based URLs">
+                        </div>
                       <div class="form-material">
                         <div class="input-group" *ngFor="let baseUrl of product['base_url']">
-                          <input class="form-control" type="text" disabled [value]="baseUrl.url">
-                          <span class="input-group-btn">
-                              <div class="btn-group">
-                                  <button *ngIf="baseUrl['status']" class="btn btn-success" title="Deactive" type="button" (click)="toggleStatus
-                                  (product, baseUrl)">
-                                    <i class="fa fa-check"></i>
-                                </button>
-                                <button *ngIf="!baseUrl['status']" class="btn btn-default" title="Active" type="button" (click)="toggleStatus(product,
-                                baseUrl)">
-                                    <i class="fa fa-check"></i>
-                                </button>
-                                <button class="btn btn-default" title="Remove" type="button" (click)="removeBaseUrl(product,baseUrl)">
-                                    <i class="fa fa-times"></i>
-                                </button>
-                              </div>
-                          </span>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="text" disabled [value]="baseUrl.url">
+                            </div>
+                            <div class="col-sm-4">
+                              <span class="input-group-btn">
+                                  <div class="btn-group">
+                                      <button *ngIf="baseUrl['status']" class="btn btn-success" title="Deactive" type="button" (click)="toggleStatus
+                                      (product, baseUrl)">
+                                        <i class="fa fa-check"></i>
+                                    </button>
+                                    <button *ngIf="!baseUrl['status']" class="btn btn-default" title="Active" type="button" (click)="toggleStatus(product,
+                                    baseUrl)">
+                                        <i class="fa fa-check"></i>
+                                    </button>
+                                    <button class="btn btn-default" title="Remove" type="button" (click)="removeBaseUrl(product,baseUrl)">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                  </div>
+                              </span>
+                            </div>
                         </div>
                       </div>
                     </div>
@@ -157,7 +169,7 @@
                 </td>
                 <td>
                   <div class="form-group">
-                    <div class="col-sm-9">
+                    <div class="col-sm-12">
                       <div class="form-material">
                         <input class="form-control" type="text" name="{{ 'val-purchased_date' + product['product_id'] }}"
                                id="{{ 'val-purchased_date' + product['product_id'] }}"
@@ -168,7 +180,7 @@
                 </td>
                 <td>
                   <div class="form-group">
-                    <div class="col-sm-9">
+                    <div class="col-sm-12">
                       <div class="form-material">
                         <input class="form-control" type="text" name="{{'val-expire_date'+product['product_id']}}"
                                id="{{ 'val-expire_date' + product['product_id'] }}"
