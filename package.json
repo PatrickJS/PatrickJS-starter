@@ -130,6 +130,8 @@
     "optimize-js-plugin": "0.0.4",
     "parse5": "^3.0.1",
     "protractor": "^4.0.14",
+    "pug": "2.0.0-beta11",
+    "pug-html-loader": "1.1.4",
     "raw-loader": "0.5.1",
     "rimraf": "~2.6.0",
     "sass-loader": "^6.0.0",
