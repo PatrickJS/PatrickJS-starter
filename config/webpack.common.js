@@ -179,6 +179,11 @@ module.exports = function (options) {
           exclude: [helpers.root('src/index.html')]
         },
 
+        { 
+          test: /\.(pug|jade)$/, 
+          use: ['raw-loader', 'pug-html-loader'] 
+        },
+
         /* 
          * File loader for supporting images, for example, in CSS files.
          */
