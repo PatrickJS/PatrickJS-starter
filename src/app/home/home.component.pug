@@ -1,0 +1,16 @@
+div
+  h1.sample-content(x-large='') Your Content Here
+  hr
+  div
+    | For hot module reloading run
+    pre.
+      \nnpm run start:hmr      
+  hr
+  div
+    h4 Local State
+    form((ngsubmit)='submitState(localState.value)', autocomplete='off')
+      input([value]='localState.value', (input)='localState.value = $event.target.value', placeholder='Submit Local State to App State', autofocus='')
+      |  
+      button Submit Value
+    pre.
+      \nthis.localState = {{ localState | json }}      
