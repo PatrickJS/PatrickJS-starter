@@ -256,8 +256,10 @@ export class RolesComponent implements OnInit {
         .subscribe((data) => {
           this.roles = data;
           this.role = _.find(data, (rol) => {
-            return rol.id == this.role_id;
+            return rol['id'] == this.role_id;
           });
+        }, (e) => {
+          this.toast.error(e);
         });
 
     if (!!this.role_id) {
@@ -268,18 +270,20 @@ export class RolesComponent implements OnInit {
                 let section_update = _.map(group.sections, (section) => {
                   let permission_update = _.map(section.permissions, (permission) => {
                     let perm             = _.find(data, (perm) => {
-                      return perm.permission == permission.permission;
+                      return perm['permission'] == permission['permission'];
                     });
-                    permission.is_active = perm.is_active;
+                    permission['is_active'] = perm['is_active'];
                     return permission;
                   });
-                  section.permissions   = permission_update;
+                  section['permissions']   = permission_update;
                   return section;
                 });
-                group.sections     = section_update;
+                group['sections']     = section_update;
                 return group;
               });
             }
+          }, (e) => {
+            this.toast.error(e);
           });
     }
     this.initPageJs();
@@ -328,6 +332,8 @@ export class RolesComponent implements OnInit {
                                                          vm.userService.updatePermission(data)
                                                            .subscribe(() => {
                                                               vm.toast.success('Update Permission Successfully');
+                                                           }, (e) => {
+                                                             this.toast.error(e);
                                                            });
 
                                                        }
