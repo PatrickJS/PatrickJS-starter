@@ -71,6 +71,7 @@ import {UserFormComponent} from "./cloud/pages/admin-area/manage-users/form";
 import {VerifyEmailComponent} from "./cloud/pages/auth/verify";
 import {RolesComponent} from "./cloud/pages/admin-area/manage-users/role";
 import {LoopGetKeyPipe} from "./cloud/pipes/LoopGetKeyPipe";
+import {RequestService} from "./service/request";
 
 
 /**
@@ -138,7 +139,8 @@ import {LoopGetKeyPipe} from "./cloud/pipes/LoopGetKeyPipe";
               AuthService,
               AuthenticateGuard,
               ManageProductsService,
-              ManageLicensesService
+              ManageLicensesService,
+              RequestService
             ]
           })
 export class AppModule {
