@@ -103,8 +103,9 @@ export const ROUTES: Routes = [
         children : [
           {path: '', component: CashierGridComponent},
           {path: 'cashiers', component: CashierGridComponent},
-          {path: 'roles', component: ShopRolesComponent},
-          {path: 'create-cashier', component: CreateCashierComponent}
+          {path: 'roles/:id', component: ShopRolesComponent},
+          {path: 'create-cashier', component: CreateCashierComponent},
+          {path: 'edit-cashier/:id', component: CreateCashierComponent}
         ]
       },
       {

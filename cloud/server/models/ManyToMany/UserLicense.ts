@@ -38,8 +38,16 @@ export class UserLicense {
         if (_.size(products) == 0) {
           throw new Meteor.Error("Please define products");
         }
-        
-        let licenseHasProduct = license.getProducts();
+
+        let licenseHasProduct = _.map(license.getProducts(), (_p) => {
+          if (_.isArray(_p.has_user)) {
+            let has_user = _.reject(_p.has_user, (_u) => {
+              return _u['username'] == user.getData('username');
+            });
+            _p['has_user'] = has_user;
+          }
+          return _p;
+        });
         _.forEach(products, productId => {
           let _pInLicense = _.find(licenseHasProduct, pInLicense => pInLicense.product_id == productId);
           if (!_pInLicense)

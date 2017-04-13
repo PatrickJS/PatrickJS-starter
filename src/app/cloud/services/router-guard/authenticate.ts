@@ -20,11 +20,11 @@ export class AuthenticateGuard implements CanActivate {
         Meteor.logout();
         this.router.navigate(['']);
       }
-      if(!currentUser.emails[0].verified){
+      /*if(!currentUser.emails[0].verified){
         alert('Please verify your email');
         this.router.navigate(['/verify_email']);
         return false;
-      }
+      }*/
       return true;
     } else {
       this.authService.redirectUrl = state.url;

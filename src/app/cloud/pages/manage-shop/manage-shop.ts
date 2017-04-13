@@ -3,6 +3,7 @@ import {
   OnInit
 } from '@angular/core';
 import {ManageShopService} from "./manage-shop.service";
+import {ManageUsersService} from "../admin-area/manage-users/manage-users.service";
 
 @Component({
              selector : 'manage-shop',
@@ -25,7 +26,7 @@ import {ManageShopService} from "./manage-shop.service";
                 </div>
 <!-- END Page Header -->
 <router-outlet></router-outlet>`,
-             providers: [ManageShopService]
+             providers: [ManageShopService, ManageUsersService]
            })
 export class ManageShopComponent implements OnInit {
   constructor(protected manageShop: ManageShopService) { }

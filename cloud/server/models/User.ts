@@ -19,10 +19,12 @@ export class User extends AbstractModel {
   
   addToRoles(roles: string|string[], group = Role.GROUP_CLOUD): void {
     Roles.addUsersToRoles(this.getData(), roles, group);
+    this.loadById(this.getId());
   }
   
   setRoles(roles: string|string[], group = Role.GROUP_CLOUD): void {
     Roles.setUserRoles(this.getData(), roles, group);
+    this.loadById(this.getId());
   }
   
   isInRoles(roles: string|string[], group = Role.GROUP_CLOUD): boolean {

@@ -20,12 +20,20 @@ new ValidatedMethod({
       Accounts.createUser(
         {
           username: data['username'],
-          email: data['email']
+          email: data['email'],
+          profile: {
+            first_name: data['first_name'],
+            last_name: data['last_name'],
+            is_disabled: data['isDisabled']
+          }
         });
     
     cashier       = OM.create<User>(User).load(data['username'], "username");
     const license = OM.create<License>(License).load(data['license_id']);
     if (cashier) {
+      if (data.hasOwnProperty('role')){
+        cashier.setRoles(data['role'], Role.GROUP_SHOP);
+      }
       return UserLicense.attach(cashier, license, User.LICENSE_PERMISSION_CASHIER, data['products']);
     }
     else

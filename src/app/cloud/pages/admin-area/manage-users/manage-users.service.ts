@@ -13,8 +13,6 @@ export class ManageUsersService {
   };
   viewData: any  = {};
 
-  api_magento2 = "http://mage2.dev";
-
   constructor(protected toast: ToastsManager,
               protected router: Router,
               private http: Http,
@@ -52,27 +50,16 @@ export class ManageUsersService {
     });
   }
 
-  updatePermission(data: any): Observable<any>{
-    return this.requestService.makePost(this.api_magento2 + "/xrest/v1/xretail/permission", data);
-  }
-
-  getAllRoles(): Observable<any>{
-    return this.requestService.makeGet(this.api_magento2 + "/xrest/v1/xretail/role")
-               .map((data) => {
-                 return data.items;
-               });
-  }
-
-  getAllPermissions(role_id): Observable<any>{
-    let params: URLSearchParams = new URLSearchParams();
-    let options = new RequestOptions({headers: new Headers({'Content-Type': 'application/json'})});
-
-    params.set('role_id', role_id);
-    options.search = params;
-    return this.requestService.makeGet(this.api_magento2 + "/xrest/v1/xretail/permission", options)
-               .map((data) => {
-                 return data.items;
-               });
+  updatePermission(data: any){
+    return new Promise<void>((resolve, reject) => {
+      MeteorObservable.call("license.remove_user", data).subscribe((res) => {
+        this.toast.success("Remove User Successfully");
+        resolve();
+      }, (err) => {
+        this.toast.error(err.reason, err.error);
+        return reject(err);
+      });
+    });
   }
 
 }

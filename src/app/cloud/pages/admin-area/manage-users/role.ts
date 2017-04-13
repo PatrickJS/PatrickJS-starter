@@ -266,9 +266,9 @@ export class RolesComponent implements OnInit {
       this.userService.getAllPermissions(this.role_id)
           .subscribe((data) => {
             if (data.length > 0) {
-              this.permissions = _.map(this.permissions, (group) => {
-                let section_update = _.map(group.sections, (section) => {
-                  let permission_update = _.map(section.permissions, (permission) => {
+              this.permissions = _.map(this.permissions, (group:any) => {
+                let section_update = _.map(group['sections'], (section) => {
+                  let permission_update = _.map(section['permissions'], (permission) => {
                     let perm             = _.find(data, (perm) => {
                       return perm['permission'] == permission['permission'];
                     });
