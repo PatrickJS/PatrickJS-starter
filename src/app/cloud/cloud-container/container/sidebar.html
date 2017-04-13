@@ -140,7 +140,7 @@
                     <a routerLink="/cloud/roles" routerLinkActive="active">Roles</a>
                 </li>
               <li>
-                <a routerLink="/cloud/manage-shop/roles/1" routerLinkActive="active">Permissions</a>
+                <a [routerLink]="['manage-shop/roles', role_code]" routerLinkActive="active">Permissions</a>
               </li>
             </ul>
           </li>

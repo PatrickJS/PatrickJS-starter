@@ -17,7 +17,7 @@ export class ShopRolesComponent extends AbstractRxComponent implements OnInit {
   protected role: any;
   protected roles: any;
   protected currentGroup: string;
-  protected role_id: number;
+  protected role_id: string;
   protected license: any = {};
   protected permissions: any = [
     {
@@ -326,8 +326,8 @@ export class ShopRolesComponent extends AbstractRxComponent implements OnInit {
     return this.currentGroup;
   }
 
-  redirect(role_id: number){
-    this.router.navigate(['/cloud/users/roles', role_id]);
+  redirect(role_id: string){
+    this.router.navigate(['/cloud/manage-shop/roles', role_id]);
     this.initPage(role_id);
   }
   

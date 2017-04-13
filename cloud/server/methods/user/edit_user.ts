@@ -41,7 +41,7 @@ new ValidatedMethod({
         };
         Meteor.users.update({_id: data._id}, {$set: new_data});
         const license = OM.create<License>(License).load(data['license_id']);
-
+        userModel = OM.create<User>(User).loadById(data._id);
         return UserLicense.attach(userModel, license, User.LICENSE_PERMISSION_CASHIER, data['products']);
       }
     }else {

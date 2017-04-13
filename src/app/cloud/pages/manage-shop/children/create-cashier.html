@@ -37,7 +37,8 @@
             <div class="form-group">
               <div class="col-sm-9">
                 <div class="form-material">
-                  <input class="form-control" type="text" id="cashier_username" name="cashier_username" [(ngModel)]="_data.username"
+                  <input class="form-control" [disabled]="!!id" type="text" id="cashier_username" name="cashier_username" [(ngModel)]="_data
+                  .username"
                          placeholder="Choose a cashier username..">
                   <label for="cashier_username">Username</label>
                 </div>
@@ -46,7 +47,7 @@
             <div class="form-group">
               <div class="col-sm-9">
                 <div class="form-material">
-                  <input class="form-control" type="text" id="cashier_email" name="cashier_email" [(ngModel)]="_data.email"
+                  <input class="form-control" [disabled]="!!id" type="text" id="cashier_email" name="cashier_email" [(ngModel)]="_data.email"
                          placeholder="Enter cashier's valid email..">
                   <label for="cashier_email">Email</label>
                 </div>
