@@ -105,7 +105,6 @@ import {ManageRolesService} from "./cloud/pages/admin-area/manage-roles/manage-r
               ManageUsersComponent,
               ManageUsersGridComponent,
               UserFormComponent,
-              RolesComponent,
               ManageRolesComponent,
               ManageRolesGridComponent,
               RoleFormComponent,

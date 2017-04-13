@@ -251,7 +251,7 @@ export class ShopRolesComponent extends AbstractRxComponent implements OnInit {
                 });
   }
 
-  private initPage(role_id?: number){
+  private initPage(role_id?: string){
 
     if (!this.role_id){
       this.route.params.subscribe((p) => {
