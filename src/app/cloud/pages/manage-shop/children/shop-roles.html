@@ -2,7 +2,7 @@
     <div class="col-md-3">
         <ul class="nav">
             <li *ngFor="let role of roles" [ngClass]="{'active': role.id == role_id}" (click)="redirect(role.id)">
-                <a href="{{ '#/cloud/users/roles/'+ role.id }}" routerLinkActive="active">{{ role.name }}</a>
+                <a href="{{ '#/cloud/manage-shop/roles/'+ role['code'] }}" routerLinkActive="active">{{ role.name }}</a>
             </li>
         </ul>
     </div>

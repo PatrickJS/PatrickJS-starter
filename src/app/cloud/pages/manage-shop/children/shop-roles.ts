@@ -305,6 +305,7 @@ export class ShopRolesComponent extends AbstractRxComponent implements OnInit {
                                                          role_id: vm.role_id,
                                                          permissions: permissions_data
                                                        };
+                                                       data['license_id'] = vm.license['_id'];
 
                                                        vm.userService.updatePermission(data);
 

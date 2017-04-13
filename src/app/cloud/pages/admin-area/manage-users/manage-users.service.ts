@@ -4,7 +4,6 @@ import {MeteorObservable} from "meteor-rxjs";
 import {Router} from "@angular/router";
 import {Http, URLSearchParams, Headers, RequestOptions} from "@angular/http";
 import {RequestService} from "../../../../service/request";
-import {Observable} from "rxjs";
 
 @Injectable()
 export class ManageUsersService {
@@ -52,8 +51,8 @@ export class ManageUsersService {
 
   updatePermission(data: any){
     return new Promise<void>((resolve, reject) => {
-      MeteorObservable.call("license.remove_user", data).subscribe((res) => {
-        this.toast.success("Remove User Successfully");
+      MeteorObservable.call("license.save_permission_to_role", data).subscribe((res) => {
+        this.toast.success("Update Permission Successfully");
         resolve();
       }, (err) => {
         this.toast.error(err.reason, err.error);

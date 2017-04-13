@@ -72,6 +72,10 @@ import {VerifyEmailComponent} from "./cloud/pages/auth/verify";
 import {RolesComponent} from "./cloud/pages/admin-area/manage-users/role";
 import {LoopGetKeyPipe} from "./cloud/pipes/LoopGetKeyPipe";
 import {RequestService} from "./service/request";
+import {ManageRolesComponent} from "./cloud/pages/admin-area/manage-roles";
+import {ManageRolesGridComponent} from "./cloud/pages/admin-area/manage-roles/grid";
+import {RoleFormComponent} from "./cloud/pages/admin-area/manage-roles/form";
+import {ManageRolesService} from "./cloud/pages/admin-area/manage-roles/manage-roles.service";
 
 
 /**
@@ -102,6 +106,9 @@ import {RequestService} from "./service/request";
               ManageUsersGridComponent,
               UserFormComponent,
               RolesComponent,
+              ManageRolesComponent,
+              ManageRolesGridComponent,
+              RoleFormComponent,
               SignInComponent,
               SignUpComponent,
               ResetPasswordComponent,
@@ -140,7 +147,8 @@ import {RequestService} from "./service/request";
               AuthenticateGuard,
               ManageProductsService,
               ManageLicensesService,
-              RequestService
+              RequestService,
+              ManageRolesService
             ]
           })
 export class AppModule {

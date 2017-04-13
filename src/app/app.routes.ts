@@ -30,6 +30,9 @@ import {PricingFormComponent} from "./cloud/pages/admin-area/manage-pricings/for
 import {UserFormComponent} from "./cloud/pages/admin-area/manage-users/form";
 import {VerifyEmailComponent} from "./cloud/pages/auth/verify";
 import {RolesComponent} from "./cloud/pages/admin-area/manage-users/role";
+import {ManageRolesComponent} from "./cloud/pages/admin-area/manage-roles";
+import {ManageRolesGridComponent} from "./cloud/pages/admin-area/manage-roles/grid";
+import {RoleFormComponent} from "./cloud/pages/admin-area/manage-roles/form";
 
 export const ROUTES: Routes = [
   {
@@ -98,6 +101,15 @@ export const ROUTES: Routes = [
 
       /* ------------------------ User Area ------------------------ */
       {
+        path      : 'roles',
+        component: ManageRolesComponent,
+        children : [
+          {path: '', component: ManageRolesGridComponent},
+          {path: 'create', component: RoleFormComponent},
+          {path: 'edit/:id', component: RoleFormComponent}
+        ]
+      },
+      {
         path     : 'manage-shop',
         component: ManageShopComponent,
         children : [
@@ -108,6 +120,7 @@ export const ROUTES: Routes = [
           {path: 'edit-cashier/:id', component: CreateCashierComponent}
         ]
       },
+
       {
         path     : 'billing-pricing',
         component: BillingPricingComponent,

@@ -38,10 +38,6 @@ export class UserFormComponent extends AbstractRxComponent implements OnInit {
   };
 
   ngOnInit() {
-    this.userService.getAllRoles()
-        .subscribe((data) => {
-          this.roles = data;
-        });
     const params: Object = this.route.snapshot.params;
     if (params.hasOwnProperty('id') && !!params['id']) {
       this.userService.viewState.headerText = 'Edit User';
@@ -74,8 +70,7 @@ export class UserFormComponent extends AbstractRxComponent implements OnInit {
                                                first_name: first_name,
                                                last_name: last_name,
                                                is_disabled: is_disabled
-                                             },
-                                             role: user['roles']['shop_group']
+                                             }
                                            };
                                          } else {
                                            throw new Error("Can't find user");
@@ -88,8 +83,7 @@ export class UserFormComponent extends AbstractRxComponent implements OnInit {
                                              first_name: '',
                                              last_name: '',
                                              is_disabled: ''
-                                           },
-                                            role: ""
+                                           }
                                          }
                                        }
                                      });
