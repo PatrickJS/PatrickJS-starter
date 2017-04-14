@@ -1,0 +1,256 @@
+/*----------  LEFT MENU  ----------*/
+.left-menu{
+	width: 280px;
+	height: 100%;
+	position: fixed;
+	background: #1a1a1a;
+	z-index: 10;
+
+    -moz-transition: all 0.3s linear;
+	-webkit-transition: all 0.3s linear;
+	-o-transition: all 0.3s linear;
+	-ms-transition: all 0.3s linear;
+	transition: all 0.3s linear;
+}
+	/*----------  LOGO  ----------*/
+	.logo{
+		display: block;
+		height: 80px;
+		text-align: center;
+		line-height: 80px;
+		border-bottom: 1px solid #212121;
+		font-size: 15px;
+	    font-weight: 900;
+	    color: #fff;
+	    letter-spacing: 3px;
+	    text-transform: uppercase;
+	}
+		.logo em:before {
+		    color: #ff3333;
+		    font-size: 26px;
+		    position: relative;
+		    top: 3px;
+		}
+	.logo:hover{
+		color: #fff;
+	}
+	/*----------  //LOGO  ----------*/
+
+	/*----------  NAVIGATION  ----------*/
+	.main-navi li{
+		position: relative;
+	}
+	.main-navi li div,
+	.main-navi a{
+		display: block;
+		line-height: 80px;
+		text-transform: uppercase;
+		font-weight: 900;
+		padding-left: 30px;
+		color: #999;
+		border-bottom: 1px solid #212121;
+		position: relative;
+		z-index: 1;
+		background: #1A1A1A;
+		cursor: pointer;
+
+	    -moz-transition: all 0.3s linear;
+		-webkit-transition: all 0.3s linear;
+		-o-transition: all 0.3s linear;
+		-ms-transition: all 0.3s linear;
+		transition: all 0.3s linear;
+	}
+	.main-navi li div{
+		padding-left: 0;
+		border: none;
+	}
+	.main-navi li div{
+		position: relative;
+		z-index: 1;
+		background: #1A1A1A;
+		padding-left: 30px;
+		border-bottom: 1px solid #212121;
+
+	    -moz-transition: all 0.3s linear;
+		-webkit-transition: all 0.3s linear;
+		-o-transition: all 0.3s linear;
+		-ms-transition: all 0.3s linear;
+		transition: all 0.3s linear;
+	}
+	.main-navi a.active:hover,
+	.main-navi a.active{
+		padding-left: 50px;
+		color: #fff;
+		background: #ff3333;
+		cursor: default;
+	}
+	.main-navi .dot{
+		width: 10px;
+		height: 10px;
+		position: absolute;
+		top: 50%;
+		margin-top: -5px;
+		right: 30px;
+		background: #333;
+		border-radius: 50%;
+
+	    -moz-transition: all 0.3s linear;
+		-webkit-transition: all 0.3s linear;
+		-o-transition: all 0.3s linear;
+		-ms-transition: all 0.3s linear;
+		transition: all 0.3s linear;
+	}
+	.main-navi li div .corner,
+	.main-navi a .corner{
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 0;
+	    height: 0;
+	    opacity: 0;
+	    z-index: -1;
+	    border-top: 40px solid transparent;
+	    border-left: 20px solid #1A1A1A;
+	    border-bottom: 40px solid transparent;
+
+	    -moz-transition: all 0.3s linear;
+		-webkit-transition: all 0.3s linear;
+		-o-transition: all 0.3s linear;
+		-ms-transition: all 0.3s linear;
+		transition: all 0.3s linear;
+	}
+	.main-navi li div.active .corner,
+	.main-navi a.active .corner{
+		right: -20px;
+	    opacity: 1;
+	    border-left: 20px solid #ff3333;
+	}
+	.main-navi a.active:hover .dot,
+	.main-navi a.active .dot{
+		background: #fff;
+	}
+	.main-navi li div:hover,
+	.main-navi a:hover{
+		padding-left: 50px;
+		color: #fff;
+		background: #151515;
+	}
+	.main-navi li div.active{
+		padding-left: 50px;
+		background: #ff3333;
+		color: #fff;
+	}
+	.main-navi li div:hover .dot,
+	.main-navi a:hover .dot{
+		background: #ff3333;
+	}
+	.main-navi li div.active .dot{
+		background: #fff;
+	}
+	.drop-down {
+	    left: 0;
+	    overflow: hidden;
+	    position: absolute;
+	    top: -0;
+	    width: 250px;
+	    z-index: -2;
+	    background: #151515;
+	    opacity: 0;
+
+	    -moz-transition: all 0.3s linear;
+		-webkit-transition: all 0.3s linear;
+		-o-transition: all 0.3s linear;
+		-ms-transition: all 0.3s linear;
+		transition: all 0.3s linear;
+	}
+	.main-navi li:hover .drop-down{
+		left: 100%;
+	    opacity: 1;
+	} 
+	.active .drop-down{
+		overflow: visible;
+	}
+	.main-navi .drop-down a{
+		background: #151515;
+		border: none;
+    	line-height: 40px;
+	}
+
+	.main-navi .drop-down a:hover{
+		padding-left: 40px;
+	}
+	.show-hide-menu {
+	    background:  #1A1A1A !important;
+	    color: #666 !important;
+	    display: none !important;
+	    height: 40px;
+	    left: 100%;
+	    line-height: 40px !important;
+	    padding-left: 0 !important;
+	    position: absolute !important;
+	    text-align: center;
+	    top: 100px;
+	    width: 40px;
+	    margin-left: 0;
+	    cursor: pointer;
+
+	    -moz-transition: all 0.3s linear 0s;
+	    -webkit-transition: all 0.3s linear 0s;
+	    -ms-transition: all 0.3s linear 0s;
+	    -o-transition: all 0.3s linear 0s;
+	    transition: all 0.3s linear 0s;
+	}
+	.show-hide-menu:before {
+	    color: #666666;
+	    font-size: 24px;
+
+	    -moz-transition: all 0.3s linear 0s;
+	    -webkit-transition: all 0.3s linear 0s;
+	    -ms-transition: all 0.3s linear 0s;
+	    -o-transition: all 0.3s linear 0s;
+	    transition: all 0.3s linear 0s;
+	}
+	.left-menu.animate .show-hide-menu{
+	    margin-left: -40px;	
+	    top: 18px;	
+	}
+	/*----------  //NAVIGATION  ----------*/
+
+	/*----------  SOCIAL ICONS  ----------*/
+	.soc-icons{
+		height: 80px;
+		border-bottom: 1px solid #212121;
+		border-top: 1px solid #212121;
+		text-align: center;
+		line-height: 80px;
+		font-size: 16px;
+		position: absolute;
+		bottom: 40px;
+		left: 0;
+		width: 100%;
+	}
+	.soc-icons a{
+		margin: 0 11px;
+		display: inline-block;
+	}
+	.soc-icons a:hover{
+		color: #ff3333;
+	}
+	.soc-icons strong{
+		text-transform: uppercase;
+		color: #333;
+		font-size: 12px;
+	}
+	/*----------  //SOCIAL ICONS  ----------*/
+	.copy{
+		position: absolute;
+		bottom: 0;
+		height: 40px;
+		line-height: 40px;
+		color: rgba(255,255,255,0.1);
+		text-align: center;
+		width: 100%;
+		margin: 0;
+	}
+
+/*----------  //LEFT MENU  ----------*/

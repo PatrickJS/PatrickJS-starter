@@ -1,8 +1,31 @@
-html, body{
-  height: 100%;
-  font-family: Arial, Helvetica, sans-serif
-}
+@import "/assets/vendor/font-awesome/css/font-awesome.css";
 
-a.active {
-  background-color: gray;
+*{
+	margin: 0;
+	padding: 0;
+}
+html,
+body{
+	height: 100%;
+}
+body{
+	font: 12px 'Lato', sans-serif;
+	overflow: hidden;
+	background: #121212;
+}
+a, a:hover, a:active{
+	text-decoration: none !important; 
+	color: #333;
+
+    -moz-transition: all 0.3s linear;
+	-webkit-transition: all 0.3s linear;
+	-o-transition: all 0.3s linear;
+	-ms-transition: all 0.3s linear;
+	transition: all 0.3s linear;
+}
+h1, h2, h3, h4, h5, h6{
+	font-family:  'Lato', sans-serif;
+}
+strong{
+	font-weight: 900;
 }

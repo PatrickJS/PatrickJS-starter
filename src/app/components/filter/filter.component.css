@@ -1,0 +1,24 @@
+/*----------  FILTER  ----------*/
+.filter {
+    background: #1A1A1A;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 50px;
+}
+	.filter > a {
+	    border: 1px solid rgba(0,0,0,0);
+	    color: #999999;
+	    font-weight: 900;
+	    padding: 5px 20px;
+	    text-transform: uppercase;
+	    cursor: pointer;
+	}
+	.filter > a:hover{
+		border: 1px solid #333333;
+	}
+	.filter > a.active{
+		background: #ff3333;
+		border-color: #ff3333;
+		color: #fff;
+	}
+/*----------  //FILTER  ----------*/

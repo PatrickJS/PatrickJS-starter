@@ -1,0 +1,406 @@
+/*----------  RIGHT CONTENT  ----------*/
+.right-content{
+	margin-left: 280px;
+	position: relative;
+	height: 100%;
+
+    -moz-transition: all 0.3s linear;
+	-webkit-transition: all 0.3s linear;
+	-o-transition: all 0.3s linear;
+	-ms-transition: all 0.3s linear;
+	transition: all 0.3s linear;
+}
+
+/*----------  PORTFOLIO  ----------*/
+.portfolio{
+	overflow: hidden;
+	background: #1A1A1A;
+	bottom: 0;
+	right: 0;
+	top: 0;
+	left: 0;
+	z-index: 2;
+
+    -moz-transition: all 0.5s ease;
+	-webkit-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	-ms-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+}
+.portfolio.main-block{
+	width: auto;
+}
+.portfolio.animate{
+	top: 100%;
+}
+.portfolio ul {
+	display: inline-block;
+	width: 100%;
+	margin: 0;
+}
+	/*----------  COLUMNS IN PORTFOLIO  ----------*/
+	.masonry-wrapper .item,
+	.right-images li,
+	.portfolio.column li {
+		float: left;
+		margin: 0;
+		overflow: hidden;
+		padding: 0;
+		perspective: 400px;
+		position: relative;
+		width: 50%;
+	}
+
+	@media (min-width: 768px) {
+		.masonry-wrapper .item,
+		.right-images li,
+		.portfolio.column li {
+			width: 33.3333%;
+		}
+	}
+
+	@media (min-width: 1200px) {
+		.masonry-wrapper .item,
+		.right-images li,
+		.portfolio.column li {
+			width: 25%;
+		}
+	}
+
+	.masonry-wrapper .item{
+		float: none;
+	}
+	.masonry-wrapper .item a,
+	.right-images li a,
+	.portfolio.column li a {
+	    background-position: center center;
+	    background-repeat: no-repeat;
+	    background-size: 100% 100%;
+	    display: block;
+	    width: 100%;
+	    cursor: pointer;
+		box-shadow: inset 0 0 0 0 #ff3333;
+
+	    -moz-transition: all 0.2s linear;
+		-webkit-transition: all 0.2s linear;
+		-o-transition: all 0.2s linear;
+		-ms-transition: all 0.2s linear;
+		transition: all 0.2s linear;
+	}
+	.masonry-wrapper .item a img,
+	.right-images li a img,
+	.portfolio.column li a img{
+		position: relative;
+		width: 100%;
+		z-index: -1;
+		
+	    -moz-transform: scale(1, 1);
+	    -webkit-transform: scale(1, 1);
+	    -ms-transform: scale(1, 1);
+	    -o-transform: scale(1, 1);
+	    transform: scale(1, 1);
+
+	    -moz-transition: all 0.2s linear;
+		-webkit-transition: all 0.2s linear;
+		-o-transition: all 0.2s linear;
+		-ms-transition: all 0.2s linear;
+		transition: all 0.2s linear;
+
+	}
+	.masonry-wrapper .item > span,
+	.right-images li > span,
+	.portfolio.column li > span{
+		position: absolute;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+	    background: rgba(0,0,0,0);
+	    cursor: pointer;
+
+	    -moz-transition: all 0.3s linear;
+		-webkit-transition: all 0.3s linear;
+		-o-transition: all 0.3s linear;
+		-ms-transition: all 0.3s linear;
+		transition: all 0.3s linear;
+	}
+	.masonry-wrapper .item div:last-child,
+	.portfolio-image li div,
+	.right-images li div,
+	.portfolio.column li div:last-child{
+		left: 30px;
+	    position: absolute;
+	    right: 30px;
+	    top: -70px;
+	    z-index: 2;
+
+	    -moz-transition: all 0.3s linear;
+		-webkit-transition: all 0.3s linear;
+		-o-transition: all 0.3s linear;
+		-ms-transition: all 0.3s linear;
+		transition: all 0.3s linear;
+	}
+	.masonry-wrapper .item span.title,
+	.portfolio-image li span.title,
+	.right-images li span.title,
+	.portfolio.column li span.title{
+		background: #fff;
+	    color: #333;
+	    cursor: pointer;
+	    font-size: 16px;
+	    font-weight: 900;
+	    letter-spacing: 1px;
+	    overflow: hidden;
+        white-space: nowrap;
+    	display: block;
+	    padding: 4px 7px;
+	    text-transform: uppercase;
+	    text-overflow: ellipsis;
+
+	    -moz-transition: all 0.3s linear;
+		-webkit-transition: all 0.3s linear;
+		-o-transition: all 0.3s linear;
+		-ms-transition: all 0.3s linear;
+		transition: all 0.3s linear;
+	}
+	.masonry-wrapper .item span.class,
+	.portfolio-image li span.class,
+	.right-images li span.class,
+	.portfolio.column li span.class {
+	    background: #FF3333;
+	    color: #fff;
+	    font-weight: 900;
+	    letter-spacing: 1px;
+	    padding: 4px 7px;
+	    text-transform: uppercase;
+	    display: inline-block;
+    	margin-top: 2px;
+	}
+	.masonry-wrapper .item em,
+	.right-images li em,
+	.portfolio.column li em{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin: -31px 0 0 -31px;
+		width: 62px;
+		height: 62px;
+		text-align: center;
+
+		-moz-transform: scale(0, 0);
+	    -webkit-transform: scale(0, 0);
+	    -ms-transform: scale(0, 0);
+	    -o-transform: scale(0, 0);
+	    transform: scale(0, 0);
+
+	    -moz-transition: all 0.3s linear;
+		-webkit-transition: all 0.3s linear;
+		-o-transition: all 0.3s linear;
+		-ms-transition: all 0.3s linear;
+		transition: all 0.3s linear;
+	}
+	.masonry-wrapper .item em:before,
+	.right-images li em:before,
+	.portfolio.column li em:before {
+		font-size: 30px;
+	    z-index: 1;
+		color: #ff3333; 
+		line-height: 63px;   
+
+		-moz-transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+		transform: rotate(0deg);
+
+	    -moz-transition: all 0.3s linear;
+		-webkit-transition: all 0.3s linear;
+		-o-transition: all 0.3s linear;
+		-ms-transition: all 0.3s linear;
+		transition: all 0.3s linear;
+	}
+	.masonry-wrapper .item:hover a,
+	.right-images li:hover a,
+	.portfolio.column li:hover a{
+		box-shadow: inset 0 0 0 4px #ff3333;
+	}
+	.masonry-wrapper .item:hover a img,
+	.right-images li:hover a img,
+	.portfolio.column li:hover a img{
+	    -moz-transform: scale(1.1, 1.1);
+	    -webkit-transform: scale(1.1, 1.1);
+	    -ms-transform: scale(1.1, 1.1);
+	    -o-transform: scale(1.1, 1.1);
+	    transform: scale(1.1, 1.1);
+	}
+	.masonry-wrapper.animate .item > span,
+	.right-images:hover li > span,
+	.portfolio.column ul:hover li > span{
+	    background-color: rgba(0,0,0,.75);
+	}
+	.masonry-wrapper .item:hover > span,
+	.right-images li:hover > span,
+	.portfolio.column ul li:hover > span{
+	    background-color: rgba(0,0,0,0);
+	}
+	.masonry-wrapper .item:hover div:last-child,
+	.right-images li:hover div,
+	.portfolio.column li:hover div:last-child{
+		top: 25px;
+	}
+	.masonry-wrapper .item:hover em,
+	.right-images li:hover em,
+	.portfolio.column li:hover em{
+	    -moz-transform: scale(1, 1);
+	    -webkit-transform: scale(1, 1);
+	    -ms-transform: scale(1, 1);
+	    -o-transform: scale(1, 1);
+	    transform: scale(1, 1);
+	}
+	.masonry-wrapper .item.unactive em,
+	.portfolio.column li.unactive em{
+	    -moz-transform: scale(0, 0);
+	    -webkit-transform: scale(0, 0);
+	    -ms-transform: scale(0, 0);
+	    -o-transform: scale(0, 0);
+	    transform: scale(0, 0);
+	}
+	.masonry-wrapper .item.unactive > span,
+	.portfolio.column ul li.unactive > span{
+		background-color: rgba(0,0,0,.9);
+		border: 0 solid #ff3333;
+		cursor: default;
+	}
+	.masonry-wrapper .item.unactive em,
+	.portfolio.column li.unactive em{
+		bottom: -62px;
+		right: -62px;
+	}
+	.masonry-wrapper .item.unactive div:last-child,
+	.portfolio.column li.unactive div:last-child{
+		top: -70px;
+	}
+	.masonry-wrapper .item a,
+	.portfolio.column li.unactive a{
+	    -moz-transform: scale(1, 1);
+	    -webkit-transform: scale(1, 1);
+	    -ms-transform: scale(1, 1);
+	    -o-transform: scale(1, 1);
+	    transform: scale(1, 1);
+	}
+	/*----------  //COLUMNS IN PORTFOLIO  ----------*/
+
+	/*----------  MASONRY PORTFOLIO  ----------*/
+	.masonry-wrapper .item img{
+		width: 100%;
+	}
+	/*----------  //MASONRY PORTFOLIO  ----------*/
+
+	/*----------  HORIZONTAL PORTFOLIO  ----------*/
+	.portfolio.horizontal li{
+		background-size: 100%;
+		background-position: center center;
+		height: 240px;
+		position: relative;
+		opacity: 1;
+		cursor: pointer;
+
+	    -moz-transition: all 0.3s linear;
+		-webkit-transition: all 0.3s linear;
+		-o-transition: all 0.3s linear;
+		-ms-transition: all 0.3s linear;
+		transition: all 0.3s linear;
+	}	
+	.portfolio.horizontal li a{
+		position: absolute;
+		width: 330px;
+		height: 240px;
+		right: 330px;
+		top: 0;
+		background: #fff;
+		padding: 0 40px;
+	}
+	.portfolio.horizontal li:nth-child(2n) a{
+		right: 0;
+	}
+	.portfolio.horizontal span.title{
+		font-size: 30px;
+		line-height: 36px;
+		font-weight: 400;
+		margin: 32px 0 10px;
+		position: static;
+	}
+	.portfolio.horizontal strong{
+		font-size: 16px;
+		color: #ccc;
+		display: block;
+		text-transform: uppercase;
+
+	    -moz-transition: all 0.3s linear;
+		-webkit-transition: all 0.3s linear;
+		-o-transition: all 0.3s linear;
+		-ms-transition: all 0.3s linear;
+		transition: all 0.3s linear;
+	}
+	.portfolio.horizontal span{
+		text-transform: uppercase;
+		color: #333;
+		display: block;
+		font-weight: 900;
+		position: absolute;
+		bottom: 37px;
+
+	    -moz-transition: all 0.3s linear;
+		-webkit-transition: all 0.3s linear;
+		-o-transition: all 0.3s linear;
+		-ms-transition: all 0.3s linear;
+		transition: all 0.3s linear;
+	}
+	.portfolio.horizontal ul li.unactive,
+	.portfolio.horizontal ul:hover li{
+		opacity: 0.25;
+	}
+	.portfolio.horizontal ul li:hover{
+		opacity: 1;
+		background-size: 110%;
+	}
+	.portfolio.horizontal li:hover a{
+		background: #ff3333;
+	}
+	.portfolio.horizontal li:hover span{
+		color: #fff;
+	}
+	.portfolio.horizontal li:hover strong{
+		color: rgba(255,255,255,0.5);
+	}
+	/*----------  //HORIZONTAL PORTFOLIO  ----------*/
+
+	/*----------  SCROLLER  ----------*/
+	.scroller {
+	    height: 100%;
+	    overflow-y: scroll;
+	}
+	.scroller::-webkit-scrollbar { /* Preventing webkit cross-direction scrolling bug */
+	    width: 0;
+	}
+	.scroller__track {
+	    position: absolute;
+	    right: 4px;
+	    top: 10px;
+	    bottom: 4px;
+	    width: 3px;
+	    z-index: 3;
+	}
+	.scroller__bar {
+	    background: #1A1A1A;
+	    border-radius: 3px;
+	    pointer-events: auto;
+	    position: absolute;
+	    transition: opacity 0.2s linear 0s;
+	    width: 3px;
+	    z-index: 1;
+	    opacity: 0.1;
+	}
+	/*----------  //SCROLLER  ----------*/
+/*----------  //PORTFOLIO  ----------*/
+/*----------  //RIGHT CONTENT  ----------*/
