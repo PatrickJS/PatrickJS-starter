@@ -6,7 +6,7 @@ new ValidatedMethod({
   name: "user.remove_user",
   validate: function () {
     const user = OM.create<User>(User).loadById(this.userId);
-    if (user.isInRoles([Role.SUPERADMIN, Role.ADMIN], Role.GROUP_CLOUD)) {
+    if (user.isInRoles([Role.SUPERADMIN, Role.ADMIN], Role.GROUP_CLOUD) || user.isShopOwner()) {
     } else {
       throw new Meteor.Error("user.remove_user_error", "Access denied");
     }

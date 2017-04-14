@@ -5,10 +5,23 @@ export interface LicenseInterface {
   shop_owner_id?: string;
   shop_owner_username?: string;
   has_product?: LicenseHasProductInterface[];
+  has_roles?: LicenseHasRoleInterface[];
   is_auto_generate?: boolean;
   created_by?: string;
   created_at?: Date;
   updated_at?: Date
+}
+export interface LicenseHasRoleInterface{
+  code: string;
+  name:string;
+  has_permissions: LicenseHasRoleHasPermissionInterface[];
+}
+
+export interface LicenseHasRoleHasPermissionInterface{
+  code:string;
+  group: string;
+  permission:string;
+  is_active:boolean;
 }
 
 export interface LicenseHasProductInterface {

@@ -1,1 +1,63 @@
-<h1>shop roles</h1>
+<div class="row">
+    <div class="col-md-3">
+        <ul class="nav">
+            <li *ngFor="let role of roles" [ngClass]="{'active': role['code'] == role_id}" (click)="redirect(role['code'])">
+                <a href="{{ '#/cloud/manage-shop/roles/'+ role['code'] }}" routerLinkActive="active">{{ role.name }}</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-md-9">
+        <h1 class="text-center">Manage {{ role?.name }}</h1>
+        <form class="js-validation-permission form-horizontal push-10-t">
+            <div class="block">
+                <ul class="nav nav-tabs nav-justified push-20" data-toggle="tabs">
+                    <li *ngFor="let group of permissions" [ngClass]="{'active': group.group == getCurrentGroup()}">
+                        <a href="{{ '#' + group.group }}" role="tab" data-toggle="tab" (click)="setCurrentGroup
+                        (group.group)"><i class="fa fa-fw fa-pencil"></i>{{ group.group_name }}</a>
+                    </li>
+                </ul>
+                <div class="block-content tab-content">
+                    <!-- Personal Tab -->
+                    <div *ngFor="let group of permissions" class="tab-pane fade in active" role="tabpanel" id="{{ group.group }}">
+                        <div class="row items-push">
+                            <div class="col-sm-6 col-sm-offset-3 form-horizontal" *ngIf="group.group == getCurrentGroup()">
+                                <div *ngFor="let section of group.sections">
+                                    <div class="form-group" *ngIf="section.hasOwnProperty('section')">
+                                        <div class="col-sm-9">
+                                            <div class="form-material">
+                                                <h4>{{ section.section }}</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div *ngFor="let permission of section.permissions">
+                                        <div class="form-group">
+                                            <div class="col-sm-9">
+                                                <div class="form-material">
+                                                    <select class="form-control" id="{{'val-'+permission['permission']}}"
+                                                            name="{{'val-'+permission['permission']}}"
+                                                            style="width:100%;" data-placeholder="Choose one.." [(ngModel)]="permission.is_active">
+                                                        <option value="1">Yes</option>
+                                                        <option value="0">No</option>
+                                                    </select>
+                                                    <label for="{{'val-'+permission['permission']}}">{{ permission.name }}</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="block-content block-content-full bg-gray-lighter text-center">
+                    <button class="btn btn-sm btn-primary" type="submit"><i class="fa fa-check push-5-r"></i> Save Changes</button>
+                    <button class="btn btn-sm btn-warning" type="reset"><i class="fa fa-refresh push-5-r"></i> Reset</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+

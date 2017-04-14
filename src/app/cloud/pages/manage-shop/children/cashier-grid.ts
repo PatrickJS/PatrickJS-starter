@@ -9,6 +9,7 @@ import * as _ from "lodash";
 import {AuthService} from "../../../services/ddp/auth.service";
 import {AngularMeteorDataTableComponent} from "../../../../code/angular/components/angular-meteor-datatable";
 import {Router} from "../../../../../../node_modules/@angular/router/src/router";
+import {ManageUsersService} from "../../admin-area/manage-users/manage-users.service";
 
 @Component({
              selector   : 'cashier-grid',
@@ -61,7 +62,8 @@ export class CashierGridComponent implements OnInit {
   constructor(protected userCollection: UserCollection,
               protected manageShop: ManageShopService,
               protected authService: AuthService,
-              protected router: Router) { }
+              protected router: Router,
+              protected manageUserService: ManageUsersService) { }
   
   ngOnInit() {
     this.manageShop.viewState.headerText = "Cashiers";
@@ -70,6 +72,12 @@ export class CashierGridComponent implements OnInit {
     this.angularMeteorDtTable.getCallBackObservable().subscribe((data: any) => {
       if (data.event == 'newRecord') {
         this.router.navigate(['/cloud/manage-shop/create-cashier']);
+      }
+      if (data.event == "clickEdit") {
+        this.router.navigate(['/cloud/manage-shop/edit-cashier/' + data.data]);
+      }
+      if (data.event == 'removeRecord') {
+        this.manageUserService.removeUser(data.data);
       }
     });
   }

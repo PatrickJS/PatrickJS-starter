@@ -4,7 +4,6 @@ import {MeteorObservable} from "meteor-rxjs";
 import {Router} from "@angular/router";
 import {Http, URLSearchParams, Headers, RequestOptions} from "@angular/http";
 import {RequestService} from "../../../../service/request";
-import {Observable} from "rxjs";
 
 @Injectable()
 export class ManageUsersService {
@@ -12,8 +11,6 @@ export class ManageUsersService {
     headerText: ""
   };
   viewData: any  = {};
-
-  api_magento2 = "http://mage2.dev";
 
   constructor(protected toast: ToastsManager,
               protected router: Router,
@@ -52,27 +49,16 @@ export class ManageUsersService {
     });
   }
 
-  updatePermission(data: any): Observable<any>{
-    return this.requestService.makePost(this.api_magento2 + "/xrest/v1/xretail/permission", data);
-  }
-
-  getAllRoles(): Observable<any>{
-    return this.requestService.makeGet(this.api_magento2 + "/xrest/v1/xretail/role")
-               .map((data) => {
-                 return data.items;
-               });
-  }
-
-  getAllPermissions(role_id): Observable<any>{
-    let params: URLSearchParams = new URLSearchParams();
-    let options = new RequestOptions({headers: new Headers({'Content-Type': 'application/json'})});
-
-    params.set('role_id', role_id);
-    options.search = params;
-    return this.requestService.makeGet(this.api_magento2 + "/xrest/v1/xretail/permission", options)
-               .map((data) => {
-                 return data.items;
-               });
+  updatePermission(data: any){
+    return new Promise<void>((resolve, reject) => {
+      MeteorObservable.call("license.save_permission_to_role", data).subscribe((res) => {
+        this.toast.success("Update Permission Successfully");
+        resolve();
+      }, (err) => {
+        this.toast.error(err.reason, err.error);
+        return reject(err);
+      });
+    });
   }
 
 }

@@ -42,6 +42,23 @@ export const Licenses = CollectionMaker.make<LicenseInterface>("licenses",
                                                                    purchase_date: Date,
                                                                    expired_date: Date
                                                                  }),
+                                                                 has_roles: {
+                                                                   type: Array,
+                                                                   optional: true
+                                                                 },
+                                                                 "has_roles.$": new SimpleSchema({
+                                                                   code: String,
+                                                                   name: String,
+                                                                 }),
+                                                                 "has_roles.$.has_permissions": {
+                                                                   type: Array,
+                                                                   optional: true
+                                                                 },
+                                                                 "has_roles.$.has_permissions.$": new SimpleSchema({
+                                                                   group: String,
+                                                                   permission: String,
+                                                                   is_active: SimpleSchema.Integer
+                                                                 }),
                                                                  is_auto_generate: {
                                                                    type: Boolean,
                                                                    defaultValue: true

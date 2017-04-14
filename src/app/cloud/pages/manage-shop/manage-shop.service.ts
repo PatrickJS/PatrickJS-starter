@@ -17,7 +17,18 @@ export class ManageShopService {
         this.toast.success("OK");
       }, e => {
         console.log(e);
-        this.toast.error("Error");
+        this.toast.error(e);
+      });
+    });
+  }
+
+  editCashier(data): Promise<any> {
+    return new Promise((res, rej) => {
+      MeteorObservable.call("user.edit_user", data).subscribe(res => {
+        this.toast.success("OK");
+      }, e => {
+        console.log(e);
+        this.toast.error(e);
       });
     });
   }

@@ -107,9 +107,6 @@
               <li>
                 <a routerLink="/cloud/users/grid" routerLinkActive="active">User</a>
               </li>
-                <li>
-                    <a routerLink="/cloud/users/roles/1" routerLinkActive="active">Role</a>
-                </li>
             </ul>
           </li>
 
@@ -136,8 +133,11 @@
               <li>
                 <a routerLink="/cloud/manage-shop/cashiers" routerLinkActive="active">Cashiers</a>
               </li>
+                <li>
+                    <a routerLink="/cloud/roles" routerLinkActive="active">Roles</a>
+                </li>
               <li>
-                <a routerLink="/cloud/manage-shop/roles" routerLinkActive="active">Roles</a>
+                <a [routerLink]="['manage-shop/roles', role_code]" routerLinkActive="active">Permissions</a>
               </li>
             </ul>
           </li>
