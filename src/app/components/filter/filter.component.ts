@@ -12,6 +12,7 @@ import {
 })
 
 export class FilterComponent {
-  constructor(
-  ) {}
+  constructor () {
+  	// empty
+  }
 }

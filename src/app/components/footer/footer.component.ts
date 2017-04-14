@@ -11,6 +11,7 @@ import {
   templateUrl: './footer.component.html'
 })
 export class FooterComponent {
-  constructor(
-  ) {}
+  constructor () {
+  	// empty
+  }
 }

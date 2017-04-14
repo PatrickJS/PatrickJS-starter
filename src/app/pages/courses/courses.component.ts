@@ -18,6 +18,7 @@ export class CoursesComponent {
   // Set our default values
   public localState = { value: '' };
   // TypeScript public modifiers
-  constructor(
-  ) {}
+  constructor () {
+    // empty
+  }
 }

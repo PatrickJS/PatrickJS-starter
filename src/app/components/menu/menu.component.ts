@@ -12,6 +12,7 @@ import {
 })
 
 export class MenuComponent {
-  constructor(
-  ) {}
+  constructor () {
+	// empty
+  }
 }
