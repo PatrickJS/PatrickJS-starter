@@ -19,8 +19,8 @@ new ValidatedMethod({
     let has_roles = _.map(license.getData('has_roles'), (role) => {
       if (role['code'] == data['role_id']){
         role['has_permissions'] = data['permissions'];
-        return role;
       }
+      return role;
     });
     license.setData('has_roles', has_roles);
     license.save().then(() => defer.resolve(), (err) => defer.reject(err));
