@@ -1,0 +1,47 @@
+<div class="content content-narrow">
+    <div class="row">
+        <div class="block">
+            <div class="block-header">
+                <ul class="block-options">
+                    <li>
+                        <button type="button"><i class="si si-settings"></i></button>
+                    </li>
+                </ul>
+                <h3 class="block-title">{{ form_title }}</h3>
+            </div>
+            <div class="block-content block-content-narrow">
+                <form class="js-validation-role-form form-horizontal push-10-t">
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <div class="form-material">
+                                <input class="form-control" type="text" id="val-role_name" name="val-role_name" placeholder="Enter Role Name.." [(ngModel)]="role.name">
+                                <label for="val-role_name">Role Name</label>
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div class="form-group">
+                        <div class="col-sm-4">
+                            <div class="form-material">
+                                <select class="form-control"
+                                        name="val-status"
+                                        style="width:100%;" data-placeholder="Choose one.." [(ngModel)]="role.is_active">
+                                    <option value="1">Enable</option>
+                                    <option value="0">Disable</option>
+                                </select>
+                                <label for="val-status">Status</label>
+                            </div>
+                        </div>
+                    </div>-->
+
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <button class="btn btn-sm btn-primary" type="submit">Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

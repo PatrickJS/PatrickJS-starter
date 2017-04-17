@@ -1,0 +1,96 @@
+<div class="content content-narrow">
+  <div class="row">
+    <div class="block">
+      <div class="block-header">
+        <ul class="block-options">
+          <li>
+            <button type="button"><i class="si si-settings"></i></button>
+          </li>
+        </ul>
+        <h3 class="block-title">{{ form_title }}</h3>
+      </div>
+      <div class="block-content block-content-narrow">
+        <form class="js-validation-product-form form-horizontal push-10-t">
+          <div class="form-group">
+            <div class="col-sm-9">
+              <div class="form-material">
+                <input class="form-control" type="text" id="val-product_code" name="val-product_code" placeholder="Enter Product Code.."
+                       [(ngModel)]="product.code">
+                <label for="val-product_code">Product Code</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-9">
+              <div class="form-material">
+                <input class="form-control" type="text" id="val-product_name" name="val-product_name" placeholder="EnterProduct Name.."
+                       [(ngModel)]="product.name">
+                <label for="val-product_name">Product Name</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-9">
+              <div class="form-material">
+                                <textarea class="form-control" id="val-product_des" name="val-product_des" rows="6"
+                                          placeholder="Products's Description Here.." [(ngModel)]="product.additional_data.description">
+                                </textarea>
+                <label for="val-product_des">Descriptions</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-9">
+              <div class="form-material">
+                <select class="form-control" id="val-pricings" name="val-pricings" style="width: 100%;"
+                        data-placeholder="Choose at least one.." multiple>
+                  <option></option>
+                  <option *ngFor="let price of prices;trackBy:price?._id" [value]="price._id" [selected]="isSelectedPrice(price._id)">
+                    {{ price.name}}
+                  </option>
+                </select>
+                <label for="val-pricings">Pricings</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-12">
+              <div class="form-material">
+                <label>Versions of Product</label>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn btn-sm" (click)="addVersion()">Add Version</button>
+
+          <table class="table table-bordered" *ngIf="product.versions.length > 0">
+            <tr>
+              <td>Version</td>
+              <td>Version Name</td>
+              <td>Action</td>
+            </tr>
+            <tr *ngFor="let version of product.versions">
+              <td><input type="text" [value]="version.version" name="{{ 'version' + version.version }}" [(ngModel)]="version.version"></td>
+              <td><input type="text" [value]="version.name" name="{{ 'version-name' + version.name }}" [(ngModel)]="version.name"></td>
+              <td>
+                <button class="btn btn-default" type="button" title="Remove Version" (click)="removeVersion(version)">
+                  <i class="fa fa-times"></i>
+                </button>
+              </td>
+            </tr>
+          </table>
+
+          <div class="form-group">
+            <div class="col-xs-12">
+              <button class="btn btn-sm btn-primary" type="submit">Save</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+

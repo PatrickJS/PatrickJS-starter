@@ -1,0 +1,43 @@
+<!-- Lock Screen Content -->
+<div class="bg-white pulldown">
+  <div class="content content-boxed overflow-hidden">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+        <div class="push-50-t push-50 animated fadeIn">
+          <!-- Lock Screen Avatar -->
+          <div class="text-center">
+            <img class="img-avatar img-avatar96" src="assets/img/avatars/avatar10.jpg" alt="">
+          </div>
+          <!-- END Lock Screen Avatar -->
+
+          <!-- Lock Screen Form -->
+          <!-- jQuery Validation (.js-validation-lock class is initialized in js/pages/base_pages_lock.js) -->
+          <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
+          <form class="js-validation-lock form-horizontal push-50-t" action="base_pages_dashboard.html" method="post">
+            <div class="form-group">
+              <div class="col-xs-12">
+                <div class="form-material form-material-primary">
+                  <input class="form-control" type="password" id="lock-password" name="lock-password" placeholder="Please enter your password">
+                  <label for="lock-password">Password</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+                <button class="btn btn-sm btn-block btn-default" type="submit">Unlock Account</button>
+              </div>
+            </div>
+          </form>
+          <!-- END Lock Screen Form -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END Lock Screen Content -->
+
+<!-- Lock Screen Footer -->
+<div class="pulldown push-30-t text-center animated fadeInUp">
+  <small class="text-black-op font-w600"><span class="js-year-copy"></span> &copy; OneUI 3.1</small>
+</div>
+<!-- END Lock Screen Footer -->

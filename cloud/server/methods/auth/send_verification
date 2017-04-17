@@ -1,0 +1,8 @@
+Meteor.methods({
+                 send_verification() {
+                   let userId = Meteor.userId();
+                   if ( userId ) {
+                     return Accounts.sendVerificationEmail( userId );
+                   }
+                 }
+               });

@@ -1,0 +1,105 @@
+<div class="content content-narrow">
+    <div class="row">
+        <div class="block">
+            <div class="block-header">
+                <ul class="block-options">
+                    <li>
+                        <button type="button"><i class="si si-settings"></i></button>
+                    </li>
+                </ul>
+                <h3 class="block-title">{{ form_title }}</h3>
+            </div>
+            <div class="block-content block-content-narrow">
+                <form class="js-validation-pricing-form form-horizontal push-10-t">
+                    <div class="form-group">
+                        <div class="col-sm-9">
+                            <div class="form-material">
+                                <input class="form-control" type="text" id="val-pricing_code" name="val-pricing_code" placeholder="Enter Pricing
+ Code.."
+                                       [(ngModel)]="pricing.code">
+                                <label for="val-pricing_code">Pricing Code</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-9">
+                            <div class="form-material">
+                                <input class="form-control" type="text" id="val-pricing_name" name="val-pricing_name" placeholder="Enter Pricing Name.."
+                                       [(ngModel)]="pricing.name">
+                                <label for="val-pricing_name">Pricing Name</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-9">
+                            <div class="form-material">
+                                <input class="form-control" type="text" id="val-display_name" name="val-display_name" placeholder="Enter Pricing
+ Name.."
+                                       [(ngModel)]="pricing.display_name">
+                                <label for="val-display_name">Display Name</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-9">
+                            <div class="form-material">
+                                <select class="js-select2 form-control" id="val-type" name="val-type" style="width: 100%;" data-placeholder="Choose one
+                                .." [(ngModel)]="pricing.type">
+                                    <option value="1">Monthly</option>
+                                    <option value="2">Yearly</option>
+                                    <option value="3">Lifetime</option>
+                                </select>
+                                <label for="val-type">Type</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-9">
+                            <div class="form-material">
+                                <input class="form-control" type="text" id="val-cost" name="val-cost" placeholder="Enter Pricing Code.."
+                                       [(ngModel)]="pricing.cost">
+                                <label for="val-cost">Cost</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-9">
+                            <div class="form-material">
+                                <select class="js-select2 form-control" id="val-visibility" name="val-visibility" style="width: 100%;" data-placeholder="Choose one
+                                .." [(ngModel)]="pricing.visibility">
+                                    <option value="1">Show to Customer</option>
+                                    <option value="0">Hidden</option>
+                                </select>
+                                <label for="val-visibility">Visibility</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-9">
+                            <div class="form-material">
+                                <textarea class="form-control" id="val-description" name="val-description" rows="6"
+                                          placeholder="Pricing's Description Here.." [(ngModel)]="pricing.description">
+                                </textarea>
+                                <label for="val-description">Description</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <button class="btn btn-sm btn-primary" type="submit">Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
