@@ -17,7 +17,6 @@ export class ManageLicensesService {
               protected licenseCollection: LicenseCollection) { }
 
   createLicense(license: any): Promise<any> {
-    console.log(license);
     return new Promise<void>((resolve, reject) => {
       MeteorObservable.call("license.admin_create_license", license).subscribe((res) => {
         this.router.navigate(['cloud/licenses']);
