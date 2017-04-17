@@ -83,7 +83,7 @@ function greetText() {
 }
 
 Accounts.emailTemplates = {
-  from: "Meteor Accounts <bot@smartosc.com>",
+  from: "Superadmin <bot@smartosc.com>",
   siteName: Meteor.absoluteUrl().replace(/^https?:\/\//, '').replace(/\/$/, ''),
   resetPassword: {
     subject: function (user) {

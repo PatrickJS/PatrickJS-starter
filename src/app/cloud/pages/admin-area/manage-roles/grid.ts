@@ -63,7 +63,7 @@ export class ManageRolesGridComponent extends AbstractRxComponent implements OnI
                         scrollCollapse: true,
                         responsive    : true,
                         columns      : [
-                          {data: "code", title: "Code"},
+                          //{data: "code", title: "Code"},
                           {data: "name", title: "Name"},
                           //{data: "is_active", title: "Active"},
                           {data: "code", title: "Actions"}
@@ -85,7 +85,7 @@ export class ManageRolesGridComponent extends AbstractRxComponent implements OnI
                               return _html;
 
                             },
-                            "targets": [2]
+                            "targets": [1]
                           },
                           /*{
                             className: "text-center",

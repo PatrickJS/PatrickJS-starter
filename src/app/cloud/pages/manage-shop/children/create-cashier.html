@@ -10,7 +10,7 @@
               <button type="button"><i class="si si-settings"></i></button>
             </li>
           </ul>
-          <h3 class="block-title">Create new cashier</h3>
+          <h3 class="block-title">{{ manageShopService.viewState.headerText }}</h3>
         </div>
         <div class="block-content block-content-narrow">
           <!-- jQuery Validation (.js-validation-material class is initialized in js/pages/base_forms_validation.js) -->
@@ -70,7 +70,7 @@
                       <div class="form-material">
                           <select class="form-control" id="role" name="role" [(ngModel)]="_data['role']">
                               <option value=""></option>
-                              <option *ngFor="let role of roles" value="{{ role.name }}">{{ role.name }}</option>
+                              <option *ngFor="let role of roles" value="{{ role.code }}">{{ role.name }}</option>
                           </select>
                           <label for="role">Select shop role</label>
                       </div>
