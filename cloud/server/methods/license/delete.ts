@@ -21,28 +21,31 @@ new ValidatedMethod({
     if (!license) {
       throw new Meteor.Error("license.error_edit", "License Not Found");
     }
+    let cashiers = [];
+    _.forEach(license.getData('has_product'), (product) => {
+      if (product.hasOwnProperty('has_user')){
+        let cashier_list = _.map(product['has_user'], (user) => {
+          return user['user_id'];
+        });
+        cashiers = _.concat(cashiers, cashier_list);
+      }
+    });
+    _.forEach(cashiers, (cashier) => {
+      const cash: User = OM.create<User>(User).loadById(cashier);
+      if (!!cash){
+        let unset = {$unset: {}};
+        unset.$unset['has_license'] = "";
+        Meteor.users.update({_id: cashier}, unset);
+      }
+    });
     if(!!license.getData('shop_owner_id')){
       const user: User = OM.create<User>(User).loadById(license.getData('shop_owner_id'));
       if (!!user){
-        user.unsetData('has_license');
-        user.save();
+        let unset = {$unset: {}};
+        unset.$unset['has_license'] = "";
+        Meteor.users.update({_id: license.getData('shop_owner_id')}, unset);
       }
-      let cashiers = [];
-      _.forEach(license['has_product'], (product) => {
-        if (product.hasOwnProperty('has_user')){
-          let cashier_list = _.map(product['has_user'], (user) => {
-            return user['user_id'];
-          });
-          _.concat(cashiers, cashier_list);
-        }
-      });
-      _.forEach(cashiers, (cashier) => {
-        const cash: User = OM.create<User>(User).loadById(cashier);
-        if (!!cash){
-          cash.unsetData('has_license');
-          cash.save();
-        }
-      });
+
     }
     license.delete().then(() => defer.resolve(), (err) => defer.reject(err));
     return defer.promise;
