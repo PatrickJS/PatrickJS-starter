@@ -68,7 +68,7 @@
     "webpack": "webpack",
     "meteor-client:bundle": "meteor-client bundle -s cloud -c bundler.config.json",
     "meteor-start": "cd cloud && export MONGO_URL=mongodb://localhost:27017/cloud && export PORT=2005 && meteor run --port 2005",
-    "meteor": "cd cloud && export MAIL_URL=smtp://bot@smartosc.com:thestar0@smtp.gmail.com:465 && export MONGO_URL=mongodb://localhost:27017/cloud&& export ROOT_URL=http://xcloud.smartosc.com && export PORT=2005 && meteor run --port 2005",
+    "meteor": "cd cloud && export MAIL_URL=smtp://bot@smartosc.com:thestar0@smtp.gmail.com:465 && export MONGO_URL=mongodb://localhost:27017/cloud&& export ROOT_URL=http://accounts.connectpos.com && export PORT=2005 && meteor run --port 2005",
     "meteor-debug": "cd cloud && export MAIL_URL=smtp://bot@smartosc.com:thestar0@smtp.gmail.com:465 && export MONGO_URL=mongodb://localhost:27017/cloud&& export PORT=2005 && meteor debug --port 2005"
   },
   "dependencies": {
