@@ -1,6 +1,6 @@
 {
   "name": "angular2-webpack-starter",
-  "version": "5.4.1",
+  "version": "6.0.0",
   "description": "An Angular 2 Webpack Starter kit featuring Angular 2 (Router, Http, Forms, Services, Tests, E2E, Coverage), Karma, Protractor, Jasmine, Istanbul, TypeScript, and Webpack by AngularClass",
   "keywords": [
     "angular",
