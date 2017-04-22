@@ -87,7 +87,7 @@
     "ie-shim": "^0.1.0",
     "jasmine-core": "^2.5.2",
     "reflect-metadata": "^0.1.10",
-    "rxjs": "~5.3.0",
+    "rxjs": "5.0.2",
     "zone.js": "~0.8.5"
   },
   "devDependencies": {
