@@ -6,7 +6,7 @@ import {
 } from '@angular/core/testing';
 import { Component } from '@angular/core';
 import { BaseRequestOptions, Http } from '@angular/http';
-import { By } from '@angular/platform-browser/src/dom/debug/by';
+import { By } from '@angular/platform-browser';
 import { MockBackend } from '@angular/http/testing';
 
 // Load the implementations that should be tested
