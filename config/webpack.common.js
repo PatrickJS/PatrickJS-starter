@@ -17,6 +17,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
 const HtmlElementsPlugin = require('./html-elements-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const ngcWebpack = require('ngc-webpack');
@@ -239,6 +240,10 @@ module.exports = function (options) {
       new CommonsChunkPlugin({
         name: ['polyfills', 'vendor'].reverse()
       }),
+      new CommonsChunkPlugin({
+        name: ['manifest'],
+        minChunks: Infinity,
+      }),
 
       /**
        * Plugin: ContextReplacementPlugin
@@ -356,8 +361,15 @@ module.exports = function (options) {
         disabled: !AOT,
         tsConfig: helpers.root('tsconfig.webpack.json'),
         resourceOverride: helpers.root('config/resource-override.js')
-      })
+      }),
 
+      /**
+       * Plugin: InlineManifestWebpackPlugin
+       * Inline Webpack's manifest.js in index.html
+       *
+       * https://github.com/szrenwei/inline-manifest-webpack-plugin
+       */
+      new InlineManifestWebpackPlugin(),
     ],
 
     /*
