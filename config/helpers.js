@@ -22,7 +22,16 @@ function isWebpackDevServer() {
 
 var root = path.join.bind(path, ROOT);
 
+function useCoverage() {
+  if (EVENT.indexOf('--auto-watch') !== -1) {
+    return false;
+  } else {
+    return !process.env.hasOwnProperty('NO_COVERAGE')
+  }
+}
+
 exports.hasProcessFlag = hasProcessFlag;
 exports.hasNpmFlag = hasNpmFlag;
 exports.isWebpackDevServer = isWebpackDevServer;
 exports.root = root;
+exports.useCoverage = useCoverage;
