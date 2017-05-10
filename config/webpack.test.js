@@ -77,7 +77,9 @@ module.exports = function (options) {
           test: /\.js$/,
           loader: 'source-map-loader',
           exclude: [
-            // these packages have problems with their sourcemaps
+            /**
+             * These packages have problems with their sourcemaps
+             */
             helpers.root('node_modules/rxjs'),
             helpers.root('node_modules/@angular')
           ]
@@ -94,13 +96,17 @@ module.exports = function (options) {
             {
               loader: 'awesome-typescript-loader',
               query: {
-                // use inline sourcemaps for "karma-remap-coverage" reporter
+                /**
+                 * Use inline sourcemaps for "karma-remap-coverage" reporter
+                 */
                 sourceMap: false,
                 inlineSourceMap: true,
                 compilerOptions: {
 
-                  // Remove TypeScript helpers to be injected
-                  // below by DefinePlugin
+                  /**
+                   * Remove TypeScript helpers to be injected
+                   * below by DefinePlugin
+                   */
                   removeComments: true
 
                 }
@@ -192,8 +198,9 @@ module.exports = function (options) {
        * Environment helpers
        *
        * See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
+       *
+       * NOTE: when adding more properties make sure you include them in custom-typings.d.ts
        */
-      // NOTE: when adding more properties make sure you include them in custom-typings.d.ts
       new DefinePlugin({
         'ENV': JSON.stringify(ENV),
         'HMR': false,
@@ -212,11 +219,15 @@ module.exports = function (options) {
        * See: https://github.com/angular/angular/issues/11580
        */
       new ContextReplacementPlugin(
-        // The (\\|\/) piece accounts for path separators in *nix and Windows
+        /**
+         * The (\\|\/) piece accounts for path separators in *nix and Windows
+         */
         /angular(\\|\/)core(\\|\/)@angular/,
         helpers.root('src'), // location of your src
         {
-          // your Angular Async Route paths relative to this root directory
+          /**
+           * your Angular Async Route paths relative to this root directory
+           */
         }
       ),
 
@@ -228,7 +239,9 @@ module.exports = function (options) {
       new LoaderOptionsPlugin({
         debug: false,
         options: {
-          // legacy options go here
+          /**
+           * legacy options go here
+           */
         }
       }),
 

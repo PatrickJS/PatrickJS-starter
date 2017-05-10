@@ -47,7 +47,6 @@ This seed repo serves as an Angular starter for anyone looking to get up and run
 * End-to-end Angular code using Protractor.
 * Type manager with @types
 * Hot Module Replacement with Webpack and [@angularclass/hmr](https://github.com/angularclass/angular2-hmr) and [@angularclass/hmr-loader](https://github.com/angularclass/angular2-hmr-loader)
-* Material Design with [angular/material2](https://github.com/angular/material2)
 * Angular 4 support via changing package.json and any future Angular versions
 
 ### Quick start
@@ -353,8 +352,6 @@ import * as _ from 'lodash';
  * We are using inline source-maps and hot module replacement which will increase the bundle size.
 * If you're in China
  * check out https://github.com/cnpm/cnpm
-* If you're looking to add Angular 2 Material Design
- * check out the [material2](https://github.com/AngularClass/angular2-webpack-starter/tree/material2) branch
 * node-pre-gyp ERR in npm install (Windows)
  * install Python x86 version between 2.5 and 3.0 on windows see issue [#626](https://github.com/AngularClass/angular2-webpack-starter/issues/626)
 * `Error:Error: Parse tsconfig error [{"messageText":"Unknown compiler option 'lib'.","category":1,"code":5023},{"messageText":"Unknown compiler option 'strictNullChecks'.","category":1,"code":5023},{"messageText":"Unknown compiler option 'baseUrl'.","category":1,"code":5023},{"messageText":"Unknown compiler option 'paths'.","category":1,"code":5023},{"messageText":"Unknown compiler option 'types'.","category":1,"code":5023}]`
