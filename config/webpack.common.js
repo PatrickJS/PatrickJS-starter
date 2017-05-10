@@ -9,17 +9,17 @@ const helpers = require('./helpers');
  * Webpack Plugins
  */
 // problem with copy-webpack-plugin
-const AssetsPlugin = require('assets-webpack-plugin');
+const AssetsPlugin                  = require('assets-webpack-plugin');
 const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplacementPlugin');
-const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
-const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
-const HtmlElementsPlugin = require('./html-elements-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
-const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
-const ngcWebpack = require('ngc-webpack');
+const ContextReplacementPlugin      = require('webpack/lib/ContextReplacementPlugin');
+const CommonsChunkPlugin            = require('webpack/lib/optimize/CommonsChunkPlugin');
+const CopyWebpackPlugin             = require('copy-webpack-plugin');
+const CheckerPlugin                 = require('awesome-typescript-loader').CheckerPlugin;
+const HtmlElementsPlugin            = require('./html-elements-plugin');
+const HtmlWebpackPlugin             = require('html-webpack-plugin');
+const LoaderOptionsPlugin           = require('webpack/lib/LoaderOptionsPlugin');
+const ScriptExtHtmlWebpackPlugin    = require('script-ext-html-webpack-plugin');
+const ngcWebpack                    = require('ngc-webpack');
 
 /*
  * Webpack Constants
@@ -38,7 +38,7 @@ const METADATA = {
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
 module.exports = function (options) {
-  isProd = options.env === 'production';
+  var isProd = options.env === 'production';
   return {
 
     /*
@@ -279,11 +279,11 @@ module.exports = function (options) {
        * See: https://github.com/ampedandwired/html-webpack-plugin
        */
       new HtmlWebpackPlugin({
-        template: 'src/index.html',
-        title: METADATA.title,
+        template:       'src/index.html',
+        title:          METADATA.title,
         chunksSortMode: 'dependency',
-        metadata: METADATA,
-        inject: 'head'
+        metadata:       METADATA,
+        inject:         'head'
       }),
 
       /*
@@ -373,7 +373,7 @@ module.exports = function (options) {
       module: false,
       clearImmediate: false,
       setImmediate: false
-    }
+    },
 
   };
-}
+};
