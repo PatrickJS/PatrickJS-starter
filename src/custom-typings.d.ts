@@ -61,6 +61,9 @@ declare var ENV: string;
 declare var HMR: boolean;
 declare var System: SystemJS;
 
+// only work for DefinePlugin
+declare var VARS: any;
+
 interface SystemJS {
   import: (path?: string) => Promise<any>;
 }
