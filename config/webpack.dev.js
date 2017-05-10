@@ -92,21 +92,9 @@ module.exports = function (options) {
     module: {
 
       rules: [
-       {
-         test: /\.ts$/,
-         use: [
-           {
-             loader: 'tslint-loader',
-             options: {
-               configFile: 'tslint.json'
-             }
-           }
-         ],
-         exclude: [/\.(spec|e2e)\.ts$/]
-       },
 
-        /*
-         * css loader support for *.css files (styles directory only)
+        /**
+         * Css loader support for *.css files (styles directory only)
          * Loads external css styles into the DOM, supports HMR
          *
          */
@@ -116,8 +104,8 @@ module.exports = function (options) {
           include: [helpers.root('src', 'styles')]
         },
 
-        /*
-         * sass loader support for *.scss files (styles directory only)
+        /**
+         * Sass loader support for *.scss files (styles directory only)
          * Loads external sass styles into the DOM, supports HMR
          *
          */
@@ -141,8 +129,9 @@ module.exports = function (options) {
        * Environment helpers
        *
        * See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
+       *
+       * NOTE: when adding more properties, make sure you include them in custom-typings.d.ts
        */
-      // NOTE: when adding more properties, make sure you include them in custom-typings.d.ts
       new DefinePlugin({
         'ENV': JSON.stringify(METADATA.ENV),
         'HMR': METADATA.HMR,
@@ -238,7 +227,7 @@ module.exports = function (options) {
       }
     },
 
-    /*
+    /**
      * Include polyfills or mocks for various node stuff
      * Description: Node configuration
      *

@@ -13,7 +13,9 @@ import {
 } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 
-// Load the implementations that should be tested
+/**
+ * Load the implementations that should be tested.
+ */
 import { AppState } from '../app.service';
 import { HomeComponent } from './home.component';
 import { Title } from './title';
@@ -22,7 +24,9 @@ describe(`Home`, () => {
   let comp: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
 
-  // async beforeEach
+  /**
+   * async beforeEach.
+   */
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [HomeComponent],
@@ -41,15 +45,23 @@ describe(`Home`, () => {
         Title,
       ]
     })
-    .compileComponents(); // compile template and css
+    /**
+     * Compile template and css.
+     */
+    .compileComponents();
   }));
 
-  // synchronous beforeEach
+  /**
+   * Synchronous beforeEach.
+   */
   beforeEach(() => {
     fixture = TestBed.createComponent(HomeComponent);
     comp = fixture.componentInstance;
 
-    fixture.detectChanges(); // trigger initial data binding
+    /**
+     * Trigger initial data binding.
+     */
+    fixture.detectChanges();
   });
 
   it('should have default data', () => {

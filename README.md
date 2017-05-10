@@ -47,7 +47,6 @@ This seed repo serves as an Angular starter for anyone looking to get up and run
 * End-to-end Angular code using Protractor.
 * Type manager with @types
 * Hot Module Replacement with Webpack and [@angularclass/hmr](https://github.com/angularclass/angular2-hmr) and [@angularclass/hmr-loader](https://github.com/angularclass/angular2-hmr-loader)
-* Material Design with [angular/material2](https://github.com/angular/material2)
 * Angular 4 support via changing package.json and any future Angular versions
 
 ### Quick start
@@ -344,36 +343,34 @@ import * as _ from 'lodash';
   * The `EADDRINUSE` error means the port `3000` is currently being used and `EACCES` is lack of permission for webpack to build files to `./dist/`
 * How to use `sass` for css?
  *  * `loaders: ['raw-loader','sass-loader']` and `@Component({ styleUrls: ['./filename.scss'] })` see Wiki page [How to include SCSS in components](https://github.com/AngularClass/angular2-webpack-starter/wiki/How-to-include-SCSS-in-components), or issue [#136](https://github.com/AngularClass/angular2-webpack-starter/issues/136) for more information.
-* How do I test a Service?
- * See issue [#130](https://github.com/AngularClass/angular2-webpack-starter/issues/130#issuecomment-158872648)
+* How do I test a Service?  
+  * See issue [#130](https://github.com/AngularClass/angular2-webpack-starter/issues/130#issuecomment-158872648)
 * How do I add `vscode-chrome-debug` support?
- * The VS Code chrome debug extension support can be done via `launch.json` see issue [#144](https://github.com/AngularClass/angular2-webpack-starter/issues/144#issuecomment-164063790)
+  * The VS Code chrome debug extension support can be done via `launch.json` see issue [#144](https://github.com/AngularClass/angular2-webpack-starter/issues/144#issuecomment-164063790)
 * How do I make the repo work in a virtual machine?
- * You need to use `0.0.0.0` so revert these changes [#205](https://github.com/AngularClass/angular2-webpack-starter/pull/205/files)
+  * You need to use `0.0.0.0` so revert these changes [#205](https://github.com/AngularClass/angular2-webpack-starter/pull/205/files)
 * What are the naming conventions for Angular?
- * please see issue [#185](https://github.com/AngularClass/angular2-webpack-starter/issues/185) and PR [196](https://github.com/AngularClass/angular2-webpack-starter/pull/196)
+  * please see issue [#185](https://github.com/AngularClass/angular2-webpack-starter/issues/185) and PR [196](https://github.com/AngularClass/angular2-webpack-starter/pull/196)
 * How do I include bootstrap or jQuery?
- * please see issue [#215](https://github.com/AngularClass/angular2-webpack-starter/issues/215) and [#214](https://github.com/AngularClass/angular2-webpack-starter/issues/214#event-511768416)
+  * please see issue [#215](https://github.com/AngularClass/angular2-webpack-starter/issues/215) and [#214](https://github.com/AngularClass/angular2-webpack-starter/issues/214#event-511768416)
 * How do I async load a component?
- * see wiki [How-do-I-async-load-a-component-with-AsyncRoute](https://github.com/AngularClass/angular2-webpack-starter/wiki/How-do-I-async-load-a-component-with-AsyncRoute)
+  * see wiki [How-do-I-async-load-a-component-with-AsyncRoute](https://github.com/AngularClass/angular2-webpack-starter/wiki/How-do-I-async-load-a-component-with-AsyncRoute)
 * Error: Cannot find module 'tapable'
- * Remove `node_modules/` and run `npm cache clean` then `npm install`
+  * Remove `node_modules/` and run `npm cache clean` then `npm install`
 * How do I turn on Hot Module Replacement
- * Run `npm run server:dev:hmr`
+  * Run `npm run server:dev:hmr`
 * `RangeError: Maximum call stack size exceeded`
- * This is a problem with minifying Angular and it's recent JIT templates. If you set `mangle` to `false` then you should be good.
+  * This is a problem with minifying Angular and it's recent JIT templates. If you set `mangle` to `false` then you should be good.
 * Why is the size of my app larger in development?
- * We are using inline source-maps and hot module replacement which will increase the bundle size.
+  * We are using inline source-maps and hot module replacement which will increase the bundle size.
 * If you're in China
- * check out https://github.com/cnpm/cnpm
-* If you're looking to add Angular 2 Material Design
- * check out the [material2](https://github.com/AngularClass/angular2-webpack-starter/tree/material2) branch
+  * check out https://github.com/cnpm/cnpm
 * node-pre-gyp ERR in npm install (Windows)
- * install Python x86 version between 2.5 and 3.0 on windows see issue [#626](https://github.com/AngularClass/angular2-webpack-starter/issues/626)
+  * install Python x86 version between 2.5 and 3.0 on windows see issue [#626](https://github.com/AngularClass/angular2-webpack-starter/issues/626)
 * `Error:Error: Parse tsconfig error [{"messageText":"Unknown compiler option 'lib'.","category":1,"code":5023},{"messageText":"Unknown compiler option 'strictNullChecks'.","category":1,"code":5023},{"messageText":"Unknown compiler option 'baseUrl'.","category":1,"code":5023},{"messageText":"Unknown compiler option 'paths'.","category":1,"code":5023},{"messageText":"Unknown compiler option 'types'.","category":1,"code":5023}]`
- * remove `node_modules/typescript` and run `npm install typescript@beta`. This repo now uses ts 2.0 
+  * remove `node_modules/typescript` and run `npm install typescript@beta`. This repo now uses ts 2.0 
 * "There are multiple modules with names that only differ in casing"
- * change `c:\[path to angular2-webpack-starter]` to `C:\[path to angular2-webpack-starter]` see [926#issuecomment-245223547](https://github.com/AngularClass/angular2-webpack-starter/issues/926#issuecomment-245223547)
+  * change `c:\[path to angular2-webpack-starter]` to `C:\[path to angular2-webpack-starter]` see [926#issuecomment-245223547](https://github.com/AngularClass/angular2-webpack-starter/issues/926#issuecomment-245223547)
 
 # Support, Questions, or Feedback
 > Contact us anytime for anything about this repo or Angular
@@ -393,7 +390,7 @@ starter kit in production on [Netlify](https://www.netlify.com/):
 
 <p align="center">
   <a href="http://courses.angularclass.com/courses/angular-2-fundamentals" target="_blank">
-    <img width="438" alt="Angular 2 Fundamentals" src="https://cloud.githubusercontent.com/assets/1016365/17200649/085798c6-543c-11e6-8ad0-2484f0641624.png">
+    <img width="438" alt="Angular Fundamentals" src="https://cloud.githubusercontent.com/assets/1016365/17200649/085798c6-543c-11e6-8ad0-2484f0641624.png">
   </a>
 </p>
 
@@ -404,7 +401,7 @@ enjoy — **AngularClass**
 <br><br>
 
 [![AngularClass](https://cloud.githubusercontent.com/assets/1016365/9863770/cb0620fc-5af7-11e5-89df-d4b0b2cdfc43.png  "Angular Class")](https://angularclass.com)
-##[AngularClass](https://angularclass.com)
+## [AngularClass](https://angularclass.com)
 > Learn AngularJS, Angular, and Modern Web Development from the best.
 > Looking for corporate Angular training, want to host us, or Angular consulting? patrick@angularclass.com
 
