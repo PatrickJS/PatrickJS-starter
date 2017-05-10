@@ -119,7 +119,7 @@ module.exports = function (options) {
               loader: 'ng-router-loader',
               options: {
                 loader: 'async-import',
-                genDir: 'compiled',
+                genDir: 'build/compiled',
                 aot: AOT
               }
             },
@@ -205,7 +205,7 @@ module.exports = function (options) {
      */
     plugins: [
       new AssetsPlugin({
-        path: helpers.root('dist'),
+        path: (isProd) ? helpers.root('build/prod') : helpers.root('build/dev'),
         filename: 'webpack-assets.json',
         prettyPrint: true
       }),
