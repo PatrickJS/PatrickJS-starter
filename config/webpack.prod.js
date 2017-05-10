@@ -3,8 +3,14 @@
  */
 
 const helpers = require('./helpers');
-const webpackMerge = require('webpack-merge'); // used to merge webpack configs
-const commonConfig = require('./webpack.common.js'); // the settings that are common to prod and dev
+/**
+ * Used to merge webpack configs
+*/
+const webpackMerge = require('webpack-merge');
+/**
+ * The settings that are common to prod and dev
+*/
+const commonConfig = require('./webpack.common.js');
 
 /**
  * Webpack Plugins
@@ -90,7 +96,7 @@ module.exports = function (env) {
 
       rules: [
 
-        /*
+        /**
          * Extract CSS files from .src/styles directory to external CSS file
          */
         {
@@ -102,7 +108,7 @@ module.exports = function (env) {
           include: [helpers.root('src', 'styles')]
         },
 
-        /*
+        /**
          * Extract and compile SCSS files from .src/styles directory to external CSS file
          */
         {
@@ -131,7 +137,6 @@ module.exports = function (env) {
        *
        * See: https://github.com/vigneshshanmugam/optimize-js-plugin
        */
-
       new OptimizeJsPlugin({
         sourceMap: false
       }),
@@ -170,8 +175,9 @@ module.exports = function (env) {
        * Loaders are switched into minimizing mode.
        *
        * See: https://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
+       *
+       * NOTE: To debug prod builds uncomment //debug lines and comment //prod lines
        */
-      // NOTE: To debug prod builds uncomment //debug lines and comment //prod lines
       new UglifyJsPlugin({
         // beautify: true, //debug
         // mangle: false, //debug
@@ -216,7 +222,6 @@ module.exports = function (env) {
        *
        * See: http://webpack.github.io/docs/list-of-plugins.html#normalmodulereplacementplugin
        */
-
       new NormalModuleReplacementPlugin(
         /angular2-hmr/,
         helpers.root('config/empty.js')
@@ -228,35 +233,39 @@ module.exports = function (env) {
       ),
 
 
-      // AoT
-      // new NormalModuleReplacementPlugin(
-      //   /@angular(\\|\/)upgrade/,
-      //   helpers.root('config/empty.js')
-      // ),
-      // new NormalModuleReplacementPlugin(
-      //   /@angular(\\|\/)compiler/,
-      //   helpers.root('config/empty.js')
-      // ),
-      // new NormalModuleReplacementPlugin(
-      //   /@angular(\\|\/)platform-browser-dynamic/,
-      //   helpers.root('config/empty.js')
-      // ),
-      // new NormalModuleReplacementPlugin(
-      //   /dom(\\|\/)debug(\\|\/)ng_probe/,
-      //   helpers.root('config/empty.js')
-      // ),
-      // new NormalModuleReplacementPlugin(
-      //   /dom(\\|\/)debug(\\|\/)by/,
-      //   helpers.root('config/empty.js')
-      // ),
-      // new NormalModuleReplacementPlugin(
-      //   /src(\\|\/)debug(\\|\/)debug_node/,
-      //   helpers.root('config/empty.js')
-      // ),
-      // new NormalModuleReplacementPlugin(
-      //   /src(\\|\/)debug(\\|\/)debug_renderer/,
-      //   helpers.root('config/empty.js')
-      // ),
+      /**
+       * AoT
+       */
+      /*
+      new NormalModuleReplacementPlugin(
+        /@angular(\\|\/)upgrade/,
+        helpers.root('config/empty.js')
+      ),
+      new NormalModuleReplacementPlugin(
+        /@angular(\\|\/)compiler/,
+        helpers.root('config/empty.js')
+      ),
+      new NormalModuleReplacementPlugin(
+        /@angular(\\|\/)platform-browser-dynamic/,
+        helpers.root('config/empty.js')
+      ),
+      new NormalModuleReplacementPlugin(
+        /dom(\\|\/)debug(\\|\/)ng_probe/,
+        helpers.root('config/empty.js')
+      ),
+      new NormalModuleReplacementPlugin(
+        /dom(\\|\/)debug(\\|\/)by/,
+        helpers.root('config/empty.js')
+      ),
+      new NormalModuleReplacementPlugin(
+        /src(\\|\/)debug(\\|\/)debug_node/,
+        helpers.root('config/empty.js')
+      ),
+      new NormalModuleReplacementPlugin(
+        /src(\\|\/)debug(\\|\/)debug_renderer/,
+        helpers.root('config/empty.js')
+      ),
+      */
 
       /**
        * Plugin: CompressionPlugin
@@ -314,7 +323,7 @@ module.exports = function (env) {
 
     ],
 
-    /*
+    /**
      * Include polyfills or mocks for various node stuff
      * Description: Node configuration
      *
