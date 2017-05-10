@@ -17,6 +17,7 @@ const commonConfig = require('./webpack.common.js');
  */
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HashedModuleIdsPlugin = require('webpack/lib/HashedModuleIdsPlugin')
 const IgnorePlugin = require('webpack/lib/IgnorePlugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplacementPlugin');
@@ -80,7 +81,7 @@ module.exports = function (env) {
        *
        * See: http://webpack.github.io/docs/configuration.html#output-sourcemapfilename
        */
-      sourceMapFilename: '[name].[chunkhash].bundle.map',
+      sourceMapFilename: '[file].map',
 
       /**
        * The filename of non-entry chunks as relative path
@@ -88,7 +89,7 @@ module.exports = function (env) {
        *
        * See: http://webpack.github.io/docs/configuration.html#output-chunkfilename
        */
-      chunkFilename: '[id].[chunkhash].chunk.js'
+      chunkFilename: '[name].[chunkhash].chunk.js'
 
     },
 
@@ -232,6 +233,7 @@ module.exports = function (env) {
         helpers.root('config/empty.js')
       ),
 
+      new HashedModuleIdsPlugin(),
 
       /**
        * AoT
