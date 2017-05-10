@@ -1,2 +1,4 @@
-// App
+/**
+ * App
+ */
 export * from './app.module';

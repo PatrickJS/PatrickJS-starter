@@ -9,11 +9,15 @@ import { BaseRequestOptions, Http } from '@angular/http';
 import { By } from '@angular/platform-browser';
 import { MockBackend } from '@angular/http/testing';
 
-// Load the implementations that should be tested
+/**
+ * Load the implementations that should be tested.
+ */
 import { XLargeDirective } from './x-large.directive';
 
 describe('x-large directive', () => {
-  // Create a test component to test directives
+  /**
+   * Create a test component to test directives.
+   */
   @Component({
     template: '<div x-large>Content</div>'
   })

@@ -6,7 +6,9 @@ import {
   ComponentFixture
 } from '@angular/core/testing';
 
-// Load the implementations that should be tested
+/**
+ * Load the implementations that should be tested
+ */
 import { AppComponent } from './app.component';
 import { AppState } from './app.service';
 
@@ -14,22 +16,32 @@ describe(`App`, () => {
   let comp: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
 
-  // async beforeEach
+  /**
+   * async beforeEach
+   */
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ AppComponent ],
       schemas: [NO_ERRORS_SCHEMA],
       providers: [AppState]
     })
-    .compileComponents(); // compile template and css
+    /**
+     * Compile template and css
+     */
+    .compileComponents();
   }));
 
-  // synchronous beforeEach
+  /**
+   * Synchronous beforeEach
+   */
   beforeEach(() => {
     fixture = TestBed.createComponent(AppComponent);
     comp    = fixture.componentInstance;
 
-    fixture.detectChanges(); // trigger initial data binding
+    /**
+     * Trigger initial data binding
+     */
+    fixture.detectChanges();
   });
 
   it(`should be readly initialized`, () => {
