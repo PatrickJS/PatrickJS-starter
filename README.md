@@ -64,6 +64,9 @@ cd angular2-webpack-starter
 # install the repo with npm
 npm install
 
+# copy .env.example.js to .env.js and edit that copy
+cp .env.example.js .env.js
+
 # start the server
 npm start
 
@@ -129,7 +132,8 @@ angular2-webpack-starter/
  ├──tsconfig.json                  * typescript config used outside webpack
  ├──tsconfig.webpack.json          * config that webpack uses for typescript
  ├──package.json                   * what npm uses to manage it's dependencies
- └──webpack.config.js              * webpack main configuration file
+ ├──webpack.config.js              * webpack main configuration file
+ └──.env.example.js                * local environment variables 
 
 ```
 
@@ -153,6 +157,7 @@ Once you have those, you should install these globals with `npm install --global
 * `clone` your fork
 * `npm install webpack-dev-server rimraf webpack -g` to install required global dependencies
 * `npm install` to install all dependencies or `yarn`
+* `cp .env.example.js .env.js` to set up local envrinement (e.g. production) variables (you must edit .env.js)
 * `npm run server` to start the dev server in another tab
 
 ## Running the app
@@ -225,6 +230,10 @@ npm run build:docker
 
 # Configuration
 Configuration files live in `config/` we are currently using webpack, karma, and protractor for different stages of your application
+
+All variables dependent on local environment (dev, test, production) should be defined in `.env.js` file. During instalation you should create this file as copy of `.env.example.js` file and edit that copy by change/add variables.
+
+After any edition of `.env.js` file you should restart webpack (and rebuild application).
 
 # AoT Don'ts
 The following are some things that will make AoT compile fail.

@@ -307,7 +307,8 @@ module.exports = function (options) {
         title: METADATA.title,
         chunksSortMode: 'dependency',
         metadata: METADATA,
-        inject: 'head'
+        inject: 'head',
+        env: require('../.env')
       }),
 
       /**
