@@ -10,7 +10,9 @@ console.log('`Barrel` bundle loaded asynchronously');
 
 @NgModule({
   declarations: [
-    // Components / Directives/ Pipes
+    /**
+     * Components / Directives/ Pipes
+     */
     BarrelComponent,
   ],
   imports: [

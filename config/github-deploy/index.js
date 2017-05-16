@@ -1,4 +1,7 @@
 const execSync = require('child_process').execSync;
+/**
+ * Used to merge webpack configs.
+ */
 const webpackMerge = require('webpack-merge'); // used to merge webpack configs
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const helpers = require('../helpers');
@@ -59,7 +62,9 @@ function safeUrl(url) {
 function replaceHtmlWebpackPlugin(plugins, ghRepoName) {
   for (var i=0; i<plugins.length; i++) {
     if (plugins[i] instanceof HtmlWebpackPlugin) {
-      // remove the old instance of the html plugin
+      /**
+       * Remove the old instance of the html plugin.
+       */
       const htmlPlug = plugins.splice(i, 1)[0];
       const METADATA = webpackMerge(htmlPlug.options.metadata, {
         /**
@@ -70,7 +75,9 @@ function replaceHtmlWebpackPlugin(plugins, ghRepoName) {
         baseUrl: '/' + ghRepoName + '/' + safeUrl(htmlPlug.options.metadata.baseUrl)
       });
 
-      // add the new instance of the html plugin.
+      /**
+       * Add the new instance of the html plugin.
+       */
       plugins.splice(i, 0, new HtmlWebpackPlugin({
         template: htmlPlug.options.template,
         title: htmlPlug.options.title,

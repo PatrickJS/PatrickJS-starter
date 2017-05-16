@@ -5,10 +5,11 @@
 const webpack = require('webpack');
 const helpers = require('./helpers');
 
-/*
+/**
  * Webpack Plugins
+ *
+ * problem with copy-webpack-plugin
  */
-// problem with copy-webpack-plugin
 const AssetsPlugin = require('assets-webpack-plugin');
 const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplacementPlugin');
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
@@ -17,22 +18,24 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
 const HtmlElementsPlugin = require('./html-elements-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const ngcWebpack = require('ngc-webpack');
 
-/*
+/**
  * Webpack Constants
  */
 const HMR = helpers.hasProcessFlag('hot');
-const AOT = helpers.hasNpmFlag('aot');
+const AOT = process.env.BUILD_AOT || helpers.hasNpmFlag('aot');
 const METADATA = {
   title: 'Angular2 Webpack Starter by @gdi2290 from @AngularClass',
   baseUrl: '/',
-  isDevServer: helpers.isWebpackDevServer()
+  isDevServer: helpers.isWebpackDevServer(),
+  HMR: HMR
 };
 
-/*
+/**
  * Webpack configuration
  *
  * See: http://webpack.github.io/docs/configuration.html#cli
@@ -41,7 +44,7 @@ module.exports = function (options) {
   isProd = options.env === 'production';
   return {
 
-    /*
+    /**
      * Cache generated modules and chunks to improve performance for multiple incremental builds.
      * This is enabled by default in watch mode.
      * You can pass false to disable it.
@@ -50,7 +53,7 @@ module.exports = function (options) {
      */
     //cache: false,
 
-    /*
+    /**
      * The entry point for the bundle
      * Our Angular.js app
      *
@@ -64,26 +67,28 @@ module.exports = function (options) {
 
     },
 
-    /*
+    /**
      * Options affecting the resolving of modules.
      *
      * See: http://webpack.github.io/docs/configuration.html#resolve
      */
     resolve: {
 
-      /*
+      /**
        * An array of extensions that should be used to resolve modules.
        *
        * See: http://webpack.github.io/docs/configuration.html#resolve-extensions
        */
       extensions: ['.ts', '.js', '.json'],
 
-      // An array of directory names to be resolved to the current directory
+      /**
+       * An array of directory names to be resolved to the current directory
+       */
       modules: [helpers.root('src'), helpers.root('node_modules')],
 
     },
 
-    /*
+    /**
      * Options affecting the normal modules.
      *
      * See: http://webpack.github.io/docs/configuration.html#module
@@ -92,7 +97,7 @@ module.exports = function (options) {
 
       rules: [
 
-        /*
+        /**
          * Typescript loader support for .ts
          *
          * Component Template/Style integration using `angular2-template-loader`
@@ -115,7 +120,10 @@ module.exports = function (options) {
                 prod: isProd
               }
             },
-            { // MAKE SURE TO CHAIN VANILLA JS CODE, I.E. TS COMPILATION OUTPUT.
+            {
+              /**
+               *  MAKE SURE TO CHAIN VANILLA JS CODE, I.E. TS COMPILATION OUTPUT.
+               */
               loader: 'ng-router-loader',
               options: {
                 loader: 'async-import',
@@ -126,7 +134,8 @@ module.exports = function (options) {
             {
               loader: 'awesome-typescript-loader',
               options: {
-                configFileName: 'tsconfig.webpack.json'
+                configFileName: 'tsconfig.webpack.json',
+                useCache: !isProd
               }
             },
             {
@@ -136,7 +145,7 @@ module.exports = function (options) {
           exclude: [/\.(spec|e2e)\.ts$/]
         },
 
-        /*
+        /**
          * Json loader support for *.json files.
          *
          * See: https://github.com/webpack/json-loader
@@ -146,8 +155,8 @@ module.exports = function (options) {
           use: 'json-loader'
         },
 
-        /*
-         * to string and css loader support for *.css files (from Angular components)
+        /**
+         * To string and css loader support for *.css files (from Angular components)
          * Returns file content as string
          *
          */
@@ -157,8 +166,8 @@ module.exports = function (options) {
           exclude: [helpers.root('src', 'styles')]
         },
 
-        /*
-         * to string and sass loader support for *.scss files (from Angular components)
+        /**
+         * To string and sass loader support for *.scss files (from Angular components)
          * Returns compiled css content as string
          *
          */
@@ -168,7 +177,8 @@ module.exports = function (options) {
           exclude: [helpers.root('src', 'styles')]
         },
 
-        /* Raw loader support for *.html
+        /**
+         * Raw loader support for *.html
          * Returns file content as string
          *
          * See: https://github.com/webpack/raw-loader
@@ -179,7 +189,7 @@ module.exports = function (options) {
           exclude: [helpers.root('src/index.html')]
         },
 
-        /* 
+        /**
          * File loader for supporting images, for example, in CSS files.
          */
         {
@@ -189,7 +199,7 @@ module.exports = function (options) {
 
         /* File loader for supporting fonts, for example, in CSS files.
         */
-        { 
+        {
           test: /\.(eot|woff2?|svg|ttf)([\?]?.*)$/,
           use: 'file-loader'
         }
@@ -198,7 +208,7 @@ module.exports = function (options) {
 
     },
 
-    /*
+    /**
      * Add additional plugins to the compiler.
      *
      * See: http://webpack.github.io/docs/configuration.html#plugins
@@ -210,14 +220,14 @@ module.exports = function (options) {
         prettyPrint: true
       }),
 
-      /*
+      /**
        * Plugin: ForkCheckerPlugin
        * Description: Do type checking in a separate process, so webpack don't need to wait.
        *
        * See: https://github.com/s-panferov/awesome-typescript-loader#forkchecker-boolean-defaultfalse
        */
       new CheckerPlugin(),
-      /*
+      /**
        * Plugin: CommonsChunkPlugin
        * Description: Shares common code between the pages.
        * It identifies common modules and put them into a commons chunk.
@@ -229,15 +239,23 @@ module.exports = function (options) {
         name: 'polyfills',
         chunks: ['polyfills']
       }),
-      // This enables tree shaking of the vendor modules
+      /**
+       * This enables tree shaking of the vendor modules
+       */
       new CommonsChunkPlugin({
         name: 'vendor',
         chunks: ['main'],
         minChunks: module => /node_modules/.test(module.resource)
       }),
-      // Specify the correct order the scripts will be injected in
+      /**
+       * Specify the correct order the scripts will be injected in
+       */
       new CommonsChunkPlugin({
         name: ['polyfills', 'vendor'].reverse()
+      }),
+      new CommonsChunkPlugin({
+        name: ['manifest'],
+        minChunks: Infinity,
       }),
 
       /**
@@ -248,15 +266,19 @@ module.exports = function (options) {
        * See: https://github.com/angular/angular/issues/11580
        */
       new ContextReplacementPlugin(
-        // The (\\|\/) piece accounts for path separators in *nix and Windows
-        /angular(\\|\/)core(\\|\/)src(\\|\/)linker/,
+        /**
+         * The (\\|\/) piece accounts for path separators in *nix and Windows
+         */
+        /angular(\\|\/)core(\\|\/)@angular/,
         helpers.root('src'), // location of your src
         {
-          // your Angular Async Route paths relative to this root directory
+          /**
+           * Your Angular Async Route paths relative to this root directory
+           */
         }
       ),
 
-      /*
+      /**
        * Plugin: CopyWebpackPlugin
        * Description: Copy files and directories in webpack.
        *
@@ -267,10 +289,12 @@ module.exports = function (options) {
       new CopyWebpackPlugin([
         { from: 'src/assets', to: 'assets' },
         { from: 'src/meta'}
-      ]),
+      ],
+        isProd ? { ignore: [ 'mock-data/**/*' ] } : undefined
+      ),
 
 
-      /*
+      /**
        * Plugin: HtmlWebpackPlugin
        * Description: Simplifies creation of HTML files to serve your webpack bundles.
        * This is especially useful for webpack bundles that include a hash in the filename
@@ -286,7 +310,7 @@ module.exports = function (options) {
         inject: 'head'
       }),
 
-      /*
+      /**
        * Plugin: ScriptExtHtmlWebpackPlugin
        * Description: Enhances html-webpack-plugin functionality
        * with different deployment options for your scripts including:
@@ -297,7 +321,7 @@ module.exports = function (options) {
         defaultAttribute: 'defer'
       }),
 
-      /*
+      /**
        * Plugin: HtmlElementsPlugin
        * Description: Generate html tags based on javascript maps.
        *
@@ -330,7 +354,10 @@ module.exports = function (options) {
        */
       new LoaderOptionsPlugin({}),
 
-      // Fix Angular 2
+
+      /**
+       * Fix Angular 2
+       */
       new NormalModuleReplacementPlugin(
         /facade(\\|\/)async/,
         helpers.root('node_modules/@angular/core/src/facade/async.js')
@@ -356,11 +383,18 @@ module.exports = function (options) {
         disabled: !AOT,
         tsConfig: helpers.root('tsconfig.webpack.json'),
         resourceOverride: helpers.root('config/resource-override.js')
-      })
+      }),
 
+      /**
+       * Plugin: InlineManifestWebpackPlugin
+       * Inline Webpack's manifest.js in index.html
+       *
+       * https://github.com/szrenwei/inline-manifest-webpack-plugin
+       */
+      new InlineManifestWebpackPlugin(),
     ],
 
-    /*
+    /**
      * Include polyfills or mocks for various node stuff
      * Description: Node configuration
      *

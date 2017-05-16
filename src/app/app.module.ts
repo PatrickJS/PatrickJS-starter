@@ -56,13 +56,19 @@ type StoreType = {
     NoContentComponent,
     XLargeDirective
   ],
-  imports: [ // import Angular's modules
+  /**
+   * Import Angular's modules.
+   */
+  imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
   ],
-  providers: [ // expose our Services and Providers into Angular's dependency injection
+  /**
+   * Expose our Services and Providers into Angular's dependency injection.
+   */
+  providers: [
     ENV_PROVIDERS,
     APP_PROVIDERS
   ]
@@ -79,9 +85,13 @@ export class AppModule {
       return;
     }
     console.log('HMR store', JSON.stringify(store, null, 2));
-    // set state
+    /**
+     * Set state
+     */
     this.appState._state = store.state;
-    // set input values
+    /**
+     * Set input values
+     */
     if ('restoreInputValues' in store) {
       let restoreInputValues = store.restoreInputValues;
       setTimeout(restoreInputValues);
@@ -94,19 +104,29 @@ export class AppModule {
 
   public hmrOnDestroy(store: StoreType) {
     const cmpLocation = this.appRef.components.map((cmp) => cmp.location.nativeElement);
-    // save state
+    /**
+     * Save state
+     */
     const state = this.appState._state;
     store.state = state;
-    // recreate root elements
+    /**
+     * Recreate root elements
+     */
     store.disposeOldHosts = createNewHosts(cmpLocation);
-    // save input values
+    /**
+     * Save input values
+     */
     store.restoreInputValues  = createInputTransfer();
-    // remove styles
+    /**
+     * Remove styles
+     */
     removeNgStyles();
   }
 
   public hmrAfterDestroy(store: StoreType) {
-    // display new elements
+    /**
+     * Display new elements
+     */
     store.disposeOldHosts();
     delete store.disposeOldHosts;
   }
