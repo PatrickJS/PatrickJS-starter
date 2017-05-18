@@ -36,12 +36,30 @@ const METADATA = {
 };
 
 /**
+ * Copy file if dest not exist
+ * @param src
+ * @param dest
+ */
+function copyFileIfNotExist(src, dest) {
+  var fs = require('fs');
+  if (!fs.existsSync(dest))
+  {
+    var data = fs.readFileSync(src, 'utf-8');
+    fs.writeFileSync(dest, data);
+  }
+}
+
+/**
  * Webpack configuration
  *
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
 module.exports = function (options) {
+
+  copyFileIfNotExist('.env.example.js', '.env.js');
+
   isProd = options.env === 'production';
+
   return {
 
     /**

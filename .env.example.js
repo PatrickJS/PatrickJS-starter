@@ -8,6 +8,7 @@
 
 var Env = {
     GOOGLE_ANALAYTICS_TRACKING_ID : null,           // e.g. 'XX-XXXXXXXX-X',
+    API_URL: 'http://example.com/api/v1/',  // base url for backend API used in app services
     EXAMPLE_VARIABLE: 'some_value'
 };
 

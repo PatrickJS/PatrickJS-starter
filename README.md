@@ -64,9 +64,6 @@ cd angular2-webpack-starter
 # install the repo with npm
 npm install
 
-# copy .env.example.js to .env.js and edit that copy
-cp .env.example.js .env.js
-
 # start the server
 npm start
 
@@ -133,7 +130,7 @@ angular2-webpack-starter/
  ├──tsconfig.webpack.json          * config that webpack uses for typescript
  ├──package.json                   * what npm uses to manage it's dependencies
  ├──webpack.config.js              * webpack main configuration file
- └──.env.example.js                * local environment variables 
+ └──.env.example.js                * example local environment variables file
 
 ```
 
@@ -157,8 +154,9 @@ Once you have those, you should install these globals with `npm install --global
 * `clone` your fork
 * `npm install webpack-dev-server rimraf webpack -g` to install required global dependencies
 * `npm install` to install all dependencies or `yarn`
-* `cp .env.example.js .env.js` to set up local envrinement (e.g. production) variables (you must edit .env.js)
 * `npm run server` to start the dev server in another tab
+
+At the first running, if file `.env.js` not exist, it will be created from `.env.example.js`.
 
 ## Running the app
 After you have installed all dependencies you can now run the app. Run `npm run server` to start a local server using `webpack-dev-server` which will watch, build (in-memory), and reload for you. The port will be displayed to you as `http://0.0.0.0:3000` (or if you prefer IPv6, if you're using `express` server, then it's `http://[::1]:3000/`).
@@ -231,7 +229,9 @@ npm run build:docker
 # Configuration
 Configuration files live in `config/` we are currently using webpack, karma, and protractor for different stages of your application
 
-All variables dependent on local environment (dev, test, production) should be defined in `.env.js` file. During instalation you should create this file as copy of `.env.example.js` file and edit that copy by change/add variables.
+All variables dependent on local environment (dev, test, production) should be defined in `.env.js` file. 
+During instalation you should create this file as copy of `.env.example.js` file and edit that copy by change/add variables.
+If you not create `.env.js` file, at first running system create it for you from `.env.example.js`.
 
 After any edition of `.env.js` file you should restart webpack (and rebuild application).
 
