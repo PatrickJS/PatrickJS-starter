@@ -13,6 +13,7 @@ declare module 'my-module' {
  export function doesSomething(value: string): string;
 }
 
+
  * If you are using a CommonJS module that is using module.exports then you will have to write your
  * types using export = yourObjectOrFunction with a namespace above it
  * notice how we have to create a namespace that is equal to the function we're
