@@ -16,7 +16,7 @@ ___
 
 <p align="center">
   <a href="http://angularclass.com" target="_blank">
-    <img src="https://cloud.githubusercontent.com/assets/1016365/26218342/9f3ef0b6-3bd8-11e7-8a3c-3c13a9066b52.png" alt="Angular Starter with Webpack" width="500" height="320"/>
+    <img src="https://cloud.githubusercontent.com/assets/1016365/26219144/aa986cfa-3bdb-11e7-9f04-7296dc9ae945.png" alt="Angular Starter with Webpack" width="500" height="320"/>
   </a>
 </p>
 
