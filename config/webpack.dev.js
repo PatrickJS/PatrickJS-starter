@@ -222,8 +222,10 @@ module.exports = function (options) {
       host: METADATA.host,
       historyApiFallback: true,
       watchOptions: {
-        aggregateTimeout: 300,
-        poll: 1000
+        // if you're using Docker you may need this
+        // aggregateTimeout: 300,
+        // poll: 1000,
+        ignored: /node_modules/
       }
     },
 
