@@ -1,6 +1,7 @@
 /**
  * Angular bootstrapping
  */
+/// <reference path="./custom-typings.d.ts" />
 import { platformBrowser } from '@angular/platform-browser';
 import { decorateModuleRef } from './app/environment';
 /**
