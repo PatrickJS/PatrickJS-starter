@@ -142,7 +142,7 @@
     "to-string-loader": "^1.1.5",
     "ts-node": "^3.0.2",
     "tslib": "^1.6.1",
-    "tslint": "~4.5.1",
+    "tslint": "~5.3.0",
     "tslint-loader": "^3.5.2",
     "typedoc": "^0.5.10",
     "typescript": "~2.2.2",
