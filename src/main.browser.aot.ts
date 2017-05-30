@@ -18,12 +18,12 @@ export function main(): Promise<any> {
     .catch((err) => console.error(err));
 }
 
+function _domReadyHandler() {
+  document.removeEventListener('DOMContentLoaded', _domReadyHandler, false);
+  main();
+}
 switch (document.readyState) {
   case 'loading':
-    function _domReadyHandler() {
-      document.removeEventListener('DOMContentLoaded', _domReadyHandler, false);
-      main();
-    }
     document.addEventListener('DOMContentLoaded', _domReadyHandler, false);
     break;
   case 'interactive':
