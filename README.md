@@ -31,7 +31,7 @@ ___
 > If you're looking for Angular 1.x please use [NG6-starter](https://github.com/angularclass/NG6-starter)
 > If you're looking to learn about Webpack and ES6 Build Tools check out [ES6-build-tools](https://github.com/AngularClass/ES6-build-tools)
 > If you're looking to learn TypeScript see [TypeStrong/learn-typescript](https://github.com/TypeStrong/learn-typescript)
-> If you're looking for something easier to get started with then see the angular2-seed that I also maintain [angular/angular2-seed](https://github.com/AngularClass/angular2-seed)
+> If you're looking for something easier to get started with then see the angular-seed that I also maintain [AngularClass/angular-seed](https://github.com/AngularClass/angular-seed)
 
 This seed repo serves as an Angular starter for anyone looking to get up and running with Angular and TypeScript fast. Using a [Webpack 2](http://webpack.github.io/) for building our files and assisting with boilerplate. We're also using Protractor for our end-to-end story and Karma for our unit tests.
 * Best practices in file and application organization for Angular.
@@ -45,7 +45,7 @@ This seed repo serves as an Angular starter for anyone looking to get up and run
 * Coverage with Istanbul and Karma
 * End-to-end Angular code using Protractor.
 * Type manager with @types
-* Hot Module Replacement with Webpack and [@angularclass/hmr](https://github.com/angularclass/angular2-hmr) and [@angularclass/hmr-loader](https://github.com/angularclass/angular2-hmr-loader)
+* Hot Module Replacement with Webpack and [@angularclass/hmr](https://github.com/angularclass/angular-hmr) and [@angularclass/hmr-loader](https://github.com/angularclass/angular-hmr-loader)
 * Angular 4 support via changing package.json and any future Angular versions
 
 ### Quick start
@@ -55,10 +55,10 @@ This seed repo serves as an Angular starter for anyone looking to get up and run
 ```bash
 # clone our repo
 # --depth 1 removes all but one .git commit history
-git clone --depth 1 https://github.com/angularclass/angular2-webpack-starter.git
+git clone --depth 1 https://github.com/angularclass/angular-starter.git
 
 # change directory to our repo
-cd angular2-webpack-starter
+cd angular-starter
 
 # install the repo with npm
 npm install
