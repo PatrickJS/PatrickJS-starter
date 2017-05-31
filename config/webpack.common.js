@@ -22,7 +22,7 @@ const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const ngcWebpack = require('ngc-webpack');
-const PreloadWebpackPlugin = require('preload-webpack-plugin');
+//const PreloadWebpackPlugin = require('preload-webpack-plugin');
 
 /**
  * Webpack Constants
@@ -301,17 +301,17 @@ module.exports = function (options) {
        *
        * See: https://github.com/GoogleChrome/preload-webpack-plugin
        */
-      new PreloadWebpackPlugin({
-        rel: 'preload',
-        as: 'script',
-        include: ['polyfills', 'vendor', 'main'].reverse(),
-        fileBlacklist: ['.css', '.map']
-      }),
-      new PreloadWebpackPlugin({
-        rel: 'prefetch',
-        as: 'script',
-        include: 'asyncChunks'
-      }),
+      //new PreloadWebpackPlugin({
+      //  rel: 'preload',
+      //  as: 'script',
+      //  include: ['polyfills', 'vendor', 'main'].reverse(),
+      //  fileBlacklist: ['.css', '.map']
+      //}),
+      //new PreloadWebpackPlugin({
+      //  rel: 'prefetch',
+      //  as: 'script',
+      //  include: 'asyncChunks'
+      //}),
 
       /**
        * Plugin: ScriptExtHtmlWebpackPlugin
