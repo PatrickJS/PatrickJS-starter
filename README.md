@@ -400,7 +400,7 @@ and lougout and login again.
 
 ### Build image
 
-Because **node.js** is big memory consumer you need 1-2GB RAM or virtual memory to build docker image 
+Because *node.js* is big memory consumer you need 1-2GB RAM or virtual memory to build docker image 
 (it was successfully tested on machine with 512MB RAM + 2GB virtual memory - building process take 7min)
 
 Go to main project folder. To build big (~280MB) image which has cached data and is able to **FAST** rebuild  
