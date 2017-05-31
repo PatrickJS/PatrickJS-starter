@@ -4,7 +4,7 @@
 
 const helpers = require('./helpers');
 const webpackMerge = require('webpack-merge'); // used to merge webpack configs
-const webpackMergeDll = webpackMerge.strategy({plugins: 'replace'});
+// const webpackMergeDll = webpackMerge.strategy({plugins: 'replace'});
 const commonConfig = require('./webpack.common.js'); // the settings that are common to prod and dev
 
 /**
@@ -30,7 +30,7 @@ const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
 });
 
 
-const DllBundlesPlugin = require('webpack-dll-bundles-plugin').DllBundlesPlugin;
+// const DllBundlesPlugin = require('webpack-dll-bundles-plugin').DllBundlesPlugin;
 
 /**
  * Webpack configuration
@@ -142,37 +142,37 @@ module.exports = function (options) {
         }
       }),
 
-      new DllBundlesPlugin({
-        bundles: {
-          polyfills: [
-            'core-js',
-            {
-              name: 'zone.js',
-              path: 'zone.js/dist/zone.js'
-            },
-            {
-              name: 'zone.js',
-              path: 'zone.js/dist/long-stack-trace-zone.js'
-            },
-          ],
-          vendor: [
-            '@angular/platform-browser',
-            '@angular/platform-browser-dynamic',
-            '@angular/core',
-            '@angular/common',
-            '@angular/forms',
-            '@angular/http',
-            '@angular/router',
-            '@angularclass/hmr',
-            'rxjs',
-          ]
-        },
-        dllDir: helpers.root('dll'),
-        webpackConfig: webpackMergeDll(commonConfig({env: ENV}), {
-          devtool: 'cheap-module-source-map',
-          plugins: []
-        })
-      }),
+      // new DllBundlesPlugin({
+      //   bundles: {
+      //     polyfills: [
+      //       'core-js',
+      //       {
+      //         name: 'zone.js',
+      //         path: 'zone.js/dist/zone.js'
+      //       },
+      //       {
+      //         name: 'zone.js',
+      //         path: 'zone.js/dist/long-stack-trace-zone.js'
+      //       },
+      //     ],
+      //     vendor: [
+      //       '@angular/platform-browser',
+      //       '@angular/platform-browser-dynamic',
+      //       '@angular/core',
+      //       '@angular/common',
+      //       '@angular/forms',
+      //       '@angular/http',
+      //       '@angular/router',
+      //       '@angularclass/hmr',
+      //       'rxjs',
+      //     ]
+      //   },
+      //   dllDir: helpers.root('dll'),
+      //   webpackConfig: webpackMergeDll(commonConfig({env: ENV}), {
+      //     devtool: 'cheap-module-source-map',
+      //     plugins: []
+      //   })
+      // }),
 
       /**
        * Plugin: AddAssetHtmlPlugin
@@ -182,10 +182,10 @@ module.exports = function (options) {
        *
        * See: https://github.com/SimenB/add-asset-html-webpack-plugin
        */
-      new AddAssetHtmlPlugin([
-        { filepath: helpers.root(`dll/${DllBundlesPlugin.resolveFile('polyfills')}`) },
-        { filepath: helpers.root(`dll/${DllBundlesPlugin.resolveFile('vendor')}`) }
-      ]),
+      // new AddAssetHtmlPlugin([
+      //   { filepath: helpers.root(`dll/${DllBundlesPlugin.resolveFile('polyfills')}`) },
+      //   { filepath: helpers.root(`dll/${DllBundlesPlugin.resolveFile('vendor')}`) }
+      // ]),
 
       /**
        * Plugin: NamedModulesPlugin (experimental)
@@ -226,6 +226,17 @@ module.exports = function (options) {
         // aggregateTimeout: 300,
         // poll: 1000,
         ignored: /node_modules/
+      },
+      /**
+      * Here you can access the Express app object and add your own custom middleware to it.
+      *
+      * See: https://webpack.github.io/docs/webpack-dev-server.html
+      */
+      setup: function(app) {
+        // For example, to define custom handlers for some paths:
+        // app.get('/some/path', function(req, res) {
+        //   res.json({ custom: 'response' });
+        // });
       }
     },
 

@@ -215,11 +215,12 @@ module.exports = function (options) {
      * See: http://webpack.github.io/docs/configuration.html#plugins
      */
     plugins: [
-      new AssetsPlugin({
-        path: helpers.root('dist'),
-        filename: 'webpack-assets.json',
-        prettyPrint: true
-      }),
+      // Use for DLLs
+      // new AssetsPlugin({
+      //   path: helpers.root('dist'),
+      //   filename: 'webpack-assets.json',
+      //   prettyPrint: true
+      // }),
 
       /**
        * Plugin: ForkCheckerPlugin
@@ -243,21 +244,21 @@ module.exports = function (options) {
       /**
        * This enables tree shaking of the vendor modules
        */
-      new CommonsChunkPlugin({
-        name: 'vendor',
-        chunks: ['main'],
-        minChunks: module => /node_modules/.test(module.resource)
-      }),
+      // new CommonsChunkPlugin({
+      //   name: 'vendor',
+      //   chunks: ['main'],
+      //   minChunks: module => /node_modules/.test(module.resource)
+      // }),
       /**
        * Specify the correct order the scripts will be injected in
        */
-      new CommonsChunkPlugin({
-        name: ['polyfills', 'vendor'].reverse()
-      }),
-      new CommonsChunkPlugin({
-        name: ['manifest'],
-        minChunks: Infinity,
-      }),
+      // new CommonsChunkPlugin({
+      //   name: ['polyfills', 'vendor'].reverse()
+      // }),
+      // new CommonsChunkPlugin({
+      //   name: ['manifest'],
+      //   minChunks: Infinity,
+      // }),
 
       /**
        * Plugin: ContextReplacementPlugin
@@ -322,7 +323,9 @@ module.exports = function (options) {
        */
       new ScriptExtHtmlWebpackPlugin({
         sync: /polyfill|vendor/,
-        defaultAttribute: 'async'
+        defaultAttribute: 'async',
+        preload: [/polyfill|vendor|main/],
+        prefetch: [/chunk/]
       }),
 
       /*
