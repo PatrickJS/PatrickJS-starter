@@ -22,7 +22,8 @@ matrix:
   fast_finish: true
 
 before_install:
-  - npm cache clean
+  - npm install npm@5 -g
+  - npm cache verify
   - npm prune
   - npm update
 
