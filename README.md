@@ -453,6 +453,10 @@ And now you are ready to run image on subdomain by:
 docker run -e VIRTUAL_HOST=angular-starter.your-domain.com --name angular-starter angular-starter &
 ```
 
+### Login into docker container
+
+`docker exec -t -i angular-starter /bin/bash`
+
 ## Netlify
 
 You can quickly create a free site to get started using this
