@@ -221,6 +221,11 @@ npm run e2e:live
 ```bash
 npm run build:docker
 ```
+### docker-compose dev environment
+```bash
+ docker-compose up
+```
+
 
 # Configuration
 Configuration files live in `config/` we are currently using webpack, karma, and protractor for different stages of your application

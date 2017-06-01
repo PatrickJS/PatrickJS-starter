@@ -1,0 +1,13 @@
+version: '2'
+services:
+  angular2-webpack-starter:
+    build:
+      dockerfile: ./Dockerfile-dev
+      context: ./
+    ports:
+    - "3000:3000"
+    environment:
+    - HOST=0.0.0.0
+    - PORT=3000
+    - ENV="development"
+    volumes: ["./src/:/home/app/src/"]
