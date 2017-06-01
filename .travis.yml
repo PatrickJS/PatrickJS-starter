@@ -1,6 +1,10 @@
-sudo: required
-
+sudo: false
 dist: trusty
+language: node_js
+
+cache:
+  directories:
+    - node_modules
 
 addons:
   apt:
@@ -8,8 +12,6 @@ addons:
       - google-chrome
     packages:
       - google-chrome-stable
-
-language: node_js
 
 node_js:
   - "6"
@@ -38,7 +40,3 @@ after_install:
 
 script:
   - npm run ci:travis
-
-cache:
-  directories:
-    - node_modules
