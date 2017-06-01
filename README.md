@@ -55,7 +55,7 @@ This seed repo serves as an Angular starter for anyone looking to get up and run
 ```bash
 # clone our repo
 # --depth 1 removes all but one .git commit history
-git clone --depth 1 https://github.com/angularclass/angular-starter.git
+git clone --depth 1 https://github.com/AngularClass/angular-starter.git
 
 # change directory to our repo
 cd angular-starter
