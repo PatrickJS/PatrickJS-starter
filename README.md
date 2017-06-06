@@ -60,6 +60,9 @@ git clone --depth 1 https://github.com/AngularClass/angular-starter.git
 # change directory to our repo
 cd angular-starter
 
+# WINDOWS only. In terminal as administrator
+npm install -g node-pre-gyp
+
 # install the repo with npm
 npm install
 
