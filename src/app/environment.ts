@@ -24,7 +24,7 @@ let PROVIDERS: any[] = [
  */
 let _decorateModuleRef = <T>(value: T): T => { return value; };
 
-if ('production' === ENV) {
+if (process !== undefined && process.env !== undefined && 'production' === process.env.ENV) {
   enableProdMode();
 
   /**
