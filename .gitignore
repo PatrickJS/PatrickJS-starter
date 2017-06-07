@@ -36,6 +36,10 @@ Thumbs.db
 npm-debug.log
 /npm-debug.log.*
 
+# Yarn #
+yarn.lock
+yarn-debug.log
+
 # Coverage #
 /coverage/
 
