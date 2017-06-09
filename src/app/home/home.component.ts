@@ -6,6 +6,7 @@ import {
 import { AppState } from '../app.service';
 import { Title } from './title';
 import { XLargeDirective } from './x-large';
+import * as Env  from '../../../.env.js';
 
 @Component({
   /**
@@ -53,5 +54,9 @@ export class HomeComponent implements OnInit {
     console.log('submitState', value);
     this.appState.set('value', value);
     this.localState.value = '';
+  }
+
+  public env(name) {
+    return Env[name];
   }
 }

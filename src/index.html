@@ -31,6 +31,7 @@
     Loading...
   </app>
 
+  <% if (htmlWebpackPlugin.options.env.GOOGLE_ANALAYTICS_TRACKING_ID) { %>
   <!-- Google Analytics: change UA-71073175-1 to be your site's ID -->
   <script>
     (function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=r;A[l]=A[l]||function(){
@@ -38,9 +39,10 @@
     r=n.getElementsByTagName(g)[0];a.async=1;a.src=u;r.parentNode.insertBefore(a,r)
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-71073175-1', 'auto');
+    ga('create', '<%= htmlWebpackPlugin.options.env.GOOGLE_ANALAYTICS_TRACKING_ID %>', 'auto');
     ga('send', 'pageview');
   </script>
+  <% } %>
 
 
 </body>
