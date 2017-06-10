@@ -134,6 +134,8 @@
     "parse5": "^3.0.2",
     "preload-webpack-plugin": "^1.2.2",
     "protractor": "^5.1.1",
+    "pug": "2.0.0",
+    "pug-html-loader": "1.1.5",
     "raw-loader": "0.5.1",
     "rimraf": "~2.6.1",
     "sass-loader": "^6.0.3",
