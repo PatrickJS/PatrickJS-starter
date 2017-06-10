@@ -191,6 +191,18 @@ module.exports = function (options) {
         },
 
         /**
+         * Raw loader support for *.jade or *.pug files
+         * 
+         * See: https://github.com/webpack/raw-loader
+         */
+
+        {
+          test: /\.(pug|jade)$/,
+          use: ['raw-loader', 'pug-html-loader']
+        },
+
+
+        /**
          * File loader for supporting images, for example, in CSS files.
          */
         {
