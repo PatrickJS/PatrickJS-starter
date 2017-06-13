@@ -373,13 +373,13 @@ import * as _ from 'lodash';
 
 ## Docker
 
-To run project you only need host machine with **operationg system** with installed **git** (to clone this repo) 
-and [docker](https://www.docker.com/) and thats all - any other software is non needed
+To run project you only need host machine with **operating system** with installed **git** (to clone this repo) 
+and [docker](https://www.docker.com/) and thats all - any other software is not needed
 (other software like node.js etc. will be automatically downloaded and installed inside docker container during build step based on dockerfile).
 
 ### Install docker
 
-#### MacOs:
+#### MacOS:
 
 `brew cask install docker`
 
@@ -400,7 +400,7 @@ And add your user to docker group (to avoid `sudo` before using `docker` command
 ```
 sudo usermod -aG docker $(whoami)
 ```
-and lougout and login again.
+and logout and login again.
 
 ### Build image
 
@@ -432,7 +432,7 @@ And that's all, you can open browser and go to [localhost:8080](localhost:8080).
 
 ### Run image on sub-domain
 
-If you wan't run image as virtual-host on sub-domain you must setup [proxy](https://github.com/jwilder/nginx-proxy)
+If you want to run image as virtual-host on sub-domain you must setup [proxy](https://github.com/jwilder/nginx-proxy)
 . You should install proxy and set sub-domain in this way:
  
  ```
@@ -441,7 +441,7 @@ If you wan't run image as virtual-host on sub-domain you must setup [proxy](http
  ```
  
  And in your `/etc/hosts` file (linux) add line: `127.0.0.1 angular-starter.your-domain.com` or in yor hosting add
- folowwing DNS record (wildchar `*` is handy because when you add new sub-domain in future, you don't need touch/add any DNS record)
+ folowing DNS record (wildchar `*` is handy because when you add new sub-domain in future, you don't need to touch/add any DNS record)
   
  ```
  Type: CNAME 
