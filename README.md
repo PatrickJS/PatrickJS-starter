@@ -131,7 +131,7 @@ angular2-webpack-starter/
  ├──typedoc.json                   * typescript documentation generator
  ├──tsconfig.json                  * typescript config used outside webpack
  ├──tsconfig.webpack.json          * config that webpack uses for typescript
- ├──package.json                   * what npm uses to manage it's dependencies
+ ├──package.json                   * what npm uses to manage its dependencies
  └──webpack.config.js              * webpack main configuration file
 
 ```
