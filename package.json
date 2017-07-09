@@ -1,6 +1,6 @@
 {
   "name": "angular-starter",
-  "version": "6.0.0",
+  "version": "6.0.1",
   "description": "An Angular Webpack Starter kit featuring Angular (Router, Http, Forms, Services, Tests, E2E, Coverage), Karma, Protractor, Jasmine, Istanbul, TypeScript, and Webpack by AngularClass",
   "keywords": [
     "angular",
@@ -38,7 +38,7 @@
     "github-deploy:dev": "npm run webpack -- --config config/webpack.github-deploy.js --progress --profile --env.githubDev",
     "github-deploy:prod": "npm run webpack -- --config config/webpack.github-deploy.js --progress --profile --env.githubProd",
     "github-deploy": "npm run github-deploy:dev",
-    "lint": "npm run tslint \"src/**/*.ts\"",
+    "lint": "npm run tslint:typecheck \"src/**/*.ts\"",
     "node": "node",
     "postinstall": "npm run webdriver:update",
     "postversion": "git push && git push --tags",
@@ -57,6 +57,7 @@
     "start": "npm run server:dev",
     "test": "npm run lint && karma start",
     "tslint": "tslint",
+    "tslint:typecheck": "tslint --type-check --project tsconfig.json",
     "typedoc": "typedoc",
     "version": "npm run build",
     "watch:dev:hmr": "npm run watch:dev -- --hot",
