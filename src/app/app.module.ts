@@ -18,6 +18,7 @@ import {
 /*
  * Platform and Environment providers/directives/pipes
  */
+import { MaterialModule } from './material.module';
 import { ENV_PROVIDERS } from './environment';
 import { ROUTES } from './app.routes';
 // App is our top level component
@@ -63,7 +64,8 @@ type StoreType = {
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
+    MaterialModule
   ],
   /**
    * Expose our Services and Providers into Angular's dependency injection.

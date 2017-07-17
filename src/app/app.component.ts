@@ -20,26 +20,26 @@ import { AppState } from './app.service';
   ],
   template: `
     <nav>
-      <a [routerLink]=" ['./'] "
+      <button md-button [routerLink]=" ['./'] "
         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
         Index
-      </a>
-      <a [routerLink]=" ['./home'] "
+      </button>
+      <button md-button [routerLink]=" ['./home'] "
         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
         Home
-      </a>
-      <a [routerLink]=" ['./detail'] "
+      </button>
+      <button md-button [routerLink]=" ['./detail'] "
         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
         Detail
-      </a>
-      <a [routerLink]=" ['./barrel'] "
+      </button>
+      <button md-button [routerLink]=" ['./barrel'] "
         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
         Barrel
-      </a>
-      <a [routerLink]=" ['./about'] "
+      </button>
+      <button md-button [routerLink]=" ['./about'] "
         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
         About
-      </a>
+      </button>
     </nav>
 
     <main>
