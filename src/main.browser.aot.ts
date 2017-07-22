@@ -1,16 +1,15 @@
-/*
- * Angular bootstraping
+/**
+ * Angular bootstrapping
  */
 import { platformBrowser } from '@angular/platform-browser';
 import { decorateModuleRef } from './app/environment';
-/*
+/**
  * App Module
- * our top level module that holds all of our components
+ * our top level module that holds all of our components.
  */
 import { AppModuleNgFactory } from '../compiled/src/app/app.module.ngfactory';
-
-/*
- * Bootstrap our Angular app with a top level NgModule
+/**
+ * Bootstrap our Angular app with a top level NgModule.
  */
 export function main(): Promise<any> {
   return platformBrowser()
@@ -19,8 +18,17 @@ export function main(): Promise<any> {
     .catch((err) => console.error(err));
 }
 
-export function bootstrapDomReady() {
-  document.addEventListener('DOMContentLoaded', main);
+switch (document.readyState) {
+  case 'loading':
+    document.addEventListener('DOMContentLoaded', _domReadyHandler, false);
+    break;
+  case 'interactive':
+  case 'complete':
+  default:
+    main();
 }
 
-bootstrapDomReady();
+function _domReadyHandler() {
+  document.removeEventListener('DOMContentLoaded', _domReadyHandler, false);
+  main();
+}
