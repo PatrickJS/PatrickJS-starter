@@ -98,7 +98,7 @@ go to [http://0.0.0.0:3000](http://0.0.0.0:3000) or [http://localhost:3000](http
 ## File Structure
 We use the component approach in our starter. This is the new standard for developing Angular apps and a great way to ensure maintainable code by encapsulation of our behavior logic. A component is basically a self contained app usually in a single file or a folder with each concern as a file: style, template, specs, e2e, and component class. Here's how it looks:
 ```
-angular2-webpack-starter/
+angular-starter/
  ├──config/                        * our configuration
  |   ├──helpers.js                 * helper functions for our configuration files
  |   ├──spec-bundle.js             * ignore this magic that sets up our Angular testing environment
@@ -332,19 +332,19 @@ import * as _ from 'lodash';
 * How do I start the app when I get `EACCES` and `EADDRINUSE` errors?
   * The `EADDRINUSE` error means the port `3000` is currently being used and `EACCES` is lack of permission for webpack to build files to `./dist/`
 * How to use `sass` for css?
- *  * `loaders: ['raw-loader','sass-loader']` and `@Component({ styleUrls: ['./filename.scss'] })` see Wiki page [How to include SCSS in components](https://github.com/AngularClass/angular2-webpack-starter/wiki/How-to-include-SCSS-in-components), or issue [#136](https://github.com/AngularClass/angular2-webpack-starter/issues/136) for more information.
+ *  * `loaders: ['raw-loader','sass-loader']` and `@Component({ styleUrls: ['./filename.scss'] })` see Wiki page [How to include SCSS in components](https://github.com/AngularClass/angular-starter/wiki/How-to-include-SCSS-in-components), or issue [#136](https://github.com/AngularClass/angular-starter/issues/136) for more information.
 * How do I test a Service?  
-  * See issue [#130](https://github.com/AngularClass/angular2-webpack-starter/issues/130#issuecomment-158872648)
+  * See issue [#130](https://github.com/AngularClass/angular-starter/issues/130#issuecomment-158872648)
 * How do I add `vscode-chrome-debug` support?
-  * The VS Code chrome debug extension support can be done via `launch.json` see issue [#144](https://github.com/AngularClass/angular2-webpack-starter/issues/144#issuecomment-164063790)
+  * The VS Code chrome debug extension support can be done via `launch.json` see issue [#144](https://github.com/AngularClass/angular-starter/issues/144#issuecomment-164063790)
 * How do I make the repo work in a virtual machine?
-  * You need to use `0.0.0.0` so revert these changes [#205](https://github.com/AngularClass/angular2-webpack-starter/pull/205/files)
+  * You need to use `0.0.0.0` so revert these changes [#205](https://github.com/AngularClass/angular-starter/pull/205/files)
 * What are the naming conventions for Angular?
-  * please see issue [#185](https://github.com/AngularClass/angular2-webpack-starter/issues/185) and PR [196](https://github.com/AngularClass/angular2-webpack-starter/pull/196)
+  * please see issue [#185](https://github.com/AngularClass/angular-starter/issues/185) and PR [196](https://github.com/AngularClass/angular-starter/pull/196)
 * How do I include bootstrap or jQuery?
-  * please see issue [#215](https://github.com/AngularClass/angular2-webpack-starter/issues/215) and [#214](https://github.com/AngularClass/angular2-webpack-starter/issues/214#event-511768416)
+  * please see issue [#215](https://github.com/AngularClass/angular-starter/issues/215) and [#214](https://github.com/AngularClass/angular-starter/issues/214#event-511768416)
 * How do I async load a component?
-  * see wiki [How-do-I-async-load-a-component-with-AsyncRoute](https://github.com/AngularClass/angular2-webpack-starter/wiki/How-do-I-async-load-a-component-with-AsyncRoute)
+  * see wiki [How-do-I-async-load-a-component-with-AsyncRoute](https://github.com/AngularClass/angular-starter/wiki/How-do-I-async-load-a-component-with-AsyncRoute)
 * Error: Cannot find module 'tapable'
   * Remove `node_modules/` and run `npm cache clean` then `npm install`
 * How do I turn on Hot Module Replacement
@@ -356,11 +356,11 @@ import * as _ from 'lodash';
 * If you're in China
   * check out https://github.com/cnpm/cnpm
 * node-pre-gyp ERR in npm install (Windows)
-  * install Python x86 version between 2.5 and 3.0 on windows see issue [#626](https://github.com/AngularClass/angular2-webpack-starter/issues/626)
+  * install Python x86 version between 2.5 and 3.0 on windows see issue [#626](https://github.com/AngularClass/angular-starter/issues/626)
 * `Error:Error: Parse tsconfig error [{"messageText":"Unknown compiler option 'lib'.","category":1,"code":5023},{"messageText":"Unknown compiler option 'strictNullChecks'.","category":1,"code":5023},{"messageText":"Unknown compiler option 'baseUrl'.","category":1,"code":5023},{"messageText":"Unknown compiler option 'paths'.","category":1,"code":5023},{"messageText":"Unknown compiler option 'types'.","category":1,"code":5023}]`
   * remove `node_modules/typescript` and run `npm install typescript@beta`. This repo now uses ts 2.0 
 * "There are multiple modules with names that only differ in casing"
-  * change `c:\[path to angular2-webpack-starter]` to `C:\[path to angular2-webpack-starter]` see [926#issuecomment-245223547](https://github.com/AngularClass/angular2-webpack-starter/issues/926#issuecomment-245223547)
+  * change `c:\[path to angular-starter]` to `C:\[path to angular-starter]` see [926#issuecomment-245223547](https://github.com/AngularClass/angular-starter/issues/926#issuecomment-245223547)
 
 # Support, Questions, or Feedback
 > Contact us anytime for anything about this repo or Angular
@@ -465,7 +465,7 @@ docker run -e VIRTUAL_HOST=angular-starter.your-domain.com --name angular-starte
 You can quickly create a free site to get started using this
 starter kit in production on [Netlify](https://www.netlify.com/):
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/AngularClass/angular2-webpack-starter)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/AngularClass/angular-starter)
 
 <p align="center">
   <a href="http://courses.angularclass.com/courses/angular-2-fundamentals" target="_blank">
