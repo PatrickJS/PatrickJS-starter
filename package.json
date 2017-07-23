@@ -117,7 +117,6 @@
     "inline-manifest-webpack-plugin": "^3.0.1",
     "istanbul-instrumenter-loader": "2.0.0",
     "jasmine-core": "^2.5.2",
-    "json-loader": "^0.5.4",
     "karma": "^1.6.0",
     "karma-chrome-launcher": "^2.0.0",
     "karma-coverage": "^1.1.1",
