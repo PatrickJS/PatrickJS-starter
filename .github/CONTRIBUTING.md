@@ -1,6 +1,6 @@
 ## Read and contribute to the Wiki
 
-Make sure you read the [Wiki](https://github.com/AngularClass/angular2-webpack-starter/wiki).
+Make sure you read the [Wiki](https://github.com/AngularClass/angular-starter/wiki).
 
 ## Submitting Pull Requests
 
