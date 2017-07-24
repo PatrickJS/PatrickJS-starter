@@ -18,6 +18,7 @@
     "invoke-injectable": true,
     "no-access-missing-member": true,
     "no-attribute-parameter-decorator": true,
+    "no-empty-interface": false,
     "no-forward-ref": true,
     "no-input-rename": true,
     "no-output-rename": true,
