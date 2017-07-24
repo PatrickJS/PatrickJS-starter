@@ -147,16 +147,6 @@ module.exports = function (options) {
         },
 
         /**
-         * Json loader support for *.json files.
-         *
-         * See: https://github.com/webpack/json-loader
-         */
-        {
-          test: /\.json$/,
-          use: 'json-loader'
-        },
-
-        /**
          * To string and css loader support for *.css files (from Angular components)
          * Returns file content as string
          *
