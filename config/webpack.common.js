@@ -140,20 +140,16 @@ module.exports = function (options) {
               }
             },
             {
+              loader: 'ngc-webpack',
+              options: {
+                disable: !AOT,
+              }
+            },
+            {
               loader: 'angular2-template-loader'
             }
           ],
           exclude: [/\.(spec|e2e)\.ts$/]
-        },
-
-        /**
-         * Json loader support for *.json files.
-         *
-         * See: https://github.com/webpack/json-loader
-         */
-        {
-          test: /\.json$/,
-          use: 'json-loader'
         },
 
         /**
