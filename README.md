@@ -1,12 +1,3 @@
-<p align="center">
-  <a href="http://courses.angularclass.com/courses/angular-2-fundamentals?utm_source=github-angular2-webpack-starter&utm_medium=open-source&utm_campaign=webpackstarter" target="_blank">
-    <img width="438" alt="Angular 2 Fundamentals" src="https://cloud.githubusercontent.com/assets/1016365/17200649/085798c6-543c-11e6-8ad0-2484f0641624.png">
-  </a>
-</p>
-
-___
-
-
 [![taylor swift](https://img.shields.io/badge/secured%20by-taylor%20swift-brightgreen.svg)](https://twitter.com/SwiftOnSecurity)
 [![volkswagen status](https://auchenberg.github.io/volkswagen/volkswargen_ci.svg?v=1)](https://github.com/auchenberg/volkswagen)
 [![Build Status](https://travis-ci.org/AngularClass/angular2-webpack-starter.svg?branch=master)](https://travis-ci.org/AngularClass/angular2-webpack-starter)
@@ -15,8 +6,8 @@ ___
 [![Stack Share](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](http://stackshare.io/angularclass/angular-2-webpack-starter)
 
 <p align="center">
-  <a href="http://angularclass.com" target="_blank">
-    <img src="https://cloud.githubusercontent.com/assets/1016365/26219144/aa986cfa-3bdb-11e7-9f04-7296dc9ae945.png" alt="Angular Starter with Webpack" width="500" height="320"/>
+  <a href="https://onespeed.io" target="_blank">
+    <img src="https://cloud.githubusercontent.com/assets/1016365/26219144/aa986cfa-3bdb-11e7-9f04-7296dc9ae945.png" alt="Angular Starter with Webpack by OneSpeed" width="500" height="320"/>
   </a>
 </p>
 
@@ -33,7 +24,7 @@ ___
 > If you're looking to learn TypeScript see [TypeStrong/learn-typescript](https://github.com/TypeStrong/learn-typescript)
 > If you're looking for something easier to get started with then see the angular-seed that I also maintain [AngularClass/angular-seed](https://github.com/AngularClass/angular-seed)
 
-This seed repo serves as an Angular starter for anyone looking to get up and running with Angular and TypeScript fast. Using a [Webpack 2](http://webpack.github.io/) for building our files and assisting with boilerplate. We're also using Protractor for our end-to-end story and Karma for our unit tests.
+This seed repo serves as an Angular starter for anyone looking to get up and running with Angular and TypeScript fast. Using a [Webpack 3](https://webpack.js.org) for building our files and assisting with boilerplate. We're also using Protractor for our end-to-end story and Karma for our unit tests.
 * Best practices in file and application organization for Angular.
 * Ready to go build system using Webpack for working with TypeScript.
 * Angular examples that are ready to go when experimenting with Angular.
@@ -467,22 +458,16 @@ starter kit in production on [Netlify](https://www.netlify.com/):
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/AngularClass/angular-starter)
 
-<p align="center">
-  <a href="http://courses.angularclass.com/courses/angular-2-fundamentals" target="_blank">
-    <img width="438" alt="Angular Fundamentals" src="https://cloud.githubusercontent.com/assets/1016365/17200649/085798c6-543c-11e6-8ad0-2484f0641624.png">
-  </a>
-</p>
-
 ___
 
-enjoy — **AngularClass**
+enjoy — **AngularClass** a **OneSpeed** company
 
 <br><br>
 
-[![AngularClass](https://cloud.githubusercontent.com/assets/1016365/9863770/cb0620fc-5af7-11e5-89df-d4b0b2cdfc43.png  "Angular Class")](https://angularclass.com)
-## [AngularClass](https://angularclass.com)
-> Learn AngularJS, Angular, and Modern Web Development from the best.
-> Looking for corporate Angular training, want to host us, or Angular consulting? patrick@angularclass.com
+[![AngularClass](https://cloud.githubusercontent.com/assets/1016365/9863770/cb0620fc-5af7-11e5-89df-d4b0b2cdfc43.png  "Angular Class")](https://onespeed.io)
+## [AngularClass](https://angularclass.com) a [OneSpeed](https://onespeed.io) company
+> Learn Angular, and Modern Web Development from the best.
+> Looking for corporate Angular training or Angular consulting? patrick@onespeed.io
 
 ___
 
