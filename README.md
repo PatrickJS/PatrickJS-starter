@@ -1,3 +1,11 @@
+<p align="center">
+  <a href="https://onespeed.io/" target="_blank">
+    <img  alt="OneSpeed" src="https://user-images.githubusercontent.com/1016365/28739734-462f5210-73b2-11e7-92f7-2aabe05cfefa.png">
+  </a>
+</p>
+
+___
+
 [![taylor swift](https://img.shields.io/badge/secured%20by-taylor%20swift-brightgreen.svg)](https://twitter.com/SwiftOnSecurity)
 [![volkswagen status](https://auchenberg.github.io/volkswagen/volkswargen_ci.svg?v=1)](https://github.com/auchenberg/volkswagen)
 [![Build Status](https://travis-ci.org/AngularClass/angular2-webpack-starter.svg?branch=master)](https://travis-ci.org/AngularClass/angular2-webpack-starter)
@@ -464,10 +472,10 @@ enjoy — **AngularClass** a **OneSpeed** company
 
 <br><br>
 
-[![AngularClass](https://cloud.githubusercontent.com/assets/1016365/9863770/cb0620fc-5af7-11e5-89df-d4b0b2cdfc43.png  "Angular Class")](https://onespeed.io)
-## [AngularClass](https://angularclass.com) a [OneSpeed](https://onespeed.io) company
-> Learn Angular, and Modern Web Development from the best.
-> Looking for corporate Angular training or Angular consulting? patrick@onespeed.io
+[![OneSpeed](https://user-images.githubusercontent.com/1016365/28739734-462f5210-73b2-11e7-92f7-2aabe05cfefa.png  "OneSpeed")](https://onespeed.io)
+## [OneSpeed](https://onespeed.io)
+> Our experience is vast with OneSpeed successfully creating and delivering solutions for companies like Bloomberg, American Airlines, and IBM.
+> We will tailor our solutions to fit your needs. Web App Development Services, Mobile App Services, Corporate Training contact us at Patrick@OneSpeed.io
 
 ___
 
