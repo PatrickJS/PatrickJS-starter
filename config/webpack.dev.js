@@ -21,10 +21,12 @@ const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3000;
+const PUBLIC = process.env.PUBLIC || undefined;
 const HMR = helpers.hasProcessFlag('hot');
 const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
   host: HOST,
   port: PORT,
+  public: PUBLIC,
   ENV: ENV,
   HMR: HMR
 });
@@ -220,6 +222,7 @@ module.exports = function (options) {
     devServer: {
       port: METADATA.port,
       host: METADATA.host,
+      public: METADATA.public,
       historyApiFallback: true,
       watchOptions: {
         // if you're using Docker you may need this
