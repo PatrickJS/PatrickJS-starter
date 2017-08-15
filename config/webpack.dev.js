@@ -14,6 +14,7 @@ const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
+const AutoDllPlugin = require('autodll-webpack-plugin');
 
 /**
  * Webpack Constants
@@ -144,37 +145,31 @@ module.exports = function (options) {
         }
       }),
 
-      // new DllBundlesPlugin({
-      //   bundles: {
-      //     polyfills: [
-      //       'core-js',
-      //       {
-      //         name: 'zone.js',
-      //         path: 'zone.js/dist/zone.js'
-      //       },
-      //       {
-      //         name: 'zone.js',
-      //         path: 'zone.js/dist/long-stack-trace-zone.js'
-      //       },
-      //     ],
-      //     vendor: [
-      //       '@angular/platform-browser',
-      //       '@angular/platform-browser-dynamic',
-      //       '@angular/core',
-      //       '@angular/common',
-      //       '@angular/forms',
-      //       '@angular/http',
-      //       '@angular/router',
-      //       '@angularclass/hmr',
-      //       'rxjs',
-      //     ]
-      //   },
-      //   dllDir: helpers.root('dll'),
-      //   webpackConfig: webpackMergeDll(commonConfig({env: ENV}), {
-      //     devtool: 'cheap-module-source-map',
-      //     plugins: []
-      //   })
-      // }),
+      new AutoDllPlugin({
+        debug: true,
+        inject: true,
+        context: helpers.root(),
+        filename: '[name]_[hash].js',
+        path: './dll',
+        entry: {
+          polyfills: [
+            'core-js',
+            'zone.js/dist/zone.js',
+            'zone.js/dist/long-stack-trace-zone'
+          ],
+          vendor: [
+            '@angular/platform-browser',
+            '@angular/platform-browser-dynamic',
+            '@angular/core',
+            '@angular/common',
+            '@angular/forms',
+            '@angular/http',
+            '@angular/router',
+            '@angularclass/hmr',
+            'rxjs',
+          ]
+        }
+      }),
 
       /**
        * Plugin: AddAssetHtmlPlugin
