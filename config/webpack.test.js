@@ -193,6 +193,7 @@ module.exports = function (options) {
       new DefinePlugin({
         'ENV': JSON.stringify(ENV),
         'HMR': false,
+		'IS_PROD': false,
         'process.env': {
           'ENV': JSON.stringify(ENV),
           'NODE_ENV': JSON.stringify(ENV),
