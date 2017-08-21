@@ -36,6 +36,17 @@ export class AppState {
      */
     return this._state[prop] = value;
   }
+  
+  public pop(prop: string) {
+    /**
+     * Remove expired values.
+     */
+    const copy = this._clone(this._state[prop]);
+
+    delete this._state[prop];
+
+    return copy;
+  }
 
   private _clone(object: InternalStateType) {
     /**
