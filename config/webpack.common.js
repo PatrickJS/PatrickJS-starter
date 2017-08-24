@@ -191,14 +191,14 @@ module.exports = function (options) {
          */
         {
           test: /\.(jpg|png|gif)$/,
-          use: 'file-loader'
+          use: 'file-loader?name=[path][name].[ext]?[hash]&context=src/'
         },
 
         /* File loader for supporting fonts, for example, in CSS files.
         */
         {
           test: /\.(eot|woff2?|svg|ttf)([\?]?.*)$/,
-          use: 'file-loader'
+          use: 'file-loader?name=[path][name].[ext]?[hash]&context=src/'
         }
 
       ],
@@ -325,7 +325,7 @@ module.exports = function (options) {
         metadata: METADATA,
         inject: 'body'
       }),
-      
+
        /**
        * Plugin: ScriptExtHtmlWebpackPlugin
        * Description: Enhances html-webpack-plugin functionality
