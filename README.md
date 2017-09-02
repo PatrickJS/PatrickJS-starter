@@ -8,9 +8,9 @@ ___
 
 [![taylor swift](https://img.shields.io/badge/secured%20by-taylor%20swift-brightgreen.svg)](https://twitter.com/SwiftOnSecurity)
 [![volkswagen status](https://auchenberg.github.io/volkswagen/volkswargen_ci.svg?v=1)](https://github.com/auchenberg/volkswagen)
-[![Build Status](https://travis-ci.org/AngularClass/angular2-webpack-starter.svg?branch=master)](https://travis-ci.org/AngularClass/angular2-webpack-starter)
-[![GitHub version](https://badge.fury.io/gh/angularclass%2Fangular2-webpack-starter.svg)](https://badge.fury.io/gh/angularclass%2Fangular2-webpack-starter)
-[![Dependency Status](https://david-dm.org/angularclass/angular2-webpack-starter.svg)](https://david-dm.org/angularclass/angular2-webpack-starter)
+[![Build Status](https://travis-ci.org/AngularClass/angular-starter.svg?branch=master)](https://travis-ci.org/AngularClass/angular-starter)
+[![GitHub version](https://badge.fury.io/gh/angularclass%2Fangular-starter.svg)](https://badge.fury.io/gh/angularclass%2Fangular-starter)
+[![Dependency Status](https://david-dm.org/angularclass/angular-starter.svg)](https://david-dm.org/angularclass/angular-starter)
 [![Stack Share](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](http://stackshare.io/angularclass/angular-2-webpack-starter)
 
 <p align="center">
@@ -19,7 +19,7 @@ ___
   </a>
 </p>
 
-# Angular4 Webpack Starter [![Join Slack](https://img.shields.io/badge/slack-join-brightgreen.svg)](https://angularclass.com/slack-join) [![Join the chat at https://gitter.im/angularclass/angular2-webpack-starter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/angularclass/angular2-webpack-starter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+# Angular4 Webpack Starter [![Join Slack](https://img.shields.io/badge/slack-join-brightgreen.svg)](https://angularclass.com/slack-join) [![Join the chat at https://gitter.im/angularclass/angular-starter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/angularclass/angular-starter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 
 > An Angular starter kit featuring [Angular 4](https://angular.io), [Ahead of Time Compile](https://angular.io/docs/ts/latest/cookbook/aot-compiler.html), [Router](https://angular.io/docs/ts/latest/guide/router.html), [Forms](https://angular.io/docs/ts/latest/guide/forms.html),
@@ -141,7 +141,7 @@ What you need to run this app:
 * `node` and `npm` (`brew install node`)
 * Ensure you're running the latest versions Node `v6.x.x`+ (or `v7.x.x`) and NPM `3.x.x`+
 
-> If you have `nvm` installed, which is highly recommended (`brew install nvm`) you can do a `nvm install --lts && nvm use` in `$` to run with the latest Node LTS. You can also have this `zsh` done for you [automatically](https://github.com/creationix/nvm#calling-nvm-use-automatically-in-a-directory-with-a-nvmrc-file) 
+> If you have `nvm` installed, which is highly recommended (`brew install nvm`) you can do a `nvm install --lts && nvm use` in `$` to run with the latest Node LTS. You can also have this `zsh` done for you [automatically](https://github.com/creationix/nvm#calling-nvm-use-automatically-in-a-directory-with-a-nvmrc-file)
 
 Once you have those, you should install these globals with `npm install --global`:
 * `webpack` (`npm install --global webpack`)
@@ -269,18 +269,18 @@ We have good experience using these editors:
 * [Sublime Text](http://www.sublimetext.com/3) with [Typescript-Sublime-Plugin](https://github.com/Microsoft/Typescript-Sublime-plugin#installation)
 
 ### Visual Studio Code + Debugger for Chrome
-> Install [Debugger for Chrome](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome) and see docs for instructions to launch Chrome 
+> Install [Debugger for Chrome](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome) and see docs for instructions to launch Chrome
 
 The included `.vscode` automatically connects to the webpack development server on port `3000`.
 
 # Types
 > When you include a module that doesn't include Type Definitions inside of the module you can include external Type Definitions with @types
 
-i.e, to have youtube api support, run this command in terminal: 
+i.e, to have youtube api support, run this command in terminal:
 ```shell
 npm i @types/youtube @types/gapi @types/gapi.youtube
-``` 
-In some cases where your code editor doesn't support Typescript 2 yet or these types weren't listed in ```tsconfig.json```, add these to **"src/custom-typings.d.ts"** to make peace with the compile check: 
+```
+In some cases where your code editor doesn't support Typescript 2 yet or these types weren't listed in ```tsconfig.json```, add these to **"src/custom-typings.d.ts"** to make peace with the compile check:
 ```es6
 import '@types/gapi.youtube';
 import '@types/gapi';
@@ -357,7 +357,7 @@ import * as _ from 'lodash';
 * node-pre-gyp ERR in npm install (Windows)
   * install Python x86 version between 2.5 and 3.0 on windows see issue [#626](https://github.com/AngularClass/angular-starter/issues/626)
 * `Error:Error: Parse tsconfig error [{"messageText":"Unknown compiler option 'lib'.","category":1,"code":5023},{"messageText":"Unknown compiler option 'strictNullChecks'.","category":1,"code":5023},{"messageText":"Unknown compiler option 'baseUrl'.","category":1,"code":5023},{"messageText":"Unknown compiler option 'paths'.","category":1,"code":5023},{"messageText":"Unknown compiler option 'types'.","category":1,"code":5023}]`
-  * remove `node_modules/typescript` and run `npm install typescript@beta`. This repo now uses ts 2.0 
+  * remove `node_modules/typescript` and run `npm install typescript@beta`. This repo now uses ts 2.0
 * "There are multiple modules with names that only differ in casing"
   * change `c:\[path to angular-starter]` to `C:\[path to angular-starter]` see [926#issuecomment-245223547](https://github.com/AngularClass/angular-starter/issues/926#issuecomment-245223547)
 
@@ -372,7 +372,7 @@ import * as _ from 'lodash';
 
 ## Docker
 
-To run project you only need host machine with **operating system** with installed **git** (to clone this repo) 
+To run project you only need host machine with **operating system** with installed **git** (to clone this repo)
 and [docker](https://www.docker.com/) and thats all - any other software is not needed
 (other software like node.js etc. will be automatically downloaded and installed inside docker container during build step based on dockerfile).
 
@@ -403,22 +403,22 @@ and logout and login again.
 
 ### Build image
 
-Because *node.js* is big memory consumer you need 1-2GB RAM or virtual memory to build docker image 
+Because *node.js* is big memory consumer you need 1-2GB RAM or virtual memory to build docker image
 (it was successfully tested on machine with 512MB RAM + 2GB virtual memory - building process take 7min)
 
 Go to main project folder. To build big (~280MB) image which has cached data and is able to **FAST** rebuild  
-(this is good for testing or staging environment) type: 
+(this is good for testing or staging environment) type:
 
 `docker build -t angular-starter .`
 
 To build **SMALL** (~20MB) image without cache (so each rebuild will take the same amount of time as first build)
 (this is good for production environment) type:
 
-`docker build --squash="true" -t angular-starter .` 
+`docker build --squash="true" -t angular-starter .`
 
-The **angular-starter** name used in above commands is only example image name. 
+The **angular-starter** name used in above commands is only example image name.
 To remove intermediate images created by docker on build process, type:
- 
+
 `docker rmi -f $(docker images -f "dangling=true" -q)`
 
 ### Run image
@@ -433,20 +433,20 @@ And that's all, you can open browser and go to [localhost:8080](localhost:8080).
 
 If you want to run image as virtual-host on sub-domain you must setup [proxy](https://github.com/jwilder/nginx-proxy)
 . You should install proxy and set sub-domain in this way:
- 
+
  ```
  docker pull jwilder/nginx-proxy:alpine
  docker run -d -p 80:80 --name nginx-proxy -v /var/run/docker.sock:/tmp/docker.sock:ro jwilder/nginx-proxy:alpine
  ```
- 
+
  And in your `/etc/hosts` file (linux) add line: `127.0.0.1 angular-starter.your-domain.com` or in yor hosting add
  folowing DNS record (wildchar `*` is handy because when you add new sub-domain in future, you don't need to touch/add any DNS record)
-  
+
  ```
- Type: CNAME 
+ Type: CNAME
  Hostname: *.your-domain.com
  Direct to: your-domain.com
- TTL(sec): 43200 
+ TTL(sec): 43200
  ```
 
 And now you are ready to run image on subdomain by:
