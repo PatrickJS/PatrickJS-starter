@@ -33,7 +33,8 @@ const METADATA = {
   title: 'Angular2 Webpack Starter by @gdi2290 from @AngularClass',
   baseUrl: '/',
   isDevServer: helpers.isWebpackDevServer(),
-  HMR: HMR
+  HMR: HMR,
+  AOT: AOT
 };
 
 /**
@@ -114,13 +115,6 @@ module.exports = function (options) {
         {
           test: /\.ts$/,
           use: [
-            {
-              loader: '@angularclass/hmr-loader',
-              options: {
-                pretty: !isProd,
-                prod: isProd
-              }
-            },
             {
               /**
                *  MAKE SURE TO CHAIN VANILLA JS CODE, I.E. TS COMPILATION OUTPUT.
@@ -321,7 +315,10 @@ module.exports = function (options) {
       new HtmlWebpackPlugin({
         template: 'src/index.html',
         title: METADATA.title,
-        chunksSortMode: 'dependency',
+        chunksSortMode: function (a, b) {
+          const entryPoints = ["inline","polyfills","sw-register","styles","vendor","main"];
+          return entryPoints.indexOf(a.names[0]) - entryPoints.indexOf(b.names[0]);
+        },
         metadata: METADATA,
         inject: 'body'
       }),
