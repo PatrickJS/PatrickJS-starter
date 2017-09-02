@@ -242,10 +242,11 @@ The following are some things that will make AoT compile fail.
 Any stylesheets (Sass or CSS) placed in the `src/styles` directory and imported into your project will automatically be compiled into an external `.css` and embedded in your production builds.
 
 For example to use Bootstrap as an external stylesheet:
-1) Create a `styles.scss` file (name doesn't matter) in the `src/styles` directory.
-2) `npm install` the version of Boostrap you want.
-3) In `styles.scss` add `@import 'bootstrap/scss/bootstrap.scss';`
-4) In `src/app/app.module.ts` add underneath the other import statements: `import '../styles/styles.scss';`
+
+1. Create a `styles.scss` file (name doesn't matter) in the `src/styles` directory.
+2. `npm install` the version of Boostrap you want.
+3. In `styles.scss` add `@import '~bootstrap/scss/bootstrap.scss';`
+4. In `src/app/app.module.ts` add underneath the other import statements: `import '../styles/styles.scss';`
 
 # Contributing
 You can include more examples as components but they must introduce a new concept such as `Home` component (separate folders), and Todo (services). I'll accept pretty much everything so feel free to open a Pull-Request
