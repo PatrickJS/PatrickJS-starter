@@ -29,7 +29,7 @@ import 'core-js/es6/weak-set';
 import 'core-js/es6/typed';
 import 'core-js/es6/reflect';
 /**
- * See issue https://github.com/AngularClass/angular2-webpack-starter/issues/709
+ * See issue https://github.com/AngularClass/angular-starter/issues/709
  */
  /* import 'core-js/es6/promise'; */
 

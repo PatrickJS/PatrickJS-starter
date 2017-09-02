@@ -60,7 +60,7 @@ module.exports = function (options) {
      * See: http://webpack.github.io/docs/configuration.html#module
      *
      * 'use:' revered back to 'loader:' as a temp. workaround for #1188
-     * See: https://github.com/AngularClass/angular2-webpack-starter/issues/1188#issuecomment-262872034
+     * See: https://github.com/AngularClass/angular-starter/issues/1188#issuecomment-262872034
      */
     module: {
 
@@ -115,17 +115,6 @@ module.exports = function (options) {
             'angular2-template-loader'
           ],
           exclude: [/\.e2e\.ts$/]
-        },
-
-        /**
-         * Json loader support for *.json files.
-         *
-         * See: https://github.com/webpack/json-loader
-         */
-        {
-          test: /\.json$/,
-          loader: 'json-loader',
-          exclude: [helpers.root('src/index.html')]
         },
 
         /**
