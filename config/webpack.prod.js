@@ -189,10 +189,10 @@ module.exports = function (env) {
           ie8: false,
           ecma: 6,
           warnings: true,
-          mangle: false, // debug false
+          mangle: true, // debug false
           output: {
             comments: false,
-            beautify: true,  // debug true
+            beautify: false,  // debug true
           }
         },
         warnings: true,
