@@ -22,7 +22,8 @@ const IgnorePlugin = require('webpack/lib/IgnorePlugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplacementPlugin');
 const ProvidePlugin = require('webpack/lib/ProvidePlugin');
-const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
+const ModuleConcatenationPlugin = require('webpack/lib/optimize/ModuleConcatenationPlugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeJsPlugin = require('optimize-js-plugin');
 
 /**
@@ -132,6 +133,8 @@ module.exports = function (env) {
      */
     plugins: [
 
+      new ModuleConcatenationPlugin(),
+
       /**
        * Webpack plugin to optimize a JavaScript file for faster initial load
        * by wrapping eagerly-invoked functions.
@@ -180,41 +183,16 @@ module.exports = function (env) {
        * NOTE: To debug prod builds uncomment //debug lines and comment //prod lines
        */
       new UglifyJsPlugin({
-        // beautify: true, //debug
-        // mangle: false, //debug
-        // dead_code: false, //debug
-        // unused: false, //debug
-        // deadCode: false, //debug
-        // compress: {
-        //   screw_ie8: true,
-        //   keep_fnames: true,
-        //   drop_debugger: false,
-        //   dead_code: false,
-        //   unused: false
-        // }, // debug
-        // comments: true, //debug
-
-
-        beautify: false, //prod
-        output: {
-          comments: false
-        }, //prod
-        mangle: {
-          screw_ie8: true
-        }, //prod
-        compress: {
-          screw_ie8: true,
-          warnings: false,
-          conditionals: true,
-          unused: true,
-          comparisons: true,
-          sequences: true,
-          dead_code: true,
-          evaluate: true,
-          if_return: true,
-          join_vars: true,
-          negate_iife: false // we need this for lazy v8
-        },
+        parallel: true,
+        uglifyOptions: {
+          ie8: false,
+          ecma: 8,
+          warnings: true,
+          output: {
+            comments: false,
+            beautify: false,
+          }
+        }
       }),
 
       /**
@@ -238,36 +216,10 @@ module.exports = function (env) {
       /**
        * AoT
        */
-      /*
-      new NormalModuleReplacementPlugin(
-        /@angular(\\|\/)upgrade/,
-        helpers.root('config/empty.js')
-      ),
       new NormalModuleReplacementPlugin(
         /@angular(\\|\/)compiler/,
         helpers.root('config/empty.js')
       ),
-      new NormalModuleReplacementPlugin(
-        /@angular(\\|\/)platform-browser-dynamic/,
-        helpers.root('config/empty.js')
-      ),
-      new NormalModuleReplacementPlugin(
-        /dom(\\|\/)debug(\\|\/)ng_probe/,
-        helpers.root('config/empty.js')
-      ),
-      new NormalModuleReplacementPlugin(
-        /dom(\\|\/)debug(\\|\/)by/,
-        helpers.root('config/empty.js')
-      ),
-      new NormalModuleReplacementPlugin(
-        /src(\\|\/)debug(\\|\/)debug_node/,
-        helpers.root('config/empty.js')
-      ),
-      new NormalModuleReplacementPlugin(
-        /src(\\|\/)debug(\\|\/)debug_renderer/,
-        helpers.root('config/empty.js')
-      ),
-      */
 
       /**
        * Plugin: CompressionPlugin
