@@ -14,6 +14,7 @@ const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
+const HotModuleReplacementPlugin = require('webpack/lib/HotModuleReplacementPlugin');
 
 /**
  * Webpack Constants
@@ -209,6 +210,8 @@ module.exports = function (options) {
         }
       }),
 
+      new HotModuleReplacementPlugin()
+
     ],
 
     /**
@@ -222,6 +225,7 @@ module.exports = function (options) {
     devServer: {
       port: METADATA.port,
       host: METADATA.host,
+      hot: METADATA.HMR,
       public: METADATA.public,
       historyApiFallback: true,
       watchOptions: {
