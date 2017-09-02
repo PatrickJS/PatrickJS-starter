@@ -32,13 +32,15 @@ const OptimizeJsPlugin = require('optimize-js-plugin');
 const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 8080;
+const AOT = process.env.BUILD_AOT || helpers.hasNpmFlag('aot');
 const METADATA = webpackMerge(commonConfig({
   env: ENV
 }).metadata, {
   host: HOST,
   port: PORT,
   ENV: ENV,
-  HMR: false
+  HMR: false,
+  AOT: AOT
 });
 
 module.exports = function (env) {
@@ -166,11 +168,10 @@ module.exports = function (env) {
       new DefinePlugin({
         'ENV': JSON.stringify(METADATA.ENV),
         'HMR': METADATA.HMR,
-        'process.env': {
-          'ENV': JSON.stringify(METADATA.ENV),
-          'NODE_ENV': JSON.stringify(METADATA.ENV),
-          'HMR': METADATA.HMR,
-        }
+        'AOT': METADATA.AOT,
+        'process.env.ENV': JSON.stringify(METADATA.ENV),
+        'process.env.NODE_ENV': JSON.stringify(METADATA.ENV),
+        'process.env.HMR': METADATA.HMR
       }),
 
       /**
@@ -186,13 +187,15 @@ module.exports = function (env) {
         parallel: true,
         uglifyOptions: {
           ie8: false,
-          ecma: 8,
+          ecma: 6,
           warnings: true,
+          mangle: false, // debug false
           output: {
             comments: false,
-            beautify: false,
+            beautify: true,  // debug true
           }
-        }
+        },
+        warnings: true,
       }),
 
       /**
@@ -202,7 +205,7 @@ module.exports = function (env) {
        * See: http://webpack.github.io/docs/list-of-plugins.html#normalmodulereplacementplugin
        */
       new NormalModuleReplacementPlugin(
-        /angular2-hmr/,
+        /(angular2|@angularclass)((\\|\/)|-)hmr/,
         helpers.root('config/empty.js')
       ),
 
@@ -215,11 +218,14 @@ module.exports = function (env) {
 
       /**
        * AoT
+       * Manually remove compiler just to make sure it's gone
        */
-      new NormalModuleReplacementPlugin(
-        /@angular(\\|\/)compiler/,
-        helpers.root('config/empty.js')
-      ),
+      (AOT ? (
+        new NormalModuleReplacementPlugin(
+          /@angular(\\|\/)compiler/,
+          helpers.root('config/empty.js')
+        )
+      ) : (new LoaderOptionsPlugin({}))),
 
       /**
        * Plugin: CompressionPlugin
