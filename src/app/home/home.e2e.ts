@@ -1,7 +1,7 @@
 import { browser, by, element } from 'protractor';
 import 'tslib';
 
-describe('App', () => {
+describe('Home', () => {
 
   beforeEach(async () => {
     /**

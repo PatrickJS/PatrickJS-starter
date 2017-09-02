@@ -21,6 +21,7 @@
     "no-forward-ref": true,
     "no-input-rename": true,
     "no-output-rename": true,
+    "only-arrow-functions": false,
     "pipe-naming": [true, "camelCase", "my"],
     "templates-use-public": true,
     "use-host-property-decorator": true,
