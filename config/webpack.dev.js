@@ -25,14 +25,14 @@ const PORT = process.env.PORT || 3000;
 const PUBLIC = process.env.PUBLIC_DEV || undefined;
 const AOT = process.env.BUILD_AOT || helpers.hasNpmFlag('aot');
 const HMR = helpers.hasProcessFlag('hot');
-const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
+const METADATA = {
   host: HOST,
   port: PORT,
   public: PUBLIC,
   ENV: ENV,
   HMR: HMR,
   AOT: AOT
-});
+};
 
 
 // const DllBundlesPlugin = require('webpack-dll-bundles-plugin').DllBundlesPlugin;
