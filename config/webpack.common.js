@@ -115,13 +115,6 @@ module.exports = function (options) {
           test: /\.ts$/,
           use: [
             {
-              loader: '@angularclass/hmr-loader',
-              options: {
-                pretty: !isProd,
-                prod: isProd
-              }
-            },
-            {
               /**
                *  MAKE SURE TO CHAIN VANILLA JS CODE, I.E. TS COMPILATION OUTPUT.
                */
@@ -325,7 +318,7 @@ module.exports = function (options) {
         metadata: METADATA,
         inject: 'body'
       }),
-      
+
        /**
        * Plugin: ScriptExtHtmlWebpackPlugin
        * Description: Enhances html-webpack-plugin functionality
