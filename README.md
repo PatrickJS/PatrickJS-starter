@@ -149,6 +149,7 @@ Once you have those, you should install these globals with `npm install --global
 * `karma` (`npm install --global karma-cli`)
 * `protractor` (`npm install --global protractor`)
 * `typescript` (`npm install --global typescript`)
+* `tslint` (`npm install --global tslint@4.5.1`)
 
 ## Installing
 * `fork` this repo
@@ -224,6 +225,20 @@ npm run e2e:live
 ```bash
 npm run build:docker
 ```
+
+### integrate with SonarCube (for continous code quality)
+Assuming you have SonarCube 5.5.6 (LTS) installed
+* Setup SonarCube with the [Sonar Typescript plugin](https://github.com/Pablissimo/SonarTsPlugin#installation)
+* Install sonar-scanner globally (`npm install --global sonar-scanner`)
+* Update [`sonar-project.properties`](sonar-project.properties) file for the property `sonar.host.url` to point to your SonarCube server. By default this assumes that the SonarCube server is running locally using the default port
+* Run the unit tests
+```bash
+npm run test
+```
+* Push results to SonarCube
+```bash
+npm run sonar-scanner
+``` 
 
 # Configuration
 Configuration files live in `config/` we are currently using webpack, karma, and protractor for different stages of your application
