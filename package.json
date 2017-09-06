@@ -32,6 +32,9 @@
     "clean": "npm cache clean --force && npm run rimraf -- node_modules doc coverage dist compiled dll",
     "docker": "docker",
     "docs": "npm run typedoc -- --options typedoc.json --exclude '**/*.spec.ts' ./src/",
+    "docs:compodoc": "compodoc -p tsconfig.json",
+    "docs:compodoc:serve": "compodoc -p tsconfig.json -s",
+    "docs:compodoc:serve:watch": "compodoc -p tsconfig.json -s -w",
     "e2e:live": "npm-run-all -p -r server:prod:ci protractor:live",
     "e2e:travis": "npm-run-all -p -r server:prod:ci protractor:delay",
     "e2e": "npm-run-all -p -r server:prod:ci protractor",
@@ -92,6 +95,7 @@
   },
   "devDependencies": {
     "@angular/compiler-cli": "~4.3.1",
+    "@compodoc/compodoc": "^1.0.0-beta.15",
     "@types/hammerjs": "^2.0.34",
     "@types/jasmine": "2.5.45",
     "@types/node": "^7.0.39",

@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://onespeed.io/" target="_blank">
-    <img  alt="OneSpeed" src="https://user-images.githubusercontent.com/1016365/28749799-58e89da4-7488-11e7-9470-e0022f668687.png">
+    <img  alt="OneSpeed" src="https://user-images.githubusercontent.com/1016365/28749799-58e89da4-7488-11e7-9470-e0022f668687.png" class="img-responsive">
   </a>
 </p>
 
