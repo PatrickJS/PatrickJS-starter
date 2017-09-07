@@ -128,6 +128,7 @@
     "karma-jasmine": "^1.1.0",
     "karma-mocha-reporter": "^2.2.3",
     "karma-remap-coverage": "^0.1.4",
+    "karma-sonarqube-unit-reporter": "0.0.13",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^2.0.4",
     "ng-router-loader": "^2.1.0",

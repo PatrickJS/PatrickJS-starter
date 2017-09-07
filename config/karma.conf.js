@@ -60,6 +60,15 @@ module.exports = function (config) {
       type: 'in-memory'
     },
 
+    sonarQubeUnitReporter: {
+      sonarQubeVersion: '5.x',
+      outputFile: 'reports/ut_report.xml',
+      overrideTestDescription: true,
+      testPath: 'src/app',
+      testFilePattern: '.spec.ts',
+      useBrowserName: false
+    },
+
     remapCoverageReporter: {
       'text-summary': null,
       lcovonly: './coverage/coverage.lcov',
@@ -93,7 +102,7 @@ module.exports = function (config) {
      * possible values: 'dots', 'progress'
      * available reporters: https://npmjs.org/browse/keyword/karma-reporter
      */
-    reporters: ['mocha', 'coverage', 'remap-coverage'],
+    reporters: ['mocha', 'coverage', 'remap-coverage', 'sonarqubeUnit'],
 
     /**
      * Web server port.

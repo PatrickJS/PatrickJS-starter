@@ -42,6 +42,9 @@ npm-debug.log
 # Coverage #
 /coverage/
 
+# Generic Unit Sonar Reports #
+/reports/
+
 # Typing #
 /src/typings/tsd/
 /typings/
