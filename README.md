@@ -226,19 +226,27 @@ npm run e2e:live
 npm run build:docker
 ```
 
-### integrate with SonarCube (for continous code quality)
-Assuming you have SonarCube 5.5.6 (LTS) installed
-* Setup SonarCube with the [Sonar Typescript plugin](https://github.com/Pablissimo/SonarTsPlugin#installation)
+### integrate with SonarQube (for continous code quality)
+Assuming you have SonarQube 5.5.6 (LTS) installed
+* Setup SonarQube with the [Sonar Typescript plugin](https://github.com/Pablissimo/SonarTsPlugin#installation) and the Generic Test Coverage plugin https://docs.sonarqube.org/display/PLUG/Generic+Test+Coverage
 * Install sonar-scanner globally (`npm install --global sonar-scanner`)
 * Update [`sonar-project.properties`](sonar-project.properties) file for the property `sonar.host.url` to point to your SonarCube server. By default this assumes that the SonarCube server is running locally using the default port
 * Run the unit tests
 ```bash
 npm run test
 ```
+* The test results collected in the results folder in the sonar compatible format
 * Push results to SonarCube
 ```bash
 npm run sonar-scanner
 ``` 
+* If working with SonarQube 6.x it supports [Generic Test Data](https://docs.sonarqube.org/display/SONAR/Generic+Test+Data)
+Modify the [karma.conf.js](config/karma.config.js) to set the appropriate version of the sonarQube
+```json
+sonarQubeUnitReporter: {
+      sonarQubeVersion: '6.x',
+}
+```
 
 # Configuration
 Configuration files live in `config/` we are currently using webpack, karma, and protractor for different stages of your application
