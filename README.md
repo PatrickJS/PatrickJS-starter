@@ -230,7 +230,7 @@ npm run build:docker
 Assuming you have SonarQube 5.5.6 (LTS) installed
 * Setup SonarQube with the [Sonar Typescript plugin](https://github.com/Pablissimo/SonarTsPlugin#installation) and the Generic Test Coverage plugin https://docs.sonarqube.org/display/PLUG/Generic+Test+Coverage
 * Install sonar-scanner globally (`npm install --global sonar-scanner`)
-* Update [`sonar-project.properties`](sonar-project.properties) file for the property `sonar.host.url` to point to your SonarCube server. By default this assumes that the SonarCube server is running locally using the default port
+* Update [`sonar-project.properties`](sonar-project.properties) file for the property `sonar.host.url` to point to your SonarQube server. By default this assumes that the SonarQube server is running locally using the default port
 * Run the unit tests
 ```bash
 npm run test
