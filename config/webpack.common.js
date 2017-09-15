@@ -11,6 +11,7 @@ const helpers = require('./helpers');
  * problem with copy-webpack-plugin
  */
 const AssetsPlugin = require('assets-webpack-plugin');
+const IgnorePlugin = require('webpack/lib/IgnorePlugin');
 const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplacementPlugin');
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
@@ -205,6 +206,9 @@ module.exports = function (options) {
      * See: http://webpack.github.io/docs/configuration.html#plugins
      */
     plugins: [
+      // Remove all locale files in moment with the IgnorePlugin if you don't need them
+      // new IgnorePlugin(/^\.\/locale$/, /moment$/),
+      
       // Use for DLLs
       // new AssetsPlugin({
       //   path: helpers.root('dist'),
