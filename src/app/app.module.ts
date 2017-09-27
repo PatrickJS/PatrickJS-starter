@@ -56,7 +56,8 @@ type StoreType = {
   /**
    * Import Angular's modules.
    */
-  imports: [BrowserModule,
+  imports: [
+    BrowserModule,
     HttpModule,
     ...APP_MODULES,
     APPROUTEMODULE
