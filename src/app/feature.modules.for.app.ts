@@ -3,5 +3,5 @@ import { FormsModule } from '@angular/forms';
 
 export const APPMODULES = [
     FormsModule,
-    BrowserAnimationsModule   
+    BrowserAnimationsModule
 ];
