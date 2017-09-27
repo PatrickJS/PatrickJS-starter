@@ -12,9 +12,9 @@ import {
 /*
  * Platform and Environment providers/directives/pipes
  */
-import { APPCOMPONENTS } from 'components.for.app';
-import  { APPMODULES } from 'feature.modules.for.app';
-import { APPPROVIDERS } from 'providers.for.app';
+import { APPCOMPONENTS } from './components.for.app';
+import  { APPMODULES } from './feature.modules.for.app';
+import { APPPROVIDERS } from './providers.for.app';
 import { ENV_PROVIDERS } from './environment';
 import { APPROUTEMODULE } from './routes.for.app';
 // App is our top level component
