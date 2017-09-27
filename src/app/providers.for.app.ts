@@ -1,5 +1,5 @@
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 
-const PROVIDERS = [
+const APPPROVIDERS = [
     ...APP_RESOLVER_PROVIDERS
 ];

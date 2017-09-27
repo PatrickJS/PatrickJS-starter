@@ -9,21 +9,14 @@ import {
   createNewHosts,
   createInputTransfer
 } from '@angularclass/hmr';
-import {
-  RouterModule,
-  PreloadAllModules
-} from '@angular/router';
-
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 /*
  * Platform and Environment providers/directives/pipes
  */
-import { COMPONENTS } from 'components.for.app';
-import  { MODULES } from 'feature.modules.for.app';
-import { PROVIDERS } from 'providers.for.app';
+import { APPCOMPONENTS } from 'components.for.app';
+import  { APPMODULES } from 'feature.modules.for.app';
+import { APPPROVIDERS } from 'providers.for.app';
 import { ENV_PROVIDERS } from './environment';
-import { ROUTES } from './app.routes';
+import { APPROUTEMODULE } from './routes.for.app';
 // App is our top level component
 import { AppComponent } from './app.component';
 import { AppState, InternalStateType } from './app.service';
@@ -33,14 +26,14 @@ import '../styles/styles.scss';
 import '../styles/headings.css';
 
 const APP_COMPONENTS = [
-  ...COMPONENTS
+  ...APPCOMPONENTS
 ];
 const APP_MODULES = [
-  ...MODULES
+  ...APPMODULES
 ];
 // Application wide providers
 const APP_PROVIDERS = [
-  ...PROVIDERS,
+  ...APPPROVIDERS,
   AppState
 ];
 
@@ -56,21 +49,17 @@ type StoreType = {
 @NgModule({
   bootstrap: [ AppComponent ],
   declarations: [
-    ...APP_COMPONENTS, AppComponent,
-    XLargeDirective
+    AppComponent,
+    XLargeDirective,
+    ...APP_COMPONENTS
   ],
   /**
    * Import Angular's modules.
    */
-  imports: [
-    ...APP_MODULES,
-    BrowserModule,
-    BrowserAnimationsModule,
+  imports: [BrowserModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES, {
-      useHash: Boolean(history.pushState) === false,
-      preloadingStrategy: PreloadAllModules
-    })
+    ...APP_MODULES,
+    APPROUTEMODULE
   ],
   /**
    * Expose our Services and Providers into Angular's dependency injection.
