@@ -6,6 +6,7 @@ import {
 import { AppState } from '../app.service';
 import { Title } from './title';
 import { XLargeDirective } from './x-large';
+import { AppEnv } from '../app.env';
 
 @Component({
   /**
@@ -39,6 +40,7 @@ export class HomeComponent implements OnInit {
    */
   constructor(
     public appState: AppState,
+    public appEnv: AppEnv,
     public title: Title
   ) {}
 
@@ -53,5 +55,9 @@ export class HomeComponent implements OnInit {
     console.log('submitState', value);
     this.appState.set('value', value);
     this.localState.value = '';
+  }
+
+  public env(key) {
+    return this.appEnv.getKey(key);
   }
 }

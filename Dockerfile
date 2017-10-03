@@ -14,13 +14,17 @@
 #
 #    Run image as virtual host (read more: https://github.com/jwilder/nginx-proxy):
 #    docker run -e VIRTUAL_HOST=angular-starter.your-domain.com --name angular-starter angular-starter &
+#
+#    Login into container (dist is in /usr/share/nginx/html)
+#    docker exec -it angular-starter /bin/bash
 
 FROM nginx:1.13.0-alpine
 
 # install console and node
-RUN apk add --no-cache bash=4.3.46-r5 &&\
-    apk add --no-cache openssl=1.0.2k-r0 &&\
-    apk add --no-cache nodejs
+RUN apk add --no-cache \
+    bash=4.3.46-r5 \
+    openssl=1.0.2k-r0 \
+    nodejs
 
 # install npm ( in separate dir due to docker cache)
 ADD package.json /tmp/npm_inst/package.json
@@ -33,7 +37,7 @@ RUN cd /tmp/npm_inst &&\
 ADD . /tmp/app
 RUN cd /tmp/app &&\
     npm run build:aot &&\
-    mv ./dist/* /usr/share/nginx/html/
+    mv ./dist/* ./dist/.env /usr/share/nginx/html/    # "*" not work for hidden file .env
 
 # clean
 RUN rm -Rf /tmp/npm_inst  &&\

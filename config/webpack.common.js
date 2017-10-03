@@ -44,7 +44,11 @@ const METADATA = {
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
 module.exports = function (options) {
+
+  copyFileIfNotExist('.env.example', '.env');
+
   isProd = options.env === 'production';
+
   return {
 
     /**
@@ -284,6 +288,7 @@ module.exports = function (options) {
        */
       new CopyWebpackPlugin([
         { from: 'src/assets', to: 'assets' },
+        { from: '.env', to: '' },
         { from: 'src/meta'}
       ],
         isProd ? { ignore: [ 'mock-data/**/*' ] } : undefined
@@ -411,4 +416,18 @@ module.exports = function (options) {
     }
 
   };
+}
+
+/**
+ * Copy file if dest not exist
+ * @param src
+ * @param dest
+ */
+function copyFileIfNotExist(src, dest) {
+    var fs = require('fs');
+    if (!fs.existsSync(dest))
+    {
+        var data = fs.readFileSync(src, 'utf-8');
+        fs.writeFileSync(dest, data);
+    }
 }

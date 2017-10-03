@@ -19,6 +19,7 @@ import { MockBackend } from '@angular/http/testing';
 import { AppState } from '../app.service';
 import { HomeComponent } from './home.component';
 import { Title } from './title';
+import { AppEnv } from'../app.env';
 
 describe(`Home`, () => {
   let comp: HomeComponent;
@@ -42,6 +43,7 @@ describe(`Home`, () => {
           deps: [MockBackend, BaseRequestOptions]
         },
         AppState,
+        AppEnv,
         Title,
       ]
     })

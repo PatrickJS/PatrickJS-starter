@@ -22,4 +22,10 @@ describe('Home', () => {
     expect(subject).toEqual(result);
   });
 
+  it('should have `proper value of env EXAMPLE_VARIABLE`', async () => {
+    let subject = await element(by.css('.env-var')).getText();
+    let result  = 'some_value';
+    expect(subject).toEqual(result);
+  });
+
 });

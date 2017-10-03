@@ -126,6 +126,7 @@ angular-starter/
  │       └──humans.txt             * for humans to know who the developers are
  │
  │
+ ├──.env.example                   * file with environemnt variables - you shoud copy it to .env and edit that copy 
  ├──tslint.json                    * typescript lint config
  ├──typedoc.json                   * typescript documentation generator
  ├──tsconfig.json                  * typescript config used outside webpack
@@ -156,6 +157,7 @@ Once you have those, you should install these globals with `npm install --global
 * `npm install webpack-dev-server rimraf webpack -g` to install required global dependencies
 * `npm install` to install all dependencies or `yarn`
 * `npm run server` to start the dev server in another tab
+* optionally you should copy `.env.example` to `.env` and edit that copy (if not webpack make copy automatically)
 
 ## Running the app
 After you have installed all dependencies you can now run the app. Run `npm run server` to start a local server using `webpack-dev-server` which will watch, build (in-memory), and reload for you. The port will be displayed to you as `http://0.0.0.0:3000` (or if you prefer IPv6, if you're using `express` server, then it's `http://[::1]:3000/`).
@@ -227,6 +229,18 @@ npm run build:docker
 
 # Configuration
 Configuration files live in `config/` we are currently using webpack, karma, and protractor for different stages of your application
+
+In main project directory you will find `.env.example` file which contains variables dependent of environment 
+(for example your backend API_URL used in your ajax-restful-api-json services can have different values for testing, development and production environments). 
+When you set up project on some environment you should copy that file to `.env` in the same directory and edit that copy. 
+Because `.env` file is highly environment dependent so it should not be committed into git repository.
+If you add new variables you should update file `.env.example` and commit changes
+
+If you deploy your code to yor client by sending `dist` directory (with compiled code),
+your client should edit `dist/.env` file to set proper values for his environment.
+
+Read more about `.env` concept on [The Twelve-Factor App Methodology](https://12factor.net/config).
+
 
 # AoT Don'ts
 The following are some things that will make AoT compile fail.
@@ -375,6 +389,19 @@ import * as _ from 'lodash';
 To run project you only need host machine with **operating system** with installed **git** (to clone this repo)
 and [docker](https://www.docker.com/) and thats all - any other software is not needed
 (other software like node.js etc. will be automatically downloaded and installed inside docker container during build step based on dockerfile).
+
+Process of deployment can be reduced to execute following sequence of "commands" (which are given below in symbolic form only for
+overview purposes):
+
+```
+git clone/pull ...                      # download source code
+cp /path/to/env/file/.env ./.env        # copy environment dependent variables (or download wget/curl ...)
+docker build -t angular-starter ...     # build docker image
+docker run --name angular-starter ...   # run docker container from that image
+```
+
+More details are below
+
 
 ### Install docker
 

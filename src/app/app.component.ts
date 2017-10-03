@@ -7,6 +7,8 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { AppState } from './app.service';
+import { AppEnv } from './app.env';
+declare let ga: Function;
 
 /**
  * App Component
@@ -64,13 +66,23 @@ export class AppComponent implements OnInit {
   public url = 'https://twitter.com/AngularClass';
 
   constructor(
-    public appState: AppState
+    public appState: AppState,
+    public appEnv: AppEnv
   ) {}
 
   public ngOnInit() {
     console.log('Initial App State', this.appState.state);
+    this.initGoogleAnalytics();
   }
 
+  public initGoogleAnalytics() {
+    let gaId = this.appEnv.getKey('GOOGLE_ANALYTICS_TRACKING_ID');
+
+    if (gaId) {
+      ga('create', gaId, 'auto');
+      ga('send', 'pageview');
+    }
+  }
 }
 
 /**

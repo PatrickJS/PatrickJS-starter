@@ -11,6 +11,8 @@ import {
  */
 import { AppComponent } from './app.component';
 import { AppState } from './app.service';
+import { AppEnv } from './app.env';
+import { HttpModule } from '@angular/http';
 
 describe(`App`, () => {
   let comp: AppComponent;
@@ -21,9 +23,10 @@ describe(`App`, () => {
    */
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ HttpModule ],
       declarations: [ AppComponent ],
       schemas: [NO_ERRORS_SCHEMA],
-      providers: [AppState]
+      providers: [AppState, AppEnv]
     })
     /**
      * Compile template and css

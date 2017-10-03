@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {
   NgModule,
-  ApplicationRef
+  ApplicationRef, APP_INITIALIZER
 } from '@angular/core';
 import {
   removeNgStyles,
@@ -24,6 +24,7 @@ import { ENV_PROVIDERS } from './environment';
 import { ROUTES } from './app.routes';
 // App is our top level component
 import { AppComponent } from './app.component';
+import { AppEnv, EnvInitializer } from './app.env';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
@@ -76,7 +77,9 @@ type StoreType = {
    */
   providers: [
     ENV_PROVIDERS,
-    APP_PROVIDERS
+    APP_PROVIDERS,
+    AppEnv,
+    { provide: APP_INITIALIZER, useFactory: EnvInitializer, deps: [AppEnv], multi: true }
   ]
 })
 export class AppModule {
