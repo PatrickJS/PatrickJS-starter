@@ -1,6 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './store/app.reducers';
+import { Store } from '@ngrx/store';
+import * as fromApp from './store/app.reducers';
+import * as AppActions from './store/app.actions';
+import 'rxjs/add/operator/take';
 import {
   NgModule,
   ApplicationRef
@@ -41,7 +47,7 @@ const APP_PROVIDERS = [
 ];
 
 type StoreType = {
-  state: InternalStateType,
+  state: string,
   restoreInputValues: () => void,
   disposeOldHosts: () => void
 };
@@ -50,7 +56,7 @@ type StoreType = {
  * `AppModule` is the main entry point into Angular2's bootstraping process
  */
 @NgModule({
-  bootstrap: [ AppComponent ],
+  bootstrap: [AppComponent],
   declarations: [
     AppComponent,
     AboutComponent,
@@ -69,7 +75,8 @@ type StoreType = {
     RouterModule.forRoot(ROUTES, {
       useHash: Boolean(history.pushState) === false,
       preloadingStrategy: PreloadAllModules
-    })
+    }),
+    StoreModule.forRoot(reducers)
   ],
   /**
    * Expose our Services and Providers into Angular's dependency injection.
@@ -83,8 +90,9 @@ export class AppModule {
 
   constructor(
     public appRef: ApplicationRef,
-    public appState: AppState
-  ) {}
+    // public appState: AppState,
+    private store: Store<fromApp.AppState>
+  ) { }
 
   public hmrOnInit(store: StoreType) {
     if (!store || !store.state) {
@@ -94,7 +102,7 @@ export class AppModule {
     /**
      * Set state
      */
-    this.appState._state = store.state;
+    this.store.dispatch(new AppActions.SetState(store.state))
     /**
      * Set input values
      */
@@ -113,20 +121,23 @@ export class AppModule {
     /**
      * Save state
      */
-    const state = this.appState._state;
-    store.state = state;
-    /**
-     * Recreate root elements
-     */
-    store.disposeOldHosts = createNewHosts(cmpLocation);
-    /**
-     * Save input values
-     */
-    store.restoreInputValues  = createInputTransfer();
-    /**
-     * Remove styles
-     */
-    removeNgStyles();
+    this.store.select('app').take(1).subscribe((appState) => {
+      const state = appState.state;
+      store.state = state;
+      /**
+      * Recreate root elements
+      */
+      store.disposeOldHosts = createNewHosts(cmpLocation);
+      /**
+       * Save input values
+       */
+      store.restoreInputValues = createInputTransfer();
+      /**
+       * Remove styles
+       */
+      removeNgStyles();
+    })
+
   }
 
   public hmrAfterDestroy(store: StoreType) {

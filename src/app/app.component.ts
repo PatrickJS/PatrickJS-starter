@@ -6,7 +6,11 @@ import {
   OnInit,
   ViewEncapsulation
 } from '@angular/core';
-import { AppState } from './app.service';
+// import { AppState } from './app.service';
+import * as fromApp from './store/app.reducers';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable'
+import 'rxjs/add/operator/take';
 
 /**
  * App Component
@@ -46,7 +50,7 @@ import { AppState } from './app.service';
       <router-outlet></router-outlet>
     </main>
 
-    <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
+    <pre class="app-state">appState.state = {{ ( appState | async )?.state }}</pre>
 
     <footer>
       <span>WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a></span>
@@ -62,13 +66,14 @@ export class AppComponent implements OnInit {
   public angularclassLogo = 'assets/img/angularclass-avatar.png';
   public name = 'Angular 2 Webpack Starter';
   public url = 'https://twitter.com/AngularClass';
-
+  public appState: Observable<fromApp.State>
   constructor(
-    public appState: AppState
-  ) {}
+    private store: Store<fromApp.AppState>
+  ) { }
 
   public ngOnInit() {
-    console.log('Initial App State', this.appState.state);
+    this.appState = this.store.select('app')
+    this.store.select('app').take(1).subscribe((appState) => console.log('Initial App State', appState.state));
   }
 
 }
