@@ -1,36 +1,20 @@
-<div>
-  <h1 x-large class="sample-content">Your Content Here</h1>
+<div class="main">
+  <div class="landing">
+    <div class="pink">
 
-  <hr>
+    </div>
 
-  <div>
-    For hot module reloading run
-    <pre>npm run start:hmr</pre>
-  </div>
+    <div class="gray">
+      <h1>Invochain</h1>
+      <h4>Your trusted inventory management platform.</h4>
+    </div>
 
-  <hr>
-
-  <div>
-    <h4>Local State</h4>
-
-    <form (ngSubmit)="submitState(localState.value)" autocomplete="off">
-
-      <input
-        [value]="localState.value"
-        (input)="localState.value = $event.target.value"
-        placeholder="Submit Local State to App State"
-        autofocus>
-
-      <button>Submit Value</button>
-    </form>
-    <!--
-        <input type="text" [value]="localState.value" (input)="localState.value = $event.target.value" autofocus>
-        Rather than wiring up two-way data-binding ourselves with [value] and (input)
-        we can use Angular's [(ngModel)] syntax
-        <input type="text" name="textInput" [(ngModel)]="localState.value" autofocus>
-      -->
-
-    <pre>this.localState = {{ localState | json }}</pre>
+    <div class="green">
+      <h4>Powered by blockchain, <strong>Invochain</strong> is an ultimate security and trust <br/>
+          ledger for consumer and industrial products from the beginning of a <br/>
+          product's life to when it reaches your customers. Each step on the way is <br/>
+        securely recorded to assure product quality. </h4>
+    </div>
 
   </div>
 

@@ -1,8 +1,48 @@
 html, body{
   height: 100%;
+  margin: 0;
+  width: 100%;
   font-family: Arial, Helvetica, sans-serif
 }
 
 a.active {
   background-color: gray;
+}
+
+.green {
+  background-color: #50CA9A;
+}
+.pink {
+  background-color: #FF437F;
+}
+.gray {
+  background-color: #F5F5F5;
+}
+.landing {
+  display: flex;
+  flex-direction: column;
+  color: #676A6D;
+}
+
+.landing > .pink {
+  flex: 1 0 auto;
+  height: 100px;
+  margin-bottom: 30px;
+}
+
+.landing > .gray {
+  flex: 1 0 auto;
+  height: 300px;
+  margin-bottom: 30px;
+  font-size: 35px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.landing > .green {
+  flex: 1 0 auto;
+  height: 300px;
+  color: white;
+  text-align: center;
+  font-size: 22px;
 }
