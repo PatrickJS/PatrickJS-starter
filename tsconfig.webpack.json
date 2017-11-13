@@ -7,7 +7,6 @@
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
-    "noEmit": true,
     "noEmitHelpers": true,
     "importHelpers": true,
     "strictNullChecks": false,
@@ -15,7 +14,7 @@
       "es2015",
       "dom"
     ],
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "paths": {
       "@angular/*": ["node_modules/@angular/*"]
     },
@@ -33,12 +32,7 @@
     "src/**/*.spec.ts",
     "src/**/*.e2e.ts"
   ],
-  "awesomeTypescriptLoaderOptions": {
-    "forkChecker": true,
-    "useWebpackText": true
-  },
   "angularCompilerOptions": {
-    "genDir": "./compiled",
     "skipMetadataEmit": true
   },
   "compileOnSave": false,
