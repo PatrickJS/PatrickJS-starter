@@ -50,7 +50,7 @@ import { AppState } from './app.service';
     <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
 
     <footer>
-      <span>WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a></span>
+      <span>Angular Starter by <a [href]="twitter">@gdi2290</a></span>
       <div>
         <a [href]="url">
           <img [src]="angularclassLogo" width="25%">
@@ -60,9 +60,10 @@ import { AppState } from './app.service';
   `
 })
 export class AppComponent implements OnInit {
-  public angularclassLogo = 'assets/img/angularclass-avatar.png';
-  public name = 'Angular 2 Webpack Starter';
-  public url = 'https://twitter.com/AngularClass';
+  public angularclassLogo = 'assets/img/tipe.png';
+  public name = 'Angular Starter';
+  public twitter = 'https://twitter.com/gdi2290';
+  public url = 'https://tipe.io';
   public showDevModule: boolean = environment.showDevModule;
 
   constructor(
