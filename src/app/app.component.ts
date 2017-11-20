@@ -1,11 +1,8 @@
 /**
  * Angular 2 decorators and services
  */
-import {
-  Component,
-  OnInit,
-  ViewEncapsulation
-} from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { environment } from 'environments/environment';
 import { AppState } from './app.service';
 
 /**
@@ -40,6 +37,10 @@ import { AppState } from './app.service';
         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
         About
       </a>
+      <a *ngIf="showDevModule" [routerLink]=" ['./dev-module'] "
+         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+        DevModule
+      </a>
     </nav>
 
     <main>
@@ -62,6 +63,7 @@ export class AppComponent implements OnInit {
   public angularclassLogo = 'assets/img/angularclass-avatar.png';
   public name = 'Angular 2 Webpack Starter';
   public url = 'https://twitter.com/AngularClass';
+  public showDevModule: boolean = environment.showDevModule;
 
   constructor(
     public appState: AppState
