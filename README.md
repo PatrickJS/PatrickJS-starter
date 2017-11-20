@@ -9,7 +9,7 @@ ___
 [![taylor swift](https://img.shields.io/badge/secured%20by-taylor%20swift-brightgreen.svg)](https://twitter.com/SwiftOnSecurity)
 [![volkswagen status](https://auchenberg.github.io/volkswagen/volkswargen_ci.svg?v=1)](https://github.com/auchenberg/volkswagen)
 [![Build Status](https://travis-ci.org/gdi2290/angular-starter.svg?branch=master)](https://travis-ci.org/gdi2290/angular-starter)
-[![GitHub version](https://badge.fury.io/gh/gdi2290/angular-starter.svg)](https://badge.fury.io/gh/gdi2290/angular-starter)
+[![GitHub version](https://badge.fury.io/gh/gdi2290%2Fangular-starter.svg)](https://badge.fury.io/gh/gdi2290%2Fangular-starter)
 [![Dependency Status](https://david-dm.org/gdi2290/angular-starter.svg)](https://david-dm.org/gdi2290/angular-starter)
 [![Stack Share](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](http://stackshare.io/angularclass/angular-2-webpack-starter)
 
