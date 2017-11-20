@@ -53,15 +53,15 @@ import { AppState } from './app.service';
       <span>Angular Starter by <a [href]="twitter">@gdi2290</a></span>
       <div>
         <a [href]="url">
-          <img [src]="angularclassLogo" width="25%">
+          <img [src]="tipe" width="25%">
         </a>
       </div>
     </footer>
   `
 })
 export class AppComponent implements OnInit {
-  public angularclassLogo = 'assets/img/tipe.png';
   public name = 'Angular Starter';
+  public tipe = 'assets/img/tipe.png';
   public twitter = 'https://twitter.com/gdi2290';
   public url = 'https://tipe.io';
   public showDevModule: boolean = environment.showDevModule;
