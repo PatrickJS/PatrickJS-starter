@@ -8,7 +8,9 @@
     "angular4",
     "angular5",
     "webpack",
-    "typescript"
+    "typescript",
+    "tipe",
+    "tipe.io"
   ],
   "author": "Patrick Stapleton <patrick@tipe.io>",
   "homepage": "https://github.com/gdi2290/angular-starter",
