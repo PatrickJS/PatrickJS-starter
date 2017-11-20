@@ -4,7 +4,7 @@ const fs = require('fs');
 const helpers = require('./helpers');
 
 const DEFAULT_METADATA = {
-  title: 'Angular2 Webpack Starter by @gdi2290 from @AngularClass',
+  title: 'Angular Starter by @gdi2290 from @TipeIO',
   baseUrl: '/',
   isDevServer: helpers.isWebpackDevServer(),
   HMR: helpers.hasProcessFlag('hot'),

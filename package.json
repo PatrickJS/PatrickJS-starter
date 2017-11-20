@@ -10,8 +10,8 @@
     "webpack",
     "typescript"
   ],
-  "author": "Patrick Stapleton <patrick@angularclass.com>",
-  "homepage": "https://github.com/AngularClass/angular-starter",
+  "author": "Patrick Stapleton <patrick@tipe.io>",
+  "homepage": "https://github.com/gdi2290/angular-starter",
   "license": "MIT",
   "scripts": {
     "build:aot:prod": "npm run clean:dist && npm run clean:aot && cross-env BUILD_AOT=1 npm run webpack -- --config config/webpack.prod.js  --progress --profile --bail",
@@ -166,10 +166,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/AngularClass/angular-starter.git"
+    "url": "https://github.com/gdi2290/angular-starter.git"
   },
   "bugs": {
-    "url": "https://github.com/AngularClass/angular-starter/issues"
+    "url": "https://github.com/gdi2290/angular-starter/issues"
   },
   "engines": {
     "node": ">= 4.2.1",
