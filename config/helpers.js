@@ -1,7 +1,7 @@
 /**
- * @author: @AngularClass
+ * @author: tipe.io
  */
-var path = require('path');
+const path = require('path');
 
 const EVENT = process.env.npm_lifecycle_event || '';
 
@@ -21,6 +21,7 @@ function hasNpmFlag(flag) {
 function isWebpackDevServer() {
   return process.argv[1] && !! (/webpack-dev-server/.exec(process.argv[1]));
 }
+
 
 var root = path.join.bind(path, ROOT);
 
