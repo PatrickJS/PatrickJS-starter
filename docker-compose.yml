@@ -1,0 +1,14 @@
+version: '3'
+services:
+  angular-starter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: angular-starter
+    networks:
+      - angular-starter
+    ports:
+      - '8080:80'
+networks:
+  angular-starter:
+    driver: bridge
