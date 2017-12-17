@@ -1,11 +1,8 @@
 /**
  * Angular 2 decorators and services
  */
-import {
-  Component,
-  OnInit,
-  ViewEncapsulation
-} from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { environment } from 'environments/environment';
 import { AppState } from './app.service';
 
 /**
@@ -40,6 +37,10 @@ import { AppState } from './app.service';
         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
         About
       </a>
+      <a *ngIf="showDevModule" [routerLink]=" ['./dev-module'] "
+         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+        DevModule
+      </a>
     </nav>
 
     <main>
@@ -49,19 +50,21 @@ import { AppState } from './app.service';
     <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
 
     <footer>
-      <span>WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a></span>
+      <span>Angular Starter by <a [href]="twitter">@gdi2290</a></span>
       <div>
         <a [href]="url">
-          <img [src]="angularclassLogo" width="25%">
+          <img [src]="tipe" width="25%">
         </a>
       </div>
     </footer>
   `
 })
 export class AppComponent implements OnInit {
-  public angularclassLogo = 'assets/img/angularclass-avatar.png';
-  public name = 'Angular 2 Webpack Starter';
-  public url = 'https://twitter.com/AngularClass';
+  public name = 'Angular Starter';
+  public tipe = 'assets/img/tipe.png';
+  public twitter = 'https://twitter.com/gdi2290';
+  public url = 'https://tipe.io';
+  public showDevModule: boolean = environment.showDevModule;
 
   constructor(
     public appState: AppState
