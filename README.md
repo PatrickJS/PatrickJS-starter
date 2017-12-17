@@ -429,6 +429,15 @@ To run created docker image on [localhost:8080](localhost:8080) type (parameter 
 
 And that's all, you can open browser and go to [localhost:8080](localhost:8080).
 
+### Build and Run image using docker-compose
+
+To create and run docker image on [localhost:8080](localhost:8080) as part of large project you may use **docker-compose**. Type 
+
+`docker-compose up &`
+
+And that's all, you can open browser and go to [localhost:8080](localhost:8080).
+
+
 ### Run image on sub-domain
 
 If you want to run image as virtual-host on sub-domain you must setup [proxy](https://github.com/jwilder/nginx-proxy)
