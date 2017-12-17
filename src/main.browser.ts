@@ -14,6 +14,9 @@ import { AppModule } from './app';
  * Bootstrap our Angular app with a top level NgModule
  */
 export function main(): Promise<any> {
+  if (module.hot) {
+    module.hot.accept();
+  }
   return platformBrowserDynamic()
     .bootstrapModule(AppModule)
     .then(environment.decorateModuleRef)
