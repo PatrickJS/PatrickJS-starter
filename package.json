@@ -65,6 +65,7 @@
     "start": "npm run server:dev",
     "start:aot": "npm run server:aot:dev",
     "test": "npm run lint && karma start",
+    "test:sonar": "npm run lint && cross-env SONAR_QUBE=1 karma start",
     "tslint": "tslint",
     "typedoc": "typedoc",
     "version": "npm run build",
@@ -79,8 +80,7 @@
     "webdriver:start": "node ./node_modules/protractor/bin/webdriver-manager start",
     "webdriver:update": "node ./node_modules/protractor/bin/webdriver-manager update",
     "webpack-dev-server": "node --max_old_space_size=4096 node_modules/webpack-dev-server/bin/webpack-dev-server.js",
-    "webpack": "node --max_old_space_size=4096 node_modules/webpack/bin/webpack.js",
-    "sonar-scanner": "sonar-scanner"
+    "webpack": "node --max_old_space_size=4096 node_modules/webpack/bin/webpack.js"
   },
   "dependencies": {
     "@angular/animations": "~5.1.0",
