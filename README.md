@@ -502,7 +502,7 @@ npm run test:sonar
 sonar-scanner
 ``` 
 * If working with SonarQube 6.x it supports [Generic Test Data](https://docs.sonarqube.org/display/SONAR/Generic+Test+Data)
-Modify the [karma.conf.js](config/karma.config.js) to set the appropriate version of the sonarQube
+* Modify the [karma.conf.js](config/karma.config.js) to set the appropriate version of the sonarQube
 ```json
 sonarQubeUnitReporter: {
       sonarQubeVersion: '6.x',
