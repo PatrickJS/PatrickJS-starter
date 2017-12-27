@@ -1,5 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+// import { HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Rx';
 
 @Injectable()
@@ -7,7 +8,7 @@ export class AppEnv {
 
     private env: Object = null;
 
-    constructor(private http: Http) {}
+    constructor(private http: HttpClient) {}
 
     /**
      * Get value of environemtn variable
@@ -22,16 +23,13 @@ export class AppEnv {
      */
     public load() {
         return new Promise((resolve, reject) => {
-            this.http.get('.env').map((res) => res).catch((error: any): any => {
-
+            this.http.get('.env', { responseType: 'text' }).map((res) => res)
+            .catch((error: any): any => {
                 console.log('Configuration file ".env" could not be read');
                 resolve(true);
-                return Observable.throw(error.json().error || 'Server error');
-
-            }).subscribe((envResponse: any) => {
-
-                this.env = this.parseEnvToObject(envResponse._body);
-
+                return Observable.throw(error.message || 'Server error');
+            }).subscribe((env: String) => {
+                this.env = this.parseEnvToObject(env);
                 console.log('ENV loaded:', this.env);
                 resolve(true);
             });
@@ -72,7 +70,7 @@ export class AppEnv {
                             val = false;
                         } else  if (valLowerCase === 'null') {
                             val = null;
-                        } else  if (!isNaN(valLowerCase)) { // detect does string is number or not
+                        } else  if (!isNaN(valLowerCase)) { // detect number
                             val = Number(val);
                         }
                     }
@@ -85,15 +83,4 @@ export class AppEnv {
         return result;
     }
 
-}
-
-/**
- * We export this function due to avoid 'function call' compilation error on AoT build
- *
- * @param appService
- * @returns {()=>Promise<T>}
- * @constructor
- */
-export function EnvInitializer(appService: AppEnv) {
-    return () => appService.load();
 }

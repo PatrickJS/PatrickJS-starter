@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import {
   inject,
@@ -12,7 +13,6 @@ import {
 import { AppComponent } from './app.component';
 import { AppState } from './app.service';
 import { AppEnv } from './app.env';
-import { HttpModule } from '@angular/http';
 
 describe(`App`, () => {
   let comp: AppComponent;
@@ -23,10 +23,10 @@ describe(`App`, () => {
    */
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ HttpModule ],
+      imports: [ HttpClientModule ],
       declarations: [ AppComponent ],
-      schemas: [NO_ERRORS_SCHEMA],
-      providers: [AppState, AppEnv]
+      schemas: [ NO_ERRORS_SCHEMA ],
+      providers: [ AppState, AppEnv ]
     })
     /**
      * Compile template and css
@@ -52,10 +52,10 @@ describe(`App`, () => {
     expect(comp).toBeDefined();
   });
 
-  it(`should be @AngularClass`, () => {
-    expect(comp.url).toEqual('https://twitter.com/AngularClass');
-    expect(comp.angularclassLogo).toEqual('assets/img/angularclass-avatar.png');
-    expect(comp.name).toEqual('Angular 2 Webpack Starter');
+  it(`should be @TipeIO`, () => {
+    expect(comp.twitter).toEqual('https://twitter.com/gdi2290');
+    expect(comp.tipe).toEqual('assets/img/tipe.png');
+    expect(comp.name).toEqual('Angular Starter');
   });
 
   it('should log ngOnInit', () => {

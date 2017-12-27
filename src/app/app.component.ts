@@ -1,11 +1,8 @@
 /**
  * Angular 2 decorators and services
  */
-import {
-  Component,
-  OnInit,
-  ViewEncapsulation
-} from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { environment } from 'environments/environment';
 import { AppState } from './app.service';
 import { AppEnv } from './app.env';
 declare let ga: Function;
@@ -17,6 +14,7 @@ declare let ga: Function;
 @Component({
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
+  providers: [ AppEnv ],
   styleUrls: [
     './app.component.css'
   ],
@@ -42,6 +40,10 @@ declare let ga: Function;
         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
         About
       </a>
+      <a *ngIf="showDevModule" [routerLink]=" ['./dev-module'] "
+         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+        DevModule
+      </a>
     </nav>
 
     <main>
@@ -51,27 +53,30 @@ declare let ga: Function;
     <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
 
     <footer>
-      <span>WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a></span>
+      <span>Angular Starter by <a [href]="twitter">@gdi2290</a></span>
       <div>
         <a [href]="url">
-          <img [src]="angularclassLogo" width="25%">
+          <img [src]="tipe" width="25%">
         </a>
       </div>
     </footer>
   `
 })
 export class AppComponent implements OnInit {
-  public angularclassLogo = 'assets/img/angularclass-avatar.png';
-  public name = 'Angular 2 Webpack Starter';
-  public url = 'https://twitter.com/AngularClass';
+  public name = 'Angular Starter';
+  public tipe = 'assets/img/tipe.png';
+  public twitter = 'https://twitter.com/gdi2290';
+  public url = 'https://tipe.io';
+  public showDevModule: boolean = environment.showDevModule;
 
   constructor(
     public appState: AppState,
     public appEnv: AppEnv
   ) {}
 
-  public ngOnInit() {
+  public async ngOnInit() {
     console.log('Initial App State', this.appState.state);
+    await this.appEnv.load();
     this.initGoogleAnalytics();
   }
 
