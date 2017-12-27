@@ -36,7 +36,7 @@ module.exports = function (config) {
     files: [
       { pattern: './config/spec-bundle.js', watched: false },
       { pattern: './src/assets/**/*', watched: false, included: false, served: true, nocache: false },
-      { pattern: '.env', watched: false, included: false, served: true, nocache: false }
+      { pattern: '.env.example', watched: false, included: false, served: true, nocache: false }
     ],
 
     /**
@@ -44,7 +44,7 @@ module.exports = function (config) {
      */
     proxies: {
       "/assets/": "/base/src/assets/",
-      "/.env": "/base/.env"
+      "/.env": "/base/.env.example"  // file /.env.example will be used in tests
     },
 
     /**
