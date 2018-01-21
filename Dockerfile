@@ -17,29 +17,34 @@
 
 FROM nginx:1.13.0-alpine
 
-# install console and node
-RUN apk add --no-cache bash=4.3.46-r5 &&\
-    apk add --no-cache openssl=1.0.2m-r0 &&\
-    apk add --no-cache nodejs
+# overwrite the nginx default.conf, e.g. for 'X-Forwarded-For' and 'real_ip'
+#COPY config/nginx/default.conf /etc/nginx/conf.d/default.conf
 
-# install npm ( in separate dir due to docker cache)
-ADD package.json /tmp/npm_inst/package.json
-RUN cd /tmp/npm_inst &&\
-    npm install &&\
-    mkdir -p /tmp/app &&\
-    mv /tmp/npm_inst/node_modules /tmp/app/
+# build in /tmp npm (in separate dir due to docker cache)
+ADD . /tmp
 
-# build and publish application
-ADD . /tmp/app
-RUN cd /tmp/app &&\
-    npm run build:aot &&\
-    mv ./dist/* /usr/share/nginx/html/
+# install npm (in separate dir due to docker cache)
+ADD package.json /tmp/package.json
 
-# clean
-RUN rm -Rf /tmp/npm_inst  &&\
-    rm -Rf /tmp/app &&\
-    rm -Rf /root/.npm &&\
-    apk del nodejs
+# minimize docker image size by combining into a single run statement
+RUN apk add --no-cache bash && \
+    apk add --no-cache openssl && \
+    apk add --no-cache nodejs && \
+
+    # do everything in the tmp directory
+    cd /tmp && \
+
+    # install packages
+    npm install && \
+
+    # build and publish application
+    npm run build:aot && \
+    mv ./dist/* /usr/share/nginx/html && \
+
+    # clean
+    rm -Rf /tmp  && \
+    rm -Rf /root/.npm && \
+    apk del nodejs bash openssl
 
 # this is for virtual host purposes
 EXPOSE 80
