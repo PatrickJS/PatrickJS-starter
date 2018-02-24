@@ -153,6 +153,16 @@ module.exports = function (options) {
         ignored: /node_modules/
       },
       /**
+      * Show a full-screen overlay in the browser when there are compiler errors or
+      * warnings. Disabled by default.
+      *
+      * See: https://webpack.js.org/configuration/dev-server/#devserver-overlay
+      */
+      overlay: {
+        errors: true,
+        warning: false
+      },
+      /**
       * Here you can access the Express app object and add your own custom middleware to it.
       *
       * See: https://webpack.github.io/docs/webpack-dev-server.html

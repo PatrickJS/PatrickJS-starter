@@ -6,30 +6,22 @@
     "node_modules/codelyzer"
   ],
   "rules": {
-    // Custom
     "trailing-comma": [false, {"multiline": "always", "singleline": "never"}],
-    "interface-name": [false, "always-prefix"],
-    // Angular 2
+    "interface-name": [true, "never-prefix"],
     "component-class-suffix": true,
-    // "component-selector": [true, "element", "my", "kebab-case"],
     "directive-class-suffix": true,
-    // "directive-selector": [true, "attribute", "my", "camelCase"],
     "import-destructuring-spacing": true,
-    "invoke-injectable": true,
-    "no-access-missing-member": true,
     "no-attribute-parameter-decorator": true,
     "no-forward-ref": true,
     "no-input-rename": true,
     "no-output-rename": true,
     "only-arrow-functions": false,
     "pipe-naming": [true, "camelCase", "my"],
-    "templates-use-public": true,
     "use-host-property-decorator": true,
     "use-input-property-decorator": true,
     "use-life-cycle-interface": true,
     "use-output-property-decorator": true,
     "use-pipe-transform-interface": true,
-    // General
     "no-console": [true,
       "time",
       "timeEnd",
