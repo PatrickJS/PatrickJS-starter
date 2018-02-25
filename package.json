@@ -102,7 +102,7 @@
     "@angular-devkit/build-optimizer": "^0.0.32",
     "@angular/compiler-cli": "~5.0.1",
     "@compodoc/compodoc": "^1.0.0-beta.15",
-    "@ngtools/webpack": "^1.8.0",
+    "@ngtools/webpack": "1.10.0",
     "@types/hammerjs": "^2.0.34",
     "@types/jasmine": "2.5.45",
     "@types/node": "^7.0.39",
