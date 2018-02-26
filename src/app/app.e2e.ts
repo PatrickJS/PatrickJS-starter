@@ -8,26 +8,26 @@ describe('App', () => {
   });
 
   it('should have a title', async () => {
-    let subject = await browser.getTitle();
-    let result  = 'Angular Starter by @gdi2290 from @TipeIO';
+    const subject = await browser.getTitle();
+    const result  = 'Angular Starter by @gdi2290 from @TipeIO';
     expect(subject).toEqual(result);
   });
 
   it('should have header', async () => {
-    let subject = await element(by.css('h1')).isPresent();
-    let result  = true;
+    const subject = await element(by.css('h1')).isPresent();
+    const result  = true;
     expect(subject).toEqual(result);
   });
 
   it('should have <home>', async () => {
-    let subject = await element(by.css('app home')).isPresent();
-    let result  = true;
+    const subject = await element(by.css('app home')).isPresent();
+    const result  = true;
     expect(subject).toEqual(result);
   });
 
   it('should have buttons', async () => {
-    let subject = await element(by.css('button')).getText();
-    let result  = 'Submit Value';
+    const subject = await element(by.css('button')).getText();
+    const result  = 'Submit Value';
     expect(subject).toEqual(result);
   });
 

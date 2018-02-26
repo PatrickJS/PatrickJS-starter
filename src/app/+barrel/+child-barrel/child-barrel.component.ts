@@ -13,7 +13,7 @@ console.log('`ChildBarrel` component loaded asynchronously');
 @Component({
   selector: 'child-barrel',
   template: `
-    <h1>Hello from Child Barrel</h1>    
+    <h1>Hello from Child Barrel</h1>
   `,
 })
 export class ChildBarrelComponent implements OnInit {
