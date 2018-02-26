@@ -2,6 +2,11 @@
   "extends": [
     "tslint:recommended"
   ],
+  "linterOptions": {
+    "exclude": [
+      "src/*.d.ts"
+    ]
+  },
   "rulesDirectory": [
     "node_modules/codelyzer"
   ],
