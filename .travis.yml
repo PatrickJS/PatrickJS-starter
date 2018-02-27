@@ -1,4 +1,4 @@
-sudo: false
+sudo: required
 dist: trusty
 language: node_js
 
@@ -7,6 +7,7 @@ cache:
     - node_modules
 
 addons:
+  chrome: stable
   apt:
     packages:
       - google-chrome-stable
