@@ -8,9 +8,6 @@ cache:
 
 addons:
   chrome: stable
-  apt:
-    packages:
-      - google-chrome-stable
 
 node_js:
   - "6"
