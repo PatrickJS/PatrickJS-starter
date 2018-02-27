@@ -15,31 +15,31 @@
 #    Run image as virtual host (read more: https://github.com/jwilder/nginx-proxy):
 #    docker run -e VIRTUAL_HOST=angular-starter.your-domain.com --name angular-starter angular-starter &
 
-FROM nginx:1.13.0-alpine
+# Stage 1, based on Node.js, to build and compile Angular
 
-# install console and node
-RUN apk add --no-cache bash=4.3.46-r5 &&\
-    apk add --no-cache openssl=1.0.2n-r0 &&\
-    apk add --no-cache nodejs
+FROM node:8.9.4-alpine as builder
 
-# install npm ( in separate dir due to docker cache)
-ADD package.json /tmp/npm_inst/package.json
-RUN cd /tmp/npm_inst &&\
-    npm install &&\
-    mkdir -p /tmp/app &&\
-    mv /tmp/npm_inst/node_modules /tmp/app/
+COPY package.json ./
 
-# build and publish application
-ADD . /tmp/app
-RUN cd /tmp/app &&\
-    npm run build:aot &&\
-    mv ./dist/* /usr/share/nginx/html/
+## Storing node modules on a separate layer will prevent unnecessary npm installs at each build
+RUN npm i && mkdir /ng-app && mv ./node_modules ./ng-app
 
-# clean
-RUN rm -Rf /tmp/npm_inst  &&\
-    rm -Rf /tmp/app &&\
-    rm -Rf /root/.npm &&\
-    apk del nodejs
+WORKDIR /ng-app
 
-# this is for virtual host purposes
-EXPOSE 80
+COPY . .
+
+RUN npm run build:aot:prod
+
+# Stage 2, based on Nginx, to have only the compiled app, ready for production with Nginx
+
+FROM nginx:1.13.9-alpine
+
+COPY ./config/nginx-custom.conf /etc/nginx/conf.d/default.conf
+                                  
+## Remove default nginx website
+RUN rm -rf /usr/share/nginx/html/*
+
+## From ‘builder’ stage copy over the artifacts in dist folder to default nginx public folder
+COPY --from=builder /ng-app/dist /usr/share/nginx/html
+
+CMD ["nginx", "-g", "daemon off;"]
