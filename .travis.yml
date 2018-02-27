@@ -1,4 +1,4 @@
-sudo: required
+sudo: false
 dist: trusty
 language: node_js
 
@@ -25,10 +25,6 @@ before_install:
 
 install:
   - npm install
-
-before_script:
-  - npm rebuild node-sass
-  - "export DISPLAY=:99.0"
 
 script:
   - npm run ci:travis
