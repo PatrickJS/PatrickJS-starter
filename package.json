@@ -65,7 +65,7 @@
     "start": "npm run server:dev",
     "start:aot": "npm run server:aot:dev",
     "test": "karma start",
-    "test:ci": "karma start --single-run --browsers ChromeHeadless",
+    "test:ci": "karma start --single-run --browsers ChromeTravisCi",
     "tslint": "tslint",
     "typedoc": "typedoc",
     "version": "npm run build",
