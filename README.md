@@ -242,7 +242,7 @@ Any stylesheets (Sass or CSS) placed in the `src/styles` directory and imported 
 For example to use Bootstrap as an external stylesheet:
 1) Create a `styles.scss` file (name doesn't matter) in the `src/styles` directory.
 2) `npm install` the version of Boostrap you want.
-3) In `styles.scss` add `@import 'bootstrap/scss/bootstrap.scss';`
+3) In `styles.scss` add `@import '~bootstrap/scss/bootstrap.scss';`
 4) In `src/app/app.module.ts` add underneath the other import statements: `import '../styles/styles.scss';`
 
 # Contributing
