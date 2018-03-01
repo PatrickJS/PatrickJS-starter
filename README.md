@@ -42,10 +42,9 @@ This seed repo serves as an Angular starter for anyone looking to get up and run
 * [Webpack DLLs](https://robertknight.github.io/posts/webpack-dll-plugins/) dramatically speed your development builds.
 * Testing Angular code with Jasmine and Karma.
 * Coverage with Istanbul and Karma
-* End-to-end Angular code using Protractor.
+* End-to-end Angular app testing using Protractor.
 * Type manager with @types
 * Hot Module Replacement with Webpack and [@angularclass/hmr](https://github.com/angularclass/angular-hmr) and [@angularclass/hmr-loader](https://github.com/angularclass/angular-hmr-loader)
-* Angular 4 support via changing package.json and any future Angular versions
 
 ### Quick start
 **Make sure you have Node version >= 6.0 and NPM >= 3**
@@ -58,9 +57,6 @@ git clone --depth 1 https://github.com/AngularClass/angular-starter.git
 
 # change directory to our repo
 cd angular-starter
-
-# WINDOWS only. In terminal as administrator
-npm install -g node-pre-gyp
 
 # install the repo with npm
 npm install
@@ -239,13 +235,15 @@ The following are some things that will make AoT compile fail.
 - Don’t use functions in your providers, routes or declarations, export a function and then reference that function name
 - @Inputs, @Outputs, View or Content Child(ren), Hostbindings, and any field you use from the template or annotate for Angular should be public
 
+For more detailed guide on AoT's Do's and Don'ts refer to https://github.com/rangle/angular-2-aot-sandbox
+
 # External Stylesheets
 Any stylesheets (Sass or CSS) placed in the `src/styles` directory and imported into your project will automatically be compiled into an external `.css` and embedded in your production builds.
 
 For example to use Bootstrap as an external stylesheet:
 1) Create a `styles.scss` file (name doesn't matter) in the `src/styles` directory.
 2) `npm install` the version of Boostrap you want.
-3) In `styles.scss` add `@import 'bootstrap/scss/bootstrap.scss';`
+3) In `styles.scss` add `@import '~bootstrap/scss/bootstrap.scss';`
 4) In `src/app/app.module.ts` add underneath the other import statements: `import '../styles/styles.scss';`
 
 # Contributing
@@ -255,7 +253,7 @@ You can include more examples as components but they must introduce a new concep
 > To take full advantage of TypeScript with autocomplete you would have to install it globally and use an editor with the correct TypeScript plugins.
 
 ## Use latest TypeScript compiler
-TypeScript 2.1.x includes everything you need. Make sure to upgrade, even if you installed TypeScript previously.
+TypeScript 2.7.x includes everything you need. Make sure to upgrade, even if you installed TypeScript previously.
 
 ```
 npm install --global typescript
@@ -356,7 +354,8 @@ import * as _ from 'lodash';
 * If you're in China
   * check out https://github.com/cnpm/cnpm
 * node-pre-gyp ERR in npm install (Windows)
-  * install Python x86 version between 2.5 and 3.0 on windows see issue [#626](https://github.com/AngularClass/angular-starter/issues/626)
+  * often happens when you're behind proxy and proxy wasn't configured in the npm as it tries to download binary package from the github and if it fails to do so, it will try to compile node-sass from the source codes
+  * install Python x86 version 2.x and on windows see issue [#626](https://github.com/AngularClass/angular-starter/issues/626)
 * `Error:Error: Parse tsconfig error [{"messageText":"Unknown compiler option 'lib'.","category":1,"code":5023},{"messageText":"Unknown compiler option 'strictNullChecks'.","category":1,"code":5023},{"messageText":"Unknown compiler option 'baseUrl'.","category":1,"code":5023},{"messageText":"Unknown compiler option 'paths'.","category":1,"code":5023},{"messageText":"Unknown compiler option 'types'.","category":1,"code":5023}]`
   * remove `node_modules/typescript` and run `npm install typescript@beta`. This repo now uses ts 2.0
 * "There are multiple modules with names that only differ in casing"
@@ -394,7 +393,7 @@ sudo apt-add-repository 'deb https://apt.dockerproject.org/repo ubuntu-xenial ma
 sudo apt-get update
 apt-cache policy docker-engine
 sudo apt-get install -y docker-engine
-sudo systemctl status docker  # test:  shoud be ‘active’
+sudo systemctl status docker  # test: should be ‘active’
 ```
 And add your user to docker group (to avoid `sudo` before using `docker` command in future):
 ```
@@ -407,15 +406,9 @@ and logout and login again.
 Because *node.js* is big memory consumer you need 1-2GB RAM or virtual memory to build docker image
 (it was successfully tested on machine with 512MB RAM + 2GB virtual memory - building process take 7min)
 
-Go to main project folder. To build big (~280MB) image which has cached data and is able to **FAST** rebuild  
-(this is good for testing or staging environment) type:
+Go to main project folder. To build image type:
 
 `docker build -t angular-starter .`
-
-To build **SMALL** (~20MB) image without cache (so each rebuild will take the same amount of time as first build)
-(this is good for production environment) type:
-
-`docker build --squash="true" -t angular-starter .`
 
 The **angular-starter** name used in above commands is only example image name.
 To remove intermediate images created by docker on build process, type:
@@ -434,18 +427,16 @@ And that's all, you can open browser and go to [localhost:8080](localhost:8080).
 
 To create and run docker image on [localhost:8080](localhost:8080) as part of large project you may use **docker-compose**. Type 
 
-`docker-compose up &`
+`docker-compose up`
 
 And that's all, you can open browser and go to [localhost:8080](localhost:8080).
 
 
 ### Run image on sub-domain
 
-If you want to run image as virtual-host on sub-domain you must setup [proxy](https://github.com/jwilder/nginx-proxy)
-. You should install proxy and set sub-domain in this way:
+If you want to run image as virtual-host on sub-domain you must setup [proxy](https://github.com/jwilder/nginx-proxy). You should install proxy and set sub-domain in this way:
 
  ```
- docker pull jwilder/nginx-proxy:alpine
  docker run -d -p 80:80 --name nginx-proxy -v /var/run/docker.sock:/tmp/docker.sock:ro jwilder/nginx-proxy:alpine
  ```
 

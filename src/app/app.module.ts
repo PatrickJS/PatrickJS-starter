@@ -29,11 +29,11 @@ const APP_PROVIDERS = [
   AppState
 ];
 
-type StoreType = {
-  state: InternalStateType,
-  restoreInputValues: () => void,
-  disposeOldHosts: () => void
-};
+interface StoreType {
+  state: InternalStateType;
+  restoreInputValues: () => void;
+  disposeOldHosts: () => void;
+}
 
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
