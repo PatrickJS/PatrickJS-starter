@@ -93,7 +93,7 @@ module.exports = function (config) {
      * available reporters: https://npmjs.org/browse/keyword/karma-reporter
      */
     reporters: ['mocha', 'coverage', 'remap-coverage'],
-
+    
     /**
      * Web server port.
      */
@@ -135,8 +135,34 @@ module.exports = function (config) {
      * Continuous Integration mode
      * if true, Karma captures browsers, runs the tests and exits
      */
-    singleRun: true
+    singleRun: true,
+    /**
+     * For slower machines you may need to have a longer browser
+     * wait time . Uncomment the line below if required.
+     */
+    // browserNoActivityTimeout: 30000
+
   };
+
+  // Optional Sonar Qube Reporter
+  if (process.env.SONAR_QUBE) {
+
+    // SonarQube reporter plugin configuration
+    configuration.sonarQubeUnitReporter = {
+      sonarQubeVersion: '5.x',
+      outputFile: 'reports/ut_report.xml',
+      overrideTestDescription: true,
+      testPath: 'src/app',
+      testFilePattern: '.spec.ts',
+      useBrowserName: false
+    };
+
+    // Additional lcov format required for
+    // sonarqube
+    configuration.remapCoverageReporter.lcovonly = './coverage/coverage.lcov';
+
+    configuration.reporters.push('sonarqubeUnit');
+  }
 
   if (process.env.TRAVIS) {
     configuration.browsers = [

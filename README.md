@@ -145,6 +145,7 @@ Once you have those, you should install these globals with `npm install --global
 * `karma` (`npm install --global karma-cli`)
 * `protractor` (`npm install --global protractor`)
 * `typescript` (`npm install --global typescript`)
+* `tslint` (`npm install --global tslint@4.5.1`)
 
 ## Installing
 * `fork` this repo
@@ -466,6 +467,38 @@ starter kit in production on [Netlify](https://www.netlify.com/):
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/AngularClass/angular-starter)
 
+### Optional Integration with SonarQube (for continous code quality)
+Assuming you have SonarQube 5.5.6 (LTS) installed
+* Setup SonarQube with the [Sonar Typescript plugin](https://github.com/Pablissimo/SonarTsPlugin#installation) and the Generic Test Coverage plugin https://docs.sonarqube.org/display/PLUG/Generic+Test+Coverage
+* Install sonar-scanner globally 
+```bash
+npm install --global sonar-scanner
+```
+* Install the [Karma plugin for sonarqube](https://www.npmjs.com/package/karma-sonarqube-unit-reporter) as a dev dependency 
+```bash
+npm install karma-sonarqube-unit-reporter --save-dev
+```
+* Sonar Host URL configuration:
+Update [`sonar-project.properties`](sonar-project.properties) file for the property `sonar.host.url` to point to your SonarQube server. By default this assumes that the SonarQube server is running locally using the default port
+```
+sonar.host.url=<Sonar Host URL and Port>
+```
+* Run the unit tests with sonar reporter enabled
+```bash
+npm run test:sonar
+```
+* The test results collected in the results folder in the sonar compatible format
+* Push results to SonarCube
+```bash
+sonar-scanner
+``` 
+* If working with SonarQube 6.x it supports [Generic Test Data](https://docs.sonarqube.org/display/SONAR/Generic+Test+Data)
+* Modify the [karma.conf.js](config/karma.config.js) to set the appropriate version of the sonarQube
+```es6
+sonarQubeUnitReporter: {
+  sonarQubeVersion: '6.x',
+}
+```
 ___
 
 enjoy — [**PatrickJS**](https://twitter.com/gdi2290)
