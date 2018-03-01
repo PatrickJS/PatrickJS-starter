@@ -23,6 +23,9 @@ before_install:
   - npm prune
   - npm update
 
+before_script:
+  - node ./node_modules/protractor/bin/webdriver-manager update
+
 install:
   - npm install
 
