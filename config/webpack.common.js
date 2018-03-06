@@ -21,7 +21,6 @@ const ngcWebpack = require('ngc-webpack');
 
 const buildUtils = require('./build-utils');
 
-
 /**
  * Webpack configuration
  *
@@ -29,7 +28,11 @@ const buildUtils = require('./build-utils');
  */
 module.exports = function (options) {
   const isProd = options.env === 'production';
-  const METADATA = Object.assign({}, buildUtils.DEFAULT_METADATA, options.metadata || {});
+  const APP_CONFIG = require(process.env.ANGULAR_CONF_FILE || (isProd ? './config.prod.json' : './config.dev.json'));
+
+  const METADATA = Object.assign({}, buildUtils.DEFAULT_METADATA,options.metadata || {});
+  const GTM_API_KEY = process.env.GTM_API_KEY || APP_CONFIG.gtmKey;
+
   const ngcWebpackConfig = buildUtils.ngcWebpackSetup(isProd, METADATA);
   const supportES2015 = buildUtils.supportES2015(METADATA.tsConfigPath);
 
@@ -179,7 +182,8 @@ module.exports = function (options) {
         'AOT': METADATA.AOT,
         'process.env.ENV': JSON.stringify(METADATA.ENV),
         'process.env.NODE_ENV': JSON.stringify(METADATA.ENV),
-        'process.env.HMR': METADATA.HMR
+        'process.env.HMR': METADATA.HMR,
+        // 'FIREBASE_CONFIG': JSON.stringify(APP_CONFIG.firebase),
       }),
 
       /**
@@ -238,6 +242,7 @@ module.exports = function (options) {
           return entryPoints.indexOf(a.names[0]) - entryPoints.indexOf(b.names[0]);
         },
         metadata: METADATA,
+        gtmKey: GTM_API_KEY,
         inject: 'body',
         xhtml: true,
         minify: isProd ? {
@@ -321,4 +326,4 @@ module.exports = function (options) {
     }
 
   };
-}
+};

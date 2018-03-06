@@ -7,6 +7,8 @@ import { Environment } from './model';
 Error.stackTraceLimit = Infinity;
 require('zone.js/dist/long-stack-trace-zone');
 
+// export const ENV_FIREBASE_CONFIG: any = FIREBASE_CONFIG;
+
 export const environment: Environment = {
   production: false,
 
