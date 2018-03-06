@@ -20,7 +20,7 @@ const ENV = process.env.ENV = process.env.NODE_ENV = 'test';
 /**
  * Webpack configuration
  *
- * See: http://webpack.github.io/docs/configuration.html#cli
+ * See: https://webpack.js.org/configuration/
  */
 module.exports = function (options) {
   return {
@@ -36,14 +36,14 @@ module.exports = function (options) {
     /**
      * Options affecting the resolving of modules.
      *
-     * See: http://webpack.github.io/docs/configuration.html#resolve
+     * See: https://webpack.js.org/configuration/resolve/
      */
     resolve: {
 
       /**
        * An array of extensions that should be used to resolve modules.
        *
-       * See: http://webpack.github.io/docs/configuration.html#resolve-extensions
+       * See: https://webpack.js.org/configuration/resolve/#resolve-extensions
        */
       extensions: ['.ts', '.js'],
 
@@ -57,10 +57,10 @@ module.exports = function (options) {
     /**
      * Options affecting the normal modules.
      *
-     * See: http://webpack.github.io/docs/configuration.html#module
+     * See: https://webpack.js.org/configuration/module/
      *
      * 'use:' revered back to 'loader:' as a temp. workaround for #1188
-     * See: https://github.com/AngularClass/angular-starter/issues/1188#issuecomment-262872034
+     * See: https://github.com/gdi2290/angular-starter/issues/1188#issuecomment-262872034
      */
     module: {
 
@@ -175,7 +175,7 @@ module.exports = function (options) {
     /**
      * Add additional plugins to the compiler.
      *
-     * See: http://webpack.github.io/docs/configuration.html#plugins
+     * See: https://webpack.js.org/configuration/plugins/
      */
     plugins: [
 
@@ -186,7 +186,7 @@ module.exports = function (options) {
        *
        * Environment helpers
        *
-       * See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
+       * See: https://webpack.js.org/plugins/define-plugin/
        *
        * NOTE: when adding more properties make sure you include them in custom-typings.d.ts
        */
@@ -204,7 +204,7 @@ module.exports = function (options) {
        * Plugin: ContextReplacementPlugin
        * Description: Provides context to Angular's use of System.import
        *
-       * See: https://webpack.github.io/docs/list-of-plugins.html#contextreplacementplugin
+       * See: https://webpack.js.org/plugins/context-replacement-plugin/
        * See: https://github.com/angular/angular/issues/11580
        */
       new ContextReplacementPlugin(
@@ -249,7 +249,7 @@ module.exports = function (options) {
      * Include polyfills or mocks for various node stuff
      * Description: Node configuration
      *
-     * See: https://webpack.github.io/docs/configuration.html#node
+     * See: https://webpack.js.org/configuration/node/
      */
     node: {
       global: true,
