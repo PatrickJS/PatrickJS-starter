@@ -60,6 +60,16 @@ declare module 'modern-lru' {
 declare var ENV: string;
 declare var HMR: boolean;
 declare var System: SystemJS;
+// declare const FIREBASE_CONFIG: FirebaseConfig;
+
+interface FirebaseConfig {
+  apiKey: string;
+  authDomain: string;
+  databaseURL: string;
+  projectId: string;
+  storageBucket: string;
+  messagingSenderId: string;
+}
 
 interface SystemJS {
   import: (path?: string) => Promise<any>;
@@ -70,6 +80,7 @@ interface GlobalEnvironment {
   HMR: boolean;
   SystemJS: SystemJS;
   System: SystemJS;
+  // FIREBASE_CONFIG: FirebaseConfig;
 }
 
 interface Es6PromiseLoader {
