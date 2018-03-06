@@ -253,12 +253,13 @@ module.exports = function (options) {
      */
     node: {
       global: true,
-      process: false,
       crypto: 'empty',
+      process: false,
       module: false,
       clearImmediate: false,
-      setImmediate: false
+      setImmediate: false,
+      fs: 'empty'
     }
 
   };
-}
+};
