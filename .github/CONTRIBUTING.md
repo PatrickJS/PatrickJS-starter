@@ -1,6 +1,6 @@
 ## Read and contribute to the Wiki
 
-Make sure you read the [Wiki](https://github.com/AngularClass/angular-starter/wiki).
+Make sure you read the [Wiki](https://github.com/gdi2290/angular-starter/wiki).
 
 ## Submitting Pull Requests
 
