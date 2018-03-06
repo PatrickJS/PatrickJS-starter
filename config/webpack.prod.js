@@ -174,7 +174,20 @@ module.exports = function (env) {
         sourceMap: true,
         parallel: true,
         uglifyOptions: getUglifyOptions(supportES2015)
-      })
+      }),
+
+      /**
+       * Plugin: CompressionPlugin
+       * Description: Prepares compressed versions of assets to serve
+       * them with Content-Encoding
+       *
+       * See: https://github.com/webpack/compression-webpack-plugin
+       */
+      //  install compression-webpack-plugin
+/*      new CompressionPlugin({
+        regExp: /\.css$|\.html$|\.js$|\.map$/,
+        threshold: 2 * 1024
+      })*/
 
     ],
 
