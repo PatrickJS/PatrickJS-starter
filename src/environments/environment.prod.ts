@@ -5,6 +5,8 @@ import { Environment } from './model';
 
 enableProdMode();
 
+// export const ENV_FIREBASE_CONFIG: any = FIREBASE_CONFIG;
+
 export const environment: Environment = {
   production: true,
   showDevModule: false,

@@ -3,8 +3,11 @@ const path = require('path');
 const fs = require('fs');
 const helpers = require('./helpers');
 
+const APP_COMMON_CONFIG = require('./config.common.json');
+
 const DEFAULT_METADATA = {
-  title: 'Angular Starter by @gdi2290 from @TipeIO',
+  title: APP_COMMON_CONFIG.title,
+  description: APP_COMMON_CONFIG.description,
   baseUrl: '/',
   isDevServer: helpers.isWebpackDevServer(),
   HMR: helpers.hasProcessFlag('hot'),
