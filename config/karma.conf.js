@@ -3,9 +3,9 @@
  */
 
 module.exports = function (config) {
-  var testWebpackConfig = require('./webpack.test.js')({ env: 'test' });
+  const testWebpackConfig = require('./webpack.test.js')({ env: 'test' });
 
-  var configuration = {
+  const configuration = {
 
     /**
      * Base path that will be used to resolve all patterns (e.g. files, exclude).
@@ -74,7 +74,7 @@ module.exports = function (config) {
        * webpack-dev-middleware configuration
        * i.e.
        */
-      noInfo: true,
+      logLevel: 'warn',
       /**
        * and use stats to turn off verbose output
        */
@@ -93,7 +93,7 @@ module.exports = function (config) {
      * available reporters: https://npmjs.org/browse/keyword/karma-reporter
      */
     reporters: ['mocha', 'coverage', 'remap-coverage'],
-    
+
     /**
      * Web server port.
      */
