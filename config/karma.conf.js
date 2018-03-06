@@ -1,5 +1,5 @@
 /**
- * @author: @AngularClass
+ * @author: tipe.io
  */
 
 module.exports = function (config) {

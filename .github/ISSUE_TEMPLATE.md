@@ -1,4 +1,4 @@
-**Note: for support questions, please use one of these channels:** [Chat: AngularClass.slack](http://angularclass.com/member-join/) or [Twitter: @AngularClass](https://twitter.com/AngularClass)
+**Note: for support questions, please use one of these channels:** [Chat: AngularClass.slack](http://angularclass.com/member-join/) or [Twitter: @TipeIO](https://twitter.com/TipeIO)
 
 * **I'm submitting a ...**
 [ ] bug report
@@ -28,7 +28,7 @@ https://plnkr.co or similar (you can use this template as a starting point: http
 
 * **Please tell us about your environment:**
 
-- Angular version: 2.0.0-beta.X
+- Angular version: 4.x.x
 - Browser: [all | Chrome XX | Firefox XX | IE XX | Safari XX | Mobile Chrome XX | Android X.X Web Browser | iOS XX Safari | iOS XX UIWebView | iOS XX WKWebView ]
 
 

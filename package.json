@@ -1,7 +1,7 @@
 {
   "name": "angular-starter",
   "version": "7.0.0",
-  "description": "An Angular Webpack Starter kit featuring Angular (Router, Http, Forms, Services, Tests, E2E, Coverage), Karma, Protractor, Jasmine, Istanbul, TypeScript, and Webpack by AngularClass",
+  "description": "An Angular Webpack Starter kit featuring Angular (Router, Http, Forms, Services, Tests, E2E, Coverage), Karma, Protractor, Jasmine, Istanbul, TypeScript, and Webpack by Tipe.io",
   "keywords": [
     "angular",
     "angular2",
