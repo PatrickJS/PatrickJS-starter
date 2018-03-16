@@ -20,7 +20,6 @@ const SourceMapDevToolPlugin = require('webpack/lib/SourceMapDevToolPlugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HashedModuleIdsPlugin = require('webpack/lib/HashedModuleIdsPlugin')
 const PurifyPlugin = require('@angular-devkit/build-optimizer').PurifyPlugin;
-const ModuleConcatenationPlugin = require('webpack/lib/optimize/ModuleConcatenationPlugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 
@@ -159,7 +158,6 @@ module.exports = function (env) {
       new PurifyPlugin(), /* buildOptimizer */
 
       new HashedModuleIdsPlugin(),
-      new ModuleConcatenationPlugin(),
 
       /**
        * Plugin: UglifyJsPlugin

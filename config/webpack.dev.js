@@ -11,7 +11,6 @@ const commonConfig = require('./webpack.common.js'); // the settings that are co
  * Webpack Plugins
  */
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
-const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const EvalSourceMapDevToolPlugin = require('webpack/lib/EvalSourceMapDevToolPlugin');
 
 
@@ -110,14 +109,6 @@ module.exports = function (options) {
         moduleFilenameTemplate: '[resource-path]',
         sourceRoot: 'webpack:///'
       }),
-
-      /**
-       * Plugin: NamedModulesPlugin (experimental)
-       * Description: Uses file names as module name.
-       *
-       * See: https://github.com/webpack/webpack/commit/a04ffb928365b19feb75087c63f13cadfc08e1eb
-       */
-      new NamedModulesPlugin(),
 
       /**
        * Plugin LoaderOptionsPlugin (experimental)
