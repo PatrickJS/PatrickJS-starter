@@ -10,11 +10,10 @@ const helpers = require('./helpers');
  * problem with copy-webpack-plugin
  */
 const DefinePlugin = require('webpack/lib/DefinePlugin');
-const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlElementsPlugin = require('./html-elements-plugin');
+/// const HtmlElementsPlugin = require('./html-elements-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin');
+const InlineManifestWebpackPlugin = require('webpack-inline-manifest-plugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const ngcWebpack = require('ngc-webpack');
@@ -186,30 +185,6 @@ module.exports = function (options) {
         // 'FIREBASE_CONFIG': JSON.stringify(APP_CONFIG.firebase),
       }),
 
-      /**
-       * Plugin: CommonsChunkPlugin
-       * Description: Shares common code between the pages.
-       * It identifies common modules and put them into a commons chunk.
-       *
-       * See: https://webpack.js.org/plugins/commons-chunk-plugin/
-       * See: https://github.com/webpack/docs/wiki/optimization#multi-page-app
-       */
-      new CommonsChunkPlugin({
-        name: 'polyfills',
-        chunks: ['polyfills']
-      }),
-
-      new CommonsChunkPlugin({
-        minChunks: Infinity,
-        name: 'inline'
-      }),
-      new CommonsChunkPlugin({
-        name: 'main',
-        async: 'common',
-        children: true,
-        minChunks: 2
-      }),
-
 
       /**
        * Plugin: CopyWebpackPlugin
@@ -288,9 +263,9 @@ module.exports = function (options) {
        *
        * Dependencies: HtmlWebpackPlugin
        */
-      new HtmlElementsPlugin({
-        headTags: require('./head-config.common')
-      }),
+//      new HtmlElementsPlugin({
+//        headTags: require('./head-config.common')
+//      }),
 
       /**
        * Plugin LoaderOptionsPlugin (experimental)
