@@ -106,7 +106,7 @@
     "@angular/compiler-cli": "^5.2.9",
     "@angular/language-service": "^5.2.9",
     "@compodoc/compodoc": "^1.0.7",
-    "@ngtools/webpack": "1.10.2",
+    "@ngtools/webpack": "^6.0.0-beta.5",
     "@types/hammerjs": "^2.0.35",
     "@types/jasmine": "2.8.6",
     "@types/node": "^9.4.6",
