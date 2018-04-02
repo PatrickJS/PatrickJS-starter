@@ -14,7 +14,7 @@ const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlElementsPlugin = require('./html-elements-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin');
+const WebpackInlineManifestPlugin = require('webpack-inline-manifest-plugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const ngcWebpack = require('ngc-webpack');
@@ -302,12 +302,12 @@ module.exports = function (options) {
       new ngcWebpack.NgcWebpackPlugin(ngcWebpackConfig.plugin),
 
       /**
-       * Plugin: InlineManifestWebpackPlugin
+       * Plugin: WebpackInlineManifestPlugin
        * Inline Webpack's manifest.js in index.html
        *
-       * https://github.com/szrenwei/inline-manifest-webpack-plugin
+       * https://github.com/almothafar/webpack-inline-manifest-plugin
        */
-      new InlineManifestWebpackPlugin(),
+      new WebpackInlineManifestPlugin(),
     ],
 
     /**
