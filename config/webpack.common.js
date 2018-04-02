@@ -28,6 +28,7 @@ const buildUtils = require('./build-utils');
  */
 module.exports = function (options) {
   const isProd = options.env === 'production';
+  const sourceMap = !isProd;
   const APP_CONFIG = require(process.env.ANGULAR_CONF_FILE || (isProd ? './config.prod.json' : './config.dev.json'));
 
   const METADATA = Object.assign({}, buildUtils.DEFAULT_METADATA,options.metadata || {});
@@ -114,7 +115,11 @@ module.exports = function (options) {
          */
         {
           test: /\.css$/,
-          use: ['to-string-loader', 'css-loader'],
+          use: [
+            'to-string-loader',
+            { loader: 'css-loader', options: { sourceMap, importLoaders: 1 } },
+            'postcss-loader',
+          ],
           exclude: [helpers.root('src', 'styles')]
         },
 
@@ -125,8 +130,56 @@ module.exports = function (options) {
          */
         {
           test: /\.scss$/,
-          use: ['to-string-loader', 'css-loader', 'sass-loader'],
+          use: [
+            'to-string-loader',
+            { loader: 'css-loader', options: { sourceMap, importLoaders: 1 } },
+            'postcss-loader',
+            {
+              loader: 'sass-loader',
+              options: {
+                sourceMap,
+                precision: 8,
+                includePaths: []
+              }
+            }
+          ],
           exclude: [helpers.root('src', 'styles')]
+        },
+
+        /**
+         * To string and less loader support for *.less files (from Angular components)
+         * Returns compiled css content as string
+         *
+         */
+        {
+          test: /\.less$/,
+          use: [
+            'to-string-loader',
+            { loader: 'css-loader', options: { sourceMap, importLoaders: 1 } },
+            'postcss-loader',
+            { loader: 'less-loader', options: { sourceMap } }
+          ]
+        },
+
+        /**
+         * To string and stylus loader support for *.styl files (from Angular components)
+         * Returns compiled css content as string
+         *
+         */
+        {
+          test: /\.styl$/,
+          use: [
+            'to-string-loader',
+            { loader: 'css-loader', options: { sourceMap, importLoaders: 1 } },
+            'postcss-loader',
+            {
+              loader: 'stylus-loader',
+              options: {
+                sourceMap,
+                paths: []
+              }
+            }
+          ]
         },
 
         /**
