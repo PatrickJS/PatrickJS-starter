@@ -67,7 +67,7 @@ const postcssPlugins = function ({file, options, env}) {
 };
 
 module.exports = ({file, options, env}) => {
-  const sourceMap = !!process.env.DEVELOPMENT;
+  const sourceMap = env !== 'production' || env !== 'prod';
   return {
     ident: 'postcss',
     plugins: postcssPlugins({file, options, env}),
