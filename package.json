@@ -162,9 +162,9 @@
     "uglifyjs-webpack-plugin": "^1.2.4",
     "url-loader": "^1.0.1",
     "webpack": "^3.10.0",
-    "webpack-inline-manifest-plugin": "4.0.0",
     "webpack-dev-middleware": "^2.0.6",
     "webpack-dev-server": "~2.11.1",
+    "webpack-inline-manifest-plugin": "4.0.0",
     "webpack-merge": "~4.1.2"
   },
   "repository": {
