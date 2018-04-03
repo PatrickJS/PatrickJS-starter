@@ -39,7 +39,6 @@ This seed repo serves as an Angular starter for anyone looking to get up and run
 * A great Angular seed repo for anyone who wants to start their project.
 * Ahead of Time (AoT) compile for rapid page loads of your production builds.
 * Tree shaking to automatically remove unused code from your production bundle.
-* [Webpack DLLs](https://robertknight.github.io/posts/webpack-dll-plugins/) dramatically speed your development builds.
 * Testing Angular code with Jasmine and Karma.
 * Coverage with Istanbul and Karma
 * End-to-end Angular app testing using Protractor.
@@ -47,7 +46,7 @@ This seed repo serves as an Angular starter for anyone looking to get up and run
 * Hot Module Replacement with Webpack and [@gdi2290/hmr](https://github.com/gdi2290/angular-hmr) and [@gdi2290/hmr-loader](https://github.com/gdi2290/angular-hmr-loader)
 
 ### Quick start
-**Make sure you have Node version >= 6.0 and NPM >= 3**
+**Make sure you have Node version >= 8.0 and (NPM >= 5 or [Yarn](https://yarnpkg.com) )**
 > Clone/Download the repo then edit `app.component.ts` inside [`/src/app/app.component.ts`](/src/app/app.component.ts)
 
 ```bash
@@ -95,10 +94,16 @@ We use the component approach in our starter. This is the new standard for devel
 ```
 angular-starter/
  ├──config/                        * our configuration
+ |   ├──build-utils.js             * common config and shared functions for prod and dev
+ |   ├──config.common.json         * config for both environments prod and dev such title and description of index.html
+ |   ├──config.dev.json            * config for devevlopment environment
+ |   ├──config.prod.json           * config for production environment 
+ │   │                              (note: you can load your own config file, just set the evn ANGULAR_CONF_FILE with the path of your own file)
  |   ├──helpers.js                 * helper functions for our configuration files
  |   ├──spec-bundle.js             * ignore this magic that sets up our Angular testing environment
  |   ├──karma.conf.js              * karma config for our unit tests
  |   ├──protractor.conf.js         * protractor config for our end-to-end tests
+ │   ├──webpack.common.js          * common tasks for webpack build process shared for dev and prod
  │   ├──webpack.dev.js             * our development webpack config
  │   ├──webpack.prod.js            * our production webpack config
  │   └──webpack.test.js            * our testing webpack config
@@ -135,7 +140,7 @@ angular-starter/
 ## Dependencies
 What you need to run this app:
 * `node` and `npm` (`brew install node`)
-* Ensure you're running the latest versions Node `v6.x.x`+ (or `v7.x.x`) and NPM `3.x.x`+
+* Ensure you're running the latest versions Node `v8.x.x`+ (or `v9.x.x`) and NPM `5.x.x`+
 
 > If you have `nvm` installed, which is highly recommended (`brew install nvm`) you can do a `nvm install --lts && nvm use` in `$` to run with the latest Node LTS. You can also have this `zsh` done for you [automatically](https://github.com/creationix/nvm#calling-nvm-use-automatically-in-a-directory-with-a-nvmrc-file)
 
@@ -263,7 +268,7 @@ npm install --global typescript
 We have good experience using these editors:
 
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [Webstorm 10](https://www.jetbrains.com/webstorm/download/)
+* [Webstorm 2018.1](https://www.jetbrains.com/webstorm/download/)
 * [Atom](https://atom.io/) with [TypeScript plugin](https://atom.io/packages/atom-typescript)
 * [Sublime Text](http://www.sublimetext.com/3) with [Typescript-Sublime-Plugin](https://github.com/Microsoft/Typescript-Sublime-plugin#installation)
 
