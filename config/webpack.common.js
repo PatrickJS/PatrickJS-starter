@@ -11,7 +11,7 @@ const helpers = require('./helpers');
  */
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-/// const HtmlElementsPlugin = require('./html-elements-plugin');
+const HtmlElementsPlugin = require('./html-elements-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const InlineManifestWebpackPlugin = require('webpack-inline-manifest-plugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
@@ -263,9 +263,9 @@ module.exports = function (options) {
        *
        * Dependencies: HtmlWebpackPlugin
        */
-//      new HtmlElementsPlugin({
-//        headTags: require('./head-config.common')
-//      }),
+      new HtmlElementsPlugin({
+        headTags: require('./head-config.common')
+      }),
 
       /**
        * Plugin LoaderOptionsPlugin (experimental)

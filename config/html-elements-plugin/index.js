@@ -1,30 +1,3 @@
-function HtmlElementsPlugin(locations) {
-  this.locations = locations;
-}
-
-HtmlElementsPlugin.prototype.apply = function(compiler) {
-  var self = this;
-  compiler.plugin('compilation', function(compilation) {
-    compilation.options.htmlElements = compilation.options.htmlElements || {};
-
-    compilation.plugin('html-webpack-plugin-before-html-generation', function(htmlPluginData, callback) {
-      const locations = self.locations;
-
-      if (locations) {
-        const publicPath = htmlPluginData.assets.publicPath;
-
-        Object.getOwnPropertyNames(locations).forEach(function(loc) {
-          compilation.options.htmlElements[loc] = getHtmlElementString(locations[loc], publicPath);
-        });
-      }
-
-
-      callback(null, htmlPluginData);
-    });
-  });
-
-};
-
 const RE_ENDS_WITH_BS = /\/$/;
 
 /**
@@ -49,8 +22,10 @@ function createTag(tagName, attrMap, publicPath) {
   }
 
   const attributes = Object.getOwnPropertyNames(attrMap)
-    .filter(function(name) { return name[0] !== '='; } )
-    .map(function(name) {
+    .filter(function (name) {
+      return name[0] !== '=';
+    })
+    .map(function (name) {
       var value = attrMap[name];
 
       if (publicPath) {
@@ -98,16 +73,50 @@ function createTag(tagName, attrMap, publicPath) {
  */
 function getHtmlElementString(dataSource, publicPath) {
   return Object.getOwnPropertyNames(dataSource)
-    .map(function(name) {
+    .map(function (name) {
       if (Array.isArray(dataSource[name])) {
-        return dataSource[name].map(function(attrs) { return createTag(name, attrs, publicPath); } );
+        return dataSource[name].map(function (attrs) {
+          return createTag(name, attrs, publicPath);
+        });
       } else {
-        return [ createTag(name, dataSource[name], publicPath) ];
+        return [createTag(name, dataSource[name], publicPath)];
       }
     })
-    .reduce(function(arr, curr) {
+    .reduce(function (arr, curr) {
       return arr.concat(curr);
     }, [])
     .join('\n\t');
 }
+
+class HtmlElementsPlugin {
+  constructor(locations) {
+    this.locations = locations;
+  }
+
+  /* istanbul ignore next: this would be integration tests */
+  apply(compiler) {
+    compiler.hooks.compilation.tap('HtmlElementsPlugin', compilation => {
+      compilation.options.htmlElements = compilation.options.htmlElements || {};
+      compilation.hooks.htmlWebpackPluginBeforeHtmlGeneration.tapAsync('HtmlElementsPlugin',
+        (htmlPluginData, callback) => {
+
+          const locations = this.locations;
+          if (locations) {
+            const publicPath = htmlPluginData.assets.publicPath;
+
+            Object.getOwnPropertyNames(locations).forEach(function (loc) {
+
+              compilation.options.htmlElements[loc] = getHtmlElementString(locations[loc], publicPath);
+            });
+          }
+
+          // return htmlPluginData;
+          callback(null, htmlPluginData);
+        }
+      );
+    });
+  }
+}
+
 module.exports = HtmlElementsPlugin;
+

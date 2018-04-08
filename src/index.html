@@ -8,6 +8,10 @@
   <meta name="description" content="<%= htmlWebpackPlugin.options.metadata.description %>">
   <!-- base url -->
   <base href="<%= htmlWebpackPlugin.options.metadata.baseUrl %>">
+  <% if (webpackConfig.htmlElements.headTags) { %>
+  <!-- Configured Head Tags  -->
+  <%= webpackConfig.htmlElements.headTags %>
+  <% } %>
 
   <%= htmlWebpackPlugin.files.webpackManifest %>
 
