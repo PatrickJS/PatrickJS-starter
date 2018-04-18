@@ -34,7 +34,7 @@
     "clean:aot": "npm run rimraf -- compiled",
     "clean:dist": "npm run rimraf -- dist",
     "clean:install": "npm set progress=false && npm install",
-    "clean": "npm cache clean --force && npm run rimraf -- node_modules doc coverage dist compiled dll",
+    "clean": "npm cache verify && npm run rimraf -- node_modules doc coverage dist compiled webpack-cache",
     "docker": "docker",
     "docs": "npm run typedoc -- --options typedoc.json --exclude '**/*.spec.ts' ./src/",
     "docs:compodoc": "compodoc -p tsconfig.json",
