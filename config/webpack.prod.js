@@ -23,14 +23,18 @@ const PurifyPlugin = require('@angular-devkit/build-optimizer').PurifyPlugin;
 const ModuleConcatenationPlugin = require('webpack/lib/optimize/ModuleConcatenationPlugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-
-
-function getUglifyOptions (supportES2015) {
+/***
+ * Ref: https://github.com/mishoo/UglifyJS2/tree/harmony#minify-options
+ * @param supportES2015
+ * @param enableCompress disabling compress could improve the performance, see https://github.com/webpack/webpack/issues/4558#issuecomment-352255789
+ * @returns {{ecma: number, warnings: boolean, ie8: boolean, mangle: boolean, compress: {pure_getters: boolean, passes: number}, output: {ascii_only: boolean, comments: boolean}}}
+ */
+function getUglifyOptions(supportES2015, enableCompress) {
   const uglifyCompressOptions = {
     pure_getters: true, /* buildOptimizer */
     // PURE comments work best with 3 passes.
     // See https://github.com/webpack/webpack/issues/2899#issuecomment-317425926.
-    passes: 3         /* buildOptimizer */
+    passes: 2         /* buildOptimizer */
   };
 
   return {
@@ -38,7 +42,7 @@ function getUglifyOptions (supportES2015) {
     warnings: false,    // TODO verbose based on option?
     ie8: false,
     mangle: true,
-    compress: uglifyCompressOptions,
+    compress: enableCompress ? uglifyCompressOptions : false,
     output: {
       ascii_only: true,
       comments: false
@@ -49,6 +53,7 @@ function getUglifyOptions (supportES2015) {
 module.exports = function (env) {
   const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
   const supportES2015 = buildUtils.supportES2015(buildUtils.DEFAULT_METADATA.tsConfigPath);
+  const sourceMapEnabled = process.env.SOURCE_MAP === '1';
   const METADATA = Object.assign({}, buildUtils.DEFAULT_METADATA, {
     host: process.env.HOST || 'localhost',
     port: process.env.PORT || 8080,
@@ -59,7 +64,7 @@ module.exports = function (env) {
   // set environment suffix so these environments are loaded.
   METADATA.envFileSuffix = METADATA.E2E ? 'e2e.prod' : 'prod';
 
-  return webpackMerge(commonConfig({ env: ENV, metadata: METADATA }), {
+  return webpackMerge(commonConfig({env: ENV, metadata: METADATA}), {
 
     /**
      * Options affecting the output of the compilation.
@@ -171,9 +176,10 @@ module.exports = function (env) {
        * NOTE: To debug prod builds uncomment //debug lines and comment //prod lines
        */
       new UglifyJsPlugin({
-        sourceMap: true,
+        sourceMap: sourceMapEnabled,
         parallel: true,
-        uglifyOptions: getUglifyOptions(supportES2015)
+        cache: helpers.root('webpack-cache/uglify-cache'),
+        uglifyOptions: getUglifyOptions(supportES2015, true)
       }),
 
       /**
