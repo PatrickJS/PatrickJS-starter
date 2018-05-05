@@ -17,14 +17,14 @@ const commonConfig = require('./webpack.common.js');
  * Webpack Plugins
  */
 const SourceMapDevToolPlugin = require('webpack/lib/SourceMapDevToolPlugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HashedModuleIdsPlugin = require('webpack/lib/HashedModuleIdsPlugin')
 const PurifyPlugin = require('@angular-devkit/build-optimizer').PurifyPlugin;
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 
 
-function getUglifyOptions (supportES2015) {
+function getUglifyOptions(supportES2015) {
   const uglifyCompressOptions = {
     pure_getters: true, /* buildOptimizer */
     // PURE comments work best with 3 passes.
@@ -109,10 +109,7 @@ module.exports = function (env) {
          */
         {
           test: /\.css$/,
-          loader: ExtractTextPlugin.extract({
-            fallback: 'style-loader',
-            use: 'css-loader'
-          }),
+          use: [MiniCssExtractPlugin.loader, 'css-loader'],
           include: [helpers.root('src', 'styles')]
         },
 
@@ -121,12 +118,9 @@ module.exports = function (env) {
          */
         {
           test: /\.scss$/,
-          loader: ExtractTextPlugin.extract({
-            fallback: 'style-loader',
-            use: 'css-loader!sass-loader'
-          }),
+          use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
           include: [helpers.root('src', 'styles')]
-        },
+        }
 
       ]
 
@@ -147,13 +141,7 @@ module.exports = function (env) {
       }),
 
 
-      /**
-       * Plugin: ExtractTextPlugin
-       * Description: Extracts imported CSS files into external stylesheet
-       *
-       * See: https://github.com/webpack/extract-text-webpack-plugin
-       */
-      new ExtractTextPlugin('[name].[contenthash].css'),
+      new MiniCssExtractPlugin({ filename: '[name]-[hash].css', chunkFilename: '[name]-[chunkhash].css' }),
 
       new PurifyPlugin(), /* buildOptimizer */
 
@@ -169,7 +157,7 @@ module.exports = function (env) {
        * NOTE: To debug prod builds uncomment //debug lines and comment //prod lines
        */
       new UglifyJsPlugin({
-        sourceMap: true,
+        sourceMap: false,
         parallel: true,
         uglifyOptions: getUglifyOptions(supportES2015)
       }),
@@ -182,10 +170,10 @@ module.exports = function (env) {
        * See: https://github.com/webpack/compression-webpack-plugin
        */
       //  install compression-webpack-plugin
-/*      new CompressionPlugin({
-        regExp: /\.css$|\.html$|\.js$|\.map$/,
-        threshold: 2 * 1024
-      })*/
+      /*      new CompressionPlugin({
+              regExp: /\.css$|\.html$|\.js$|\.map$/,
+              threshold: 2 * 1024
+            })*/
 
     ],
 
