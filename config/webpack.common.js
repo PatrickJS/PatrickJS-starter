@@ -93,7 +93,7 @@ module.exports = function (options) {
        *
        * BE AWARE that not using lettable operators will probably result in significant payload added to your bundle.
        */
-      alias: buildUtils.rxjsAlias(supportES2015)
+      // alias: buildUtils.rxjsAlias(supportES2015)
     },
 
     /**
