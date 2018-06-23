@@ -9,15 +9,36 @@ import { environment } from 'environments/environment';
  * our top level module that holds all of our components
  */
 import { AppModule } from './app';
+import { NgModuleRef } from '@angular/core';
 
 /**
  * Bootstrap our Angular app with a top level NgModule
  */
 export function main(): Promise<any> {
-  return platformBrowserDynamic()
-    .bootstrapModule(AppModule)
-    .then(environment.decorateModuleRef)
-    .catch((err) => console.error(err));
+  let modulePromise: Promise<NgModuleRef<AppModule>> = null;
+
+  if (module['hot']) {
+    module['hot'].accept();
+    module['hot'].dispose(() => {
+      // Before restarting the app, we create a new root element and dispose the old one
+      const oldRootElem = document.querySelector('app');
+      const newRootElem = document.createElement('app');
+      oldRootElem!.parentNode!.insertBefore(newRootElem, oldRootElem);
+      if (modulePromise) {
+        modulePromise.then((appModule) => {
+          appModule.destroy();
+          if (oldRootElem !== null) {
+            oldRootElem!.parentNode!.removeChild(oldRootElem);
+          }
+          return appModule;
+        });
+      }
+    });
+  }
+
+  modulePromise = platformBrowserDynamic().bootstrapModule(AppModule);
+
+  return modulePromise.then(environment.decorateModuleRef).catch((err) => console.error(err));
 }
 
 /**

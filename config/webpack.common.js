@@ -13,8 +13,7 @@ const DefinePlugin = require('webpack/lib/DefinePlugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlElementsPlugin = require('./html-elements-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const InlineManifestWebpackPlugin = require('webpack-inline-manifest-plugin');
-const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
+const WebpackInlineManifestPlugin = require('webpack-inline-manifest-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const ngcWebpack = require('ngc-webpack');
 
@@ -93,7 +92,7 @@ module.exports = function (options) {
        *
        * BE AWARE that not using lettable operators will probably result in significant payload added to your bundle.
        */
-      // alias: buildUtils.rxjsAlias(supportES2015)
+      alias: buildUtils.rxjsAlias(supportES2015)
     },
 
     /**
@@ -185,7 +184,6 @@ module.exports = function (options) {
         // 'FIREBASE_CONFIG': JSON.stringify(APP_CONFIG.firebase),
       }),
 
-
       /**
        * Plugin: CopyWebpackPlugin
        * Description: Copy files and directories in webpack.
@@ -267,22 +265,15 @@ module.exports = function (options) {
         headTags: require('./head-config.common')
       }),
 
-      /**
-       * Plugin LoaderOptionsPlugin (experimental)
-       *
-       * See: https://gist.github.com/sokra/27b24881210b56bbaff7
-       */
-      new LoaderOptionsPlugin({}),
-
       new ngcWebpack.NgcWebpackPlugin(ngcWebpackConfig.plugin),
 
       /**
-       * Plugin: InlineManifestWebpackPlugin
+       * Plugin: WebpackInlineManifestPlugin
        * Inline Webpack's manifest.js in index.html
        *
-       * https://github.com/szrenwei/inline-manifest-webpack-plugin
+       * https://github.com/almothafar/webpack-inline-manifest-plugin
        */
-      new InlineManifestWebpackPlugin(),
+      new WebpackInlineManifestPlugin(),
     ],
 
     /**

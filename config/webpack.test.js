@@ -25,6 +25,7 @@ const ENV = process.env.ENV = process.env.NODE_ENV = 'test';
 module.exports = function (options) {
   return {
 
+    mode: 'development',
     /**
      * Source map for Karma from the help of karma-sourcemap-loader &  karma-webpack
      *
@@ -63,7 +64,6 @@ module.exports = function (options) {
      * See: https://github.com/gdi2290/angular-starter/issues/1188#issuecomment-262872034
      */
     module: {
-
       rules: [
 
         /**

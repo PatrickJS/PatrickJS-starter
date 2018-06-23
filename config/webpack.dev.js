@@ -11,8 +11,6 @@ const commonConfig = require('./webpack.common.js'); // the settings that are co
  * Webpack Plugins
  */
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
-const EvalSourceMapDevToolPlugin = require('webpack/lib/EvalSourceMapDevToolPlugin');
-
 
 /**
  * Webpack configuration
@@ -33,6 +31,10 @@ module.exports = function (options) {
   });
 
   return webpackMerge(commonConfig({ env: ENV, metadata: METADATA  }), {
+
+    mode: 'development',
+    devtool: 'inline-source-map',
+
     /**
      * Options affecting the output of the compilation.
      *
@@ -105,11 +107,6 @@ module.exports = function (options) {
     },
 
     plugins: [
-      new EvalSourceMapDevToolPlugin({
-        moduleFilenameTemplate: '[resource-path]',
-        sourceRoot: 'webpack:///'
-      }),
-
       /**
        * Plugin LoaderOptionsPlugin (experimental)
        *
@@ -118,9 +115,7 @@ module.exports = function (options) {
       new LoaderOptionsPlugin({
         debug: true,
         options: { }
-      }),
-
-      // TODO: HMR
+      })
     ],
 
     /**

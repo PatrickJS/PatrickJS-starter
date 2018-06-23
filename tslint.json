@@ -20,7 +20,6 @@
     "directive-class-suffix": true,
     // "directive-selector": [true, "attribute", "my", "camelCase"],
     "import-destructuring-spacing": true,
-    "no-output-on-prefix-name": true,
     "no-attribute-parameter-decorator": true,
     "no-forward-ref": true,
     "no-input-rename": true,
