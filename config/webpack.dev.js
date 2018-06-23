@@ -17,8 +17,8 @@ const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
  *
  * See: https://webpack.js.org/configuration/
  */
-module.exports = function (options) {
-  const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
+module.exports = function(options) {
+  const ENV = (process.env.ENV = process.env.NODE_ENV = 'development');
   const HOST = process.env.HOST || 'localhost';
   const PORT = process.env.PORT || 3000;
 
@@ -30,8 +30,7 @@ module.exports = function (options) {
     PUBLIC: process.env.PUBLIC_DEV || HOST + ':' + PORT
   });
 
-  return webpackMerge(commonConfig({ env: ENV, metadata: METADATA  }), {
-
+  return webpackMerge(commonConfig({ env: ENV, metadata: METADATA }), {
     mode: 'development',
     devtool: 'inline-source-map',
 
@@ -41,7 +40,6 @@ module.exports = function (options) {
      * See: https://webpack.js.org/configuration/output/
      */
     output: {
-
       /**
        * The output directory as absolute path (required).
        *
@@ -73,13 +71,11 @@ module.exports = function (options) {
       chunkFilename: '[id].chunk.js',
 
       library: 'ac_[name]',
-      libraryTarget: 'var',
+      libraryTarget: 'var'
     },
 
     module: {
-
       rules: [
-
         /**
          * Css loader support for *.css files (styles directory only)
          * Loads external css styles into the DOM, supports HMR
@@ -100,10 +96,8 @@ module.exports = function (options) {
           test: /\.scss$/,
           use: ['style-loader', 'css-loader', 'sass-loader'],
           include: [helpers.root('src', 'styles')]
-        },
-
+        }
       ]
-
     },
 
     plugins: [
@@ -114,7 +108,7 @@ module.exports = function (options) {
        */
       new LoaderOptionsPlugin({
         debug: true,
-        options: { }
+        options: {}
       })
     ],
 
@@ -139,10 +133,10 @@ module.exports = function (options) {
         ignored: /node_modules/
       },
       /**
-      * Here you can access the Express app object and add your own custom middleware to it.
-      *
-      * See: https://webpack.js.org/configuration/dev-server/
-      */
+       * Here you can access the Express app object and add your own custom middleware to it.
+       *
+       * See: https://webpack.js.org/configuration/dev-server/
+       */
       setup: function(app) {
         // For example, to define custom handlers for some paths:
         // app.get('/some/path', function(req, res) {
@@ -166,6 +160,5 @@ module.exports = function (options) {
       setImmediate: false,
       fs: 'empty'
     }
-
   });
 };

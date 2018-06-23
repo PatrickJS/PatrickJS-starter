@@ -18,8 +18,8 @@ const commonConfig = require('./webpack.common.js');
  * Webpack Plugins
  */
 
- const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const HashedModuleIdsPlugin = require('webpack/lib/HashedModuleIdsPlugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HashedModuleIdsPlugin = require('webpack/lib/HashedModuleIdsPlugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 /***
@@ -125,7 +125,6 @@ module.exports = function(env) {
           use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
           include: [helpers.root('src', 'styles')]
         }
-
       ]
     },
 
@@ -159,7 +158,6 @@ module.exports = function(env) {
      */
     plugins: [
       new MiniCssExtractPlugin({ filename: '[name]-[hash].css', chunkFilename: '[name]-[chunkhash].css' }),
-
       new HashedModuleIdsPlugin()
     ],
 
