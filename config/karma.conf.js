@@ -74,7 +74,7 @@ module.exports = function (config) {
        * webpack-dev-middleware configuration
        * i.e.
        */
-      logLevel: 'info',
+      logLevel: 'warn',
       /**
        * and use stats to turn off verbose output
        */

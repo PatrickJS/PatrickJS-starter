@@ -24,7 +24,7 @@ module.exports = function(options) {
   ghDeploy.replaceHtmlWebpackPlugin(webpackConfig.plugins, GH_REPO_NAME);
 
   return webpackMerge(webpackConfig, {
-    mode: 'production',
+
     output: {
       /**
        * The public path is set to the REPO name.

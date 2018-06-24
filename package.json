@@ -147,6 +147,7 @@
     "protractor": "^5.3.2",
     "raw-loader": "^0.5.1",
     "rimraf": "^2.6.2",
+    "rxjs-tslint": "^0.1.5",
     "sass-loader": "^7.0.3",
     "script-ext-html-webpack-plugin": "^2.0.1",
     "source-map-loader": "^0.2.3",
