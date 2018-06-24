@@ -13,7 +13,7 @@ import { XLargeDirective } from './x-large';
    * for `document.querySelectorAll(selector)` in our index.html
    * where, in this case, selector is the string 'home'.
    */
-  selector: 'my-home',  // <home></home>
+  selector: 'home',  // <home></home>
   /**
    * We need to tell Angular's Dependency Injection which providers are in our app.
    */

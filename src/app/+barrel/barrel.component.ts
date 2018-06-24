@@ -11,7 +11,7 @@ import {
 console.log('`Barrel` component loaded asynchronously');
 
 @Component({
-  selector: 'my-barrel',
+  selector: 'barrel',
   template: `
     <h1>Hello from Barrel</h1>
     <span>

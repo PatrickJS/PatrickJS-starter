@@ -5,7 +5,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { environment } from 'environments/environment';
 import { AppState } from './app.service';
 
-export const ROOT_SELECTOR = 'my-app';
+export const ROOT_SELECTOR = 'app';
 
 /**
  * App Component
