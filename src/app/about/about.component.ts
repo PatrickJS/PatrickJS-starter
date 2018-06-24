@@ -5,7 +5,7 @@ import {
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'about',
+  selector: 'my-about',
   styles: [`
   `],
   template: `

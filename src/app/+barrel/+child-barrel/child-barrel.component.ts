@@ -11,7 +11,7 @@ import {
 console.log('`ChildBarrel` component loaded asynchronously');
 
 @Component({
-  selector: 'child-barrel',
+  selector: 'my-child-barrel',
   template: `
     <h1>Hello from Child Barrel</h1>
   `,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'dev-module',
+  selector: 'my-dev-module',
   template: `
     <h1>Hello from DevModule Component</h1>
   `,

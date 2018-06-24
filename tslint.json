@@ -12,14 +12,12 @@
     "node_modules/rxjs-tslint"
   ],
   "rules": {
-    // Custom
     "trailing-comma": [false, {"multiline": "always", "singleline": "never"}],
     "interface-name": [false, "always-prefix"],
-    // Angular 2
     "component-class-suffix": true,
-    // "component-selector": [true, "element", "my", "kebab-case"],
+    "component-selector": [true, "element", "my", "kebab-case"],
     "directive-class-suffix": true,
-    // "directive-selector": [true, "attribute", "my", "camelCase"],
+    "directive-selector": [true, "attribute", "my", "camelCase"],
     "import-destructuring-spacing": true,
     "no-attribute-parameter-decorator": true,
     "no-forward-ref": true,
@@ -32,7 +30,6 @@
     "use-life-cycle-interface": true,
     "use-output-property-decorator": true,
     "use-pipe-transform-interface": true,
-    // General
     "no-console": [true,
       "time",
       "timeEnd",

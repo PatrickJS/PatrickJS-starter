@@ -3,13 +3,14 @@
  */
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { environment } from 'environments/environment';
+import { NgModuleRef } from '@angular/core';
 
 /**
  * App Module
  * our top level module that holds all of our components
  */
 import { AppModule } from './app';
-import { NgModuleRef } from '@angular/core';
+import { ROOT_SELECTOR } from './app/app.component';
 
 /**
  * Bootstrap our Angular app with a top level NgModule
@@ -21,8 +22,8 @@ export function main(): Promise<any> {
     module['hot'].accept();
     module['hot'].dispose(() => {
       // Before restarting the app, we create a new root element and dispose the old one
-      const oldRootElem = document.querySelector('app');
-      const newRootElem = document.createElement('app');
+      const oldRootElem = document.querySelector(ROOT_SELECTOR);
+      const newRootElem = document.createElement(ROOT_SELECTOR);
       oldRootElem!.parentNode!.insertBefore(newRootElem, oldRootElem);
       if (modulePromise) {
         modulePromise.then((appModule) => {
