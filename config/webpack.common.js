@@ -10,14 +10,12 @@ const helpers = require('./helpers');
  * problem with copy-webpack-plugin
  */
 const DefinePlugin = require('webpack/lib/DefinePlugin');
-const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlElementsPlugin = require('./html-elements-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackInlineManifestPlugin = require('webpack-inline-manifest-plugin');
-const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
-const ngcWebpack = require('ngc-webpack');
+const AngularCompilerPlugin = require('@ngtools/webpack').AngularCompilerPlugin;
 
 const buildUtils = require('./build-utils');
 
@@ -26,11 +24,11 @@ const buildUtils = require('./build-utils');
  *
  * See: https://webpack.js.org/configuration/
  */
-module.exports = function (options) {
+module.exports = function(options) {
   const isProd = options.env === 'production';
   const APP_CONFIG = require(process.env.ANGULAR_CONF_FILE || (isProd ? './config.prod.json' : './config.dev.json'));
 
-  const METADATA = Object.assign({}, buildUtils.DEFAULT_METADATA,options.metadata || {});
+  const METADATA = Object.assign({}, buildUtils.DEFAULT_METADATA, options.metadata || {});
   const GTM_API_KEY = process.env.GTM_API_KEY || APP_CONFIG.gtmKey;
 
   const ngcWebpackConfig = buildUtils.ngcWebpackSetup(isProd, METADATA);
@@ -38,7 +36,7 @@ module.exports = function (options) {
 
   const entry = {
     polyfills: './src/polyfills.browser.ts',
-    main:      './src/main.browser.ts'
+    main: './src/main.browser.ts'
   };
 
   Object.assign(ngcWebpackConfig.plugin, {
@@ -61,7 +59,7 @@ module.exports = function (options) {
      * See: https://webpack.js.org/configuration/resolve/
      */
     resolve: {
-      mainFields: [ ...(supportES2015 ? ['es2015'] : []), 'browser', 'module', 'main' ],
+      mainFields: [...(supportES2015 ? ['es2015'] : []), 'browser', 'module', 'main'],
 
       /**
        * An array of extensions that should be used to resolve modules.
@@ -103,7 +101,6 @@ module.exports = function (options) {
      * See: https://webpack.js.org/configuration/module/
      */
     module: {
-
       rules: [
         ...ngcWebpackConfig.loaders,
 
@@ -155,9 +152,7 @@ module.exports = function (options) {
           test: /\.(eot|woff2?|svg|ttf)([\?]?.*)$/,
           use: 'file-loader'
         }
-
-      ],
-
+      ]
     },
 
     /**
@@ -177,39 +172,14 @@ module.exports = function (options) {
        */
       // NOTE: when adding more properties make sure you include them in custom-typings.d.ts
       new DefinePlugin({
-        'ENV': JSON.stringify(METADATA.ENV),
-        'HMR': METADATA.HMR,
-        'AOT': METADATA.AOT,
+        ENV: JSON.stringify(METADATA.ENV),
+        HMR: METADATA.HMR,
+        AOT: METADATA.AOT,
         'process.env.ENV': JSON.stringify(METADATA.ENV),
         'process.env.NODE_ENV': JSON.stringify(METADATA.ENV),
-        'process.env.HMR': METADATA.HMR,
+        'process.env.HMR': METADATA.HMR
         // 'FIREBASE_CONFIG': JSON.stringify(APP_CONFIG.firebase),
       }),
-
-      /**
-       * Plugin: CommonsChunkPlugin
-       * Description: Shares common code between the pages.
-       * It identifies common modules and put them into a commons chunk.
-       *
-       * See: https://webpack.js.org/plugins/commons-chunk-plugin/
-       * See: https://github.com/webpack/docs/wiki/optimization#multi-page-app
-       */
-      new CommonsChunkPlugin({
-        name: 'polyfills',
-        chunks: ['polyfills']
-      }),
-
-      new CommonsChunkPlugin({
-        minChunks: Infinity,
-        name: 'inline'
-      }),
-      new CommonsChunkPlugin({
-        name: 'main',
-        async: 'common',
-        children: true,
-        minChunks: 2
-      }),
-
 
       /**
        * Plugin: CopyWebpackPlugin
@@ -219,11 +189,9 @@ module.exports = function (options) {
        *
        * See: https://www.npmjs.com/package/copy-webpack-plugin
        */
-      new CopyWebpackPlugin([
-        { from: 'src/assets', to: 'assets' },
-        { from: 'src/meta'}
-      ],
-        isProd ? { ignore: [ 'mock-data/**/*' ] } : undefined
+      new CopyWebpackPlugin(
+        [{ from: 'src/assets', to: 'assets' }, { from: 'src/meta' }],
+        isProd ? { ignore: ['mock-data/**/*'] } : undefined
       ),
 
       /*
@@ -237,22 +205,24 @@ module.exports = function (options) {
       new HtmlWebpackPlugin({
         template: 'src/index.html',
         title: METADATA.title,
-        chunksSortMode: function (a, b) {
-          const entryPoints = ["inline","polyfills","sw-register","styles","vendor","main"];
+        chunksSortMode: function(a, b) {
+          const entryPoints = ['inline', 'polyfills', 'sw-register', 'styles', 'vendor', 'main'];
           return entryPoints.indexOf(a.names[0]) - entryPoints.indexOf(b.names[0]);
         },
         metadata: METADATA,
         gtmKey: GTM_API_KEY,
         inject: 'body',
         xhtml: true,
-        minify: isProd ? {
-          caseSensitive: true,
-          collapseWhitespace: true,
-          keepClosingSlash: true
-        } : false
+        minify: isProd
+          ? {
+              caseSensitive: true,
+              collapseWhitespace: true,
+              keepClosingSlash: true
+            }
+          : false
       }),
 
-       /**
+      /**
        * Plugin: ScriptExtHtmlWebpackPlugin
        * Description: Enhances html-webpack-plugin functionality
        * with different deployment options for your scripts including:
@@ -292,14 +262,7 @@ module.exports = function (options) {
         headTags: require('./head-config.common')
       }),
 
-      /**
-       * Plugin LoaderOptionsPlugin (experimental)
-       *
-       * See: https://gist.github.com/sokra/27b24881210b56bbaff7
-       */
-      new LoaderOptionsPlugin({}),
-
-      new ngcWebpack.NgcWebpackPlugin(ngcWebpackConfig.plugin),
+      new AngularCompilerPlugin(ngcWebpackConfig.plugin),
 
       /**
        * Plugin: WebpackInlineManifestPlugin
@@ -307,7 +270,7 @@ module.exports = function (options) {
        *
        * https://github.com/almothafar/webpack-inline-manifest-plugin
        */
-      new WebpackInlineManifestPlugin(),
+      new WebpackInlineManifestPlugin()
     ],
 
     /**
@@ -324,6 +287,5 @@ module.exports = function (options) {
       clearImmediate: false,
       setImmediate: false
     }
-
   };
 };
