@@ -229,6 +229,11 @@ npm run build:docker
 
 ### bundle analyzer (for bundle size inspecting and optimizing after production build):
 ```bash
+# First: run the analyzing build
+npm run build:analyze
+# or npm run build:aot:analyze
+
+# Second: view the report by running the bundle-report command
 npm run bundle-report
 ```
 

@@ -52,6 +52,7 @@ function getUglifyOptions(supportES2015, enableCompress) {
 
 module.exports = function(env) {
   const ENV = (process.env.NODE_ENV = process.env.ENV = 'production');
+  const ANALYZE = process.env.ANALYZE === '1';
   const supportES2015 = buildUtils.supportES2015(buildUtils.DEFAULT_METADATA.tsConfigPath);
   const sourceMapEnabled = process.env.SOURCE_MAP === '1';
   const METADATA = Object.assign({}, buildUtils.DEFAULT_METADATA, {
@@ -162,7 +163,7 @@ module.exports = function(env) {
       new HashedModuleIdsPlugin(),
       new BundleAnalyzerPlugin({
         analyzerMode: 'disabled',
-        generateStatsFile: true,
+        generateStatsFile: ANALYZE,
       })
     ],
 

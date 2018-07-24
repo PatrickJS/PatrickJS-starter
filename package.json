@@ -16,6 +16,8 @@
   "homepage": "https://github.com/gdi2290/angular-starter",
   "license": "MIT",
   "scripts": {
+    "build:analyze": "cross-env ANALYZE=1 npm run build:prod",
+    "build:aot:analyze": "cross-env ANALYZE=1 npm run build:aot:prod",
     "build:aot:prod": "rimraf dist compiled && cross-env BUILD_AOT=1 SOURCE_MAP=0 npm run webpack -- --config config/webpack.prod.js --progress --profile --bail",
     "build:aot": "npm run build:aot:prod",
     "build:aot:dev": "cross-env BUILD_AOT=1 npm run build:dev",
