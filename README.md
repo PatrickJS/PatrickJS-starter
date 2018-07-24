@@ -227,7 +227,7 @@ npm run e2e:live
 npm run build:docker
 ```
 
-### bundle analyzer (for bundle size inspecting and optimizing):
+### bundle analyzer (for bundle size inspecting and optimizing after production build):
 ```bash
 npm run bundle-report
 ```
