@@ -162,8 +162,7 @@ module.exports = function(env) {
       new MiniCssExtractPlugin({ filename: '[name]-[hash].css', chunkFilename: '[name]-[chunkhash].css' }),
       new HashedModuleIdsPlugin(),
       new BundleAnalyzerPlugin({
-        analyzerMode: 'disabled',
-        generateStatsFile: ANALYZE,
+        analyzerMode: ANALYZE ? 'server' : 'disabled',
       })
     ],
 
