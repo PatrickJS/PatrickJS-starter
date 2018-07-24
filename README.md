@@ -227,6 +227,11 @@ npm run e2e:live
 npm run build:docker
 ```
 
+### bundle analyzer (for bundle size inspecting and optimizing):
+```bash
+npm run bundle-report
+```
+
 # Configuration
 Configuration files live in `config/` we are currently using webpack, karma, and protractor for different stages of your application
 

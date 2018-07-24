@@ -21,6 +21,7 @@ const commonConfig = require('./webpack.common.js');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HashedModuleIdsPlugin = require('webpack/lib/HashedModuleIdsPlugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 /***
  * Ref: https://github.com/mishoo/UglifyJS2/tree/harmony#minify-options
@@ -158,7 +159,11 @@ module.exports = function(env) {
      */
     plugins: [
       new MiniCssExtractPlugin({ filename: '[name]-[hash].css', chunkFilename: '[name]-[chunkhash].css' }),
-      new HashedModuleIdsPlugin()
+      new HashedModuleIdsPlugin(),
+      new BundleAnalyzerPlugin({
+        analyzerMode: 'disabled',
+        generateStatsFile: true,
+      })
     ],
 
     /**
