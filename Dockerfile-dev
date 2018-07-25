@@ -12,9 +12,9 @@
 FROM node:8.9.4-alpine as builder
 
 # Uncomment this if you encounter node-sass environment changed issue (1/2)
-RUN apk add --no-cache python &&\
-    apk add --no-cache make &&\
-    apk add --no-cache g++
+#RUN apk add --no-cache python &&\
+#    apk add --no-cache make &&\
+#    apk add --no-cache g++
 
 COPY package.json ./
 
@@ -24,7 +24,7 @@ RUN npm i &&\
     mv ./node_modules ./ng-app
 
 # Uncomment this if you encounter node-sass environment changed issue (2/2)
-RUN npm rebuild node-sass --force
+#RUN npm rebuild node-sass --force
 
 WORKDIR /ng-app
 
