@@ -11,10 +11,19 @@
 
 FROM node:8.9.4-alpine as builder
 
+# Uncomment this if you encounter node-sass environment changed issue (1/2)
+RUN apk add --no-cache python &&\
+    apk add --no-cache g++
+
 COPY package.json ./
 
 ## Storing node modules on a separate layer will prevent unnecessary npm installs at each build
-RUN npm i && mkdir /ng-app && mv ./node_modules ./ng-app
+RUN npm i &&\
+    mkdir /ng-app &&\
+    mv ./node_modules ./ng-app
+
+# Uncomment this if you encounter node-sass environment changed issue (2/2)
+RUN npm rebuild node-sass --force
 
 WORKDIR /ng-app
 

@@ -9,6 +9,8 @@ services:
       - angular-starter
     ports:
       - '3000:3000'
+    volumes:
+     - .:/ng-app
     environment:
      - HOST=0.0.0.0
     command: npm run start
