@@ -126,7 +126,7 @@ export class HomeComponent implements OnInit {
 
   public noResultsMessage = 'no records found';
 
-  public selectType = 'standard';
+  public selectType = 'checkbox';
   /**
    * TypeScript public modifiers
    */
