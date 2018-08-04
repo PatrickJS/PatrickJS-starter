@@ -4,14 +4,14 @@ import * as uuid from 'uuid';
 import * as invariant from 'invariant';
 
 import {Component, Input, OnInit, OnDestroy, OnChanges, AfterViewInit} from '@angular/core';
-import { reactTable } from './react-component.jsx';
+import { ReactInsideAngularExample } from './reactInsideAngularExample.jsx';
 
 @Component({
-  selector: 'react-host',
-  template: '<span [id]="rootDomID">test</span>'
+  selector: 'react-inside-angular-example',
+  template: '<span [id]="rootDomID"></span>'
 })
 
-export class MyCardHostComponent implements OnInit, OnDestroy, OnChanges, AfterViewInit {
+export class ReactInsideAngularExampleComponent implements OnInit, OnDestroy, OnChanges, AfterViewInit {
 
     private rootDomID: string;
 
@@ -27,7 +27,7 @@ export class MyCardHostComponent implements OnInit, OnDestroy, OnChanges, AfterV
 
     protected render() {
       if (this.isMounted()) {
-        ReactDOM.render(React.createElement(reactTable), this.getRootDomNode());
+        ReactDOM.render(React.createElement(ReactInsideAngularExample), this.getRootDomNode());
       }
     }
 
