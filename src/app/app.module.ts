@@ -20,6 +20,8 @@ import { NoContentComponent } from './no-content';
 import { XLargeDirective } from './home/x-large';
 import { DevModuleModule } from './+dev-module';
 
+import { MyCardHostComponent } from './home/react-host.component';
+
 import '../styles/styles.scss';
 import '../styles/headings.css';
 
@@ -45,7 +47,8 @@ interface StoreType {
     AboutComponent,
     HomeComponent,
     NoContentComponent,
-    XLargeDirective
+    XLargeDirective,
+    MyCardHostComponent
   ],
   /**
    * Import Angular's modules.
