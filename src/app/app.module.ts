@@ -21,6 +21,8 @@ import { XLargeDirective } from './home/x-large';
 import { DevModuleModule } from './+dev-module';
 
 import { ReactInsideAngularExampleComponent } from './components/reactInsideAngularExample/reactInsideAngularExample.component';
+import { ReactTableHostComponent } from './components/reactTableHost/reactTableHost.component';
+
 
 
 import '../styles/styles.scss';
@@ -49,7 +51,8 @@ interface StoreType {
     HomeComponent,
     NoContentComponent,
     XLargeDirective,
-    ReactInsideAngularExampleComponent
+    ReactInsideAngularExampleComponent,
+    ReactTableHostComponent
   ],
   /**
    * Import Angular's modules.
