@@ -98,10 +98,13 @@
     "core-js": "^2.5.7",
     "http-server": "^0.11.1",
     "ie-shim": "^0.1.0",
+    "invariant": "^2.2.4",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
+    "react-table": "^6.8.6",
     "reflect-metadata": "^0.1.12",
     "rxjs": "^6.2.1",
+    "uuid": "^3.3.2",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
