@@ -18,32 +18,38 @@ export const ROOT_SELECTOR = 'app';
     './app.component.css'
   ],
   template: `
-    <nav>
-      <a [routerLink]=" ['./'] "
-        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        Index
-      </a>
-      <a [routerLink]=" ['./home'] "
-        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        Home
-      </a>
-      <a [routerLink]=" ['./detail'] "
-        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        Detail
-      </a>
-      <a [routerLink]=" ['./barrel'] "
-        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        Barrel
-      </a>
-      <a [routerLink]=" ['./about'] "
-        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        About
-      </a>
-      <a *ngIf="showDevModule" [routerLink]=" ['./dev-module'] "
-         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        DevModule
-      </a>
-    </nav>
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <span>AngularReactMaterial</span>
+        <nav>
+          <a [routerLink]=" ['./'] "
+            routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+            <button mat-button color="primary">Index</button>
+          </a>
+          <a [routerLink]=" ['./home'] "
+            routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+            <button mat-button color="primary">Home</button>
+          </a>
+          <a [routerLink]=" ['./detail'] "
+            routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+            <button mat-button color="primary">Detail</button>
+          </a>
+          <a [routerLink]=" ['./barrel'] "
+            routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+            <button mat-button color="primary">Barrel</button>
+          </a>
+          <a [routerLink]=" ['./about'] "
+            routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+            <button mat-button color="primary">About</button>
+          </a>
+          <a *ngIf="showDevModule" [routerLink]=" ['./dev-module'] "
+             routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+            <button mat-button color="primary">DevModule</button>
+          </a>
+        </nav>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    
 
     <main>
       <router-outlet></router-outlet>
