@@ -23,6 +23,8 @@ import { DevModuleModule } from './+dev-module';
 import '../styles/styles.scss';
 import '../styles/headings.css';
 
+import {MatButtonModule, MatCheckboxModule, MatToolbarModule} from '@angular/material';
+
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -59,6 +61,10 @@ interface StoreType {
       useHash: Boolean(history.pushState) === false,
       preloadingStrategy: PreloadAllModules
     }),
+
+    MatToolbarModule,
+    MatButtonModule,
+    MatCheckboxModule,
 
     /**
      * This section will import the `DevModuleModule` only in certain build types.

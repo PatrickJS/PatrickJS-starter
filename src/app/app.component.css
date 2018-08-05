@@ -6,3 +6,7 @@ html, body{
 a.active {
   background-color: gray;
 }
+
+nav { 
+    margin-top: 0;
+}

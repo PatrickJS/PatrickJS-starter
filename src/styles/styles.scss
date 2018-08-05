@@ -1,6 +1,7 @@
 /* this file will be extracted to main dist folder and is imported in index.html */
 /* This file is for setting global styles  */
 @import 'variables';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 nav {
   margin-top: 16px;
