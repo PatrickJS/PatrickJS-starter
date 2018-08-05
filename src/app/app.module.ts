@@ -20,8 +20,15 @@ import { NoContentComponent } from './no-content';
 import { XLargeDirective } from './home/x-large';
 import { DevModuleModule } from './+dev-module';
 
+import { ReactInsideAngularExampleComponent } from './components/reactInsideAngularExample/reactInsideAngularExample.component';
+import { ReactTableHostComponent } from './components/reactTableHost/reactTableHost.component';
+
+
+
 import '../styles/styles.scss';
 import '../styles/headings.css';
+
+import {MatButtonModule, MatCheckboxModule, MatToolbarModule} from '@angular/material';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -45,7 +52,9 @@ interface StoreType {
     AboutComponent,
     HomeComponent,
     NoContentComponent,
-    XLargeDirective
+    XLargeDirective,
+    ReactInsideAngularExampleComponent,
+    ReactTableHostComponent
   ],
   /**
    * Import Angular's modules.
@@ -59,6 +68,10 @@ interface StoreType {
       useHash: Boolean(history.pushState) === false,
       preloadingStrategy: PreloadAllModules
     }),
+
+    MatToolbarModule,
+    MatButtonModule,
+    MatCheckboxModule,
 
     /**
      * This section will import the `DevModuleModule` only in certain build types.

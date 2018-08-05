@@ -3,10 +3,19 @@
 
   <hr>
 
-  <div>
-    For hot module reloading run
-    <pre>npm run start:hmr</pre>
-  </div>
+  <div style="border:1px solid #333; padding:10px; min-height:500px; min-width:600px;">
+      <h1> Main area</h1>
+      <react-table-host
+        [data]="tableData"
+        [options]="defaultOptions"
+        [isLoading]="isLoading"
+        [noResultsMessage]="noResultsMessage"
+        [selectType]="selectType"
+      >
+      </react-table-host>
+
+<!--       <react-inside-angular-example></react-inside-angular-example>
+ -->  </div>
 
   <hr>
 
