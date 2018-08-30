@@ -133,6 +133,17 @@ module.exports = function(options) {
         ignored: /node_modules/
       },
       /**
+       * Use stats to turn off verbose output
+       */
+      stats: {
+        /**
+         * Filter warnings to be shown
+         *
+         * See: https://github.com/angular/angular/issues/21560
+         */
+        warningsFilter: /System.import/,
+      },
+      /**
        * Here you can access the Express app object and add your own custom middleware to it.
        *
        * See: https://webpack.js.org/configuration/dev-server/

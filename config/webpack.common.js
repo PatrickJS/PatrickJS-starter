@@ -286,6 +286,17 @@ module.exports = function(options) {
       module: false,
       clearImmediate: false,
       setImmediate: false
-    }
+    },
+    /**
+     * Use stats to turn off verbose output
+     */
+    stats: {
+      /**
+       * Filter warnings to be shown
+       *
+       * See: https://github.com/angular/angular/issues/21560
+       */
+      warningsFilter: /System.import/,
+    },
   };
 };
