@@ -137,7 +137,7 @@ module.exports = function(options) {
        *
        * See: https://webpack.js.org/configuration/dev-server/
        */
-      setup: function(app) {
+      before: function(app) {
         // For example, to define custom handlers for some paths:
         // app.get('/some/path', function(req, res) {
         //   res.json({ custom: 'response' });
