@@ -3,7 +3,7 @@
  */
 
 /**
- * Look in ./config folder for webpack.dev.js
+ * Look in ./config folder for webpack.dev.js--er
  */
 switch (process.env.NODE_ENV) {
   case 'prod':
