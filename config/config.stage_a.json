@@ -1,0 +1,11 @@
+{
+  "firebase": {
+    "apiKey": "",
+    "authDomain": "stage_a.firebaseapp.com",
+    "databaseURL": "https://stage_a.firebaseio.com",
+    "projectId": "XXXXXX",
+    "storageBucket": "stage_a.appspot.com",
+    "messagingSenderId": "000000000000"
+  },
+  "gtmKey" : "GTM-XXXXXXX"
+}

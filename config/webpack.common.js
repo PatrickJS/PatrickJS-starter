@@ -24,11 +24,16 @@ const buildUtils = require('./build-utils');
  *
  * See: https://webpack.js.org/configuration/
  */
-module.exports = function(options) {
-  const isProd = options.env === 'production';
-  const APP_CONFIG = require(process.env.ANGULAR_CONF_FILE || (isProd ? './config.prod.json' : './config.dev.json'));
+module.exports = function(envOptions) {
+  const isProd = envOptions.metadata.buildMode === 'production';
+  //const APP_CONFIG = require(process.env.ANGULAR_CONF_FILE || (isProd ? './config.prod.json' : './config.dev.json'));
+  const APP_CONFIG = require(process.env.ANGULAR_CONF_FILE || buildUtils.getConfigFile(envOptions.E2E, envOptions.metadata.distSufixTarget));
 
-  const METADATA = Object.assign({}, buildUtils.DEFAULT_METADATA, options.metadata || {});
+  //in order of priority:
+  // first the data from 'buildUtils.DEFAULT_METADATA';
+  // then, config.{sufix}.json they are overwritten by process.env (eg pre-existing environment variables or 'cross-env BUILD_AOT = 1 SOURCE_MAP = 0 npm run webpack')
+  // then, if they exist, they are overwritten by envOptions.metadata (ex: --env.metadata.distSufixTarget=prod ou --env.metadata.title=title_setted_by_argument)
+  const METADATA = buildUtils.deepMerge({}, buildUtils.DEFAULT_METADATA, APP_CONFIG, envOptions.metadata || {});
   const GTM_API_KEY = process.env.GTM_API_KEY || APP_CONFIG.gtmKey;
 
   const ngcWebpackConfig = buildUtils.ngcWebpackSetup(isProd, METADATA);

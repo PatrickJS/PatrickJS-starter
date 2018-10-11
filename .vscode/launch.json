@@ -22,6 +22,89 @@
             "port": 9222,
             "sourceMaps": true,
             "webRoot": "${workspaceRoot}"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch build:aot:dev",
+            "program": "${workspaceRoot}/node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+            "args": [
+                "--config",
+                "config/webpack.dev.js",
+                "--progress",
+                "--profile",
+                "--watch",
+                "--content-base",
+                "src/"
+            ],
+            "sourceMaps": true,
+            "outFiles": [
+                "${workspaceRoot}/node_modules/*"
+                //"${webRoot}/src/client/app/*"
+            ],
+            "cwd": "${workspaceRoot}"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch build:aot:prod",
+            "program": "${workspaceRoot}/node_modules/webpack/bin/webpack.js",
+            "args": [
+                "--config",
+                "config/webpack.prod.js",
+                "--progress",
+                "--profile",
+                "--bail"
+            ],
+            "sourceMaps": true,
+            "outFiles": [
+                "${workspaceRoot}/node_modules/*"
+                //"${webRoot}/src/client/app/*"
+            ],
+            "cwd": "${workspaceRoot}"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch build:aot:stage_a",
+            "program": "${workspaceRoot}/node_modules/webpack/bin/webpack.js",
+            "args": [
+                "--config",
+                "config/webpack.prod.js",
+                "--progress",
+                "--profile",
+                "--bail",
+                "--env.metadata.distSufixTarget=stage_a"
+            ],
+            "sourceMaps": true,
+            "outFiles": [
+                "${workspaceRoot}/node_modules/*"
+                //"${webRoot}/src/client/app/*"
+            ],
+            "cwd": "${workspaceRoot}"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch build:aot:stage_b",
+            "program": "${workspaceRoot}/node_modules/webpack/bin/webpack.js",
+            "args": [
+                "--config",
+                "config/webpack.prod.js",
+                "--progress",
+                "--profile",
+                "--bail",
+                "--env.metadata.distSufixTarget=stage_a",
+                "--env.metadata.firebase.authDomain=stage_b.firebaseapp.com",
+                "--env.metadata.firebase.databaseURL=https://stage_a.firebaseio.com",
+                "--env.metadata.firebase.storageBucket=stage_b.appspot.com",
+            ],
+            "sourceMaps": true,
+            "outFiles": [
+                "${workspaceRoot}/node_modules/*"
+                //"${webRoot}/src/client/app/*"
+            ],
+            "cwd": "${workspaceRoot}"
         }
     ]
 }

@@ -49,21 +49,34 @@ function getUglifyOptions(supportES2015, enableCompress) {
   };
 }
 
-module.exports = function(env) {
+module.exports = function(envOptions) {
   const ENV = (process.env.NODE_ENV = process.env.ENV = 'production');
   const supportES2015 = buildUtils.supportES2015(buildUtils.DEFAULT_METADATA.tsConfigPath);
   const sourceMapEnabled = process.env.SOURCE_MAP === '1';
-  const METADATA = Object.assign({}, buildUtils.DEFAULT_METADATA, {
-    host: process.env.HOST || 'localhost',
-    port: process.env.PORT || 8080,
-    ENV: ENV,
-    HMR: false
-  });
+  //in order of priority:
+  // first the data from 'buildUtils.DEFAULT_METADATA';
+  // then, if they exist, they are overwritten by process.env (eg pre-existing environment variables or 'cross-env BUILD_AOT = 1 SOURCE_MAP = 0 npm run webpack')
+  // then, if they exist, they are overwritten by envOptions.metadata (ex: --env.metadata.distSufixTarget=prod ou --env.metadata.title=title_setted_by_argument)
+  const METADATA =
+    buildUtils.deepMerge(
+      {}, 
+      buildUtils.DEFAULT_METADATA, 
+      {
+        host: process.env.HOST || 'localhost',
+        port: process.env.PORT || 8080,
+        buildMode: ENV,
+        HMR: false,
+        //deprecated for distSufixTarget by argument. Exe: --env.metadata.distSufixTarget=dev
+        //envFileSuffix
+        distSufixTarget: 'prod'
+      },
+      envOptions? envOptions.metadata : {});
+  const NEW_ENV_OPTIONS = buildUtils.deepMerge({}, envOptions, {metadata: METADATA});
 
   // set environment suffix so these environments are loaded.
-  METADATA.envFileSuffix = METADATA.E2E ? 'e2e.prod' : 'prod';
+  //METADATA.envFileSuffix = METADATA.E2E ? 'e2e.prod' : 'prod';
 
-  return webpackMerge(commonConfig({ env: ENV, metadata: METADATA }), {
+  return webpackMerge(commonConfig(NEW_ENV_OPTIONS), {
     mode: 'production',
 
     devtool: 'source-map',

@@ -17,6 +17,8 @@
   "license": "MIT",
   "scripts": {
     "build:aot:prod": "rimraf dist compiled && cross-env BUILD_AOT=1 SOURCE_MAP=0 npm run webpack -- --config config/webpack.prod.js --progress --profile --bail",
+    "build:aot:stage_a": "rimraf dist compiled && cross-env BUILD_AOT=1 SOURCE_MAP=0 npm run webpack -- --config config/webpack.prod.js --progress --profile --bail --env.metadata.distSufixTarget=stage_a",
+    "build:aot:stage_b": "rimraf dist compiled && cross-env BUILD_AOT=1 SOURCE_MAP=0 npm run webpack -- --config config/webpack.prod.js --progress --profile --bail --env.metadata.distSufixTarget=stage_a --env.metadata.firebase.authDomain=stage_b.firebaseapp.com --env.metadata.firebase.databaseURL=https://stage_a.firebaseio.com --env.metadata.firebase.storageBucket=stage_b.appspot.com",
     "build:aot": "npm run build:aot:prod",
     "build:aot:dev": "cross-env BUILD_AOT=1 npm run build:dev",
     "build:dev": "rimraf dist && npm run webpack -- --config config/webpack.dev.js --mode development --progress --profile --trace-deprecation",
