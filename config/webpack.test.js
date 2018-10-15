@@ -22,7 +22,7 @@ const ENV = (process.env.ENV = process.env.NODE_ENV = 'test');
  *
  * See: https://webpack.js.org/configuration/
  */
-module.exports = function(options) {
+module.exports = function(envOptions) {
   return {
     mode: 'development',
     /**

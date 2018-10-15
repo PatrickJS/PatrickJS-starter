@@ -40,7 +40,6 @@
             "sourceMaps": true,
             "outFiles": [
                 "${workspaceRoot}/node_modules/*"
-                //"${webRoot}/src/client/app/*"
             ],
             "cwd": "${workspaceRoot}"
         },
@@ -79,7 +78,6 @@
             "sourceMaps": true,
             "outFiles": [
                 "${workspaceRoot}/node_modules/*"
-                //"${webRoot}/src/client/app/*"
             ],
             "cwd": "${workspaceRoot}"
         },
@@ -102,7 +100,6 @@
             "sourceMaps": true,
             "outFiles": [
                 "${workspaceRoot}/node_modules/*"
-                //"${webRoot}/src/client/app/*"
             ],
             "cwd": "${workspaceRoot}"
         }

@@ -77,7 +77,7 @@ module.exports = function(envOptions) {
   //METADATA.envFileSuffix = METADATA.E2E ? 'e2e.prod' : 'prod';
 
   return webpackMerge(commonConfig(NEW_ENV_OPTIONS), {
-    mode: 'production',
+    mode: METADATA.buildMode,
 
     devtool: 'source-map',
 

@@ -46,7 +46,7 @@ module.exports = function(envOptions) {
 
   const NEW_ENV_OPTIONS = buildUtils.deepMerge({}, envOptions, { metadata: METADATA });
   return webpackMerge(commonConfig(NEW_ENV_OPTIONS), {
-    mode: 'development',
+    mode: METADATA.buildMode,
     devtool: 'inline-source-map',
 
     /**
