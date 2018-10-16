@@ -55,7 +55,6 @@ export class HomeComponent implements OnInit {
     console.log('environment.distSufixTarget === DistSufixTargetEnum.StageB: ' +
       (environment.distSufixTarget === DistSufixTargetEnum.StageB));
     console.log('environment: \n' + JSON.stringify(environment, null, 2));
-    
     /**
      * this.title.getData().subscribe(data => this.data = data);
      */
