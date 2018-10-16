@@ -57,24 +57,20 @@ module.exports = function(envOptions) {
   // first the data from 'buildUtils.DEFAULT_METADATA';
   // then, if they exist, they are overwritten by process.env (eg pre-existing environment variables or 'cross-env BUILD_AOT = 1 SOURCE_MAP = 0 npm run webpack')
   // then, if they exist, they are overwritten by envOptions.metadata (ex: --env.metadata.distSufixTarget=prod ou --env.metadata.title=title_setted_by_argument)
-  const METADATA =
-    buildUtils.deepMerge(
-      {}, 
-      buildUtils.DEFAULT_METADATA, 
-      {
+  const NEW_ENV_OPTIONS = buildUtils.getFinalEnvOptions(
+    {
+      metadata: {
         host: process.env.HOST || 'localhost',
         port: process.env.PORT || 8080,
         buildMode: ENV,
+        AOT: true,
         HMR: false,
-        //deprecated for distSufixTarget by argument. Exe: --env.metadata.distSufixTarget=dev
-        //envFileSuffix
-        distSufixTarget: 'prod'
+        distSufixTarget: 'prod',
+        sourceMapEnabled: sourceMapEnabled
       },
-      envOptions? envOptions.metadata : {});
-  const NEW_ENV_OPTIONS = buildUtils.deepMerge({}, envOptions, {metadata: METADATA});
-
-  // set environment suffix so these environments are loaded.
-  //METADATA.envFileSuffix = METADATA.E2E ? 'e2e.prod' : 'prod';
+    },
+    envOptions);
+  const METADATA = NEW_ENV_OPTIONS.metadata;
 
   return webpackMerge(commonConfig(NEW_ENV_OPTIONS), {
     mode: METADATA.buildMode,

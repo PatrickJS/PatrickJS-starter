@@ -6,23 +6,30 @@ import { AngularCompilerPluginOptions } from '@ngtools/webpack';
 
 export type BeforeRunHandler = ( resourceCompiler: { get(filename: string): Promise<string> }) => Promise<void>;
 
+export interface CustomWebpackEnvOptions {
+  metadata: Metadata;
+}
+
 export interface Metadata {
-  title: string;
-  description: string;
-  baseUrl:  string;
-  isDevServer: boolean;
-  HMR: boolean;
-  AOT: boolean;
-  E2E: boolean;
-  WATCH: boolean;
+  title: string,
+  description: string,
+  baseUrl:  string,
+  isDevServer: boolean,
+  HMR: boolean,
+  AOT: boolean,
+  E2E: boolean,
+  WATCH: boolean,
+  PUBLIC: string,
   //tsConfigPath: 'tsconfig.webpack.json';
-  tsConfigPath: string;
+  tsConfigPath: string,
+  gtmKey: string,
   /**
    * This suffix is added to the environment.ts file, if not set the default environment file is loaded (development)
    * To disable environment files set this to null
    * this deprecated envFileSuffix
    */
-  distSufixTarget: string;
+  distSufixTarget: string,
+  sourceMapEnabled: boolean,
 }
 
 export function supportES2015(tsConfigPath: string): boolean;
@@ -39,6 +46,31 @@ export function getEnvFile(e2e: boolean, suffix: string): string;
  * @param suffix 
  */
 export function getConfigFile(e2e: boolean, suffix: string): string;
+/**
+ * In order of priority:
+ *   first the data from { metadata: DEFAULT_METADATA }
+ *     baseUrl: '/',
+ *     isDevServer: helpers.isWebpackDevServer(),
+ *     HMR: helpers.hasProcessFlag('hot'),
+ *     AOT: process.env.BUILD_AOT || helpers.hasNpmFlag('aot'),
+ *     E2E: false,
+ *     WATCH: helpers.hasProcessFlag('watch'),
+ *     tsConfigPath: 'tsconfig.webpack.json',
+ *     gtmKey: process.env.GTM_API_KEY,
+ *     distSufixTarget: ''
+ *   then, webpackEnvOptionsInternal;
+ *   then, { metadata: require(...'config/config.commons.json') };
+ *   then, { metadata: require(...'config/config.{sufix}.json') };
+ *   then, [webpack Environment Options](https://webpack.js.org/api/cli/#environment-options) (--env.metadata.distSufixTarget=prod or --env.metadata.title=title_setted_by_argument)
+ * NOTE: distSufixTarget is get from: (webpackEnvOptionsFromArgs && webpackEnvOptionsFromArgs.metadata && webpackEnvOptionsFromArgs.metadata.distSufixTarget? webpackEnvOptionsFromArgs.metadata.distSufixTarget : (webpackEnvOptionsInternal && webpackEnvOptionsInternal.metadata && webpackEnvOptionsInternal.metadata.distSufixTarget? webpackEnvOptionsInternal.metadata.distSufixTarget: ''))
+ *   this value is put on 'return.metadata.distSufixTarget';
+ * OBS: e2e additional sufix is used if: (webpackEnvOptionsFromArgs && webpackEnvOptionsFromArgs.metadata? webpackEnvOptionsFromArgs.metadata.E2E : (webpackEnvOptionsInternal && webpackEnvOptionsInternal.metadata? webpackEnvOptionsInternal.metadata.E2E : process.env.BUILD_E2E))
+ *   this value is put on 'return.metadata.distSufixTarget';
+ * @param {*} webpackEnvOptionsInternal 
+ * @param {*} webpackEnvOptionsFromArgs 
+ */
+export function getFinalEnvOptions(webpackEnvOptionsInternal: CustomWebpackEnvOptions, webpackEnvOptionsFromArgs: CustomWebpackEnvOptions);
+
 
 // export function getEnvObject(suffix): Environment;
 
@@ -56,11 +88,22 @@ export function rxjsAlias(supportES2015: boolean): any;
  */
 export function deepMerge(...args: any[]);
 
-export interface WaNgcWebpackSetup {
+export interface CustomNgcWebpackSetup {
   loaders: Array<Rule>;
-  plugin: AngularCompilerPluginOptions;  
+  angularCompilerPluginOptions: AngularCompilerPluginOptions;  
 }
 
-export function ngcWebpackSetup(prod: boolean, metadata: Metadata): WaNgcWebpackSetup;
+export function ngcWebpackSetup(prod: boolean, metadata: Metadata): CustomNgcWebpackSetup;
 
+/**
+ *  baseUrl: '/',
+ *  isDevServer: helpers.isWebpackDevServer(),
+ *  HMR: helpers.hasProcessFlag('hot'),
+ *  AOT: process.env.BUILD_AOT || helpers.hasNpmFlag('aot'),
+ *  E2E: false,
+ *  WATCH: helpers.hasProcessFlag('watch'),
+ *  tsConfigPath: 'tsconfig.webpack.json',
+ *  gtmKey: process.env.GTM_API_KEY,
+ *  distSufixTarget: ''
+ */
 export const DEFAULT_METADATA: Metadata;

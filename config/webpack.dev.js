@@ -26,25 +26,23 @@ module.exports = function(envOptions) {
   // first the data from 'buildUtils.DEFAULT_METADATA';
   // then, if they exist, they are overwritten by process.env (eg pre-existing environment variables or 'cross-env BUILD_AOT = 1 SOURCE_MAP = 0 npm run webpack')
   // then, if they exist, they are overwritten by envOptions.metadata (ex: --env.metadata.distSufixTarget=prod ou --env.metadata.title=title_setted_by_argument)
-  const METADATA = 
-    buildUtils.deepMerge(
-      {},
-      buildUtils.DEFAULT_METADATA, 
+  const NEW_ENV_OPTIONS = buildUtils.getFinalEnvOptions(
       {
-        host: HOST,
-        port: PORT,
-        buildMode: ENV,
-        HMR: helpers.hasProcessFlag('hot'),
-        PUBLIC: process.env.PUBLIC_DEV || HOST + ':' + PORT,
-        //deprecated for distSufixTarget by argument. Exe: --env.metadata.distSufixTarget=dev
-        //envFileSuffix
-        distSufixTarget: 'dev'
+        metadata: {
+          host: HOST,
+          port: PORT,
+          buildMode: ENV,
+          AOT: false,
+          PUBLIC: process.env.PUBLIC_DEV || HOST + ':' + PORT,
+          //deprecated by distSufixTarget, --env.metadata.distSufixTarget=dev
+          //envFileSuffix
+          distSufixTarget: ''
+        },
       },
-      //envOptions.metadata has priority over the other
-      envOptions? envOptions.metadata : {});
+      envOptions
+    );
+  const METADATA = NEW_ENV_OPTIONS.metadata;
 
-
-  const NEW_ENV_OPTIONS = buildUtils.deepMerge({}, envOptions, { metadata: METADATA });
   return webpackMerge(commonConfig(NEW_ENV_OPTIONS), {
     mode: METADATA.buildMode,
     devtool: 'inline-source-map',

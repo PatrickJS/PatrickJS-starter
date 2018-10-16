@@ -6,16 +6,28 @@ const helpers = require('./helpers');
 
 const APP_COMMON_CONFIG = require('./config.common.json');
 
+/**
+ *  baseUrl: '/',
+ *  isDevServer: helpers.isWebpackDevServer(),
+ *  HMR: helpers.hasProcessFlag('hot'),
+ *  AOT: process.env.BUILD_AOT || helpers.hasNpmFlag('aot'),
+ *  E2E: false,
+ *  WATCH: helpers.hasProcessFlag('watch'),
+ *  tsConfigPath: 'tsconfig.webpack.json',
+ *  gtmKey: process.env.GTM_API_KEY,
+ *  distSufixTarget: ''
+ */
 const DEFAULT_METADATA = {
-  title: APP_COMMON_CONFIG.title,
-  description: APP_COMMON_CONFIG.description,
+  // title: APP_COMMON_CONFIG.title,
+  // description: APP_COMMON_CONFIG.description,
   baseUrl: '/',
   isDevServer: helpers.isWebpackDevServer(),
   HMR: helpers.hasProcessFlag('hot'),
   AOT: process.env.BUILD_AOT || helpers.hasNpmFlag('aot'),
-  E2E: !!process.env.BUILD_E2E,
+  E2E: false,
   WATCH: helpers.hasProcessFlag('watch'),
   tsConfigPath: 'tsconfig.webpack.json',
+  gtmKey: process.env.GTM_API_KEY,
   /**
    * This suffix is added to the environment.ts file, if not set the default environment file is loaded (development)
    * To disable environment files set this to null
@@ -81,6 +93,64 @@ function getConfigFile(e2e, suffix) {
 }
 
 /**
+ * In order of priority:
+ *   first the data from { metadata: DEFAULT_METADATA }
+ *     baseUrl: '/',
+ *     isDevServer: helpers.isWebpackDevServer(),
+ *     HMR: helpers.hasProcessFlag('hot'),
+ *     AOT: process.env.BUILD_AOT || helpers.hasNpmFlag('aot'),
+ *     E2E: false,
+ *     WATCH: helpers.hasProcessFlag('watch'),
+ *     tsConfigPath: 'tsconfig.webpack.json',
+ *     gtmKey: process.env.GTM_API_KEY,
+ *     distSufixTarget: ''
+ *   then, webpackEnvOptionsInternal;
+ *   then, { metadata: require(...'config/config.commons.json') };
+ *   then, { metadata: require(...'config/config.{sufix}.json') };
+ *   then, [webpack Environment Options](https://webpack.js.org/api/cli/#environment-options) (--env.metadata.distSufixTarget=prod or --env.metadata.title=title_setted_by_argument)
+ * NOTE: distSufixTarget is get from: (webpackEnvOptionsFromArgs && webpackEnvOptionsFromArgs.metadata && webpackEnvOptionsFromArgs.metadata.distSufixTarget? webpackEnvOptionsFromArgs.metadata.distSufixTarget : (webpackEnvOptionsInternal && webpackEnvOptionsInternal.metadata && webpackEnvOptionsInternal.metadata.distSufixTarget? webpackEnvOptionsInternal.metadata.distSufixTarget: ''))
+ *   this value is put on 'return.metadata.distSufixTarget';
+ * NOTE: e2e additional sufix is used if: (webpackEnvOptionsFromArgs && webpackEnvOptionsFromArgs.metadata? webpackEnvOptionsFromArgs.metadata.E2E : (webpackEnvOptionsInternal && webpackEnvOptionsInternal.metadata? webpackEnvOptionsInternal.metadata.E2E : process.env.BUILD_E2E))
+ *   this value is put on 'return.metadata.distSufixTarget';
+ * @param {*} webpackEnvOptionsInternal 
+ * @param {*} webpackEnvOptionsFromArgs 
+ */
+function getFinalEnvOptions(webpackEnvOptionsInternal, webpackEnvOptionsFromArgs) {
+  var e2e = (webpackEnvOptionsFromArgs && webpackEnvOptionsFromArgs.metadata? webpackEnvOptionsFromArgs.metadata.E2E : (webpackEnvOptionsInternal && webpackEnvOptionsInternal.metadata? webpackEnvOptionsInternal.metadata.E2E : process.env.BUILD_E2E));
+  var distSufixTarget = (webpackEnvOptionsFromArgs && webpackEnvOptionsFromArgs.metadata && webpackEnvOptionsFromArgs.metadata.distSufixTarget? webpackEnvOptionsFromArgs.metadata.distSufixTarget : (webpackEnvOptionsInternal && webpackEnvOptionsInternal.metadata && webpackEnvOptionsInternal.metadata.distSufixTarget? webpackEnvOptionsInternal.metadata.distSufixTarget: ''));
+
+  var appConfigForDistSufix = require(process.env.ANGULAR_CONF_FILE || getConfigFile(e2e, distSufixTarget));
+  return deepMerge(
+    { 
+      metadata: DEFAULT_METADATA
+    }, 
+    webpackEnvOptionsInternal,
+    {
+      metadata: APP_COMMON_CONFIG
+    },
+    {
+      metadata: appConfigForDistSufix
+    },
+    webpackEnvOptionsFromArgs,
+    {
+      metadata: {
+        E2E: e2e
+      }
+    },
+    (
+      distSufixTarget? 
+        { 
+          metadata: { 
+            distSufixTarget: distSufixTarget
+          }
+        }
+        : 
+        {}
+    )
+  );
+}
+
+/**
  * Read the tsconfig to determine if we should prefer ES2015 modules.
  * Load rxjs path aliases.
  * https://github.com/ReactiveX/rxjs/blob/master/doc/lettable-operators.md#build-and-treeshaking
@@ -142,7 +212,7 @@ function ngcWebpackSetup(prod, metadata) {
 
   return {
     loaders,
-    plugin: ngcWebpackPluginOptions
+    angularCompilerPluginOptions: ngcWebpackPluginOptions
   };
 }
 
@@ -195,3 +265,4 @@ exports.getConfigFile = getConfigFile;
 exports.rxjsAlias = rxjsAlias;
 exports.ngcWebpackSetup = ngcWebpackSetup;
 exports.deepMerge = deepMerge;
+exports.getFinalEnvOptions = getFinalEnvOptions;
