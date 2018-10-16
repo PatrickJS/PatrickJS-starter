@@ -3,24 +3,37 @@ const path = require('path');
 const fs = require('fs');
 const helpers = require('./helpers');
 
+
 const APP_COMMON_CONFIG = require('./config.common.json');
 
+/**
+ *  baseUrl: '/',
+ *  isDevServer: helpers.isWebpackDevServer(),
+ *  HMR: helpers.hasProcessFlag('hot'),
+ *  AOT: process.env.BUILD_AOT || helpers.hasNpmFlag('aot'),
+ *  E2E: false,
+ *  WATCH: helpers.hasProcessFlag('watch'),
+ *  tsConfigPath: 'tsconfig.webpack.json',
+ *  gtmKey: process.env.GTM_API_KEY,
+ *  distSufixTarget: ''
+ */
 const DEFAULT_METADATA = {
-  title: APP_COMMON_CONFIG.title,
-  description: APP_COMMON_CONFIG.description,
+  // title: APP_COMMON_CONFIG.title,
+  // description: APP_COMMON_CONFIG.description,
   baseUrl: '/',
   isDevServer: helpers.isWebpackDevServer(),
   HMR: helpers.hasProcessFlag('hot'),
   AOT: process.env.BUILD_AOT || helpers.hasNpmFlag('aot'),
-  E2E: !!process.env.BUILD_E2E,
+  E2E: false,
   WATCH: helpers.hasProcessFlag('watch'),
   tsConfigPath: 'tsconfig.webpack.json',
-
+  gtmKey: process.env.GTM_API_KEY,
   /**
    * This suffix is added to the environment.ts file, if not set the default environment file is loaded (development)
    * To disable environment files set this to null
+   * this deprecated envFileSuffix
    */
-  envFileSuffix: ''
+  distSufixTarget: ''
 };
 
 function supportES2015(tsConfigPath) {
@@ -37,9 +50,12 @@ function readTsConfig(tsConfigPath) {
     path.dirname(tsConfigPath), undefined, tsConfigPath);
 }
 
-function getEnvFile(suffix) {
+function getEnvFile(e2e, suffix) {
   if (suffix && suffix[0] !== '.') {
     suffix = '.' + suffix;
+    if (e2e) {
+      suffix = '.e2e'+ suffix;
+    }
   }
 
   if (suffix === null) {
@@ -55,6 +71,83 @@ function getEnvFile(suffix) {
   } else {
     throw new Error('Environment file not found.')
   }
+}
+
+function getConfigFile(e2e, suffix) {
+  if (suffix && suffix[0] !== '.') {
+    suffix = '.' + suffix;
+    if (e2e) {
+      suffix = '.e2e'+ suffix;
+    }
+  }
+
+  let fileName = helpers.root(`config/config${suffix}.json`);
+  if (fs.existsSync(fileName)) {
+    return fileName;
+  } else if (fs.existsSync(fileName = helpers.root('config/config.json'))) {
+    console.warn(`Could not find config.json file with suffix ${suffix}, loading default environment file`);
+    return fileName;
+  } else {
+    throw new Error('config.json file not found.')
+  }
+}
+
+/**
+ * In order of priority:
+ *   first the data from { metadata: DEFAULT_METADATA }
+ *     baseUrl: '/',
+ *     isDevServer: helpers.isWebpackDevServer(),
+ *     HMR: helpers.hasProcessFlag('hot'),
+ *     AOT: process.env.BUILD_AOT || helpers.hasNpmFlag('aot'),
+ *     E2E: false,
+ *     WATCH: helpers.hasProcessFlag('watch'),
+ *     tsConfigPath: 'tsconfig.webpack.json',
+ *     gtmKey: process.env.GTM_API_KEY,
+ *     distSufixTarget: ''
+ *   then, webpackEnvOptionsInternal;
+ *   then, { metadata: require(...'config/config.commons.json') };
+ *   then, { metadata: require(...'config/config.{sufix}.json') };
+ *   then, [webpack Environment Options](https://webpack.js.org/api/cli/#environment-options) (--env.metadata.distSufixTarget=prod or --env.metadata.title=title_setted_by_argument)
+ * NOTE: distSufixTarget is get from: (webpackEnvOptionsFromArgs && webpackEnvOptionsFromArgs.metadata && webpackEnvOptionsFromArgs.metadata.distSufixTarget? webpackEnvOptionsFromArgs.metadata.distSufixTarget : (webpackEnvOptionsInternal && webpackEnvOptionsInternal.metadata && webpackEnvOptionsInternal.metadata.distSufixTarget? webpackEnvOptionsInternal.metadata.distSufixTarget: ''))
+ *   this value is put on 'return.metadata.distSufixTarget';
+ * NOTE: e2e additional sufix is used if: (webpackEnvOptionsFromArgs && webpackEnvOptionsFromArgs.metadata? webpackEnvOptionsFromArgs.metadata.E2E : (webpackEnvOptionsInternal && webpackEnvOptionsInternal.metadata? webpackEnvOptionsInternal.metadata.E2E : process.env.BUILD_E2E))
+ *   this value is put on 'return.metadata.distSufixTarget';
+ * @param {*} webpackEnvOptionsInternal 
+ * @param {*} webpackEnvOptionsFromArgs 
+ */
+function getFinalEnvOptions(webpackEnvOptionsInternal, webpackEnvOptionsFromArgs) {
+  var e2e = (webpackEnvOptionsFromArgs && webpackEnvOptionsFromArgs.metadata? webpackEnvOptionsFromArgs.metadata.E2E : (webpackEnvOptionsInternal && webpackEnvOptionsInternal.metadata? webpackEnvOptionsInternal.metadata.E2E : process.env.BUILD_E2E));
+  var distSufixTarget = (webpackEnvOptionsFromArgs && webpackEnvOptionsFromArgs.metadata && webpackEnvOptionsFromArgs.metadata.distSufixTarget? webpackEnvOptionsFromArgs.metadata.distSufixTarget : (webpackEnvOptionsInternal && webpackEnvOptionsInternal.metadata && webpackEnvOptionsInternal.metadata.distSufixTarget? webpackEnvOptionsInternal.metadata.distSufixTarget: ''));
+
+  var appConfigForDistSufix = require(process.env.ANGULAR_CONF_FILE || getConfigFile(e2e, distSufixTarget));
+  return deepMerge(
+    { 
+      metadata: DEFAULT_METADATA
+    }, 
+    webpackEnvOptionsInternal,
+    {
+      metadata: APP_COMMON_CONFIG
+    },
+    {
+      metadata: appConfigForDistSufix
+    },
+    webpackEnvOptionsFromArgs,
+    {
+      metadata: {
+        E2E: e2e
+      }
+    },
+    (
+      distSufixTarget? 
+        { 
+          metadata: { 
+            distSufixTarget: distSufixTarget
+          }
+        }
+        : 
+        {}
+    )
+  );
 }
 
 /**
@@ -85,10 +178,11 @@ function ngcWebpackSetup(prod, metadata) {
     sourceMap
   };
 
-  const environment = getEnvFile(metadata.envFileSuffix);
-  if (environment) {
+  const environmentFilePath = getEnvFile(metadata.E2E, metadata.distSufixTarget);
+
+  if (environmentFilePath) {
     ngcWebpackPluginOptions.hostReplacementPaths = {
-      [helpers.root('src/environments/environment.ts')]: environment
+      [helpers.root('src/client/environments/environment.ts')]: environmentFilePath
     }
   }
 
@@ -118,14 +212,57 @@ function ngcWebpackSetup(prod, metadata) {
 
   return {
     loaders,
-    plugin: ngcWebpackPluginOptions
+    angularCompilerPluginOptions: ngcWebpackPluginOptions
   };
 }
 
+function deepMergeRecursive(visitedSourceObjectsMap, target, source) {
+  if (!visitedSourceObjectsMap.get(source)) {
+    var keysArr = source? Object.keys(source) : [];
+    for (let j = 0; j < keysArr.length; j++) {
+      var key = keysArr[j];
+      if (isObject(source[key])) {
+        target[key] = deepMergeRecursive(visitedSourceObjectsMap, target[key] || {}, source[key]);
+        visitedSourceObjectsMap.set(source[key], target[key]);
+      } else {
+        target[key] = source[key];
+      }
+    }
+  } else {
+    return visitedSourceObjectsMap.get(source);
+  }
+  return target;
+}
+
+function deepMerge(...args) {
+  var target;
+  if (args.length > 0) {
+    target = args[0];
+  }
+  var visitedSourceObjectsMap = new Map();
+  for (let i = 1; i < args.length; i++) {
+    const source = args[i];
+    target = deepMergeRecursive(visitedSourceObjectsMap, target, source);
+  }
+
+  return target;
+}
+
+function isObject(x) {
+  return typeof x === "object" && !Array.isArray(x) && x !== null && x.constructor && x.constructor !== Number && x.constructor !== Date;
+}
+
+// function getEnvObject(suffix) {
+//   var environmentObject = require(getEnvFile(metadata.distSufixTarget));
+//   return environmentObject;
+// }
 
 exports.DEFAULT_METADATA = DEFAULT_METADATA;
 exports.supportES2015 = supportES2015;
 exports.readTsConfig = readTsConfig;
 exports.getEnvFile = getEnvFile;
+exports.getConfigFile = getConfigFile;
 exports.rxjsAlias = rxjsAlias;
 exports.ngcWebpackSetup = ngcWebpackSetup;
+exports.deepMerge = deepMerge;
+exports.getFinalEnvOptions = getFinalEnvOptions;

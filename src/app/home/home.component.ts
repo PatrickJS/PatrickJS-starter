@@ -6,6 +6,8 @@ import {
 import { AppState } from '../app.service';
 import { Title } from './title';
 import { XLargeDirective } from './x-large';
+import { environment } from 'environments/environment';
+import { DistSufixTargetEnum } from 'environments/model';
 
 @Component({
   /**
@@ -44,6 +46,11 @@ export class HomeComponent implements OnInit {
 
   public ngOnInit() {
     console.log('hello `Home` component');
+    console.log('environment.distSufixTarget === DistSufixTargetEnum.DevWorstation: ' + (environment.distSufixTarget === DistSufixTargetEnum.DevWorstation));
+    console.log('environment.distSufixTarget === DistSufixTargetEnum.Prod: ' + (environment.distSufixTarget === DistSufixTargetEnum.Prod));
+    console.log('environment.distSufixTarget === DistSufixTargetEnum.StageA: ' + (environment.distSufixTarget === DistSufixTargetEnum.StageA));
+    console.log('environment.distSufixTarget === DistSufixTargetEnum.StageB: ' + (environment.distSufixTarget === DistSufixTargetEnum.StageB));
+    console.log('environment: \n' + JSON.stringify(environment, null, 2));
     /**
      * this.title.getData().subscribe(data => this.data = data);
      */

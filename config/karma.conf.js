@@ -3,7 +3,7 @@
  */
 
 module.exports = function (config) {
-  const testWebpackConfig = require('./webpack.test.js')({ env: 'test' });
+  const testWebpackConfig = require('./webpack.test.js')({ metadata: { buildMode: 'test'}});
 
   const configuration = {
 

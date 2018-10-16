@@ -14,7 +14,9 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlElementsPlugin = require('./html-elements-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackInlineManifestPlugin = require('webpack-inline-manifest-plugin');
+const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplacementPlugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+const NullPlugin = require('webpack-null-plugin');
 const AngularCompilerPlugin = require('@ngtools/webpack').AngularCompilerPlugin;
 
 const buildUtils = require('./build-utils');
@@ -24,12 +26,14 @@ const buildUtils = require('./build-utils');
  *
  * See: https://webpack.js.org/configuration/
  */
-module.exports = function(options) {
-  const isProd = options.env === 'production';
-  const APP_CONFIG = require(process.env.ANGULAR_CONF_FILE || (isProd ? './config.prod.json' : './config.dev.json'));
+module.exports = function(envOptions) {
+  const isProd = envOptions.metadata.buildMode === 'production';
 
-  const METADATA = Object.assign({}, buildUtils.DEFAULT_METADATA, options.metadata || {});
-  const GTM_API_KEY = process.env.GTM_API_KEY || APP_CONFIG.gtmKey;
+  //in order of priority:
+  // first the data from 'buildUtils.DEFAULT_METADATA';
+  // then, config.{sufix}.json they are overwritten by process.env (eg pre-existing environment variables or 'cross-env BUILD_AOT = 1 SOURCE_MAP = 0 npm run webpack')
+  // then, if they exist, they are overwritten by envOptions.metadata (ex: --env.metadata.distSufixTarget=prod ou --env.metadata.title=title_setted_by_argument)
+  const METADATA = envOptions.metadata;
 
   const ngcWebpackConfig = buildUtils.ngcWebpackSetup(isProd, METADATA);
   const supportES2015 = buildUtils.supportES2015(METADATA.tsConfigPath);
@@ -39,7 +43,7 @@ module.exports = function(options) {
     main: './src/main.browser.ts'
   };
 
-  Object.assign(ngcWebpackConfig.plugin, {
+  Object.assign(ngcWebpackConfig.angularCompilerPluginOptions, {
     tsConfigPath: METADATA.tsConfigPath,
     mainPath: entry.main
   });
@@ -161,6 +165,15 @@ module.exports = function(options) {
      * See: https://webpack.js.org/configuration/plugins/
      */
     plugins: [
+      (
+        METADATA.distSufixTarget !== '' ?
+          new NormalModuleReplacementPlugin(
+            /.*environments[\\\/]environment/,
+            buildUtils.getEnvFile(METADATA.E2E, METADATA.distSufixTarget)
+          )
+        :
+        new NullPlugin()
+      ),
       /**
        * Plugin: DefinePlugin
        * Description: Define free variables.
@@ -175,6 +188,7 @@ module.exports = function(options) {
         ENV: JSON.stringify(METADATA.ENV),
         HMR: METADATA.HMR,
         AOT: METADATA.AOT,
+        DIST_SUFIX_TARGET: JSON.stringify(METADATA.distSufixTarget),
         'process.env.ENV': JSON.stringify(METADATA.ENV),
         'process.env.NODE_ENV': JSON.stringify(METADATA.ENV),
         'process.env.HMR': METADATA.HMR
@@ -191,7 +205,7 @@ module.exports = function(options) {
        */
       new CopyWebpackPlugin(
         [{ from: 'src/assets', to: 'assets' }, { from: 'src/meta' }],
-        isProd ? { ignore: ['mock-data/**/*'] } : undefined
+        isProd ? { ignore: ['mock-data/**/*'] } : {debug: 'warning'}
       ),
 
       /*
@@ -210,7 +224,7 @@ module.exports = function(options) {
           return entryPoints.indexOf(a.names[0]) - entryPoints.indexOf(b.names[0]);
         },
         metadata: METADATA,
-        gtmKey: GTM_API_KEY,
+        gtmKey: envOptions.gtmKey,
         inject: 'body',
         xhtml: true,
         minify: isProd
@@ -262,7 +276,7 @@ module.exports = function(options) {
         headTags: require('./head-config.common')
       }),
 
-      new AngularCompilerPlugin(ngcWebpackConfig.plugin),
+      new AngularCompilerPlugin(ngcWebpackConfig.angularCompilerPluginOptions),
 
       /**
        * Plugin: WebpackInlineManifestPlugin

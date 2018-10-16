@@ -17,21 +17,34 @@ const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
  *
  * See: https://webpack.js.org/configuration/
  */
-module.exports = function(options) {
+module.exports = function(envOptions) {
   const ENV = (process.env.ENV = process.env.NODE_ENV = 'development');
   const HOST = process.env.HOST || 'localhost';
   const PORT = process.env.PORT || 3000;
 
-  const METADATA = Object.assign({}, buildUtils.DEFAULT_METADATA, {
-    host: HOST,
-    port: PORT,
-    ENV: ENV,
-    HMR: helpers.hasProcessFlag('hot'),
-    PUBLIC: process.env.PUBLIC_DEV || HOST + ':' + PORT
-  });
+  //in order of priority:
+  // first the data from 'buildUtils.DEFAULT_METADATA';
+  // then, if they exist, they are overwritten by process.env (eg pre-existing environment variables or 'cross-env BUILD_AOT = 1 SOURCE_MAP = 0 npm run webpack')
+  // then, if they exist, they are overwritten by envOptions.metadata (ex: --env.metadata.distSufixTarget=prod ou --env.metadata.title=title_setted_by_argument)
+  const NEW_ENV_OPTIONS = buildUtils.getFinalEnvOptions(
+      {
+        metadata: {
+          host: HOST,
+          port: PORT,
+          buildMode: ENV,
+          AOT: false,
+          PUBLIC: process.env.PUBLIC_DEV || HOST + ':' + PORT,
+          //deprecated by distSufixTarget, --env.metadata.distSufixTarget=dev
+          //envFileSuffix
+          distSufixTarget: ''
+        },
+      },
+      envOptions
+    );
+  const METADATA = NEW_ENV_OPTIONS.metadata;
 
-  return webpackMerge(commonConfig({ env: ENV, metadata: METADATA }), {
-    mode: 'development',
+  return webpackMerge(commonConfig(NEW_ENV_OPTIONS), {
+    mode: METADATA.buildMode,
     devtool: 'inline-source-map',
 
     /**
