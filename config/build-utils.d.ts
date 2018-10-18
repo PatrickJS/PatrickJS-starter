@@ -47,7 +47,7 @@ export function getEnvFile(e2e: boolean, suffix: string): string;
  */
 export function getConfigFile(e2e: boolean, suffix: string): string;
 /**
- * In order of priority:
+ * In reversed order of priority:
  *   first the data from { metadata: DEFAULT_METADATA }
  *     baseUrl: '/',
  *     isDevServer: helpers.isWebpackDevServer(),

@@ -55,7 +55,7 @@ export function main(): Promise<any> {
       `);
   }
 
-  let compilerOptions: CompilerOptions = undefined;
+  let compilerOptions: CompilerOptions;
   if (environment.ngTemplateStrategy === NgTemplateStrategyEnum.Emulated) {
     compilerOptions = {
       defaultEncapsulation: ViewEncapsulation.Emulated,
