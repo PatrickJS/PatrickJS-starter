@@ -6,5 +6,6 @@
     "projectId": "XXXXXX",
     "storageBucket": "XXXXXX.appspot.com",
     "messagingSenderId": "000000000000"
-  }
+  },
+  "sourceMapEnabled": true
 }

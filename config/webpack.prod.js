@@ -33,7 +33,10 @@ function getUglifyOptions(supportES2015, enableCompress) {
     pure_getters: true /* buildOptimizer */,
     // PURE comments work best with 3 passes.
     // See https://github.com/webpack/webpack/issues/2899#issuecomment-317425926.
-    passes: 2 /* buildOptimizer */
+    passes: 2, /* buildOptimizer */
+    //https://github.com/mishoo/UglifyJS2/issues/1609
+    collapse_vars: false,
+    reduce_vars: false
   };
 
   return {
@@ -70,12 +73,13 @@ module.exports = function(envOptions) {
       },
     },
     envOptions);
+  console.log('[webpack.prod.js] final envOptions:\n' + JSON.stringify(NEW_ENV_OPTIONS, null, 2));
   const METADATA = NEW_ENV_OPTIONS.metadata;
 
   return webpackMerge(commonConfig(NEW_ENV_OPTIONS), {
     mode: METADATA.buildMode,
 
-    devtool: 'source-map',
+    devtool: METADATA.sourceMapEnabled? 'source-map' : 'disabled',
 
     /**
      * Options affecting the output of the compilation.
@@ -149,7 +153,7 @@ module.exports = function(envOptions) {
          * NOTE: To debug prod builds uncomment //debug lines and comment //prod lines
          */
         new UglifyJsPlugin({
-          sourceMap: sourceMapEnabled,
+          sourceMap: METADATA.sourceMapEnabled,
           parallel: true,
           cache: helpers.root('webpack-cache/uglify-cache'),
           uglifyOptions: getUglifyOptions(supportES2015, true)

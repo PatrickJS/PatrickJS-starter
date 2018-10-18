@@ -1,6 +1,6 @@
 /* tslint:disable */
 import { enableProdMode } from '@angular/core';
-import { Environment, decorateModuleRefProd, DistSufixTargetEnum } from './model';
+import { Environment, decorateModuleRefProd, DistSufixTargetEnum, NgTemplateStrategyEnum } from './model';
 
 enableProdMode();
 
@@ -10,6 +10,8 @@ export const environment: Environment = {
   production: true,
   showDevModule: false,
   distSufixTarget: DIST_SUFIX_TARGET as any as DistSufixTargetEnum,
+  // In 'production' mode always use Aot.
+  ngTemplateStrategy: NgTemplateStrategyEnum.Aot,
 
   /** Angular debug tools in the dev console
    * https://github.com/angular/angular/blob/86405345b781a9dc2438c0fbe3e9409245647019/TOOLS_JS.md

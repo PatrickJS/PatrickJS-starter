@@ -7,5 +7,6 @@
     "storageBucket": "XXXXXX.appspot.com",
     "messagingSenderId": "000000000000"
   },
-  "gtmKey" : "GTM-XXXXXXX"
+  "gtmKey" : "GTM-XXXXXXX",
+  "sourceMapEnabled": true
 }

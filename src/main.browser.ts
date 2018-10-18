@@ -3,7 +3,7 @@
  */
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { environment } from 'environments/environment';
-import { NgModuleRef } from '@angular/core';
+import { NgModuleRef, ViewEncapsulation, CompilerOptions } from '@angular/core';
 
 /**
  * App Module
@@ -11,6 +11,7 @@ import { NgModuleRef } from '@angular/core';
  */
 import { AppModule } from './app';
 import { ROOT_SELECTOR } from './app/app.component';
+import { NgTemplateStrategyEnum } from 'environments/model';
 
 /**
  * Bootstrap our Angular app with a top level NgModule
@@ -37,7 +38,31 @@ export function main(): Promise<any> {
     });
   }
 
-  modulePromise = platformBrowserDynamic().bootstrapModule(AppModule);
+  if (environment.production
+      && environment.ngTemplateStrategy !== NgTemplateStrategyEnum.Aot) {
+    throw new Error(
+      `
+      * In 'production' mode always use Aot.
+      * In 'development' mode always use Emulated or Jit.
+      `);
+  }
+  if (!environment.production
+      && environment.ngTemplateStrategy === NgTemplateStrategyEnum.Aot) {
+    throw new Error(
+      `
+      * In 'production' mode always use Aot.
+      * In 'development' mode always use Emulated or Jit.
+      `);
+  }
+
+  let compilerOptions: CompilerOptions = undefined;
+  if (environment.ngTemplateStrategy === NgTemplateStrategyEnum.Emulated) {
+    compilerOptions = {
+      defaultEncapsulation: ViewEncapsulation.Emulated,
+      useJit: false
+    };
+  }
+  modulePromise = platformBrowserDynamic().bootstrapModule(AppModule, compilerOptions);
 
   return modulePromise.then(environment.decorateModuleRef).catch((err) => console.error(err));
 }

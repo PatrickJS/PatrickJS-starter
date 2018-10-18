@@ -41,11 +41,12 @@ module.exports = function(envOptions) {
       },
       envOptions
     );
+  console.log('[webpack.dev.js] final envOptions:\n' + JSON.stringify(NEW_ENV_OPTIONS, null, 2));
   const METADATA = NEW_ENV_OPTIONS.metadata;
 
   return webpackMerge(commonConfig(NEW_ENV_OPTIONS), {
     mode: METADATA.buildMode,
-    devtool: 'inline-source-map',
+    devtool: METADATA.sourceMapEnabled? 'inline-source-map' : 'disabled',
 
     /**
      * Options affecting the output of the compilation.
