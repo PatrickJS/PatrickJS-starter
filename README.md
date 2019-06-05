@@ -463,7 +463,7 @@ starter kit in production on [Netlify](https://www.netlify.com/):
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/AngularClass/angular-starter)
 
-### Optional Integration with SonarQube (for continous code quality)
+### Optional Integration with SonarQube (for continuous code quality)
 Assuming you have SonarQube 5.5.6 (LTS) installed
 * Setup SonarQube with the [Sonar Typescript plugin](https://github.com/Pablissimo/SonarTsPlugin#installation) and the Generic Test Coverage plugin https://docs.sonarqube.org/display/PLUG/Generic+Test+Coverage
 * Install sonar-scanner globally 
