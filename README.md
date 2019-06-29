@@ -437,7 +437,7 @@ If you want to run image as virtual-host on sub-domain you must setup [proxy](ht
  ```
 
  And in your `/etc/hosts` file (linux) add line: `127.0.0.1 angular-starter.your-domain.com` or in yor hosting add
- folowing DNS record (wildchar `*` is handy because when you add new sub-domain in future, you don't need to touch/add any DNS record)
+ following DNS record (wildchar `*` is handy because when you add new sub-domain in future, you don't need to touch/add any DNS record)
 
  ```
  Type: CNAME
