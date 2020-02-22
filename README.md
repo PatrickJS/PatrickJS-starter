@@ -164,6 +164,7 @@ npm run server:prod
 ```
 
 ## Other commands
+## the following commands with npm can be used with yarn as well
 
 ### build files
 ```bash
