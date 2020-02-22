@@ -1,0 +1,19 @@
+{
+  "name": "hizen",
+  "version": "1.0.0",
+  "description": "A minimal Electron application",
+  "main": "main.js",
+  "scripts": {
+    "start": "nf start -p 3000",
+    "dashboard-start": "cd dashboard && npm run start",
+    "electron": "electron .",
+    "electron-start": "node ./electron-wait-react"
+  },
+  "repository": "https://github.com/hizenapp/hizen",
+  "author": "PatrickJS",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^8.0.1",
+    "electron-builder": "^22.3.2"
+  }
+}
