@@ -13,6 +13,7 @@ const {
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 let currentState = {
+  location: '',
   filePaths: []
 }
 function sendData (data) {
@@ -55,18 +56,25 @@ function createWindow () {
 
   ipcMain.on("toMain", (event, args) => {    
     console.log('event', event, 'args', args);
-    if (args === 'get-dir') {
-      dialog.showOpenDialog({
-        properties: ['openDirectory']
-      })
-      .then(({canceled, filePaths}) => {
-        if (!canceled) {
-          sendData({
-            filePaths
-          });
-        }
-      })
-    }
+    switch (args.event) {
+      case 'get-dir':
+        dialog.showOpenDialog({
+          properties: ['openDirectory']
+        })
+        .then(({canceled, filePaths}) => {
+          if (!canceled) {
+            sendData({
+              filePaths
+            });
+          }
+        });
+        break;
+      case 'location':
+        sendData({
+          location: args.payload
+        })
+        break;
+    }    
   });
   mainWindow.webContents.on('did-finish-load', () => {
     sendData({content: 'hi from electron'});

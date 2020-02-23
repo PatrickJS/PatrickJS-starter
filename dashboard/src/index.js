@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import {subscribe} from './services/local-api';
 
-import {BrowserRouter,} from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
 
 function Main(props) {
   return (
@@ -15,12 +15,13 @@ function Main(props) {
 }
 
 let currentData = {
+  location: '',
   filePaths: []
 }
 subscribe((data = currentData) => {
   Object.assign(currentData, data);
   const logData = JSON.stringify(currentData, null, 2);
-  console.log('sub render', logData)
+  console.log('data', logData)
   ReactDOM.render(<Main {...currentData} />, document.getElementById('root'));
 });
 

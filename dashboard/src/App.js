@@ -12,26 +12,26 @@ import {
 function usePageViews() {
   let location = useLocation();
   React.useEffect(() => {
-    send(location.pathname);
+    send({event: 'location', payload: location.pathname});
   }, [location]);
 }
 
 function App(props) {
   usePageViews();
   return  (
-      <Switch>
-        <Route
-          path="/"
-          exact={true}
-          render={
-            routeProps => <Workspace {...routeProps} {...props} />
-        }/>
-        <Route
-          path="/dashboard"
-          render={
-            routeProps => <Dashboard {...routeProps} {...props} />
-        }/>
-      </Switch>
+    <Switch>
+      <Route
+        path="/"
+        exact={true}
+        render={
+          routeProps => <Workspace {...routeProps} {...props} />
+      }/>
+      <Route
+        path="/dashboard"
+        render={
+          routeProps => <Dashboard {...routeProps} {...props} />
+      }/>
+    </Switch>
   );
 }
 

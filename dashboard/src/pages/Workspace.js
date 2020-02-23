@@ -11,13 +11,15 @@ export default function Workspace(props) {
         return <div key={path+i}>path: {path}</div>
       })}
       {
-        props.filePaths.length && (
+        props.filePaths.length > 0 && (
           <Link to="/dashboard">Dashboard</Link>
         )
       }
-      <button onClick={() => {
-        send('get-dir');
-      }}>open dir</button>
+      <div>
+        <button onClick={() => {
+          send({event: 'get-dir'});
+        }}>open dir</button>
+      </div>
       
     </div>
   )
