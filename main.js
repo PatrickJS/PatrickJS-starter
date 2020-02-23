@@ -8,15 +8,12 @@ const {
   dialog,
   BrowserWindow
 } = require('electron');
+const getDefaultState = require('./dashboard/src/universal/state');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
-let currentState = {
-  location: '',
-  filePaths: [],
-  projectName: 'Hizen'
-}
+let currentState = getDefaultState()
 function sendData (data) {
   const newState = Object.assign(currentState, data)
   mainWindow.webContents.send("fromMain", newState);

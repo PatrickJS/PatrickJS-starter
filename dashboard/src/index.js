@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import {subscribe} from './services/local-api';
+import getDefaultState from './universal/state';
 
 import {BrowserRouter} from "react-router-dom";
 
@@ -14,11 +15,8 @@ function Main(props) {
   )
 }
 
-let currentData = {
-  location: '',
-  filePaths: [],
-  projectName: 'Hizen'
-}
+let currentData = getDefaultState()
+
 subscribe((data = currentData) => {
   Object.assign(currentData, data);
   const logData = JSON.stringify(currentData, null, 2);
