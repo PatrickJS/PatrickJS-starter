@@ -1,7 +1,7 @@
 // Modules to control application life and create native browser window
 const url = require('url');
 const path = require('path');
-const {app, screen, BrowserWindow} = require('electron');
+const {app, screen, ipcMain, BrowserWindow} = require('electron');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -20,8 +20,10 @@ function createWindow () {
     width: width - 200,
     height: height - 100,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
-      // nodeIntegration: true
+      preload: path.join(__dirname, 'preload.js'),
+      nodeIntegration: false, // is default value after Electron v5
+      contextIsolation: true, // protect against prototype pollution
+      enableRemoteModule: false, // turn off remote
     }
   });
 
@@ -35,6 +37,16 @@ function createWindow () {
   // mainWindow.webContents.openDevTools()
   // mainWindow.loadFile('index.html')
   mainWindow.loadURL(startUrl);
+  mainWindow.webContents.openDevTools()
+
+  ipcMain.on("toMain", (event, args) => {    
+    console.log('event', event, 'args', args);
+  });
+  mainWindow.webContents.on('did-finish-load', () => {
+    mainWindow.webContents.send("fromMain", {
+      content: 'nodejs datataaa after load'
+    });
+  });
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
