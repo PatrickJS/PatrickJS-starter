@@ -4,12 +4,24 @@ import './index.css';
 import App from './App';
 import {subscribe} from './services/local-api';
 
-let currentData = {}
-subscribe((data) => {
-  currentData = data;
+import {BrowserRouter,} from "react-router-dom";
+
+function Main(props) {
+  return (
+    <BrowserRouter>
+      <App {...props}/>
+    </BrowserRouter>
+  )
+}
+
+let currentData = {
+  filePaths: []
+}
+subscribe((data = currentData) => {
+  Object.assign(currentData, data);
   const logData = JSON.stringify(currentData, null, 2);
   console.log('sub render', logData)
-  ReactDOM.render(<App data={data} />, document.getElementById('root'));
+  ReactDOM.render(<Main {...currentData} />, document.getElementById('root'));
 });
 
 // setTimeout(() => {
@@ -20,6 +32,13 @@ subscribe((data) => {
 if (module.hot) {
   module.hot.accept('./App', () => {
     const NextApp = require('./App').default;
-    ReactDOM.render(<NextApp data={currentData} />);
+    function NextMain(props) {
+      return (
+        <BrowserRouter>
+          <NextApp {...props}/>
+        </BrowserRouter>
+      )
+    }
+    ReactDOM.render(<NextMain {...currentData} />);
   })
 }

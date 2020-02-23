@@ -7,6 +7,8 @@ export function subscribe (fn, defaultData = {}) {
 }
 
 export function send(data) {
-  window.api.send("toMain", data);
+  try {
+    window.api.send("toMain", data);
+  } catch(e) {}
 }
 

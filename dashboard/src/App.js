@@ -2,16 +2,23 @@ import React from 'react';
 import './App.css';
 import Workspace from './pages/Workspace';
 import Dashboard from './pages/Dashboard';
+import {send} from './services/local-api'
 import {
-  BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  useLocation
 } from "react-router-dom";
 
+function usePageViews() {
+  let location = useLocation();
+  React.useEffect(() => {
+    send(location.pathname);
+  }, [location]);
+}
 
 function App(props) {
+  usePageViews();
   return  (
-    <Router>
       <Switch>
         <Route
           path="/"
@@ -25,7 +32,6 @@ function App(props) {
             routeProps => <Dashboard {...routeProps} {...props} />
         }/>
       </Switch>
-    </Router>
   );
 }
 

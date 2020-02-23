@@ -1,11 +1,25 @@
 // Modules to control application life and create native browser window
 const url = require('url');
 const path = require('path');
-const {app, screen, ipcMain, BrowserWindow} = require('electron');
+const {
+  app,
+  screen,
+  ipcMain,
+  dialog,
+  BrowserWindow
+} = require('electron');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
+let currentState = {
+  filePaths: []
+}
+function sendData (data) {
+  const newState = Object.assign(currentState, data)
+  mainWindow.webContents.send("fromMain", newState);
+}
+
 
 function workAreaSize() {
   const { width, height } = screen.getPrimaryDisplay().workAreaSize
@@ -41,11 +55,21 @@ function createWindow () {
 
   ipcMain.on("toMain", (event, args) => {    
     console.log('event', event, 'args', args);
+    if (args === 'get-dir') {
+      dialog.showOpenDialog({
+        properties: ['openDirectory']
+      })
+      .then(({canceled, filePaths}) => {
+        if (!canceled) {
+          sendData({
+            filePaths
+          });
+        }
+      })
+    }
   });
   mainWindow.webContents.on('did-finish-load', () => {
-    mainWindow.webContents.send("fromMain", {
-      content: 'nodejs datataaa after load'
-    });
+    sendData({content: 'hi from electron'});
   });
 
   // Open the DevTools.
