@@ -1,17 +1,9 @@
 import React from 'react';
 import './App.css';
+import Dashboard from './pages/Dashboard';
 
 function App() {
-  return (
-    <div className="App">
-      <div>
-        Side bar
-      </div>
-      <div>
-        Main content
-      </div>
-    </div>
-  );
+  return <Dashboard />;
 }
 
 export default App;
