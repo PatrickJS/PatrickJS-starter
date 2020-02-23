@@ -16,7 +16,8 @@ function Main(props) {
 
 let currentData = {
   location: '',
-  filePaths: []
+  filePaths: [],
+  projectName: 'Hizen'
 }
 subscribe((data = currentData) => {
   Object.assign(currentData, data);

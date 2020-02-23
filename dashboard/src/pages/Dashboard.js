@@ -8,13 +8,11 @@ import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
 // import Link from '@material-ui/core/Link';
-import MenuIcon from '@material-ui/icons/Menu';
 // import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 // import NotificationsIcon from '@material-ui/icons/Notifications';
 import ListItemText from '@material-ui/core/ListItemText';
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Link } from "react-router-dom";
 
 import { mainListItems, secondaryListItems } from '../components/listItems';
 import DefaultLayout from '../components/DefaultLayout'
@@ -112,22 +110,11 @@ export default function Dashboard(props) {
       <CssBaseline />
       <AppBar position="absolute" className={clsx(classes.appBar)}>
         <Toolbar className={classes.toolbar}>
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            className={clsx(classes.menuButton)}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            Hizen
-          </Typography>
-          {/* <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton> */}
+          <Link to="/">
+            <Typography component="h1" variant="h6" color="textPrimary" noWrap className={classes.title}>
+              {props.projectName}
+            </Typography>
+          </Link>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -141,24 +128,24 @@ export default function Dashboard(props) {
           <ListItemText primary="Project Name" />
         </div>
         <Divider />
-        <List>{mainListItems}</List>
+        <List>{mainListItems(props)}</List>
         <Divider />
-        <List>{secondaryListItems}</List>
+        <List>{secondaryListItems(props)}</List>
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Switch>
-          <Route path="/dashboard/packages" exact={true}>
+          <Route path="/dashboard/:project/packages" exact={true}>
             <DefaultLayout classes={classes}>
               <Packages {...props} />
             </DefaultLayout>
           </Route>
-          <Route path="/dashboard/tasks" exact={true}>
+          <Route path="/dashboard/:project/tasks" exact={true}>
             <DefaultLayout classes={classes}>
               <Tasks {...props} />
             </DefaultLayout>
           </Route>
-          <Route path="/dashboard/scripts" exact={true}>
+          <Route path="/dashboard/:project/scripts" exact={true}>
             <DefaultLayout classes={classes}>
               <Scripts {...props} />
             </DefaultLayout>

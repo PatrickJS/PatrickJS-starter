@@ -8,13 +8,22 @@ export default function Workspace(props) {
     <div>
       Your Workspace
       {props.filePaths.map((path, i) => {
-        return <div key={path+i}>path: {path}</div>
-      })}
-      {
-        props.filePaths.length > 0 && (
-          <Link to="/dashboard">Dashboard</Link>
+        const paths = path.split('/');
+        const projectName = paths[paths.length-1]
+        return (
+          <div key={path+i}>
+            <div>path: {path}</div>
+            <Link
+              to={"/dashboard/" + projectName}
+              onClick={
+                () => {
+                  send({event: 'set-project', payload: projectName})
+                }
+              }
+            >{projectName} Dashboard</Link>
+          </div>
         )
-      }
+      })}
       <div>
         <button onClick={() => {
           send({event: 'get-dir'});

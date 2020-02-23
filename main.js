@@ -14,7 +14,8 @@ const {
 let mainWindow
 let currentState = {
   location: '',
-  filePaths: []
+  filePaths: [],
+  projectName: 'Hizen'
 }
 function sendData (data) {
   const newState = Object.assign(currentState, data)
@@ -57,6 +58,11 @@ function createWindow () {
   ipcMain.on("toMain", (event, args) => {    
     console.log('event', event, 'args', args);
     switch (args.event) {
+      case 'set-project':
+        sendData({
+          projectName: args.payload
+        });
+        break;
       case 'get-dir':
         dialog.showOpenDialog({
           properties: ['openDirectory']
