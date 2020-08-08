@@ -1,5 +1,3 @@
-**Note: for support questions, please use one of these channels:** [Chat: AngularClass.slack](http://angularclass.com/member-join/) or [Twitter: @TipeIO](https://twitter.com/TipeIO)
-
 * **I'm submitting a ...**
 [ ] bug report
 [ ] feature request
