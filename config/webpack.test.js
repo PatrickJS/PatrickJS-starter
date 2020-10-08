@@ -7,10 +7,10 @@ const helpers = require('./helpers');
 /**
  * Webpack Plugins
  */
-const ProvidePlugin = require('webpack/lib/ProvidePlugin');
+// const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
-const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
+// const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
 
 /**
  * Webpack Constants
@@ -195,18 +195,18 @@ module.exports = function(options) {
        * See: https://webpack.js.org/plugins/context-replacement-plugin/
        * See: https://github.com/angular/angular/issues/11580
        */
-      new ContextReplacementPlugin(
+      // new ContextReplacementPlugin(
         /**
          * The (\\|\/) piece accounts for path separators in *nix and Windows
          */
-        /\@angular(\\|\/)core(\\|\/)esm5/,
-        helpers.root('src'), // location of your src
-        {
+        // /\@angular(\\|\/)core(\\|\/)esm5/,
+        // helpers.root('src'), // location of your src
+        // {
           /**
            * your Angular Async Route paths relative to this root directory
            */
-        }
-      ),
+        // }
+      // ),
 
       /**
        * Plugin LoaderOptionsPlugin (experimental)

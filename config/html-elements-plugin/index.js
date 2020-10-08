@@ -89,15 +89,16 @@ function getHtmlElementString(dataSource, publicPath) {
 }
 
 class HtmlElementsPlugin {
-  constructor(locations) {
+  constructor(locations, htmlWebpackPlugin) {
     this.locations = locations;
+    this.htmlWebpackPlugin = htmlWebpackPlugin;
   }
 
   /* istanbul ignore next: this would be integration tests */
   apply(compiler) {
     compiler.hooks.compilation.tap('HtmlElementsPlugin', compilation => {
       compilation.options.htmlElements = compilation.options.htmlElements || {};
-      compilation.hooks.htmlWebpackPluginBeforeHtmlGeneration.tapAsync('HtmlElementsPlugin',
+      this.htmlWebpackPlugin.getHooks(compilation).beforeAssetTagGeneration.tapAsync('HtmlElementsPlugin',
         (htmlPluginData, callback) => {
 
           const locations = this.locations;

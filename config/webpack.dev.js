@@ -4,7 +4,7 @@
 
 const helpers = require('./helpers');
 const buildUtils = require('./build-utils');
-const webpackMerge = require('webpack-merge'); // used to merge webpack configs
+const { merge } = require('webpack-merge'); // used to merge webpack configs
 const commonConfig = require('./webpack.common.js'); // the settings that are common to prod and dev
 
 /**
@@ -30,7 +30,7 @@ module.exports = function(options) {
     PUBLIC: process.env.PUBLIC_DEV || HOST + ':' + PORT
   });
 
-  return webpackMerge(commonConfig({ env: ENV, metadata: METADATA }), {
+  return merge(commonConfig({ env: ENV, metadata: METADATA }), {
     mode: 'development',
     devtool: 'inline-source-map',
 

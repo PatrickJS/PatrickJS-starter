@@ -13,7 +13,7 @@ const DefinePlugin = require('webpack/lib/DefinePlugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlElementsPlugin = require('./html-elements-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const WebpackInlineManifestPlugin = require('webpack-inline-manifest-plugin');
+// const WebpackInlineManifestPlugin = require('webpack-inline-manifest-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const AngularCompilerPlugin = require('@ngtools/webpack').AngularCompilerPlugin;
 
@@ -189,10 +189,12 @@ module.exports = function(options) {
        *
        * See: https://www.npmjs.com/package/copy-webpack-plugin
        */
-      new CopyWebpackPlugin(
-        [{ from: 'src/assets', to: 'assets' }, { from: 'src/meta' }],
-        isProd ? { ignore: ['mock-data/**/*'] } : undefined
-      ),
+      new CopyWebpackPlugin({
+        patterns: [
+          { from: 'src/assets', to: 'assets' },
+          { from: 'src/meta' },
+        ]
+      }),
 
       /*
       * Plugin: HtmlWebpackPlugin
@@ -207,7 +209,7 @@ module.exports = function(options) {
         title: METADATA.title,
         chunksSortMode: function(a, b) {
           const entryPoints = ['inline', 'polyfills', 'sw-register', 'styles', 'vendor', 'main'];
-          return entryPoints.indexOf(a.names[0]) - entryPoints.indexOf(b.names[0]);
+          return entryPoints.indexOf(a) - entryPoints.indexOf(b);
         },
         metadata: METADATA,
         gtmKey: GTM_API_KEY,
@@ -260,17 +262,9 @@ module.exports = function(options) {
        */
       new HtmlElementsPlugin({
         headTags: require('./head-config.common')
-      }),
+      }, HtmlWebpackPlugin),
 
-      new AngularCompilerPlugin(ngcWebpackConfig.plugin),
-
-      /**
-       * Plugin: WebpackInlineManifestPlugin
-       * Inline Webpack's manifest.js in index.html
-       *
-       * https://github.com/almothafar/webpack-inline-manifest-plugin
-       */
-      new WebpackInlineManifestPlugin()
+      new AngularCompilerPlugin(ngcWebpackConfig.plugin)
     ],
 
     /**

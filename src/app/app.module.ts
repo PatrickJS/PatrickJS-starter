@@ -65,7 +65,7 @@ interface StoreType {
      * When the module is not imported it will get tree shaked.
      * This is a simple example, a big app should probably implement some logic
      */
-    ...environment.showDevModule ? [ DevModuleModule ] : [],
+    // ...environment.showDevModule ? [ DevModuleModule ] : [],
   ],
   /**
    * Expose our Services and Providers into Angular's dependency injection.

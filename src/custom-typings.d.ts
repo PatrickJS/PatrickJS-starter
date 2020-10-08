@@ -59,7 +59,7 @@ declare module 'modern-lru' {
 // Extra variables that live on Global that will be replaced by webpack DefinePlugin
 declare var ENV: string;
 declare var HMR: boolean;
-declare var System: SystemJS;
+declare var SystemJS: SystemJS;
 // declare const FIREBASE_CONFIG: FirebaseConfig;
 
 interface FirebaseConfig {
@@ -79,7 +79,6 @@ interface GlobalEnvironment {
   ENV: string;
   HMR: boolean;
   SystemJS: SystemJS;
-  System: SystemJS;
   // FIREBASE_CONFIG: FirebaseConfig;
 }
 

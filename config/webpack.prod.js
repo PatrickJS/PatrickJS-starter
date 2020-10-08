@@ -7,7 +7,7 @@ const buildUtils = require('./build-utils');
 /**
  * Used to merge webpack configs
  */
-const webpackMerge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 
 /**
  * The settings that are common to prod and dev
@@ -20,8 +20,8 @@ const commonConfig = require('./webpack.common.js');
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HashedModuleIdsPlugin = require('webpack/lib/HashedModuleIdsPlugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-
+// const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin')
 /***
  * Ref: https://github.com/mishoo/UglifyJS2/tree/harmony#minify-options
  * @param supportES2015
@@ -63,7 +63,7 @@ module.exports = function(env) {
   // set environment suffix so these environments are loaded.
   METADATA.envFileSuffix = METADATA.E2E ? 'e2e.prod' : 'prod';
 
-  return webpackMerge(commonConfig({ env: ENV, metadata: METADATA }), {
+  return merge(commonConfig({ env: ENV, metadata: METADATA }), {
     mode: 'production',
 
     devtool: 'source-map',
@@ -129,22 +129,14 @@ module.exports = function(env) {
     },
 
     optimization: {
+      minimize: true,
       minimizer: [
-        /**
-         * Plugin: UglifyJsPlugin
-         * Description: Minimize all JavaScript output of chunks.
-         * Loaders are switched into minimizing mode.
-         *
-         * See: https://webpack.js.org/plugins/uglifyjs-webpack-plugin/
-         *
-         * NOTE: To debug prod builds uncomment //debug lines and comment //prod lines
-         */
-        new UglifyJsPlugin({
-          sourceMap: sourceMapEnabled,
+        new TerserPlugin({
+          sourceMap: true,
           parallel: true,
           cache: helpers.root('webpack-cache/uglify-cache'),
-          uglifyOptions: getUglifyOptions(supportES2015, true)
-        })
+          terserOptions: getUglifyOptions(supportES2015, true)
+        }),
       ],
       splitChunks: {
         chunks: 'all'
