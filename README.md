@@ -90,7 +90,7 @@ angular-starter/
  ├──config/                        * our configuration
  |   ├──build-utils.js             * common config and shared functions for prod and dev
  |   ├──config.common.json         * config for both environments prod and dev such title and description of index.html
- |   ├──config.dev.json            * config for devevlopment environment
+ |   ├──config.dev.json            * config for development environment
  |   ├──config.prod.json           * config for production environment 
  │   │                              (note: you can load your own config file, just set the evn ANGULAR_CONF_FILE with the path of your own file)
  |   ├──helpers.js                 * helper functions for our configuration files
@@ -242,7 +242,7 @@ Any stylesheets (Sass or CSS) placed in the `src/styles` directory and imported 
 
 For example to use Bootstrap as an external stylesheet:
 1) Create a `styles.scss` file (name doesn't matter) in the `src/styles` directory.
-2) `npm install` the version of Boostrap you want.
+2) `npm install` the version of Bootstrap you want.
 3) In `styles.scss` add `@import '~bootstrap/scss/bootstrap.scss';`
 4) In `src/app/app.module.ts` add underneath the other import statements: `import '../styles/styles.scss';`
 
@@ -439,7 +439,7 @@ If you want to run image as virtual-host on sub-domain you must setup [proxy](ht
  ```
 
  And in your `/etc/hosts` file (linux) add line: `127.0.0.1 angular-starter.your-domain.com` or in yor hosting add
- folowing DNS record (wildchar `*` is handy because when you add new sub-domain in future, you don't need to touch/add any DNS record)
+ following DNS record (wildchar `*` is handy because when you add new sub-domain in future, you don't need to touch/add any DNS record)
 
  ```
  Type: CNAME
